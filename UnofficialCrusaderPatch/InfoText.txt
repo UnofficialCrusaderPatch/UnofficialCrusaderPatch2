@@ -1,0 +1,12 @@
+﻿
+
+Dieser Patcher editiert die Datei "Stronghold Crusader.exe".
+Das Original wird in "Stronghold Crusader.exe.ori" umbenannt.
+
+Es wird die Crusader-Steam-Version benötigt!
+
+Das Projekt ist Open-Source und kann unter https://git.io/fxyw1 eingesehen werden.
+
+****** Version 1.0 ******
+
+- Armbrustschaden gegen Arabische Schwertkämpfer verringert. Es sind jetzt 6 Treffer bis zum Tod nötig.

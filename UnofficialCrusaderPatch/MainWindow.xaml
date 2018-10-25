@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UnofficialCrusaderPatch"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Unofficial Patcher" Height="480" Width="600" ResizeMode="NoResize">
     <Grid>
-        
+        <Image Source="background.jpg" Stretch="Fill"/>
+        <Grid x:Name="infoGrid" Visibility="Visible">
+            <Button x:Name="bInfoContinue" Content="Weiter" HorizontalAlignment="Left" Height="31" Margin="396,364,0,0" VerticalAlignment="Top" Width="124" RenderTransformOrigin="0.502,0.504" Click="bInfoContinue_Click"/>
+            <TextBox x:Name="infoBox" HorizontalAlignment="Left" Height="268" Margin="66,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="454" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
+            <TextBlock x:Name="linkLabel" Text="GitHub-Repository: " TextAlignment="Center" HorizontalAlignment="Left" Height="24" Margin="66,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="397">
+                <Hyperlink NavigateUri="https://git.io/fxyw1" RequestNavigate="Hyperlink_RequestNavigate">
+                    https://git.io/fxyw1
+                </Hyperlink>
+            </TextBlock>
+        </Grid>
+        <Grid x:Name="pathGrid" Visibility="Hidden">
+            <Button x:Name="bPathInstall" Content="Installieren" HorizontalAlignment="Left" Height="30" Margin="397,364,0,0" VerticalAlignment="Top" Width="123" RenderTransformOrigin="0.502,0.504" Click="bPathInstall_Click"/>
+            <TextBox x:Name="tbPath" HorizontalAlignment="Left" Height="28" Margin="70,150,0,0" VerticalAlignment="Top" Width="391" MaxLines="1"/>
+            <Button x:Name="bPathSearch" Content="Suchen" HorizontalAlignment="Left" Height="28" Margin="466,150,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.502,0.504" Click="bPathSearch_Click"/>
+            <Button x:Name="bPathBack" Content="Zurück" HorizontalAlignment="Left" Height="30" Margin="70,364,0,0" VerticalAlignment="Top" Width="102" RenderTransformOrigin="0.502,0.504" Click="bPathBack_Click"/>
+        </Grid>
+        <Grid x:Name="setupGrid" Visibility="Hidden">
+            <TextBox x:Name="setupBox" HorizontalAlignment="Left" Height="257" Margin="68,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="453" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
+            <ProgressBar x:Name="pbSetup" HorizontalAlignment="Left" Height="29" Margin="68,59,0,0" VerticalAlignment="Top" Width="453"/>
+            <Button x:Name="bSetupFinish" Content="Fertig" HorizontalAlignment="Left" Height="30" Margin="406,364,0,0" VerticalAlignment="Top" Width="115" Click="bSetupFinish_Click"/>
+
+        </Grid>
     </Grid>
 </Window>
