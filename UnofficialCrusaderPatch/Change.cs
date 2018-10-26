@@ -13,14 +13,10 @@ namespace UnofficialCrusaderPatch
 
         byte[] data;
 
-        string description;
-        public string Description { get { return this.description; } }
-
-        public Change(int address, byte[] data, string description)
+        public Change(int address, byte[] data)
         {
             this.address = address;
             this.data = data;
-            this.description = description;
         }
 
         public void Edit(FileStream fs)
@@ -33,29 +29,24 @@ namespace UnofficialCrusaderPatch
 
     class ChangeInt32 : Change
     {
-        public ChangeInt32(int address, int newValue, string description = null)
-            : base(address, BitConverter.GetBytes(newValue), description)
+        public ChangeInt32(int address, int newValue)
+            : base(address, BitConverter.GetBytes(newValue))
         {
         }
     }
 
     class ChangeFloat : Change
     {
-        public ChangeFloat(int address, float newValue, string description = null)
-            : base(address, BitConverter.GetBytes(newValue), description)
+        public ChangeFloat(int address, float newValue)
+            : base(address, BitConverter.GetBytes(newValue))
         {
         }
     }
     
     class ChangeBytes : Change
     {
-        public ChangeBytes(int address, byte[] data, string description = null)
-            : base(address, data, description)
-        {
-        }
-
-        public ChangeBytes(int address, string description, params byte[] data)
-            : base(address, data, description)
+        public ChangeBytes(int address, params byte[] data)
+            : base(address, data)
         {
         }
     }

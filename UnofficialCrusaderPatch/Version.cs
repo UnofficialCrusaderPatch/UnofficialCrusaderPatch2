@@ -64,8 +64,21 @@ namespace UnofficialCrusaderPatch
         public static IEnumerable<Change> Changes { get { return changes; } }
         static List<Change> changes = new List<Change>()
         {
-            new ChangeInt32(0x4B*4 + 0xB4ED20, 3500, 
-                "Armbrustschaden gegen Arab. Schwertkämpfer auf 3500 gesetzt."),
+            // Armbrust dmg table: 0xB4ED20
+            // Bogen dmg table: 0xB4EAA0
+            // Lanzenträger hp: 10000
+
+             // Armbrustschaden gegen Arab. Schwertkämpfer, original: 8000
+            new ChangeInt32(0x4B*4 + 0xB4ED20, 3500),
+
+            // Arab. Schwertkämpfer Angriffsanimation, ca. halbiert
+            new ChangeBytes(0xB59CD0, 0x01, 0x02, 0x03, 0x04, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x10, 0x11, 0x12, 0x13, 0x14, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x00),
+            
+             // Armbrustschaden gegen Lanzenträger, original: 15000
+            new ChangeInt32(0x18*4 + 0xB4ED20, 9999),
+            
+             // Bogenschaden gegen Lanzenträger, original: 3500
+            new ChangeInt32(0x18*4 + 0xB4EAA0, 2000),
         };
     }
 }

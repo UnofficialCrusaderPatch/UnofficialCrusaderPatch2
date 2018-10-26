@@ -36,6 +36,8 @@ namespace UnofficialCrusaderPatch
                 {
                     tbPath.Text = path;
                 }
+
+                pathBox.Text = "Bitte wähle dein Steam - Stronghold Crusader HD - Verzeichnis";
             }
             catch (Exception e)
             {
@@ -90,8 +92,13 @@ namespace UnofficialCrusaderPatch
                 return;
             }
 
-            pathGrid.Visibility = Visibility.Hidden;
-            setupGrid.Visibility = Visibility.Visible;
+            bPathInstall.Content = "Fertig";
+            bPathInstall.IsEnabled = false;
+            bPathInstall.Click -= bPathInstall_Click;
+            bPathInstall.Click += (s, a) => this.Close();
+
+            bPathSearch.IsEnabled = false;
+            tbPath.IsReadOnly = true;
 
             setupThread = new Thread(DoSetup);
             setupThread.Start();
@@ -102,33 +109,25 @@ namespace UnofficialCrusaderPatch
         #region Setup
 
         Thread setupThread;
-        void bSetupFinish_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         void DoSetup()
         {
             try
             {
                 Thread.Sleep(100);
                 Patcher.Patch(crusaderPath, SetPercent);
+                Dispatcher.Invoke(() => bPathInstall.IsEnabled = true, DispatcherPriority.Render);
             }
             catch (Exception e)
             {
                 if (!(e is System.Threading.Tasks.TaskCanceledException)) // in case of exit
-                    File.WriteAllText("exceptions.txt", e.ToString());
+                    MessageBox.Show(e.ToString(), "Fehler");
             }
         }
 
-        void SetPercent(double value, string textLine)
+        void SetPercent(double value)
         {
-            Dispatcher.Invoke(() =>
-            {
-                pbSetup.Value = value;
-                setupBox.Text += textLine + "\n";
-            }, DispatcherPriority.Render);
-            Thread.Sleep(100);
+            Dispatcher.Invoke(() => pbSetup.Value = value, DispatcherPriority.Render);
+            Thread.Sleep(50);
         }
 
         #endregion

@@ -9,7 +9,7 @@ namespace UnofficialCrusaderPatch
 {
     static class Patcher
     {
-        public delegate void SetPercentHandler(double percent, string textLine);
+        public delegate void SetPercentHandler(double percent);
 
         public static void Patch(string filePath, SetPercentHandler SetPercent = null)
         {
@@ -32,15 +32,15 @@ namespace UnofficialCrusaderPatch
             {
                 int index = 0;
                 double count = Version.Changes.Count() / 100.0;
-                SetPercent?.Invoke(0, "Start...");
+                SetPercent?.Invoke(0);
 
                 foreach(Change change in Version.Changes)
                 {
                     change.Edit(fs);
-                    SetPercent?.Invoke(++index / count, change.Description);
+                    SetPercent?.Invoke(++index / count);
                 }
 
-                SetPercent?.Invoke(100, "Fertig...");
+                SetPercent?.Invoke(100);
             }
         }
     }

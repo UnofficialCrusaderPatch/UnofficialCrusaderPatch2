@@ -105,5 +105,8 @@
   <ItemGroup>
     <Resource Include="background.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="frame.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
