@@ -8,9 +8,9 @@ Es wird die ausführbare Datei "Stronghold Crusader.exe" editiert, eine Kopie de
 
 ****** Version 1.0 ******
 
-- Arabische Schwertkämpfer brauchen 6 Armbrusttreffer bis sie sterben
+- Arabische Schwertkämpfer brauchen 6 Armbrusttreffer statt 3 bis sie sterben
 - Arabische Schwertkämpfer hauen Mauern ca. doppelt so schnell ein wie vorher
-- Lanzenträger brauchen 5 Bogentreffer bis sie sterben
-- Lanzenträger brauchen überleben ganz knapp einen Armbrusttreffer
+- Lanzenträger brauchen 5 Bogentreffer statt 3 bis sie sterben
+- Lanzenträger überleben ganz knapp einen Armbrusttreffer
 
 
