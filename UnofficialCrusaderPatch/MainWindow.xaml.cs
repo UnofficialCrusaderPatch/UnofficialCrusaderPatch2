@@ -127,7 +127,7 @@ namespace UnofficialCrusaderPatch
         void SetPercent(double value)
         {
             Dispatcher.Invoke(() => pbSetup.Value = value, DispatcherPriority.Render);
-            Thread.Sleep(50);
+            Thread.Sleep(10);
         }
 
         #endregion

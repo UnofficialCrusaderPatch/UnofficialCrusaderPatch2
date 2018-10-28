@@ -79,6 +79,28 @@ namespace UnofficialCrusaderPatch
             
              // Bogenschaden gegen Lanzenträger, original: 3500
             new ChangeInt32(0x18*4 + 0xB4EAA0, 2000),
+
+
+
+            // found from AI buy routine at 0x4CD62C
+            // Marschall Waffen- & Rüstungskauf, original: 0
+            // run time address: 0x23FF084 + 0x9C
+            new ChangeBytes(0x4CA5AE, 0xE9, 0x3E, 0xF3, 0xFF, 0xFF, 0x90), // jmp to code cave at 0x004C98F1
+            new ChangeBytes(0x004C98F1, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, // mov [EAX+9C], 2
+                                        0xE9, 0xB4, 0x0C, 0x00, 0x00), // jmp back to 004CA5B4
+
+
+
+
+            // Friedrich Waffen- & Rüstungskauf, original: 0
+            // run time address: 0x23FE0AC + 0x9C
+            //new ChangeBytes(0x004C8DEA + 1, 0xB0), // mov [EAX + 9C], ECX = 0 to ESI = 4
+            new ChangeBytes(0x004C8DEA, 0xE9, 0x12, 0x3B, 0x00, 0x00, 0x90), // jmp to code cave at 0x4CC901
+            new ChangeBytes(0x004CC901, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, // mov [EAX+9C], 3
+                                        0xE9, 0xE0, 0xC4, 0xFF, 0xFF), // jmp back to 004C8DF0
+
+
+            // ai1_buytable 0x01165C78
         };
     }
 }
