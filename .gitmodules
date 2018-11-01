@@ -1,0 +1,3 @@
+[submodule "SHC_AIV"]
+	path = SHC_AIV
+	url = https://github.com/Evrey/SHC_AIV

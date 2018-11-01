@@ -132,3 +132,35 @@ ui_cancel
 	"Abbrechen"
 	"Cancel"
 }
+
+ui_evreyfixed
+{
+	"Evreys gefixte Vanilla-Burgen ([ref2])"
+	"Evrey's fixed vanilla castles ([ref2])"
+}
+
+ui_evreyimproved
+{
+	"Evreys verbesserte KI-Burgen ([ref2])"
+	"Evrey's improved AI castles ([ref2])"
+}
+
+ui_aivlimit
+{
+	"Du kannst nur eine KI-Änderung gleichzeitig aktiv haben,
+ bitte deaktiviere alle bis auf eine."
+	"You can only have one AI change at a time active,
+ please deactivate all but one."
+}
+
+ui_uninstall
+{
+	"Deinstallieren"
+	"Uninstall"
+}
+
+ui_uninstalldone
+{
+	"Deinstallation abgeschlossen."
+	"Uninstall completed."
+}

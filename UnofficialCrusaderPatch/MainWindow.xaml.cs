@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows;
-using System.Windows.Documents;
 using System.IO;
 using Microsoft.Win32;
 using System.Windows.Threading;
-using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace UnofficialCrusaderPatch
 {
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             try
@@ -24,7 +25,7 @@ namespace UnofficialCrusaderPatch
                     Close();
                     return;
                 }
-                
+
                 // init main window
                 InitializeComponent();
 
@@ -40,11 +41,10 @@ namespace UnofficialCrusaderPatch
                 }
 
                 // fill setup options list
-                foreach (ChangeCollection c in Version.Changes)
+                foreach (Change c in Version.Changes)
                 {
-                    if (c.Type == ChangeType.Balancing)
-                        tviBalancing.Items.Add(c);
-                    else tviBugfixes.Items.Add(c);
+                    ItemsControl treeView = c.Type == ChangeType.Balancing ? tviBalancing : tviBugfixes;
+                    int index = treeView.Items.Add(c);
                 }
 
                 // set translated ui elements
@@ -52,35 +52,52 @@ namespace UnofficialCrusaderPatch
                 pButtonCancel.Content = Localization.Get("ui_cancel");
                 pButtonContinue.Content = Localization.Get("ui_continue");
                 pButtonSearch.Content = Localization.Get("ui_search");
-
-                // set info text with github reference
-                const string linkKeyword = "[ref]";
-                string infoText = Localization.Get("ui_welcomeText");
-                int index = infoText.IndexOf(linkKeyword);
-                if (index < 0)
-                {
-                    linkLabel.Text = infoText;
-                }
-                else
-                {
-                    linkLabel.Inlines.Add(infoText.Remove(index));
-
-                    Hyperlink hyperlink = new Hyperlink(new Run(Version.GitHubRef));
-                    hyperlink.NavigateUri = new Uri(Version.GitHubRef);
-                    hyperlink.RequestNavigate += (s, e) => Process.Start(Version.GitHubRef);
-                    linkLabel.Inlines.Add(hyperlink);
-
-                    linkLabel.Inlines.Add(infoText.Substring(index + linkKeyword.Length));
-                }
+                pButtonUninstall.Content = Localization.Get("ui_uninstall");
+                TextReferencer.SetText(linkLabel, "ui_welcometext");
             }
             catch (Exception e)
             {
-                File.WriteAllText("exceptions.txt", e.ToString());
-                MessageBox.Show(e.ToString(), "Error");
+                Debug.Error(e.ToString());
+            }
+        }
+
+        void TextBlock_Initialized(object sender, EventArgs e)
+        {
+            try
+            {
+                TextBlock tb = (TextBlock)sender;
+                string ident = tb.Text;
+                tb.Text = null;
+                TextReferencer.SetText(tb, ident);
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.ToString());
             }
         }
 
         #region Path finding
+
+        void pButtonUninstall_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string path = pTextBoxPath.Text;
+                if (Directory.Exists(path))
+                {
+                    Patcher.RestoreOriginals(path);
+                    Debug.Show(Localization.Get("ui_uninstalldone"), Localization.Get("ui_uninstall"));
+                }
+                else
+                {
+                    Debug.Error(Localization.Get("ui_wrongpath"));
+                }
+            }
+            catch (Exception exc)
+            {
+                Debug.Error(exc);
+            }
+        }
 
         void bPathSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -100,7 +117,7 @@ namespace UnofficialCrusaderPatch
         {
             if (Patcher.SeekOriginal(pTextBoxPath.Text).NotFound)
             {
-                MessageBox.Show(Localization.Get("ui_wrongpath"), Localization.Get("ui_error"));
+                Debug.Error(Localization.Get("ui_wrongpath"));
                 return;
             }
 
@@ -117,6 +134,11 @@ namespace UnofficialCrusaderPatch
 
         #region Install
 
+        void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            AIVLimitReached();
+        }
+
         void iButtonBack_Click(object sender, RoutedEventArgs e)
         {
             installGrid.Visibility = Visibility.Hidden;
@@ -128,7 +150,13 @@ namespace UnofficialCrusaderPatch
             VersionInfo info = Patcher.SeekOriginal(pTextBoxPath.Text);
             if (info.NotFound)
             {
-                MessageBox.Show(Localization.Get("ui_wrongpath"), Localization.Get("ui_error"));
+                Debug.Error(Localization.Get("ui_wrongpath"));
+                return;
+            }
+
+            if (AIVLimitReached())
+            {
+                Debug.Error(Localization.Get("ui_aivlimit"));
                 return;
             }
 
@@ -141,6 +169,7 @@ namespace UnofficialCrusaderPatch
             pTextBoxPath.IsReadOnly = true;
 
             setupThread = new Thread(DoSetup);
+            this.Closed += (s, args) => setupThread.Abort();
             setupThread.Start(info);
         }
 
@@ -150,28 +179,26 @@ namespace UnofficialCrusaderPatch
             try
             {
                 VersionInfo info = (VersionInfo)arg;
-
-                Thread.Sleep(100);
-                Patcher.Patch(info, SetPercent);
+                Patcher.Install(info, SetPercent);
 
                 Dispatcher.Invoke(() => iButtonInstall.IsEnabled = true, DispatcherPriority.Render);
             }
             catch (Exception e)
             {
-                if (!(e is System.Threading.Tasks.TaskCanceledException)) // in case of exit
+                if (!(e is TaskCanceledException || e is ThreadAbortException)) // in case of exit
                     MessageBox.Show(e.ToString(), Localization.Get("ui_error"));
             }
         }
 
         void SetPercent(double value)
         {
-            Dispatcher.Invoke(() => pbSetup.Value = value, DispatcherPriority.Render);
+            Dispatcher.Invoke(() => pbSetup.Value = value * 100.0, DispatcherPriority.Render);
             Thread.Sleep(10);
         }
 
         void cbBugfix_Check(object sender, RoutedEventArgs e)
         {
-            foreach (ChangeCollection c in Version.Changes)
+            foreach (Change c in Version.Changes)
                 if (c.Type == ChangeType.Bugfix)
                     c.IsChecked = (bool)cbBugfixes.IsChecked;
             tviBugfixes.Items.Refresh();
@@ -179,10 +206,23 @@ namespace UnofficialCrusaderPatch
 
         void cbBalancing_Check(object sender, RoutedEventArgs e)
         {
-            foreach (ChangeCollection c in Version.Changes)
+            foreach (Change c in Version.Changes)
                 if (c.Type == ChangeType.Balancing)
                     c.IsChecked = (bool)cbBalancing.IsChecked;
             tviBalancing.Items.Refresh();
+        }
+
+        bool AIVLimitReached()
+        {
+            bool result = Version.Changes.Where(c => c.IsChecked && c is AIVChange).Count() > 1;
+
+            foreach (Change change in Version.Changes)
+                change.Marked = (result && change.IsChecked && change is AIVChange);
+
+            tviBalancing.Items.Refresh();
+            tviBugfixes.Items.Refresh();
+
+            return result;
         }
 
         #endregion

@@ -62,8 +62,6 @@ namespace UnofficialCrusaderPatch
                 if (computedHash.SequenceEqual(pair.Hash))
                     return pair.Version;
 
-            System.Windows.MessageBox.Show(computedHash[0] + " " + hashes[0].Hash[0]);
-
             return VersionHash.Unknown;
         }
     }
