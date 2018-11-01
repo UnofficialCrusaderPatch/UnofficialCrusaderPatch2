@@ -120,7 +120,7 @@ namespace UnofficialCrusaderPatch
 
         void pButtonContinue_Click(object sender, RoutedEventArgs e)
         {
-            if (Patcher.SeekOriginal(pTextBoxPath.Text).NotFound)
+            if (Patcher.GetOriginalBinary(pTextBoxPath.Text) == null)
             {
                 Debug.Error(Localization.Get("ui_wrongpath"));
                 return;
@@ -152,8 +152,8 @@ namespace UnofficialCrusaderPatch
 
         void iButtonInstall_Click(object sender, RoutedEventArgs e)
         {
-            VersionInfo info = Patcher.SeekOriginal(pTextBoxPath.Text);
-            if (info.NotFound)
+            string filePath = Patcher.GetOriginalBinary(pTextBoxPath.Text);
+            if (filePath == null)
             {
                 Debug.Error(Localization.Get("ui_wrongpath"));
                 return;
@@ -175,7 +175,7 @@ namespace UnofficialCrusaderPatch
 
             setupThread = new Thread(DoSetup);
             this.Closed += (s, args) => setupThread.Abort();
-            setupThread.Start(info);
+            setupThread.Start(filePath);
         }
 
         Thread setupThread;
@@ -183,8 +183,7 @@ namespace UnofficialCrusaderPatch
         {
             try
             {
-                VersionInfo info = (VersionInfo)arg;
-                Patcher.Install(info, SetPercent);
+                Patcher.Install((string)arg, SetPercent);
 
                 Dispatcher.Invoke(() => iButtonInstall.IsEnabled = true, DispatcherPriority.Render);
             }

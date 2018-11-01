@@ -65,6 +65,8 @@
     <Compile Include="Localization\TextReferencer.cs" />
     <Compile Include="Patching\AIVChange.cs" />
     <Compile Include="Patching\BinaryChange.cs" />
+    <Compile Include="Patching\BinaryEdit.cs" />
+    <Compile Include="Patching\BinaryHook.cs" />
     <Compile Include="Patching\Patcher.cs" />
     <Compile Include="Version.cs" />
     <Page Include="Localization\LanguageWindow.xaml">
@@ -875,6 +877,8 @@
     <EmbeddedResource Include="CodeBlocks\c_arabwall.bin" />
     <EmbeddedResource Include="CodeBlocks\c_spearbow.bin" />
     <EmbeddedResource Include="CodeBlocks\c_spearxbow.bin" />
+    <EmbeddedResource Include="CodeBlocks\c_frederickbuy.bin" />
+    <EmbeddedResource Include="CodeBlocks\c_marshalbuy.bin" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
 
 namespace UnofficialCrusaderPatch
 {
     // Wazir & Nizar Korn & Mehl kaufen lassen
     // Abreißen deaktivieren
-    // Scroll-Tempo in 1.41 reduzieren
     // ki rekrutierungen anheben
+    // Scroll-Tempo in 1.41 reduzieren
 
     // Leiterträger, die deutlich mehr Pfeile und Bolzen aushalten
     // europäische Bogenschützen mit leicht erhöhter Reichweite.
@@ -21,6 +20,10 @@ namespace UnofficialCrusaderPatch
         public static IEnumerable<Change> Changes { get { return changes; } }
         static List<Change> changes = new List<Change>()
         {
+            /* 
+             * STAT CHANGES
+             */
+
             // Armbrust dmg table: 0xB4ED20
             // Bogen dmg table: 0xB4EAA0
             // Lanzenträger hp: 10000
@@ -45,34 +48,27 @@ namespace UnofficialCrusaderPatch
 
             
 
-
-
-
-            // found from AI buy routine at 0x4CD62C
-            // Marschall Waffen- & Rüstungskauf, original: 0
-            // run time address: 0x23FF084 + 0x9C
-/*
-            new BinaryChange("c_marshalbuy", ChangeType.Bugfix)
-            {
-                new EditBytes(0x4CA5AE, 0xE9, 0x3E, 0xF3, 0xFF, 0xFF, 0x90), // jmp to code cave at 0x004C98F1
-                new EditBytes(0x004C98F1, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, // mov [EAX+9C], 2
-                                            0xE9, 0xB4, 0x0C, 0x00, 0x00) // jmp back to 004CA5B4 
-            },
-
-            // Friedrich Waffen- & Rüstungskauf, original: 0
-            // run time address: 0x23FE0AC + 0x9C
-            //new ChangeBytes(0x004C8DEA + 1, 0xB0), // mov [EAX + 9C], ECX = 0 to ESI = 4
-            new BinaryChange("c_frederickbuy", ChangeType.Bugfix)
-            {
-                new EditBytes(0x004C8DEA, 0xE9, 0x12, 0x3B, 0x00, 0x00, 0x90), // jmp to code cave at 0x4CC901
-                new EditBytes(0x004CC901, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, // mov [EAX+9C], 3
-                                            0xE9, 0xE0, 0xC4, 0xFF, 0xFF) // jmp back to 004C8DF0
-            },
-
-            // ai1_buytable 0x01165C78
+            /*
+            * WEAPON & ARMOR AI BUYING - found from routine at 0x4CD62C
             */
 
+            // ai1_buytable 0x01165C78
 
+            // Marschall Waffen- & Rüstungskauf, original: 0
+            // run time address: 0x23FF084 + 0x9C
+            BinaryHook.Create("c_marshalbuy", ChangeType.Bugfix, 6, 
+                0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // mov [EAX+9C], 2
+            
+            // Friedrich Waffen- & Rüstungskauf, original: 0
+            // run time address: 0x23FE0AC + 0x9C
+            BinaryHook.Create("c_frederickbuy", ChangeType.Bugfix, 6,
+                0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00), // mov [EAX+9C], 3
+
+
+
+            /*
+            * FIXED AIV CASTLES - https://github.com/Evrey/SHC_AIV
+            */
 
             new AIVChange("ui_evreyfixed", ChangeType.Bugfix, "EvreyFixed"),
             new AIVChange("ui_evreyimproved", ChangeType.Balancing, "EvreyImproved", false),
