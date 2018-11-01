@@ -11,18 +11,14 @@ namespace UnofficialCrusaderPatch
         FileInfo file;
         public FileInfo File { get { return this.file; } }
 
-        VersionHash version;
-        public VersionHash Version { get { return this.version; } }
-
         bool backup;
         public bool IsBackup { get { return this.backup; } }
 
-        public bool NotFound { get { return this.version == VersionHash.Unknown; } }
+        public bool NotFound { get { return file == null; } }
 
-        public VersionInfo(FileInfo file, VersionHash version, bool backup)
+        public VersionInfo(FileInfo file, bool backup)
         {
             this.file = file;
-            this.version = version;
             this.backup = backup;
         }
     }
@@ -35,19 +31,17 @@ namespace UnofficialCrusaderPatch
         {
             if (Directory.Exists(folderPath))
             {
-                string path = Path.Combine(folderPath, "Stronghold Crusader.exe");
+                string path = Path.Combine(folderPath, "Stronghold Crusader.exe." + BackupIdent);
 
                 FileInfo file = new FileInfo(path);
-                VersionHash v = FileHash.CheckVersion(file);
-                if (v != VersionHash.Unknown)
-                    return new VersionInfo(file, v, false);
+                if (file.Exists)
+                    return new VersionInfo(file, true);
 
-                file = new FileInfo(path + "." + BackupIdent);
-                v = FileHash.CheckVersion(file);
-                if (v != VersionHash.Unknown)
-                    return new VersionInfo(file, v, true);
+                file = new FileInfo(path.Remove(path.Length - (BackupIdent.Length + 1)));
+                if (file.Exists)
+                    return new VersionInfo(file, false);
             }
-            return new VersionInfo(null, VersionHash.Unknown, false);
+            return new VersionInfo(null, false);
         }
 
         public delegate void SetPercentHandler(double percent);
@@ -77,7 +71,7 @@ namespace UnofficialCrusaderPatch
             // Do aiv folder backup
             DirectoryInfo aivDir = new DirectoryInfo(Path.Combine(file.DirectoryName, "aiv"));
             DirectoryInfo backupDir = new DirectoryInfo(Path.Combine(aivDir.FullName, BackupIdent));
-            
+
             if (backupDir.Exists)
             {
                 // restore originals
@@ -90,7 +84,7 @@ namespace UnofficialCrusaderPatch
             {
                 // create backup
                 backupDir.Create();
-                foreach(FileInfo fi in aivDir.EnumerateFiles("*.aiv"))
+                foreach (FileInfo fi in aivDir.EnumerateFiles("*.aiv"))
                 {
                     fi.CopyTo(Path.Combine(backupDir.FullName, fi.Name));
                 }
@@ -125,12 +119,17 @@ namespace UnofficialCrusaderPatch
                 SetPercent?.Invoke(++index / count);
             }
 
-            using (FileStream fs = binFile.Open(FileMode.Open, FileAccess.Write, FileShare.Read))
+            using (FileStream fs = binFile.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.Read))
+            {
+                byte[] oriData = new byte[fs.Length];
+                fs.Read(oriData, 0, oriData.Length);
+
                 foreach (BinaryChange change in binTodo)
                 {
-                    change.Edit(fs);
+                    change.Edit(fs, oriData);
                     SetPercent?.Invoke(++index / count);
                 }
+            }
         }
 
         public static void RestoreOriginals(string dirPath)

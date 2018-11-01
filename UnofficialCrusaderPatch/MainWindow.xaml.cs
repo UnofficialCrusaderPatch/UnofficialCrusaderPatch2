@@ -54,6 +54,11 @@ namespace UnofficialCrusaderPatch
                 pButtonSearch.Content = Localization.Get("ui_search");
                 pButtonUninstall.Content = Localization.Get("ui_uninstall");
                 TextReferencer.SetText(linkLabel, "ui_welcometext");
+
+                var asm = System.Reflection.Assembly.GetExecutingAssembly();
+                using (Stream stream = asm.GetManifestResourceStream("UnofficialCrusaderPatch.license.txt"))
+                using (StreamReader sr = new StreamReader(stream))
+                    linkLabel.Inlines.Add("\n\n\n\n\n\n" + sr.ReadToEnd());
             }
             catch (Exception e)
             {

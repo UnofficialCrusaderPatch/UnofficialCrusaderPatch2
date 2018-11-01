@@ -69,8 +69,8 @@ ui_continue
 
 ui_wrongpath
 {
-	"Version nicht unterstützt oder falscher Pfad!"
-	"Unsupported version or wrong path!"
+	"Stronghold Crusader konnte nicht im angegebenen Pfad gefunden werden!"
+	"Stronghold Crusader could not be found in the specified path!"
 }
 
 ui_finished
@@ -82,19 +82,19 @@ ui_finished
 ui_welcometext
 {
 
-"Dieser Setup nimmt einige Balancing-Änderungen und Bug-Fixes vor.
-
-Dabei wird unter Anderem die Datei 'Stronghold Crusader.exe' editiert.
+"Dies ist ein inoffizieller Patch für Stronghold Crusader.
 Das Projekt ist Open-Source unter [ref] zu finden.
 
-Unterstützte Crusader Versionen: v1.41 Steam"
+Potenziell wird jede Crusader-Version unterstützt, die Änderungen wurden allerdings anhand der 1.41 Steam-Version hergeleitet. Im Falle von Versions-Inkompatibilität wird der Setup jedoch Fehlermeldungen zeigen.
 
-"This Setup includes some balancing changes and bug fixes.
+Vor jeglichen Änderungen werden Backup-Dateien erstellt, die über den 'Deinstallieren'-Button oder manuell wiederhergestellt werden können."
 
-The file 'Stronghold Crusader.exe' will be edited.
-The project is available as open-source via [ref].
+"This is an unofficial patch for Stronghold Crusader.
+The project ist available as open-source via [ref].
 
-Supported Crusader versions: v1.41 Steam"
+Any Crusader version is potentially supported, but since the changes where derived with the 1.41 Steam-Version, incompatibilities may appear. The setup will then show error messages.
+
+Before any changes, backup files will be created. These can be restored via the 'Uninstall'-button or manually."
 }
 
 ui_german

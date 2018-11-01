@@ -58,7 +58,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Debug.cs" />
-    <Compile Include="Hashes\FileHash.cs" />
     <Compile Include="Localization\LanguageWindow.xaml.cs">
       <DependentUpon>LanguageWindow.xaml</DependentUpon>
     </Compile>
@@ -104,7 +103,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Hashes\Steam141.hash" />
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot1.aiv">
       <Link>EvreyFixed\Abbot1.aiv</Link>
     </EmbeddedResource>
@@ -873,6 +871,10 @@
     <EmbeddedResource Include="..\SHC_AIV\aiv\wolf8.aiv">
       <Link>EvreyImproved\wolf8.aiv</Link>
     </EmbeddedResource>
+    <EmbeddedResource Include="CodeBlocks\c_arabxbow.bin" />
+    <EmbeddedResource Include="CodeBlocks\c_arabwall.bin" />
+    <EmbeddedResource Include="CodeBlocks\c_spearbow.bin" />
+    <EmbeddedResource Include="CodeBlocks\c_spearxbow.bin" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -889,6 +891,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Localization\Localization.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
