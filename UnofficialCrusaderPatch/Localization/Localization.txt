@@ -1,0 +1,134 @@
+﻿// Deutsch
+// Englisch
+
+Name
+{
+	"Inoffizieller Crusader Patcher"
+	"Unofficial Crusader Patcher"
+}
+
+c_ArabXBow
+{
+	"Arab. Schwertkämpfer sterben nach 6 Armbrusttreffern statt 3."
+	"Arabic Swordsmen die after 6 crossbow hits instead of 3."
+}
+
+c_ArabWall
+{
+	"Arab. Schwertkämpfer reißen Mauern ca. doppelt so schnell ein."
+	"Arabic Swordsmen destroy walls about twice as fast as before."
+}
+
+c_spearxbow
+{
+	"Lanzenträger überleben knapp einen Armbrusttreffer."
+	"Spearmen barely survive one crossbow hit."
+}
+
+c_spearbow
+{
+	"Lanzenträger sterben nach 5 Bogentreffern statt 3."
+	"Spearmen die after 5 bow hits instead of 3."
+}
+
+c_marshalbuy
+{
+	"Marschall kauft Waffen und Rüstungen."
+	"Marshal buys weapons and armor."
+}
+
+c_frederickbuy
+{
+	"Friedrich kauft Waffen und Rüstungen."
+	"Frederick buys weapons and armor."
+}
+
+ui_error
+{
+	"Fehler"
+	"Error"
+}
+
+ui_SearchPath
+{
+	"Bitte wähle dein Installationverzeichnis:"
+	"Please select your installation folder:"
+}
+
+ui_search
+{
+	"Suchen"
+	"Browse"
+}
+
+ui_continue
+{
+	"Weiter"
+	"Continue"
+}
+
+ui_wrongpath
+{
+	"Version nicht unterstützt oder falscher Pfad!"
+	"Unsupported version or wrong path!"
+}
+
+ui_finished
+{
+	"Fertig"
+	"Finished"
+}
+
+ui_welcometext
+{
+
+"Dieser Setup nimmt einige Balancing-Änderungen und Bug-Fixes vor.
+
+Dabei wird unter Anderem die Datei 'Stronghold Crusader.exe' editiert.
+Das Projekt ist Open-Source unter [ref] zu finden.
+
+Unterstützte Crusader Versionen: v1.41 Steam"
+
+"This Setup includes some balancing changes and bug fixes.
+
+The file 'Stronghold Crusader.exe' will be edited.
+The project is available as open-source via [ref].
+
+Supported Crusader versions: v1.41 Steam"
+}
+
+ui_german
+{
+	"Deutsch"
+	"German"
+}
+
+ui_english
+{
+	"Englisch"
+	"English"
+}
+
+ui_chooseLangTitle
+{
+	"Setup-Sprache"
+	"Setup language"
+}
+
+ui_chooseLang
+{
+	"Bitte wählen Sie eine Sprache für die Installation aus der unten aufgeführten Liste."
+	"Please choose a language for this setup from the list below."
+}
+
+ui_accept
+{
+	"OK"
+	"OK"
+}
+
+ui_cancel
+{
+	"Abbrechen"
+	"Cancel"
+}
