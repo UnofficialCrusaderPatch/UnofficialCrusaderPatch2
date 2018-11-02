@@ -15,8 +15,16 @@ namespace UnofficialCrusaderPatch
         {
             if (Directory.Exists(folderPath))
             {
-                string path = Path.Combine(folderPath, "Stronghold Crusader.exe" + BackupFileEnding);
+                // remove old file ending from v1.0
+                string path = Path.Combine(folderPath, "Stronghold Crusader.exe.ori");
+                if (File.Exists(path))
+                {
+                    string dest = path.Remove(path.Length - ".ori".Length);
+                    File.Delete(dest);
+                    File.Move(path, dest);
+                }
 
+                path = Path.Combine(folderPath, "Stronghold Crusader.exe" + BackupFileEnding);
                 if (File.Exists(path))
                     return path;
 
