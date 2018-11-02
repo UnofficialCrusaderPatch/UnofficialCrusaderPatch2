@@ -15,7 +15,7 @@ namespace UnofficialCrusaderPatch
 
     class Version
     {
-        public static string PatcherVersion = "1.1";
+        public static string PatcherVersion = "2.01";
 
         // change version 0x424EF1 + 1
         public static readonly BinaryRedirect MenuChange = new BinaryRedirect("menuversion", false,
