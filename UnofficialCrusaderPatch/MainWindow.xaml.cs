@@ -197,7 +197,6 @@ namespace UnofficialCrusaderPatch
         void SetPercent(double value)
         {
             Dispatcher.Invoke(() => pbSetup.Value = value * 100.0, DispatcherPriority.Render);
-            Thread.Sleep(10);
         }
 
         void cbBugfix_Check(object sender, RoutedEventArgs e)

@@ -11,7 +11,7 @@ namespace UnofficialCrusaderPatch
         string blockFile;
         public string BlockFile { get { return this.blockFile; } }
 
-        byte[] editedData;
+        protected byte[] editedData;
 
         public BinaryEdit(string blockIdent, byte[] editedData)
         {
@@ -80,6 +80,17 @@ namespace UnofficialCrusaderPatch
 
     public class EditInt32 : BinaryEdit
     {
+        int value;
+        public int Value
+        {
+            get { return this.value; }
+            set
+            {
+                this.value = value;
+                this.editedData = BitConverter.GetBytes(value);
+            }
+        }
+
         public EditInt32(string blockIdent, int newValue)
             : base(blockIdent, BitConverter.GetBytes(newValue))
         {

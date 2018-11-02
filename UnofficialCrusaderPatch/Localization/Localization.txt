@@ -9,38 +9,32 @@ Name
 
 c_ArabXBow
 {
-	"Arab. Schwertkämpfer sterben nach 6 Armbrusttreffern statt 3."
-	"Arabic Swordsmen die after 6 crossbow hits instead of 3."
+	"Arab. Schwertkämpfer sterben nach 6 Armbrusttreffern statt 3"
+	"Arabic Swordsmen die after 6 crossbow hits instead of 3"
 }
 
 c_ArabWall
 {
-	"Arab. Schwertkämpfer reißen Mauern ca. doppelt so schnell ein."
-	"Arabic Swordsmen destroy walls about twice as fast as before."
+	"Arab. Schwertkämpfer reißen Mauern ca. doppelt so schnell ein"
+	"Arabic Swordsmen destroy walls about twice as fast as before"
 }
 
 c_spearxbow
 {
-	"Lanzenträger überleben knapp einen Armbrusttreffer."
-	"Spearmen barely survive one crossbow hit."
+	"Lanzenträger überleben knapp einen Armbrusttreffer"
+	"Spearmen barely survive one crossbow hit"
 }
 
 c_spearbow
 {
-	"Lanzenträger sterben nach 5 Bogentreffern statt 3."
-	"Spearmen die after 5 bow hits instead of 3."
+	"Lanzenträger sterben nach 5 Bogentreffern statt 3"
+	"Spearmen die after 5 bow hits instead of 3"
 }
 
-c_marshalbuy
+c_aibuy
 {
-	"Marschall kauft Waffen und Rüstungen."
-	"Marshal buys weapons and armor."
-}
-
-c_frederickbuy
-{
-	"Friedrich kauft Waffen und Rüstungen."
-	"Frederick buys weapons and armor."
+	"Marschall & Friedrich kaufen Waffen und Rüstungen"
+	"Marshal & Frederick buy weapons and armor"
 }
 
 ui_error
@@ -164,4 +158,22 @@ ui_uninstalldone
 {
 	"Deinstallation abgeschlossen."
 	"Uninstall completed."
+}
+
+ai_recruitinterval
+{
+	"Setze das Rekrutierungstempo der KIs auf den höchsten Wert"
+	"Set the recruitment speed of the AIs to the highest value"
+}
+
+ai_recruitsleep
+{
+	"Deaktiviere Rekrutierungspausen der KI"
+	"Deactivate recruitment pauses of the AI"
+}
+
+ai_attacklimit
+{
+	"Setze Angriffstruppenlimit der KIs auf 1000",
+	"Set the attacking troops limit of the ai to 1000",
 }

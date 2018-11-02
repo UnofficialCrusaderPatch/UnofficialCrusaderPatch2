@@ -884,6 +884,9 @@
     <EmbeddedResource Include="CodeBlocks\c_spearbow.block" />
     <EmbeddedResource Include="CodeBlocks\c_spearxbow.block" />
     <EmbeddedResource Include="CodeBlocks\menuversion.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_recruitinterval.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_recruitsleep.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_attacklimit.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Collections;
 
 namespace UnofficialCrusaderPatch
 {
     public class BinaryChange : Change, IEnumerable<BinaryEdit>
     {
-        List<BinaryEdit> edits;
+        List<BinaryEdit> edits = new List<BinaryEdit>();
 
         public BinaryChange(string ident, ChangeType type, bool checkedDefault = true)
             : base(ident, type, checkedDefault)
         {
-            this.edits = new List<BinaryEdit>(1);
         }
 
         public void Add(BinaryEdit change)

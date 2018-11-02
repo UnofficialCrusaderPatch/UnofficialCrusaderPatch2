@@ -40,11 +40,11 @@
             <TreeView x:Name="optionView" HorizontalAlignment="Left" Height="215" Margin="10,51,0,0" VerticalAlignment="Top" Width="466" Background="#CCFFFFFF" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <TreeViewItem x:Name="tviBugfixes" IsExpanded="True" Focusable="False">
                     <TreeViewItem.ItemTemplate>
-                        <HierarchicalDataTemplate>
+                        <DataTemplate>
                             <CheckBox IsChecked="{Binding IsChecked}" Background="{Binding Background}" Unchecked="CheckBox_Unchecked">
                                 <TextBlock Text="{Binding Ident}" TextWrapping="Wrap" FontSize="14" Width="400" Margin="0,-1,0,0" Initialized="TextBlock_Initialized"/>
                             </CheckBox>
-                        </HierarchicalDataTemplate>
+                        </DataTemplate>
                     </TreeViewItem.ItemTemplate>
                     <TreeViewItem.Header>
                         <CheckBox x:Name="cbBugfixes" IsChecked="true" Checked="cbBugfix_Check" Unchecked="cbBugfix_Check">
@@ -54,11 +54,11 @@
                 </TreeViewItem>
                 <TreeViewItem x:Name="tviBalancing" IsExpanded="True" Focusable="False">
                     <TreeViewItem.ItemTemplate>
-                        <HierarchicalDataTemplate>
+                        <DataTemplate>
                             <CheckBox IsChecked="{Binding IsChecked}" Background="{Binding Background}" Unchecked="CheckBox_Unchecked">
                                 <TextBlock Text="{Binding Ident}" TextWrapping="Wrap" FontSize="14" Width="400" Margin="0,-1,0,0" Initialized="TextBlock_Initialized"/>
                             </CheckBox>
-                        </HierarchicalDataTemplate>
+                        </DataTemplate>
                     </TreeViewItem.ItemTemplate>
                     <TreeViewItem.Header>
                         <CheckBox x:Name="cbBalancing" Checked="cbBalancing_Check" Unchecked="cbBalancing_Check">
