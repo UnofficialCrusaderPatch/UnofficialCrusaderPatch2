@@ -69,7 +69,7 @@ namespace UnofficialCrusaderPatch
             }
 
             int index = 0;
-            double count = binTodo.Count;
+            double count = 1 + binTodo.Count; // +1 for version edit
 
             // aiv changes
             AIVChange aivChange = (AIVChange)Version.Changes.FirstOrDefault(c => c.IsChecked && c is AIVChange);
@@ -84,6 +84,12 @@ namespace UnofficialCrusaderPatch
             byte[] oriData = File.ReadAllBytes(filePath);
             byte[] data = (byte[])oriData.Clone();
 
+            // change version display in main menu
+            var displayResult = Version.MenuChange.Edit(data, oriData);
+            if (displayResult != BinaryEdit.Result.NoErrors)
+                throw new Exception("Menu display edit failed: " + displayResult);
+
+            // change other stuff
             foreach (BinaryChange change in binTodo)
             {
                 change.Edit(data, oriData);
@@ -92,14 +98,14 @@ namespace UnofficialCrusaderPatch
 
             if (filePath.EndsWith(BackupFileEnding))
             {
-                filePath.Remove(filePath.Length - BackupFileEnding.Length);
+                filePath = filePath.Remove(filePath.Length - BackupFileEnding.Length);
             }
             else
             {
                 // create backup
                 File.WriteAllBytes(filePath + BackupFileEnding, oriData);
             }
-
+            
             File.WriteAllBytes(filePath, data);
         }
 

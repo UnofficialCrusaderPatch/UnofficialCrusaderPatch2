@@ -2,62 +2,45 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Globalization;
 using System.IO;
+using System.Globalization;
 
 namespace CodeBlox
 {
     class Program
     {
-        static byte[] oriData;
         static void Main(string[] args)
         {
             try
             {
-                int address;
-                while (true)
+                Console.Write("check or read (c/r): ");
+                string input = Console.ReadLine();
+                bool read = input.StartsWith("r", StringComparison.OrdinalIgnoreCase);
+
+                Console.Write("File name: ");
+                string path = Console.ReadLine();
+
+                path = Path.Combine("blocks", path);
+                if (!path.EndsWith(".block"))
+                    path += ".block";
+
+                if (read)
                 {
-                    Console.Write("Address: ");
-
-                    string input = Console.ReadLine();
-                    if (input.StartsWith("0x"))
-                        input = input.Substring(2);
-
-                    if (int.TryParse(input, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out address))
-                        break;
+                    ReadBlock(path);
                 }
-
-                oriData = File.ReadAllBytes("Stronghold Crusader.exe");
-
-                address -= 0x400000;
-                if (address < 0x1000 || address > oriData.Length)
-                    throw new Exception("Address is out of range! " + address);
-
-                Console.WriteLine();
-                DirectoryInfo dir = new DirectoryInfo("versions");
-                foreach (FileInfo file in dir.EnumerateFiles("*.exe"))
+                else
                 {
-                    Console.Write(string.Format("'{0}': ", file.Name));
-                    string result = CheckVersion(file, address);
-                    Console.WriteLine(result);
-                }
-                
-                int size;
-                while (true)
-                {
-                    Console.Write("Choose size: ");
-                    string input = Console.ReadLine();
-                    if (int.TryParse(input, out size))
-                        break;
-                }
+                    CodeBlock block;
+                    using (FileStream fs = File.OpenRead(path))
+                        block = new CodeBlock(fs);
 
-                if (size <= 0 || address + size > oriData.Length)
-                    throw new Exception("Size is out of range! " + size);
-
-                byte[] buffer = new byte[size];
-                Buffer.BlockCopy(oriData, address, buffer, 0, size);
-                File.WriteAllBytes("data.bin", buffer);
+                    foreach (string filePath in Directory.EnumerateFiles("versions", "*.exe"))
+                    {
+                        Console.Write(string.Format("'{0}': ", Path.GetFileName(filePath)));
+                        byte[] data = File.ReadAllBytes(filePath);
+                        Console.WriteLine(block.SeekCount(data, out int whatever));
+                    }
+                }
             }
             catch (Exception e)
             {
@@ -65,51 +48,64 @@ namespace CodeBlox
                 Console.WriteLine();
                 Console.WriteLine(e.ToString());
             }
+            Console.WriteLine("done");
             Console.ReadLine();
         }
 
-        const int maxSize = 256;
-        static string CheckVersion(FileInfo file, int address)
+        const int BlockLength = 32;
+        static void ReadBlock(string filePath)
         {
-            byte[] data = new byte[file.Length];
-            using (FileStream fs = file.OpenRead())
-                fs.Read(data, 0, data.Length);
 
-            int first = 2; // start with 2 bytes
-            while (first < maxSize)
+            int address;
+            while (true)
             {
-                if (address + first > oriData.Length)
-                    return "out of range";
+                Console.Write("Address: ");
 
-                if (CheckBlock(data, address, first) == 1)
-                    return first.ToString();
+                string input = Console.ReadLine();
+                if (input.StartsWith("0x"))
+                    input = input.Substring(2);
 
-                first++;
+                if (int.TryParse(input, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out address))
+                    break;
             }
 
-            return "none < " + maxSize;
-        }
+            byte[] data = File.ReadAllBytes("Stronghold Crusader.exe");
 
-        static int CheckBlock(byte[] data, int address, int size)
-        {
-            byte[] block = new byte[size];
-            Buffer.BlockCopy(oriData, address, block, 0, size);
+            address -= 0x400000;
+            if (address < 0x1000 || address >= data.Length)
+                throw new Exception("Address is out of range! " + address);
 
-            int count = 0;
-            int sizeless = size - 1;
-            for (int i = 0; i < data.Length - size; i++)
+            int size;
+            while (true)
             {
-                for (int b = 0; b < size; b++)
+                Console.Write("Choose size: ");
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out size))
+                    break;
+            }
+
+            if (size <= 0 || address + size > data.Length)
+                throw new Exception("Size is out of range! " + size);
+
+            byte[] buf = new byte[size];
+            Buffer.BlockCopy(data, address, buf, 0, size);
+
+            if (File.Exists(filePath))
+            {
+                Console.WriteLine("File does already exists! Press enter to continue.");
+                Console.ReadLine();
+            }
+
+            using (FileStream fs = File.OpenWrite(filePath))
+            using (StreamWriter sw = new StreamWriter(fs))
+            {
+                for (int i = 0; i < buf.Length; i++)
                 {
-                    if (data[i + b] == block[b])
-                    {
-                        if (b == sizeless)
-                            count++;
-                    }
-                    else break;
+                    sw.Write(buf[i].ToString("X2"));
+                    if (i < buf.Length - 1)
+                        sw.Write(" ");
                 }
             }
-            return count;
         }
     }
 }

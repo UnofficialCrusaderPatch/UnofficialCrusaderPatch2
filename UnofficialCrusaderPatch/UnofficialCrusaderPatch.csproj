@@ -57,6 +57,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="..\CodeBlox\CodeBlock.cs">
+      <Link>CodeBlocks\CodeBlock.cs</Link>
+    </Compile>
     <Compile Include="Debug.cs" />
     <Compile Include="Localization\LanguageWindow.xaml.cs">
       <DependentUpon>LanguageWindow.xaml</DependentUpon>
@@ -67,6 +70,7 @@
     <Compile Include="Patching\BinaryChange.cs" />
     <Compile Include="Patching\BinaryEdit.cs" />
     <Compile Include="Patching\BinaryHook.cs" />
+    <Compile Include="Patching\BinaryRedirect.cs" />
     <Compile Include="Patching\Patcher.cs" />
     <Compile Include="Version.cs" />
     <Page Include="Localization\LanguageWindow.xaml">
@@ -873,12 +877,13 @@
     <EmbeddedResource Include="..\SHC_AIV\aiv\wolf8.aiv">
       <Link>EvreyImproved\wolf8.aiv</Link>
     </EmbeddedResource>
-    <EmbeddedResource Include="CodeBlocks\c_arabxbow.bin" />
-    <EmbeddedResource Include="CodeBlocks\c_arabwall.bin" />
-    <EmbeddedResource Include="CodeBlocks\c_spearbow.bin" />
-    <EmbeddedResource Include="CodeBlocks\c_spearxbow.bin" />
-    <EmbeddedResource Include="CodeBlocks\c_frederickbuy.bin" />
-    <EmbeddedResource Include="CodeBlocks\c_marshalbuy.bin" />
+    <EmbeddedResource Include="CodeBlocks\c_arabwall.block" />
+    <EmbeddedResource Include="CodeBlocks\c_arabxbow.block" />
+    <EmbeddedResource Include="CodeBlocks\c_frederickbuy.block" />
+    <EmbeddedResource Include="CodeBlocks\c_marshalbuy.block" />
+    <EmbeddedResource Include="CodeBlocks\c_spearbow.block" />
+    <EmbeddedResource Include="CodeBlocks\c_spearxbow.block" />
+    <EmbeddedResource Include="CodeBlocks\menuversion.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

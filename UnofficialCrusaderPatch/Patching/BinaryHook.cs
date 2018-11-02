@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Reflection;
 
 namespace UnofficialCrusaderPatch
 {
@@ -59,26 +58,5 @@ namespace UnofficialCrusaderPatch
 
             return Result.NoErrors;
         }
-
-        int FindCodeCave(byte[] data, int startAddress, int length)
-        {
-            int lastIndex = length - 1;
-            for (int i = startAddress; i < data.Length; i++)
-            {
-                for (int j = 0; j < length; j++)
-                {
-                    if (data[i + j] == 0xCC)
-                    {
-                        if (j == lastIndex)
-                        {
-                            return i;
-                        }
-                    }
-                    else break;
-                }
-            }
-            return 0;
-        }
-
     }
 }

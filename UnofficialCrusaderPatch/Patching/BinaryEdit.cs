@@ -2,12 +2,13 @@
 using System.Linq;
 using System.IO;
 using System.Reflection;
+using CodeBlox;
 
 namespace UnofficialCrusaderPatch
 {
     public abstract class BinaryEdit
     {
-        protected string blockFile;
+        string blockFile;
         public string BlockFile { get { return this.blockFile; } }
 
         byte[] editedData;
@@ -15,7 +16,7 @@ namespace UnofficialCrusaderPatch
         public BinaryEdit(string blockIdent, byte[] editedData)
         {
             this.editedData = editedData;
-            this.blockFile = "UnofficialCrusaderPatch.CodeBlocks." + blockIdent + ".bin";
+            this.blockFile = "UnofficialCrusaderPatch.CodeBlocks." + blockIdent + ".block";
             Assembly asm = Assembly.GetExecutingAssembly();
             if (!asm.GetManifestResourceNames().Contains(this.blockFile))
                 throw new Exception("Missing block file " + blockFile);
@@ -37,41 +38,41 @@ namespace UnofficialCrusaderPatch
 
         public Result Edit(byte[] data, byte[] oriData)
         {
-            // read code block
-            byte[] codeBlock;
+            CodeBlock block;
             Assembly asm = Assembly.GetExecutingAssembly();
             using (Stream stream = asm.GetManifestResourceStream(blockFile))
             {
-                codeBlock = new byte[stream.Length];
-                stream.Read(codeBlock, 0, codeBlock.Length);
+                block = new CodeBlock(stream);
             }
 
             // find equivalent position in original file
-            int address = 0;
-            int max = oriData.Length - codeBlock.Length;
-            int lastIndex = codeBlock.Length - 1;
-            for (int i = 0; i < max; i++)
+            int count = block.SeekCount(data, out int address);
+            if (count == 0)
+                return Result.BlockNotFound;
+            else if (count > 1)
+                return Result.MultipleBlocks;
+            
+            return DoEdit(data, address, this.editedData);
+        }
+        
+        protected static int FindCodeCave(byte[] data, int startAddress, int length)
+        {
+            int lastIndex = length - 1;
+            for (int i = startAddress; i < data.Length; i++)
             {
-                for (int j = 0; j < codeBlock.Length; j++)
+                for (int j = 0; j < length; j++)
                 {
-                    if (oriData[i + j] == codeBlock[j])
+                    if (data[i + j] == 0xCC)
                     {
                         if (j == lastIndex)
                         {
-                            if (address != 0)
-                                return Result.MultipleBlocks;
-                            address = i;
-                            break;
+                            return i;
                         }
                     }
                     else break;
                 }
             }
-
-            if (address == 0)
-                return Result.BlockNotFound;
-
-            return DoEdit(data, address, this.editedData);
+            return 0;
         }
     }
     

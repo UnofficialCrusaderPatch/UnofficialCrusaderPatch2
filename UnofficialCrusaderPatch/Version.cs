@@ -17,6 +17,10 @@ namespace UnofficialCrusaderPatch
     {
         public static string PatcherVersion = "1.1";
 
+        // change version 0x424EF1 + 1
+        public static readonly BinaryRedirect MenuChange = new BinaryRedirect("menuversion", false,
+                                                           Encoding.UTF8.GetBytes("V1.%d UCP" + PatcherVersion + '\0'));
+
         public static IEnumerable<Change> Changes { get { return changes; } }
         static List<Change> changes = new List<Change>()
         {
@@ -56,11 +60,13 @@ namespace UnofficialCrusaderPatch
 
             // Marschall Waffen- & Rüstungskauf, original: 0
             // run time address: 0x23FF084 + 0x9C
+            // edit at 0x4CA5AE
             BinaryHook.Create("c_marshalbuy", ChangeType.Bugfix, 6, 
                 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // mov [EAX+9C], 2
             
             // Friedrich Waffen- & Rüstungskauf, original: 0
             // run time address: 0x23FE0AC + 0x9C
+            // edit at 0x004C8DEA
             BinaryHook.Create("c_frederickbuy", ChangeType.Bugfix, 6,
                 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00), // mov [EAX+9C], 3
 
