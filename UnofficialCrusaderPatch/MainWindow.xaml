@@ -37,36 +37,7 @@
             <ProgressBar x:Name="pbSetup" HorizontalAlignment="Left" Height="20" Margin="10,271,0,0" VerticalAlignment="Top" Width="466" Background="#99FFFFFF" Foreground="#FF832708"/>
             <Button x:Name="iButtonBack" Content="Zurück" HorizontalAlignment="Left" Height="30" Margin="10,301,0,0" VerticalAlignment="Top" Width="123" RenderTransformOrigin="0.502,0.504" Click="iButtonBack_Click"/>
             <Button x:Name="iButtonInstall" Content="Installieren" HorizontalAlignment="Left" Height="31" Margin="350,300,0,0" VerticalAlignment="Top" Width="124" RenderTransformOrigin="0.502,0.504" Click="iButtonInstall_Click"/>
-            <TreeView x:Name="optionView" HorizontalAlignment="Left" Height="215" Margin="10,51,0,0" VerticalAlignment="Top" Width="466" Background="#CCFFFFFF" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <TreeViewItem x:Name="tviBugfixes" IsExpanded="True" Focusable="False">
-                    <TreeViewItem.ItemTemplate>
-                        <DataTemplate>
-                            <CheckBox IsChecked="{Binding IsChecked}" Background="{Binding Background}" Unchecked="CheckBox_Unchecked">
-                                <TextBlock Text="{Binding Ident}" TextWrapping="Wrap" FontSize="14" Width="400" Margin="0,-1,0,0" Initialized="TextBlock_Initialized"/>
-                            </CheckBox>
-                        </DataTemplate>
-                    </TreeViewItem.ItemTemplate>
-                    <TreeViewItem.Header>
-                        <CheckBox x:Name="cbBugfixes" IsChecked="true" Checked="cbBugfix_Check" Unchecked="cbBugfix_Check">
-                            <TextBlock Text="Bugfixes" TextWrapping="Wrap" FontSize="12" Width="400" FontWeight="Bold"/>
-                        </CheckBox>
-                    </TreeViewItem.Header>
-                </TreeViewItem>
-                <TreeViewItem x:Name="tviBalancing" IsExpanded="True" Focusable="False">
-                    <TreeViewItem.ItemTemplate>
-                        <DataTemplate>
-                            <CheckBox IsChecked="{Binding IsChecked}" Background="{Binding Background}" Unchecked="CheckBox_Unchecked">
-                                <TextBlock Text="{Binding Ident}" TextWrapping="Wrap" FontSize="14" Width="400" Margin="0,-1,0,0" Initialized="TextBlock_Initialized"/>
-                            </CheckBox>
-                        </DataTemplate>
-                    </TreeViewItem.ItemTemplate>
-                    <TreeViewItem.Header>
-                        <CheckBox x:Name="cbBalancing" Checked="cbBalancing_Check" Unchecked="cbBalancing_Check">
-                            <TextBlock Text="Balancing" TextWrapping="Wrap" FontSize="12" Width="400" FontWeight="Bold"/>
-                        </CheckBox>
-                    </TreeViewItem.Header>
-                </TreeViewItem>
-            </TreeView>
+            <TreeView x:Name="optionView" HorizontalAlignment="Left" Height="215" Margin="10,51,0,0" VerticalAlignment="Top" Width="466" Background="#CCFFFFFF" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
         </Grid>
     </Grid>
 </Window>

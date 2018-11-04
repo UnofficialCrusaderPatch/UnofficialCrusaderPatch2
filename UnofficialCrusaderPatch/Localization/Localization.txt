@@ -177,3 +177,27 @@ ai_attacklimit
 	"Setze Angriffstruppenlimit der KIs auf 1000",
 	"Set the attacking troops limit of the ai to 1000",
 }
+
+c_gamespeed
+{
+	"Erweitere die Grenzen der Spielgeschwindigkeit"
+	"Extend the game speed limits."
+}
+
+ui_bugfix
+{
+	"Bugfixes"
+	"Bugfixes"
+}
+
+ui_ailords
+{
+	"Balancing: KI-Lords"
+	"Balancing: AI lords"
+}
+
+ui_troops
+{
+	"Balancing: Einheiten"
+	"Balancing: Units"
+}

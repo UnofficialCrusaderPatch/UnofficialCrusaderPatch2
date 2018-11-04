@@ -8,8 +8,8 @@ namespace UnofficialCrusaderPatch
     {
         List<BinaryEdit> edits = new List<BinaryEdit>();
 
-        public BinaryChange(string ident, ChangeType type, bool checkedDefault = true)
-            : base(ident, type, checkedDefault)
+        public BinaryChange(string locIdent, ChangeType type, bool checkedDefault = true)
+            : base(locIdent, type, checkedDefault)
         {
         }
 

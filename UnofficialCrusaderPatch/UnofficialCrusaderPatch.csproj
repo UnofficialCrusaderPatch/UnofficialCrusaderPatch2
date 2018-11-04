@@ -69,8 +69,8 @@
     <Compile Include="Patching\AIVChange.cs" />
     <Compile Include="Patching\BinaryChange.cs" />
     <Compile Include="Patching\BinaryEdit.cs" />
-    <Compile Include="Patching\BinaryHook.cs" />
-    <Compile Include="Patching\BinaryRedirect.cs" />
+    <Compile Include="Patching\BinHook.cs" />
+    <Compile Include="Patching\BinRedirect.cs" />
     <Compile Include="Patching\Patcher.cs" />
     <Compile Include="Version.cs" />
     <Page Include="Localization\LanguageWindow.xaml">
@@ -887,6 +887,8 @@
     <EmbeddedResource Include="CodeBlocks\ai_recruitinterval.block" />
     <EmbeddedResource Include="CodeBlocks\ai_recruitsleep.block" />
     <EmbeddedResource Include="CodeBlocks\ai_attacklimit.block" />
+    <EmbeddedResource Include="CodeBlocks\c_gamespeed_up.block" />
+    <EmbeddedResource Include="CodeBlocks\c_gamespeed_down.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

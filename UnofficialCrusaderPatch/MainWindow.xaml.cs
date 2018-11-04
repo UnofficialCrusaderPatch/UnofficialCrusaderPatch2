@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows;
+using System.Windows.Media;
 using System.IO;
 using Microsoft.Win32;
 using System.Windows.Threading;
@@ -41,11 +42,7 @@ namespace UnofficialCrusaderPatch
                 }
 
                 // fill setup options list
-                foreach (Change c in Version.Changes)
-                {
-                    ItemsControl treeView = c.Type == ChangeType.Balancing ? tviBalancing : tviBugfixes;
-                    int index = treeView.Items.Add(c);
-                }
+                FillTreeView(Version.Changes);
 
                 // set translated ui elements
                 pathBox.Text = Localization.Get("ui_searchpath");
@@ -63,21 +60,6 @@ namespace UnofficialCrusaderPatch
             catch (Exception e)
             {
                 Debug.Error(e.ToString());
-            }
-        }
-
-        void TextBlock_Initialized(object sender, EventArgs e)
-        {
-            try
-            {
-                TextBlock tb = (TextBlock)sender;
-                string ident = tb.Text;
-                tb.Text = null;
-                TextReferencer.SetText(tb, ident);
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show(ec.ToString());
             }
         }
 
@@ -199,33 +181,125 @@ namespace UnofficialCrusaderPatch
             Dispatcher.Invoke(() => pbSetup.Value = value * 100.0, DispatcherPriority.Render);
         }
 
-        void cbBugfix_Check(object sender, RoutedEventArgs e)
-        {
-            foreach (Change c in Version.Changes)
-                if (c.Type == ChangeType.Bugfix)
-                    c.IsChecked = (bool)cbBugfixes.IsChecked;
-            tviBugfixes.Items.Refresh();
-        }
-
-        void cbBalancing_Check(object sender, RoutedEventArgs e)
-        {
-            foreach (Change c in Version.Changes)
-                if (c.Type == ChangeType.Balancing)
-                    c.IsChecked = (bool)cbBalancing.IsChecked;
-            tviBalancing.Items.Refresh();
-        }
-
         bool AIVLimitReached()
         {
-            bool result = Version.Changes.Where(c => c.IsChecked && c is AIVChange).Count() > 1;
-
-            foreach (Change change in Version.Changes)
-                change.Marked = (result && change.IsChecked && change is AIVChange);
-
-            tviBalancing.Items.Refresh();
-            tviBugfixes.Items.Refresh();
-
+            bool result = Version.Changes.Count(c => c.IsChecked && c is AIVChange) > 1;
+            foreach(var pair in changeBoxes)
+            {
+                if (result && pair.Value.IsChecked && pair.Value is AIVChange)
+                {
+                    pair.Key.Background = Brushes.Red;
+                }
+                else
+                {
+                    pair.Key.Background = Brushes.White;
+                }
+            }
             return result;
+        }
+
+        #endregion
+
+        #region TreeView
+
+        Dictionary<CheckBox, Change> changeBoxes = new Dictionary<CheckBox, Change>();
+        void FillTreeView(IEnumerable<Change> changes)
+        {
+            List<TreeViewItem> tviList = new List<TreeViewItem>(5);
+            foreach (ChangeType type in Enum.GetValues(typeof(ChangeType)))
+            {
+                string typeName = type.ToString();
+
+                // header checkbox
+                CheckBox header = new CheckBox()
+                {
+                    IsChecked = true,
+                    Content = new TextBlock()
+                    {
+                        Text = Localization.Get("ui_" + typeName),
+                        TextWrapping = TextWrapping.Wrap,
+                        FontWeight = FontWeights.Bold,
+                        FontSize = 12,
+                        Width = 400,
+                    }
+                };
+
+                header.Checked += HeaderCB_Check;
+                header.Unchecked += HeaderCB_Check;
+
+                TreeViewItem tvi = new TreeViewItem()
+                {
+                    IsExpanded = true,
+                    Focusable = false,
+                    Header = header,
+                };
+                tviList.Add(tvi);
+                optionView.Items.Add(tvi);
+            }
+
+            // child checkboxes
+            foreach (Change c in changes)
+            {
+                TextBlock content = new TextBlock()
+                {
+                    TextWrapping = TextWrapping.Wrap,
+                    Margin = new Thickness(0, -1, 0, 0),
+                    FontSize = 14,
+                    Width = 400,
+                };
+                TextReferencer.SetText(content, c.Ident);
+
+                CheckBox cb = new CheckBox()
+                {
+                    IsChecked = c.IsChecked,
+                    Content = content,
+                };
+
+                cb.Checked += CB_Check;
+                cb.Unchecked += CB_Check;
+
+                tviList[(int)c.Type].Items.Add(cb);
+                changeBoxes.Add(cb, c);
+            }
+        }
+
+        void CB_Check(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = (CheckBox)sender;
+            changeBoxes[cb].IsChecked = cb.IsChecked == true;
+            AIVLimitReached();
+
+            // all the same?
+            TreeViewItem tv = (TreeViewItem)cb.Parent;
+            foreach(CheckBox item in tv.Items)
+            {
+                if (item.IsChecked != cb.IsChecked)
+                    return;
+            }
+
+            // set header the same!
+            CheckBox header = (CheckBox)tv.Header;
+            if (header.IsChecked != cb.IsChecked)
+            {
+                header.Checked -= HeaderCB_Check;
+                header.Unchecked -= HeaderCB_Check;
+
+                header.IsChecked = cb.IsChecked;
+
+                header.Checked += HeaderCB_Check;
+                header.Unchecked += HeaderCB_Check;
+            }
+        }
+
+        void HeaderCB_Check(object sender, RoutedEventArgs e)
+        {
+            CheckBox header = (CheckBox)sender;
+            ItemsControl tv = (ItemsControl)header.Parent;
+            bool isChecked = header.IsChecked == true;
+
+            // set all child boxes the same!
+            foreach (CheckBox cb in tv.Items)
+                cb.IsChecked = isChecked;
         }
 
         #endregion
