@@ -889,6 +889,8 @@
     <EmbeddedResource Include="CodeBlocks\ai_attacklimit.block" />
     <EmbeddedResource Include="CodeBlocks\c_gamespeed_up.block" />
     <EmbeddedResource Include="CodeBlocks\c_gamespeed_down.block" />
+    <EmbeddedResource Include="CodeBlocks\o_gatedistance.block" />
+    <EmbeddedResource Include="CodeBlocks\o_gatetime.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

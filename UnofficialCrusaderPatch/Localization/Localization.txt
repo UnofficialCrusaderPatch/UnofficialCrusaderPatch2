@@ -162,7 +162,7 @@ ui_uninstalldone
 
 ai_recruitinterval
 {
-	"Setze das Rekrutierungstempo der KIs auf den höchsten Wert"
+	"Setze das Rekrutierungstempo aller KIs auf den höchsten Wert"
 	"Set the recruitment speed of the AIs to the highest value"
 }
 
@@ -180,8 +180,8 @@ ai_attacklimit
 
 c_gamespeed
 {
-	"Erweitere die Grenzen der Spielgeschwindigkeit"
-	"Extend the game speed limits."
+	"Erweitere die Grenzen der Spielgeschwindigkeit (im Spiel)"
+	"Extend the game speed limits (ingame)"
 }
 
 ui_bugfix
@@ -200,4 +200,16 @@ ui_troops
 {
 	"Balancing: Einheiten"
 	"Balancing: Units"
+}
+
+ui_other
+{
+	"Sonstiges"
+	"Other"
+}
+
+o_responsivegates
+{
+	"Tore schließen später durch Gegnernähe und öffnen wieder früher"
+	"Gates open later due to enemies and open again faster."
 }

@@ -11,6 +11,7 @@ namespace UnofficialCrusaderPatch
         Bugfix,
         AILords,
         Troops,
+        Other,
     }
 
     public abstract class Change

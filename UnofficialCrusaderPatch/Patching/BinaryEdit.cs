@@ -102,7 +102,7 @@ namespace UnofficialCrusaderPatch
         public override BinaryEdit.Result Write(int address, byte[] data)
         {
             byte[] buf = BitConverter.GetBytes(value);
-            Buffer.BlockCopy(buf, 0, data, address, 4);
+            Buffer.BlockCopy(buf, 0, data, address, Length);
             return BinaryEdit.Result.NoErrors;
         }
 
@@ -112,6 +112,44 @@ namespace UnofficialCrusaderPatch
             {
                 new BinaryEdit(locIdent) { new BinInt32(newValue), }
             };
+        }
+
+        public static BinaryEdit CreateEdit(string ident, int newValue)
+        {
+            return new BinaryEdit(ident) { new BinInt32(newValue) };
+        }
+    }
+
+
+    public class BinShort : BinElement
+    {
+        public override int Length => 2;
+
+        short value;
+
+        public BinShort(short input)
+        {
+            this.value = input;
+        }
+
+        public override BinaryEdit.Result Write(int address, byte[] data)
+        {
+            byte[] buf = BitConverter.GetBytes(value);
+            Buffer.BlockCopy(buf, 0, data, address, Length);
+            return BinaryEdit.Result.NoErrors;
+        }
+
+        public static BinaryChange Change(string locIdent, ChangeType type, short newValue, bool checkedDefault = true)
+        {
+            return new BinaryChange(locIdent, type, checkedDefault)
+            {
+                new BinaryEdit(locIdent) { new BinShort(newValue), }
+            };
+        }
+
+        public static BinaryEdit CreateEdit(string ident, short newValue)
+        {
+            return new BinaryEdit(ident) { new BinShort(newValue) };
         }
     }
 
