@@ -879,18 +879,20 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CodeBlocks\c_arabwall.block" />
     <EmbeddedResource Include="CodeBlocks\c_arabxbow.block" />
-    <EmbeddedResource Include="CodeBlocks\c_frederickbuy.block" />
-    <EmbeddedResource Include="CodeBlocks\c_marshalbuy.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_wepbuy_frederick.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_wepbuy_marshal.block" />
     <EmbeddedResource Include="CodeBlocks\c_spearbow.block" />
     <EmbeddedResource Include="CodeBlocks\c_spearxbow.block" />
     <EmbeddedResource Include="CodeBlocks\menuversion.block" />
     <EmbeddedResource Include="CodeBlocks\ai_recruitinterval.block" />
     <EmbeddedResource Include="CodeBlocks\ai_recruitsleep.block" />
     <EmbeddedResource Include="CodeBlocks\ai_attacklimit.block" />
-    <EmbeddedResource Include="CodeBlocks\c_gamespeed_up.block" />
-    <EmbeddedResource Include="CodeBlocks\c_gamespeed_down.block" />
+    <EmbeddedResource Include="CodeBlocks\o_gamespeed_up.block" />
+    <EmbeddedResource Include="CodeBlocks\o_gamespeed_down.block" />
     <EmbeddedResource Include="CodeBlocks\o_gatedistance.block" />
     <EmbeddedResource Include="CodeBlocks\o_gatetime.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_wepbuy_abbot.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_wepbuy_emir.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

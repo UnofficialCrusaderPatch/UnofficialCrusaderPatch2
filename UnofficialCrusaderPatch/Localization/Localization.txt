@@ -31,10 +31,10 @@ c_spearbow
 	"Spearmen die after 5 bow hits instead of 3"
 }
 
-c_aibuy
+ai_wepbuy
 {
-	"Marschall & Friedrich kaufen Waffen und Rüstungen"
-	"Marshal & Frederick buy weapons and armor"
+	"Marschall, Friedrich, Emir & Abt kaufen Waffen und Rüstungen"
+	"Marshal, Frederick, Emir & Abbot buy weapons and armor"
 }
 
 ui_error
@@ -178,7 +178,7 @@ ai_attacklimit
 	"Set the attacking troops limit of the ai to 1000",
 }
 
-c_gamespeed
+o_gamespeed
 {
 	"Erweitere die Grenzen der Spielgeschwindigkeit (im Spiel)"
 	"Extend the game speed limits (ingame)"

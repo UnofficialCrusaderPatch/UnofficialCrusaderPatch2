@@ -17,7 +17,7 @@ namespace UnofficialCrusaderPatch
 
     class Version
     {
-        public static string PatcherVersion = "2.02";
+        public static string PatcherVersion = "2.03";
 
         // change version 0x424EF1 + 1
         public static readonly BinaryEdit MenuChange = BinRedirect.CreateEdit("menuversion", false,
@@ -46,10 +46,10 @@ namespace UnofficialCrusaderPatch
              *  EXTENDED GAME SPEED 
              */ 
 
-            new BinaryChange("c_gamespeed", ChangeType.Bugfix)
+            new BinaryChange("o_gamespeed", ChangeType.Other)
             {
                 // 4B4748
-                new BinaryEdit("c_gamespeed_up")
+                new BinaryEdit("o_gamespeed_up")
                 {
                     new BinBytes(0x3D, 0xE8, 0x03, 0x00, 0x00),      // cmp eax, 1000
 
@@ -72,7 +72,7 @@ namespace UnofficialCrusaderPatch
                 },
 
                 // 004B47C2
-                new BinaryEdit("c_gamespeed_down")
+                new BinaryEdit("o_gamespeed_down")
                 {
                     new BinBytes(0x7E, 0x1B), // jle to end
 
@@ -195,18 +195,13 @@ namespace UnofficialCrusaderPatch
             */
 
             // ai1_buytable 0x01165C78
-
-            // Marschall Waffen- & Rüstungskauf, original: 0
-            // run time address: 0x23FF084 + 0x9C
-            // edit at 0x4CA5AE
-            
-            // Friedrich Waffen- & Rüstungskauf, original: 0
-            // run time address: 0x23FE0AC + 0x9C
-            // edit at 0x004C8DEA
-            new BinaryChange("c_aibuy", ChangeType.Bugfix)
+            new BinaryChange("ai_wepbuy", ChangeType.Bugfix)
             {
-                BinHook.CreateEdit("c_marshalbuy", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // mov [EAX+9C], 2
-                BinHook.CreateEdit("c_frederickbuy", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // mov [EAX+9C], 2
+                // mov [EAX+9C], 2
+                BinHook.CreateEdit("ai_wepbuy_marshal", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4CA5AE, runtime: 0x23FF084 + 0x9C
+                BinHook.CreateEdit("ai_wepbuy_frederick", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4C8DEA, runtime: 0x23FE0AC + 0x9C
+                BinHook.CreateEdit("ai_wepbuy_emir", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4C99AB, runtime: 023FE898 + 0x9C
+                BinHook.CreateEdit("ai_wepbuy_abbot", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4CA95B, runtime: 023FF328 + 0x9C
             },
 
 
