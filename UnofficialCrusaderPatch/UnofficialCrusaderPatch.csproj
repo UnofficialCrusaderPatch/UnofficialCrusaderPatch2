@@ -893,6 +893,11 @@
     <EmbeddedResource Include="CodeBlocks\o_gatetime.block" />
     <EmbeddedResource Include="CodeBlocks\ai_wepbuy_abbot.block" />
     <EmbeddedResource Include="CodeBlocks\ai_wepbuy_emir.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_addattack.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_foodbuy.block" />
+    <EmbeddedResource Include="CodeBlocks\u_ladderarmor_bow.block" />
+    <EmbeddedResource Include="CodeBlocks\u_ladderarmor_sling.block" />
+    <EmbeddedResource Include="CodeBlocks\u_ladderarmor_xbow.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

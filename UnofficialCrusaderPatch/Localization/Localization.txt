@@ -210,6 +210,24 @@ ui_other
 
 o_responsivegates
 {
-	"Tore schließen später durch Gegnernähe und öffnen wieder früher"
+	"Tore schließen später bei Gegnernähe und öffnen wieder früher"
 	"Gates open later due to enemies and open again faster."
+}
+
+ai_addattack
+{
+	"Zusätzliche Angriffstruppen nach dem 1. Angriff verdoppeln"
+	"Double additional attack troops after the first attack"
+}
+
+ai_foodbuy
+{
+	"Wazir kauft Nahrung ein"
+	"Wazir buys food"
+}
+
+u_ladderarmor
+{
+	"Leiterträger sterben nach 5 Armbrust- oder 12 Bogenschüssen"
+	"Laddermen die after 5 crossbow or 12 bow hits"
 }

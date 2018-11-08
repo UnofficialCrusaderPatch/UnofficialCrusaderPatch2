@@ -5,19 +5,16 @@ using System.Text;
 
 namespace UnofficialCrusaderPatch
 {
-    // Wazir & Nizar Korn & Mehl kaufen lassen
     // kalif eisen?
     // Abreißen deaktivieren
-    // ki rekrutierungen anpassen
     // Scroll-Tempo in 1.41 reduzieren
-    //
 
     // Leiterträger, die deutlich mehr Pfeile und Bolzen aushalten
     // europäische Bogenschützen mit leicht erhöhter Reichweite.
 
     class Version
     {
-        public static string PatcherVersion = "2.03";
+        public static string PatcherVersion = "2.04";
 
         // change version 0x424EF1 + 1
         public static readonly BinaryEdit MenuChange = BinRedirect.CreateEdit("menuversion", false,
@@ -92,6 +89,43 @@ namespace UnofficialCrusaderPatch
                 }
             },
 
+            /*
+             * AI BUY FOOD
+             */
+
+            // Wazir runtime buytable 023FE5F4 +84, apples, cheese, bread, wheat
+            // Emir 023FE898
+            // Nizar 023FEB3C
+            
+            // 004C951C
+            BinBytes.Change("ai_foodbuy", ChangeType.Bugfix, 0x89, 0xB8), // mov [EAX+84], EDI = 10
+
+            /*
+             *  AI RECRUIT ADDITIONAL ATTACK TROOPS 
+             */
+             
+            new BinaryChange("ai_addattack", ChangeType.AILords, false)
+            {
+                // 004CDEDC
+                new BinaryEdit("ai_addattack")
+                {
+                    // if (ai gold < 10000)
+                    new BinBytes(0x7E, 07),      // jle to 8
+
+                    new BinBytes(0xB9),     // mov ecx, 16
+                    new BinInt32(16),
+
+                    new BinBytes(0xEB, 0x05), // jmp
+                    
+                    new BinBytes(0xB9),     // mov ecx, 8
+                    new BinInt32(8),
+
+                    new BinBytes(0xF7, 0xE9), // imul ecx
+                    
+                    new BinNops(6),
+                    new BinBytes(0x01, 0x86), // mov [addtroops], eax instead of ecx
+                },
+            },
 
             /*
              * AI RECRUIT INTERVALS
@@ -158,8 +192,6 @@ namespace UnofficialCrusaderPatch
             
             // absolute limit at 0x4CDEF8 + 1 = 200
             BinInt32.Change("ai_attacklimit", ChangeType.AILords, 1000),
-            
-
 
 
             /* 
@@ -168,7 +200,15 @@ namespace UnofficialCrusaderPatch
 
             // Armbrust dmg table: 0xB4ED20
             // Bogen dmg table: 0xB4EAA0
-            // Lanzenträger hp: 10000
+            // Sling dmg table: 0xB4EBE0
+
+            // Schutz von Leiternträgern gegen Fernkämpfer
+            new BinaryChange("u_ladderarmor", ChangeType.Troops)
+            {
+                BinInt32.CreateEdit("u_ladderarmor_bow", 420), // B4EAA0 + 4 * 1D   (vanilla = 1000)
+                BinInt32.CreateEdit("u_ladderarmor_sling", 1000), // B4EBE0 + 4 * 1D   (vanilla = 2500)
+                BinInt32.CreateEdit("u_ladderarmor_xbow", 1000), // B4ED20 + 4 * 1D   (vanilla = 2500)
+            },         
             
             // Armbrustschaden gegen Arab. Schwertkämpfer, original: 8000
             // 0xB4EE4C = 0x4B*4 + 0xB4ED20
@@ -179,6 +219,9 @@ namespace UnofficialCrusaderPatch
             BinBytes.Change("c_arabwall", ChangeType.Troops,                
                 0x01, 0x02, 0x03, 0x04, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E,
                 0x10, 0x11, 0x12, 0x13, 0x14, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x00),
+            
+
+            // Lanzenträger hp: 10000
 
             // Armbrustschaden gegen Lanzenträger, original: 15000
             // 0xB4ED80 = 0x18*4 + 0xB4ED20

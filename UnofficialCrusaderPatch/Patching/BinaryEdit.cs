@@ -204,6 +204,24 @@ namespace UnofficialCrusaderPatch
             };
         }
     }
+    
+    public class BinNops : BinElement
+    {
+        int count;
+        public override int Length => count;
+
+        public BinNops(int count)
+        {
+            this.count = count;
+        }
+
+        public override BinaryEdit.Result Write(int address, byte[] data)
+        {
+            for (int i = 0; i < count; i++)
+                data[address + i] = 0x90;
+            return BinaryEdit.Result.NoErrors;
+        }
+    }
 
     public class BinaryEdit : IEnumerable<BinElement>
     {
@@ -243,16 +261,16 @@ namespace UnofficialCrusaderPatch
         public Result Edit(byte[] data, byte[] oriData)
         {
             // find equivalent position in original file
-            int count = block.SeekCount(data, out int address);
+            int count = block.SeekCount(oriData, out int address);
             if (count == 0)
                 return Result.BlockNotFound;
             else if (count > 1)
                 return Result.MultipleBlocks;
 
-            return DoEdit(address, data, oriData);
+            return DoEdit(address, data);
         }
 
-        Result DoEdit(int address, byte[] data, byte[] oriData)
+        Result DoEdit(int address, byte[] data)
         {
             foreach (BinElement e in elements)
             {
