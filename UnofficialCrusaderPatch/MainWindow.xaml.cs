@@ -240,19 +240,10 @@ namespace UnofficialCrusaderPatch
             // child checkboxes
             foreach (Change c in changes)
             {
-                TextBlock content = new TextBlock()
-                {
-                    TextWrapping = TextWrapping.Wrap,
-                    Margin = new Thickness(0, -1, 0, 0),
-                    FontSize = 14,
-                    Width = 400,
-                };
-                TextReferencer.SetText(content, c.Ident);
-
                 CheckBox cb = new CheckBox()
                 {
                     IsChecked = c.IsChecked,
-                    Content = content,
+                    Content = c.UIContent,
                 };
 
                 cb.Checked += CB_Check;

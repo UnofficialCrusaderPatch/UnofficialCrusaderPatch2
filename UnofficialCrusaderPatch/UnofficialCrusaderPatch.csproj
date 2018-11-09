@@ -72,6 +72,7 @@
     <Compile Include="Patching\BinHook.cs" />
     <Compile Include="Patching\BinRedirect.cs" />
     <Compile Include="Patching\Patcher.cs" />
+    <Compile Include="Patching\SliderChange.cs" />
     <Compile Include="Version.cs" />
     <Page Include="Localization\LanguageWindow.xaml">
       <SubType>Designer</SubType>

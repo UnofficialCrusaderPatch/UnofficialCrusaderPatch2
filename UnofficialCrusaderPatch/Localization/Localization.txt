@@ -174,7 +174,7 @@ ai_recruitsleep
 
 ai_attacklimit
 {
-	"Setze Angriffstruppenlimit der KIs auf 1000",
+	"Setze das Angriffstruppenlimit der KIs auf 1000",
 	"Set the attacking troops limit of the ai to 1000",
 }
 
@@ -216,8 +216,8 @@ o_responsivegates
 
 ai_addattack
 {
-	"Zusätzliche Angriffstruppen nach dem 1. Angriff verdoppeln"
-	"Double additional attack troops after the first attack"
+	"Zusätzliche Angriffstruppen nach jedem Angriff:"
+	"Additional attack troops after each attack:"
 }
 
 ai_foodbuy

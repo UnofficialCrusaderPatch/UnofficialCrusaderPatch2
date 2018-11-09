@@ -8,13 +8,12 @@ namespace UnofficialCrusaderPatch
     // kalif eisen?
     // Abreißen deaktivieren
     // Scroll-Tempo in 1.41 reduzieren
-
-    // Leiterträger, die deutlich mehr Pfeile und Bolzen aushalten
+    
     // europäische Bogenschützen mit leicht erhöhter Reichweite.
 
     class Version
     {
-        public static string PatcherVersion = "2.04";
+        public static string PatcherVersion = "2.05";
 
         // change version 0x424EF1 + 1
         public static readonly BinaryEdit MenuChange = BinRedirect.CreateEdit("menuversion", false,
@@ -104,7 +103,7 @@ namespace UnofficialCrusaderPatch
              *  AI RECRUIT ADDITIONAL ATTACK TROOPS 
              */
              
-            new BinaryChange("ai_addattack", ChangeType.AILords, false)
+            new SliderChange("ai_addattack", ChangeType.AILords, false, 0, 100, 1, 5)
             {
                 // 004CDEDC
                 new BinaryEdit("ai_addattack")
@@ -112,13 +111,13 @@ namespace UnofficialCrusaderPatch
                     // if (ai gold < 10000)
                     new BinBytes(0x7E, 07),      // jle to 8
 
-                    new BinBytes(0xB9),     // mov ecx, 16
-                    new BinInt32(16),
+                    new BinBytes(0xB9),     // mov ecx, value * 7/5 (vanilla = 7)
+                    new BinProduct(7.0/5.0),     
 
                     new BinBytes(0xEB, 0x05), // jmp
                     
-                    new BinBytes(0xB9),     // mov ecx, 8
-                    new BinInt32(8),
+                    new BinBytes(0xB9),     // mov ecx, value (vanilla = 5)
+                    new BinProduct(1),
 
                     new BinBytes(0xF7, 0xE9), // imul ecx
                     

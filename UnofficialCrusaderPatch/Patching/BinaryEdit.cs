@@ -92,7 +92,7 @@ namespace UnofficialCrusaderPatch
     {
         public override int Length => 4;
 
-        int value;
+        protected int value;
 
         public BinInt32(int input)
         {

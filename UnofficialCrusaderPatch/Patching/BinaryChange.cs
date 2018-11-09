@@ -21,7 +21,7 @@ namespace UnofficialCrusaderPatch
         public IEnumerator<BinaryEdit> GetEnumerator() { return edits.GetEnumerator(); }
         IEnumerator IEnumerable.GetEnumerator() { return edits.GetEnumerator(); }
 
-        public void Edit(byte[] data, byte[] oriData)
+        public virtual void Edit(byte[] data, byte[] oriData)
         {
             for (int i = 0; i < edits.Count; i++)
             {
