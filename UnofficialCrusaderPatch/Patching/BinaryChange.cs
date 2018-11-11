@@ -26,7 +26,7 @@ namespace UnofficialCrusaderPatch
             for (int i = 0; i < edits.Count; i++)
             {
                 var result = edits[i].Edit(data, oriData);
-                if (result != BinaryEdit.Result.NoErrors)
+                if (result != BinResult.NoErrors)
                 {
                     string message = string.Format("Your version is probably not supported: {0} for edit {1} of change {2}", result, i, Ident);
                     throw new Exception(message);

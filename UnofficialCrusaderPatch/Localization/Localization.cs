@@ -21,7 +21,7 @@ namespace UnofficialCrusaderPatch
                 if (LanguageIndex < texts.Length) return texts[LanguageIndex];
                 else return string.Format("{{Missing Translation|{0}}}", identifier);
             }
-            return "{Unknown Identifier}";
+            return string.Format("{{Unknown Identifier: {0}}}", identifier);
         }
 
         class Reader : IDisposable

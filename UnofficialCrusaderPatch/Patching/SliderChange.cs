@@ -100,7 +100,7 @@ namespace UnofficialCrusaderPatch
 
         public void Multiply(double p)
         {
-            base.value = (int)(p * oriValue);
+            base.editData = BitConverter.GetBytes((int)(p * oriValue));
         }
     }
 }

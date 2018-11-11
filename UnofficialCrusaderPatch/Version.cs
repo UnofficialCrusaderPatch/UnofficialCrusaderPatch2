@@ -23,6 +23,45 @@ namespace UnofficialCrusaderPatch
         static List<Change> changes = new List<Change>()
         {
             /*
+             * PLAYER 1 COLOR
+             */
+
+            new BinaryChange("o_playercolor", ChangeType.Other)
+            {
+                // 0044FC15
+                new BinaryEdit("o_playercolor_ingame")
+                {
+                    new BinAddress("var", 2), // [ED3158]
+
+                    new BinBytes(0xA1), // mov eax, [var]
+                    new BinRefTo("var", false),
+
+                    new BinBytes(0x3C, 0x01), // cmp al, 1
+                    new BinBytes(0x75, 0x04), // jne to next cmp
+                    new BinBytes(0xB0, 0x04), // mov al, 4
+                    new BinBytes(0xEB, 0x06), // jmp to end
+                    new BinBytes(0x3C, 0x04), // cmp al, 4
+                    new BinBytes(0x75, 0x02), // jne to end
+                    new BinBytes(0xB0, 0x01), // mov al, 1
+                    // end
+
+                    new BinBytes(0x3C, 0x02), // cmp al, 1
+                    new BinBytes(0x75, 0x04), // jne to next cmp
+                    new BinBytes(0xB0, 0x03), // mov al, 4
+                    new BinBytes(0xEB, 0x06), // jmp to end
+                    new BinBytes(0x3C, 0x03), // cmp al, 4
+                    new BinBytes(0x75, 0x02), // jne to end
+                    new BinBytes(0xB0, 0x02), // mov al, 1
+                    // end
+
+                    new BinBytes(0xA3), // mov [var], eax
+                    new BinRefTo("var", false),
+
+                    new BinNops(2),
+                }
+            },
+
+            /*
              * GATES
              */ 
 

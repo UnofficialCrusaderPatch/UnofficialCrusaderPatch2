@@ -17,14 +17,19 @@ namespace UnofficialCrusaderPatch
             this.relative = relative;
         }
 
-        public override BinaryEdit.Result Write(int address, byte[] data)
+        public override BinResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
         {
+            // find code cave
             int caveAddress = FindCodeCave(data, address, editData.Length);
             if (caveAddress == 0)
-                return BinaryEdit.Result.NoHookspace;
+                return BinResult.NoHookspace;
+
+
 
             // write into code cave
-            Buffer.BlockCopy(editData, 0, data, caveAddress, editData.Length);
+            editData.CopyTo(data, caveAddress);
+
+
 
             // write redirection
             int redirectAddress;
@@ -34,9 +39,9 @@ namespace UnofficialCrusaderPatch
                 redirectAddress = caveAddress + 0x400000;
 
             byte[] buffer = BitConverter.GetBytes(redirectAddress);
-            Buffer.BlockCopy(buffer, 0, data, address, 4);
+            buffer.CopyTo(data, address);
 
-            return BinaryEdit.Result.NoErrors;
+            return BinResult.NoErrors;
         }
 
         public static BinaryEdit CreateEdit(string ident, bool relative, params byte[] code)

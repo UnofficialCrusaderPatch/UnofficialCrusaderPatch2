@@ -9,9 +9,8 @@ namespace UnofficialCrusaderPatch
     class BinHook : BinRefTo, IEnumerable<byte>
     {
         public override int Length => hookLen;
-
-
-        List<byte> editData = new List<byte>();
+        
+        List<byte> codeData = new List<byte>();
         byte[] jmpBytes;
         int hookLen;
 
@@ -35,45 +34,49 @@ namespace UnofficialCrusaderPatch
             this.jmpBytes = jmpBytes;
             this.hookLen = hookLen;
             if (code != null)
-                this.editData.AddRange(code);
+                this.codeData.AddRange(code);
         }
 
         public void Add(byte input)
         {
-            if (editData.Count == 10)
+            if (codeData.Count == 10)
                 throw new Exception("Hook code can only be < 10 bytes!");
 
-            this.editData.Add(input);
+            this.codeData.Add(input);
         }
 
-        public IEnumerator<byte> GetEnumerator() { return editData.GetEnumerator(); }
-        IEnumerator IEnumerable.GetEnumerator() { return editData.GetEnumerator(); }
+        public IEnumerator<byte> GetEnumerator() { return codeData.GetEnumerator(); }
+        IEnumerator IEnumerable.GetEnumerator() { return codeData.GetEnumerator(); }
 
-        public override BinaryEdit.Result Write(int address, byte[] data)
+        public override BinResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
         {
-            int caveAddress = FindCodeCave(data, address, editData.Count + 5);
+            // find a code cave
+            int caveAddress = FindCodeCave(data, address, codeData.Count + 5);
             if (caveAddress == 0)
-                return BinaryEdit.Result.NoHookspace;
+                return BinResult.NoHookspace;
+
+
 
             // write hook
-            Buffer.BlockCopy(jmpBytes, 0, data, address, jmpBytes.Length);
+            jmpBytes.CopyTo(data, address);
             int jmpLen = jmpBytes.Length + 4;
 
             byte[] buffer = BitConverter.GetBytes(caveAddress - (address + jmpLen));
-            Buffer.BlockCopy(buffer, 0, data, address + jmpBytes.Length, 4);
+            buffer.CopyTo(data, address + jmpBytes.Length);
+
+            // fill rest with nops
             for (int i = jmpLen; i < hookLen; i++)
                 data[address + i] = 0x90;
 
+            
 
             // write into code cave
-            editData.CopyTo(data, caveAddress);
+            codeData.CopyTo(data, caveAddress);
 
             // jmp back
-            data[caveAddress + editData.Count] = 0xE9;
-            // jmpBackLabel address will be resolved by BinRefTo later
-            this.refAddress = caveAddress + editData.Count + 1;
-
-            return BinaryEdit.Result.NoErrors;
+            data[caveAddress + codeData.Count] = 0xE9;
+            // jmpBackLabel address will be resolved by BinRefTo
+            return base.Write(caveAddress + codeData.Count + 1, data, oriData, labels);
         }
 
         public static BinaryChange Change(string ident, ChangeType type, int hookLen, params byte[] code)

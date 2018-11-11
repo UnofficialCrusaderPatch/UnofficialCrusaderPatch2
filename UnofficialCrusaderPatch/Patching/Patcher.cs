@@ -94,7 +94,7 @@ namespace UnofficialCrusaderPatch
 
             // change version display in main menu
             var displayResult = Version.MenuChange.Edit(data, oriData);
-            if (displayResult != BinaryEdit.Result.NoErrors)
+            if (displayResult != BinResult.NoErrors)
                 throw new Exception("Menu display edit failed: " + displayResult);
 
             // change other stuff

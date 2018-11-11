@@ -69,8 +69,19 @@
     <Compile Include="Patching\AIVChange.cs" />
     <Compile Include="Patching\BinaryChange.cs" />
     <Compile Include="Patching\BinaryEdit.cs" />
-    <Compile Include="Patching\BinHook.cs" />
-    <Compile Include="Patching\BinRedirect.cs" />
+    <Compile Include="Patching\BinElements\BinAddress.cs" />
+    <Compile Include="Patching\BinElements\BinBytes.cs" />
+    <Compile Include="Patching\BinElements\BinElement.cs" />
+    <Compile Include="Patching\BinElements\BinHook.cs" />
+    <Compile Include="Patching\BinElements\BinInt32.cs" />
+    <Compile Include="Patching\BinElements\BinNops.cs" />
+    <Compile Include="Patching\BinElements\BinRedirect.cs" />
+    <Compile Include="Patching\BinElements\BinShort.cs" />
+    <Compile Include="Patching\BinElements\BinLabel.cs" />
+    <Compile Include="Patching\BinElements\BinRefTo.cs" />
+    <Compile Include="Patching\BinElements\BinSkip.cs" />
+    <Compile Include="Patching\BinResult.cs" />
+    <Compile Include="Patching\LabelCollection.cs" />
     <Compile Include="Patching\Patcher.cs" />
     <Compile Include="Patching\SliderChange.cs" />
     <Compile Include="Version.cs" />
@@ -899,6 +910,7 @@
     <EmbeddedResource Include="CodeBlocks\u_ladderarmor_bow.block" />
     <EmbeddedResource Include="CodeBlocks\u_ladderarmor_sling.block" />
     <EmbeddedResource Include="CodeBlocks\u_ladderarmor_xbow.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_ingame.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
