@@ -30,5 +30,10 @@ namespace UnofficialCrusaderPatch
                 new BinaryEdit(locIdent) { new BinBytes(input), }
             };
         }
+        
+        public static BinaryEdit CreateEdit(string ident, params byte[] input)
+        {
+            return new BinaryEdit(ident) { new BinBytes(input) };
+        }
     }
 }

@@ -7,34 +7,62 @@ Name
 	"Unofficial Crusader Patcher"
 }
 
-c_ArabXBow
+u_ArabXBow
 {
-	"Arab. Schwertkämpfer sterben nach 6 Armbrusttreffern statt 3"
-	"Arabic Swordsmen die after 6 crossbow hits instead of 3"
+	"Erhöhter Schutz von Arab. Schwertkämpfer vor Armbrüsten"
+	"Increased armor of Arabic Swordsmen against crossbows"
 }
 
-c_ArabWall
+u_arabxbow_descr
 {
-	"Arab. Schwertkämpfer reißen Mauern ca. doppelt so schnell ein"
-	"Arabic Swordsmen destroy walls about twice as fast as before"
+	" - Arabische Schwertkämpfer sterben erst nach 6 Armbrusttreffern statt 3"
+	" - Arabic Swordsmen only die after 6 crossbow hits intead of 3"
 }
 
-c_spearxbow
+u_ArabWall
 {
-	"Lanzenträger überleben knapp einen Armbrusttreffer"
-	"Spearmen barely survive one crossbow hit"
+	"Arab. Schwertkämpfer reißen Mauern schneller ein"
+	"Arabic Swordsmen destroy walls faster"
 }
 
-c_spearbow
+u_ArabWall_descr
 {
-	"Lanzenträger sterben nach 5 Bogentreffern statt 3"
-	"Spearmen die after 5 bow hits instead of 3"
+	"In Vanilla reißen Arabische Schwertkämpfer Mauern am langsamsten ein unter den Nahkämpfern. Die Einreißgeschwindigkeit wird hiermit für sie ca. verdoppelt, sodass sie dabei knapp über Lanzenträgern sind."
+	"In Vanilla, arabic swordsmen destroy walls slower than any other melee unit. With this option, the tear down speed against walls is about doubled for them, putting them slightly above Spearmen."
 }
 
-ai_wepbuy
+u_spearmen
 {
-	"Marschall, Friedrich, Emir & Abt kaufen Waffen und Rüstungen"
-	"Marshal, Frederick, Emir & Abbot buy weapons and armor"
+	"Erhöhter Schutz von Lanzenträger gegen Fernkämpfer"
+	"Increased armor of spearmen against ranged units"
+}
+
+u_spearmen_descr
+{
+	" - Lanzenträger sterben erst nach 5 Pfeiltreffern statt 3
+ - Lanzenträger überleben knapp einen Armbrusttreffer"
+
+	" - Spearmen only die after 5 arrow hits instead of 3
+ - Spearmen barely survive one crossbow hit, instead of getting one-shot"
+}
+
+ai_buy
+{
+	"Die neuen KIs benutzen den Marktplatz"
+	"The new AIs use the trader post"
+}
+
+ai_buy_descr
+{
+	"In Vanilla benutzen einige der neuen KIs den Marktplatz nicht richtig. Dies ist hiermit behoben:
+ - Friedrich und Marschall kaufen Waffen und Rüstungen
+ - Der Abt und Emir kaufen Bögen
+ - Wazir kauft Obst wie Nizar & Emir"
+
+	"In vanilla, some of the new AIs do not use the trading outpost correctly. This is fixed now:
+ - Frederick and Marshal buy weapons and armors
+ - The Abbot and Emir buy bows
+ - Wazir buys apples like Nizar & Emir do"
 }
 
 ui_error
@@ -128,16 +156,33 @@ ui_cancel
 	"Cancel"
 }
 
-ui_evreyfixed
+ai_evreyfixed
 {
-	"Evreys gefixte Vanilla-Burgen ([ref2])"
-	"Evrey's fixed vanilla castles ([ref2])"
+	"Evreys gefixte Vanilla-Burgen"
+	"Evrey's fixed vanilla castles"
 }
 
-ui_evreyimproved
+ai_evreyfixed_descr
 {
-	"Evreys verbesserte KI-Burgen ([ref2])"
-	"Evrey's improved AI castles ([ref2])"
+	"Behebt Fehler der Vanilla-KI-Burgen, wie z.B. fehlende Häuser und Gilden oder blockierte Ausgänge.
+Erstellt von Evrey ([ref2])"
+	"Fixes bugs of the vanilla AI-Lord castles, like missing houses and guilds or blocked entrances.
+Created by Evrey ([ref2])"
+}
+
+ai_evreyimproved
+{
+	"Evreys verbesserte KI-Burgen"
+	"Evrey's improved AI castles"
+}
+
+ai_evreyimproved_descr
+{
+	"Gibt den KI-Lords neue verbesserte Burgen, während der Stil so Vanilla wie möglich gehalten wird.
+Erstellt von Evrey ([ref2])"
+
+	"Grants the AI-Lords new and improved castles, while staying close to the vanilla style.
+Created by Evrey ([ref2])"
 }
 
 ui_aivlimit
@@ -180,8 +225,23 @@ ai_attacklimit
 
 o_gamespeed
 {
-	"Erweitere die Grenzen der Spielgeschwindigkeit (im Spiel)"
-	"Extend the game speed limits (ingame)"
+	"Erweiterte Spielgeschwindigkeitsgrenzen"
+	"Extended game speed limits"
+}
+
+o_gamespeed_descr
+{
+	"Die Spielgeschwindigkeit kann nun wie folgt geändert werden:
+ - Von 10 bis 90 in 5er Schritten
+ - Von 90 bis 200 in 10er Schritten
+ - Von 200 bis 1000 in 100er Schritten
+Die neuen Werte sind nur im Spiel über die +- Tasten erreichbar, der Regler im Spielmenü bleibt ungeändert."
+
+	"The game speed can now be changed as follows:
+ - From 10 to 90 in intervals of 5
+ - From 90 to 200 in intervals of 10
+ - From 200 to 1000 in intervals of 100
+The new values are only available ingame via the +- keys, the slider in the game menu remains unchanged."
 }
 
 ui_bugfix
@@ -192,14 +252,14 @@ ui_bugfix
 
 ui_ailords
 {
-	"Balancing: KI-Lords"
-	"Balancing: AI lords"
+	"KI-Lords"
+	"AI lords"
 }
 
 ui_troops
 {
-	"Balancing: Einheiten"
-	"Balancing: Units"
+	"Einheiten"
+	"Units"
 }
 
 ui_other
@@ -210,8 +270,15 @@ ui_other
 
 o_responsivegates
 {
-	"Tore schließen später bei Gegnernähe und öffnen wieder früher"
-	"Gates open later due to enemies and open again faster."
+	"Torhäuser schneller auf Gegner reagieren lassen"
+	"Quicker responsiveness of gates towards enemies"
+}
+
+o_responsivegates_descr
+{
+	"Torhäuser schließen sich jetzt später bei Gegnernähe und öffnen wieder schneller automatisch, sobald die Gefahr vorüber ist. Die Distanz die ein Gegner haben muss, damit sich das Tor automatisch schließt, wird von 200 auf 140 gesenkt. Die Zeit nach der sich das Tor wieder öffnet, sofern kein Gegner mehr in der Nähe ist, wird von 1200 auf 100 reduziert."
+
+	"Gates close themselves later if enemies get into range and open "
 }
 
 ai_addattack
@@ -220,14 +287,29 @@ ai_addattack
 	"Additional attack troops after each attack:"
 }
 
-ai_foodbuy
+u_laddermen
 {
-	"Wazir kauft Nahrung ein"
-	"Wazir buys food"
+	"Erhöhter Schutz für Leiterträger gegen Fernkämpfer"
+	"Increased armor of laddermen against ranged units"
 }
 
-u_ladderarmor
+u_laddermen_descr
 {
-	"Leiterträger sterben nach 5 Armbrust- oder 12 Bogenschüssen"
-	"Laddermen die after 5 crossbow or 12 bow hits"
+	" - Leiterträger sterben erst nach 12 Pfeiltreffern statt 5
+ - Leiterträger sterben erst nach 5 Armbrust- oder Schleudertreffern statt 2"
+
+	" - Laddermen die after 12 arrow hits instead of 5
+ - Laddermen die after 5 crossbow or slinger hits instead of 2"
+}
+
+o_playercolor
+{
+	"Farbe von Spieler 1 wechseln"
+	"Change the color of player 1"
+}
+
+o_playercolor_descr
+{
+	" "
+	" "
 }

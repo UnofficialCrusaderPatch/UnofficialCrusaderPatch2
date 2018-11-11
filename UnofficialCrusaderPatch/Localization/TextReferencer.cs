@@ -39,14 +39,20 @@ namespace UnofficialCrusaderPatch
                 int index = text.IndexOf(r.Keyword);
                 if (index >= 0)
                 {
-                    tb.Inlines.Add(text.Remove(index));
+                    string part = text.Remove(index);
+                    if (!string.IsNullOrWhiteSpace(part))
+                        tb.Inlines.Add(part);
 
                     Hyperlink hyperlink = new Hyperlink(new Run(r.Reference));
                     hyperlink.NavigateUri = new Uri(r.Reference);
                     hyperlink.RequestNavigate += (s, e) => Process.Start(r.Reference);
                     tb.Inlines.Add(hyperlink);
 
-                    tb.Inlines.Add(text.Substring(index + r.Keyword.Length));
+
+
+                    part = text.Substring(index + r.Keyword.Length);
+                    if (!string.IsNullOrWhiteSpace(part))
+                        tb.Inlines.Add(part);
                     return;
                 }
             }

@@ -35,7 +35,7 @@ namespace UnofficialCrusaderPatch
             }
         }
 
-        protected override UIElement CreateUIContent()
+        /*protected override UIElement CreateUIContent()
         {
             Grid grid = new Grid
             {
@@ -69,7 +69,7 @@ namespace UnofficialCrusaderPatch
             grid.Children.Add(slider);
 
             return grid;
-        }
+        }*/
 
         void ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {

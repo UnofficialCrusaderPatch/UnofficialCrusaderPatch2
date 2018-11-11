@@ -8,7 +8,7 @@ namespace UnofficialCrusaderPatch
     // kalif eisen?
     // Abreißen deaktivieren
     // Scroll-Tempo in 1.41 reduzieren
-    
+
     // europäische Bogenschützen mit leicht erhöhter Reichweite.
 
     class Version
@@ -128,21 +128,10 @@ namespace UnofficialCrusaderPatch
             },
 
             /*
-             * AI BUY FOOD
-             */
-
-            // Wazir runtime buytable 023FE5F4 +84, apples, cheese, bread, wheat
-            // Emir 023FE898
-            // Nizar 023FEB3C
-            
-            // 004C951C
-            BinBytes.Change("ai_foodbuy", ChangeType.Bugfix, 0x89, 0xB8), // mov [EAX+84], EDI = 10
-
-            /*
              *  AI RECRUIT ADDITIONAL ATTACK TROOPS 
              */
              
-            new SliderChange("ai_addattack", ChangeType.AILords, false, 0, 100, 1, 5)
+            /*new SliderChange("ai_addattack", ChangeType.AILords, false, 0, 100, 1, 5)
             {
                 // 004CDEDC
                 new BinaryEdit("ai_addattack")
@@ -163,7 +152,7 @@ namespace UnofficialCrusaderPatch
                     new BinNops(6),
                     new BinBytes(0x01, 0x86), // mov [addtroops], eax instead of ecx
                 },
-            },
+            },*/
 
             /*
              * AI RECRUIT INTERVALS
@@ -241,7 +230,7 @@ namespace UnofficialCrusaderPatch
             // Sling dmg table: 0xB4EBE0
 
             // Schutz von Leiternträgern gegen Fernkämpfer
-            new BinaryChange("u_ladderarmor", ChangeType.Troops)
+            new BinaryChange("u_laddermen", ChangeType.Troops)
             {
                 BinInt32.CreateEdit("u_ladderarmor_bow", 420), // B4EAA0 + 4 * 1D   (vanilla = 1000)
                 BinInt32.CreateEdit("u_ladderarmor_sling", 1000), // B4EBE0 + 4 * 1D   (vanilla = 2500)
@@ -250,25 +239,29 @@ namespace UnofficialCrusaderPatch
             
             // Armbrustschaden gegen Arab. Schwertkämpfer, original: 8000
             // 0xB4EE4C = 0x4B*4 + 0xB4ED20
-            BinInt32.Change("c_arabxbow", ChangeType.Troops, 3500),
+            BinInt32.Change("u_arabxbow", ChangeType.Troops, 3500),
             
             // Arab. Schwertkämpfer Angriffsanimation, ca. halbiert
             // 0xB59CD0
-            BinBytes.Change("c_arabwall", ChangeType.Troops,                
+            BinBytes.Change("u_arabwall", ChangeType.Troops,
                 0x01, 0x02, 0x03, 0x04, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E,
                 0x10, 0x11, 0x12, 0x13, 0x14, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x00),
             
 
             // Lanzenträger hp: 10000
+            new BinaryChange("u_spearmen", ChangeType.Troops)
+            {
+                BinInt32.CreateEdit("u_spearbow", 2000), // B4EAA0 + 4 * 18   (vanilla = 3500)
+                BinInt32.CreateEdit("u_spearxbow", 9999), // B4EBE0 + 4 * 18   (vanilla = 15000)
+            },                  
 
-            // Armbrustschaden gegen Lanzenträger, original: 15000
-            // 0xB4ED80 = 0x18*4 + 0xB4ED20
-            BinInt32.Change("c_spearxbow", ChangeType.Troops, 9999),
-            
-            // Bogenschaden gegen Lanzenträger, original: 3500
-            // 0xB4EB00 = 0x18*4 + 0xB4EAA0
-            BinInt32.Change("c_spearbow", ChangeType.Troops, 2000),
+            /*
+             * AI BUY FOOD
+             */
 
+            // Wazir runtime buytable 023FE5F4 +84, apples, cheese, bread, wheat
+            // Emir 023FE898
+            // Nizar 023FEB3C
             
 
             /*
@@ -276,8 +269,11 @@ namespace UnofficialCrusaderPatch
             */
 
             // ai1_buytable 0x01165C78
-            new BinaryChange("ai_wepbuy", ChangeType.Bugfix)
+            new BinaryChange("ai_buy", ChangeType.Bugfix)
             {
+                // mov [EAX+84], EDI = 10
+                BinBytes.CreateEdit("ai_foodbuy_wazir", 0x89, 0xB8), // 004C951C
+                
                 // mov [EAX+9C], 2
                 BinHook.CreateEdit("ai_wepbuy_marshal", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4CA5AE, runtime: 0x23FF084 + 0x9C
                 BinHook.CreateEdit("ai_wepbuy_frederick", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4C8DEA, runtime: 0x23FE0AC + 0x9C
@@ -292,8 +288,8 @@ namespace UnofficialCrusaderPatch
             * FIXED AIV CASTLES - https://github.com/Evrey/SHC_AIV
             */
 
-            new AIVChange("ui_evreyfixed", ChangeType.Bugfix, "EvreyFixed"),
-            new AIVChange("ui_evreyimproved", ChangeType.AILords, "EvreyImproved", false),
+            new AIVChange("ai_evreyfixed", ChangeType.Bugfix, "EvreyFixed"),
+            new AIVChange("ai_evreyimproved", ChangeType.AILords, "EvreyImproved", false),
         };
     }
 }

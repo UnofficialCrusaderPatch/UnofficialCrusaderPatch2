@@ -22,7 +22,7 @@
                 </TransformGroup>
             </Image.LayoutTransform>
         </Image>
-        <Grid x:Name="pathGrid" Visibility="Visible">
+        <Grid x:Name="pathGrid" Visibility="Hidden">
             <ScrollViewer Height="143" Margin="10,55,0,0" VerticalAlignment="Top" Width="466">
                 <TextBlock x:Name="linkLabel" ScrollViewer.VerticalScrollBarVisibility="Auto" TextAlignment="Center" TextWrapping="Wrap" FontSize="14" Background="#CCFFFFFF"/>
             </ScrollViewer>
@@ -33,11 +33,11 @@
             <Button x:Name="pButtonCancel" Content="Abbrechen" HorizontalAlignment="Left" Height="30" Margin="10,301,0,0" VerticalAlignment="Top" Width="123" Click="pButtonCancel_Click"/>
             <Button x:Name="pButtonUninstall" Content="Deinstallieren" HorizontalAlignment="Left" Height="30" Margin="179,301,0,0" VerticalAlignment="Top" Width="123" Click="pButtonUninstall_Click"/>
         </Grid>
-        <Grid x:Name="installGrid" Visibility="Hidden">
+        <Grid x:Name="installGrid" Visibility="Visible">
+            <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="215" Margin="8,51,0,0" VerticalAlignment="Top" Width="466" Background="#CCFFFFFF" Focusable="False"/>
             <ProgressBar x:Name="pbSetup" HorizontalAlignment="Left" Height="20" Margin="10,271,0,0" VerticalAlignment="Top" Width="466" Background="#99FFFFFF" Foreground="#FF832708"/>
             <Button x:Name="iButtonBack" Content="Zurück" HorizontalAlignment="Left" Height="30" Margin="10,301,0,0" VerticalAlignment="Top" Width="123" RenderTransformOrigin="0.502,0.504" Click="iButtonBack_Click"/>
             <Button x:Name="iButtonInstall" Content="Installieren" HorizontalAlignment="Left" Height="31" Margin="350,300,0,0" VerticalAlignment="Top" Width="124" RenderTransformOrigin="0.502,0.504" Click="iButtonInstall_Click"/>
-            <TreeView x:Name="optionView" HorizontalAlignment="Left" Height="215" Margin="10,51,0,0" VerticalAlignment="Top" Width="466" Background="#CCFFFFFF" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
         </Grid>
     </Grid>
 </Window>

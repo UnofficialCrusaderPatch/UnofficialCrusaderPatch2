@@ -205,92 +205,30 @@ namespace UnofficialCrusaderPatch
         Dictionary<CheckBox, Change> changeBoxes = new Dictionary<CheckBox, Change>();
         void FillTreeView(IEnumerable<Change> changes)
         {
-            List<TreeViewItem> tviList = new List<TreeViewItem>(5);
             foreach (ChangeType type in Enum.GetValues(typeof(ChangeType)))
             {
                 string typeName = type.ToString();
-
-                // header checkbox
-                CheckBox header = new CheckBox()
+                TreeView view = new TreeView()
                 {
-                    IsChecked = true,
-                    Content = new TextBlock()
-                    {
-                        Text = Localization.Get("ui_" + typeName),
-                        TextWrapping = TextWrapping.Wrap,
-                        FontWeight = FontWeights.Bold,
-                        FontSize = 12,
-                        Width = 400,
-                    }
+                    Background = null,
+                    BorderThickness = new Thickness(0, 0, 0, 0),
                 };
 
-                header.Checked += HeaderCB_Check;
-                header.Unchecked += HeaderCB_Check;
-
-                TreeViewItem tvi = new TreeViewItem()
+                TabItem tab = new TabItem()
                 {
-                    IsExpanded = true,
-                    Focusable = false,
-                    Header = header,
+                    Header = Localization.Get("ui_" + typeName),
+                    Content = view,
                 };
-                tviList.Add(tvi);
-                optionView.Items.Add(tvi);
-            }
+                tabControl.Items.Add(tab);
 
-            // child checkboxes
-            foreach (Change c in changes)
-            {
-                CheckBox cb = new CheckBox()
+                foreach (Change change in changes)
                 {
-                    IsChecked = c.IsChecked,
-                    Content = c.UIContent,
-                };
+                    if (change.Type != type)
+                        continue;
 
-                cb.Checked += CB_Check;
-                cb.Unchecked += CB_Check;
-
-                tviList[(int)c.Type].Items.Add(cb);
-                changeBoxes.Add(cb, c);
+                    view.Items.Add(change.UIContent);
+                }
             }
-        }
-
-        void CB_Check(object sender, RoutedEventArgs e)
-        {
-            CheckBox cb = (CheckBox)sender;
-            changeBoxes[cb].IsChecked = cb.IsChecked == true;
-            AIVLimitReached();
-
-            // all the same?
-            TreeViewItem tv = (TreeViewItem)cb.Parent;
-            foreach(CheckBox item in tv.Items)
-            {
-                if (item.IsChecked != cb.IsChecked)
-                    return;
-            }
-
-            // set header the same!
-            CheckBox header = (CheckBox)tv.Header;
-            if (header.IsChecked != cb.IsChecked)
-            {
-                header.Checked -= HeaderCB_Check;
-                header.Unchecked -= HeaderCB_Check;
-
-                header.IsChecked = cb.IsChecked;
-
-                header.Checked += HeaderCB_Check;
-                header.Unchecked += HeaderCB_Check;
-            }
-        }
-
-        void HeaderCB_Check(object sender, RoutedEventArgs e)
-        {
-            CheckBox header = (CheckBox)sender;
-            ItemsControl tv = (ItemsControl)header.Parent;
-            bool isChecked = header.IsChecked == true;
-
-            // set all child boxes the same!
-            foreach (CheckBox cb in tv.Items)
-                cb.IsChecked = isChecked;
         }
 
         #endregion
