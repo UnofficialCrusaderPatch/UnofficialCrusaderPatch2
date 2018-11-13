@@ -23,25 +23,6 @@ namespace UnofficialCrusaderPatch
         public string TitleIdent => titleIdent;
         public string GetTitle() { return Localization.Get(titleIdent); }
 
-        bool isChecked;
-        public bool IsChecked
-        {
-            get => this.isChecked;
-            set
-            {
-                headerList.ForEach(h => h.IsActive = false);
-                if (value == false || headerList.Count <= 1)
-                {
-                    headerList[0].IsActive = true;
-                }
-                else
-                {
-                    headerList[1].IsActive = true;
-                }
-                this.isChecked = value;
-            }
-        }
-
         ChangeType type;
         public ChangeType Type => type;
 
@@ -61,21 +42,28 @@ namespace UnofficialCrusaderPatch
             }
         }
 
-        public ChangeHeader ActiveHeader => headerList.Find(h => h.IsActive);
-        public int ActiveHeaderIndex => headerList.FindIndex(h => h.IsActive);
+        int defaultActiveIndex;
+        int activeHeaderIndex;
+        public int ActiveHeaderIndex => activeHeaderIndex;
 
-        public Change(string titleIdent, ChangeType type, bool checkedDefault = true)
+        public ChangeHeader GetActiveHeader() => IsChecked ? headerList[activeHeaderIndex] : null;
+        public bool IsChecked => activeHeaderIndex >= 0;
+
+        public Change(string titleIdent, ChangeType type, bool checkedDefault = true, int defaultActiveIndex = 0)
         {
             this.type = type;
             this.titleIdent = titleIdent;
-            this.isChecked = checkedDefault;
-            this.headerList = new List<ChangeHeader>() { new ChangeHeader(this.titleIdent + "_descr") };
-            this.uiContent = CreateUIContent();
+
+            this.defaultActiveIndex = defaultActiveIndex;
+            this.activeHeaderIndex = checkedDefault ? defaultActiveIndex : -1;
+
+            var defaultHeader = new ChangeHeader(this.titleIdent);
+            headerList = new List<ChangeHeader>() { defaultHeader };
         }
 
         public void Activate(ChangeArgs args)
         {
-            ChangeHeader header = this.ActiveHeader;
+            ChangeHeader header = GetActiveHeader();
 
             /*foreach (var edit in editList)
                 foreach (var element in edit)
@@ -99,14 +87,15 @@ namespace UnofficialCrusaderPatch
 
         #region UI
 
-        public CheckBox CheckBox { get { return (CheckBox)((TreeViewItem)uiContent).Header; } }
 
-        UIElement uiContent;
-        public UIElement UIContent { get { return this.uiContent; } }
+        UIElement uiElement;
+        public UIElement UIElement { get { return this.uiElement; } }
 
-        UIElement CreateUIContent()
+        CheckBox titleBox;
+
+        public void InitUI()
         {
-            CheckBox header = new CheckBox()
+            this.titleBox = new CheckBox()
             {
                 IsChecked = this.IsChecked,
                 Content = new TextBlock()
@@ -118,17 +107,16 @@ namespace UnofficialCrusaderPatch
                     Width = 400,
                 }
             };
-            header.Checked += (s, e) => this.IsChecked = true;
-            header.Unchecked += (s, e) => this.IsChecked = false;
+            titleBox.Checked += (s, e) => SetChecked(true);
+            titleBox.Unchecked += (s, e) => SetChecked(false);
 
             TreeViewItem tvi = new TreeViewItem()
             {
                 IsExpanded = false,
                 Focusable = false,
-                Header = header,
+                Header = titleBox,
                 MinHeight = 22,
             };
-
 
             Grid content = new Grid()
             {
@@ -138,42 +126,98 @@ namespace UnofficialCrusaderPatch
                 Focusable = false,
             };
 
-            this.FillGrid(content);
+            FillGrid(content);
 
             tvi.Items.Add(content);
             tvi.Items.Add(null); // spacing
-            return tvi;
+
+            this.uiElement = tvi;
+
+            if (IsChecked)
+                GetActiveHeader().IsEnabled = true;
+        }
+
+        void SetChecked(bool check)
+        {
+            if (check)
+            {
+                if (activeHeaderIndex >= 0)
+                    return;
+
+                activeHeaderIndex = defaultActiveIndex;
+                GetActiveHeader().IsEnabled = true;
+            }
+            else
+            {
+                ChangeHeader header = GetActiveHeader();
+                if (header != null)
+                    header.IsEnabled = false;
+                activeHeaderIndex = -1;
+            }
         }
 
         void FillGrid(Grid grid)
         {
-            double height = 15;
-            int startIndex = headerList.Count > 1 ? 1 : 0;
-            for (int i = startIndex; i < headerList.Count; i++)
+            if (headerList.Count > 1)
+            {
+                headerList.RemoveAt(0); // default one is not needed
+            }
+
+            double height = 5;
+            for (int i = 0; i < headerList.Count; i++)
             {
                 var header = headerList[i];
+                header.OnEnabledChange += Header_OnEnable;
+
+                // ui element
+                var uiElement = header.InitUI(headerList.Count > 1);
+                uiElement.HorizontalAlignment = HorizontalAlignment.Left;
+                uiElement.VerticalAlignment = VerticalAlignment.Top;
+                uiElement.Margin = new Thickness(6, height, 0, 0);
+                height += uiElement.Height + 5;
+
+                grid.Children.Add(uiElement);
+
+
 
                 // Description
                 TextBlock description = new TextBlock()
                 {
-                    Margin = new Thickness(6, 5, 0, 0),
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                    VerticalAlignment = VerticalAlignment.Top,
+                    Margin = new Thickness(6, height, 0, 0),
                     TextWrapping = TextWrapping.Wrap,
                     FontSize = 13,
                     Width = grid.Width - 12,
                 };
-                TextReferencer.SetText(description, header.DescrIdent);
+                TextReferencer.SetText(description, header.DescrIdent + "_descr");
                 grid.Children.Add(description);
                 height += description.MeasureHeight();
 
-                // ui element
-                Control control = header.UIControl;
-                if (control != null)
-                {
-                    grid.Children.Add(control);
-                    height += control.Height;
-                }
+
+
+                if (i != headerList.Count - 1)
+                    height += 18;
             }
-            grid.Height = height;
+            grid.Height = height + 10;
+        }
+
+        void Header_OnEnable(ChangeHeader header, bool enabled)
+        {
+            if (enabled)
+            {
+                var current = GetActiveHeader();
+
+                activeHeaderIndex = headerList.IndexOf(header);
+                if (current != null)
+                    current.IsEnabled = false;
+                else
+                    titleBox.IsChecked = true;
+            }
+            else
+            {
+                titleBox.IsChecked = false;
+            }
         }
 
         #endregion

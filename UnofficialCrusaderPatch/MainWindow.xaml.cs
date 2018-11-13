@@ -18,71 +18,65 @@ namespace UnofficialCrusaderPatch
 
         public MainWindow()
         {
-            try
+            Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
+            // choose language
+            if (!LanguageWindow.ShowSelection())
             {
-                // choose language
-                if (!LanguageWindow.ShowSelection())
-                {
-                    Close();
-                    return;
-                }
-
-                // init main window
-                InitializeComponent();
-
-                // set title
-                this.Title = string.Format("{0} {1}", Localization.Get("Name"), Version.PatcherVersion);
-
-                // check if we can already find the steam path
-                const string key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 40970";
-                RegistryKey myKey = Registry.LocalMachine.OpenSubKey(key, false);
-                if (myKey != null && myKey.GetValue("InstallLocation") is string path && !string.IsNullOrWhiteSpace(path))
-                {
-                    pTextBoxPath.Text = path;
-                }
-
-                // fill setup options list
-                FillTreeView(Version.Changes);
-
-                // set translated ui elements
-                pathBox.Text = Localization.Get("ui_searchpath");
-                pButtonCancel.Content = Localization.Get("ui_cancel");
-                pButtonContinue.Content = Localization.Get("ui_continue");
-                pButtonSearch.Content = Localization.Get("ui_search");
-                pButtonUninstall.Content = Localization.Get("ui_uninstall");
-                TextReferencer.SetText(linkLabel, "ui_welcometext");
-
-                var asm = System.Reflection.Assembly.GetExecutingAssembly();
-                using (Stream stream = asm.GetManifestResourceStream("UnofficialCrusaderPatch.license.txt"))
-                using (StreamReader sr = new StreamReader(stream))
-                    linkLabel.Inlines.Add("\n\n\n\n\n\n" + sr.ReadToEnd());
+                Close();
+                return;
             }
-            catch (Exception e)
+
+            // init main window
+            InitializeComponent();
+
+            // set title
+            this.Title = string.Format("{0} {1}", Localization.Get("Name"), Version.PatcherVersion);
+
+            // check if we can already find the steam path
+            const string key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 40970";
+            RegistryKey myKey = Registry.LocalMachine.OpenSubKey(key, false);
+            if (myKey != null && myKey.GetValue("InstallLocation") is string path && !string.IsNullOrWhiteSpace(path))
             {
-                Debug.Error(e.ToString());
+                pTextBoxPath.Text = path;
             }
+
+            // fill setup options list
+            FillTreeView(Version.Changes);
+
+            // set translated ui elements
+            pathBox.Text = Localization.Get("ui_searchpath");
+            pButtonCancel.Content = Localization.Get("ui_cancel");
+            pButtonContinue.Content = Localization.Get("ui_continue");
+            pButtonSearch.Content = Localization.Get("ui_search");
+            pButtonUninstall.Content = Localization.Get("ui_uninstall");
+            iButtonBack.Content = Localization.Get("ui_back");
+            iButtonInstall.Content = Localization.Get("ui_install");
+            TextReferencer.SetText(linkLabel, "ui_welcometext");
+
+            var asm = System.Reflection.Assembly.GetExecutingAssembly();
+            using (Stream stream = asm.GetManifestResourceStream("UnofficialCrusaderPatch.license.txt"))
+            using (StreamReader sr = new StreamReader(stream))
+                linkLabel.Inlines.Add("\n\n\n\n\n\n" + sr.ReadToEnd());
+        }
+
+        void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            Debug.Error(e.Exception);
         }
 
         #region Path finding
 
         void pButtonUninstall_Click(object sender, RoutedEventArgs e)
         {
-            try
+            string path = pTextBoxPath.Text;
+            if (Directory.Exists(path))
             {
-                string path = pTextBoxPath.Text;
-                if (Directory.Exists(path))
-                {
-                    Patcher.RestoreOriginals(path);
-                    Debug.Show(Localization.Get("ui_uninstalldone"), Localization.Get("ui_uninstall"));
-                }
-                else
-                {
-                    Debug.Error(Localization.Get("ui_wrongpath"));
-                }
+                Patcher.RestoreOriginals(path);
+                Debug.Show(Localization.Get("ui_uninstalldone"), Localization.Get("ui_uninstall"));
             }
-            catch (Exception exc)
+            else
             {
-                Debug.Error(exc);
+                Debug.Error(Localization.Get("ui_wrongpath"));
             }
         }
 
@@ -173,7 +167,7 @@ namespace UnofficialCrusaderPatch
         #endregion
 
         #region TreeView
-        
+
         void FillTreeView(IEnumerable<Change> changes)
         {
             foreach (ChangeType type in Enum.GetValues(typeof(ChangeType)))
@@ -198,7 +192,8 @@ namespace UnofficialCrusaderPatch
                     if (change.Type != type)
                         continue;
 
-                    view.Items.Add(change.UIContent);
+                    change.InitUI();
+                    view.Items.Add(change.UIElement);
                 }
             }
         }

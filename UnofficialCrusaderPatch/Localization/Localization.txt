@@ -73,8 +73,8 @@ ui_error
 
 ui_SearchPath
 {
-	"Bitte wähle dein Installationverzeichnis:"
-	"Please select your installation folder:"
+	" Bitte wähle dein Installationverzeichnis:"
+	" Please select your installation folder:"
 }
 
 ui_search
@@ -93,6 +93,18 @@ ui_wrongpath
 {
 	"Stronghold Crusader konnte nicht im angegebenen Pfad gefunden werden!"
 	"Stronghold Crusader could not be found in the specified path!"
+}
+
+ui_back
+{
+	"Zurück"
+	"Back"
+}
+
+ui_install
+{
+	"Installieren"
+	"Install"
 }
 
 ui_finished
@@ -156,6 +168,12 @@ ui_cancel
 	"Cancel"
 }
 
+aiv_evrey
+{
+	"Verbesserte KI-Burgen"
+	"Improved AI castles"
+}
+
 aiv_evreyfixed
 {
 	"Evreys gefixte Vanilla-Burgen"
@@ -164,10 +182,8 @@ aiv_evreyfixed
 
 aiv_evreyfixed_descr
 {
-	"Behebt Fehler der Vanilla-KI-Burgen, wie z.B. fehlende Häuser und Gilden oder blockierte Ausgänge.
-Erstellt von Evrey ([ref2])"
-	"Fixes bugs of the vanilla AI-Lord castles, like missing houses and guilds or blocked entrances.
-Created by Evrey ([ref2])"
+	"Behebt Fehler der Vanilla-KI-Burgen, wie z.B. fehlende Häuser und Gilden oder blockierte Ausgänge."
+	"Fixes bugs of the vanilla AI-Lord castles, like missing houses and guilds or blocked entrances."
 }
 
 aiv_evreyimproved
@@ -178,11 +194,13 @@ aiv_evreyimproved
 
 aiv_evreyimproved_descr
 {
-	"Gibt den KI-Lords neue verbesserte Burgen, während der Stil so Vanilla wie möglich gehalten wird.
-Erstellt von Evrey ([ref2])"
+	"Gibt den KI-Lords neue verbesserte Burgen, angelehnt an den Vanilla-Stil.
+	
+Erstellt von Evrey ([ref2])."
 
-	"Grants the AI-Lords new and improved castles, while staying close to the vanilla style.
-Created by Evrey ([ref2])"
+	"Grants the AI-Lords new and improved castles, based on the vanilla style.
+	
+Created by Evrey ([ref2])."
 }
 
 ui_uninstall

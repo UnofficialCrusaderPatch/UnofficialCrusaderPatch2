@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UnofficialCrusaderPatch"
         mc:Ignorable="d"
-        Title="Unofficial Patcher" Height="380" Width="500" ResizeMode="NoResize">
+        Title="Unofficial Patcher" Height="400" Width="500" ResizeMode="NoResize">
     <Window.Background>
         <ImageBrush ImageSource="Graphics/background.jpg"
         Viewport="0,0,200,200"
@@ -14,30 +14,36 @@
         Stretch="None"/>
     </Window.Background>
     <Grid>
-        <Image Source="Graphics/frame.jpg" Margin="0,296,0 ,0" Stretch="Fill"></Image>
-        <Image Source="Graphics/frame.jpg" Margin="0,0,0,296" Stretch="Fill">
+        <Image Source="Graphics/frame.jpg" Margin="0,0,0,0" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="50"/>
+        <Image Source="Graphics/frame.jpg" Margin="0,0,0,0" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50">
             <Image.LayoutTransform>
                 <TransformGroup>
                     <RotateTransform Angle="180"/>
                 </TransformGroup>
             </Image.LayoutTransform>
         </Image>
-        <Grid x:Name="pathGrid" Visibility="Hidden">
-            <ScrollViewer Height="143" Margin="10,55,0,0" VerticalAlignment="Top" Width="466">
+        <Grid x:Name="pathGrid" Visibility="Visible" HorizontalAlignment="Left" VerticalAlignment="Top" 
+            Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type Grid}}}"
+            Height="{Binding ActualHeight, RelativeSource ={RelativeSource AncestorType = {x:Type Grid}}}">
+            
+            <ScrollViewer Height="150" Margin="0,56,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="470">
                 <TextBlock x:Name="linkLabel" ScrollViewer.VerticalScrollBarVisibility="Auto" TextAlignment="Center" TextWrapping="Wrap" FontSize="14" Background="#CCFFFFFF"/>
             </ScrollViewer>
-            <TextBox x:Name="pathBox" Background="#A5FFFFFF" HorizontalAlignment="Left" Height="60" Margin="9,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="466" FontSize="12" IsReadOnly="True"/>
-            <Button x:Name="pButtonContinue" Content="Weiter" HorizontalAlignment="Left" Height="30" Margin="350,301,0,0" VerticalAlignment="Top" Width="123" Click="pButtonContinue_Click"/>
-            <TextBox x:Name="pTextBoxPath" HorizontalAlignment="Left" Height="28" Margin="18,238,0,0" VerticalAlignment="Top" Width="386" MaxLines="1" Background="#99FFFFFF" FontSize="14"/>
-            <Button x:Name="pButtonSearch" Content="Suchen" HorizontalAlignment="Left" Height="28" Margin="409,238,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.502,0.504" Click="bPathSearch_Click"/>
-            <Button x:Name="pButtonCancel" Content="Abbrechen" HorizontalAlignment="Left" Height="30" Margin="10,301,0,0" VerticalAlignment="Top" Width="123" Click="pButtonCancel_Click"/>
-            <Button x:Name="pButtonUninstall" Content="Deinstallieren" HorizontalAlignment="Left" Height="30" Margin="179,301,0,0" VerticalAlignment="Top" Width="123" Click="pButtonUninstall_Click"/>
+            <TextBlock x:Name="pathBox" Background="#A5FFFFFF" HorizontalAlignment="Center" Height="60" Margin="0,220,0,0" VerticalAlignment="Top" Width="470" FontSize="12"/>
+            <TextBox x:Name="pTextBoxPath" HorizontalAlignment="Left" Height="28" Margin="14,238,0,0" VerticalAlignment="Top" Width="400" MaxLines="1" Background="#99FFFFFF" FontSize="14"/>
+            <Button x:Name="pButtonSearch" Content="Suchen" HorizontalAlignment="Right" Height="28" Margin="0,238,14,0" VerticalAlignment="Top" Width="54" Click="bPathSearch_Click"/>
+            <Button x:Name="pButtonContinue" Content="Weiter" HorizontalAlignment="Right" Height="30" Margin="0,0,8,14" VerticalAlignment="Bottom" Width="120" Click="pButtonContinue_Click"/>
+            <Button x:Name="pButtonCancel" Content="Abbrechen" HorizontalAlignment="Left" Height="30" Margin="8,0,0,14" VerticalAlignment="Bottom" Width="120" Click="pButtonCancel_Click"/>
+            <Button x:Name="pButtonUninstall" Content="Deinstallieren" HorizontalAlignment="Center" Height="30" Margin="0,0,0,14" VerticalAlignment="Bottom" Width="120" Click="pButtonUninstall_Click"/>
         </Grid>
-        <Grid x:Name="installGrid" Visibility="Visible">
-            <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="215" Margin="8,51,0,0" VerticalAlignment="Top" Width="466" Background="#CCFFFFFF" Focusable="true"/>
-            <ProgressBar x:Name="pbSetup" HorizontalAlignment="Left" Height="20" Margin="10,271,0,0" VerticalAlignment="Top" Width="466" Background="#99FFFFFF" Foreground="#FF832708"/>
-            <Button x:Name="iButtonBack" Content="Zurück" HorizontalAlignment="Left" Height="30" Margin="10,301,0,0" VerticalAlignment="Top" Width="123" RenderTransformOrigin="0.502,0.504" Click="iButtonBack_Click"/>
-            <Button x:Name="iButtonInstall" Content="Installieren" HorizontalAlignment="Left" Height="31" Margin="350,300,0,0" VerticalAlignment="Top" Width="124" RenderTransformOrigin="0.502,0.504" Click="iButtonInstall_Click"/>
+        <Grid x:Name="installGrid" Visibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Top" 
+            Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type Grid}}}"
+            Height="{Binding ActualHeight, RelativeSource ={RelativeSource AncestorType = {x:Type Grid}}}">
+            
+            <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="238" Margin="0,56,0,0" VerticalAlignment="Top" Width="470" Background="#CCFFFFFF" Focusable="true"/>
+            <ProgressBar x:Name="pbSetup" HorizontalAlignment="Center" Height="13" Margin="0,0,0,53" VerticalAlignment="Bottom" Width="468" Background="#99FFFFFF" Foreground="#FF832708"/>
+            <Button x:Name="iButtonBack" Content="Zurück" HorizontalAlignment="Left" Height="30" Margin="8,0,0,13" VerticalAlignment="Bottom" Width="120" Click="iButtonBack_Click"/>
+            <Button x:Name="iButtonInstall" Content="Installieren" HorizontalAlignment="Right" Height="30" Margin="0,0,8,13" VerticalAlignment="Bottom" Width="120" Click="iButtonInstall_Click"/>
         </Grid>
     </Grid>
 </Window>

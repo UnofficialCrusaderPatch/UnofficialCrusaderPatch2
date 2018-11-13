@@ -9,10 +9,10 @@ namespace UnofficialCrusaderPatch
 {
     static class Extensions
     {
-        public static double MeasureHeight(this TextBlock block)
+        public static double MeasureHeight(this FrameworkElement element)
         {
-            block.Arrange(new Rect());
-            return block.ActualHeight;
+            element.Arrange(new Rect());
+            return element.ActualHeight;
         }
     }
 }

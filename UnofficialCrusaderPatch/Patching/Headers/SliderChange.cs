@@ -7,6 +7,20 @@ using System.Windows.Controls;
 
 namespace UnofficialCrusaderPatch
 {
+    public class SliderHeader : ChangeHeader
+    {
+        double min, max, oriVal, defaultVal;
+
+        public SliderHeader(string descrIdent, double min, double max, double oriVal, double defaultVal)
+            : base(descrIdent)
+        {
+            this.min = min;
+            this.max = max;
+            this.oriVal = oriVal;
+            this.defaultVal = defaultVal;
+        }
+    }
+
     /*protected override UIElement CreateUIContent()
     {
         Grid grid = new Grid

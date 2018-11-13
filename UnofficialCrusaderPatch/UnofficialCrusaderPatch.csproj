@@ -84,8 +84,8 @@
     <Compile Include="Patching\Changes\ChangeArgs.cs" />
     <Compile Include="Patching\Changes\ChangeEdit.cs" />
     <Compile Include="Patching\Changes\ChangeElement.cs" />
-    <Compile Include="Patching\Changes\ChangeHeader.cs" />
-    <Compile Include="Patching\Changes\SliderChange.cs" />
+    <Compile Include="Patching\Headers\ChangeHeader.cs" />
+    <Compile Include="Patching\Headers\SliderChange.cs" />
     <Compile Include="Patching\EditTypes\AIVEdit.cs" />
     <Compile Include="Patching\EditTypes\BinaryEdit.cs" />
     <Compile Include="Patching\EditTypes\EditResult.cs" />

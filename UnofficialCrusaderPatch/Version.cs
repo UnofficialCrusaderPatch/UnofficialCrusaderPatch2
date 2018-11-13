@@ -5,6 +5,8 @@ using System.Text;
 
 namespace UnofficialCrusaderPatch
 {
+    // Schwein Nahrung verkaufen & Friedrich Waffen ?
+    // Ochsenjoch spam
     // kalif eisen?
     // Abreißen deaktivieren
     // Scroll-Tempo in 1.41 reduzieren
@@ -288,8 +290,14 @@ namespace UnofficialCrusaderPatch
             * FIXED AIV CASTLES - https://github.com/Evrey/SHC_AIV
             */
 
-            AIVEdit.Change("evreyfixed", ChangeType.Bugfix),
-            AIVEdit.Change("evreyimproved", ChangeType.AILords, false),
+            new Change("aiv_evrey", ChangeType.Bugfix, true, 0)
+            {
+                new ChangeHeader("aiv_evreyfixed"),
+                new AIVEdit("evreyfixed"),
+
+                new ChangeHeader("aiv_evreyimproved"),
+                new AIVEdit("evreyimproved"),
+            },
         };
     }
 }
