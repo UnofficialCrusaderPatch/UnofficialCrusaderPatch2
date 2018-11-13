@@ -17,12 +17,12 @@ namespace UnofficialCrusaderPatch
             this.relative = relative;
         }
 
-        public override BinResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
+        public override EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
         {
             // find code cave
             int caveAddress = FindCodeCave(data, address, editData.Length);
             if (caveAddress == 0)
-                return BinResult.NoHookspace;
+                return EditResult.NoHookspace;
 
 
 
@@ -41,7 +41,7 @@ namespace UnofficialCrusaderPatch
             byte[] buffer = BitConverter.GetBytes(redirectAddress);
             buffer.CopyTo(data, address);
 
-            return BinResult.NoErrors;
+            return EditResult.NoErrors;
         }
 
         public static BinaryEdit CreateEdit(string ident, bool relative, params byte[] code)

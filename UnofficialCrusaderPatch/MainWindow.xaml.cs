@@ -121,11 +121,6 @@ namespace UnofficialCrusaderPatch
 
         #region Install
 
-        void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            AIVLimitReached();
-        }
-
         void iButtonBack_Click(object sender, RoutedEventArgs e)
         {
             installGrid.Visibility = Visibility.Hidden;
@@ -138,12 +133,6 @@ namespace UnofficialCrusaderPatch
             if (filePath == null)
             {
                 Debug.Error(Localization.Get("ui_wrongpath"));
-                return;
-            }
-
-            if (AIVLimitReached())
-            {
-                Debug.Error(Localization.Get("ui_aivlimit"));
                 return;
             }
 
@@ -181,28 +170,10 @@ namespace UnofficialCrusaderPatch
             Dispatcher.Invoke(() => pbSetup.Value = value * 100.0, DispatcherPriority.Render);
         }
 
-        bool AIVLimitReached()
-        {
-            bool result = Version.Changes.Count(c => c.IsChecked && c is AIVChange) > 1;
-            foreach(var pair in changeBoxes)
-            {
-                if (result && pair.Value.IsChecked && pair.Value is AIVChange)
-                {
-                    pair.Key.Background = Brushes.Red;
-                }
-                else
-                {
-                    pair.Key.Background = Brushes.White;
-                }
-            }
-            return result;
-        }
-
         #endregion
 
         #region TreeView
-
-        Dictionary<CheckBox, Change> changeBoxes = new Dictionary<CheckBox, Change>();
+        
         void FillTreeView(IEnumerable<Change> changes)
         {
             foreach (ChangeType type in Enum.GetValues(typeof(ChangeType)))
@@ -212,6 +183,7 @@ namespace UnofficialCrusaderPatch
                 {
                     Background = null,
                     BorderThickness = new Thickness(0, 0, 0, 0),
+                    Focusable = false,
                 };
 
                 TabItem tab = new TabItem()

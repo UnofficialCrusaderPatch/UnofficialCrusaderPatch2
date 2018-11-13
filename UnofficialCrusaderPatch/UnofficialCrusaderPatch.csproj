@@ -61,29 +61,36 @@
       <Link>CodeBlocks\CodeBlock.cs</Link>
     </Compile>
     <Compile Include="Debug.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Localization\LanguageWindow.xaml.cs">
       <DependentUpon>LanguageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Localization\Localization.cs" />
     <Compile Include="Localization\TextReferencer.cs" />
-    <Compile Include="Patching\AIVChange.cs" />
-    <Compile Include="Patching\BinaryChange.cs" />
-    <Compile Include="Patching\BinaryEdit.cs" />
     <Compile Include="Patching\BinElements\BinAddress.cs" />
+    <Compile Include="Patching\BinElements\BinByte.cs" />
     <Compile Include="Patching\BinElements\BinBytes.cs" />
     <Compile Include="Patching\BinElements\BinElement.cs" />
     <Compile Include="Patching\BinElements\BinHook.cs" />
     <Compile Include="Patching\BinElements\BinInt32.cs" />
+    <Compile Include="Patching\BinElements\BinValue.cs" />
     <Compile Include="Patching\BinElements\BinNops.cs" />
     <Compile Include="Patching\BinElements\BinRedirect.cs" />
     <Compile Include="Patching\BinElements\BinShort.cs" />
     <Compile Include="Patching\BinElements\BinLabel.cs" />
     <Compile Include="Patching\BinElements\BinRefTo.cs" />
     <Compile Include="Patching\BinElements\BinSkip.cs" />
-    <Compile Include="Patching\BinResult.cs" />
-    <Compile Include="Patching\LabelCollection.cs" />
+    <Compile Include="Patching\Changes\Change.cs" />
+    <Compile Include="Patching\Changes\ChangeArgs.cs" />
+    <Compile Include="Patching\Changes\ChangeEdit.cs" />
+    <Compile Include="Patching\Changes\ChangeElement.cs" />
+    <Compile Include="Patching\Changes\ChangeHeader.cs" />
+    <Compile Include="Patching\Changes\SliderChange.cs" />
+    <Compile Include="Patching\EditTypes\AIVEdit.cs" />
+    <Compile Include="Patching\EditTypes\BinaryEdit.cs" />
+    <Compile Include="Patching\EditTypes\EditResult.cs" />
+    <Compile Include="Patching\EditTypes\LabelCollection.cs" />
     <Compile Include="Patching\Patcher.cs" />
-    <Compile Include="Patching\SliderChange.cs" />
     <Compile Include="Version.cs" />
     <Page Include="Localization\LanguageWindow.xaml">
       <SubType>Designer</SubType>
@@ -97,7 +104,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Patching\Change.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

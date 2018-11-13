@@ -10,11 +10,11 @@
             this.count = count;
         }
 
-        public override BinResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
+        public override EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
         {
             for (int i = 0; i < count; i++)
                 data[address + i] = 0x90;
-            return BinResult.NoErrors;
+            return EditResult.NoErrors;
         }
     }
 }

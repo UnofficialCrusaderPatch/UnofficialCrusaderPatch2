@@ -15,7 +15,7 @@ namespace UnofficialCrusaderPatch
             this.relative = relative;
         }
 
-        public override BinResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
+        public override EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
         {
             int labelAddress = labels.GetLabel(this.labelName);
 
@@ -28,7 +28,7 @@ namespace UnofficialCrusaderPatch
             byte[] buf = BitConverter.GetBytes(refAddress);
             buf.CopyTo(data, address);
 
-            return BinResult.NoErrors;
+            return EditResult.NoErrors;
         }
     }
 }

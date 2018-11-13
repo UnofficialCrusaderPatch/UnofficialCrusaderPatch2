@@ -9,11 +9,11 @@ namespace UnofficialCrusaderPatch
         {
         }
 
-        public static BinaryChange Change(string locIdent, ChangeType type, int newValue, bool checkedDefault = true)
+        public static Change Change(string locIdent, ChangeType type, int newValue, bool checkedDefault = true)
         {
-            return new BinaryChange(locIdent, type, checkedDefault)
+            return new Change(locIdent, type, checkedDefault)
             {
-                new BinaryEdit(locIdent) { new BinInt32(newValue), }
+                CreateEdit(locIdent, newValue)
             };
         }
 

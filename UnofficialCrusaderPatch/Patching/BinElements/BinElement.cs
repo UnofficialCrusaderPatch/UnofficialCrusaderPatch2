@@ -3,7 +3,7 @@
     public abstract class BinElement
     {
         public abstract int Length { get; }
-        public abstract BinResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels);
+        public abstract EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels);
 
         protected static int FindCodeCave(byte[] data, int startAddress, int length)
         {

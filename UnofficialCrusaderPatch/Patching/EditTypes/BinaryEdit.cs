@@ -8,7 +8,7 @@ using System.Collections;
 
 namespace UnofficialCrusaderPatch
 {
-    public class BinaryEdit : IEnumerable<BinElement>
+    public class BinaryEdit : ChangeEdit, IEnumerable<BinElement>
     {
         int length;
         public int Length => length;
@@ -46,31 +46,31 @@ namespace UnofficialCrusaderPatch
         public IEnumerator<BinElement> GetEnumerator() { return this.elements.GetEnumerator(); }
         IEnumerator IEnumerable.GetEnumerator() { return this.elements.GetEnumerator(); }
 
-        public BinResult Edit(byte[] data, byte[] oriData)
+        public override EditResult Activate(ChangeArgs args)
         {
             // find equivalent position in original file
-            int count = block.SeekCount(oriData, out int address);
+            int count = block.SeekCount(args.OriData, out int address);
             if (count > 1)
-                return BinResult.MultipleBlocks;
+                return EditResult.MultipleBlocks;
             else if (count == 0)
-                return BinResult.BlockNotFound;
+                return EditResult.BlockNotFound;
 
             labels.Resolve(address);
 
-            return DoEdit(address, data, oriData);
+            return DoEdit(address, args.Data, args.OriData);
         }
 
-        BinResult DoEdit(int address, byte[] data, byte[] oriData)
+        EditResult DoEdit(int address, byte[] data, byte[] oriData)
         {
             foreach (BinElement e in elements)
             {
-                BinResult result = e.Write(address, data, oriData, labels);
-                if (result != BinResult.NoErrors)
+                EditResult result = e.Write(address, data, oriData, labels);
+                if (result != EditResult.NoErrors)
                     return result;
 
                 address += e.Length;
             }
-            return BinResult.NoErrors;
+            return EditResult.NoErrors;
         }
     }
 }

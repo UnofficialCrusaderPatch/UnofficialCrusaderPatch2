@@ -12,20 +12,20 @@ namespace UnofficialCrusaderPatch
             this.editData = input;
         }
 
-        public override BinResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
+        public override EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
         {
             editData.CopyTo(data, address);
-            return BinResult.NoErrors;
+            return EditResult.NoErrors;
         }
 
-        public static BinaryChange Change(string locIdent, ChangeType type, params byte[] input)
+        public static Change Change(string locIdent, ChangeType type, params byte[] input)
         {
             return Change(locIdent, type, true, input);
         }
 
-        public static BinaryChange Change(string locIdent, ChangeType type, bool checkedDefault, params byte[] input)
+        public static Change Change(string locIdent, ChangeType type, bool checkedDefault, params byte[] input)
         {
-            return new BinaryChange(locIdent, type, checkedDefault)
+            return new Change(locIdent, type, checkedDefault)
             {
                 new BinaryEdit(locIdent) { new BinBytes(input), }
             };

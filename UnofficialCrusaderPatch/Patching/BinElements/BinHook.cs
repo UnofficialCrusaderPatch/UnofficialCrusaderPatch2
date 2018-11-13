@@ -48,12 +48,12 @@ namespace UnofficialCrusaderPatch
         public IEnumerator<byte> GetEnumerator() { return codeData.GetEnumerator(); }
         IEnumerator IEnumerable.GetEnumerator() { return codeData.GetEnumerator(); }
 
-        public override BinResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
+        public override EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
         {
             // find a code cave
             int caveAddress = FindCodeCave(data, address, codeData.Count + 5);
             if (caveAddress == 0)
-                return BinResult.NoHookspace;
+                return EditResult.NoHookspace;
 
 
 
@@ -79,14 +79,14 @@ namespace UnofficialCrusaderPatch
             return base.Write(caveAddress + codeData.Count + 1, data, oriData, labels);
         }
 
-        public static BinaryChange Change(string ident, ChangeType type, int hookLen, params byte[] code)
+        public static Change Change(string ident, ChangeType type, int hookLen, params byte[] code)
         {
             return Change(ident, type, true, hookLen, code);
         }
 
-        public static BinaryChange Change(string ident, ChangeType type, bool checkedDefault, int hookLen, params byte[] code)
+        public static Change Change(string ident, ChangeType type, bool checkedDefault, int hookLen, params byte[] code)
         {
-            return new BinaryChange(ident, type, checkedDefault)
+            return new Change(ident, type, checkedDefault)
             {
                 CreateEdit(ident, hookLen, code)
             };

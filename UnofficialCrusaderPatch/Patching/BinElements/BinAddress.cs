@@ -16,10 +16,10 @@ namespace UnofficialCrusaderPatch
         public override void SetOffset(int offset) { }
         public override void Resolve(int editAddress) { }
 
-        public override BinResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
+        public override EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
         {
             this.address = BitConverter.ToInt32(oriData, address + this.offset);
-            return BinResult.NoErrors;
+            return EditResult.NoErrors;
         }
 
     }

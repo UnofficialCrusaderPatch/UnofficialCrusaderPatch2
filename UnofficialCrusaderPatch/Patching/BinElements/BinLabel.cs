@@ -18,9 +18,9 @@
             this.name = name;
         }
 
-        public override BinResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
+        public override EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
         {
-            return BinResult.NoErrors;
+            return EditResult.NoErrors;
         }
 
         public virtual void Resolve(int startAddress)

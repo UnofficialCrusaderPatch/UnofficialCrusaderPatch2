@@ -26,7 +26,7 @@ namespace UnofficialCrusaderPatch
              * PLAYER 1 COLOR
              */
 
-            new BinaryChange("o_playercolor", ChangeType.Other)
+            new Change("o_playercolor", ChangeType.Other)
             {
                 // 0044FC15
                 new BinaryEdit("o_playercolor_ingame")
@@ -65,7 +65,7 @@ namespace UnofficialCrusaderPatch
              * GATES
              */ 
 
-            new BinaryChange("o_responsivegates", ChangeType.Other)
+            new Change("o_responsivegates", ChangeType.Other)
             {
                 // Gates closing distance to enemy = 200
                 // 0x422ACC + 2
@@ -81,7 +81,7 @@ namespace UnofficialCrusaderPatch
              *  EXTENDED GAME SPEED 
              */ 
 
-            new BinaryChange("o_gamespeed", ChangeType.Other)
+            new Change("o_gamespeed", ChangeType.Other)
             {
                 // 4B4748
                 new BinaryEdit("o_gamespeed_up")
@@ -230,7 +230,7 @@ namespace UnofficialCrusaderPatch
             // Sling dmg table: 0xB4EBE0
 
             // Schutz von Leiternträgern gegen Fernkämpfer
-            new BinaryChange("u_laddermen", ChangeType.Troops)
+            new Change("u_laddermen", ChangeType.Troops)
             {
                 BinInt32.CreateEdit("u_ladderarmor_bow", 420), // B4EAA0 + 4 * 1D   (vanilla = 1000)
                 BinInt32.CreateEdit("u_ladderarmor_sling", 1000), // B4EBE0 + 4 * 1D   (vanilla = 2500)
@@ -249,7 +249,7 @@ namespace UnofficialCrusaderPatch
             
 
             // Lanzenträger hp: 10000
-            new BinaryChange("u_spearmen", ChangeType.Troops)
+            new Change("u_spearmen", ChangeType.Troops)
             {
                 BinInt32.CreateEdit("u_spearbow", 2000), // B4EAA0 + 4 * 18   (vanilla = 3500)
                 BinInt32.CreateEdit("u_spearxbow", 9999), // B4EBE0 + 4 * 18   (vanilla = 15000)
@@ -269,7 +269,7 @@ namespace UnofficialCrusaderPatch
             */
 
             // ai1_buytable 0x01165C78
-            new BinaryChange("ai_buy", ChangeType.Bugfix)
+            new Change("ai_buy", ChangeType.Bugfix)
             {
                 // mov [EAX+84], EDI = 10
                 BinBytes.CreateEdit("ai_foodbuy_wazir", 0x89, 0xB8), // 004C951C
@@ -288,8 +288,8 @@ namespace UnofficialCrusaderPatch
             * FIXED AIV CASTLES - https://github.com/Evrey/SHC_AIV
             */
 
-            new AIVChange("ai_evreyfixed", ChangeType.Bugfix, "EvreyFixed"),
-            new AIVChange("ai_evreyimproved", ChangeType.AILords, "EvreyImproved", false),
+            AIVEdit.Change("evreyfixed", ChangeType.Bugfix),
+            AIVEdit.Change("evreyimproved", ChangeType.AILords, false),
         };
     }
 }

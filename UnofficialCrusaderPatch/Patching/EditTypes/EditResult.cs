@@ -1,6 +1,6 @@
 ﻿namespace UnofficialCrusaderPatch
 {
-    public enum BinResult
+    public enum EditResult
     {
         NoErrors,
         BlockNotFound,

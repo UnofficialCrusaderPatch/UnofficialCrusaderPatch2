@@ -68,41 +68,42 @@ namespace UnofficialCrusaderPatch
 
         static void DoChanges(string filePath, DirectoryInfo aivFolder, SetPercentHandler SetPercent)
         {
-            // count binary changes
-            List<BinaryChange> binTodo = new List<BinaryChange>(Version.Changes.Count());
-            foreach (Change change in Version.Changes)
-            {
-                if (change.IsChecked && change is BinaryChange bc)
-                    binTodo.Add(bc);
-            }
+            List<Change> todo = new List<Change>(Version.Changes.Where(c => c.IsChecked));
 
             int index = 0;
-            double count = 1 + binTodo.Count; // +1 for version edit
+            double count = 4 + todo.Count; // +1 from folder backup above, +1 for read, +1 for version edit, +1 for writing data
+            SetPercent?.Invoke(++index / count);
 
-            // aiv changes
-            AIVChange aivChange = (AIVChange)Version.Changes.FirstOrDefault(c => c.IsChecked && c is AIVChange);
-            if (aivChange != null)
-            {
-                count++;
-                aivChange.Activate(aivFolder);
-                SetPercent?.Invoke(++index / count);
-            }
 
-            // read original data
+
+            // read original data & preparation
             byte[] oriData = File.ReadAllBytes(filePath);
             byte[] data = (byte[])oriData.Clone();
+            ChangeArgs args = new ChangeArgs(data, oriData, aivFolder);
+            SetPercent?.Invoke(++index / count);
+
+
 
             // change version display in main menu
-            var displayResult = Version.MenuChange.Edit(data, oriData);
-            if (displayResult != BinResult.NoErrors)
-                throw new Exception("Menu display edit failed: " + displayResult);
-
-            // change other stuff
-            foreach (BinaryChange change in binTodo)
+            var displayResult = Version.MenuChange.Activate(args);
+            if (displayResult != EditResult.NoErrors)
             {
-                change.Edit(data, oriData);
+                const string str = "Your version is currently unsupported: {0} in menu display edit.";
+                string message = string.Format(str, displayResult);
+                throw new Exception(message);
+            }
+            SetPercent?.Invoke(++index / count);
+
+
+
+            // change stuff
+            foreach (Change change in todo)
+            {
+                change.Activate(args);
                 SetPercent?.Invoke(++index / count);
             }
+
+
 
             if (filePath.EndsWith(BackupFileEnding))
             {
