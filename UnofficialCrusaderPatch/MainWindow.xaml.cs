@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows;
-using System.Windows.Media;
 using System.IO;
 using Microsoft.Win32;
 using System.Windows.Threading;
@@ -15,10 +14,18 @@ namespace UnofficialCrusaderPatch
 {
     public partial class MainWindow : Window
     {
+        static MainWindow()
+        {
+            Application.Current.DispatcherUnhandledException += DispatcherException;
+        }
+
+        static void DispatcherException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            Debug.Error(e.Exception);
+        }
 
         public MainWindow()
         {
-            Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
             // choose language
             if (!LanguageWindow.ShowSelection())
             {
@@ -57,11 +64,6 @@ namespace UnofficialCrusaderPatch
             using (Stream stream = asm.GetManifestResourceStream("UnofficialCrusaderPatch.license.txt"))
             using (StreamReader sr = new StreamReader(stream))
                 linkLabel.Inlines.Add("\n\n\n\n\n\n" + sr.ReadToEnd());
-        }
-
-        void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
-        {
-            Debug.Error(e.Exception);
         }
 
         #region Path finding
@@ -180,6 +182,8 @@ namespace UnofficialCrusaderPatch
                     Focusable = false,
                 };
 
+                view.SelectedItemChanged += View_SelectedItemChanged;
+
                 TabItem tab = new TabItem()
                 {
                     Header = Localization.Get("ui_" + typeName),
@@ -196,6 +200,22 @@ namespace UnofficialCrusaderPatch
                     view.Items.Add(change.UIElement);
                 }
             }
+        }
+
+        static void View_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            TreeView view = (TreeView)sender;
+            view.SelectedItemChanged -= View_SelectedItemChanged;
+
+            object[] items = new object[view.Items.Count];
+            view.Items.CopyTo(items, 0);
+
+            view.Items.Clear();
+
+            foreach (object o in items)
+                view.Items.Add(o);
+
+            view.SelectedItemChanged += View_SelectedItemChanged;
         }
 
         #endregion

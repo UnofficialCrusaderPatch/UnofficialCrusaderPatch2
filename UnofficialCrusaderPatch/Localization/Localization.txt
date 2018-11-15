@@ -48,8 +48,8 @@ u_spearmen_descr
 
 ai_buy
 {
-	"Die neuen KIs benutzen den Marktplatz"
-	"The new AIs use the trader post"
+	"Verbesserte Marktplatznutzung der KI-Lords"
+	"Improved trader usage of the AI lords"
 }
 
 ai_buy_descr
@@ -217,8 +217,14 @@ ui_uninstalldone
 
 ai_recruitinterval
 {
-	"Setze das Rekrutierungstempo aller KIs auf den höchsten Wert"
-	"Set the recruitment speed of the AIs to the highest value"
+	"Erhöhtes Rekrutierungstempo"
+	"Increased recruitment speed"
+}
+
+ai_recruitinterval_descr
+{
+	"Setzt das Rekrutierungsintervall aller KIs auf den niedrigsten Wert. (Ratte/Richard-Niveau)"
+	"Sets the recruitment interval of all AIs to the lowest value (Rat/Richard niveau)"
 }
 
 ai_recruitsleep
@@ -229,8 +235,17 @@ ai_recruitsleep
 
 ai_attacklimit
 {
-	"Setze das Angriffstruppenlimit der KIs auf 1000",
-	"Set the attacking troops limit of the ai to 1000",
+	"Erhöhung des Angriffstruppenlimits der KIs",
+	"Increase of the attacking troops limit of the AIs",
+}
+
+ai_attacklimit_descr
+{
+	"In Vanilla is das Limit der zusätzlichen Truppen, die nach dem ersten Angriff dazukommen &
+auf 200 begrenzt. Hier kann diese Grenze verändert werden.",
+
+	"The number of additional units which are added after the first attack is limited to 200 in Vanilla. &
+Here you can change this limit."
 }
 
 o_gamespeed
@@ -286,15 +301,43 @@ o_responsivegates
 
 o_responsivegates_descr
 {
-	"Torhäuser schließen sich jetzt später bei Gegnernähe und öffnen wieder schneller automatisch, sobald die Gefahr vorüber ist. Die Distanz die ein Gegner haben muss, damit sich das Tor automatisch schließt, wird von 200 auf 140 gesenkt. Die Zeit nach der sich das Tor wieder öffnet, sofern kein Gegner mehr in der Nähe ist, wird von 1200 auf 100 reduziert."
+	"Torhäuser schließen sich jetzt später bei Gegnernähe und öffnen wieder schneller automatisch, sobald die Gefahr vorüber ist. &
+Die Distanz die ein Gegner haben muss, damit sich das Tor automatisch schließt, wird von 200 auf 140 gesenkt. Die Zeit nach der sich &
+das Tor wieder öffnet, sofern kein Gegner mehr in der Nähe ist, wird von 1200 auf 100 reduziert."
 
-	"Gates close themselves later if enemies get into range and open "
+	"Gates close themselves later if enemies get into range and open faster when the danger is gone. The distance of an enemy for which &
+the gates close will be reduced from 200 to 140. The time after which the gates open, after all enemies left will be reduced from &
+1200 to 100."
 }
 
 ai_addattack
 {
-	"Zusätzliche Angriffstruppen nach jedem Angriff:"
-	"Additional attack troops after each attack:"
+	"Erhöhung der Rate von zusätzlichen Angriffstruppen"
+	"Increase of the rate of additional attack troops"
+}
+
+ai_addattack_descr
+{
+	"In Vanilla wird nach jedem Angriff die Truppenzahl für den nächsten Angriff durchschnittlich um 5 Einheiten erhöht. &
+Dieser Wert ist für alle KI-Lords gleich und kann hier geändert werden."
+	"In Vanilla the attack troop number is increased after each attack by 5 units on average. &
+This value is the same for all AI lords and can be changed here."
+}
+
+ai_addattack_alt_descr
+{
+	"Alternativ kann hier die hinzukommende Truppenanzahl von der Truppenstärke des ersten Angriffs &
+abhängig gemacht werden. Da jede KI unterschiedliche Anzahlen für den Erstangriff hat, werden somit auch folgende &
+Angriffe skalieren, anstatt für jede KI gleich anzusteigen.
+Beispiel: Skalierungsfaktor = 0,5
+Sultans Angriffszahlen = 10, 15, 20, 25, ...
+Saladins Angriffszahlen = 50, 75, 100, 125, ..."
+	"Alternatively, the additional troop count can be made dependent on the troop count of the first attack. &
+Since this value is different for each AI, the following attacks will also scale, instead of increasing by the &
+same value for each AI lord.
+Example: Scale factor = 0.5
+Sultan's attack troops = 10, 15, 20, 25, ...
+Saladin's attack troops = 50, 75, 100, 125, ..."
 }
 
 u_laddermen

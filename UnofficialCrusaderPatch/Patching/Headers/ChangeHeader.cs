@@ -41,6 +41,8 @@ namespace UnofficialCrusaderPatch
                 {
                     Content = content,
                     Height = content.Height,
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                    VerticalAlignment = VerticalAlignment.Top,
                 };
 
                 box.Checked += Box_Checked;

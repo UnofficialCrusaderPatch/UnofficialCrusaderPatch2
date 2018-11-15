@@ -65,12 +65,8 @@ namespace UnofficialCrusaderPatch
         {
             ChangeHeader header = GetActiveHeader();
 
-            /*foreach (var edit in editList)
-                foreach (var element in edit)
-                    if (element is BinValue value)
-                    {
-                        value.Set(valueDict[value.ValueIdent].Value);
-                    }*/
+            if (header is ValueHeader vh)
+                vh.SetValueEdits();
 
             var list = header.EditList;
             for (int i = 0; i < list.Count; i++)
@@ -121,10 +117,11 @@ namespace UnofficialCrusaderPatch
             Grid content = new Grid()
             {
                 Background = new SolidColorBrush(Color.FromArgb(150, 200, 200, 200)),
-                Width = 400,
+                Width = 420,
                 Margin = new Thickness(-18, 5, 0, 0),
                 Focusable = false,
             };
+
 
             FillGrid(content);
 
@@ -158,7 +155,8 @@ namespace UnofficialCrusaderPatch
 
         void FillGrid(Grid grid)
         {
-            if (headerList.Count > 1)
+            bool defaultHeader = headerList.Count == 1;
+            if (!defaultHeader)
             {
                 headerList.RemoveAt(0); // default one is not needed
             }
@@ -167,17 +165,19 @@ namespace UnofficialCrusaderPatch
             for (int i = 0; i < headerList.Count; i++)
             {
                 var header = headerList[i];
-                header.OnEnabledChange += Header_OnEnable;
+                if (!defaultHeader)
+                {
+                    header.OnEnabledChange += Header_OnEnable;
 
-                // ui element
-                var uiElement = header.InitUI(headerList.Count > 1);
-                uiElement.HorizontalAlignment = HorizontalAlignment.Left;
-                uiElement.VerticalAlignment = VerticalAlignment.Top;
-                uiElement.Margin = new Thickness(6, height, 0, 0);
-                height += uiElement.Height + 5;
+                    // ui element
+                    var uiElement = header.InitUI(headerList.Count > 1);
+                    uiElement.HorizontalAlignment = HorizontalAlignment.Left;
+                    uiElement.VerticalAlignment = VerticalAlignment.Top;
+                    uiElement.Margin = new Thickness(6, height, 0, 0);
+                    height += uiElement.Height + 5;
 
-                grid.Children.Add(uiElement);
-
+                    grid.Children.Add(uiElement);
+                }
 
 
                 // Description
@@ -197,7 +197,7 @@ namespace UnofficialCrusaderPatch
 
 
                 if (i != headerList.Count - 1)
-                    height += 18;
+                    height += 22;
             }
             grid.Height = height + 10;
         }

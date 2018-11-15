@@ -59,7 +59,7 @@ namespace UnofficialCrusaderPatch
                 return false;
             }
 
-            List<char> chars = new List<char>(100);
+            StringBuilder chars = new StringBuilder(100);
             public bool ReadString(out string text)
             {
                 int c;
@@ -69,7 +69,7 @@ namespace UnofficialCrusaderPatch
                 {
                     if ((c = sr.Read()) < 0)
                         throw new Exception("ReadString: End of file after line " + oldLineNum);
-                    
+
                     if (c == '\n')
                         lineNum++;
 
@@ -95,19 +95,33 @@ namespace UnofficialCrusaderPatch
                     if ((c = sr.Read()) < 0)
                         throw new Exception("Could not find string closing after line " + oldLineNum);
 
+                    if (c == '&')
+                    {
+                        int peek = sr.Peek();
+                        if (peek == '\r')
+                        {
+                            sr.Read();
+                            sr.Read();
+                            lineNum++;
+                            continue;
+                        }
+                    }
+
                     if (c == '\n')
+                    {
                         lineNum++;
+                    }
 
                     if (c == '\"')
                         break;
 
-                    chars.Add((char)c);
+                    chars.Append((char)c);
                 }
 
                 sr.ReadLine(); lineNum++;
-                if (chars.Count > 0)
+                if (chars.Length > 0)
                 {
-                    text = new string(chars.ToArray());
+                    text = chars.ToString();
                     chars.Clear();
                     return true;
                 }
@@ -118,26 +132,33 @@ namespace UnofficialCrusaderPatch
                 }
             }
         }
-        
+
         static Localization()
         {
-            Assembly asm = Assembly.GetExecutingAssembly();
-            using (var s = asm.GetManifestResourceStream("UnofficialCrusaderPatch.Localization.Localization.txt"))
-            using (Reader r = new Reader(s))
+            try
             {
-                List<string> texts = new List<string>(5);
-                while (r.ReadLine(out string line))
+                Assembly asm = Assembly.GetExecutingAssembly();
+                using (var s = asm.GetManifestResourceStream("UnofficialCrusaderPatch.Localization.Localization.txt"))
+                using (Reader r = new Reader(s))
                 {
-                    string ident = line;
-                    if (!r.ReadLine(out line) || !line.StartsWith("{"))
-                        throw new Exception(ident + " Missing opening bracket at line " + r.LineNumber);
-                    
-                    while ((r.ReadString(out string text)))
-                        texts.Add(text);
+                    List<string> texts = new List<string>(5);
+                    while (r.ReadLine(out string line))
+                    {
+                        string ident = line;
+                        if (!r.ReadLine(out line) || !line.StartsWith("{"))
+                            throw new Exception(ident + " Missing opening bracket at line " + r.LineNumber);
 
-                    LocalStrings.Add(ident, texts.ToArray());
-                    texts.Clear();
+                        while ((r.ReadString(out string text)))
+                            texts.Add(text);
+
+                        LocalStrings.Add(ident, texts.ToArray());
+                        texts.Clear();
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                Debug.Error(e);
             }
         }
     }

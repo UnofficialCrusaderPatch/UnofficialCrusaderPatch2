@@ -85,11 +85,12 @@
     <Compile Include="Patching\Changes\ChangeEdit.cs" />
     <Compile Include="Patching\Changes\ChangeElement.cs" />
     <Compile Include="Patching\Headers\ChangeHeader.cs" />
-    <Compile Include="Patching\Headers\SliderChange.cs" />
+    <Compile Include="Patching\Headers\SliderHeader.cs" />
     <Compile Include="Patching\EditTypes\AIVEdit.cs" />
     <Compile Include="Patching\EditTypes\BinaryEdit.cs" />
     <Compile Include="Patching\EditTypes\EditResult.cs" />
     <Compile Include="Patching\EditTypes\LabelCollection.cs" />
+    <Compile Include="Patching\Headers\ValueHeader.cs" />
     <Compile Include="Patching\Patcher.cs" />
     <Compile Include="Version.cs" />
     <Page Include="Localization\LanguageWindow.xaml">
@@ -917,6 +918,7 @@
     <EmbeddedResource Include="CodeBlocks\u_ladderarmor_sling.block" />
     <EmbeddedResource Include="CodeBlocks\u_ladderarmor_xbow.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ingame.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_addattack_alt.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -9,7 +9,7 @@ namespace UnofficialCrusaderPatch
 {
     static class Debug
     {
-        public static void Show(string message, string title)
+        public static void Show(string message, string title = "Info")
         {
             MessageBox.Show(message, title);
         }

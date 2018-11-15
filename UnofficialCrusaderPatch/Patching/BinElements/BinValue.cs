@@ -13,8 +13,8 @@ namespace UnofficialCrusaderPatch
         string valueIdent;
         public string ValueIdent => valueIdent;
 
-        public BinValue(string valueIdent, double factor = 1)
-            : base(null)
+        public BinValue(int size, double factor = 1, string valueIdent = null)
+            : base(new byte[size])
         {
             this.factor = factor;
             this.valueIdent = valueIdent;
@@ -30,8 +30,8 @@ namespace UnofficialCrusaderPatch
 
     class BinInt32Value : BinValue
     {
-        public BinInt32Value(string valueIdent, double factor = 1)
-            : base(valueIdent, factor)
+        public BinInt32Value(double factor = 1, string valueIdent = null)
+            : base(4, factor, valueIdent)
         {
         }
 
@@ -43,8 +43,8 @@ namespace UnofficialCrusaderPatch
 
     class BinByteValue : BinValue
     {
-        public BinByteValue(string valueIdent, double factor = 1)
-            : base(valueIdent, factor)
+        public BinByteValue(string valueIdent = null, double factor = 1)
+            : base(1, factor, valueIdent)
         {
         }
 

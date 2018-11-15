@@ -16,6 +16,7 @@ namespace UnofficialCrusaderPatch
         CodeBlock block;
         List<BinElement> elements = new List<BinElement>();
         LabelCollection labels = new LabelCollection();
+        
 
         public BinaryEdit(string blockIdent)
         {
@@ -47,7 +48,7 @@ namespace UnofficialCrusaderPatch
         IEnumerator IEnumerable.GetEnumerator() { return this.elements.GetEnumerator(); }
 
         public override EditResult Activate(ChangeArgs args)
-        {
+        {           
             // find equivalent position in original file
             int count = block.SeekCount(args.OriData, out int address);
             if (count > 1)
