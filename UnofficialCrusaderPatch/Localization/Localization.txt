@@ -366,3 +366,46 @@ o_playercolor_descr
 	" "
 	" "
 }
+
+o_trooplimit
+{
+	"Erhöhung des allgemeinen Einheitenlimits"
+	"Increasement of the total troop limit"
+}
+
+o_trooplimit_descr
+{
+	"In Vanilla liegt das absolute Einheitenlimit für den Spieler bei 
+2400/Spieleranzahl. Hier kann dieser Wert geändert werden."
+	"The limit for the total amount of units one player can field is set to 2400/Players in Vanilla. &
+This value can be changed here."
+}
+
+ai_demolish
+{
+	"Einreißen für Geld der KI-Lords deaktivieren"
+	"Deactivate demolishing for money of the AI lords"
+}
+
+ai_demolish_descr
+{
+	"Wenn die KI sich bedrängt fühlt und schnell an Geld für Truppen kommen will, reißt sie gerne mal ihre &
+komplette Wirtschaft oder Befestigungsanlagen ein. Manchmal wird dieses Feature aber auch völlig ohne scheinbaren &
+Grund ausgelöst und kann darum hier ausgestellt werden."
+	"If the AI feels pressured, it likes to demolishes its economy and castle buildings to get quick money for troops. &
+This feature sometimes seems to be triggered without any visible reason and thus can be disabled here."
+}
+
+ai_tethers
+{
+	"Ochsenjoch-Spam deaktivieren"
+	"Disable ox tether spam"
+}
+
+ai_tethers_descr
+{
+	"Die KI baut normalerweise mit jedem neuen Steinbruch auch ein neues Ochsenjoch, unabhängig davon wie viele sie schon hat. &
+Dies kann hier deaktiviert werden, da es zu Ochsenjoch-Spam führt, wenn die Steinbrüche der AI immer wieder zerstört werden."
+	"Usually, the AI builds for each new stone quarry a new ox tether, independent of how many tether already exist. This &
+can be disabled here, since it leads to ox tether spam if the AIs' quarries get destroyed repeatedly."
+}

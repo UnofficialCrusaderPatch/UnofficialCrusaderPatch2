@@ -919,6 +919,10 @@
     <EmbeddedResource Include="CodeBlocks\u_ladderarmor_xbow.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ingame.block" />
     <EmbeddedResource Include="CodeBlocks\ai_addattack_alt.block" />
+    <EmbeddedResource Include="CodeBlocks\u_laddergold.block" />
+    <EmbeddedResource Include="CodeBlocks\o_trooplimit.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_demolish.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_tethers.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

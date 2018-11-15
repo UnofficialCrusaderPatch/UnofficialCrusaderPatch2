@@ -6,11 +6,11 @@ using System.Text;
 
 namespace UnofficialCrusaderPatch
 {
-    class BinHook : BinRefTo, IEnumerable<byte>
+    class BinHook : BinRefTo, IEnumerable<BinBytes>
     {
         public override int Length => hookLen;
         
-        List<byte> codeData = new List<byte>();
+        List<BinBytes> codeData = new List<BinBytes>();
         byte[] jmpBytes;
         int hookLen;
 
@@ -21,12 +21,12 @@ namespace UnofficialCrusaderPatch
         }
 
         /// <summary> Simple hook with 0xE9 JMP byte </summary>
-        public BinHook(string jmpBackLabel, int hookLen, byte[] code)
+        public BinHook(string jmpBackLabel, int hookLen, params BinBytes[] code)
             : this(jmpBackLabel, new byte[] { 0xE9 }, hookLen, code)
         {
         }
 
-        public BinHook(string jmpBackLabel, byte[] jmpBytes, int hookLen, byte[] code)
+        public BinHook(string jmpBackLabel, byte[] jmpBytes, int hookLen, params BinBytes[] code)
             : base(jmpBackLabel)
         {
             if (hookLen < jmpBytes.Length + 4)
@@ -37,7 +37,7 @@ namespace UnofficialCrusaderPatch
                 this.codeData.AddRange(code);
         }
 
-        public void Add(byte input)
+        public void Add(BinBytes input)
         {
             if (codeData.Count == 10)
                 throw new Exception("Hook code can only be < 10 bytes!");
@@ -45,7 +45,7 @@ namespace UnofficialCrusaderPatch
             this.codeData.Add(input);
         }
 
-        public IEnumerator<byte> GetEnumerator() { return codeData.GetEnumerator(); }
+        public IEnumerator<BinBytes> GetEnumerator() { return codeData.GetEnumerator(); }
         IEnumerator IEnumerable.GetEnumerator() { return codeData.GetEnumerator(); }
 
         public override EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
@@ -96,7 +96,7 @@ namespace UnofficialCrusaderPatch
         {
             return new BinaryEdit(ident)
             {
-                new BinHook(ident, hookLen, code),
+                new BinHook(ident, hookLen, new BinBytes(code)),
                 new BinLabel(ident)
             };
         }

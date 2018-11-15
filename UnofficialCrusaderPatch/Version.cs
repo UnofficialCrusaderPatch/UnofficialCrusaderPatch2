@@ -5,12 +5,11 @@ using System.Text;
 
 namespace UnofficialCrusaderPatch
 {
-    // leiternträger 20 gold
-    // max truppen limit
     // spieler farben
     // rekrutierungsintervall
-    // Ochsenjoch spam
-    // Abreißen deaktivieren
+    // demolishing -> option economy & castles
+    // bauerngrenze
+
     // Schwein Nahrung verkaufen & Friedrich Waffen ?
     // kalif eisen?
     // Scroll-Tempo in 1.41 reduzieren
@@ -29,11 +28,64 @@ namespace UnofficialCrusaderPatch
         static List<Change> changes = new List<Change>()
         {
             /*
+             *  OX TETHER SPAM
+             */
+             
+            // 004EFF9A => jne to jmp
+            BinBytes.Change("ai_tethers", ChangeType.Bugfix, true, 0x90, 0xEB),
+
+            /*
+             *  ECONOMY DEMOLISHING
+             */
+             
+            // 004D0280 => retn 8
+            BinBytes.Change("ai_demolish", ChangeType.AILords, false, 0xC2, 0x08, 0x00, 0x00, 0x90, 0x90, 0x90),
+
+            /*
+             * TOTAL TROOP LIMIT
+             */
+
+            new Change("o_trooplimit", ChangeType.Other)
+            {
+                // 00459E10 + 1
+                new SliderHeader("o_trooplimit", 1000, 10000, 100, 2400, 5000),
+                new BinaryEdit("o_trooplimit")
+                {
+                    new BinInt32Value()
+                }
+            },
+
+            /*
              * PLAYER 1 COLOR
              */
 
             new Change("o_playercolor", ChangeType.Other)
-            {
+            {               
+                // 0044FC15
+                new BinaryEdit("o_playercolor_list")
+                {
+                    new BinBytes(0xA1), // mov eax, [var]
+
+                    new BinHook("label", 0xE9)
+                    {
+                        /*
+02491000 - 8B C6                 - mov eax,esi
+02491002 - 3C 01                 - cmp al,01 { 1 }
+02491004 - 75 04                 - jne 0249100A
+02491006 - B0 03                 - mov al,03 { 3 }
+02491008 - EB 06                 - jmp 02491010
+0249100A - 3C 03                 - cmp al,03 { 3 }
+0249100C - 75 02                 - jne 02491010
+0249100E - B0 01                 - mov al,01 { 1 }
+02491010 - 05 D5010000           - add eax,000001D5 { 469 }
+02491015 - E9 AE6CF9FD           - jmp 00427CC8
+*/
+                    },
+                },
+
+
+
+
                 // 0044FC15
                 new BinaryEdit("o_playercolor_ingame")
                 {
@@ -51,13 +103,15 @@ namespace UnofficialCrusaderPatch
                     new BinBytes(0xB0, 0x01), // mov al, 1
                     // end
 
-                    new BinBytes(0x3C, 0x02), // cmp al, 1
+                    new BinBytes(0x3C, 0x01), // cmp al, 1
                     new BinBytes(0x75, 0x04), // jne to next cmp
-                    new BinBytes(0xB0, 0x03), // mov al, 4
+                    new BinBytes(0xB0), // mov al, value
+                    new BinByteValue(),
                     new BinBytes(0xEB, 0x06), // jmp to end
-                    new BinBytes(0x3C, 0x03), // cmp al, 4
+                    new BinBytes(0x3C), // cmp al, value
+                    new BinByteValue(),
                     new BinBytes(0x75, 0x02), // jne to end
-                    new BinBytes(0xB0, 0x02), // mov al, 1
+                    new BinBytes(0xB0, 0x01), // mov al, 1
                     // end
 
                     new BinBytes(0xA3), // mov [var], eax
@@ -101,9 +155,10 @@ namespace UnofficialCrusaderPatch
                     new BinBytes(0x3D, 0xC8, 0x00, 0x00, 0x00),     // cmp eax, 200
                     new BinHook("label", 0x0F, 0x8C)                // jl hook
                     {
+                        new BinBytes(
                         0x83, 0xF8, 0x5A, // cmp eax, 90
                         0x7C, 0x03,       // jl to end
-                        0x83, 0xC7, 0x05, // add edi, 5
+                        0x83, 0xC7, 0x05), // add edi, 5
                     },
                     new BinBytes(0x83, 0xC7, 0x5F),        // add edi, 95
                     new BinLabel("label"),
@@ -122,9 +177,10 @@ namespace UnofficialCrusaderPatch
                     new BinBytes(0x3D, 0xC8, 0x00, 0x00, 0x00),     // cmp eax, 200
                     new BinHook("label", 0x0F, 0x8E)                // jle hook
                     {
+                        new BinBytes(
                         0x83, 0xF8, 0x5A, // cmp eax, 90
                         0x7E, 0x03,       // jle to end
-                        0x83, 0xEF, 0x05, // sub edi, 5
+                        0x83, 0xEF, 0x05), // sub edi, 5
                     },
                     new BinBytes(0x83, 0xEF, 0x5F),        // sub edi, 95
                     new BinLabel("label"),
@@ -292,6 +348,9 @@ namespace UnofficialCrusaderPatch
                 BinInt32.CreateEdit("u_ladderarmor_bow", 420), // B4EAA0 + 4 * 1D   (vanilla = 1000)
                 BinInt32.CreateEdit("u_ladderarmor_sling", 1000), // B4EBE0 + 4 * 1D   (vanilla = 2500)
                 BinInt32.CreateEdit("u_ladderarmor_xbow", 1000), // B4ED20 + 4 * 1D   (vanilla = 2500)
+
+                // 0052EC37 + 2
+                BinByte.CreateEdit("u_laddergold", 9), // 1D - 9 = 14h            (vanilla: 1D - 19 = 4)
             },         
             
             // Armbrustschaden gegen Arab. Schwertkämpfer, original: 8000
