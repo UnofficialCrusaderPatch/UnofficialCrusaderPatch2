@@ -71,7 +71,82 @@ namespace UnofficialCrusaderPatch
             new Change("o_playercolor", ChangeType.Other)
             {
                 new ColorHeader("o_playercolor"),
+
+                // 0042845B
+                BinHook.CreateEdit("o_playercolor_mm_shields", 6,
+                    0x80, 0xF9, 0x00, //  CMP CL,0
+                    0x75, 0x04, //  JNE SHORT 2. CMP
+                    0xB1, 0x03, //  MOV CL,3
+                    0xEB, 0x07, //  JMP SHORT END
+                    0x80, 0xF9, 0x03, //  CMP CL,3
+                    0x75, 0x02, //  JNE SHORT END
+                    0xB1, 0x00, //  MOV CL,0
+
+                    0x81, 0xC1, 0xD6, 0x01, 0x00, 0x00  // ori code,     add ecx, 1D6
+                ),   
+
+                // 004283C1
+                BinHook.CreateEdit("o_playercolor_mm_emblem1", 5,
+                    0x3C, 0x00, //  CMP AL,0
+                    0x75, 0x04, //  JNE SHORT 00427CD2
+                    0xB0, 0x03, //  MOV AL,3
+                    0xEB, 0x06, //  JMP SHORT 00427CD8
+                    0x3C, 0x03, //  CMP AL,3
+                    0x75, 0x02, //  JNE SHORT 00427CD8
+                    0xB0, 0x00, //  MOV AL,0
+                    0x05, 0xCF, 0x02, 0x00, 0x00 // ori code,  ADD EAX,2CF
+                ),    
+
+                // 004282DD
+                BinHook.CreateEdit("o_playercolor_mm_emblem2", 5,
+                    0x3C, 0x00, //  CMP AL,0
+                    0x75, 0x04, //  JNE SHORT 00427CD2
+                    0xB0, 0x03, //  MOV AL,3
+                    0xEB, 0x06, //  JMP SHORT 00427CD8
+                    0x3C, 0x03, //  CMP AL,3
+                    0x75, 0x02, //  JNE SHORT 00427CD8
+                    0xB0, 0x00, //  MOV AL,0
+                    0x05, 0xCF, 0x02, 0x00, 0x00 // ori code,  ADD EAX,2CF
+                ),     
+
+                // 004B6CC3
+                BinHook.CreateEdit("o_playercolor_minimap", 6,
+                    0x80, 0xF9, 0x01, //  CMP CL,1
+                    0x75, 0x04, //  JNE SHORT 2. CMP
+                    0xB1, 0x04, //  MOV CL,4
+                    0xEB, 0x07, //  JMP SHORT END
+                    0x80, 0xF9, 0x04, //  CMP CL,4
+                    0x75, 0x02, //  JNE SHORT END
+                    0xB1, 0x01, //  MOV CL,1
+
+                    0x83, 0xC2, 0xD9, 0x83, 0xFA, 0x26 // ori code
+                ),   
+
+                // 004B05CC
+                BinHook.CreateEdit("o_playercolor_emblem1", 5,
+                    0x3C, 0x01, //  CMP AL,1
+                    0x75, 0x04, //  JNE SHORT 00427CD2
+                    0xB0, 0x04, //  MOV AL,4
+                    0xEB, 0x06, //  JMP SHORT 00427CD8
+                    0x3C, 0x04, //  CMP AL,4
+                    0x75, 0x02, //  JNE SHORT 00427CD8
+                    0xB0, 0x01, //  MOV AL,1
+                    0x05, 0x22, 0x02, 0x00, 0x00 //  ADD EAX,222
+                ),     
                 
+                // 004B06EB
+                BinHook.CreateEdit("o_playercolor_emblem2", 5,
+                    0x3C, 0x01, //  CMP AL,1
+                    0x75, 0x04, //  JNE SHORT 00427CD2
+                    0xB0, 0x04, //  MOV AL,4
+                    0xEB, 0x06, //  JMP SHORT 00427CD8
+                    0x3C, 0x04, //  CMP AL,4
+                    0x75, 0x02, //  JNE SHORT 00427CD8
+                    0xB0, 0x01, //  MOV AL,1
+                    0x05, 0x22, 0x02, 0x00, 0x00 //  ADD EAX,222
+                ),
+
+
                 // 00427CC2
                 BinHook.CreateEdit("o_playercolor_list", 6,
                     0x89, 0xF0, //  MOV EAX,ESI
