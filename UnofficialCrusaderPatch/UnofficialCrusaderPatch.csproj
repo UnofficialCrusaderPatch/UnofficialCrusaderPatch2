@@ -68,23 +68,25 @@
     <Compile Include="Localization\Localization.cs" />
     <Compile Include="Localization\TextReferencer.cs" />
     <Compile Include="Patching\BinElements\BinAddress.cs" />
-    <Compile Include="Patching\BinElements\BinByte.cs" />
-    <Compile Include="Patching\BinElements\BinBytes.cs" />
+    <Compile Include="Patching\BinElements\BinArgs.cs" />
+    <Compile Include="Patching\BinElements\StructTypes\BinBytes.cs" />
     <Compile Include="Patching\BinElements\BinElement.cs" />
-    <Compile Include="Patching\BinElements\BinHook.cs" />
-    <Compile Include="Patching\BinElements\BinInt32.cs" />
+    <Compile Include="Patching\BinElements\Referencers\BinHook.cs" />
+    <Compile Include="Patching\BinElements\StructTypes\BinInt32.cs" />
     <Compile Include="Patching\BinElements\BinValue.cs" />
     <Compile Include="Patching\BinElements\BinNops.cs" />
-    <Compile Include="Patching\BinElements\BinRedirect.cs" />
-    <Compile Include="Patching\BinElements\BinShort.cs" />
-    <Compile Include="Patching\BinElements\BinLabel.cs" />
-    <Compile Include="Patching\BinElements\BinRefTo.cs" />
+    <Compile Include="Patching\BinElements\Referencers\BinRedirect.cs" />
+    <Compile Include="Patching\BinElements\StructTypes\BinShort.cs" />
+    <Compile Include="Patching\BinElements\Referencers\BinLabel.cs" />
+    <Compile Include="Patching\BinElements\Referencers\BinRefTo.cs" />
     <Compile Include="Patching\BinElements\BinSkip.cs" />
+    <Compile Include="Patching\BinElements\StructTypes\BinByte.cs" />
     <Compile Include="Patching\Changes\Change.cs" />
     <Compile Include="Patching\Changes\ChangeArgs.cs" />
     <Compile Include="Patching\Changes\ChangeEdit.cs" />
     <Compile Include="Patching\Changes\ChangeElement.cs" />
     <Compile Include="Patching\Headers\ChangeHeader.cs" />
+    <Compile Include="Patching\Headers\ColorHeader.cs" />
     <Compile Include="Patching\Headers\SliderHeader.cs" />
     <Compile Include="Patching\EditTypes\AIVEdit.cs" />
     <Compile Include="Patching\EditTypes\BinaryEdit.cs" />
@@ -92,6 +94,10 @@
     <Compile Include="Patching\EditTypes\LabelCollection.cs" />
     <Compile Include="Patching\Headers\ValueHeader.cs" />
     <Compile Include="Patching\Patcher.cs" />
+    <Compile Include="Patching\Section\AddressSpace.cs" />
+    <Compile Include="Patching\Section\PEHeader.cs" />
+    <Compile Include="Patching\Section\SectionEditor.cs" />
+    <Compile Include="Patching\Section\SectionHeader.cs" />
     <Compile Include="Version.cs" />
     <Page Include="Localization\LanguageWindow.xaml">
       <SubType>Designer</SubType>
@@ -923,6 +929,8 @@
     <EmbeddedResource Include="CodeBlocks\o_trooplimit.block" />
     <EmbeddedResource Include="CodeBlocks\ai_demolish.block" />
     <EmbeddedResource Include="CodeBlocks\ai_tethers.block" />
+    <EmbeddedResource Include="CodeBlocks\o_onlyai.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_list.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -942,6 +950,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\shield.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

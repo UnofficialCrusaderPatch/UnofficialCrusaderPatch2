@@ -1,20 +1,23 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace UnofficialCrusaderPatch
 {
     public class BinBytes : BinElement
     {
-        protected byte[] editData;
-        public override int Length { get { return this.editData.Length; } }
+
+        protected readonly byte[] byteBuf;
+        public override int Length => byteBuf.Length;
 
         public BinBytes(params byte[] input)
         {
-            this.editData = input;
+            this.byteBuf = input;
         }
 
-        public override EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
+        public override EditResult Write(int address, BinArgs data)
         {
-            editData.CopyTo(data, address);
+            byteBuf.CopyTo(data, address);
             return EditResult.NoErrors;
         }
 
@@ -30,7 +33,7 @@ namespace UnofficialCrusaderPatch
                 new BinaryEdit(locIdent) { new BinBytes(input), }
             };
         }
-        
+
         public static BinaryEdit CreateEdit(string ident, params byte[] input)
         {
             return new BinaryEdit(ident) { new BinBytes(input) };

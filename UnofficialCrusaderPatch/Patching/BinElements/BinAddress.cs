@@ -16,9 +16,9 @@ namespace UnofficialCrusaderPatch
         public override void SetOffset(int offset) { }
         public override void Resolve(int editAddress) { }
 
-        public override EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
+        public override EditResult Write(int address, BinArgs data)
         {
-            this.address = BitConverter.ToInt32(oriData, address + this.offset);
+            this.labelAddress = BitConverter.ToInt32(data.Original, address + this.offset);
             return EditResult.NoErrors;
         }
 

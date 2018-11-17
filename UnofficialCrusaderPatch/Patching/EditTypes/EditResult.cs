@@ -5,6 +5,5 @@
         NoErrors,
         BlockNotFound,
         MultipleBlocks,
-        NoHookspace,
     }
 }

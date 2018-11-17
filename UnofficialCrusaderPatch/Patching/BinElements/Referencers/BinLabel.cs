@@ -5,9 +5,9 @@
         public override int Length => 0;
 
         protected int offset;
-        protected int address;
+        protected int labelAddress;
         public int Offset => offset;
-        public int Address => address;
+        public int Address => labelAddress;
         public virtual void SetOffset(int offset) { this.offset = offset; }
         
         string name;
@@ -18,14 +18,14 @@
             this.name = name;
         }
 
-        public override EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
+        public override EditResult Write(int address, BinArgs data)
         {
             return EditResult.NoErrors;
         }
 
         public virtual void Resolve(int startAddress)
         {
-            this.address = this.offset + startAddress;
+            this.labelAddress = this.offset + startAddress;
         }
     }
 }

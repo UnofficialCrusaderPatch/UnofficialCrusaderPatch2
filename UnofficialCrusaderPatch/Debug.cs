@@ -9,9 +9,9 @@ namespace UnofficialCrusaderPatch
 {
     static class Debug
     {
-        public static void Show(string message, string title = "Info")
+        public static void Show(object message, object title = null)
         {
-            MessageBox.Show(message, title);
+            MessageBox.Show(message == null ? "" : message.ToString(), title == null ? "Info" : title.ToString());
         }
 
         public static void Error(string message)

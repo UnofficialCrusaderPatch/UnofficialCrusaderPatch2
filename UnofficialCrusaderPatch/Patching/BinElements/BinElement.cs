@@ -1,30 +1,14 @@
 ﻿namespace UnofficialCrusaderPatch
 {
+
     public abstract class BinElement
     {
         public abstract int Length { get; }
-        public abstract EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels);
+        public abstract EditResult Write(int address, BinArgs data);
 
-        protected static int FindCodeCave(byte[] data, int startAddress, int length)
+        /*public static implicit operator BinElement(int value)
         {
-            // improveme: search backwards
-
-            int lastIndex = length - 1;
-            for (int i = startAddress; i < data.Length; i++)
-            {
-                for (int j = 0; j < length; j++)
-                {
-                    if (data[i + j] == 0xCC)
-                    {
-                        if (j == lastIndex)
-                        {
-                            return i;
-                        }
-                    }
-                    else break;
-                }
-            }
-            return 0;
-        }
+            return new BinByte((byte)value);
+        }*/
     }
 }

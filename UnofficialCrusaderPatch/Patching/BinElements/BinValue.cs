@@ -22,7 +22,7 @@ namespace UnofficialCrusaderPatch
 
         public void Set(double value)
         {
-            this.editData = this.GetBytes(value);
+            this.GetBytes(value).CopyTo(byteBuf, 0);
         }
 
         protected abstract byte[] GetBytes(double value);

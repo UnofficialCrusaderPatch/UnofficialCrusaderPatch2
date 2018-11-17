@@ -15,9 +15,9 @@ namespace UnofficialCrusaderPatch
             this.relative = relative;
         }
 
-        public override EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
+        public override EditResult Write(int address, BinArgs data)
         {
-            int labelAddress = labels.GetLabel(this.labelName);
+            int labelAddress = data.Labels.GetLabel(this.labelName);
 
             int refAddress = labelAddress;
             if (relative)

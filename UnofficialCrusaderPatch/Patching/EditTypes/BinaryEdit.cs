@@ -63,9 +63,10 @@ namespace UnofficialCrusaderPatch
 
         EditResult DoEdit(int address, byte[] data, byte[] oriData)
         {
+            BinArgs args = new BinArgs(data, oriData, labels);
             foreach (BinElement e in elements)
             {
-                EditResult result = e.Write(address, data, oriData, labels);
+                EditResult result = e.Write(address, args);
                 if (result != EditResult.NoErrors)
                     return result;
 

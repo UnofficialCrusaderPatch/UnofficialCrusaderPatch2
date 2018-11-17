@@ -15,7 +15,7 @@ namespace UnofficialCrusaderPatch
             this.count = count;
         }
 
-        public override EditResult Write(int address, byte[] data, byte[] oriData, LabelCollection labels)
+        public override EditResult Write(int address, BinArgs data)
         {
             return EditResult.NoErrors;
         }

@@ -10,6 +10,7 @@ namespace UnofficialCrusaderPatch
     // demolishing -> option economy & castles
     // bauerngrenze
 
+    // Störkatapult positionierung
     // Schwein Nahrung verkaufen & Friedrich Waffen ?
     // kalif eisen?
     // Scroll-Tempo in 1.41 reduzieren
@@ -28,11 +29,19 @@ namespace UnofficialCrusaderPatch
         static List<Change> changes = new List<Change>()
         {
             /*
+             * ONLY AI
+             */
+
+            // 0048F96C => je to jmp to almost end
+            BinBytes.Change("o_onlyai", ChangeType.Other, false, 0xE9, 0x09, 0x01, 0x00, 0x00, 0x90),
+
+
+            /*
              *  OX TETHER SPAM
              */
              
             // 004EFF9A => jne to jmp
-            BinBytes.Change("ai_tethers", ChangeType.Bugfix, true, 0x90, 0xEB),
+            BinBytes.Change("ai_tethers", ChangeType.Bugfix, true, 0x90, 0xE9),
 
             /*
              *  ECONOMY DEMOLISHING
@@ -60,31 +69,21 @@ namespace UnofficialCrusaderPatch
              */
 
             new Change("o_playercolor", ChangeType.Other)
-            {               
-                // 0044FC15
-                new BinaryEdit("o_playercolor_list")
-                {
-                    new BinBytes(0xA1), // mov eax, [var]
-
-                    new BinHook("label", 0xE9)
-                    {
-                        /*
-02491000 - 8B C6                 - mov eax,esi
-02491002 - 3C 01                 - cmp al,01 { 1 }
-02491004 - 75 04                 - jne 0249100A
-02491006 - B0 03                 - mov al,03 { 3 }
-02491008 - EB 06                 - jmp 02491010
-0249100A - 3C 03                 - cmp al,03 { 3 }
-0249100C - 75 02                 - jne 02491010
-0249100E - B0 01                 - mov al,01 { 1 }
-02491010 - 05 D5010000           - add eax,000001D5 { 469 }
-02491015 - E9 AE6CF9FD           - jmp 00427CC8
-*/
-                    },
-                },
-
-
-
+            {
+                new ColorHeader("o_playercolor"),
+                
+                // 00427CC2
+                BinHook.CreateEdit("o_playercolor_list", 6,
+                    0x89, 0xF0, //  MOV EAX,ESI
+                    0x3C, 0x01, //  CMP AL,1
+                    0x75, 0x04, //  JNE SHORT 00427CD2
+                    0xB0, 0x04, //  MOV AL,4
+                    0xEB, 0x06, //  JMP SHORT 00427CD8
+                    0x3C, 0x04, //  CMP AL,4
+                    0x75, 0x02, //  JNE SHORT 00427CD8
+                    0xB0, 0x01, //  MOV AL,1
+                    0x05, 0xD5, 0x01, 0x00, 0x00 //  ADD EAX,1D5
+                ),
 
                 // 0044FC15
                 new BinaryEdit("o_playercolor_ingame")
@@ -103,7 +102,7 @@ namespace UnofficialCrusaderPatch
                     new BinBytes(0xB0, 0x01), // mov al, 1
                     // end
 
-                    new BinBytes(0x3C, 0x01), // cmp al, 1
+                    new BinBytes(0x3C, 0x04), // cmp al, 1
                     new BinBytes(0x75, 0x04), // jne to next cmp
                     new BinBytes(0xB0), // mov al, value
                     new BinByteValue(),
@@ -111,7 +110,7 @@ namespace UnofficialCrusaderPatch
                     new BinBytes(0x3C), // cmp al, value
                     new BinByteValue(),
                     new BinBytes(0x75, 0x02), // jne to end
-                    new BinBytes(0xB0, 0x01), // mov al, 1
+                    new BinBytes(0xB0, 0x04), // mov al, 1
                     // end
 
                     new BinBytes(0xA3), // mov [var], eax
@@ -155,10 +154,9 @@ namespace UnofficialCrusaderPatch
                     new BinBytes(0x3D, 0xC8, 0x00, 0x00, 0x00),     // cmp eax, 200
                     new BinHook("label", 0x0F, 0x8C)                // jl hook
                     {
-                        new BinBytes(
                         0x83, 0xF8, 0x5A, // cmp eax, 90
                         0x7C, 0x03,       // jl to end
-                        0x83, 0xC7, 0x05), // add edi, 5
+                        0x83, 0xC7, 0x05, // add edi, 5
                     },
                     new BinBytes(0x83, 0xC7, 0x5F),        // add edi, 95
                     new BinLabel("label"),
@@ -177,10 +175,9 @@ namespace UnofficialCrusaderPatch
                     new BinBytes(0x3D, 0xC8, 0x00, 0x00, 0x00),     // cmp eax, 200
                     new BinHook("label", 0x0F, 0x8E)                // jle hook
                     {
-                        new BinBytes(
                         0x83, 0xF8, 0x5A, // cmp eax, 90
                         0x7E, 0x03,       // jle to end
-                        0x83, 0xEF, 0x05), // sub edi, 5
+                        0x83, 0xEF, 0x05, // sub edi, 5
                     },
                     new BinBytes(0x83, 0xEF, 0x5F),        // sub edi, 95
                     new BinLabel("label"),
@@ -219,7 +216,7 @@ namespace UnofficialCrusaderPatch
                     new BinBytes(0x7E, 07),      // jle to 8
 
                     new BinBytes(0xB9),     // mov ecx, value * 7/5 (vanilla = 7)
-                    new BinInt32Value(7.0/5.0),     
+                    new BinInt32Value(7.0/5.0),
 
                     new BinBytes(0xEB, 0x05), // jmp
                     
@@ -249,7 +246,7 @@ namespace UnofficialCrusaderPatch
 
                     new BinBytes(0x8B, 0x8E), //mov ecx,[esi+0115F71C]   => attack number
                     new BinRefTo("attacknum", false),
-                    
+
                     new BinBytes(0xF7, 0xE9), // imul ecx   => attack number * initial attack troops
 
                     new BinBytes(0x69, 0xC0), // imul eax, value

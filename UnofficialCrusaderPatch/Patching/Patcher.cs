@@ -73,16 +73,18 @@ namespace UnofficialCrusaderPatch
             int index = 0;
             double count = 4 + todo.Count; // +1 from folder backup above, +1 for read, +1 for version edit, +1 for writing data
             SetPercent?.Invoke(++index / count);
+            
 
-
-
-            // read original data & preparation
+            // read original data & section preparation
             byte[] oriData = File.ReadAllBytes(filePath);
             byte[] data = (byte[])oriData.Clone();
+            SectionEditor.Init(data);
+
             ChangeArgs args = new ChangeArgs(data, oriData, aivFolder);
             SetPercent?.Invoke(++index / count);
 
 
+            
 
             // change version display in main menu
             var displayResult = Version.MenuChange.Activate(args);
@@ -94,7 +96,7 @@ namespace UnofficialCrusaderPatch
             }
             SetPercent?.Invoke(++index / count);
 
-
+            
 
             // change stuff
             foreach (Change change in todo)
@@ -103,7 +105,7 @@ namespace UnofficialCrusaderPatch
                 SetPercent?.Invoke(++index / count);
             }
 
-
+            data = SectionEditor.AttachSection(data);
 
             if (filePath.EndsWith(BackupFileEnding))
             {
