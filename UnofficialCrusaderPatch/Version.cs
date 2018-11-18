@@ -32,13 +32,7 @@ namespace UnofficialCrusaderPatch
         public static IEnumerable<Change> Changes { get { return changes; } }
         static List<Change> changes = new List<Change>()
         {
-            /*
-             * ONLY AI
-             */
-
-            // 0048F96C => je to jmp to almost end
-            BinBytes.Change("o_onlyai", ChangeType.Other, false, 0xE9, 0x09, 0x01, 0x00, 0x00, 0x90),
-
+            #region BUG FIXES
 
             /*
              *  OX TETHER SPAM
@@ -46,234 +40,74 @@ namespace UnofficialCrusaderPatch
              
             // 004EFF9A => jne to jmp
             BinBytes.Change("ai_tethers", ChangeType.Bugfix, true, 0x90, 0xE9),
+            
+            /*
+             * AI BUY FOOD
+             */
+
+            // Wazir runtime buytable 023FE5F4 +84, apples, cheese, bread, wheat
+            // Emir 023FE898
+            // Nizar 023FEB3C
+            
+
+            /*
+            * WEAPON & ARMOR AI BUYING - found from routine at 0x4CD62C
+            */
+
+            // ai1_buytable 0x01165C78
+            new Change("ai_buy", ChangeType.Bugfix)
+            {
+                new DefaultHeader("ai_buy")
+                {
+                    // mov [EAX+84], EDI = 10
+                    BinBytes.CreateEdit("ai_foodbuy_wazir", 0x89, 0xB8), // 004C951C
+                
+                    // mov [EAX+9C], 2
+                    BinHook.CreateEdit("ai_wepbuy_marshal", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4CA5AE, runtime: 0x23FF084 + 0x9C
+                    BinHook.CreateEdit("ai_wepbuy_frederick", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4C8DEA, runtime: 0x23FE0AC + 0x9C
+                    BinHook.CreateEdit("ai_wepbuy_emir", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4C99AB, runtime: 023FE898 + 0x9C
+                    BinHook.CreateEdit("ai_wepbuy_abbot", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4CA95B, runtime: 023FF328 + 0x9C
+                }
+            },
+
+
+            /*
+            * FIXED AIV CASTLES - https://github.com/Evrey/SHC_AIV
+            */
+
+            new Change("aiv_evrey", ChangeType.Bugfix)
+            {
+                AIVEdit.Header("evreyfixed", true),
+                AIVEdit.Header("evreyimproved", false),
+            },
+
+            #endregion
+
+            #region AI LORDS
 
             /*
              *  ECONOMY DEMOLISHING
              */
              
-            // 004D0280 => retn 8
-            BinBytes.Change("ai_demolish", ChangeType.AILords, false, 0xC2, 0x08, 0x00, 0x00, 0x90, 0x90, 0x90),
-
-            /*
-             * TOTAL TROOP LIMIT
-             */
-
-            new Change("o_trooplimit", ChangeType.Other)
+            // 004D0280
+            new Change("ai_demolish", ChangeType.AILords, false, false)
             {
-                // 00459E10 + 1
-                new SliderHeader("o_trooplimit", true, 1000, 10000, 100, 2400, 5000)
+                new DefaultHeader("ai_demolish_walls", true)
                 {
-                    new BinaryEdit("o_trooplimit")
-                    {
-                        new BinInt32Value()
-                    }
-                }
-            },
+                    // 004D0387  => jne to jmp
+                    BinBytes.CreateEdit("ai_demolish_walls", 0xEB)
+                },
 
-            /*
-             * PLAYER 1 COLOR
-             */
-
-            new Change("o_playercolor", ChangeType.Other, false)
-            {
-                new ColorHeader("o_playercolor")
+                new DefaultHeader("ai_demolish_eco", false)
                 {
-
-                // 0042845B
-                BinHook.CreateEdit("o_playercolor_mm_shields", 6,
-                    0x80, 0xF9, 0x00, //  CMP CL,0
-                    0x75, 0x04, //  JNE SHORT 2. CMP
-                    0xB1, 0x03, //  MOV CL,3
-                    0xEB, 0x07, //  JMP SHORT END
-                    0x80, 0xF9, 0x03, //  CMP CL,3
-                    0x75, 0x02, //  JNE SHORT END
-                    0xB1, 0x00, //  MOV CL,0
-
-                    0x81, 0xC1, 0xD6, 0x01, 0x00, 0x00  // ori code,     add ecx, 1D6
-                ),   
-
-                // 004283C1
-                BinHook.CreateEdit("o_playercolor_mm_emblem1", 5,
-                    0x3C, 0x00, //  CMP AL,0
-                    0x75, 0x04, //  JNE SHORT 00427CD2
-                    0xB0, 0x03, //  MOV AL,3
-                    0xEB, 0x06, //  JMP SHORT 00427CD8
-                    0x3C, 0x03, //  CMP AL,3
-                    0x75, 0x02, //  JNE SHORT 00427CD8
-                    0xB0, 0x00, //  MOV AL,0
-                    0x05, 0xCF, 0x02, 0x00, 0x00 // ori code,  ADD EAX,2CF
-                ),    
-
-                // 004282DD
-                BinHook.CreateEdit("o_playercolor_mm_emblem2", 5,
-                    0x3C, 0x00, //  CMP AL,0
-                    0x75, 0x04, //  JNE SHORT 00427CD2
-                    0xB0, 0x03, //  MOV AL,3
-                    0xEB, 0x06, //  JMP SHORT 00427CD8
-                    0x3C, 0x03, //  CMP AL,3
-                    0x75, 0x02, //  JNE SHORT 00427CD8
-                    0xB0, 0x00, //  MOV AL,0
-                    0x05, 0xCF, 0x02, 0x00, 0x00 // ori code,  ADD EAX,2CF
-                ),     
-
-                // 004B6CC3
-                BinHook.CreateEdit("o_playercolor_minimap", 6,
-                    0x80, 0xF9, 0x01, //  CMP CL,1
-                    0x75, 0x04, //  JNE SHORT 2. CMP
-                    0xB1, 0x04, //  MOV CL,4
-                    0xEB, 0x07, //  JMP SHORT END
-                    0x80, 0xF9, 0x04, //  CMP CL,4
-                    0x75, 0x02, //  JNE SHORT END
-                    0xB1, 0x01, //  MOV CL,1
-
-                    0x83, 0xC2, 0xD9, 0x83, 0xFA, 0x26 // ori code
-                ),   
-
-                // 004B05CC
-                BinHook.CreateEdit("o_playercolor_emblem1", 5,
-                    0x3C, 0x01, //  CMP AL,1
-                    0x75, 0x04, //  JNE SHORT 00427CD2
-                    0xB0, 0x04, //  MOV AL,4
-                    0xEB, 0x06, //  JMP SHORT 00427CD8
-                    0x3C, 0x04, //  CMP AL,4
-                    0x75, 0x02, //  JNE SHORT 00427CD8
-                    0xB0, 0x01, //  MOV AL,1
-                    0x05, 0x22, 0x02, 0x00, 0x00 //  ADD EAX,222
-                ),     
-                
-                // 004B06EB
-                BinHook.CreateEdit("o_playercolor_emblem2", 5,
-                    0x3C, 0x01, //  CMP AL,1
-                    0x75, 0x04, //  JNE SHORT 00427CD2
-                    0xB0, 0x04, //  MOV AL,4
-                    0xEB, 0x06, //  JMP SHORT 00427CD8
-                    0x3C, 0x04, //  CMP AL,4
-                    0x75, 0x02, //  JNE SHORT 00427CD8
-                    0xB0, 0x01, //  MOV AL,1
-                    0x05, 0x22, 0x02, 0x00, 0x00 //  ADD EAX,222
-                ),
-
-
-                // 00427CC2
-                BinHook.CreateEdit("o_playercolor_list", 6,
-                    0x89, 0xF0, //  MOV EAX,ESI
-                    0x3C, 0x01, //  CMP AL,1
-                    0x75, 0x04, //  JNE SHORT 00427CD2
-                    0xB0, 0x04, //  MOV AL,4
-                    0xEB, 0x06, //  JMP SHORT 00427CD8
-                    0x3C, 0x04, //  CMP AL,4
-                    0x75, 0x02, //  JNE SHORT 00427CD8
-                    0xB0, 0x01, //  MOV AL,1
-                    0x05, 0xD5, 0x01, 0x00, 0x00 //  ADD EAX,1D5
-                ),
-
-                // 0044FC15
-                new BinaryEdit("o_playercolor_ingame")
-                {
-                    new BinAddress("var", 2), // [ED3158]
-
-                    new BinBytes(0xA1), // mov eax, [var]
-                    new BinRefTo("var", false),
-
-                    new BinBytes(0x3C, 0x01), // cmp al, 1
-                    new BinBytes(0x75, 0x04), // jne to next cmp
-                    new BinBytes(0xB0, 0x04), // mov al, 4
-                    new BinBytes(0xEB, 0x06), // jmp to end
-                    new BinBytes(0x3C, 0x04), // cmp al, 4
-                    new BinBytes(0x75, 0x02), // jne to end
-                    new BinBytes(0xB0, 0x01), // mov al, 1
-                    // end
-
-                    new BinBytes(0x3C, 0x04), // cmp al, 1
-                    new BinBytes(0x75, 0x04), // jne to next cmp
-                    new BinBytes(0xB0), // mov al, value
-                    new BinByteValue(),
-                    new BinBytes(0xEB, 0x06), // jmp to end
-                    new BinBytes(0x3C), // cmp al, value
-                    new BinByteValue(),
-                    new BinBytes(0x75, 0x02), // jne to end
-                    new BinBytes(0xB0, 0x04), // mov al, 1
-                    // end
-
-                    new BinBytes(0xA3), // mov [var], eax
-                    new BinRefTo("var", false),
-
-                    new BinNops(2),
-                }
+                    // 004D03F2  => jne to jmp
+                    BinBytes.CreateEdit("ai_demolish_eco", 0xEB)
                 },
             },
 
-            /*
-             * GATES
-             */ 
-
-            new Change("o_responsivegates", ChangeType.Other)
-            {
-                new DefaultHeader("o_responsivegates")
-                {
-                    // Gates closing distance to enemy = 200
-                    // 0x422ACC + 2
-                    BinInt32.CreateEdit("o_gatedistance", 140),
-
-                    // Gates closing time after enemy leaves = 1200
-                    // 0x422B35 + 7 (ushort)
-                    BinShort.CreateEdit("o_gatetime", 100),
-                }
-            },
 
 
-            /*
-             *  EXTENDED GAME SPEED 
-             */ 
 
-            new Change("o_gamespeed", ChangeType.Other)
-            {
-                new DefaultHeader("o_gamespeed")
-                {
-                    // 4B4748
-                    new BinaryEdit("o_gamespeed_up")
-                    {
-                        new BinBytes(0x3D, 0xE8, 0x03, 0x00, 0x00),      // cmp eax, 1000
-
-                        new BinBytes(0x7D, 0x19), // jge to end
-
-                        new BinBytes(0x8B, 0xF8),              // mov edi, eax
-
-                        new BinBytes(0x3D, 0xC8, 0x00, 0x00, 0x00),     // cmp eax, 200
-                        new BinHook("label1", 0x0F, 0x8C)                // jl hook
-                        {
-                            0x83, 0xF8, 0x5A, // cmp eax, 90
-                            0x7C, 0x03,       // jl to end
-                            0x83, 0xC7, 0x05, // add edi, 5
-                        },
-                        new BinBytes(0x83, 0xC7, 0x5F),        // add edi, 95
-                        new BinLabel("label1"),
-                        new BinBytes(0x83, 0xC7, 0x05),        // add edi, 5
-                        new BinBytes(0xEB, 0x75),              // jmp to gamespeed_down set value
-                        new BinBytes(0x90, 0x90, 0x90, 0x90),
-                    },
-
-                    // 004B47C2
-                    new BinaryEdit("o_gamespeed_down")
-                    {
-                        new BinBytes(0x7E, 0x1B), // jle to end
-
-                        new BinBytes(0x8B, 0xF8),              // mov edi, eax
-
-                        new BinBytes(0x3D, 0xC8, 0x00, 0x00, 0x00),     // cmp eax, 200
-                        new BinHook("label2", 0x0F, 0x8E)                // jle hook
-                        {
-                            0x83, 0xF8, 0x5A, // cmp eax, 90
-                            0x7E, 0x03,       // jle to end
-                            0x83, 0xEF, 0x05, // sub edi, 5
-                        },
-                        new BinBytes(0x83, 0xEF, 0x5F),        // sub edi, 95
-                        new BinLabel("label2"),
-                        new BinBytes(0x83, 0xEF, 0x05),        // sub edi, 5
-                        new BinBytes(0x90, 0x90),
-                    }
-                }
-            },
 
             /*
              *  AI RECRUIT ADDITIONAL ATTACK TROOPS 
@@ -426,11 +260,10 @@ namespace UnofficialCrusaderPatch
             // marshal => 10
             // abbot => 50
 
+            #endregion
 
-            /* 
-             * STAT CHANGES
-             */
-
+            #region UNITS
+            
             // Armbrust dmg table: 0xB4ED20
             // Bogen dmg table: 0xB4EAA0
             // Sling dmg table: 0xB4EBE0
@@ -468,49 +301,308 @@ namespace UnofficialCrusaderPatch
                     BinInt32.CreateEdit("u_spearbow", 2000), // B4EAA0 + 4 * 18   (vanilla = 3500)
                     BinInt32.CreateEdit("u_spearxbow", 9999), // B4EBE0 + 4 * 18   (vanilla = 15000)
                 }
-            },                  
+            },                
+
+            #endregion
+
+            #region OTHER
 
             /*
-             * AI BUY FOOD
+             * PLAYER 1 COLOR
              */
 
-            // Wazir runtime buytable 023FE5F4 +84, apples, cheese, bread, wheat
-            // Emir 023FE898
-            // Nizar 023FEB3C
+            new Change("o_playercolor", ChangeType.Other, false)
+            {
+                new ColorHeader("o_playercolor")
+                {
+                    // 00448C78
+                    BinHook.CreateEdit("o_playercolor_minilist1", 5,
+                        0x57, 0x56, // push edi, esi
+
+                        0x8D, 0x85, 0x31, 0xFD, 0xFF, 0xFF, // lea eax, [ebp - 2CF]
+                        0x3C, 0x00, //  CMP AL,0
+                        0x75, 0x04, //  JNE SHORT
+                        0xB0, new BinByteValue(offset:-1), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(offset:-1), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x00, //  MOV AL,0
+                        
+                        0x05, 0xCF, 0x02, 0x00, 0x00, // push eax
+                        0x50, // push eax
+                        0x6A, 0x2E // push 2E
+                    ),   
+
+                    // 00448CC3
+                    BinHook.CreateEdit("o_playercolor_minilist2", 5,
+                        0x57, 0x56, // push edi, esi
+
+                        0x8D, 0x85, 0x31, 0xFD, 0xFF, 0xFF, // lea eax, [ebp - 2CF]
+                        0x3C, 0x00, //  CMP AL,0
+                        0x75, 0x04, //  JNE SHORT
+                        0xB0, new BinByteValue(offset:-1), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(offset:-1), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x00, //  MOV AL,0
+                        
+                        0x05, 0xCF, 0x02, 0x00, 0x00, // push eax
+                        0x50, // push eax
+                        0x6A, 0x2E // push 2E
+                    ),   
+
+
+                    // 00428421
+                    BinHook.CreateEdit("o_playercolor_mm_shield_hover", 6,
+                        0x80, 0xFA, 0x00, //  CMP DL,0
+                        0x75, 0x04, //  JNE SHORT 2. CMP
+                        0xB2, new BinByteValue(offset:-1), //  MOV DL, value
+                        0xEB, 0x07, //  JMP SHORT END
+                        0x80, 0xFA, new BinByteValue(offset:-1), //  CMP DL, value
+                        0x75, 0x02, //  JNE SHORT END
+                        0xB2, 0x00, //  MOV DL,0
+                        0x81, 0xC2, 0xD4, 0x00, 0x00, 0x00 // ori code,  ADD EDX,D4
+                    ),   
+
+                    // 00428360
+                    BinHook.CreateEdit("o_playercolor_mm_shield_drag", 5,
+                        0x3C, 0x00, //  CMP AL,0
+                        0x75, 0x04, //  JNE SHORT 00427CD2
+                        0xB0, new BinByteValue(offset:-1), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT 00427CD8
+                        0x3C, new BinByteValue(offset:-1), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT 00427CD8
+                        0xB0, 0x00, //  MOV AL,0
+                        0x05, 0xD6, 0x01, 0x00, 0x00 // ori code,  ADD EAX,1D6
+                    ),   
+
+                    // 0042845B
+                    BinHook.CreateEdit("o_playercolor_mm_shields", 6,
+                        0x80, 0xF9, 0x00, //  CMP CL,0
+                        0x75, 0x04, //  JNE SHORT 2. CMP
+                        0xB1, new BinByteValue(offset:-1), //  MOV CL, value
+                        0xEB, 0x07, //  JMP SHORT END
+                        0x80, 0xF9, new BinByteValue(offset:-1), //  CMP CL, value
+                        0x75, 0x02, //  JNE SHORT END
+                        0xB1, 0x00, //  MOV CL,0
+
+                        0x81, 0xC1, 0xD6, 0x01, 0x00, 0x00  // ori code,     add ecx, 1D6
+                    ),   
+
+                    // 004283C1
+                    BinHook.CreateEdit("o_playercolor_mm_emblem1", 5,
+                        0x3C, 0x00, //  CMP AL,0
+                        0x75, 0x04, //  JNE SHORT 00427CD2
+                        0xB0, new BinByteValue(offset:-1), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT 00427CD8
+                        0x3C, new BinByteValue(offset:-1), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT 00427CD8
+                        0xB0, 0x00, //  MOV AL,0
+                        0x05, 0xCF, 0x02, 0x00, 0x00 // ori code,  ADD EAX,2CF
+                    ),    
+
+                    // 004282DD
+                    BinHook.CreateEdit("o_playercolor_mm_emblem2", 5,
+                        0x3C, 0x00, //  CMP AL,0
+                        0x75, 0x04, //  JNE SHORT 00427CD2
+                        0xB0, new BinByteValue(offset:-1), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT 00427CD8
+                        0x3C, new BinByteValue(offset:-1), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT 00427CD8
+                        0xB0, 0x00, //  MOV AL,0
+                        0x05, 0xCF, 0x02, 0x00, 0x00 // ori code,  ADD EAX,2CF
+                    ),     
+
+                    // 004B6CC3
+                    BinHook.CreateEdit("o_playercolor_minimap", 6,
+                        0x80, 0xF9, 0x01, //  CMP CL,1
+                        0x75, 0x04, //  JNE SHORT 2. CMP
+                        0xB1, new BinByteValue(), //  MOV CL, value
+                        0xEB, 0x07, //  JMP SHORT END
+                        0x80, 0xF9, new BinByteValue(), //  CMP CL, value
+                        0x75, 0x02, //  JNE SHORT END
+                        0xB1, 0x01, //  MOV CL,1
+
+                        0x83, 0xC2, 0xD9, 0x83, 0xFA, 0x26 // ori code
+                    ),   
+
+                    // 004B05CC
+                    BinHook.CreateEdit("o_playercolor_emblem1", 5,
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT 00427CD2
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT 00427CD8
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT 00427CD8
+                        0xB0, 0x01, //  MOV AL,1
+                        0x05, 0x22, 0x02, 0x00, 0x00 //  ADD EAX,222
+                    ),     
+                
+                    // 004B06EB
+                    BinHook.CreateEdit("o_playercolor_emblem2", 5,
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT 00427CD2
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT 00427CD8
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT 00427CD8
+                        0xB0, 0x01, //  MOV AL,1
+                        0x05, 0x22, 0x02, 0x00, 0x00 //  ADD EAX,222
+                    ),
+
+
+                    // 00427CC2
+                    BinHook.CreateEdit("o_playercolor_list", 6,
+                        0x89, 0xF0, //  MOV EAX,ESI
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT 00427CD2
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT 00427CD8
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT 00427CD8
+                        0xB0, 0x01, //  MOV AL,1
+                        0x05, 0xD5, 0x01, 0x00, 0x00 //  ADD EAX,1D5
+                    ),
+
+                    // 0044FC15
+                    new BinaryEdit("o_playercolor_ingame")
+                    {
+                        new BinAddress("var", 2), // [ED3158]
+
+                        new BinBytes(0xA1), // mov eax, [var]
+                        new BinRefTo("var", false),
+
+                        new BinBytes(0x3C, 0x01), // cmp al, 1
+                        new BinBytes(0x75, 0x04), // jne to next cmp
+                        new BinBytes(0xB0), // mov al, value
+                        new BinByteValue(),
+                        new BinBytes(0xEB, 0x06), // jmp to end
+                        new BinBytes(0x3C), // cmp al, value
+                        new BinByteValue(),
+                        new BinBytes(0x75, 0x02), // jne to end
+                        new BinBytes(0xB0, 0x01), // mov al, 1
+                        // end
+
+                        new BinBytes(0x3C, 0x01), // cmp al, 1
+                        new BinBytes(0x75, 0x04), // jne to next cmp
+                        new BinBytes(0xB0, 0x04), // mov al, 4
+                        new BinBytes(0xEB, 0x06), // jmp to end
+                        new BinBytes(0x3C, 0x04), // cmp al, 4
+                        new BinBytes(0x75, 0x02), // jne to end
+                        new BinBytes(0xB0, 0x01), // mov al, 1
+                        // end
+
+                        new BinBytes(0xA3), // mov [var], eax
+                        new BinRefTo("var", false),
+
+                        new BinNops(2),
+                    }
+                },
+            },
             
 
-            /*
-            * WEAPON & ARMOR AI BUYING - found from routine at 0x4CD62C
-            */
 
-            // ai1_buytable 0x01165C78
-            new Change("ai_buy", ChangeType.Bugfix)
+            /*
+             *  EXTENDED GAME SPEED 
+             */ 
+
+            new Change("o_gamespeed", ChangeType.Other)
             {
-                new DefaultHeader("ai_buy")
+                new DefaultHeader("o_gamespeed")
                 {
-                    // mov [EAX+84], EDI = 10
-                    BinBytes.CreateEdit("ai_foodbuy_wazir", 0x89, 0xB8), // 004C951C
-                
-                    // mov [EAX+9C], 2
-                    BinHook.CreateEdit("ai_wepbuy_marshal", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4CA5AE, runtime: 0x23FF084 + 0x9C
-                    BinHook.CreateEdit("ai_wepbuy_frederick", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4C8DEA, runtime: 0x23FE0AC + 0x9C
-                    BinHook.CreateEdit("ai_wepbuy_emir", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4C99AB, runtime: 023FE898 + 0x9C
-                    BinHook.CreateEdit("ai_wepbuy_abbot", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4CA95B, runtime: 023FF328 + 0x9C
+                    // 4B4748
+                    new BinaryEdit("o_gamespeed_up")
+                    {
+                        new BinBytes(0x3D, 0xE8, 0x03, 0x00, 0x00),      // cmp eax, 1000
+
+                        new BinBytes(0x7D, 0x19), // jge to end
+
+                        new BinBytes(0x8B, 0xF8),              // mov edi, eax
+
+                        new BinBytes(0x3D, 0xC8, 0x00, 0x00, 0x00),     // cmp eax, 200
+                        new BinHook("label1", 0x0F, 0x8C)                // jl hook
+                        {
+                            0x83, 0xF8, 0x5A, // cmp eax, 90
+                            0x7C, 0x03,       // jl to end
+                            0x83, 0xC7, 0x05, // add edi, 5
+                        },
+                        new BinBytes(0x83, 0xC7, 0x5F),        // add edi, 95
+                        new BinLabel("label1"),
+                        new BinBytes(0x83, 0xC7, 0x05),        // add edi, 5
+                        new BinBytes(0xEB, 0x75),              // jmp to gamespeed_down set value
+                        new BinBytes(0x90, 0x90, 0x90, 0x90),
+                    },
+
+                    // 004B47C2
+                    new BinaryEdit("o_gamespeed_down")
+                    {
+                        new BinBytes(0x7E, 0x1B), // jle to end
+
+                        new BinBytes(0x8B, 0xF8),              // mov edi, eax
+
+                        new BinBytes(0x3D, 0xC8, 0x00, 0x00, 0x00),     // cmp eax, 200
+                        new BinHook("label2", 0x0F, 0x8E)                // jle hook
+                        {
+                            0x83, 0xF8, 0x5A, // cmp eax, 90
+                            0x7E, 0x03,       // jle to end
+                            0x83, 0xEF, 0x05, // sub edi, 5
+                        },
+                        new BinBytes(0x83, 0xEF, 0x5F),        // sub edi, 95
+                        new BinLabel("label2"),
+                        new BinBytes(0x83, 0xEF, 0x05),        // sub edi, 5
+                        new BinBytes(0x90, 0x90),
+                    }
                 }
             },
 
 
 
+            /*
+             * GATES
+             */ 
+
+            new Change("o_responsivegates", ChangeType.Other)
+            {
+                new DefaultHeader("o_responsivegates")
+                {
+                    // Gates closing distance to enemy = 200
+                    // 0x422ACC + 2
+                    BinInt32.CreateEdit("o_gatedistance", 140),
+
+                    // Gates closing time after enemy leaves = 1200
+                    // 0x422B35 + 7 (ushort)
+                    BinShort.CreateEdit("o_gatetime", 100),
+                }
+            },
+
+
 
             /*
-            * FIXED AIV CASTLES - https://github.com/Evrey/SHC_AIV
-            */
+             * TOTAL TROOP LIMIT
+             */
 
-            new Change("aiv_evrey", ChangeType.Bugfix)
+            new Change("o_trooplimit", ChangeType.Other)
             {
-                AIVEdit.Header("evreyfixed", true),
-                AIVEdit.Header("evreyimproved", false),
+                // 00459E10 + 1
+                new SliderHeader("o_trooplimit", true, 1000, 10000, 100, 2400, 5000)
+                {
+                    new BinaryEdit("o_trooplimit")
+                    {
+                        new BinInt32Value()
+                    }
+                }
             },
+
+
+
+            /*
+             * ONLY AI
+             */
+
+            // 0048F96C => je to jmp to almost end
+            BinBytes.Change("o_onlyai", ChangeType.Other, false, 0xE9, 0x09, 0x01, 0x00, 0x00, 0x90),
+
+            #endregion
         };
     }
 }

@@ -30,7 +30,15 @@ namespace UnofficialCrusaderPatch
                     return;
 
                 base.IsEnabled = value;
-                this.SetValue(value ? suggested : oriVal);
+                if (IsEnabled)
+                {
+                    if (this.value == oriVal)
+                        this.SetValue(suggested);
+                }
+                else
+                {
+                    this.SetValue(oriVal);
+                }
             }
         }
 

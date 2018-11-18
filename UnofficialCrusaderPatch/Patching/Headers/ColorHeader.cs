@@ -12,23 +12,24 @@ namespace UnofficialCrusaderPatch
     public class ColorHeader : ValueHeader
     {
         public ColorHeader(string descrIdent)
-            : base(descrIdent, false, 4, 1)
+            : base(descrIdent, false, 1, 1)
         {
         }
 
-        static readonly Dictionary<int, Color> Colors = new Dictionary<int, Color>()
+        static readonly List<Color> Colors = new List<Color>()
         {
-            { 4, Color.FromArgb(255, 240, 32, 0) }, // red
-            { 2, Color.FromArgb(255, 248, 120, 0) }, // orange
-            { 3, Color.FromArgb(255, 224, 224, 0) }, // yellow
-            { 1, Color.FromArgb(255, 0, 0, 248) }, // blue
-            { 5, Color.FromArgb(255, 80, 80, 80) }, // black
-            { 6, Color.FromArgb(255, 184, 0, 248) }, // purple
-            { 7, Color.FromArgb(255, 0, 208, 240) }, // light blue
-            { 8, Color.FromArgb(255, 0, 216, 0) } // green
+            Color.FromArgb(255, 240, 32, 0), // red
+            Color.FromArgb(255, 248, 120, 0), // orange
+            Color.FromArgb(255, 224, 224, 0), // yellow
+            Color.FromArgb(255, 0, 0, 248), // blue
+            Color.FromArgb(255, 80, 80, 80), // black
+            Color.FromArgb(255, 184, 0, 248), // purple
+            Color.FromArgb(255, 0, 208, 240), // light blue
+            Color.FromArgb(255, 0, 216, 0) // green
         };
 
         Image focus;
+        const int ButtonSpacing = 53;
 
         protected override FrameworkElement CreateUI()
         {
@@ -53,35 +54,33 @@ namespace UnofficialCrusaderPatch
 
             for (int i = 0; i < 8; i++)
             {
-                var pair = Colors.ElementAt(i);
-
                 Border button = new Border()
                 {
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Top,
-                    Margin = new Thickness(i * 53, 0, 0, 0),
+                    Margin = new Thickness(i * ButtonSpacing, 0, 0, 0),
                     BorderThickness = new Thickness(1, 1, 1, 1),
                     BorderBrush = Brushes.Black,
-                    Background = new SolidColorBrush(pair.Value),
+                    Background = new SolidColorBrush(Colors[i]),
                     Height = 30,
                     Width = 38,
                 };
 
-                button.MouseUp += (s, e) => SetFocus(button, pair.Key);
+                int value = i + 1;
+                button.MouseUp += (s, e) => SetValue(value);
 
                 grid.Children.Insert(0, button);
-
-                if (pair.Key == this.Value)
-                    SetFocus(button, pair.Key);
             }
+
+            this.OnValueChange += ValueChange;
+            SetValue(1);
 
             return grid;
         }
-        
-        void SetFocus(Border button, int value)
+
+        void ValueChange()
         {
-            this.SetValue(value);
-            Canvas.SetLeft(focus, button.Margin.Left);
+            Canvas.SetLeft(focus, ButtonSpacing * (this.Value - 1));
         }
     }
 }

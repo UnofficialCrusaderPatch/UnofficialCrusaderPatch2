@@ -69,7 +69,7 @@ namespace UnofficialCrusaderPatch
             return new TextBlock()
             {
                 Text = this.GetDescription(),
-                Height = 15,
+                Height = 16,
             };
         }
 

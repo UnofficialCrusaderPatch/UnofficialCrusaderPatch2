@@ -66,10 +66,10 @@ namespace UnofficialCrusaderPatch
                     Margin = new Thickness(0, -1, 0, 0),
                     FontSize = 14,
                     Width = 400,
-                }
+                },
             };
-            titleBox.Checked += (s, e) => SetChecked(true);
-            titleBox.Unchecked += (s, e) => SetChecked(false);
+            titleBox.Checked += TitleBox_Checked;
+            titleBox.Unchecked += TitleBox_Unchecked;
 
             TreeViewItem tvi = new TreeViewItem()
             {
@@ -98,18 +98,19 @@ namespace UnofficialCrusaderPatch
             this.titleBox.IsChecked = enabledDefault;
         }
 
-        void SetChecked(bool check)
+        void TitleBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            if (check)
-            {
-                if (!this.IsChecked)
-                    headerList.ForEach(h => h.IsEnabled = h.DefaultIsEnabled);
-            }
-            else
-            {
-                if (this.IsChecked)
-                    headerList.ForEach(h => h.IsEnabled = false);
-            }
+            headerList.ForEach(h => h.IsEnabled = false);
+        }
+
+        bool noCheck = false;
+        void TitleBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (noCheck) return;
+            headerList.ForEach(h => h.IsEnabled = h.DefaultIsEnabled);
+            noCheck = true;
+            titleBox.IsChecked = this.IsChecked;
+            noCheck = false;
         }
 
         void FillGrid(Grid grid)
@@ -135,23 +136,26 @@ namespace UnofficialCrusaderPatch
                     grid.Children.Add(uiElement);
                 }
 
-                // Description
-                TextBlock description = new TextBlock()
+                string descrIdent = header.DescrIdent + "_descr";
+                if (Localization.Get(descrIdent).Length > 1)
                 {
-                    HorizontalAlignment = HorizontalAlignment.Left,
-                    VerticalAlignment = VerticalAlignment.Top,
-                    Margin = new Thickness(6, height, 0, 0),
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 13,
-                    Width = grid.Width - 12,
-                };
-                TextReferencer.SetText(description, header.DescrIdent + "_descr");
-                grid.Children.Add(description);
-                height += description.MeasureHeight();
+                    // Description
+                    TextBlock description = new TextBlock()
+                    {
+                        HorizontalAlignment = HorizontalAlignment.Left,
+                        VerticalAlignment = VerticalAlignment.Top,
+                        Margin = new Thickness(6, height, 0, 0),
+                        TextWrapping = TextWrapping.Wrap,
+                        FontSize = 13,
+                        Width = grid.Width - 12,
+                    };
+                    TextReferencer.SetText(description, descrIdent);
+                    grid.Children.Add(description);
+                    height += description.MeasureHeight();
 
-
-                if (i != headerList.Count - 1)
-                    height += 22;
+                    if (i != headerList.Count - 1)
+                        height += 22;
+                }
             }
             grid.Height = height + 10;
         }
@@ -165,9 +169,9 @@ namespace UnofficialCrusaderPatch
                         h.IsEnabled = false;
             }
 
-            bool isChecked = this.IsChecked;
-            if (titleBox.IsChecked != isChecked)
-                this.titleBox.IsChecked = this.IsChecked;
+            noCheck = true;
+            this.titleBox.IsChecked = IsChecked;
+            noCheck = false;
         }
 
         #endregion

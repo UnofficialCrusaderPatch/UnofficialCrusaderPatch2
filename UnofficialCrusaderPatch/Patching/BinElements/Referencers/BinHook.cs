@@ -34,7 +34,7 @@ namespace UnofficialCrusaderPatch
             EditData.Insert(EditData.Count - 3, input);
         }
 
-        public static Change Change(string ident, ChangeType type, bool checkedDefault, int hookLen, params byte[] code)
+        public static Change Change(string ident, ChangeType type, bool checkedDefault, int hookLen, params BinElement[] code)
         {
             return new Change(ident, type, checkedDefault)
             {
@@ -45,14 +45,15 @@ namespace UnofficialCrusaderPatch
             };
         }
 
-        public static BinaryEdit CreateEdit(string ident, int hookLen, params byte[] code)
+        public static BinaryEdit CreateEdit(string ident, int hookLen, params BinElement[] code)
         {
+            var hook = new BinHook(hookLen, ident, new byte[1] { 0xE9 });
+            foreach (BinElement element in code)
+                hook.Add(element);
+
             return new BinaryEdit(ident)
             {
-                new BinHook(hookLen, ident, new byte[1] { 0xE9 })
-                {
-                    new BinBytes(code),
-                },
+                hook,
                 new BinLabel(ident)
             };
         }

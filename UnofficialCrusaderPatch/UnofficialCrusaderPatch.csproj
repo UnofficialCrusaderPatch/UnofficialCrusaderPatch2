@@ -930,7 +930,6 @@
     <EmbeddedResource Include="CodeBlocks\ai_addattack_alt.block" />
     <EmbeddedResource Include="CodeBlocks\u_laddergold.block" />
     <EmbeddedResource Include="CodeBlocks\o_trooplimit.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_demolish.block" />
     <EmbeddedResource Include="CodeBlocks\ai_tethers.block" />
     <EmbeddedResource Include="CodeBlocks\o_onlyai.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_list.block" />
@@ -940,6 +939,12 @@
     <EmbeddedResource Include="CodeBlocks\o_playercolor_mm_emblem1.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_mm_emblem2.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_mm_shields.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_demolish_eco.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_demolish_walls.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_mm_shield_drag.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_mm_shield_hover.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_minilist2.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_minilist1.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
