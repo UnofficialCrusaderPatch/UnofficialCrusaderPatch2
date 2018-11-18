@@ -8,68 +8,40 @@ namespace UnofficialCrusaderPatch
 {
     class BinHook : BinRedirect
     {
-        int hookLen;
-        public override int Length => hookLen;
-
-        byte[] jmpBytes;
-        string jmpBackLabel;
-
-        /// <summary> Any jump hook </summary>
         public BinHook(string jmpBackLabel, params byte[] jmpBytes)
-            : this(jmpBackLabel, jmpBytes, jmpBytes.Length + 4)
+            : this(jmpBytes.Length + 4, jmpBackLabel, jmpBytes)
         {
         }
 
-        public BinHook(string jmpBackLabel, byte[] jmpBytes, int hookLen, params byte[] code)
-            : base(true, code)
+        public BinHook(int hookLen, string jmpBackLabel, byte[] jmpBytes)
+            : base(true)
         {
             if (hookLen < jmpBytes.Length + 4)
                 throw new Exception("Hook length is too short!");
 
-            this.jmpBackLabel = jmpBackLabel;
-            this.jmpBytes = jmpBytes;
-            this.hookLen = hookLen;
+            base.InsertToGroup(0, new BinBytes(jmpBytes));
+            int nopsLen = hookLen - (4 + jmpBytes.Length);
+            if (nopsLen > 0)
+                base.AddToGroup(new BinNops(nopsLen));
+
+            base.Add(new BinBytes(0xE9));
+            base.Add(new BinRefTo(jmpBackLabel));
         }
 
-        public override EditResult Write(int address, BinArgs data)
+        public override void Add(BinElement input)
         {
-            var secPos = SectionEditor.GetDataPos();
-            
-            // add jmp back at end of code
-            int labelAddress = data.Labels.GetLabel(this.jmpBackLabel);
-            int endOfCode = (int)secPos.VirtualAddress + codeData.Count + 5;
-
-            codeData.Add(0xE9);
-            int relativeAddress = labelAddress - endOfCode;
-            codeData.AddRange(BitConverter.GetBytes(relativeAddress));
-
-
-
-            // write hook
-            jmpBytes.CopyTo(data, address);
-            int pos = address + jmpBytes.Length;
-
-            // write address
-            base.Write(pos, data);
-            pos += 4;
-
-            // fill rest with nops
-            for (int i = pos; i < address + hookLen; i++)
-                data.Buffer[i] = 0x90;
-
-            return EditResult.NoErrors;
-        }
-
-        public static Change Change(string ident, ChangeType type, int hookLen, params byte[] code)
-        {
-            return Change(ident, type, true, hookLen, code);
+            // add in front of jmpBytes, refTo, nops
+            EditData.Insert(EditData.Count - 3, input);
         }
 
         public static Change Change(string ident, ChangeType type, bool checkedDefault, int hookLen, params byte[] code)
         {
             return new Change(ident, type, checkedDefault)
             {
-                CreateEdit(ident, hookLen, code)
+                new DefaultHeader(ident, true)
+                {
+                    CreateEdit(ident, hookLen, code)
+                }
             };
         }
 
@@ -77,7 +49,10 @@ namespace UnofficialCrusaderPatch
         {
             return new BinaryEdit(ident)
             {
-                new BinHook(ident, new byte[1] { 0xE9 }, hookLen, code),
+                new BinHook(hookLen, ident, new byte[1] { 0xE9 })
+                {
+                    new BinBytes(code),
+                },
                 new BinLabel(ident)
             };
         }

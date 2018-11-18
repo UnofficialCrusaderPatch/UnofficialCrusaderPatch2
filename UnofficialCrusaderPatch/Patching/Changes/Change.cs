@@ -9,15 +9,7 @@ using System.Collections;
 
 namespace UnofficialCrusaderPatch
 {
-    public enum ChangeType
-    {
-        Bugfix,
-        AILords,
-        Troops,
-        Other,
-    }
-
-    public class Change : IEnumerable<ChangeElement>
+    public class Change : IEnumerable<DefaultHeader>
     {
         string titleIdent;
         public string TitleIdent => titleIdent;
@@ -26,63 +18,37 @@ namespace UnofficialCrusaderPatch
         ChangeType type;
         public ChangeType Type => type;
 
-        List<ChangeHeader> headerList;
+        bool exclusive, enabledDefault;
+        List<DefaultHeader> headerList = new List<DefaultHeader>();
 
-        public IEnumerator<ChangeElement> GetEnumerator() => throw new NotImplementedException();
-        IEnumerator IEnumerable.GetEnumerator() => throw new NotImplementedException();
-        public void Add(ChangeElement edit)
+        public IEnumerator<DefaultHeader> GetEnumerator() => headerList.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+
+        public void Add(DefaultHeader header)
         {
-            if (edit is ChangeHeader header)
-            {
-                headerList.Add(header);
-            }
-            else
-            {
-                headerList.Last().Add((ChangeEdit)edit);
-            }
+            headerList.Add(header);
         }
 
-        int defaultActiveIndex;
-        int activeHeaderIndex;
-        public int ActiveHeaderIndex => activeHeaderIndex;
-
-        public ChangeHeader GetActiveHeader() => IsChecked ? headerList[activeHeaderIndex] : null;
-        public bool IsChecked => activeHeaderIndex >= 0;
-
-        public Change(string titleIdent, ChangeType type, bool checkedDefault = true, int defaultActiveIndex = 0)
+        public Change(string titleIdent, ChangeType type, bool enabledDefault = true, bool exclusive = true)
         {
             this.type = type;
             this.titleIdent = titleIdent;
-
-            this.defaultActiveIndex = defaultActiveIndex;
-            this.activeHeaderIndex = checkedDefault ? defaultActiveIndex : -1;
-
-            var defaultHeader = new ChangeHeader(this.titleIdent);
-            headerList = new List<ChangeHeader>() { defaultHeader };
+            this.exclusive = exclusive;
+            this.enabledDefault = enabledDefault;
         }
 
         public void Activate(ChangeArgs args)
         {
-            ChangeHeader header = GetActiveHeader();
-
-            if (header is ValueHeader vh)
-                vh.SetValueEdits();
-
-            var list = header.EditList;
-            for (int i = 0; i < list.Count; i++)
+            foreach (var header in headerList)
             {
-                var result = list[i].Activate(args);
-                if (result != EditResult.NoErrors)
-                {
-                    const string str = "Your version is currently unsupported: {0} for {1}/{2}/{3}.";
-                    string message = string.Format(str, result, TitleIdent, ActiveHeaderIndex, i);
-                    throw new Exception(message);
-                }
+                if (header.IsEnabled)
+                    header.Activate(args);
             }
         }
 
         #region UI
 
+        public bool IsChecked => headerList.Exists(h => h.IsEnabled);
 
         UIElement uiElement;
         public UIElement UIElement { get { return this.uiElement; } }
@@ -93,7 +59,6 @@ namespace UnofficialCrusaderPatch
         {
             this.titleBox = new CheckBox()
             {
-                IsChecked = this.IsChecked,
                 Content = new TextBlock()
                 {
                     Text = this.GetTitle(),
@@ -130,42 +95,33 @@ namespace UnofficialCrusaderPatch
 
             this.uiElement = tvi;
 
-            if (IsChecked)
-                GetActiveHeader().IsEnabled = true;
+            this.titleBox.IsChecked = enabledDefault;
         }
 
         void SetChecked(bool check)
         {
             if (check)
             {
-                if (activeHeaderIndex >= 0)
-                    return;
-
-                activeHeaderIndex = defaultActiveIndex;
-                GetActiveHeader().IsEnabled = true;
+                if (!this.IsChecked)
+                    headerList.ForEach(h => h.IsEnabled = h.DefaultIsEnabled);
             }
             else
             {
-                ChangeHeader header = GetActiveHeader();
-                if (header != null)
-                    header.IsEnabled = false;
-                activeHeaderIndex = -1;
+                if (this.IsChecked)
+                    headerList.ForEach(h => h.IsEnabled = false);
             }
         }
 
         void FillGrid(Grid grid)
         {
-            bool defaultHeader = headerList.Count == 1;
-            if (!defaultHeader)
-            {
-                headerList.RemoveAt(0); // default one is not needed
-            }
+            bool singleDefault = headerList.Count == 1 && headerList[0].GetType() == typeof(DefaultHeader);
 
             double height = 5;
             for (int i = 0; i < headerList.Count; i++)
             {
                 var header = headerList[i];
-                if (!defaultHeader)
+
+                if (!singleDefault)
                 {
                     header.OnEnabledChange += Header_OnEnable;
 
@@ -178,7 +134,6 @@ namespace UnofficialCrusaderPatch
 
                     grid.Children.Add(uiElement);
                 }
-
 
                 // Description
                 TextBlock description = new TextBlock()
@@ -195,29 +150,24 @@ namespace UnofficialCrusaderPatch
                 height += description.MeasureHeight();
 
 
-
                 if (i != headerList.Count - 1)
                     height += 22;
             }
             grid.Height = height + 10;
         }
 
-        void Header_OnEnable(ChangeHeader header, bool enabled)
+        void Header_OnEnable(DefaultHeader header, bool enabled)
         {
-            if (enabled)
+            if (this.exclusive && enabled)
             {
-                var current = GetActiveHeader();
+                foreach (DefaultHeader h in headerList)
+                    if (h != header)
+                        h.IsEnabled = false;
+            }
 
-                activeHeaderIndex = headerList.IndexOf(header);
-                if (current != null)
-                    current.IsEnabled = false;
-                else
-                    titleBox.IsChecked = true;
-            }
-            else
-            {
-                titleBox.IsChecked = false;
-            }
+            bool isChecked = this.IsChecked;
+            if (titleBox.IsChecked != isChecked)
+                this.titleBox.IsChecked = this.IsChecked;
         }
 
         #endregion

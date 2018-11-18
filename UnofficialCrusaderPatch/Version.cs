@@ -9,6 +9,7 @@ namespace UnofficialCrusaderPatch
     // rekrutierungsintervall
     // demolishing -> option economy & castles
     // bauerngrenze
+    // KI Handeln untereinander
 
     // Störkatapult positionierung
     // Schwein Nahrung verkaufen & Friedrich Waffen ?
@@ -22,8 +23,11 @@ namespace UnofficialCrusaderPatch
         public static string PatcherVersion = "2.05";
 
         // change version 0x424EF1 + 1
-        public static readonly BinaryEdit MenuChange = BinRedirect.CreateEdit("menuversion", false,
-                                                       Encoding.UTF8.GetBytes("V1.%d UCP" + PatcherVersion + '\0'));
+        public static readonly ChangeHeader MenuChange = new ChangeHeader()
+        {
+            BinRedirect.CreateEdit("menuversion", false, Encoding.UTF8.GetBytes("V1.%d UCP" + PatcherVersion + '\0'))
+        };
+
 
         public static IEnumerable<Change> Changes { get { return changes; } }
         static List<Change> changes = new List<Change>()
@@ -57,10 +61,12 @@ namespace UnofficialCrusaderPatch
             new Change("o_trooplimit", ChangeType.Other)
             {
                 // 00459E10 + 1
-                new SliderHeader("o_trooplimit", 1000, 10000, 100, 2400, 5000),
-                new BinaryEdit("o_trooplimit")
+                new SliderHeader("o_trooplimit", true, 1000, 10000, 100, 2400, 5000)
                 {
-                    new BinInt32Value()
+                    new BinaryEdit("o_trooplimit")
+                    {
+                        new BinInt32Value()
+                    }
                 }
             },
 
@@ -68,9 +74,10 @@ namespace UnofficialCrusaderPatch
              * PLAYER 1 COLOR
              */
 
-            new Change("o_playercolor", ChangeType.Other)
+            new Change("o_playercolor", ChangeType.Other, false)
             {
-                new ColorHeader("o_playercolor"),
+                new ColorHeader("o_playercolor")
+                {
 
                 // 0042845B
                 BinHook.CreateEdit("o_playercolor_mm_shields", 6,
@@ -193,6 +200,7 @@ namespace UnofficialCrusaderPatch
 
                     new BinNops(2),
                 }
+                },
             },
 
             /*
@@ -201,13 +209,16 @@ namespace UnofficialCrusaderPatch
 
             new Change("o_responsivegates", ChangeType.Other)
             {
-                // Gates closing distance to enemy = 200
-                // 0x422ACC + 2
-                BinInt32.CreateEdit("o_gatedistance", 140),
+                new DefaultHeader("o_responsivegates")
+                {
+                    // Gates closing distance to enemy = 200
+                    // 0x422ACC + 2
+                    BinInt32.CreateEdit("o_gatedistance", 140),
 
-                // Gates closing time after enemy leaves = 1200
-                // 0x422B35 + 7 (ushort)
-                BinShort.CreateEdit("o_gatetime", 100),
+                    // Gates closing time after enemy leaves = 1200
+                    // 0x422B35 + 7 (ushort)
+                    BinShort.CreateEdit("o_gatetime", 100),
+                }
             },
 
 
@@ -217,47 +228,50 @@ namespace UnofficialCrusaderPatch
 
             new Change("o_gamespeed", ChangeType.Other)
             {
-                // 4B4748
-                new BinaryEdit("o_gamespeed_up")
+                new DefaultHeader("o_gamespeed")
                 {
-                    new BinBytes(0x3D, 0xE8, 0x03, 0x00, 0x00),      // cmp eax, 1000
-
-                    new BinBytes(0x7D, 0x19), // jge to end
-
-                    new BinBytes(0x8B, 0xF8),              // mov edi, eax
-
-                    new BinBytes(0x3D, 0xC8, 0x00, 0x00, 0x00),     // cmp eax, 200
-                    new BinHook("label", 0x0F, 0x8C)                // jl hook
+                    // 4B4748
+                    new BinaryEdit("o_gamespeed_up")
                     {
-                        0x83, 0xF8, 0x5A, // cmp eax, 90
-                        0x7C, 0x03,       // jl to end
-                        0x83, 0xC7, 0x05, // add edi, 5
+                        new BinBytes(0x3D, 0xE8, 0x03, 0x00, 0x00),      // cmp eax, 1000
+
+                        new BinBytes(0x7D, 0x19), // jge to end
+
+                        new BinBytes(0x8B, 0xF8),              // mov edi, eax
+
+                        new BinBytes(0x3D, 0xC8, 0x00, 0x00, 0x00),     // cmp eax, 200
+                        new BinHook("label1", 0x0F, 0x8C)                // jl hook
+                        {
+                            0x83, 0xF8, 0x5A, // cmp eax, 90
+                            0x7C, 0x03,       // jl to end
+                            0x83, 0xC7, 0x05, // add edi, 5
+                        },
+                        new BinBytes(0x83, 0xC7, 0x5F),        // add edi, 95
+                        new BinLabel("label1"),
+                        new BinBytes(0x83, 0xC7, 0x05),        // add edi, 5
+                        new BinBytes(0xEB, 0x75),              // jmp to gamespeed_down set value
+                        new BinBytes(0x90, 0x90, 0x90, 0x90),
                     },
-                    new BinBytes(0x83, 0xC7, 0x5F),        // add edi, 95
-                    new BinLabel("label"),
-                    new BinBytes(0x83, 0xC7, 0x05),        // add edi, 5
-                    new BinBytes(0xEB, 0x75),              // jmp to gamespeed_down set value
-                    new BinBytes(0x90, 0x90, 0x90, 0x90),
-                },
 
-                // 004B47C2
-                new BinaryEdit("o_gamespeed_down")
-                {
-                    new BinBytes(0x7E, 0x1B), // jle to end
-
-                    new BinBytes(0x8B, 0xF8),              // mov edi, eax
-
-                    new BinBytes(0x3D, 0xC8, 0x00, 0x00, 0x00),     // cmp eax, 200
-                    new BinHook("label", 0x0F, 0x8E)                // jle hook
+                    // 004B47C2
+                    new BinaryEdit("o_gamespeed_down")
                     {
-                        0x83, 0xF8, 0x5A, // cmp eax, 90
-                        0x7E, 0x03,       // jle to end
-                        0x83, 0xEF, 0x05, // sub edi, 5
-                    },
-                    new BinBytes(0x83, 0xEF, 0x5F),        // sub edi, 95
-                    new BinLabel("label"),
-                    new BinBytes(0x83, 0xEF, 0x05),        // sub edi, 5
-                    new BinBytes(0x90, 0x90),
+                        new BinBytes(0x7E, 0x1B), // jle to end
+
+                        new BinBytes(0x8B, 0xF8),              // mov edi, eax
+
+                        new BinBytes(0x3D, 0xC8, 0x00, 0x00, 0x00),     // cmp eax, 200
+                        new BinHook("label2", 0x0F, 0x8E)                // jle hook
+                        {
+                            0x83, 0xF8, 0x5A, // cmp eax, 90
+                            0x7E, 0x03,       // jle to end
+                            0x83, 0xEF, 0x05, // sub edi, 5
+                        },
+                        new BinBytes(0x83, 0xEF, 0x5F),        // sub edi, 95
+                        new BinLabel("label2"),
+                        new BinBytes(0x83, 0xEF, 0x05),        // sub edi, 5
+                        new BinBytes(0x90, 0x90),
+                    }
                 }
             },
 
@@ -271,10 +285,12 @@ namespace UnofficialCrusaderPatch
             // absolute limit at 0x4CDEF8 + 1 = 200
             new Change("ai_attacklimit", ChangeType.AILords)
             {
-                new SliderHeader("ai_attacklimit", 0, 3000, 50, 200, 1000),
-                new BinaryEdit("ai_attacklimit")
+                new SliderHeader("ai_attacklimit", true, 0, 3000, 50, 200, 500)
                 {
-                    new BinInt32Value()
+                    new BinaryEdit("ai_attacklimit")
+                    {
+                        new BinInt32Value()
+                    },
                 }
             },
 
@@ -283,63 +299,68 @@ namespace UnofficialCrusaderPatch
                 // vanilla:
                 // additional attack troops = factor * attack number
 
-                new SliderHeader("ai_addattack", 0, 60, 1, 5, 12),
-                // 004CDEDC
-                new BinaryEdit("ai_addattack")
+                new SliderHeader("ai_addattack", true, 0, 60, 1, 5, 12)
                 {
-                    // if (ai gold < 10000)
-                    new BinBytes(0x7E, 07),      // jle to 8
+                    // 004CDEDC
+                    new BinaryEdit("ai_addattack")
+                    {
+                        // if (ai gold < 10000)
+                        new BinBytes(0x7E, 07),      // jle to 8
 
-                    new BinBytes(0xB9),     // mov ecx, value * 7/5 (vanilla = 7)
-                    new BinInt32Value(7.0/5.0),
+                        new BinBytes(0xB9),     // mov ecx, value * 7/5 (vanilla = 7)
+                        new BinInt32Value(7.0/5.0),
 
-                    new BinBytes(0xEB, 0x05), // jmp
+                        new BinBytes(0xEB, 0x05), // jmp
                     
-                    new BinBytes(0xB9),     // mov ecx, value (vanilla = 5)
-                    new BinInt32Value(1),
+                        new BinBytes(0xB9),     // mov ecx, value (vanilla = 5)
+                        new BinInt32Value(1),
 
-                    new BinBytes(0xF7, 0xE9), // imul ecx
+                        new BinBytes(0xF7, 0xE9), // imul ecx
                     
-                    new BinNops(6),
-                    new BinBytes(0x01, 0x86), // mov [addtroops], eax instead of ecx
+                        new BinNops(6),
+                        new BinBytes(0x01, 0x86), // mov [addtroops], eax instead of ecx
+                    },
                 },
+
 
 
                 // alternative:
                 // additional attack troops = factor * initial attack troops * attack number
 
-                new SliderHeader("ai_addattack_alt", 0, 3, 0.1, 0, 0.3),
-                // 004CDE7C
-                new BinaryEdit("ai_addattack_alt")
+                new SliderHeader("ai_addattack_alt", false, 0.0, 3.0, 0.1, 0.0, 0.3)
                 {
-                    new BinAddress("attacknum", 0x2F), // [0115F71C]
-                    new BinAddress("addtroops", 0x55), // [0115F698]
+                    // 004CDE7C
+                    new BinaryEdit("ai_addattack_alt")
+                    {
+                        new BinAddress("attacknum", 0x2F), // [0115F71C]
+                        new BinAddress("addtroops", 0x55), // [0115F698]
 
-                    new BinBytes(0x83, 0xE8, 0x01),                 // sub eax,01   => ai_index
-                    new BinBytes(0x69, 0xC0, 0xA4, 0x02, 0x00, 0x00), // imul eax, 2A4 { 676 }  => ai_offset
-                    new BinBytes(0x8B, 0x84, 0x28, 0xF4, 0x01, 0x00, 0x00), // mov eax,[eax+ebp+1F4]   => initial attack troops
+                        new BinBytes(0x83, 0xE8, 0x01),                 // sub eax,01   => ai_index
+                        new BinBytes(0x69, 0xC0, 0xA4, 0x02, 0x00, 0x00), // imul eax, 2A4 { 676 }  => ai_offset
+                        new BinBytes(0x8B, 0x84, 0x28, 0xF4, 0x01, 0x00, 0x00), // mov eax,[eax+ebp+1F4]   => initial attack troops
 
-                    new BinBytes(0x8B, 0x8E), //mov ecx,[esi+0115F71C]   => attack number
-                    new BinRefTo("attacknum", false),
+                        new BinBytes(0x8B, 0x8E), //mov ecx,[esi+0115F71C]   => attack number
+                        new BinRefTo("attacknum", false),
 
-                    new BinBytes(0xF7, 0xE9), // imul ecx   => attack number * initial attack troops
+                        new BinBytes(0xF7, 0xE9), // imul ecx   => attack number * initial attack troops
 
-                    new BinBytes(0x69, 0xC0), // imul eax, value
-                    new BinInt32Value(10),
+                        new BinBytes(0x69, 0xC0), // imul eax, value
+                        new BinInt32Value(10),
 
-                    new BinBytes(0xB9, 0x0A, 0x00, 0x00, 0x00), // mov ecx, 0A { 10 }
-                    new BinBytes(0xF7, 0xF9), // idiv ecx
+                        new BinBytes(0xB9, 0x0A, 0x00, 0x00, 0x00), // mov ecx, 0A { 10 }
+                        new BinBytes(0xF7, 0xF9), // idiv ecx
                     
-                    new BinBytes(0x83, 0xC0, 0x05), // add eax, 5   => because in vanilla, attackNum was already 1 for first attack
+                        new BinBytes(0x83, 0xC0, 0x05), // add eax, 5   => because in vanilla, attackNum was already 1 for first attack
 
-                    new BinBytes(0x89, 0x86), // mov [esi+0115F698],eax   =>  addtroops = result
-                    new BinRefTo("addtroops", false),
+                        new BinBytes(0x89, 0x86), // mov [esi+0115F698],eax   =>  addtroops = result
+                        new BinRefTo("addtroops", false),
 
-                    new BinBytes(0xFF, 0x86),  // inc [esi+0115F71C]  => attack number++
-                    new BinRefTo("attacknum", false),
+                        new BinBytes(0xFF, 0x86),  // inc [esi+0115F71C]  => attack number++
+                        new BinRefTo("attacknum", false),
 
-                    new BinBytes(0xEB, 0x46), // jmp over nops
-                    new BinNops(0x46),
+                        new BinBytes(0xEB, 0x46), // jmp over nops
+                        new BinNops(0x46),
+                    },
                 },
             },
 
@@ -417,12 +438,15 @@ namespace UnofficialCrusaderPatch
             // Schutz von Leiternträgern gegen Fernkämpfer
             new Change("u_laddermen", ChangeType.Troops)
             {
-                BinInt32.CreateEdit("u_ladderarmor_bow", 420), // B4EAA0 + 4 * 1D   (vanilla = 1000)
-                BinInt32.CreateEdit("u_ladderarmor_sling", 1000), // B4EBE0 + 4 * 1D   (vanilla = 2500)
-                BinInt32.CreateEdit("u_ladderarmor_xbow", 1000), // B4ED20 + 4 * 1D   (vanilla = 2500)
+                new DefaultHeader("u_laddermen")
+                {
+                    BinInt32.CreateEdit("u_ladderarmor_bow", 420), // B4EAA0 + 4 * 1D   (vanilla = 1000)
+                    BinInt32.CreateEdit("u_ladderarmor_sling", 1000), // B4EBE0 + 4 * 1D   (vanilla = 2500)
+                    BinInt32.CreateEdit("u_ladderarmor_xbow", 1000), // B4ED20 + 4 * 1D   (vanilla = 2500)
 
-                // 0052EC37 + 2
-                BinByte.CreateEdit("u_laddergold", 9), // 1D - 9 = 14h            (vanilla: 1D - 19 = 4)
+                    // 0052EC37 + 2
+                    BinBytes.CreateEdit("u_laddergold", 9), // 1D - 9 = 14h            (vanilla: 1D - 19 = 4)
+                }
             },         
             
             // Armbrustschaden gegen Arab. Schwertkämpfer, original: 8000
@@ -431,7 +455,7 @@ namespace UnofficialCrusaderPatch
             
             // Arab. Schwertkämpfer Angriffsanimation, ca. halbiert
             // 0xB59CD0
-            BinBytes.Change("u_arabwall", ChangeType.Troops,
+            BinBytes.Change("u_arabwall", ChangeType.Troops, true,
                 0x01, 0x02, 0x03, 0x04, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E,
                 0x10, 0x11, 0x12, 0x13, 0x14, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x00),
             
@@ -439,8 +463,11 @@ namespace UnofficialCrusaderPatch
             // Lanzenträger hp: 10000
             new Change("u_spearmen", ChangeType.Troops)
             {
-                BinInt32.CreateEdit("u_spearbow", 2000), // B4EAA0 + 4 * 18   (vanilla = 3500)
-                BinInt32.CreateEdit("u_spearxbow", 9999), // B4EBE0 + 4 * 18   (vanilla = 15000)
+                new DefaultHeader("u_spearmen")
+                {
+                    BinInt32.CreateEdit("u_spearbow", 2000), // B4EAA0 + 4 * 18   (vanilla = 3500)
+                    BinInt32.CreateEdit("u_spearxbow", 9999), // B4EBE0 + 4 * 18   (vanilla = 15000)
+                }
             },                  
 
             /*
@@ -459,14 +486,17 @@ namespace UnofficialCrusaderPatch
             // ai1_buytable 0x01165C78
             new Change("ai_buy", ChangeType.Bugfix)
             {
-                // mov [EAX+84], EDI = 10
-                BinBytes.CreateEdit("ai_foodbuy_wazir", 0x89, 0xB8), // 004C951C
+                new DefaultHeader("ai_buy")
+                {
+                    // mov [EAX+84], EDI = 10
+                    BinBytes.CreateEdit("ai_foodbuy_wazir", 0x89, 0xB8), // 004C951C
                 
-                // mov [EAX+9C], 2
-                BinHook.CreateEdit("ai_wepbuy_marshal", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4CA5AE, runtime: 0x23FF084 + 0x9C
-                BinHook.CreateEdit("ai_wepbuy_frederick", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4C8DEA, runtime: 0x23FE0AC + 0x9C
-                BinHook.CreateEdit("ai_wepbuy_emir", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4C99AB, runtime: 023FE898 + 0x9C
-                BinHook.CreateEdit("ai_wepbuy_abbot", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4CA95B, runtime: 023FF328 + 0x9C
+                    // mov [EAX+9C], 2
+                    BinHook.CreateEdit("ai_wepbuy_marshal", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4CA5AE, runtime: 0x23FF084 + 0x9C
+                    BinHook.CreateEdit("ai_wepbuy_frederick", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4C8DEA, runtime: 0x23FE0AC + 0x9C
+                    BinHook.CreateEdit("ai_wepbuy_emir", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4C99AB, runtime: 023FE898 + 0x9C
+                    BinHook.CreateEdit("ai_wepbuy_abbot", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4CA95B, runtime: 023FF328 + 0x9C
+                }
             },
 
 
@@ -476,13 +506,10 @@ namespace UnofficialCrusaderPatch
             * FIXED AIV CASTLES - https://github.com/Evrey/SHC_AIV
             */
 
-            new Change("aiv_evrey", ChangeType.Bugfix, true, 0)
+            new Change("aiv_evrey", ChangeType.Bugfix)
             {
-                new ChangeHeader("aiv_evreyfixed"),
-                new AIVEdit("evreyfixed"),
-
-                new ChangeHeader("aiv_evreyimproved"),
-                new AIVEdit("evreyimproved"),
+                AIVEdit.Header("evreyfixed", true),
+                AIVEdit.Header("evreyimproved", false),
             },
         };
     }

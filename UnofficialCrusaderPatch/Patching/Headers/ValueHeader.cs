@@ -5,13 +5,13 @@ using System.Text;
 
 namespace UnofficialCrusaderPatch
 {
-    public class ValueHeader : ChangeHeader
+    public class ValueHeader : DefaultHeader
     {
         double oriVal, suggested;
         public double OriginalValue => oriVal;
         public double SuggestedValue => suggested;
 
-        public ValueHeader(string descrIdent, double oriVal, double suggested) : base(descrIdent)
+        public ValueHeader(string descrIdent, bool isEnabled, double oriVal, double suggested) : base(descrIdent, isEnabled)
         {
             this.value = oriVal;
             this.oriVal = oriVal;
@@ -20,21 +20,6 @@ namespace UnofficialCrusaderPatch
 
         double value;
         public double Value => value;
-
-        public void SetValueEdits()
-        {
-            foreach (var edit in EditList)
-            {
-                if (!(edit is BinaryEdit be))
-                    continue;
-
-                foreach (var ele in be)
-                {
-                    if (ele is BinValue bv)
-                        bv.Set(this.value);
-                }
-            }
-        }
 
         public override bool IsEnabled
         {

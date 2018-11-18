@@ -6,7 +6,6 @@ namespace UnofficialCrusaderPatch
 {
     public class BinBytes : BinElement
     {
-
         protected readonly byte[] byteBuf;
         public override int Length => byteBuf.Length;
 
@@ -15,22 +14,19 @@ namespace UnofficialCrusaderPatch
             this.byteBuf = input;
         }
 
-        public override EditResult Write(int address, BinArgs data)
+        public override void Write(BinArgs data)
         {
-            byteBuf.CopyTo(data, address);
-            return EditResult.NoErrors;
+            byteBuf.CopyTo(data, this.RawAddress);
         }
 
-        public static Change Change(string locIdent, ChangeType type, params byte[] input)
+        public static Change Change(string ident, ChangeType type, bool checkedDefault, params byte[] input)
         {
-            return Change(locIdent, type, true, input);
-        }
-
-        public static Change Change(string locIdent, ChangeType type, bool checkedDefault, params byte[] input)
-        {
-            return new Change(locIdent, type, checkedDefault)
+            return new Change(ident, type, checkedDefault)
             {
-                new BinaryEdit(locIdent) { new BinBytes(input), }
+                new DefaultHeader(ident, true)
+                {
+                    CreateEdit(ident, input)
+                }
             };
         }
 

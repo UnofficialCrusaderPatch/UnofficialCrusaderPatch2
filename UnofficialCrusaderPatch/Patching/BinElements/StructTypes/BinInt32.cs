@@ -13,7 +13,10 @@ namespace UnofficialCrusaderPatch
         {
             return new Change(locIdent, type, checkedDefault)
             {
-                CreateEdit(locIdent, newValue)
+                new DefaultHeader(locIdent, true)
+                {
+                    CreateEdit(locIdent, newValue)
+                }
             };
         }
 

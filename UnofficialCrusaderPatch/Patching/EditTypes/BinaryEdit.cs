@@ -4,20 +4,16 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.IO;
 using CodeBlox;
-using System.Collections;
 
 namespace UnofficialCrusaderPatch
 {
-    public class BinaryEdit : ChangeEdit, IEnumerable<BinElement>
+    public class BinaryEdit : BinaryEditBase
     {
-        int length;
-        public int Length => length;
+        string blockFile;
+        public string BlockFile => this.blockFile;
 
         CodeBlock block;
-        List<BinElement> elements = new List<BinElement>();
-        LabelCollection labels = new LabelCollection();
         
-
         public BinaryEdit(string blockIdent)
         {
             Assembly asm = Assembly.GetExecutingAssembly();
@@ -30,49 +26,27 @@ namespace UnofficialCrusaderPatch
             // read code block file
             using (Stream stream = asm.GetManifestResourceStream(file))
                 this.block = new CodeBlock(stream);
+
+            this.blockFile = blockIdent;
         }
 
-        public void Add(BinElement e)
+        protected override bool GetAddresses(byte[] original, out int rawAddr, out int virtAddr)
         {
-            if (e is BinLabel label)
-            {
-                label.SetOffset(this.length);
-                labels.Add(label);
-            }
-
-            this.elements.Add(e);
-            this.length += e.Length;
-        }
-
-        public IEnumerator<BinElement> GetEnumerator() { return this.elements.GetEnumerator(); }
-        IEnumerator IEnumerable.GetEnumerator() { return this.elements.GetEnumerator(); }
-
-        public override EditResult Activate(ChangeArgs args)
-        {           
             // find equivalent position in original file
-            int count = block.SeekCount(args.OriData, out int address);
+            int count = block.SeekCount(original, out rawAddr);
+            virtAddr = rawAddr + 0x400000;
+
             if (count > 1)
-                return EditResult.MultipleBlocks;
-            else if (count == 0)
-                return EditResult.BlockNotFound;
-
-            labels.Resolve(address);
-
-            return DoEdit(address, args.Data, args.OriData);
-        }
-
-        EditResult DoEdit(int address, byte[] data, byte[] oriData)
-        {
-            BinArgs args = new BinArgs(data, oriData, labels);
-            foreach (BinElement e in elements)
             {
-                EditResult result = e.Write(address, args);
-                if (result != EditResult.NoErrors)
-                    return result;
-
-                address += e.Length;
+                Patcher.AddFailure(this.blockFile, EditFailure.MultipleBlocks);
+                return false;
             }
-            return EditResult.NoErrors;
+            else if (count == 0)
+            {
+                Patcher.AddFailure(this.blockFile, EditFailure.BlockNotFound);
+                return false;
+            }
+            return true;
         }
     }
 }

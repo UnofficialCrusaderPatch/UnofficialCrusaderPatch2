@@ -7,7 +7,10 @@ namespace UnofficialCrusaderPatch
         public override int Length => 4;
 
         string labelName;
+        public string LabelName => labelName;
+
         bool relative;
+        public bool Relative => relative;
 
         public BinRefTo(string labelName, bool relative = true)
         {
@@ -15,20 +18,17 @@ namespace UnofficialCrusaderPatch
             this.relative = relative;
         }
 
-        public override EditResult Write(int address, BinArgs data)
+        public override void Write(BinArgs data)
         {
             int labelAddress = data.Labels.GetLabel(this.labelName);
 
             int refAddress = labelAddress;
             if (relative)
             {
-                refAddress -= (address + 4);
+                refAddress -= (this.VirtAddress + 4);
             }
-
-            byte[] buf = BitConverter.GetBytes(refAddress);
-            buf.CopyTo(data, address);
-
-            return EditResult.NoErrors;
+            
+            BitConverter.GetBytes(refAddress).CopyTo(data, this.RawAddress);
         }
     }
 }

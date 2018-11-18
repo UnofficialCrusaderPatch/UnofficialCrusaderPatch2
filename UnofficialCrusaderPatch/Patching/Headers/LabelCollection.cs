@@ -16,13 +16,7 @@ namespace UnofficialCrusaderPatch
         {
             if (!dict.TryGetValue(labelName, out BinLabel label))
                 throw new Exception("Label not found! " + labelName);
-            return label.Address;
-        }
-
-        public void Resolve(int address)
-        {
-            foreach (BinLabel label in dict.Values)
-                label.Resolve(address);
+            return label.VirtAddress;
         }
     }
 }

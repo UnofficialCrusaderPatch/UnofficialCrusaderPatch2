@@ -1,100 +1,33 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace UnofficialCrusaderPatch
 {
-    public class ChangeHeader : ChangeElement
+    public class ChangeHeader : IEnumerable<ChangeEdit>
     {
-        List<ChangeEdit> editList = new List<ChangeEdit>();
-        public ReadOnlyCollection<ChangeEdit> EditList => new ReadOnlyCollection<ChangeEdit>(editList);
+        LabelCollection labels = new LabelCollection();
+        public LabelCollection Labels => labels;
 
-        string descrIdent;
-        public string DescrIdent => descrIdent;
-        public string GetDescription() { return Localization.Get(descrIdent); }
+        protected readonly List<ChangeEdit> editList = new List<ChangeEdit>();
 
-        public event Action<ChangeHeader, bool> OnEnabledChange;
+        public IEnumerator<ChangeEdit> GetEnumerator() => editList.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
-        public ChangeHeader(string descrIdent)
+        public virtual void Add(ChangeEdit edit)
         {
-            this.descrIdent = descrIdent;
+            editList.Add(edit);
+            edit.SetParent(this);
         }
 
-        public void Add(ChangeEdit edit)
+        public void Activate(ChangeArgs args)
         {
-            this.editList.Add(edit);
-        }
-
-        CheckBox box;
-        public CheckBox CheckBox => box;
-
-        public FrameworkElement InitUI(bool createCheckBox)
-        {
-            FrameworkElement content = CreateUI();
-            if (createCheckBox)
-            {
-                box = new CheckBox()
-                {
-                    Content = content,
-                    Height = content.Height,
-                    HorizontalAlignment = HorizontalAlignment.Left,
-                    VerticalAlignment = VerticalAlignment.Top,
-                };
-
-                box.Checked += Box_Checked;
-                box.Unchecked += Box_Unchecked;
-
-                return box;
-            }
-            return content;
-        }
-
-        void Box_Unchecked(object sender, RoutedEventArgs e)
-        {
-            if (this.IsEnabled)
-                SetEnabled(false);
-        }
-
-        void Box_Checked(object sender, RoutedEventArgs e)
-        {
-            if (!this.IsEnabled)
-                SetEnabled(true);
-        }
-
-        protected virtual FrameworkElement CreateUI()
-        {
-            return new TextBlock()
-            {
-                Text = this.GetDescription(),
-                Height = 15,
-            };
-        }
-
-        bool isEnabled;
-        public virtual bool IsEnabled
-        {
-            get => isEnabled;
-            set
-            {
-                if (isEnabled == value)
-                    return;
-
-                isEnabled = value;
-                if (box != null)
-                    box.IsChecked = value;
-            }
-        }
-        protected void SetEnabled(bool enabled)
-        {
-            if (IsEnabled == enabled)
+            if (!editList.TrueForAll(e => e.Initialize(args)))
                 return;
 
-            IsEnabled = enabled;
-            OnEnabledChange?.Invoke(this, enabled);
+            editList.ForEach(e => e.Activate(args));
         }
     }
 }

@@ -1,22 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace UnofficialCrusaderPatch
 {
     public static partial class SectionEditor
     {
-        static List<byte> dataBuf = new List<byte>();
+        static uint currentLen = 0;
+        static byte[] buffer = new byte[0];
 
-        public static AddressSpace GetDataPos()
+        public static AddressSpace ReserveBufferSpace(uint size)
         {
-            return new AddressSpace(ucpSec.VirtAddr + (uint)dataBuf.Count, ucpSec.RawAddr + (uint)dataBuf.Count);
+            uint newLen = currentLen + size;
+
+            uint rawSize = GetMultiples(newLen, header.FileAlignment);
+            if (buffer.Length < rawSize)
+            {
+                byte[] newBuffer = new byte[rawSize];
+                buffer.CopyTo(newBuffer, currentLen);
+                buffer = newBuffer;
+            }
+
+            var space = new AddressSpace(ucpSec.VirtAddr + currentLen, currentLen);
+            currentLen = newLen;
+            return space;
         }
 
-        public static void AddData(IEnumerable<byte> data)
+        public static byte[] GetBuffer()
         {
-            dataBuf.AddRange(data);
+            return buffer;
         }
+
+
+
+
         
         static PEHeader header;
         static SectionHeader ucpSec;
@@ -42,16 +58,15 @@ namespace UnofficialCrusaderPatch
         
         public static byte[] AttachSection(byte[] input)
         {
-            //if (dataBuf.Count == 0)
-            //    return input;
+            if (buffer.Length == 0)
+                return input;
 
-            uint size = (uint)dataBuf.Count + 1;
+            uint size = (uint)buffer.Length;
             ucpSec.VirtSize = GetMultiples(size, header.SectionAlignment);
             ucpSec.RawSize = GetMultiples(size, header.FileAlignment);
 
             byte[] data = header.AddSection(input, ucpSec);
-
-            dataBuf.CopyTo(data, input.Length);
+            buffer.CopyTo(data, input.Length);
 
             return data;
         }

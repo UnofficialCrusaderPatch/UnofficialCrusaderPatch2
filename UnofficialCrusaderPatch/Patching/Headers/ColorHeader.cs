@@ -12,7 +12,7 @@ namespace UnofficialCrusaderPatch
     public class ColorHeader : ValueHeader
     {
         public ColorHeader(string descrIdent)
-            : base(descrIdent, 4, 1)
+            : base(descrIdent, false, 4, 1)
         {
         }
 

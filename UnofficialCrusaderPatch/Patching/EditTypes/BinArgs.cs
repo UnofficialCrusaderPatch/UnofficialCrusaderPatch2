@@ -1,21 +1,21 @@
 ﻿namespace UnofficialCrusaderPatch
 {
-    public struct BinArgs
+    public class BinArgs
     {
         byte[] data;
         public byte[] Buffer => data;
 
-        byte[] oriData;
-        public byte[] Original => oriData;
-
         LabelCollection labels;
         public LabelCollection Labels => labels;
 
-        public BinArgs(byte[] data, byte[] oriData, LabelCollection labels)
+        double value;
+        public double Value => value;
+
+        public BinArgs(byte[] data, LabelCollection labels, double value)
         {
             this.data = data;
-            this.oriData = oriData;
             this.labels = labels;
+            this.value = value;
         }
 
         public static implicit operator byte[](BinArgs data)

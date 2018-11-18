@@ -5,52 +5,56 @@ using System.Text;
 
 namespace UnofficialCrusaderPatch
 {
-    abstract class BinValue : BinBytes
+    abstract class BinValue : BinElement
     {
         double factor;
         public double Factor => factor;
 
-        string valueIdent;
-        public string ValueIdent => valueIdent;
+        double offset;
+        public double Offset => offset;
 
-        public BinValue(int size, double factor = 1, string valueIdent = null)
-            : base(new byte[size])
+        public BinValue(double factor = 1, double offset = 0)
         {
             this.factor = factor;
-            this.valueIdent = valueIdent;
-        }
-
-        public void Set(double value)
-        {
-            this.GetBytes(value).CopyTo(byteBuf, 0);
+            this.offset = offset;
         }
 
         protected abstract byte[] GetBytes(double value);
+
+        public override void Write(BinArgs data)
+        {
+            byte[] buf = this.GetBytes(factor * data.Value + offset);
+            buf.CopyTo(data, this.RawAddress);
+        }
     }
 
     class BinInt32Value : BinValue
     {
-        public BinInt32Value(double factor = 1, string valueIdent = null)
-            : base(4, factor, valueIdent)
+        public override int Length => 4;
+
+        public BinInt32Value(double factor = 1, double offset = 0)
+            : base(factor, offset)
         {
         }
 
         protected override byte[] GetBytes(double value)
         {
-            return BitConverter.GetBytes((int)(Factor * value));
+            return BitConverter.GetBytes((int)value);
         }
     }
 
     class BinByteValue : BinValue
     {
-        public BinByteValue(string valueIdent = null, double factor = 1)
-            : base(1, factor, valueIdent)
+        public override int Length => 1;
+
+        public BinByteValue(double factor = 1, double offset = 0)
+            : base(factor, offset)
         {
         }
 
         protected override byte[] GetBytes(double value)
         {
-            return new byte[1] { (byte)(Factor * value) };
+            return new byte[1] { (byte)value };
         }
     }
 }

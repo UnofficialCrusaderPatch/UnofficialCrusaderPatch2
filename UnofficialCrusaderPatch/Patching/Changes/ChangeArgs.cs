@@ -2,22 +2,17 @@
 
 namespace UnofficialCrusaderPatch
 {
-    public class ChangeArgs
+    public struct ChangeArgs
     {
-        byte[] data;
-        public byte[] Data => data;
-
-        byte[] oriData;
-        public byte[] OriData => oriData;
-
-        DirectoryInfo aivDir;
-        public DirectoryInfo AIVDir => aivDir;
+        public byte[] Data;
+        public byte[] OriData;
+        public DirectoryInfo AIVDir;
 
         public ChangeArgs(byte[] data, byte[] oriData, DirectoryInfo aivDir)
         {
-            this.data = data;
-            this.oriData = oriData;
-            this.aivDir = aivDir;
+            this.Data = data;
+            this.OriData = oriData;
+            this.AIVDir = aivDir;
         }
     }
 }

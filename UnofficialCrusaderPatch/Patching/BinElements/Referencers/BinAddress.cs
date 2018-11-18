@@ -7,20 +7,18 @@ namespace UnofficialCrusaderPatch
 {
     class BinAddress : BinLabel
     {
+        int offset;
         public BinAddress(string name, int offset)
             : base(name)
         {
             this.offset = offset;
         }
 
-        public override void SetOffset(int offset) { }
-        public override void Resolve(int editAddress) { }
-
-        public override EditResult Write(int address, BinArgs data)
+        public override void Initialize(int rawAddr, int virtAddr, byte[] original)
         {
-            this.labelAddress = BitConverter.ToInt32(data.Original, address + this.offset);
-            return EditResult.NoErrors;
+            virtAddr = BitConverter.ToInt32(original, rawAddr + this.offset);
+            rawAddr = virtAddr - 0x400000;
+            base.Initialize(rawAddr, virtAddr, original);
         }
-
     }
 }

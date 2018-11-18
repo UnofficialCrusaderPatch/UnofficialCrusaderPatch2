@@ -11,8 +11,8 @@ namespace UnofficialCrusaderPatch
     {
         double min, max, delta;
 
-        public SliderHeader(string descrIdent, double min, double max, double delta, double oriVal, double suggested)
-            : base(descrIdent, oriVal, suggested)
+        public SliderHeader(string descrIdent, bool isEnabled, double min, double max, double delta, double oriVal, double suggested)
+            : base(descrIdent, isEnabled, oriVal, suggested)
         {
             this.min = min;
             this.max = max;

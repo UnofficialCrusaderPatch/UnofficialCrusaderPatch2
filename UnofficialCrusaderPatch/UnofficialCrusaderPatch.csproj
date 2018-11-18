@@ -67,8 +67,9 @@
     </Compile>
     <Compile Include="Localization\Localization.cs" />
     <Compile Include="Localization\TextReferencer.cs" />
-    <Compile Include="Patching\BinElements\BinAddress.cs" />
-    <Compile Include="Patching\BinElements\BinArgs.cs" />
+    <Compile Include="Patching\BinElements\BinGroup.cs" />
+    <Compile Include="Patching\BinElements\Referencers\BinAddress.cs" />
+    <Compile Include="Patching\EditTypes\BinArgs.cs" />
     <Compile Include="Patching\BinElements\StructTypes\BinBytes.cs" />
     <Compile Include="Patching\BinElements\BinElement.cs" />
     <Compile Include="Patching\BinElements\Referencers\BinHook.cs" />
@@ -80,18 +81,20 @@
     <Compile Include="Patching\BinElements\Referencers\BinLabel.cs" />
     <Compile Include="Patching\BinElements\Referencers\BinRefTo.cs" />
     <Compile Include="Patching\BinElements\BinSkip.cs" />
-    <Compile Include="Patching\BinElements\StructTypes\BinByte.cs" />
     <Compile Include="Patching\Changes\Change.cs" />
     <Compile Include="Patching\Changes\ChangeArgs.cs" />
-    <Compile Include="Patching\Changes\ChangeEdit.cs" />
-    <Compile Include="Patching\Changes\ChangeElement.cs" />
+    <Compile Include="Patching\Changes\ChangeType.cs" />
+    <Compile Include="Patching\EditTypes\BinaryEditBase.cs" />
+    <Compile Include="Patching\EditTypes\ChangeEdit.cs" />
+    <Compile Include="Patching\EditTypes\UCPEdit.cs" />
     <Compile Include="Patching\Headers\ChangeHeader.cs" />
+    <Compile Include="Patching\Headers\DefaultHeader.cs" />
     <Compile Include="Patching\Headers\ColorHeader.cs" />
     <Compile Include="Patching\Headers\SliderHeader.cs" />
     <Compile Include="Patching\EditTypes\AIVEdit.cs" />
     <Compile Include="Patching\EditTypes\BinaryEdit.cs" />
-    <Compile Include="Patching\EditTypes\EditResult.cs" />
-    <Compile Include="Patching\EditTypes\LabelCollection.cs" />
+    <Compile Include="Patching\EditTypes\EditFailures.cs" />
+    <Compile Include="Patching\Headers\LabelCollection.cs" />
     <Compile Include="Patching\Headers\ValueHeader.cs" />
     <Compile Include="Patching\Patcher.cs" />
     <Compile Include="Patching\Section\AddressSpace.cs" />

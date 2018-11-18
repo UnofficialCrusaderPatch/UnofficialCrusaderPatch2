@@ -13,7 +13,10 @@ namespace UnofficialCrusaderPatch
         {
             return new Change(locIdent, type, checkedDefault)
             {
-                new BinaryEdit(locIdent) { new BinShort(newValue), }
+                new DefaultHeader(locIdent, true)
+                {
+                    CreateEdit(locIdent, newValue)
+                }
             };
         }
 

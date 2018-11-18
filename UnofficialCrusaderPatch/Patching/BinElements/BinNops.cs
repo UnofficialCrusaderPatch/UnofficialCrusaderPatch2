@@ -10,11 +10,10 @@
             this.count = count;
         }
 
-        public override EditResult Write(int address, BinArgs data)
+        public override void Write(BinArgs data)
         {
             for (int i = 0; i < count; i++)
-                data.Buffer[address + i] = 0x90;
-            return EditResult.NoErrors;
+                data.Buffer[this.RawAddress + i] = 0x90;
         }
     }
 }

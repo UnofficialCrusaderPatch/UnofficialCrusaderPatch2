@@ -1,8 +1,7 @@
 ﻿namespace UnofficialCrusaderPatch
 {
-    public enum EditResult
+    public enum EditFailure
     {
-        NoErrors,
         BlockNotFound,
         MultipleBlocks,
     }

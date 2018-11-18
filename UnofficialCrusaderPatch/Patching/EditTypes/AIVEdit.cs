@@ -17,7 +17,8 @@ namespace UnofficialCrusaderPatch
             this.resourceFolder = "UnofficialCrusaderPatch." + resourceFolder;
         }
 
-        public override EditResult Activate(ChangeArgs args)
+        public override bool Initialize(ChangeArgs args) => true;
+        public override void Activate(ChangeArgs args)
         {
             Assembly asm = Assembly.GetExecutingAssembly();
 
@@ -33,15 +34,14 @@ namespace UnofficialCrusaderPatch
                     }
                 }
             }
-
-            return EditResult.NoErrors;
         }
         
-        public static Change Change(string resourceFolder, ChangeType type, bool checkedDefault = true)
+        public static DefaultHeader Header(string resourceFolder, bool isEnabled)
         {
-            return new Change("aiv_" + resourceFolder, type, checkedDefault)
+            string ident = "aiv_" + resourceFolder;
+            return new DefaultHeader(ident, isEnabled)
             {
-                new AIVEdit(resourceFolder)
+                new AIVEdit(resourceFolder),
             };
         }
     }

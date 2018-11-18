@@ -84,15 +84,16 @@ namespace UnofficialCrusaderPatch
             SetPercent?.Invoke(++index / count);
 
 
-            
+
 
             // change version display in main menu
-            var displayResult = Version.MenuChange.Activate(args);
-            if (displayResult != EditResult.NoErrors)
+            try
             {
-                const string str = "Your version is currently unsupported: {0} in menu display edit.";
-                string message = string.Format(str, displayResult);
-                throw new Exception(message);
+                Version.MenuChange.Activate(args);
+            }
+            catch(Exception e)
+            {
+                Debug.Error(e);
             }
             SetPercent?.Invoke(++index / count);
 
@@ -145,6 +146,13 @@ namespace UnofficialCrusaderPatch
 
                 Directory.Delete(backupPath, true);
             }
+        }
+
+        static readonly Dictionary<string, EditFailure> fails = new Dictionary<string, EditFailure>();
+
+        public static void AddFailure(string ident, EditFailure failure)
+        {
+            fails.Add(ident, failure);
         }
     }
 }
