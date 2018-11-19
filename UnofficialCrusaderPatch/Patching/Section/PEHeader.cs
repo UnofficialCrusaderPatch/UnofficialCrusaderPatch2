@@ -44,8 +44,8 @@ namespace UnofficialCrusaderPatch
             public byte[] AddSection(byte[] input, SectionHeader sec)
             {
                 // make space
-                byte[] data = new byte[input.Length + sec.RawSize];
-                input.CopyTo(data, 0);
+                byte[] data = new byte[sec.RawAddr + sec.RawSize];
+                Buffer.BlockCopy(input, 0, data, 0, (int)sec.RawAddr);
 
                 // number of sections
                 ushort sectionCount = (ushort)(this.NumberOfSections + 1);

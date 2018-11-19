@@ -66,7 +66,7 @@ namespace UnofficialCrusaderPatch
             ucpSec.RawSize = GetMultiples(size, header.FileAlignment);
 
             byte[] data = header.AddSection(input, ucpSec);
-            buffer.CopyTo(data, input.Length);
+            Buffer.BlockCopy(buffer, 0, data, (int)ucpSec.RawAddr, buffer.Length);
 
             return data;
         }

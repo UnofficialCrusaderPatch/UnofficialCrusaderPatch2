@@ -349,10 +349,12 @@ u_laddermen
 u_laddermen_descr
 {
 	" - Leiterträger sterben erst nach 12 Pfeiltreffern statt 5
- - Leiterträger sterben erst nach 5 Armbrust- oder Schleudertreffern statt 2"
+ - Leiterträger sterben erst nach 5 Armbrust- oder Schleudertreffern statt 2
+ - Leiterträger kosten 20 Gold statt 4"
 
 	" - Laddermen die after 12 arrow hits instead of 5
- - Laddermen die after 5 crossbow or slinger hits instead of 2"
+ - Laddermen die after 5 crossbow or slinger hits instead of 2
+ - Laddermen cost 20 gold instead of 4"
 }
 
 o_playercolor
