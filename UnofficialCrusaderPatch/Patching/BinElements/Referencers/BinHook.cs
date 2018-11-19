@@ -13,7 +13,7 @@ namespace UnofficialCrusaderPatch
         {
         }
 
-        public BinHook(int hookLen, string jmpBackLabel, byte[] jmpBytes)
+        public BinHook(int hookLen, string jmpBackLabel, params byte[] jmpBytes)
             : base(true)
         {
             if (hookLen < jmpBytes.Length + 4)
@@ -23,6 +23,11 @@ namespace UnofficialCrusaderPatch
             int nopsLen = hookLen - (4 + jmpBytes.Length);
             if (nopsLen > 0)
                 base.AddToGroup(new BinNops(nopsLen));
+            if (jmpBackLabel == null)
+            {
+                jmpBackLabel = this.GetHashCode().ToString() + "back";
+                base.AddToGroup(new BinLabel(jmpBackLabel));
+            }
 
             base.Add(new BinBytes(0xE9));
             base.Add(new BinRefTo(jmpBackLabel));
@@ -56,6 +61,15 @@ namespace UnofficialCrusaderPatch
                 hook,
                 new BinLabel(ident)
             };
+        }
+
+        public static BinGroup CreateJMP(int hookLen, params BinElement[] code)
+        {
+            var hook = new BinHook(hookLen, null, new byte[1] { 0xE9 });
+            foreach (BinElement element in code)
+                hook.Add(element);
+
+            return hook;
         }
     }
 }

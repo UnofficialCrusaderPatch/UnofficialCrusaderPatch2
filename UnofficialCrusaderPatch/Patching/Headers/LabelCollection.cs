@@ -9,7 +9,14 @@ namespace UnofficialCrusaderPatch
 
         public void Add(BinLabel label)
         {
-            dict.Add(label.Name, label);
+            try
+            {
+                dict.Add(label.Name, label);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(label.Name + "\n" + e);
+            }
         }
 
         public int GetLabel(string labelName)

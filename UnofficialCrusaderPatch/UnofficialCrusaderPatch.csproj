@@ -945,6 +945,19 @@
     <EmbeddedResource Include="CodeBlocks\o_playercolor_mm_shield_hover.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_minilist2.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_minilist1.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_scorename.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_trail_name.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_trail_shield.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_trail_shield2.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_trail_portrait.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_chat.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_gameover.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_endscore.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_chat2.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_table1.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_table2.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_table_back.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_table_drag.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

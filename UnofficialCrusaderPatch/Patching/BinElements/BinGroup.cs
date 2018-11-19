@@ -10,7 +10,7 @@ namespace UnofficialCrusaderPatch
         List<BinElement> elements = new List<BinElement>();
         public IEnumerable<BinElement> Elements => elements;
 
-        protected BinGroup(params BinElement[] input)
+        public BinGroup(params BinElement[] input)
         {
             this.elements.AddRange(input);
         }

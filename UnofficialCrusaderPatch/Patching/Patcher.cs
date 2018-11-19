@@ -63,6 +63,16 @@ namespace UnofficialCrusaderPatch
 
             DoChanges(filePath, aivDir, SetPercent);
             SetPercent?.Invoke(1);
+
+            if (fails.Count > 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("The following changes could not be provided probably due to version differences:");
+                foreach (var f in fails)
+                    sb.AppendLine(f.Value + " " + f.Key);
+
+                Debug.Show(sb.ToString());
+            }
         }
 
 

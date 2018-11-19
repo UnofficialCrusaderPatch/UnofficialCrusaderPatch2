@@ -5,11 +5,15 @@ using System.Text;
 
 namespace UnofficialCrusaderPatch
 {
-    // spieler farben
-    // rekrutierungsintervall
-    // demolishing -> option economy & castles
+    // farben:
+    // unit fade out
+    // message shield
+
+    // rekrutierungsintervalle
     // bauerngrenze
     // KI Handeln untereinander
+    // schlafen legen deaktivieren
+    // trader post priority
 
     // Störkatapult positionierung
     // Schwein Nahrung verkaufen & Friedrich Waffen ?
@@ -315,6 +319,272 @@ namespace UnofficialCrusaderPatch
             {
                 new ColorHeader("o_playercolor")
                 {
+                    #region Round Table
+
+                    // 004AF3D0
+                    BinHook.CreateEdit("o_playercolor_table_drag", 6,
+                        0x8B, 0xC5, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT 00427CD2
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT 00427CD8
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT 00427CD8
+                        0xB0, 0x01, //  MOV AL,1
+                        0x8D, 0x80, 0x22, 0x02, 0x00, 0x00 //  lea eax, [EAX + 222]
+                    ),   
+                    
+                    // 004AEFE9
+                    BinHook.CreateEdit("o_playercolor_table_back", 6,
+                        0x89, 0xF0, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT 00427CD2
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT 00427CD8
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT 00427CD8
+                        0xB0, 0x01, //  MOV AL,1
+                        0x8D, 0x90, 0x22, 0x02, 0x00, 0x00 //  lea edx, [EAX + 222]
+                    ),   
+
+                    // 004AF15A
+                    BinHook.CreateEdit("o_playercolor_table1", 7, 
+                            0x89, 0xF0, // mov eax, esi
+                            0x3C, 0x01, //  CMP AL,1
+                            0x75, 0x04, //  JNE SHORT
+                            0xB0, new BinByteValue(), //  MOV AL, value
+                            0xEB, 0x06, //  JMP SHORT
+                            0x3C, new BinByteValue(), //  CMP AL, value
+                            0x75, 0x02, //  JNE SHORT
+                            0xB0, 0x01, //  MOV AL,1
+                            0x8B, 0x14, 0x85, // mov edx, [eax*4 + namecolors]
+                            new BinRefTo("namecolors", false)
+                    ),
+
+                    // 004AF1A9
+                    BinHook.CreateEdit("o_playercolor_table2", 7,
+                            0x89, 0xF0, // mov eax, esi
+                            0x3C, 0x01, //  CMP AL,1
+                            0x75, 0x04, //  JNE SHORT
+                            0xB0, new BinByteValue(), //  MOV AL, value
+                            0xEB, 0x06, //  JMP SHORT
+                            0x3C, new BinByteValue(), //  CMP AL, value
+                            0x75, 0x02, //  JNE SHORT
+                            0xB0, 0x01, //  MOV AL,1
+                            0x8B, 0x04, 0x85, // mov eax, [eax*4 + namecolors]
+                            new BinRefTo("namecolors", false)
+                    ),
+
+                    #endregion
+
+                    #region scoreboards
+
+                    // 004D60B1 end results scoreboard
+                    BinHook.CreateEdit("o_playercolor_endscore", 7,
+                            0x89, 0xF0, // mov eax, esi
+                            0x3C, 0x01, //  CMP AL,1
+                            0x75, 0x04, //  JNE SHORT 
+                            0xB0, new BinByteValue(), //  MOV AL, value
+                            0xEB, 0x06, //  JMP SHORT
+                            0x3C, new BinByteValue(), //  CMP AL, value
+                            0x75, 0x02, //  JNE SHORT
+                            0xB0, 0x01, //  MOV AL,1
+                            0x8B, 0x04, 0x85, // mov eax, [eax*4 + namecolors]
+                            new BinRefTo("namecolors", false)
+                    ),
+
+
+                    // 004AFCBD game over
+                    new BinaryEdit("o_playercolor_gameover")
+                    {
+                        new BinAddress("someoffset", 5),
+
+                        BinHook.CreateJMP(9,
+                            0x8B, 0xC7, // mov eax, edi
+                            0x2D, new BinRefTo("namecolors", false), // sub eax, namecolors
+                            0x3C, 0x04, //cmp al, value
+                            0x75, 0x04, //  JNE SHORT 
+                            0xB0, new BinByteValue(4), //  MOV AL, value
+                            0xEB, 0x06, //  JMP SHORT
+                            0x3C, new BinByteValue(4), //  CMP AL, value
+                            0x75, 0x02, //  JNE SHORT
+                            0xB0, 0x04, //  MOV AL,1
+                            0x8B, 0x80, // mov eax, [eax + namecolors]
+                            new BinRefTo("namecolors", false),
+                            0x8B, 0x0C, 0x85, // mov ecx, [eax*4 + someoffset]
+                            new BinRefTo("someoffset", false)
+                        ),
+
+                        new BinSkip(0x1B),
+
+                        BinHook.CreateJMP(9,
+                            0x8B, 0xC7, // mov eax, edi
+                            0x2D, new BinRefTo("namecolors", false), // sub eax, namecolors
+                            0x3C, 0x04, //cmp al, value
+                            0x75, 0x04, //  JNE SHORT 
+                            0xB0, new BinByteValue(4), //  MOV AL, value
+                            0xEB, 0x06, //  JMP SHORT
+                            0x3C, new BinByteValue(4), //  CMP AL, value
+                            0x75, 0x02, //  JNE SHORT
+                            0xB0, 0x04, //  MOV AL,1
+                            0x8B, 0x80, // mov eax, [eax + namecolors]
+                            new BinRefTo("namecolors", false),
+                            0x8B, 0x0C, 0x85, // mov ecx, [eax*4 + someoffset]
+                            new BinRefTo("someoffset", false)
+                        ),
+
+                        new BinSkip(0x16),
+
+                        BinHook.CreateJMP(9,
+                            0x8B, 0xC7, // mov eax, edi
+                            0x2D, new BinRefTo("namecolors", false), // sub eax, namecolors
+                            0x3C, 0x04, //cmp al, value
+                            0x75, 0x04, //  JNE SHORT 
+                            0xB0, new BinByteValue(4), //  MOV AL, value
+                            0xEB, 0x06, //  JMP SHORT
+                            0x3C, new BinByteValue(4), //  CMP AL, value
+                            0x75, 0x02, //  JNE SHORT
+                            0xB0, 0x04, //  MOV AL,1
+                            0x8B, 0x80, // mov eax, [eax + namecolors]
+                            new BinRefTo("namecolors", false),
+                            0x8B, 0x14, 0x85, // mov edx, [eax*4 + someoffset]
+                            new BinRefTo("someoffset", false)
+                        ),
+
+                        new BinSkip(0x20),
+
+                        BinHook.CreateJMP(9,
+                            0x8B, 0xC7, // mov eax, edi
+                            0x2D, new BinRefTo("namecolors", false), // sub eax, namecolors
+                            0x3C, 0x04, //cmp al, value
+                            0x75, 0x04, //  JNE SHORT 
+                            0xB0, new BinByteValue(4), //  MOV AL, value
+                            0xEB, 0x06, //  JMP SHORT
+                            0x3C, new BinByteValue(4), //  CMP AL, value
+                            0x75, 0x02, //  JNE SHORT
+                            0xB0, 0x04, //  MOV AL,1
+                            0x8B, 0x80, // mov eax, [eax + namecolors]
+                            new BinRefTo("namecolors", false),
+                            0x8B, 0x14, 0x85, // mov edx, [eax*4 + someoffset]
+                            new BinRefTo("someoffset", false)
+                        ),
+                    },
+                
+                    // 004AE562 mightiest lord
+                    BinHook.CreateEdit("o_playercolor_scorename", 7,
+                            0x89, 0xF0, // mov eax, esi
+                            0x3C, 0x01, //  CMP AL,1
+                            0x75, 0x04, //  JNE SHORT 
+                            0xB0, new BinByteValue(), //  MOV AL, value
+                            0xEB, 0x06, //  JMP SHORT
+                            0x3C, new BinByteValue(), //  CMP AL, value
+                            0x75, 0x02, //  JNE SHORT
+                            0xB0, 0x01, //  MOV AL,1
+                            0x8B, 0x04, 0x85, // mov eax, [eax*4 + varscore]
+                            new BinRefTo("namecolors", false)
+                    ),
+
+                    #endregion
+
+                    #region Chat
+
+                    // 0047FA16
+                    BinHook.CreateEdit("o_playercolor_chat", 7,
+                        0x80, 0xF9, 0x01, //  CMP CL,1
+                        0x75, 0x04, //  JNE SHORT 2. CMP
+                        0xB1, new BinByteValue(), //  MOV CL, value
+                        0xEB, 0x07, //  JMP SHORT END
+                        0x80, 0xF9, new BinByteValue(), //  CMP CL, value
+                        0x75, 0x02, //  JNE SHORT END
+                        0xB1, 0x01, //  MOV CL,1
+                        0x8B, 0x14, 0x8D, // mov edx, [ecx*4 + varscore]
+                        new BinRefTo("namecolors", false)
+                    ),
+
+                    // 0047FAEE
+                    BinHook.CreateEdit("o_playercolor_chat2", 7,
+                        0x80, 0xF9, 0x01, //  CMP CL,1
+                        0x75, 0x04, //  JNE SHORT 2. CMP
+                        0xB1, new BinByteValue(), //  MOV CL, value
+                        0xEB, 0x07, //  JMP SHORT END
+                        0x80, 0xF9, new BinByteValue(), //  CMP CL, value
+                        0x75, 0x02, //  JNE SHORT END
+                        0xB1, 0x01, //  MOV CL,1
+                        0x8B, 0x14, 0x8D, // mov edx, [ecx*4 + varscore]
+                        new BinRefTo("namecolors", false)
+                    ),
+
+                    #endregion
+
+                    #region Trail
+
+                    // 004D8B05
+                    BinHook.CreateEdit("o_playercolor_trail_portrait", 6,
+                        0x8B, 0xC3, // mov eax, ebx
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT 00427CD2
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT 00427CD8
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT 00427CD8
+                        0xB0, 0x01, //  MOV AL,1
+                        0x05, 0x22, 0x02, 0x00, 0x00 //  ADD EAX,222
+                    ),    
+                    
+                    // 004DE2C9
+                    BinHook.CreateEdit("o_playercolor_trail_shield2", 7,
+
+                        0x8B, 0xC6, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x01, //  MOV AL,1
+                        
+                        0x05, 0xD5, 0x01, 0x00, 0x00, // add eax, 1D5
+                        0x50 // push eax
+                    ),   
+
+                    // 004DDA5F
+                    BinHook.CreateEdit("o_playercolor_trail_shield", 6,
+                        0x80, 0xFA, 0x00, //  CMP DL,0
+                        0x75, 0x04, //  JNE SHORT 2. CMP
+                        0xB2, new BinByteValue(offset:-1), //  MOV DL, value
+                        0xEB, 0x07, //  JMP SHORT END
+                        0x80, 0xFA, new BinByteValue(offset:-1), //  CMP DL, value
+                        0x75, 0x02, //  JNE SHORT END
+                        0xB2, 0x00, //  MOV DL,0
+                        0x81, 0xC2, 0xD6, 0x01, 0x00, 0x00 // ori code,  ADD EDX,1D6
+                    ),   
+
+
+                    // 4DE26D
+                    new BinaryEdit("o_playercolor_trail_name")
+                    {
+                        new BinAddress("namecolors", 3),
+
+                        new BinHook(7, "namelabel", 0xE9)
+                        {
+                            0x89, 0xF0, // mov eax, esi
+                            0x3C, 0x01, //  CMP AL,1
+                            0x75, 0x04, //  JNE SHORT
+                            0xB0, new BinByteValue(), //  MOV AL, value
+                            0xEB, 0x06, //  JMP SHORT
+                            0x3C, new BinByteValue(), //  CMP AL, value
+                            0x75, 0x02, //  JNE SHORT
+                            0xB0, 0x01, //  MOV AL,1
+                            0x8B, 0x0C, 0x85, // mov ecx, [esi*4 + varscore]
+                            new BinRefTo("namecolors", false)
+                        },
+                        new BinLabel("namelabel"),
+                    },
+
+                    #endregion
+
+                    #region Lineup menu
+
                     // 00448C78
                     BinHook.CreateEdit("o_playercolor_minilist1", 5,
                         0x57, 0x56, // push edi, esi
@@ -328,7 +598,7 @@ namespace UnofficialCrusaderPatch
                         0x75, 0x02, //  JNE SHORT
                         0xB0, 0x00, //  MOV AL,0
                         
-                        0x05, 0xCF, 0x02, 0x00, 0x00, // push eax
+                        0x05, 0xCF, 0x02, 0x00, 0x00, // add eax, 2CF
                         0x50, // push eax
                         0x6A, 0x2E // push 2E
                     ),   
@@ -346,7 +616,7 @@ namespace UnofficialCrusaderPatch
                         0x75, 0x02, //  JNE SHORT
                         0xB0, 0x00, //  MOV AL,0
                         
-                        0x05, 0xCF, 0x02, 0x00, 0x00, // push eax
+                        0x05, 0xCF, 0x02, 0x00, 0x00, // add eax, 2CF
                         0x50, // push eax
                         0x6A, 0x2E // push 2E
                     ),   
@@ -411,7 +681,11 @@ namespace UnofficialCrusaderPatch
                         0x75, 0x02, //  JNE SHORT 00427CD8
                         0xB0, 0x00, //  MOV AL,0
                         0x05, 0xCF, 0x02, 0x00, 0x00 // ori code,  ADD EAX,2CF
-                    ),     
+                    ),
+
+                    #endregion
+
+                    #region ingame
 
                     // 004B6CC3
                     BinHook.CreateEdit("o_playercolor_minimap", 6,
@@ -497,6 +771,8 @@ namespace UnofficialCrusaderPatch
 
                         new BinNops(2),
                     }
+
+                    #endregion
                 },
             },
             
