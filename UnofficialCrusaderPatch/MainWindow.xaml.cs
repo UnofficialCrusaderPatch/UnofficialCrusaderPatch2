@@ -152,7 +152,7 @@ namespace UnofficialCrusaderPatch
             {
                 Patcher.Install((string)arg, SetPercent);
 
-                Dispatcher.Invoke(() => iButtonInstall.IsEnabled = true, DispatcherPriority.Render);
+                Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => iButtonInstall.IsEnabled = true));
             }
             catch (Exception e)
             {
@@ -163,7 +163,7 @@ namespace UnofficialCrusaderPatch
 
         void SetPercent(double value)
         {
-            Dispatcher.Invoke(() => pbSetup.Value = value * 100.0, DispatcherPriority.Render);
+            Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => pbSetup.Value = value * 100.0));
         }
 
         #endregion

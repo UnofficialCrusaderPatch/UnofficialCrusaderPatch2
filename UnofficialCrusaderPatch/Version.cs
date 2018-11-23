@@ -9,6 +9,8 @@ namespace UnofficialCrusaderPatch
     // unit fade out
     // message shield
 
+    // wellen
+    // holz kaufen?
     // rekrutierungsintervalle
     // bauerngrenze
     // KI Handeln untereinander

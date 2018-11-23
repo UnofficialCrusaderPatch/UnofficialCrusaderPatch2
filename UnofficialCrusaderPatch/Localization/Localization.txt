@@ -1,10 +1,46 @@
 ﻿// Deutsch
-// Englisch
+// English
+// Polski
+// Pусский
 
 Name
 {
 	"Inoffizieller Crusader Patcher"
 	"Unofficial Crusader Patcher"
+	"Nieoficjalny Crusader Patcher"
+	"неофициальный Crusader Patcher"
+}
+
+ui_german
+{
+	"Deutsch"
+	"German"
+	"Niemiecki"
+	"немецкий"
+}
+
+ui_english
+{
+	"Englisch"
+	"English"
+	"Angielski"
+	"английский"
+}
+
+ui_polish
+{
+	"Polnisch"
+	"Polish"
+	"Polski"
+	"полировать"
+}
+
+ui_russian
+{
+	"Russisch"
+	"Russian"
+	"Rosyjski"
+	"Pусский"
 }
 
 u_ArabXBow
@@ -130,18 +166,6 @@ Any Crusader version is potentially supported, but since the changes where deriv
 
 
 Before any changes, backup files will be created. These can be restored via the 'Uninstall'-button or manually."
-}
-
-ui_german
-{
-	"Deutsch"
-	"German"
-}
-
-ui_english
-{
-	"Englisch"
-	"English"
 }
 
 ui_chooseLangTitle
@@ -432,8 +456,8 @@ can be disabled here, since it leads to ox tether spam if the AIs' quarries get 
 
 o_onlyai
 {
-	"Purer-KI-Modus aktivieren"
-	"Activate AI-only-mode"
+	"Zuschauer-Modus aktivieren"
+	"Activate Spectator-mode"
 }
 
 o_onlyai_descr

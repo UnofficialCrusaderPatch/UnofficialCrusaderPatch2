@@ -22,6 +22,8 @@ namespace UnofficialCrusaderPatch
         {
             new LanguageItem("ui_german"),
             new LanguageItem("ui_english"),
+            new LanguageItem("ui_polish"),
+            new LanguageItem("ui_russian"),
         };
 
         struct LanguageItem
@@ -54,13 +56,19 @@ namespace UnofficialCrusaderPatch
 
                 switch (info.Name)
                 {
+                    case "en":
+                    default:
+                        index = 1;
+                        break;
                     case "de":
                         index = 0;
                         break;
-                        //case "en":
-                        //default:
-                        //    selected = 1;
-                        //    break;
+                    case "pl":
+                        index = 2;
+                        break;
+                    case "ru":
+                        index = 3;
+                        break;
                 }
             }
 
