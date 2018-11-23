@@ -974,13 +974,18 @@
     <Resource Include="Graphics\frame.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\Localization.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="license.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Graphics\shield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\English.txt" />
+    <EmbeddedResource Include="Localization\German.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Polish.txt" />
+    <EmbeddedResource Include="Localization\Russian.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

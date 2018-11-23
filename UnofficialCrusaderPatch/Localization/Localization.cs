@@ -10,16 +10,46 @@ namespace UnofficialCrusaderPatch
 {
     static class Localization
     {
-        public static int LanguageIndex = 0;
+        public class Language
+        {
+            string name;
+            public string Name => name;
 
-        static Dictionary<string, string[]> LocalStrings = new Dictionary<string, string[]>(StringComparer.OrdinalIgnoreCase);
+            string ident;
+            public string Ident => ident;
+
+            string culture;
+            public string Culture => culture;
+
+            public Language(string name, string ident, string culture)
+            {
+                this.name = name;
+                this.ident = ident;
+                this.culture = culture;
+            }
+        }
+
+        static List<Language> translations = new List<Language>()
+        {
+            new Language("Deutsch", "German", "de"),
+            new Language("English", "English", "en"),
+            new Language("Polski", "Polish", "pl"),
+            new Language("русский язык", "Russian", "ru"),
+        };
+        public static IEnumerable<Language> Translations => translations;
+        public static int GetLangByCulture(string culture)
+        {
+            return translations.FindIndex(l => l.Culture == culture);
+        }
+
+
+        static Dictionary<string, string> localStrs = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         public static string Get(string identifier)
         {
-            if (LocalStrings.TryGetValue(identifier, out string[] texts))
+            if (localStrs.TryGetValue(identifier, out string text))
             {
-                if (LanguageIndex < texts.Length) return texts[LanguageIndex];
-                else return string.Format("{{Missing Translation|{0}}}", identifier);
+                return text;
             }
             return string.Format("{{Unknown Identifier: {0}}}", identifier);
         }
@@ -133,26 +163,31 @@ namespace UnofficialCrusaderPatch
             }
         }
 
-        static Localization()
+        public static void Load(int index)
         {
             try
             {
+                string path = string.Format("UnofficialCrusaderPatch.Localization.{0}.txt", translations[index].Ident);
+
                 Assembly asm = Assembly.GetExecutingAssembly();
-                using (var s = asm.GetManifestResourceStream("UnofficialCrusaderPatch.Localization.Localization.txt"))
+                using (var s = asm.GetManifestResourceStream(path))
                 using (Reader r = new Reader(s))
                 {
-                    List<string> texts = new List<string>(5);
+                    localStrs.Clear();
                     while (r.ReadLine(out string line))
                     {
                         string ident = line;
+
                         if (!r.ReadLine(out line) || !line.StartsWith("{"))
                             throw new Exception(ident + " Missing opening bracket at line " + r.LineNumber);
 
-                        while ((r.ReadString(out string text)))
-                            texts.Add(text);
+                        if (!r.ReadString(out string text))
+                            throw new Exception(ident + " Missing string at " + r.LineNumber);
 
-                        LocalStrings.Add(ident, texts.ToArray());
-                        texts.Clear();
+                        if (!r.ReadLine(out line) || !line.StartsWith("}"))
+                            throw new Exception(ident + " Missing closing bracket at line " + r.LineNumber);
+
+                        localStrs.Add(ident, text);
                     }
                 }
             }

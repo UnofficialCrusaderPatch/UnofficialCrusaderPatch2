@@ -8,13 +8,7 @@
         Title="Choose a language" Height="184.718" Width="216.153" ResizeMode="NoResize">
     <Grid>
         <TextBlock x:Name="textBlock" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" Height="61" Margin="10,10,0,0" VerticalAlignment="Top" Width="179"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="25,71,0,0" VerticalAlignment="Top" Width="152" SelectionChanged="SelectionChanged">
-            <ComboBox.ItemTemplate>
-                <HierarchicalDataTemplate>
-                    <TextBlock Text="{Binding Name}"/>
-                </HierarchicalDataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="25,71,0,0" VerticalAlignment="Top" Width="152" SelectionChanged="SelectionChanged"/>
         <Button x:Name="okButton" Content="OK" HorizontalAlignment="Left" Height="32" Margin="10,103,0,0" VerticalAlignment="Top" Width="86" Click="Accept_Click"/>
         <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" Height="32" Margin="103,103,0,0" VerticalAlignment="Top" Width="86
                 " Click="Cancel_Click"/>

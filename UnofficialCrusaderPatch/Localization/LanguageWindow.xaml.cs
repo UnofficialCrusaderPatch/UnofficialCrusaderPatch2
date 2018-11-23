@@ -18,32 +18,15 @@ namespace UnofficialCrusaderPatch
             InitializeComponent();
         }
 
-        static readonly LanguageItem[] Languages = new LanguageItem[]
-        {
-            new LanguageItem("ui_german"),
-            new LanguageItem("ui_english"),
-            new LanguageItem("ui_polish"),
-            new LanguageItem("ui_russian"),
-        };
-
-        struct LanguageItem
-        {
-            string ident;
-            public string Name { get { return Localization.Get(ident); } }
-
-            public LanguageItem(string ident)
-            {
-                this.ident = ident;
-            }
-        }
-
         public static bool ShowSelection()
         {
             LanguageWindow win = new LanguageWindow();
-            win.comboBox.ItemsSource = Languages;
+            ComboBox cb = win.comboBox;
+            cb.ItemsSource = Localization.Translations.Select(t => t.Name);
+
+            string culture = "en";
 
             CultureInfo info = CultureInfo.CurrentCulture;
-            int index = 1;
             if (info != null)
             {
                 for (int i = 0; i < 3; i++) // just to be safe, I don't know enough about cultureinfos
@@ -54,26 +37,10 @@ namespace UnofficialCrusaderPatch
                     info = parent;
                 }
 
-                switch (info.Name)
-                {
-                    case "en":
-                    default:
-                        index = 1;
-                        break;
-                    case "de":
-                        index = 0;
-                        break;
-                    case "pl":
-                        index = 2;
-                        break;
-                    case "ru":
-                        index = 3;
-                        break;
-                }
+                culture = info.Name;
             }
 
-            Localization.LanguageIndex = index;
-            win.comboBox.SelectedIndex = index;
+            cb.SelectedIndex = Localization.GetLangByCulture(culture);
             win.UpdateTexts();
 
             return win.ShowDialog() == true;
@@ -85,16 +52,11 @@ namespace UnofficialCrusaderPatch
             textBlock.Text = Localization.Get("ui_chooseLang");
             okButton.Content = Localization.Get("ui_accept");
             cancelButton.Content = Localization.Get("ui_cancel");
-
-            comboBox.Items.Refresh();
         }
 
         void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Localization.LanguageIndex == comboBox.SelectedIndex)
-                return;
-
-            Localization.LanguageIndex = comboBox.SelectedIndex;
+            Localization.Load(comboBox.SelectedIndex);
             UpdateTexts();
         }
 

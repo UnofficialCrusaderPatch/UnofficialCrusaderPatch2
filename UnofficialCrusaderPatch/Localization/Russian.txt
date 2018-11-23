@@ -1,0 +1,344 @@
+﻿Name
+{
+	"неофициальный Crusader Patcher"
+}
+
+u_ArabXBow
+{
+	"Increased armor of Arabic Swordsmen against crossbows"
+}
+
+u_arabxbow_descr
+{
+	" - Arabic Swordsmen only die after 6 crossbow hits intead of 3"
+}
+
+u_ArabWall
+{
+	"Arabic Swordsmen destroy walls faster"
+}
+
+u_ArabWall_descr
+{
+	"In Vanilla, arabic swordsmen destroy walls slower than any other melee unit. &
+With this option, the tear down speed against walls is about doubled for them, &
+putting them slightly above Spearmen."
+}
+
+u_spearmen
+{
+	"Increased armor of spearmen against ranged units"
+}
+
+u_spearmen_descr
+{
+	" - Spearmen only die after 5 arrow hits instead of 3
+ - Spearmen barely survive one crossbow hit, instead of getting one-shot"
+}
+
+ai_buy
+{
+	"Improved trader usage of the AI lords"
+}
+
+ai_buy_descr
+{
+	"In vanilla, some of the new AIs do not use the trading outpost correctly. &
+The following improvements will be carried out with this:
+ - Frederick and Marshal buy weapons and armors
+ - The Abbot and Emir buy bows
+ - Wazir buys apples like Nizar & Emir do"
+}
+
+ui_error
+{
+	"Error"
+}
+
+ui_SearchPath
+{
+	" Please select your installation folder:"
+}
+
+ui_search
+{
+	"Browse"
+}
+
+ui_continue
+{
+	"Continue"
+}
+
+ui_wrongpath
+{
+	"Stronghold Crusader could not be found in the specified path!"
+}
+
+ui_back
+{
+	"Back"
+}
+
+ui_install
+{
+	"Install"
+}
+
+ui_finished
+{
+	"Finished"
+}
+
+ui_welcometext
+{
+"This is an unofficial patch for Stronghold Crusader.
+The project ist available as open-source via [ref].
+
+Any Crusader version is potentially supported, but since the changes where &
+derived with the 1.41 Steam-Version, incompatibilities may appear. The setup &
+will then show error messages. The installed patch version is shown in the &
+bottom left corner of the main menu.
+
+
+Before any changes, backup files will be created. These can be restored via &
+the 'Uninstall'-button or manually."
+}
+
+ui_chooseLangTitle
+{
+	"Setup language"
+}
+
+ui_chooseLang
+{
+	"Please choose a language for this setup from the list below."
+}
+
+ui_accept
+{
+	"OK"
+}
+
+ui_cancel
+{
+	"Cancel"
+}
+
+aiv_evrey
+{
+	"Improved AI castles"
+}
+
+aiv_evreyfixed
+{
+	"Evrey's fixed vanilla castles"
+}
+
+aiv_evreyfixed_descr
+{
+	"Fixes bugs of the vanilla AI-Lord castles, like missing houses and guilds &
+or blocked entrances."
+}
+
+aiv_evreyimproved
+{
+	"Evrey's improved AI castles"
+}
+
+aiv_evreyimproved_descr
+{
+	"Grants the AI-Lords new and improved castles, based on the vanilla style.
+	
+Created by Evrey ([ref2])."
+}
+
+ui_uninstall
+{
+	"Uninstall"
+}
+
+ui_uninstalldone
+{
+	"Uninstall completed."
+}
+
+ai_recruitinterval
+{
+	"Increased recruitment speed"
+}
+
+ai_recruitinterval_descr
+{
+	"Sets the recruitment interval of all AIs to the lowest value (Rat/Richard niveau)"
+}
+
+ai_recruitsleep
+{
+	"Deactivate recruitment pauses of the AI"
+}
+
+ai_attacklimit
+{
+	"Increase of the attacking troops limit of the AIs"
+}
+
+ai_attacklimit_descr
+{
+	"The number of additional units which are added after the first attack is &
+limited to 200 in Vanilla. Here you can change this limit."
+}
+
+o_gamespeed
+{
+	"Extended game speed limits"
+}
+
+o_gamespeed_descr
+{
+	"The game speed can now be changed as follows:
+ - From 10 to 90 in intervals of 5
+ - From 90 to 200 in intervals of 10
+ - From 200 to 1000 in intervals of 100
+The new values are only available ingame via the +- keys, the slider in the &
+game menu remains unchanged."
+}
+
+ui_bugfix
+{
+	"Bugfixes"
+}
+
+ui_ailords
+{
+	"AI lords"
+}
+
+ui_troops
+{
+	"Units"
+}
+
+ui_other
+{
+	"Other"
+}
+
+o_responsivegates
+{
+	"Quicker responsiveness of gates towards enemies"
+}
+
+o_responsivegates_descr
+{
+	"Gates close themselves later if enemies get into range and open faster &
+when the danger is gone. The distance of an enemy for which the gates close &
+will be reduced from 200 to 140. The time after which the gates open, after & 
+all enemies left will be reduced from 1200 to 100."
+}
+
+ai_addattack
+{
+	"Increase of the rate of additional attack troops"
+}
+
+ai_addattack_descr
+{
+	"In Vanilla the attack troop number is increased after each attack by 5 &
+units on average. This value is the same for all AI lords and can be changed &
+here."
+}
+
+ai_addattack_alt_descr
+{
+	"Alternatively, the additional troop count can be made dependent on the &
+troop count of the first attack. Since this value is different for each AI, &
+the following attacks will also scale, instead of increasing by the same value &
+for each AI lord.
+Example: Scale factor = 0.5
+Sultan's attack troops = 10, 15, 20, 25, ...
+Saladin's attack troops = 50, 75, 100, 125, ..."
+}
+
+u_laddermen
+{
+	"Increased armor of laddermen against ranged units"
+}
+
+u_laddermen_descr
+{
+	" - Laddermen die after 12 arrow hits instead of 5
+ - Laddermen die after 5 crossbow or slinger hits instead of 2
+ - Laddermen cost 20 gold instead of 4"
+}
+
+o_playercolor
+{
+	"Change the color of player 1"
+}
+
+o_playercolor_descr
+{
+	" "
+}
+
+o_trooplimit
+{
+	"Increasement of the total troop limit"
+}
+
+o_trooplimit_descr
+{
+	"The limit for the total amount of units one player can field is set to &
+2400/Players in Vanilla. This value can be changed here."
+}
+
+ai_demolish
+{
+	"Deactivate demolishing for money of the AI lords"
+}
+
+ai_demolish_walls
+{
+	"fortification buildings"
+}
+
+ai_demolish_eco
+{
+	"econonmy buildings"
+}
+
+ai_demolish_walls_descr
+{
+	" "
+}
+
+ai_demolish_eco_descr
+{
+	"If the AI feels pressured, it likes to demolishes its economy or &
+fortification buildings to get quick money for troops. This feature sometimes &
+seems to be triggered without any visible reason and thus can be disabled here."
+}
+
+ai_tethers
+{
+	"Disable ox tether spam"
+}
+
+ai_tethers_descr
+{
+	"Usually, the AI builds for each new stone quarry a new ox tether, &
+independent of how many tether already exist. This can be disabled here, since &
+it leads to ox tether spam if the AIs' quarries get destroyed repeatedly."
+}
+
+o_onlyai
+{
+	"Activate Spectator-mode"
+}
+
+o_onlyai_descr
+{
+	"Removes player 1 so that you can only spectate and makes 8 AIs in one &
+round possible."
+}
