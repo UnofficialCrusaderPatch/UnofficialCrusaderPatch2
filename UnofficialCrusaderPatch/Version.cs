@@ -8,14 +8,14 @@ namespace UnofficialCrusaderPatch
     // farben:
     // unit fade out
     // message shield
+    // baumeister
 
-    // ai spielen & spectaten
-    // wellen
+    // ai spielen
+
     // holz kaufen?
     // rekrutierungsintervalle
     // bauerngrenze
     // KI Handeln untereinander
-    // schlafen legen deaktivieren
     // trader post priority
     // mehr truppen für burggraben ausheben
 
@@ -94,11 +94,56 @@ namespace UnofficialCrusaderPatch
             #region AI LORDS
 
             /*
+             * AI NO SLEEP
+             */
+
+            // 004CBCD5
+            new Change("ai_nosleep", ChangeType.AILords, false)
+            {
+                new DefaultHeader("ai_nosleep")
+                {
+                    new BinaryEdit("ai_nosleep")
+                    {
+                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
+                        new BinSkip(2),
+                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
+                        new BinSkip(10),
+                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
+                        new BinSkip(8),
+                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
+                        new BinSkip(8),
+                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
+                        new BinSkip(10),
+                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
+                        new BinSkip(10),
+                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
+                        new BinSkip(10),
+                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
+                        new BinSkip(10),
+                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
+                        new BinSkip(10),
+                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
+                        new BinSkip(10),
+                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
+                    }
+                }
+            },
+
+            /*
              *  AI OVERCLOCK
              */
 
-            // 0045CC20+6
-            BinInt32.Change("ai_overclock", ChangeType.AILords, false, 100), // default: 200
+            new Change("ai_overclock", ChangeType.AILords, false)
+            {
+                new SliderHeader("ai_overclock", true, 0.25, 1, 0.25, 1, 0.5)
+                {
+                    // 0045CC20+6
+                    new BinaryEdit("ai_overclock")
+                    {
+                        new BinInt32Value(100) // default: 200
+                    }
+                }
+            },
 
             /*
              * IMPROVED ATTACKS
@@ -945,8 +990,24 @@ namespace UnofficialCrusaderPatch
              * ONLY AI
              */
 
-            // 0048F96C => je to jmp to almost end
-            BinBytes.Change("o_onlyai", ChangeType.Other, false, 0xE9, 0x09, 0x01, 0x00, 0x00, 0x90),
+            new Change("o_onlyai", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_onlyai")
+                {
+                    // game start
+                    // 0048F96C => je to jmp to almost end
+                    BinBytes.CreateEdit("o_onlyai", 0xE9, 0x09, 0x01, 0x00, 0x00, 0x90),
+                    
+                    // loading
+                    // 004956FB => mov [selfindex], eax   to   mov [selfindex], ebx = 0
+                    BinBytes.CreateEdit("o_onlyai_load1", 0x90, 0x90, 0x90, 0x89, 0x1D),
+
+                    // missing in 1.3
+                    // loading, buildings menu
+                    // 0046B3FA => mov ecx, [selfindex]   to   xor ecx, ecx
+                    //BinBytes.CreateEdit("o_onlyai_load2", 0x31, 0xC9, 0x90, 0x90, 0x90, 0x90),
+                }
+            },
 
             #endregion
         };

@@ -963,6 +963,9 @@
     <EmbeddedResource Include="CodeBlocks\ai_attackwave.block" />
     <EmbeddedResource Include="CodeBlocks\ai_attackwave_wallcount.block" />
     <EmbeddedResource Include="CodeBlocks\ai_overclock.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_nosleep.block" />
+    <EmbeddedResource Include="CodeBlocks\o_onlyai_load1.block" />
+    <EmbeddedResource Include="CodeBlocks\o_onlyai_load2.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
