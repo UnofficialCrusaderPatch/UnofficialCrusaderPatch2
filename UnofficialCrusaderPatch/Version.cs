@@ -87,6 +87,8 @@ namespace UnofficialCrusaderPatch
             {
                 AIVEdit.Header("evreyfixed", true),
                 AIVEdit.Header("evreyimproved", false),
+
+                AIVEdit.Header("evreypitch", false),
             },
 
             #endregion

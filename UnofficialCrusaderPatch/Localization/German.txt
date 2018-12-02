@@ -90,20 +90,6 @@ ui_finished
 	"Fertig"
 }
 
-ui_welcometext
-{
-"Dies ist ein inoffizieller Patch für Stronghold Crusader.
-Das Projekt ist Open-Source unter [ref] zu finden.
-
-Potenziell wird jede Crusader-Version unterstützt, die Änderungen wurden &
-allerdings anhand der 1.41 Steam-Version hergeleitet. Im Falle von Versions-&
-Inkompatibilität wird der Setup Fehlermeldungen zeigen. Die installierte Patch-&
-Version wird unten links im Hauptmenü angezeigt.
-
-Vor jeglichen Änderungen werden Backup-Dateien erstellt, die über den &
-'Deinstallieren'-Button oder manuell wiederhergestellt werden können."
-}
-
 ui_chooseLangTitle
 {
 	"Setup-Sprache"
@@ -336,6 +322,66 @@ deaktiviert werden, da es zu Ochsenjoch-Spam führt, wenn die Steinbrüche &
 der AI immer wieder zerstört werden."
 }
 
+
+
+
+
+
+
+
+// =======================
+//          2.06
+// =======================
+
+
+
+ai_nosleep
+{
+	"Schlafenlegen bei Rohstoffmangel deaktivieren"
+}
+
+ai_nosleep_descr
+{
+	"Normalerweise legt die KI ihre Verarbeitungsgebäude schlafen, &
+sobald der nötige Rohstoff nicht mehr im Lager vorhanden ist. Dabei &
+wird keine Rücksicht genommen ob Produkte verloren gehen die &
+z.B. gerade zur Waffenkammer gebracht werden. Diese Funktion kann hier &
+komplett deaktiviert werden."
+}
+
+
+ai_overclock
+{
+	"Befehlsintervall verringern [Test]"
+}
+
+ai_overclock_descr
+{
+	"Hier kann das Intervall verändert werden, in dem die KI Befehle &
+wie z.B. Angriffsbefehle für Einheiten erteilt. Dadurch stehen Einheiten &
+nicht mehr so lange herum, nachdem sie ihr Angriffsziel zerstört/besiegt &
+haben.
+
+Es ist allerdings unbekannt was noch alles durch dieses Intervall &
+beeinflusst wird, darum ist es möglich dass Bugs auftreten."
+}
+
+ai_attackwave
+{
+	"Angriffswellen verbessern"
+}
+
+ai_attackwave_descr
+{
+	"In Vanilla schickt die KI bei einem Angriff immer nur &
+so viele Einheiten auf einmal los wie Mauernstücke erreichbar &
+sind. Bei Burgen die mit Gebäuden umbaut sind greifen die Einheiten &
+dadurch nur tröpfchenweise an.
+Durch die Aktivierung dieser Option greifen Einheiten auch Gebäude und &
+Befestigungsanlagen an, sowie Mauerstücke die bereits von einem Angreifer &
+besetzt sind."
+}
+
 o_onlyai
 {
 	"Zuschauer-Modus aktivieren"
@@ -344,5 +390,43 @@ o_onlyai
 o_onlyai_descr
 {
 	"Entfernt Spieler 1 sodass man nur noch zugucken kann und 8 KIs in einem &
-Kreuzzug möglich sind."
+Kreuzzug möglich sind. Gespeicherte Spiele laden jetzt auch ordnungsgemäß in &
+diesem Modus."
+}
+
+ui_welcometext
+{
+"Dies ist ein inoffizieller Patch für Stronghold Crusader.
+Das Projekt ist Open-Source unter [ref] zu finden.
+
+Potenziell wird jede Crusader-Version unterstützt, die Änderungen wurden &
+allerdings anhand der 1.41 Steam-Version hergeleitet. Im Falle von Versions-&
+Inkompatibilität wird der Setup Fehlermeldungen zeigen. Die installierte Patch-&
+Version wird unten links im Hauptmenü angezeigt.
+
+Vor jeglichen Änderungen werden Backup-Dateien erstellt, die über den &
+'Deinstallieren'-Button oder manuell wiederhergestellt werden können.
+
+
+An dieser Stelle möchte ich der Stronghold-Community danken die mich in &
+diesem Projekt so enthusiastisch unterstützt hat.
+
+Besonderer Dank geht an:
+FireFly Studios für die Stronghold-Serie
+Udwin, da sein YouTube-Channel mich an Stronghold erinnert hat
+Lolasik011 für die russische Übersetzung
+Radek2019 für die polnische Übersetzung
+Evrey für seine AI-Burgen"
+}
+
+aiv_evreypitch
+{
+	"Evreys gefixte Vanilla-Burgen [PitchNeeded Edit]"
+}
+
+aiv_evreypitch_descr
+{
+	"Erweitert 'Evreys gefixte Vanilla-Burgen', indem den Türmen von &
+Wazir, Schwein, Nizar und Emir Mangen und Ballisten hinzugefügt werden. &
+Editiert von PitchNeeded."
 }

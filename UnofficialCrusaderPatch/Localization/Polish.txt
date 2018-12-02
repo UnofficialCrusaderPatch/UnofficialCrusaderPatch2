@@ -90,21 +90,6 @@ ui_finished
 	"Zakończona sukcesem"
 }
 
-ui_welcometext
-{
-"Jest to nieoficjalna łatka dla Twierdzy Krzyżowej.
-Projekt jest dostępny jako open-source przez [ref].
-
-Każda wersja Crusadera jest potencjalnie obsługiwana, ale od czasu zmian, gdzie
-pochodzące z wersji 1.41 Steam, mogą pojawić się niekompatybilności.
-wyświetla się wtedy komunikat o błędzie. Zainstalowana łatka jest pokazana w &
-w lewym dolnym rogu głównego menu.
-
-
-Przed zmianami zostaną utworzone pliki kopii zapasowej. Można je przywrócić za pośrednictwem &
-przycisk "Odinstaluj" lub ręcznie."
-}
-
 ui_chooseLangTitle
 {
 	"Ustaw język"
@@ -334,6 +319,61 @@ niezależnie od tego, ile linków już istnieje. Można to wyłączyć tutaj, po
 Prowadzi to do spamu w O-Ox, gdy kamieniołomy AI są wielokrotnie niszczone."
 }
 
+
+
+
+
+
+
+
+
+
+// =======================
+//          2.06
+// =======================
+
+ai_nosleep
+{
+	"Disable sleeping mode for lack of resources"
+}
+
+ai_nosleep_descr
+{
+	"The AI usually puts its processing buildings to sleep, as soon &
+as the needed resource is missing. This is done without the regard for &
+losing products which are just on the way f.e. to the weapon chamber.
+This feature can be completely disabled here."
+}
+
+ai_overclock
+{
+	"Reduce AI order interval [Test]"
+}
+
+ai_overclock_descr
+{
+	"The interval in which the AI imposes orders, f.e. attacking orders &
+for units. This reduces the time in which units stand around doing nothing &
+after destroying/killing their last target.
+
+It is unknown what else is influenced by this interval, thus, bugs may appear &
+when using this feature."
+}
+
+ai_attackwave
+{
+	"Improve attack waves"
+}
+
+ai_attackwave_descr
+{
+	"The AI in an attack in vanilla only sends as many troops at once as &
+there are wall parts reachable. This causes units to drop in in small waves &
+when the target castle has a lot of buildings directly at its walls.
+This option makes units also attack civil and fortification buildings, as &
+well as wall parts which are already being attacked by one unit."
+}
+
 o_onlyai
 {
 	"Aktywuj tryb Spectator"
@@ -341,5 +381,43 @@ o_onlyai
 
 o_onlyai_descr
 {
-	"Usuwa głównego gracza, dzięki czemu możesz tylko obserwować i tworzyć pojedynki między osmioma botami."
+	"Usuwa głównego gracza, dzięki czemu możesz tylko obserwować i tworzyć pojedynki między osmioma botami. &
+Savegames now load properly in this mode."
+}
+
+ui_welcometext
+{
+"Jest to nieoficjalna łatka dla Twierdzy Krzyżowej.
+Projekt jest dostępny jako open-source przez [ref].
+
+Każda wersja Crusadera jest potencjalnie obsługiwana, ale od czasu zmian, gdzie
+pochodzące z wersji 1.41 Steam, mogą pojawić się niekompatybilności.
+wyświetla się wtedy komunikat o błędzie. Zainstalowana łatka jest pokazana w &
+w lewym dolnym rogu głównego menu.
+
+Przed zmianami zostaną utworzone pliki kopii zapasowej. Można je przywrócić za pośrednictwem &
+przycisk 'Odinstaluj' lub ręcznie.
+
+
+At this point I would like to thank the Stronghold community for supporting &
+me so enthusiastic.
+
+Special thanks go to:
+FireFly Studios for the creation of the Stronghold series
+Udwin, because his YouTube-Channel reminded me of Stronghold
+Lolasik011 for the russian translation
+Radek2019 for the polish translation
+Evrey for his AI castles"
+}
+
+aiv_evreypitch
+{
+	"Evrey's fixed vanilla castles [PitchNeeded Edit]"
+}
+
+aiv_evreypitch_descr
+{
+	"Extends 'Evrey's fixed vanilla castles', by adding mangonels and &
+ballistae to the towers of Wazir, Pig, Nizar and Emir. Edited by &
+PitchNeeded."
 }
