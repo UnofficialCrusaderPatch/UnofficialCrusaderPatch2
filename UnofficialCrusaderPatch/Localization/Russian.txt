@@ -1,282 +1,280 @@
 ﻿Name
 {
-	"неофициальный Crusader Patcher"
+	"Неофициальный Stronghold Crusader Патч"
 }
 
 u_ArabXBow
 {
-	"Increased armor of Arabic Swordsmen against crossbows"
+	"Увеличенная броня арабского мечника против арбалетчика"
 }
 
 u_arabxbow_descr
 {
-	" - Arabic Swordsmen only die after 6 crossbow hits intead of 3"
+	" - Арабские мечники только умирают после 6 выстрелов из арбалета вместо 3"
 }
 
 u_ArabWall
 {
-	"Arabic Swordsmen destroy walls faster"
+	"Арабские мечники разрушают стены быстрее"
 }
 
 u_ArabWall_descr
 {
-	"In Vanilla, arabic swordsmen destroy walls slower than any other melee unit. &
-With this option, the tear down speed against walls is about doubled for them, &
-putting them slightly above Spearmen."
+	"В Ваниле арабские мечники разрушают стены медленнее любого другого подразделения ближнего боя. &
+С этой опцией скорость удара против стен примерно удваивается для них,
+положив их немного выше копейщиков."
 }
 
 u_spearmen
 {
-	"Increased armor of spearmen against ranged units"
+	"Увеличенная броню копейщиков против дальних юнитов"
 }
 
 u_spearmen_descr
 {
-	" - Spearmen only die after 5 arrow hits instead of 3
- - Spearmen barely survive one crossbow hit, instead of getting one-shot"
+	" - Копейщики умирают только после 5 стрел, вместо 3
+  - Копейщики едва выдержали один выстрел арбалета, вместо того,чтобы получить одноразовый"
 }
 
 ai_buy
 {
-	"Improved trader usage of the AI lords"
+	"Улучшеное использования торговцев лордами AI"
 }
 
 ai_buy_descr
 {
-	"In vanilla, some of the new AIs do not use the trading outpost correctly. &
-The following improvements will be carried out with this:
- - Frederick and Marshal buy weapons and armors
- - The Abbot and Emir buy bows
- - Wazir buys apples like Nizar & Emir do"
+	"В ваниле некоторые из новых AI не используют рынок правильно. &
+Следующие улучшения будут выполнены с этим:
+  - Фредерик и Маршал покупают оружие и доспехи
+  - Аббат и Эмир покупают луки
+  - Вазир покупает яблоки, также как Низар и Эмир
 }
 
 ui_error
 {
-	"Error"
+	"Ошибка"
 }
 
 ui_SearchPath
 {
-	" Please select your installation folder:"
+	" Выберите папку установки:"
 }
 
 ui_search
 {
-	"Browse"
+	"Просматривать"
 }
 
 ui_continue
 {
-	"Continue"
+	"Продолжить"
 }
 
 ui_wrongpath
 {
-	"Stronghold Crusader could not be found in the specified path!"
+	"Stronghold Crusader не может быть найден по указанному пути!"
 }
 
 ui_back
 {
-	"Back"
+	"Назад"
 }
 
 ui_install
 {
-	"Install"
+	"Установить"
 }
 
 ui_finished
 {
-	"Finished"
+	"Завершение"
 }
 
 ui_welcometext
 {
-"This is an unofficial patch for Stronghold Crusader.
-The project ist available as open-source via [ref].
+"Это неофициальный патч для Stronghold Crusader.
+Проект доступен с открытым исходным кодом через [ref].
 
-Any Crusader version is potentially supported, but since the changes where &
-derived with the 1.41 Steam-Version, incompatibilities may appear. The setup &
-will then show error messages. The installed patch version is shown in the &
-bottom left corner of the main menu.
+Любая версия Crusader потенциально поддерживается, но поскольку изменения,
+выведенный со Steam версией 1.41, могут возникнуть несовместимости. Настройка &
+затем отобразит сообщения об ошибках. Установленная версия исправления показана в &
+нижнем левом углу главного меню.
 
 
-Before any changes, backup files will be created. These can be restored via &
-the 'Uninstall'-button or manually."
+Перед любыми изменениями будут созданы резервные файлы. Они могут быть восстановлены через &
+кнопку «Удалить» или вручную."
 }
 
 ui_chooseLangTitle
 {
-	"Setup language"
+	"Язык установки"
 }
 
 ui_chooseLang
 {
-	"Пожалуйста, &
-выберите язык
-для этой настройки из списка ниже."
+	"Пожалуйста, выберите язык для этой настройки из списка ниже."
 }
 
 ui_accept
 {
-	"OK"
+	"ОК"
 }
 
 ui_cancel
 {
-	"Cancel"
+	"Отмена"
 }
 
 aiv_evrey
 {
-	"Improved AI castles"
+	"Улучшенные замки AI"
 }
 
 aiv_evreyfixed
 {
-	"Evrey's fixed vanilla castles"
+	"Evrey's фиксированные ванильные замки"
 }
 
 aiv_evreyfixed_descr
 {
-	"Fixes bugs of the vanilla AI-Lord castles, like missing houses and guilds &
-or blocked entrances."
+	"Исправляет ошибки ванильных замков AI-Lord, таких как пропущенные дома и гильдии &
+или заблокированные входы."
 }
 
 aiv_evreyimproved
 {
-	"Evrey's improved AI castles"
+	"Evrey's улучшенные замки AI"
 }
 
 aiv_evreyimproved_descr
 {
-	"Grants the AI-Lords new and improved castles, based on the vanilla style.
+	"Предоставляет AI-Лордам новые и улучшенные замки, основанные на стиле ванили.
 	
-Created by Evrey ([ref2])."
+Создано Evrey ([ref2])."
 }
 
 ui_uninstall
 {
-	"Uninstall"
+	"Удаление"
 }
 
 ui_uninstalldone
 {
-	"Uninstall completed."
+	"Удаление завершено."
 }
 
 ai_recruitinterval
 {
-	"Increased recruitment speed"
+	"Увеличенная скорость набора рекрутов"
 }
 
 ai_recruitinterval_descr
 {
-	"Sets the recruitment interval of all AIs to the lowest value (Rat/Richard niveau)"
+	"Устанавливает интервал набора всех AI до самого низкого значения (Крыса/Ричард)"
 }
 
 ai_recruitsleep
 {
-	"Deactivate recruitment pauses of the AI"
+	"Деактивировать приостановку набора рекрутов AI"
 }
 
 ai_attacklimit
 {
-	"Increase of the attacking troops limit of the AIs"
+	"Увеличение предела атакующих войск AI"
 }
 
 ai_attacklimit_descr
 {
-	"The number of additional units which are added after the first attack is &
-limited to 200 in Vanilla. Here you can change this limit."
+	"Количество дополнительных единиц, которые добавляются после первой атаки &
+в Ваниле - до 200. Здесь вы можете изменить этот предел."
 }
 
 o_gamespeed
 {
-	"Extended game speed limits"
+	"Расширенные ограничения скорости игры"
 }
 
 o_gamespeed_descr
 {
-	"The game speed can now be changed as follows:
- - From 10 to 90 in intervals of 5
- - From 90 to 200 in intervals of 10
- - From 200 to 1000 in intervals of 100
-The new values are only available ingame via the +- keys, the slider in the &
-game menu remains unchanged."
+	"Теперь скорость игры можно изменить следующим образом:
+  - От 10 до 90 с интервалом 5
+  - от 90 до 200 с интервалом 10
+  - от 200 до 1000 с интервалом в 100
+Новые значения доступны только с помощью клавиш + -, ползунка в &
+меню игры остается неизменным."
 }
 
 ui_bugfix
 {
-	"Bugfixes"
+	"Исправления ошибок"
 }
 
 ui_ailords
 {
-	"AI lords"
+	"ИИ Лорды"
 }
 
 ui_troops
 {
-	"Units"
+	"Юниты"
 }
 
 ui_other
 {
-	"Other"
+	"Другое"
 }
 
 o_responsivegates
 {
-	"Quicker responsiveness of gates towards enemies"
+	"Быстрая реакция врагов на врагов"
 }
 
 o_responsivegates_descr
 {
-	"Gates close themselves later if enemies get into range and open faster &
-when the danger is gone. The distance of an enemy for which the gates close &
-will be reduced from 200 to 140. The time after which the gates open, after & 
-all enemies left will be reduced from 1200 to 100."
+	"Ворота закрывается позже &
+когда опасность исчезнет. Расстояние врага, для которого закрываются ворота &
+будет уменьшено с 200 до 140. Время, после которого ворота открываются &
+будет уменьшены с 1200 до 100."
 }
 
 ai_addattack
 {
-	"Increase of the rate of additional attack troops"
+	"Увеличение скорости дополнительных атакующих войск"
 }
 
 ai_addattack_descr
 {
-	"In Vanilla the attack troop number is increased after each attack by 5 &
-units on average. This value is the same for all AI lords and can be changed &
-here."
+	"В Ваниле количество единиц атаки увеличивается на 5 &
+единиц в среднем. Это значение для всех здесь."
+
 }
 
 ai_addattack_alt_descr
 {
-	"Alternatively, the additional troop count can be made dependent on the &
-troop count of the first attack. Since this value is different for each AI, &
-the following attacks will also scale, instead of increasing by the same value &
-for each AI lord.
-Example: Scale factor = 0.5
-Sultan's attack troops = 10, 15, 20, 25, ...
-Saladin's attack troops = 50, 75, 100, 125, ..."
+	"В качестве альтернативы, дополнительное количество войск может быть выполнено в зависимости от &
+число войск первой атаки. Поскольку это значение отличается для каждого AI &
+следующие атаки будут масштабироваться, а не на одну и ту же величину &
+для каждого лорда AI.
+Пример: Масштабный коэффициент = 0,5
+Войска Султана атакуют = 10, 15, 20, 25, ...
+Атакующие войска Саладина = 50, 75, 100, 125, ... "
 }
 
 u_laddermen
 {
-	"Increased armor of laddermen against ranged units"
+	"Увеличенная броня Крестьян с лесницами против дальних войск"
 }
 
 u_laddermen_descr
 {
-	" - Laddermen die after 12 arrow hits instead of 5
- - Laddermen die after 5 crossbow or slinger hits instead of 2
- - Laddermen cost 20 gold instead of 4"
+	" -Крестияне с лестницами умирают после 12 стрелок  вместо 5
+  - Крестияне с лестницами умирают после 5 арбалетов или пращников вместо 2
+  - Крестияне с лестницами стоят 20 золотых вместо 4"
 }
 
 o_playercolor
 {
-	"Change the color of player 1"
+	"Изменить цвет Игрока 1"
 }
 
 o_playercolor_descr
@@ -286,28 +284,28 @@ o_playercolor_descr
 
 o_trooplimit
 {
-	"Increasement of the total troop limit"
+	"Увеличение общего лимита войск"
 }
 
 o_trooplimit_descr
 {
-	"The limit for the total amount of units one player can field is set to &
-2400/Players in Vanilla. This value can be changed here."
+	"Предел для общего количества единиц  одного игрока может быть установлен в &
+2400 / Игроки в Ваниле. Это значение можно изменить здесь."
 }
 
 ai_demolish
 {
-	"Deactivate demolishing for money of the AI lords"
+	"Деактивировать снос за деньги AI лордов"
 }
 
 ai_demolish_walls
 {
-	"fortification buildings"
+	"фортификационные сооружения"
 }
 
 ai_demolish_eco
 {
-	"econonmy buildings"
+	"экономические сооружения"
 }
 
 ai_demolish_walls_descr
@@ -317,30 +315,29 @@ ai_demolish_walls_descr
 
 ai_demolish_eco_descr
 {
-	"If the AI feels pressured, it likes to demolishes its economy or &
-fortification buildings to get quick money for troops. This feature sometimes &
-seems to be triggered without any visible reason and thus can be disabled here."
+	"Если AI чуствует прессинг, он начинает разрушать свою экономику или &
+фортификационные здания, чтобы получить быстрые деньги для войск. Эта функция иногда & "
+кажется, запускается без какой-либо причины."
 }
 
 ai_tethers
 {
-	"Disable ox tether spam"
+	"Отключит спам привязей"
 }
 
 ai_tethers_descr
 {
-	"Usually, the AI builds for each new stone quarry a new ox tether, &
-independent of how many tether already exist. This can be disabled here, since &
-it leads to ox tether spam if the AIs' quarries get destroyed repeatedly."
+	"Как правило, AI строит для каждой новой каменоломни новую привязь &
+независимо от того, сколько привязей уже существует. Здесь это можно отключить, так как &
+это приводит к спаму, если карьеры AI будут уничтожены повторно."
 }
 
 o_onlyai
 {
-	"Activate Spectator-mode"
+	"Активировать Режим - Зрителя"
 }
 
 o_onlyai_descr
 {
-	"Removes player 1 so that you can only spectate and makes 8 AIs in one &
-round possible."
+	"Убирает игрока 1, чтобы вы могли видеть только 8 ИИ в одном и том же режиме."
 }
