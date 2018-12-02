@@ -5,7 +5,7 @@
 
 u_ArabXBow
 {
-	"Увеличенная броня арабского мечника против арбалетчика"
+	"Увеличенная броня арабского мечника против выстрела арбалетчика"
 }
 
 u_arabxbow_descr
@@ -122,7 +122,7 @@ aiv_evreyfixed
 
 aiv_evreyfixed_descr
 {
-	"Исправляет ошибки ванильных замков AI-Lord, таких как пропущенные дома и гильдии &
+	"Исправляет ошибки ванильных замков AI-Лордов, таких как пропущенные дома и гильдии &
 или заблокированные входы."
 }
 
@@ -196,7 +196,7 @@ ui_bugfix
 
 ui_ailords
 {
-	"ИИ Лорды"
+	"AI Лорды"
 }
 
 ui_troops
@@ -252,8 +252,8 @@ u_laddermen
 
 u_laddermen_descr
 {
-	" -Крестияне с лестницами умирают после 12 стрелок  вместо 5
-  - Крестияне с лестницами умирают после 5 арбалетов или пращников вместо 2
+	" - Крестияне с лестницами умирают после 12 стрелок  вместо 5
+  - Крестияне с лестницами умирают после 5 выстрелов арбалетов или пращников & вместо 2
   - Крестияне с лестницами стоят 20 золотых вместо 4"
 }
 
@@ -280,7 +280,7 @@ o_trooplimit_descr
 
 ai_demolish
 {
-	"Деактивировать снос за деньги AI лордов"
+	"Деактивировать снос за деньги AI Лордов"
 }
 
 ai_demolish_walls
@@ -332,57 +332,56 @@ ai_tethers_descr
 
 ai_nosleep
 {
-	"Disable sleeping mode for lack of resources"
+	"Отключить спящий режим из-за нехватки ресурсов"
 }
 
 ai_nosleep_descr
 {
-	"The AI usually puts its processing buildings to sleep, as soon &
-as the needed resource is missing. This is done without the regard for &
-losing products which are just on the way f.e. to the weapon chamber.
-This feature can be completely disabled here."
+	"ИИ обычно ставит свои обрабатывающие здания в сон, &
+поскольку необходимый ресурс отсутствует. Это делается без учета потери продуктов, & которые находятся на пути  в в Оружейную.
+Эта функция может быть полностью отключена здесь.
 }
 
 
 ai_overclock
 {
-	"Reduce AI order interval [Test]"
+	"Уменьшает интервал выполнения задач AI [Тестовая]"
 }
 
 ai_overclock_descr
 {
-	"The interval in which the AI imposes orders, f.e. attacking orders &
-for units. This reduces the time in which units stand around doing nothing &
-after destroying/killing their last target.
+	"Интервал, в течение которого ИИ наводит порядок, т. Е. атакующие заказы &
+для единиц. Это уменьшает время, в течение которого единицы стоят вокруг, ничего не делая &
+после уничтожения / убийства своей последней цели.
 
-It is unknown what else is influenced by this interval, thus, bugs may appear &
-when using this feature."
+Неизвестно, на что еще влияет этот интервал, поэтому могут появляться ошибки, &
+при использовании этой функции."
 }
 
 ai_attackwave
 {
-	"Improve attack waves"
+	"Улучшение волны атаки"
 }
 
 ai_attackwave_descr
 {
-	"The AI in an attack in vanilla only sends as many troops at once as &
-there are wall parts reachable. This causes units to drop in in small waves &
-when the target castle has a lot of buildings directly at its walls.
-This option makes units also attack civil and fortification buildings, as &
-well as wall parts which are already being attacked by one unit."
+	"AI в атаке в ванили посылает сразу столько же войск, как и & 
+	тогда когда стены целые.Это заставляет единицы падать в маленьких волнах &
+	когда у целевого замка много зданий прямо у его стен
+	"Этот вариант позволяет подразделениям атаковать гражданские & и фортификационные здания,
+а также стены, которые уже атакованы одной единицей.
 }
 
 
 o_onlyai
 {
-	"Активировать Режим - Зрителя"
+	"Активировать Режим - Зрителя (Только AI)"
 }
 
 o_onlyai_descr
 {
 	"Убирает игрока 1, чтобы вы могли видеть только 8 ИИ в одном и том же режиме. &
- Savegames now load properly in this mode."
+ Сохранения игры теперь правильно загружаются в этом режиме."
 }
 
 ui_welcometext
@@ -399,25 +398,25 @@ ui_welcometext
 кнопку «Удалить» или вручную.
 
 
-At this point I would like to thank the Stronghold community for supporting &
-me so enthusiastic.
+На этом этапе я хотел бы поблагодарить сообщество Stronghold за поддержку &
+меня так восторженно.
 
-Special thanks go to:
-FireFly Studios for the creation of the Stronghold series
-Udwin, because his YouTube-Channel reminded me of Stronghold
-Lolasik011 for the russian translation
-Radek2019 for the polish translation
-Evrey for his AI castles"
+Особая благодарность:
+FireFly Studios за создания серии Stronghold
+Udwin, потому что его канал YouTube напомнил мне о Stronghold
+Lolasik011 за Русский перевод
+Radek2019 за Польский перевод
+Evrey за свои замки AI"
 }
 
 aiv_evreypitch
 {
-	"Evrey's fixed vanilla castles [PitchNeeded Edit]"
+	"Улучшеные ванильные замки Evrey [PitchNeeded редактировано]"
 }
 
 aiv_evreypitch_descr
 {
-	"Extends 'Evrey's fixed vanilla castles', by adding mangonels and &
-ballistae to the towers of Wazir, Pig, Nizar and Emir. Edited by &
-PitchNeeded."
+	"Расширяет «улучшеные ванильные замки Evrey», добавляя мангонелей и &
+баллистов к башням Вазира, Свиньи, Низара и Эмира. Отредактировано &
+PitchNeeded «.
 }
