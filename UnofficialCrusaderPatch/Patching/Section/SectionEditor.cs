@@ -52,7 +52,7 @@ namespace UnofficialCrusaderPatch
                 VirtAddr = prevSec.VirtAddr + GetMultiples(prevSec.VirtSize, header.SectionAlignment),
                 RawAddr = prevSec.RawAddr + GetMultiples(prevSec.RawSize, header.FileAlignment),
 
-                Characteristics = 0x60000020, // executable, readonly, contains code
+                Characteristics = 0xE0000020 // writable, //0x60000020, // executable, readable, contains code
             };
         }
         

@@ -112,7 +112,9 @@ ui_chooseLangTitle
 
 ui_chooseLang
 {
-	"Please choose a language for this setup from the list below."
+	"Пожалуйста, &
+выберите язык
+для этой настройки из списка ниже."
 }
 
 ui_accept

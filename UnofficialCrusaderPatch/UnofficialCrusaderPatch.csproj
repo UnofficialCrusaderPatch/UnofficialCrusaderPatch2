@@ -70,6 +70,7 @@
     <Compile Include="Localization\TextReferencer.cs" />
     <Compile Include="Patching\BinElements\BinGroup.cs" />
     <Compile Include="Patching\BinElements\Referencers\BinAddress.cs" />
+    <Compile Include="Patching\BinElements\Referencers\BinAlloc.cs" />
     <Compile Include="Patching\EditTypes\BinArgs.cs" />
     <Compile Include="Patching\BinElements\StructTypes\BinBytes.cs" />
     <Compile Include="Patching\BinElements\BinElement.cs" />
@@ -959,6 +960,9 @@
     <EmbeddedResource Include="CodeBlocks\o_playercolor_table2.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_table_back.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_table_drag.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_attackwave.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_attackwave_wallcount.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_overclock.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
