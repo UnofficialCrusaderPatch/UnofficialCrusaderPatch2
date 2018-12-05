@@ -34,7 +34,7 @@ namespace UnofficialCrusaderPatch
             new Language("Deutsch", "German", "de"),
             new Language("English", "English", "en"),
             new Language("Polski", "Polish", "pl"),
-            new Language("русский язык", "Russian", "ru"),
+            new Language("Русский", "Russian", "ru"),
         };
         public static IEnumerable<Language> Translations => translations;
         public static int GetLangByCulture(string culture)

@@ -1094,6 +1094,7 @@
     <EmbeddedResource Include="EvreyPitch\wolf6.aiv" />
     <EmbeddedResource Include="EvreyPitch\wolf7.aiv" />
     <EmbeddedResource Include="EvreyPitch\wolf8.aiv" />
+    <EmbeddedResource Include="CodeBlocks\o_moatvisibility.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

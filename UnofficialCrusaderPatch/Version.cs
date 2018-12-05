@@ -135,17 +135,17 @@ namespace UnofficialCrusaderPatch
              *  AI OVERCLOCK
              */
 
-            new Change("ai_overclock", ChangeType.AILords, false)
+            /*new Change("ai_overclock", ChangeType.AILords, false)
             {
-                new SliderHeader("ai_overclock", true, 0.25, 1, 0.25, 1, 0.5)
+                new SliderHeader("ai_overclock", true, 0.5, 1, 0.05, 1, 0.75)
                 {
                     // 0045CC20+6
                     new BinaryEdit("ai_overclock")
                     {
-                        new BinInt32Value(100) // default: 200
+                        new BinInt32Value(200) // default: 200
                     }
                 }
-            },
+            },*/
 
             /*
              * IMPROVED ATTACKS
@@ -215,13 +215,13 @@ namespace UnofficialCrusaderPatch
             {
                 new DefaultHeader("ai_demolish_walls", true)
                 {
-                    // 004D03F2  => jne to jmp
-                    BinBytes.CreateEdit("ai_demolish_walls", 0x75, 0x6D, 0xE9, 0x00, 0x01, 0x00, 0x00, 0x90, 0x90)
+                    // 004D03F2  => jmp to end
+                    BinBytes.CreateEdit("ai_demolish_walls", 0xE9, 0x00, 0x01, 0x00, 0x00, 0x90, 0x90, 0x90, 0x90)
                 },
 
                 new DefaultHeader("ai_demolish_eco", false)
                 {
-                    // 004D0387  => jne, jmp to end
+                    // 004D0387  => jmp to end
                     BinBytes.CreateEdit("ai_demolish_eco", 0x75, 0x66, 0xE9, 0x6B, 0x01, 0x00, 0x00, 0x90, 0x90)
                 },
             },
@@ -427,6 +427,29 @@ namespace UnofficialCrusaderPatch
             #endregion
 
             #region OTHER
+
+            /*
+             * SIEGE EQUIPMENT BUILDING
+             */
+
+            // 446129
+
+            /*
+             *  MOAT VISIBILITY
+             */
+             
+            new Change("o_moatvisibility", ChangeType.Other)
+            {
+                new DefaultHeader("o_moatvisibility")
+                {
+                    // 4EC86C
+                    new BinaryEdit("o_moatvisibility")
+                    {
+                        new BinSkip(0x24),
+                        new BinBytes(0x15) // mov [ ], edx = 1 instead of ebp = 0
+                    }
+                }
+            },
 
             /*
              * PLAYER 1 COLOR

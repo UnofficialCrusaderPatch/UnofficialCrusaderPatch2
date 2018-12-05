@@ -68,8 +68,6 @@ namespace UnofficialCrusaderPatch
                     Width = 400,
                 },
             };
-            titleBox.Checked += TitleBox_Checked;
-            titleBox.Unchecked += TitleBox_Unchecked;
 
             TreeViewItem tvi = new TreeViewItem()
             {
@@ -78,6 +76,17 @@ namespace UnofficialCrusaderPatch
                 Header = titleBox,
                 MinHeight = 22,
             };
+
+            if (headerList.Exists(h => h is ColorHeader))
+            {
+                titleBox.IsEnabled = false;
+                tvi.MouseDown += (s, e) => tvi.IsExpanded = !tvi.IsExpanded;
+            }
+            else
+            {
+                titleBox.Checked += TitleBox_Checked;
+                titleBox.Unchecked += TitleBox_Unchecked;
+            }
 
             Grid content = new Grid()
             {
