@@ -373,17 +373,6 @@ This option makes units also attack civil and fortification buildings, as &
 well as wall parts which are already being attacked by one unit."
 }
 
-o_onlyai
-{
-	"Activate Spectator-mode"
-}
-
-o_onlyai_descr
-{
-	"Removes player 1 so that you can only spectate and makes 8 AIs in one &
-round possible. Savegames now load properly in this mode."
-}
-
 ui_welcometext
 {
 "This is an unofficial patch for Stronghold Crusader.
@@ -419,4 +408,50 @@ aiv_evreypitch_descr
 	"Extends 'Evrey's fixed vanilla castles', by adding mangonels and &
 ballistae to the towers of Wazir, Pig, Nizar and Emir. Edited by &
 PitchNeeded."
+}
+
+
+
+
+
+
+
+
+// 5.12.2018
+
+o_onlyai
+{
+	"Activate Spectator-mode [bug possible]"
+}
+
+o_onlyai_descr
+{
+	"Removes player 1 so that you can only spectate and makes 8 AIs in one &
+round possible. Savegames now load properly in this mode. Sometimes a bug &
+appears in which random objects spawn all over the map. This is just visually &
+and can be removed by saving the game, ending the mission and reloading the &
+save file."
+}
+
+o_moatvisibility
+{
+	"Always show planned moat"
+}
+
+o_moatvisibility_descr
+{
+	"Your own placed but not digged out moat will always be shown with this &
+setting, even if you deselect the moat placing."
+}
+
+o_engineertent
+{
+	"No siege tent deselection"
+}
+
+o_engineertent_descr
+{
+	"With this setting, the game will not deselect your chosen siege equipment &
+after placing one tent anymore. This way you can create several tents after another &
+without having to reselect the same siege equipment every time."
 }

@@ -382,18 +382,6 @@ Befestigungsanlagen an, sowie Mauerstücke die bereits von einem Angreifer &
 besetzt sind."
 }
 
-o_onlyai
-{
-	"Zuschauer-Modus aktivieren"
-}
-
-o_onlyai_descr
-{
-	"Entfernt Spieler 1 sodass man nur noch zugucken kann und 8 KIs in einem &
-Kreuzzug möglich sind. Gespeicherte Spiele laden jetzt auch ordnungsgemäß in &
-diesem Modus."
-}
-
 ui_welcometext
 {
 "Dies ist ein inoffizieller Patch für Stronghold Crusader.
@@ -429,4 +417,51 @@ aiv_evreypitch_descr
 	"Erweitert 'Evreys gefixte Vanilla-Burgen', indem den Türmen von &
 Wazir, Schwein, Nizar und Emir Mangen und Ballisten hinzugefügt werden. &
 Editiert von PitchNeeded."
+}
+
+
+
+
+
+
+
+
+// 5.12.2018
+
+o_onlyai
+{
+	"Zuschauer-Modus aktivieren [bug möglich]"
+}
+
+o_onlyai_descr
+{
+	"Entfernt Spieler 1 sodass man nur noch zugucken kann und 8 KIs in einem &
+Kreuzzug möglich sind. Gespeicherte Spiele laden jetzt auch ordnungsgemäß in &
+diesem Modus. Ab und zu tritt ein Bug auf, bei dem überall auf der Karte zufällige &
+Objekte auftauchen. Diese sind jedoch nur visuell und können durch einfaches &
+Spiel speichern -> Mission beenden -> Spiel laden behoben werden."
+}
+
+o_moatvisibility
+{
+	"Geplanten Burggraben immer zeigen"
+}
+
+o_moatvisibility_descr
+{
+	"Mit dieser Einstellung wird der gesetzte, aber noch nicht ausgehobene &
+Burggraben immer angezeigt, auch wenn man die Burggrabenplatzierung abwählt."
+}
+
+
+o_engineertent
+{
+	"Belagerungsgeräte nicht automatisch abwählen"
+}
+
+o_engineertent_descr
+{
+	"Mit dieser Einstellung wird das zuletzt zum Bau ausgewählte Belagerungsgerät &
+bei Baumeistern nicht abgewählt, sodass man mehrere Zelte nacheinander bauen kann, &
+ohne jedes mal neu wählen zu müssen."
 }
