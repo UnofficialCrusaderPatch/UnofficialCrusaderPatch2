@@ -334,44 +334,44 @@ Prowadzi to do spamu w O-Ox, gdy kamieniołomy AI są wielokrotnie niszczone."
 
 ai_nosleep
 {
-	"Disable sleeping mode for lack of resources"
+	"Wyłącz tryb uśpienia z powodu braku zasobów"
 }
 
 ai_nosleep_descr
 {
-	"The AI usually puts its processing buildings to sleep, as soon &
-as the needed resource is missing. This is done without the regard for &
-losing products which are just on the way f.e. to the weapon chamber.
-This feature can be completely disabled here."
+	"Sztuczna inteligencja zwykle usypia budynki przetwarzania, jak tylko
+ponieważ brakuje wymaganego zasobu. Odbywa się to bez względu na
+tracące produkty, które są już w drodze. Do zbrojowni na broń.
+Tę funkcję można całkowicie wyłączyć tutaj."
 }
 
 ai_overclock
 {
-	"Reduce AI order interval [Test]"
+	"Zmniejsza interwał zamówień AI [Test]"
 }
 
 ai_overclock_descr
 {
-	"The interval in which the AI imposes orders, f.e. attacking orders &
-for units. This reduces the time in which units stand around doing nothing &
-after destroying/killing their last target.
+	"Odstęp czasu, w którym sztuczna inteligencja nakłada zamówienia, f.e. atakowanie zamówień i
+dla jednostek. Zmniejsza to czas, w którym jednostki stają w miejscu, nie robiąc nic i
+po zniszczeniu / zabiciu ostatniego celu.
 
-It is unknown what else is influenced by this interval, thus, bugs may appear &
-when using this feature."
+Nie wiadomo, na jaki wpływ ma ten interwał, dlatego mogą pojawić się błędy i
+podczas korzystania z tej funkcji."
 }
 
 ai_attackwave
 {
-	"Improve attack waves"
+	"Poprawa fali ataków"
 }
 
 ai_attackwave_descr
 {
-	"The AI in an attack in vanilla only sends as many troops at once as &
-there are wall parts reachable. This causes units to drop in in small waves &
-when the target castle has a lot of buildings directly at its walls.
-This option makes units also attack civil and fortification buildings, as &
-well as wall parts which are already being attacked by one unit."
+	"SI w ataku w wanilii wysyła tylko tyle żołnierzy na raz, jak i
+są dostępne części ścienne. Powoduje to, że jednostki wpadają w małe fale i
+gdy docelowy zamek ma wiele budynków bezpośrednio na jego ścianach.
+Ta opcja sprawia, że jednostki atakują również budynki cywilne i fortyfikacyjne, ponieważ
+oraz części ścian, które są już atakowane przez jedną jednostkę."
 }
 
 o_onlyai
@@ -382,7 +382,7 @@ o_onlyai
 o_onlyai_descr
 {
 	"Usuwa głównego gracza, dzięki czemu możesz tylko obserwować i tworzyć pojedynki między osmioma botami. &
-Savegames now load properly in this mode."
+Savegames ładuje się teraz poprawnie w tym trybie."
 }
 
 ui_welcometext
@@ -399,25 +399,25 @@ Przed zmianami zostaną utworzone pliki kopii zapasowej. Można je przywrócić 
 przycisk 'Odinstaluj' lub ręcznie.
 
 
-At this point I would like to thank the Stronghold community for supporting &
-me so enthusiastic.
+W tym miejscu chciałbym podziękować społeczności Stronghold za wsparcie i
+Jestem taki entuzjastyczny.)
 
-Special thanks go to:
-FireFly Studios for the creation of the Stronghold series
-Udwin, because his YouTube-Channel reminded me of Stronghold
-Lolasik011 for the russian translation
-Radek2019 for the polish translation
-Evrey for his AI castles"
+Specjalne podziękowania dla:
+FireFly Studios do stworzenia serii Stronghold
+Udwin, ponieważ jego kanał na YouTube przypomniał mi o Twierdzy
+Lolasik011 dla rosyjskiego tłumaczenia
+Radek2019 dla polskiego tłumaczenia
+Evrey za swoje zamki AI "
 }
 
 aiv_evreypitch
 {
-	"Evrey's fixed vanilla castles [PitchNeeded Edit]"
+	"Zamki waniliowe Evrey [PitchNeeded Edit]"
 }
 
 aiv_evreypitch_descr
 {
-	"Extends 'Evrey's fixed vanilla castles', by adding mangonels and &
-ballistae to the towers of Wazir, Pig, Nizar and Emir. Edited by &
+	"Rozszerza "stałe zamki waniliowe Evrey", dodając mangonele i &
+ballisty do wież Wezyla, Wieprza, Nizara i Emira. Edytowany przez &
 PitchNeeded."
 }
