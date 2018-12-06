@@ -21,7 +21,7 @@ u_ArabWall
 u_ArabWall_descr
 {
 	"W Wanili arabscy szermierze niszczą ściany wolniej niż jakakolwiek inna walka wręcz. &
-Dzięki tej opcji prędkość zrywania przy ścianach jest dla nich dwukrotnie większa, & i
+Dzięki tej opcji prędkość zrywania przy ścianach jest dla nich dwukrotnie większa, i &
 umieszczając je nieco powyżej włóczników."
 }
 
@@ -122,7 +122,7 @@ aiv_evreyfixed
 
 aiv_evreyfixed_descr
 {
-	"Naprawiono błędy zamków waniliowych AI-Lord, takich jak brakujące domy i gildie
+	"Naprawiono błędy zamków waniliowych AI-Lord, takich jak brakujące domy i gildie &
 lub zablokowane wejścia."
 }
 
@@ -181,8 +181,7 @@ o_gamespeed
 
 o_gamespeed_descr
 {
-	"
-Szybkość gry można teraz zmienić w następujący sposób:
+	"Szybkość gry można teraz zmienić w następujący sposób:
  - Od 10 do 90 w odstępach 5
  - Od 90 do 200 w odstępach 10
  - Od 200 do 1000 w odstępach 100
@@ -217,9 +216,9 @@ o_responsivegates
 
 o_responsivegates_descr
 {
-	"Bramy zamykają się później, gdy wrogowie znajdą się w zasięgu i otworzą się szybciej i
-kiedy niebezpieczeństwo zniknie. Odległość wroga, dla którego zamyka się brama i
-zostanie zmniejszona z 200 do 140. Czas, po którym otwierają się bramy, po i
+	"Bramy zamykają się później, gdy wrogowie znajdą się w zasięgu i otworzą się szybciej i &
+kiedy niebezpieczeństwo zniknie. Odległość wroga, dla którego zamyka się brama i &
+zostanie zmniejszona z 200 do 140. Czas, po którym otwierają się bramy, po i &
 wszyscy pozostali wrogowie zostaną zmniejszeni z 1200 do 100."
 }
 
@@ -230,17 +229,16 @@ ai_addattack
 
 ai_addattack_descr
 {
-	"W Vanilla liczba żołnierzy wzrasta po każdym ataku o 5 i
-jednostki średnio. Ta wartość jest taka sama dla wszystkich lordów AI i można ją zmienić i
+	"W Vanilla liczba żołnierzy wzrasta po każdym ataku o 5 i &
+jednostki średnio. Ta wartość jest taka sama dla wszystkich lordów AI i można ją zmienić i &
 tutaj."
 }
 
 ai_addattack_alt_descr
 {
-	"
-Ewentualnie dodatkowa liczba żołnierzy może być uzależniona od
+	"Ewentualnie dodatkowa liczba żołnierzy może być uzależniona od &
 liczba żołnierzy pierwszego ataku. Ponieważ ta wartość jest inna dla każdej AI, &
-Następujące ataki będą skalować, zamiast zwiększać o tę samą wartość i
+Następujące ataki będą skalować, zamiast zwiększać o tę samą wartość i &
 dla każdego Lorda AI.
 Przykład: współczynnik skali = 0,5
 Oddziały szturmowe Sultana = 10, 15, 20, 25, ...
@@ -303,7 +301,7 @@ ai_demolish_walls_descr
 ai_demolish_eco_descr
 {
 	"Jeśli AI czuje presję, lubi burzyć gospodarkę lub &
-budynki fortyfikacyjne, aby uzyskać szybkie pieniądze dla żołnierzy. Ta funkcja czasami i
+budynki fortyfikacyjne, aby uzyskać szybkie pieniądze dla żołnierzy. Ta funkcja czasami i &
 wydaje się być uruchamiany bez widocznego powodu i dlatego można go wyłączyć tutaj."
 }
 
@@ -314,7 +312,7 @@ ai_tethers
 
 ai_tethers_descr
 {
-	"Zazwyczaj sztuczna inteligencja buduje dla każdego nowego kamieniołomu nową
+	"Zazwyczaj sztuczna inteligencja buduje dla każdego nowego kamieniołomu nową &
 niezależnie od tego, ile linków już istnieje. Można to wyłączyć tutaj, ponieważ &
 Prowadzi to do spamu w O-Ox, gdy kamieniołomy AI są wielokrotnie niszczone."
 }
@@ -339,8 +337,8 @@ ai_nosleep
 
 ai_nosleep_descr
 {
-	"Sztuczna inteligencja zwykle usypia budynki przetwarzania, jak tylko
-ponieważ brakuje wymaganego zasobu. Odbywa się to bez względu na
+	"Sztuczna inteligencja zwykle usypia budynki przetwarzania, jak tylko &
+ponieważ brakuje wymaganego zasobu. Odbywa się to bez względu na &
 tracące produkty, które są już w drodze. Do zbrojowni na broń.
 Tę funkcję można całkowicie wyłączyć tutaj."
 }
@@ -352,11 +350,11 @@ ai_overclock
 
 ai_overclock_descr
 {
-	"Odstęp czasu, w którym sztuczna inteligencja nakłada zamówienia, f.e. atakowanie zamówień i
-dla jednostek. Zmniejsza to czas, w którym jednostki stają w miejscu, nie robiąc nic i
+	"Odstęp czasu, w którym sztuczna inteligencja nakłada zamówienia, f.e. atakowanie zamówień i &
+dla jednostek. Zmniejsza to czas, w którym jednostki stają w miejscu, nie robiąc nic i &
 po zniszczeniu / zabiciu ostatniego celu.
 
-Nie wiadomo, na jaki wpływ ma ten interwał, dlatego mogą pojawić się błędy i
+Nie wiadomo, na jaki wpływ ma ten interwał, dlatego mogą pojawić się błędy i &
 podczas korzystania z tej funkcji."
 }
 
@@ -367,10 +365,10 @@ ai_attackwave
 
 ai_attackwave_descr
 {
-	"SI w ataku w wanilii wysyła tylko tyle żołnierzy na raz, jak i
-są dostępne części ścienne. Powoduje to, że jednostki wpadają w małe fale i
+	"SI w ataku w wanilii wysyła tylko tyle żołnierzy na raz, jak i &
+są dostępne części ścienne. Powoduje to, że jednostki wpadają w małe fale i &
 gdy docelowy zamek ma wiele budynków bezpośrednio na jego ścianach.
-Ta opcja sprawia, że jednostki atakują również budynki cywilne i fortyfikacyjne, ponieważ
+Ta opcja sprawia, że jednostki atakują również budynki cywilne i fortyfikacyjne, ponieważ &
 oraz części ścian, które są już atakowane przez jedną jednostkę."
 }
 
@@ -379,8 +377,8 @@ ui_welcometext
 "Jest to nieoficjalna łatka dla Twierdzy Krzyżowej.
 Projekt jest dostępny jako open-source przez [ref].
 
-Każda wersja Crusadera jest potencjalnie obsługiwana, ale od czasu zmian, gdzie
-pochodzące z wersji 1.41 Steam, mogą pojawić się niekompatybilności.
+Każda wersja Crusadera jest potencjalnie obsługiwana, ale od czasu zmian, gdzie &
+pochodzące z wersji 1.41 Steam, mogą pojawić się niekompatybilności. &
 wyświetla się wtedy komunikat o błędzie. Zainstalowana łatka jest pokazana w &
 w lewym dolnym rogu głównego menu.
 
@@ -388,8 +386,8 @@ Przed zmianami zostaną utworzone pliki kopii zapasowej. Można je przywrócić 
 przycisk 'Odinstaluj' lub ręcznie.
 
 
-W tym miejscu chciałbym podziękować społeczności Stronghold za wsparcie i
-Jestem taki entuzjastyczny.)
+W tym miejscu chciałbym podziękować społeczności Stronghold za wsparcie i &
+Jestem taki entuzjastyczny.
 
 Specjalne podziękowania dla:
 FireFly Studios do stworzenia serii Stronghold
@@ -431,7 +429,7 @@ o_onlyai_descr
 	"Usuwa głównego gracza, dzięki czemu możesz tylko obserwować i tworzyć &
 pojedynki między osmioma botami. Gra ładuje się teraz poprawnie w tym &
 trybie. Czasami pojawia się błąd, w którym losowe obiekty odradzają się na całej mapie. &
-Jest to tylko wizualnie i można je usunąć, zapisując grę, kończąc misję i
+Jest to tylko wizualnie i można je usunąć, zapisując grę, kończąc misję i &
 i ponownie załadować plik zapisu."
 }
 
@@ -453,7 +451,7 @@ o_engineertent
 
 o_engineertent_descr
 {
-	"Przy tym ustawieniu, gra nie odznacza wybranego urządzenia oblężniczego i
-po umieszczeniu już jednego namiotu. W ten sposób możesz stworzyć kilka namiotów po drugim i
+	"Przy tym ustawieniu, gra nie odznacza wybranego urządzenia oblężniczego i &
+po umieszczeniu już jednego namiotu. W ten sposób możesz stworzyć kilka namiotów po drugim i &
 bez konieczności ponownego wybierania tego samego sprzętu oblężniczego za każdym razem."
 }
