@@ -28,7 +28,7 @@ namespace UnofficialCrusaderPatch
 
     class Version
     {
-        public static string PatcherVersion = "2.06";
+        public static string PatcherVersion = "2.06a";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
@@ -215,8 +215,8 @@ namespace UnofficialCrusaderPatch
             {
                 new DefaultHeader("ai_demolish_walls", true)
                 {
-                    // 004D03F2  => jmp to end
-                    BinBytes.CreateEdit("ai_demolish_walls", 0xE9, 0x00, 0x01, 0x00, 0x00, 0x90, 0x90, 0x90, 0x90)
+                    // 004D03EF  => jmp to end
+                    BinBytes.CreateEdit("ai_demolish_walls", 0xE9, 0x1A, 0x01, 0x00, 0x00)
                 },
 
                 new DefaultHeader("ai_demolish_eco", false)
