@@ -1096,6 +1096,14 @@
     <EmbeddedResource Include="EvreyPitch\wolf8.aiv" />
     <EmbeddedResource Include="CodeBlocks\o_moatvisibility.block" />
     <EmbeddedResource Include="CodeBlocks\o_engineertent.block" />
+    <EmbeddedResource Include="CodeBlocks\o_onlyai_face.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_demolish_trapped.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_attacknearest.block" />
+    <EmbeddedResource Include="CodeBlocks\o_freetrader.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_towerengines.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_buywood.block" />
+    <EmbeddedResource Include="CodeBlocks\o_wasd_down.block" />
+    <EmbeddedResource Include="CodeBlocks\o_wasd_up.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

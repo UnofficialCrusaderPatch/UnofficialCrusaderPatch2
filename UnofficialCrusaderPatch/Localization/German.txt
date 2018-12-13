@@ -465,3 +465,78 @@ o_engineertent_descr
 bei Baumeistern nicht abgewählt, sodass man mehrere Zelte nacheinander bauen kann, &
 ohne jedes mal neu wählen zu müssen."
 }
+
+
+
+
+
+
+
+// ================================
+//              2.07
+// ================================
+
+
+// 12.12.2018
+
+ai_demolish_trapped
+{
+	"Falls eingeschlossen"
+}
+
+ai_demolish_trapped_descr
+{
+	" "
+}
+
+
+ai_attacknearest
+{
+	"Immer nächsten Gegner angreifen"
+}
+
+ai_attacknearest_descr
+{
+	" 1234 "
+}
+
+
+o_freetrader
+{
+	"Kostenloser Marktplatz"
+}
+
+o_freetrader_descr
+{
+	" 1234 "
+}
+
+ai_towerengines
+{
+	"Keine Grenze für Geräte auf Türmen"
+}
+
+ai_towerenginesdescr
+{
+	" 1234 "
+}
+
+ai_buywood
+{
+	"Genügend Holz kaufen"
+}
+
+ai_buywood_descr
+{
+	"Damit Bogenmacher etc. kein Bauholz wegschnappen, wird immer 2 Holz mehr als nötig für Gebäude eingekauft."
+}
+
+ai_wasd
+{
+	"WASD"
+}
+
+ai_wasd_descr
+{
+	" "
+}

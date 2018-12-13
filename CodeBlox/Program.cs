@@ -38,7 +38,7 @@ namespace CodeBlox
                     {
                         Console.Write(string.Format("'{0}': ", Path.GetFileName(filePath)));
                         byte[] data = File.ReadAllBytes(filePath);
-                        Console.WriteLine(block.SeekCount(data, out int whatever));
+                        Console.WriteLine(block.SeekCount(data, out int whatever) + " " + whatever.ToString("X4"));
                     }
                 }
             }

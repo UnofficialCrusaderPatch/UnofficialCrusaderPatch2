@@ -5,6 +5,19 @@ using System.Text;
 
 namespace UnofficialCrusaderPatch
 {
+    // 2.07
+    // - face in spectator mode
+    // - extended demolish setting to trapped castles
+    // - always attack nearest neighbor
+    // - free trader post
+    // - UNLIMITED SIEGE ENGINES ON TOWERS
+    // - buy wood
+    // - wasd
+
+
+    // meuchelmörder direkt auf bergfried
+
+
     // farben:
     // unit fade out
     // message shield
@@ -16,7 +29,6 @@ namespace UnofficialCrusaderPatch
     // rekrutierungsintervalle
     // bauerngrenze
     // KI Handeln untereinander
-    // trader post priority
     // mehr truppen für burggraben ausheben
 
     // Störkatapult positionierung
@@ -28,7 +40,7 @@ namespace UnofficialCrusaderPatch
 
     class Version
     {
-        public static string PatcherVersion = "2.06a";
+        public static string PatcherVersion = "2.07 pre-release";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
@@ -94,6 +106,46 @@ namespace UnofficialCrusaderPatch
             #endregion
 
             #region AI LORDS
+
+            /*
+             *  IMPROVE WOOD BUYING
+             */ 
+
+            // 00457BC0
+            new Change("ai_buywood", ChangeType.AILords, true)
+            {
+                new DefaultHeader("ai_buywood")
+                {
+                    new BinaryEdit("ai_buywood")
+                    {
+                        new BinAddress("addr", 3),
+                        new BinHook(7, "ret", 0xE9)
+                        {
+                            0x8B, 0x9C, 0x00, new BinRefTo("addr", false), // ori code
+
+                            0x85, 0xDB, // test ebx, ebx
+                            0x74, 0x03, // jz over add
+                            0x83, 0xC3, 0x02, // add ebx, 2
+                        },
+                        new BinLabel("ret")
+                    }
+                }
+            },
+                
+
+            /*
+             * UNLIMITED SIEGE ENGINES ON TOWERS
+             */
+             
+            // 004D20A2
+            BinBytes.Change("ai_towerengines", ChangeType.AILords, true, 0xEB),
+
+            /*
+             * ALWAYS ATTACK NEAREST NEIGHBOR
+             */ 
+
+            // 004D47B2
+            BinBytes.Change("ai_attacknearest", ChangeType.AILords, true, 0xEB, 0x11, 0x90),
 
             /*
              * AI NO SLEEP
@@ -217,6 +269,12 @@ namespace UnofficialCrusaderPatch
                 {
                     // 004D03EF  => jmp to end
                     BinBytes.CreateEdit("ai_demolish_walls", 0xE9, 0x1A, 0x01, 0x00, 0x00)
+                },
+
+                new DefaultHeader("ai_demolish_trapped", false)
+                {
+                    // 004F1988  => jne to jmp
+                    BinBytes.CreateEdit("ai_demolish_trapped", 0xEB)
                 },
 
                 new DefaultHeader("ai_demolish_eco", false)
@@ -427,6 +485,99 @@ namespace UnofficialCrusaderPatch
             #endregion
 
             #region OTHER
+            
+            /*
+             *  WASD
+             */
+             
+            new Change("o_keys", ChangeType.Other)
+            {
+                new DefaultHeader("o_keys")
+                {
+                    // 004B3B53 S key
+                    new BinaryEdit("o_keys_down")
+                    {
+                        new BinAddress("ctrl", 0x10F),
+                        
+                        0x39, 0x1D,                 // cmp ctrlpressed, ebx = 0
+                        new BinRefTo("ctrl", false),
+                        0x0F, 0x84, 0xEB, 0xF3, 0xFF, 0xFF, // jmp to move if equal
+
+                        0x6A, 0x00, // push 00
+
+                        0xE8, 0xA6, 0x1C, 0xFE, 0xFF, // call
+
+                        0x58, // pop eax
+                        0xEB, 0x76 // jmp to default/end
+                    },
+
+
+
+                    // WASD
+                    // Arrow Keys: 4b4ee4 + 1D => 9, A, B, C
+                    // WASD Keys: 4b4ee4 + 39, 4F, 3C, 4B
+                    new BinaryEdit("o_keys_down")
+                    {
+                        // 4b4ee4 + 39
+                        new BinBytes(0x09),
+                        new BinSkip(0x02),
+                        new BinBytes(0x0B),
+                        new BinSkip(0x0E),
+                        new BinBytes(0x0C),
+                        //new BinSkip(0x03),
+                        //new BinBytes(0x0A),
+                    },
+
+                    // WASD
+                    // 004B4C9F
+                    new BinaryEdit("o_keys_up")
+                    {
+                        new BinHook(6, "ret", 0xE9)
+                        {
+                            0x83, 0xC0, 0xDB, // add eax, -25
+
+                            // 1C left => 0
+                            // 32 top => 1
+                            // 1F right => 2
+                            // 2E down => 3
+
+                            0x83, 0xF8, 0x1C, // cmp eax, 1C
+                            0x75, 0x04,       // jne to next
+                            0x31, 0xC0,       // xor eax, eax
+                            0xEB, 0x1C,       // jmp to end
+                            
+                            0x83, 0xF8, 0x32, // cmp eax, 32
+                            0x75, 0x05,       // jne to next
+                            0x8D, 0x40, 0xCF, // lea eax, [eax-31]
+                            0xEB, 0x12,       // jmp to end
+                            
+                            0x83, 0xF8, 0x1F, // cmp eax, 1F
+                            0x75, 0x05,       // jne to next
+                            0x8D, 0x40, 0xE3, // lea eax, [eax-1D]
+                            0xEB, 0x08,       // jmp to end
+
+                            0x83, 0xF8, 0x2E, // cmp eax, 2E
+                            0x75, 0x03,       // jne to end 
+                            0x8D, 0x40, 0xD5, // lea eax, [eax-2B]
+
+                            // end
+                            0x83, 0xF8, 0x03 // cmp eax, 3
+                        },
+                        new BinLabel("ret")
+                    }
+                }
+            },
+
+
+
+            /* 
+             *  FREE TRADER POST
+             */
+             
+            // trader post: runtime 01124EFC
+            // 005C23D8
+            BinBytes.Change("o_freetrader", ChangeType.Other, true, 0x00),
+
 
             /*
              * SIEGE EQUIPMENT BUILDING
@@ -1033,6 +1184,10 @@ namespace UnofficialCrusaderPatch
                     // loading, buildings menu
                     // 0046B3FA => mov ecx, [selfindex]   to   xor ecx, ecx
                     //BinBytes.CreateEdit("o_onlyai_load2", 0x31, 0xC9, 0x90, 0x90, 0x90, 0x90),
+
+                    // happy face :)
+                    // 0x4334A6
+                    BinBytes.CreateEdit("o_onlyai_face", 0xB9, 0xD3, 0x13, 0x00, 0x00, 0x90),
                 }
             },
 
