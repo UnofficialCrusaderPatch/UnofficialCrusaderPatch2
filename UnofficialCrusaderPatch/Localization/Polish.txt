@@ -455,3 +455,86 @@ o_engineertent_descr
 po umieszczeniu już jednego namiotu. W ten sposób możesz stworzyć kilka namiotów po drugim i &
 bez konieczności ponownego wybierania tego samego sprzętu oblężniczego za każdym razem."
 }
+
+
+
+
+
+
+
+
+
+
+
+// ================================
+//              2.07
+// ================================
+
+
+ai_demolish_trapped
+{
+	"If enclosed"
+}
+
+ai_demolish_trapped_descr
+{
+	" "
+}
+
+
+ai_attacknearest
+{
+	"Always attack nearest enemy"
+}
+
+ai_attacknearest_descr
+{
+	"With this setting, the AI lords always attack their nearest enemies. &
+This prevents troops switching targets during a castle assault as well as sending &
+them past other enemies' castles to gather."
+}
+
+
+o_freetrader
+{
+	"Free trader post"
+}
+
+o_freetrader_descr
+{
+	"Since the AI sometimes plays itself, when they're out of wood and their trader post &
+is destroyed. With this setting, the trader post will become free of cost to prevent this."
+}
+
+ai_towerengines
+{
+	"No limit for siege engines on towers"
+}
+
+ai_towerenginesdescr
+{
+	"Usually the AI only builds up to three mangonels and ballistae each on its towers. &
+This limit can be lifted here."
+}
+
+ai_buywood
+{
+	"Buy enough wood"
+}
+
+ai_buywood_descr
+{
+	"To prevent thievish fletchers from stealing wood which the AI just bought for &
+buildings, 2 extra wood will now be bought for each building.
+}
+
+o_keys
+{
+	"WASD-Keys and quicksaves"
+}
+
+o_keys_descr
+{
+	"The WASD-keys can be used to move around with this setting as well as &
+CTRL-S and CTRL-L to quicksave and load respectively."
+}

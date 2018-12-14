@@ -477,8 +477,6 @@ ohne jedes mal neu wählen zu müssen."
 // ================================
 
 
-// 12.12.2018
-
 ai_demolish_trapped
 {
 	"Falls eingeschlossen"
@@ -492,12 +490,14 @@ ai_demolish_trapped_descr
 
 ai_attacknearest
 {
-	"Immer nächsten Gegner angreifen"
+	"Immer nähesten Gegner angreifen"
 }
 
 ai_attacknearest_descr
 {
-	" 1234 "
+	"Mit dieser Einstellung greifen die KI-Lords immer den nähesten Gegner an. &
+Dies verhindert, dass die Truppen mittem im laufenden Angriff umschwenken oder &
+an Gegnerburgen vorbeigeschickt werden zum Sammeln."
 }
 
 
@@ -508,7 +508,8 @@ o_freetrader
 
 o_freetrader_descr
 {
-	" 1234 "
+	"Da die KI sich manchmal selbst Schachmatt setzt, wenn sie kein Holz hat und der &
+Marktplatz zerstört wurde, kann hier der Bau des Marktplatzes kostenlos gemacht werden."
 }
 
 ai_towerengines
@@ -518,7 +519,8 @@ ai_towerengines
 
 ai_towerenginesdescr
 {
-	" 1234 "
+	"Normalerweise baut die KI maximal je drei Ballisten und Mangen. &
+Dieses Limit wird hiermit aufgehoben."
 }
 
 ai_buywood
@@ -528,15 +530,17 @@ ai_buywood
 
 ai_buywood_descr
 {
-	"Damit Bogenmacher etc. kein Bauholz wegschnappen, wird immer 2 Holz mehr als nötig für Gebäude eingekauft."
+	"Damit Bogenmacher etc. nicht ständig gekauftes Bauholz wegschnappen, &
+kauft die KI mit dieser Einstellung immer 2 Holz mehr als nötig für Gebäude."
 }
 
-ai_wasd
+o_keys
 {
-	"WASD"
+	"WASD-Tasten und Quicksaves"
 }
 
-ai_wasd_descr
+o_keys_descr
 {
-	" "
+	"Mit dieser Einstellung werden die WASD-Tasten für die Kamera aktiviert.
+Außerdem kann mit STRG-S und STRG-L ein Quicksave erstellt und geladen werden."
 }
