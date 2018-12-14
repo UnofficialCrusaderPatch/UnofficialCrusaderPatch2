@@ -19,14 +19,16 @@ namespace UnofficialCrusaderPatch
             if (hookLen < jmpBytes.Length + 4)
                 throw new Exception("Hook length is too short!");
 
-            base.InsertToGroup(0, new BinBytes(jmpBytes));
+            this.Collection.Insert(0, jmpBytes);
+
             int nopsLen = hookLen - (4 + jmpBytes.Length);
             if (nopsLen > 0)
-                base.AddToGroup(new BinNops(nopsLen));
+                this.Collection.Add(new BinNops(nopsLen));
+
             if (jmpBackLabel == null)
             {
                 jmpBackLabel = this.GetHashCode().ToString() + "back";
-                base.AddToGroup(new BinLabel(jmpBackLabel));
+                this.Collection.Add(new BinLabel(jmpBackLabel));
             }
 
             base.Add(new BinBytes(0xE9));
@@ -63,7 +65,7 @@ namespace UnofficialCrusaderPatch
             };
         }
 
-        public static BinGroup CreateJMP(int hookLen, params BinElement[] code)
+        public static BinHook CreateJMP(int hookLen, params BinElement[] code)
         {
             var hook = new BinHook(hookLen, null, new byte[1] { 0xE9 });
             foreach (BinElement element in code)

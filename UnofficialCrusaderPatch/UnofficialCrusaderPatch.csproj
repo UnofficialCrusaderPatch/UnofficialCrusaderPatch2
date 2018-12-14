@@ -68,7 +68,7 @@
     </Compile>
     <Compile Include="Localization\Localization.cs" />
     <Compile Include="Localization\TextReferencer.cs" />
-    <Compile Include="Patching\BinElements\BinGroup.cs" />
+    <Compile Include="Patching\BinElements\BinCollection.cs" />
     <Compile Include="Patching\BinElements\Referencers\BinAddress.cs" />
     <Compile Include="Patching\BinElements\Referencers\BinAlloc.cs" />
     <Compile Include="Patching\EditTypes\BinArgs.cs" />
@@ -1102,8 +1102,11 @@
     <EmbeddedResource Include="CodeBlocks\o_freetrader.block" />
     <EmbeddedResource Include="CodeBlocks\ai_towerengines.block" />
     <EmbeddedResource Include="CodeBlocks\ai_buywood.block" />
-    <EmbeddedResource Include="CodeBlocks\o_wasd_down.block" />
-    <EmbeddedResource Include="CodeBlocks\o_wasd_up.block" />
+    <EmbeddedResource Include="CodeBlocks\o_keys_down.block" />
+    <EmbeddedResource Include="CodeBlocks\o_keys_up.block" />
+    <EmbeddedResource Include="CodeBlocks\o_keys_name.block" />
+    <EmbeddedResource Include="CodeBlocks\o_keys_s.block" />
+    <EmbeddedResource Include="CodeBlocks\o_keys_savefunc.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

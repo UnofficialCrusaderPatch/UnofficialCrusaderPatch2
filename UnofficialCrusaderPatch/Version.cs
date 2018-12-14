@@ -45,7 +45,7 @@ namespace UnofficialCrusaderPatch
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
         {
-            BinRedirect.CreateEdit("menuversion", false, Encoding.UTF8.GetBytes("V1.%d UCP" + PatcherVersion + '\0'))
+            BinRedirect.CreateEdit("menuversion", false, Encoding.ASCII.GetBytes("V1.%d UCP" + PatcherVersion + '\0'))
         };
 
 
@@ -214,7 +214,7 @@ namespace UnofficialCrusaderPatch
                         new BinAddress("buildings", 0x1C7, true),
                         new BinAddress("towers", 0x20F, true),
 
-                        new BinAlloc("var_type"),
+                        new BinAlloc("var_type", 4),
 
                         new BinHook("back", 0xE9)
                         {
@@ -494,21 +494,62 @@ namespace UnofficialCrusaderPatch
             {
                 new DefaultHeader("o_keys")
                 {
+                    // 495800
+                    new BinaryEdit("o_keys_savefunc")
+                    {
+                        new BinAddress("self", 17),
+                        new BinAddress("c1", 22),
+                        new BinAddress("func", 27, true),
+                        new BinAddress("savefunc", 50, true),
+
+                        // 0x20 == save, 0x1F == load
+                        new BinAlloc("DoSave", null)
+                        {
+                            0x8B, 0x44, 0x24, 0x04, // mov eax, [esp+4]
+                            0xA3, new BinRefTo("c1", false), // mov [c1], eax
+                            0xB9, new BinRefTo("self", false), // mov ecx, self
+                            0x6A, 0x0E, // push E
+                            0xE8, new BinRefTo("func"), // call func
+                            0xE9, new BinRefTo("savefunc"), // jmp to save
+                        }
+                    },    
+
+                    // 004697C0
+                    new BinaryEdit("o_keys_name")
+                    {
+                        new BinAlloc("savebool", 1),
+                        new BinAlloc("name", Encoding.ASCII.GetBytes("Quicksave\0")),
+                        new BinHook(25, null, 0xE9)
+                        {
+                            0x80, 0x3D, new BinRefTo("savebool", false), 0x00, // cmp byte ptr [savebool], 0
+                            0x74, 0x06, // je to ori code
+                            0xB8, new BinRefTo("name", false), // mov eax, quicksave
+                            0xC3, // ret
+                            // ori code:
+                            new BinBytes(0x83, 0x79, 0x04, 0x00, 0x75, 0x03, 0x33, 0xC0, 0xC3, 0x8B, 0x01, 0x69,
+                                0xC0, 0xFA, 0x00, 0x00, 0x00, 0x8D, 0x84, 0x08, 0x50, 0x01, 0x00, 0x00, 0xC3)
+                        }
+                    },             
+
+
                     // 004B3B53 S key
-                    new BinaryEdit("o_keys_down")
+                    new BinaryEdit("o_keys_s")
                     {
                         new BinAddress("ctrl", 0x10F),
                         
-                        0x39, 0x1D,                 // cmp ctrlpressed, ebx = 0
-                        new BinRefTo("ctrl", false),
-                        0x0F, 0x84, 0xEB, 0xF3, 0xFF, 0xFF, // jmp to move if equal
+                        0x39, 0x1D, new BinRefTo("ctrl", false),  // cmp [ctrlpressed], ebx = 0
+                        0x0F, 0x84, 0xEB, 0xF3, 0xFF, 0xFF,       // jmp to move if equal
 
-                        0x6A, 0x00, // push 00
+                        0xC6, 0x05, new BinRefTo("savebool", false), 0x01,
 
-                        0xE8, 0xA6, 0x1C, 0xFE, 0xFF, // call
+                        0x6A, 0x20, // push 0x20
+                        0xE8, new BinRefTo("DoSave"),
+                        
+
+                        0xC6, 0x05, new BinRefTo("savebool", false), 0x00,
 
                         0x58, // pop eax
-                        0xEB, 0x76 // jmp to default/end
+                        0xEB, 0x5C // jmp to default/end
                     },
 
 
@@ -522,17 +563,17 @@ namespace UnofficialCrusaderPatch
                         new BinBytes(0x09),
                         new BinSkip(0x02),
                         new BinBytes(0x0B),
-                        new BinSkip(0x0E),
-                        new BinBytes(0x0C),
-                        //new BinSkip(0x03),
-                        //new BinBytes(0x0A),
+                        //new BinSkip(0x0E),
+                        //new BinBytes(0x0C),
+                        new BinSkip(0x03 + 0x0E + 1),
+                        new BinBytes(0x0A),
                     },
 
                     // WASD
                     // 004B4C9F
                     new BinaryEdit("o_keys_up")
                     {
-                        new BinHook(6, "ret", 0xE9)
+                        new BinHook(6, null, 0xE9)
                         {
                             0x83, 0xC0, 0xDB, // add eax, -25
 
@@ -562,8 +603,7 @@ namespace UnofficialCrusaderPatch
 
                             // end
                             0x83, 0xF8, 0x03 // cmp eax, 3
-                        },
-                        new BinLabel("ret")
+                        }
                     }
                 }
             },

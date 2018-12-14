@@ -17,8 +17,10 @@ namespace UnofficialCrusaderPatch
 
             foreach (BinElement element in elements)
             {
-                if (element is BinRedirect redirection)
-                    parent.Add(redirection.EditData);
+                if (element is BinAlloc alloc)
+                {
+                    parent.Add(alloc.EditData);
+                }
             }
         }
 
@@ -48,9 +50,9 @@ namespace UnofficialCrusaderPatch
 
             foreach (BinElement e in elements)
             {
-                if (e is BinGroup group)
+                if (e is IBinCollection group)
                 {
-                    foreach (BinElement ge in group.Elements)
+                    foreach (BinElement ge in group.Collection)
                     {
                         InitElement(ge, ref rawAddr, ref virtAddr, args.OriData);
                     }
@@ -81,9 +83,9 @@ namespace UnofficialCrusaderPatch
 
             foreach (BinElement e in elements)
             {
-                if (e is BinGroup group)
+                if (e is IBinCollection group)
                 {
-                    foreach (BinElement ge in group.Elements)
+                    foreach (BinElement ge in group.Collection)
                         ge.Write(binArgs);
                 }
                 else
