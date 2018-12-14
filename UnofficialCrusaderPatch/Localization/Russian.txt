@@ -476,7 +476,7 @@ o_engineertent_descr
 
 ai_demolish_trapped
 {
-	"If enclosed"
+	"Если приложено"
 }
 
 ai_demolish_trapped_descr
@@ -487,57 +487,57 @@ ai_demolish_trapped_descr
 
 ai_attacknearest
 {
-	"Always attack nearest enemy"
+	"Всегда атакует ближайшего врага"
 }
 
 ai_attacknearest_descr
 {
-	"With this setting, the AI lords always attack their nearest enemies. &
-This prevents troops switching targets during a castle assault as well as sending &
-them past other enemies' castles to gather."
+	"С этим параметром, Лорды АI всегда атакуют своих ближайших врагов. &
+Это предотвращает переключение войск во время штурма замка, а также отправку и
+их мимо замков других врагов, чтобы собрать."
 }
 
 
 o_freetrader
 {
-	"Free trader post"
+	"Бесплатный рынок"
 }
 
 o_freetrader_descr
 {
-	"Since the AI sometimes plays itself, when they're out of wood and their trader post &
-is destroyed. With this setting, the trader post will become free of cost to prevent this."
+	"Поскольку АI иногда играет сам, когда он вне леса и его рынок уничтожен. &
+ С этим параметром рынок станет бесплатным, чтобы предотвратить это."
 }
 
 ai_towerengines
 {
-	"No limit for siege engines on towers"
+	"Нет лимита на осадные машины на вышках"
 }
 
 ai_towerenginesdescr
 {
-	"Usually the AI only builds up to three mangonels and ballistae each on its towers. &
-This limit can be lifted here."
+	"Обычно АI строит на своих башнях до трех мангонелей и баллист. &
+Этот лимит можно снять здесь."
 }
 
 ai_buywood
 {
-	"Buy enough wood"
+	"Купить достаточно древесины"
 }
 
 ai_buywood_descr
 {
-	"To prevent thievish fletchers from stealing wood which the AI just bought for &
-buildings, 2 extra wood will now be bought for each building.
+	"Чтобы воры не могли украсть древесину которую АI только что купил для &
+	здания,2 единицы дополнительной деревесины теперь будет покупать для каждого здания.
 }
 
 o_keys
 {
-	"WASD-Keys and quicksaves"
+	"WASD-Кнопки и быстрые сохранения"
 }
 
 o_keys_descr
 {
-	"The WASD-keys can be used to move around with this setting as well as &
-CTRL-S and CTRL-L to quicksave and load respectively."
+	"Клавиши WASD можно использовать для перемещения с этой настройкой, а также &
+CTRL-S и CTRL-L для быстрого сохранения и загрузки соответственно."
 }
