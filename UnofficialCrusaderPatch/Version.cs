@@ -515,13 +515,13 @@ namespace UnofficialCrusaderPatch
                     },    
 
                     // 004697C0
-                    new BinaryEdit("o_keys_name")
+                    new BinaryEdit("o_keys_savename")
                     {
-                        new BinAlloc("savebool", 1),
+                        new BinAlloc("namebool", 1),
                         new BinAlloc("name", Encoding.ASCII.GetBytes("Quicksave\0")),
                         new BinHook(25, null, 0xE9)
                         {
-                            0x80, 0x3D, new BinRefTo("savebool", false), 0x00, // cmp byte ptr [savebool], 0
+                            0x80, 0x3D, new BinRefTo("namebool", false), 0x00, // cmp byte ptr [namebool], 0
                             0x74, 0x06, // je to ori code
                             0xB8, new BinRefTo("name", false), // mov eax, quicksave
                             0xC3, // ret
@@ -529,8 +529,7 @@ namespace UnofficialCrusaderPatch
                             new BinBytes(0x83, 0x79, 0x04, 0x00, 0x75, 0x03, 0x33, 0xC0, 0xC3, 0x8B, 0x01, 0x69,
                                 0xC0, 0xFA, 0x00, 0x00, 0x00, 0x8D, 0x84, 0x08, 0x50, 0x01, 0x00, 0x00, 0xC3)
                         }
-                    },             
-
+                    },          
 
                     // 004B3B53 S key
                     new BinaryEdit("o_keys_s")
@@ -540,19 +539,58 @@ namespace UnofficialCrusaderPatch
                         0x39, 0x1D, new BinRefTo("ctrl", false),  // cmp [ctrlpressed], ebx = 0
                         0x0F, 0x84, 0xEB, 0xF3, 0xFF, 0xFF,       // jmp to move if equal
 
-                        0xC6, 0x05, new BinRefTo("savebool", false), 0x01,
+                        0xC6, 0x05, new BinRefTo("namebool", false), 0x01,
 
                         0x6A, 0x20, // push 0x20
-                        0xE8, new BinRefTo("DoSave"),
+                        0xE8, new BinRefTo("DoSave"), // call save func
                         
 
-                        0xC6, 0x05, new BinRefTo("savebool", false), 0x00,
+                        0xC6, 0x05, new BinRefTo("namebool", false), 0x00,
 
                         0x58, // pop eax
                         0xEB, 0x5C // jmp to default/end
                     },
 
+                       
 
+                    // 0046C2E0
+                    new BinaryEdit("o_keys_loadname")
+                    {
+                        new BinHook(32, null, 0xE9)
+                        {
+                            0x80, 0x3D, new BinRefTo("namebool", false), 0x00, // cmp byte ptr [namebool], 0
+                            0x74, 0x08, // je to ori code
+                            0xB8, new BinRefTo("name", false), // mov eax, quicksave
+                            0xC2, 0x04, 0x00, // ret
+                            // ori code:
+                            new BinBytes(0x8B, 0x44, 0x24, 0x04, 0x3D, 0xF4, 0x01, 0x00, 0x00, 0x7C, 0x05, 0x33, 0xC0,
+                                0xC2, 0x04, 0x00, 0x69, 0xC0, 0xE9, 0x03, 0x00, 0x00, 0x8D, 0x84, 0x08, 0xC8, 0x0B, 0x00,
+                                0x00, 0xC2, 0x04, 0x00)
+                        }
+                    },   
+                    
+                    // 004B3DA1 L key
+                    new BinaryEdit("o_keys_l")
+                    {
+                        new BinAddress("somevar", 2),
+                        new BinHook(7)
+                        {
+                            0x39, 0x1D, new BinRefTo("ctrl", false),  // cmp [ctrlpressed], ebx = 0
+                            0x74, 0x16, // je to ori code
+
+                            0xC6, 0x05, new BinRefTo("namebool", false), 0x01,
+
+                            0x6A, 0x1F, // push 0x1F
+                            0xE8, new BinRefTo("DoSave"), // call save func
+                            
+                            0xC6, 0x05, new BinRefTo("namebool", false), 0x00,
+
+                            0x58, // pop eax
+                            
+                            // ori code
+                            0x83, 0x3D, new BinRefTo("somevar", false), 0xFF
+                        }
+                    },
 
                     // WASD
                     // Arrow Keys: 4b4ee4 + 1D => 9, A, B, C

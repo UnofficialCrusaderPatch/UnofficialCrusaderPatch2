@@ -8,6 +8,11 @@ namespace UnofficialCrusaderPatch
 {
     class BinHook : BinRedirect
     {
+        public BinHook(int hookLen)
+            : this(hookLen, null, 0xE9)
+        {
+        }
+
         public BinHook(string jmpBackLabel, params byte[] jmpBytes)
             : this(jmpBytes.Length + 4, jmpBackLabel, jmpBytes)
         {

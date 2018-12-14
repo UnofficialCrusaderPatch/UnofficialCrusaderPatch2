@@ -1104,9 +1104,11 @@
     <EmbeddedResource Include="CodeBlocks\ai_buywood.block" />
     <EmbeddedResource Include="CodeBlocks\o_keys_down.block" />
     <EmbeddedResource Include="CodeBlocks\o_keys_up.block" />
-    <EmbeddedResource Include="CodeBlocks\o_keys_name.block" />
+    <EmbeddedResource Include="CodeBlocks\o_keys_savename.block" />
     <EmbeddedResource Include="CodeBlocks\o_keys_s.block" />
     <EmbeddedResource Include="CodeBlocks\o_keys_savefunc.block" />
+    <EmbeddedResource Include="CodeBlocks\o_keys_loadname.block" />
+    <EmbeddedResource Include="CodeBlocks\o_keys_l.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
