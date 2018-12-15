@@ -511,7 +511,7 @@ ai_towerengines
 	"Brak ograniczeń dla silników oblężniczych na wieżach"
 }
 
-ai_towerenginesdescr
+ai_towerengines_descr
 {
 	"Zazwyczaj sztuczna inteligencja buduje tylko trzy mangonele i balistę na swoich wieżach. &
 Ten limit można tutaj unieść."

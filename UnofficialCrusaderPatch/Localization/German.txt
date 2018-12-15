@@ -517,7 +517,7 @@ ai_towerengines
 	"Keine Grenze für Geräte auf Türmen"
 }
 
-ai_towerenginesdescr
+ai_towerengines_descr
 {
 	"Normalerweise baut die KI maximal je drei Ballisten und Mangen. &
 Dieses Limit wird hiermit aufgehoben."

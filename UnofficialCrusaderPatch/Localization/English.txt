@@ -510,7 +510,7 @@ ai_towerengines
 	"No limit for siege engines on towers"
 }
 
-ai_towerenginesdescr
+ai_towerengines_descr
 {
 	"Usually the AI only builds up to three mangonels and ballistae each on its towers. &
 This limit can be lifted here."
