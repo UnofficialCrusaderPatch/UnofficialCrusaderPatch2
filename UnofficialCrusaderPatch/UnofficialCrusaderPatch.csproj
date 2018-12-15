@@ -1098,7 +1098,7 @@
     <EmbeddedResource Include="CodeBlocks\o_engineertent.block" />
     <EmbeddedResource Include="CodeBlocks\o_onlyai_face.block" />
     <EmbeddedResource Include="CodeBlocks\ai_demolish_trapped.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_attacknearest.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_attacktarget.block" />
     <EmbeddedResource Include="CodeBlocks\o_freetrader.block" />
     <EmbeddedResource Include="CodeBlocks\ai_towerengines.block" />
     <EmbeddedResource Include="CodeBlocks\ai_buywood.block" />
@@ -1109,6 +1109,7 @@
     <EmbeddedResource Include="CodeBlocks\o_keys_savefunc.block" />
     <EmbeddedResource Include="CodeBlocks\o_keys_loadname.block" />
     <EmbeddedResource Include="CodeBlocks\o_keys_l.block" />
+    <EmbeddedResource Include="CodeBlocks\o_onlyai_reset.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

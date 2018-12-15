@@ -23,11 +23,16 @@ namespace UnofficialCrusaderPatch
         {
             return new Change(ident, type, checkedDefault)
             {
-                new DefaultHeader(ident, true)
+                Header(ident, true, input)
+            };
+        }
+
+        public static DefaultHeader Header(string ident, bool suggested, params byte[] input)
+        {
+            return new DefaultHeader(ident, suggested)
                 {
                     CreateEdit(ident, input)
-                }
-            };
+                };
         }
 
         public static BinaryEdit CreateEdit(string ident, params byte[] input)

@@ -20,13 +20,23 @@ namespace UnofficialCrusaderPatch
         public override bool Initialize(ChangeArgs args) => true;
         public override void Activate(ChangeArgs args)
         {
-            Assembly asm = Assembly.GetExecutingAssembly();
+            var aivDir = args.AIVDir;
 
+            // create backup
+            string backupDir = Path.Combine(args.AIVDir.FullName, Patcher.BackupIdent);
+            Directory.CreateDirectory(backupDir);
+            foreach (FileInfo fi in aivDir.EnumerateFiles("*.aiv"))
+                fi.CopyTo(Path.Combine(backupDir, fi.Name));
+
+
+
+            // copy aiv castles
+            Assembly asm = Assembly.GetExecutingAssembly();
             foreach (string res in asm.GetManifestResourceNames())
             {
                 if (res.StartsWith(resourceFolder, StringComparison.OrdinalIgnoreCase))
                 {
-                    string path = Path.Combine(args.AIVDir.FullName, res.Substring(resourceFolder.Length + 1));
+                    string path = Path.Combine(aivDir.FullName, res.Substring(resourceFolder.Length + 1));
                     using (Stream stream = asm.GetManifestResourceStream(res))
                     using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
                     {
@@ -35,7 +45,7 @@ namespace UnofficialCrusaderPatch
                 }
             }
         }
-        
+
         public static DefaultHeader Header(string resourceFolder, bool isEnabled)
         {
             string ident = "aiv_" + resourceFolder;

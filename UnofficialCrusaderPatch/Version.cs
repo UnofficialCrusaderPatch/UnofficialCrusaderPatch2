@@ -5,22 +5,6 @@ using System.Text;
 
 namespace UnofficialCrusaderPatch
 {
-    // 2.07
-    // - face in spectator mode
-    // - extended demolish setting to trapped castles
-    // - always attack nearest neighbor
-    // - free trader post
-    // - UNLIMITED SIEGE ENGINES ON TOWERS
-    // - buy wood
-    // - wasd
-    // - quicksaves
-
-
-
-
-
-
-
     // meuchelmörder direkt auf bergfried
 
     // farben:
@@ -44,7 +28,7 @@ namespace UnofficialCrusaderPatch
 
     class Version
     {
-        public static string PatcherVersion = "2.07 pre-release";
+        public static string PatcherVersion = "2.07 pre-release-2";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
@@ -143,65 +127,26 @@ namespace UnofficialCrusaderPatch
              
             // 004D20A2
             BinBytes.Change("ai_towerengines", ChangeType.AILords, true, 0xEB),
-
+            
             /*
-             * ALWAYS ATTACK NEAREST NEIGHBOR
-             */ 
-
-            // 004D47B2
-            BinBytes.Change("ai_attacknearest", ChangeType.AILords, true, 0xEB, 0x11, 0x90),
-
-            /*
-             * AI NO SLEEP
+             *  AI RECRUIT ADDITIONAL ATTACK TROOPS 
              */
 
-            // 004CBCD5
-            new Change("ai_nosleep", ChangeType.AILords, false)
+            // 115EEE0 + (AI1 = 73E8) = stay home troops?
+            // +8 attack troops
+            
+            // absolute limit at 0x4CDEF8 + 1 = 200
+            new Change("ai_attacklimit", ChangeType.AILords)
             {
-                new DefaultHeader("ai_nosleep")
+                new SliderHeader("ai_attacklimit", true, 0, 3000, 50, 200, 500)
                 {
-                    new BinaryEdit("ai_nosleep")
+                    new BinaryEdit("ai_attacklimit")
                     {
-                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
-                        new BinSkip(2),
-                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
-                        new BinSkip(10),
-                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
-                        new BinSkip(8),
-                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
-                        new BinSkip(8),
-                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
-                        new BinSkip(10),
-                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
-                        new BinSkip(10),
-                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
-                        new BinSkip(10),
-                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
-                        new BinSkip(10),
-                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
-                        new BinSkip(10),
-                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
-                        new BinSkip(10),
-                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
-                    }
+                        new BinInt32Value()
+                    },
                 }
             },
 
-            /*
-             *  AI OVERCLOCK
-             */
-
-            /*new Change("ai_overclock", ChangeType.AILords, false)
-            {
-                new SliderHeader("ai_overclock", true, 0.5, 1, 0.05, 1, 0.75)
-                {
-                    // 0045CC20+6
-                    new BinaryEdit("ai_overclock")
-                    {
-                        new BinInt32Value(200) // default: 200
-                    }
-                }
-            },*/
 
             /*
              * IMPROVED ATTACKS
@@ -263,6 +208,82 @@ namespace UnofficialCrusaderPatch
 
 
             /*
+             * ALWAYS ATTACK NEAREST NEIGHBOR
+             */ 
+
+            // 004D47B2
+            new Change("ai_attacknearest", ChangeType.AILords, false)
+            {
+                new DefaultHeader("ai_attacknearest", true)
+                {
+                    BinBytes.CreateEdit("ai_attacktarget", 0xEB, 0x11, 0x90)
+                },
+
+                new DefaultHeader("ai_attacktarget_richest", false)
+                {
+                    BinBytes.CreateEdit("ai_attacktarget", 0xEB, 0x3F, 0x90)
+                },
+
+                new DefaultHeader("ai_attacktarget_weakest", false)
+                {
+                    BinBytes.CreateEdit("ai_attacktarget", 0xEB, 0x52, 0x90)
+                },
+            },
+
+            /*
+             * AI NO SLEEP
+             */
+
+            // 004CBCD5
+            new Change("ai_nosleep", ChangeType.AILords, false)
+            {
+                new DefaultHeader("ai_nosleep")
+                {
+                    new BinaryEdit("ai_nosleep")
+                    {
+                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
+                        new BinSkip(2),
+                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
+                        new BinSkip(10),
+                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
+                        new BinSkip(8),
+                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
+                        new BinSkip(8),
+                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
+                        new BinSkip(10),
+                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
+                        new BinSkip(10),
+                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
+                        new BinSkip(10),
+                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
+                        new BinSkip(10),
+                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
+                        new BinSkip(10),
+                        new BinBytes(0x30, 0xC9, 0x90), // xor cl, cl
+                        new BinSkip(10),
+                        new BinBytes(0x30, 0xD2, 0x90), // xor dl, dl
+                    }
+                }
+            },
+
+            /*
+             *  AI OVERCLOCK
+             */
+
+            /*new Change("ai_overclock", ChangeType.AILords, false)
+            {
+                new SliderHeader("ai_overclock", true, 0.5, 1, 0.05, 1, 0.75)
+                {
+                    // 0045CC20+6
+                    new BinaryEdit("ai_overclock")
+                    {
+                        new BinInt32Value(200) // default: 200
+                    }
+                }
+            },*/
+
+
+            /*
              *  ECONOMY DEMOLISHING
              */
              
@@ -271,8 +292,8 @@ namespace UnofficialCrusaderPatch
             {
                 new DefaultHeader("ai_demolish_walls", true)
                 {
-                    // 004D03EF  => jmp to end
-                    BinBytes.CreateEdit("ai_demolish_walls", 0xE9, 0x1A, 0x01, 0x00, 0x00)
+                    // 004D03F4  => jmp to end
+                    BinBytes.CreateEdit("ai_demolish_walls", 0xE9, 0x15, 0x01, 0x00, 0x00, 0x90, 0x90)
                 },
 
                 new DefaultHeader("ai_demolish_trapped", false)
@@ -283,8 +304,8 @@ namespace UnofficialCrusaderPatch
 
                 new DefaultHeader("ai_demolish_eco", false)
                 {
-                    // 004D0387  => jmp to end
-                    BinBytes.CreateEdit("ai_demolish_eco", 0x75, 0x66, 0xE9, 0x6B, 0x01, 0x00, 0x00, 0x90, 0x90)
+                    // 004D0280  => retn 8
+                    BinBytes.CreateEdit("ai_demolish_eco", 0xC2, 0x08, 0x00, 0x90, 0x90, 0x90)
                 },
             },
 
@@ -292,24 +313,6 @@ namespace UnofficialCrusaderPatch
 
 
 
-            /*
-             *  AI RECRUIT ADDITIONAL ATTACK TROOPS 
-             */
-
-            // 115EEE0 + (AI1 = 73E8) = stay home troops?
-            // +8 attack troops
-            
-            // absolute limit at 0x4CDEF8 + 1 = 200
-            new Change("ai_attacklimit", ChangeType.AILords)
-            {
-                new SliderHeader("ai_attacklimit", true, 0, 3000, 50, 200, 500)
-                {
-                    new BinaryEdit("ai_attacklimit")
-                    {
-                        new BinInt32Value()
-                    },
-                }
-            },
 
             new Change("ai_addattack", ChangeType.AILords, false)
             {
@@ -490,203 +493,6 @@ namespace UnofficialCrusaderPatch
 
             #region OTHER
             
-            /*
-             *  WASD
-             */
-             
-            new Change("o_keys", ChangeType.Other)
-            {
-                new DefaultHeader("o_keys")
-                {
-                    // 495800
-                    new BinaryEdit("o_keys_savefunc")
-                    {
-                        new BinAddress("self", 17),
-                        new BinAddress("c1", 22),
-                        new BinAddress("func", 27, true),
-                        new BinAddress("savefunc", 50, true),
-
-                        // 0x20 == save, 0x1F == load
-                        new BinAlloc("DoSave", null)
-                        {
-                            0x8B, 0x44, 0x24, 0x04, // mov eax, [esp+4]
-                            0xA3, new BinRefTo("c1", false), // mov [c1], eax
-                            0xB9, new BinRefTo("self", false), // mov ecx, self
-                            0x6A, 0x0E, // push E
-                            0xE8, new BinRefTo("func"), // call func
-                            0xE9, new BinRefTo("savefunc"), // jmp to save
-                        }
-                    },    
-
-                    // 004697C0
-                    new BinaryEdit("o_keys_savename")
-                    {
-                        new BinAlloc("namebool", 1),
-                        new BinAlloc("name", Encoding.ASCII.GetBytes("Quicksave\0")),
-                        new BinHook(9)
-                        {
-                            0x80, 0x3D, new BinRefTo("namebool", false), 0x00, // cmp byte ptr [namebool], 0
-                            0x74, 0x06, // je to ori code
-                            0xB8, new BinRefTo("name", false), // mov eax, quicksave
-                            0xC3, // ret
-                            // ori code:
-                            new BinBytes(0x83, 0x79, 0x04, 0x00, 0x75, 0x03, 0x33, 0xC0, 0xC3)
-                        }
-                    },          
-
-                    // 004B3B53 S key
-                    new BinaryEdit("o_keys_s")
-                    {
-                        new BinAddress("ctrl", 0x10F),
-                        
-                        0x39, 0x1D, new BinRefTo("ctrl", false),  // cmp [ctrlpressed], ebx = 0
-                        0x0F, 0x84, 0xEB, 0xF3, 0xFF, 0xFF,       // jmp to move if equal
-
-                        0xC6, 0x05, new BinRefTo("namebool", false), 0x01,
-
-                        0x6A, 0x20, // push 0x20
-                        0xE8, new BinRefTo("DoSave"), // call save func
-                        
-
-                        0xC6, 0x05, new BinRefTo("namebool", false), 0x00,
-
-                        0x58, // pop eax
-                        0xEB, 0x5C // jmp to default/end
-                    },
-
-                       
-
-                    // 0046C2E0
-                    new BinaryEdit("o_keys_loadname")
-                    {
-                        new BinAddress("someoffset", 25),
-                        new BinHook(9)
-                        {
-                            0x80, 0x3D, new BinRefTo("namebool", false), 0x00, // cmp byte ptr [namebool], 0
-                            0x74, 0x08, // je to ori code
-                            0xB8, new BinRefTo("name", false), // mov eax, quicksave
-                            0xC2, 0x04, 0x00, // ret
-
-                            // ori code:
-                            new BinBytes(0x8B, 0x44, 0x24, 0x04, 0x3D, 0xF4, 0x01, 0x00, 0x00)
-                        }
-                    },  
-                    
-                    // 004B3DA1 L key
-                    new BinaryEdit("o_keys_l")
-                    {
-                        new BinAddress("somevar", 2),
-                        new BinAddress("default", 9, true),
-                        new BinHook(7)
-                        {
-                            0x39, 0x1D, new BinRefTo("ctrl", false),  // cmp [ctrlpressed], ebx = 0
-                            0x74, 0x1B, // je to ori code
-
-                            0xC6, 0x05, new BinRefTo("namebool", false), 0x01,
-
-                            0x6A, 0x1F, // push 0x1F
-                            0xE8, new BinRefTo("DoSave"), // call save func
-                            
-                            0xC6, 0x05, new BinRefTo("namebool", false), 0x00,
-
-                            0x58, // pop eax
-
-                            0xE9, new BinRefTo("default"), // jump awayy
-                            
-                            // ori code
-                            0x83, 0x3D, new BinRefTo("somevar", false), 0xFF
-                        }
-                    },
-
-                    // WASD
-                    // Arrow Keys: 4b4ee4 + 1D => 9, A, B, C
-                    // WASD Keys: 4b4ee4 + 39, 4F, 3C, 4B
-                    new BinaryEdit("o_keys_down")
-                    {
-                        // 4b4ee4 + 39
-                        new BinBytes(0x09),
-                        new BinSkip(0x02),
-                        new BinBytes(0x0B),
-                        //new BinSkip(0x0E),
-                        //new BinBytes(0x0C),
-                        new BinSkip(0x03 + 0x0E + 1),
-                        new BinBytes(0x0A),
-                    },
-
-                    // WASD
-                    // 004B4C9F
-                    new BinaryEdit("o_keys_up")
-                    {
-                        new BinHook(6, null, 0xE9)
-                        {
-                            0x83, 0xC0, 0xDB, // add eax, -25
-
-                            // 1C left => 0
-                            // 32 top => 1
-                            // 1F right => 2
-                            // 2E down => 3
-
-                            0x83, 0xF8, 0x1C, // cmp eax, 1C
-                            0x75, 0x04,       // jne to next
-                            0x31, 0xC0,       // xor eax, eax
-                            0xEB, 0x1C,       // jmp to end
-                            
-                            0x83, 0xF8, 0x32, // cmp eax, 32
-                            0x75, 0x05,       // jne to next
-                            0x8D, 0x40, 0xCF, // lea eax, [eax-31]
-                            0xEB, 0x12,       // jmp to end
-                            
-                            0x83, 0xF8, 0x1F, // cmp eax, 1F
-                            0x75, 0x05,       // jne to next
-                            0x8D, 0x40, 0xE3, // lea eax, [eax-1D]
-                            0xEB, 0x08,       // jmp to end
-
-                            0x83, 0xF8, 0x2E, // cmp eax, 2E
-                            0x75, 0x03,       // jne to end 
-                            0x8D, 0x40, 0xD5, // lea eax, [eax-2B]
-
-                            // end
-                            0x83, 0xF8, 0x03 // cmp eax, 3
-                        }
-                    }
-                }
-            },
-
-
-
-            /* 
-             *  FREE TRADER POST
-             */
-             
-            // trader post: runtime 01124EFC
-            // 005C23D8
-            BinBytes.Change("o_freetrader", ChangeType.Other, true, 0x00),
-
-
-            /*
-             * SIEGE EQUIPMENT BUILDING
-             */
-
-            // 0044612B
-            // nop out: mov [selection], ebp = 0
-            BinBytes.Change("o_engineertent", ChangeType.Other, true, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90),
-
-            /*
-             *  MOAT VISIBILITY
-             */
-             
-            new Change("o_moatvisibility", ChangeType.Other)
-            {
-                new DefaultHeader("o_moatvisibility")
-                {
-                    // 4EC86C
-                    new BinaryEdit("o_moatvisibility")
-                    {
-                        new BinSkip(0x24),
-                        new BinBytes(0x15) // mov [ ], edx = 1 instead of ebp = 0
-                    }
-                }
-            },
 
             /*
              * PLAYER 1 COLOR
@@ -725,7 +531,7 @@ namespace UnofficialCrusaderPatch
                     ),   
 
                     // 004AF15A
-                    BinHook.CreateEdit("o_playercolor_table1", 7, 
+                    BinHook.CreateEdit("o_playercolor_table1", 7,
                             0x89, 0xF0, // mov eax, esi
                             0x3C, 0x01, //  CMP AL,1
                             0x75, 0x04, //  JNE SHORT
@@ -1152,6 +958,204 @@ namespace UnofficialCrusaderPatch
                     #endregion
                 },
             },
+
+            /*
+             *  WASD
+             */
+             
+            new Change("o_keys", ChangeType.Other)
+            {
+                new DefaultHeader("o_keys")
+                {
+                    // 495800
+                    new BinaryEdit("o_keys_savefunc")
+                    {
+                        new BinAddress("self", 17),
+                        new BinAddress("c1", 22),
+                        new BinAddress("func", 27, true),
+                        new BinAddress("savefunc", 50, true),
+
+                        // 0x20 == save, 0x1F == load
+                        new BinAlloc("DoSave", null)
+                        {
+                            0x8B, 0x44, 0x24, 0x04, // mov eax, [esp+4]
+                            0xA3, new BinRefTo("c1", false), // mov [c1], eax
+                            0xB9, new BinRefTo("self", false), // mov ecx, self
+                            0x6A, 0x0E, // push E
+                            0xE8, new BinRefTo("func"), // call func
+                            0xE9, new BinRefTo("savefunc"), // jmp to save
+                        }
+                    },    
+
+                    // 004697C0
+                    new BinaryEdit("o_keys_savename")
+                    {
+                        new BinAlloc("namebool", 1),
+                        new BinAlloc("name", Encoding.ASCII.GetBytes("Quicksave\0")),
+                        new BinHook(9)
+                        {
+                            0x80, 0x3D, new BinRefTo("namebool", false), 0x00, // cmp byte ptr [namebool], 0
+                            0x74, 0x06, // je to ori code
+                            0xB8, new BinRefTo("name", false), // mov eax, quicksave
+                            0xC3, // ret
+                            // ori code:
+                            new BinBytes(0x83, 0x79, 0x04, 0x00, 0x75, 0x03, 0x33, 0xC0, 0xC3)
+                        }
+                    },          
+
+                    // 004B3B53 S key
+                    new BinaryEdit("o_keys_s")
+                    {
+                        new BinAddress("ctrl", 0x10F),
+
+                        0x39, 0x1D, new BinRefTo("ctrl", false),  // cmp [ctrlpressed], ebx = 0
+                        0x0F, 0x84, 0xEB, 0xF3, 0xFF, 0xFF,       // jmp to move if equal
+
+                        0xC6, 0x05, new BinRefTo("namebool", false), 0x01,
+
+                        0x6A, 0x20, // push 0x20
+                        0xE8, new BinRefTo("DoSave"), // call save func
+                        
+
+                        0xC6, 0x05, new BinRefTo("namebool", false), 0x00,
+
+                        0x58, // pop eax
+                        0xEB, 0x5C // jmp to default/end
+                    },
+
+                       
+
+                    // 0046C2E0
+                    new BinaryEdit("o_keys_loadname")
+                    {
+                        new BinAddress("someoffset", 25),
+                        new BinHook(9)
+                        {
+                            0x80, 0x3D, new BinRefTo("namebool", false), 0x00, // cmp byte ptr [namebool], 0
+                            0x74, 0x08, // je to ori code
+                            0xB8, new BinRefTo("name", false), // mov eax, quicksave
+                            0xC2, 0x04, 0x00, // ret
+
+                            // ori code:
+                            new BinBytes(0x8B, 0x44, 0x24, 0x04, 0x3D, 0xF4, 0x01, 0x00, 0x00)
+                        }
+                    },  
+                    
+                    // 004B3DA1 L key
+                    new BinaryEdit("o_keys_l")
+                    {
+                        new BinAddress("somevar", 2),
+                        new BinAddress("default", 9, true),
+                        new BinHook(7)
+                        {
+                            0x39, 0x1D, new BinRefTo("ctrl", false),  // cmp [ctrlpressed], ebx = 0
+                            0x74, 0x1B, // je to ori code
+
+                            0xC6, 0x05, new BinRefTo("namebool", false), 0x01,
+
+                            0x6A, 0x1F, // push 0x1F
+                            0xE8, new BinRefTo("DoSave"), // call save func
+                            
+                            0xC6, 0x05, new BinRefTo("namebool", false), 0x00,
+
+                            0x58, // pop eax
+
+                            0xE9, new BinRefTo("default"), // jump awayy
+                            
+                            // ori code
+                            0x83, 0x3D, new BinRefTo("somevar", false), 0xFF
+                        }
+                    },
+
+                    // WASD
+                    // Arrow Keys: 4b4ee4 + 1D => 9, A, B, C
+                    // WASD Keys: 4b4ee4 + 39, 4F, 3C, 4B
+                    new BinaryEdit("o_keys_down")
+                    {
+                        // 4b4ee4 + 39
+                        new BinBytes(0x09),
+                        new BinSkip(0x02),
+                        new BinBytes(0x0B),
+                        //new BinSkip(0x0E),
+                        //new BinBytes(0x0C),
+                        new BinSkip(0x03 + 0x0E + 1),
+                        new BinBytes(0x0A),
+                    },
+
+                    // WASD
+                    // 004B4C9F
+                    new BinaryEdit("o_keys_up")
+                    {
+                        new BinHook(6, null, 0xE9)
+                        {
+                            0x83, 0xC0, 0xDB, // add eax, -25
+
+                            // 1C left => 0
+                            // 32 top => 1
+                            // 1F right => 2
+                            // 2E down => 3
+
+                            0x83, 0xF8, 0x1C, // cmp eax, 1C
+                            0x75, 0x04,       // jne to next
+                            0x31, 0xC0,       // xor eax, eax
+                            0xEB, 0x1C,       // jmp to end
+                            
+                            0x83, 0xF8, 0x32, // cmp eax, 32
+                            0x75, 0x05,       // jne to next
+                            0x8D, 0x40, 0xCF, // lea eax, [eax-31]
+                            0xEB, 0x12,       // jmp to end
+                            
+                            0x83, 0xF8, 0x1F, // cmp eax, 1F
+                            0x75, 0x05,       // jne to next
+                            0x8D, 0x40, 0xE3, // lea eax, [eax-1D]
+                            0xEB, 0x08,       // jmp to end
+
+                            0x83, 0xF8, 0x2E, // cmp eax, 2E
+                            0x75, 0x03,       // jne to end 
+                            0x8D, 0x40, 0xD5, // lea eax, [eax-2B]
+
+                            // end
+                            0x83, 0xF8, 0x03 // cmp eax, 3
+                        }
+                    }
+                }
+            },
+
+
+
+            /* 
+             *  FREE TRADER POST
+             */
+             
+            // trader post: runtime 01124EFC
+            // 005C23D8
+            BinBytes.Change("o_freetrader", ChangeType.Other, true, 0x00),
+
+
+            /*
+             * SIEGE EQUIPMENT BUILDING
+             */
+
+            // 0044612B
+            // nop out: mov [selection], ebp = 0
+            BinBytes.Change("o_engineertent", ChangeType.Other, true, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90),
+
+            /*
+             *  MOAT VISIBILITY
+             */
+             
+            new Change("o_moatvisibility", ChangeType.Other)
+            {
+                new DefaultHeader("o_moatvisibility")
+                {
+                    // 4EC86C
+                    new BinaryEdit("o_moatvisibility")
+                    {
+                        new BinSkip(0x24),
+                        new BinBytes(0x15) // mov [ ], edx = 1 instead of ebp = 0
+                    }
+                }
+            },
             
 
 
@@ -1237,7 +1241,7 @@ namespace UnofficialCrusaderPatch
             new Change("o_trooplimit", ChangeType.Other)
             {
                 // 00459E10 + 1
-                new SliderHeader("o_trooplimit", true, 1000, 10000, 100, 2400, 5000)
+                new SliderHeader("o_trooplimit", false, 1000, 10000, 100, 2400, 5000)
                 {
                     new BinaryEdit("o_trooplimit")
                     {
@@ -1255,14 +1259,37 @@ namespace UnofficialCrusaderPatch
             new Change("o_onlyai", ChangeType.Other, false)
             {
                 new DefaultHeader("o_onlyai")
-                {
+                {   
+                    // reset player list
+                    // 0048F919
+                    new BinaryEdit("o_onlyai_reset")
+                    {
+                        new BinAddress("selfindex", 2),
+                        new BinAddress("selfai", 8),
+
+                        new BinHook(12)
+                        {
+                            0x31, 0xC0, // xor eax, eax
+                            0xA3, new BinRefTo("selfindex", false),
+
+                            0x83, 0xE8, 0x01, // sub eax, 1
+                            0xA3, new BinRefTo("selfai", false),
+                        }
+                    },
+
                     // game start
                     // 0048F96C => je to jmp to almost end
                     BinBytes.CreateEdit("o_onlyai", 0xE9, 0x09, 0x01, 0x00, 0x00, 0x90),
                     
                     // loading
-                    // 004956FB => mov [selfindex], eax   to   mov [selfindex], ebx = 0
-                    BinBytes.CreateEdit("o_onlyai_load1", 0x90, 0x90, 0x90, 0x89, 0x1D),
+                    // 004956FB
+                    new BinaryEdit("o_onlyai_load1")
+                    {
+                        //  => mov [selfindex], eax   to   mov [selfindex], ebx = 0
+                        new BinBytes(0x90, 0x90, 0x90, 0x89, 0x1D),
+                        new BinSkip(5),
+                        new BinBytes(0x3C) // mov ..., ebp  => mov ..., edi
+                    },
 
                     // missing in 1.3
                     // loading, buildings menu

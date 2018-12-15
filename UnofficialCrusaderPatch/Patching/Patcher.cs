@@ -8,8 +8,8 @@ namespace UnofficialCrusaderPatch
 {
     static class Patcher
     {
-        const string BackupIdent = "ucp_backup";
-        const string BackupFileEnding = "." + BackupIdent;
+        public const string BackupIdent = "ucp_backup";
+        public const string BackupFileEnding = "." + BackupIdent;
 
         public static string GetOriginalBinary(string folderPath)
         {
@@ -52,13 +52,8 @@ namespace UnofficialCrusaderPatch
                 // restore originals
                 foreach (FileInfo fi in backupDir.EnumerateFiles("*.aiv"))
                     fi.CopyTo(Path.Combine(aivDir.FullName, fi.Name), true);
-            }
-            else
-            {
-                // create backup
-                backupDir.Create();
-                foreach (FileInfo fi in aivDir.EnumerateFiles("*.aiv"))
-                    fi.CopyTo(Path.Combine(backupDir.FullName, fi.Name));
+
+                backupDir.Delete(true);
             }
 
             DoChanges(filePath, aivDir, SetPercent);
