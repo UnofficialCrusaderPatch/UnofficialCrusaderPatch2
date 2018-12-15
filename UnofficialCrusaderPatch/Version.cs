@@ -219,7 +219,7 @@ namespace UnofficialCrusaderPatch
                     BinBytes.CreateEdit("ai_attacktarget", 0xEB, 0x11, 0x90)
                 },
 
-                new DefaultHeader("ai_attacktarget_richest", false)
+                /*new DefaultHeader("ai_attacktarget_richest", false)
                 {
                     BinBytes.CreateEdit("ai_attacktarget", 0xEB, 0x3F, 0x90)
                 },
@@ -227,7 +227,7 @@ namespace UnofficialCrusaderPatch
                 new DefaultHeader("ai_attacktarget_weakest", false)
                 {
                     BinBytes.CreateEdit("ai_attacktarget", 0xEB, 0x52, 0x90)
-                },
+                },*/
             },
 
             /*

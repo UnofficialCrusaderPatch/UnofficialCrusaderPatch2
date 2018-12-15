@@ -490,7 +490,7 @@ ai_attacknearest
 ai_attacknearest_descr
 {
 	"Przy takim ustawieniu władcy AI zawsze atakują najbliższych wrogów. &
-Zapobiega to oddziałom zmieniającym cele podczas zamachu na zamek, a także wysyłania i
+Zapobiega to oddziałom zmieniającym cele podczas zamachu na zamek, a także wysyłania i &
 przeszukują zamki innych wrogów."
 }
 
@@ -502,7 +502,7 @@ o_freetrader
 
 o_freetrader_descr
 {
-	"Ponieważ sztuczna inteligencja czasami gra sama, gdy są poza drewnem, a ich
+	"Ponieważ sztuczna inteligencja czasami gra sama, gdy są poza drewnem, a ich &
 jest zniszczony. Przy takim ustawieniu stanowisko inwestora stanie się wolne od kosztów, aby temu zapobiec."
 }
 
