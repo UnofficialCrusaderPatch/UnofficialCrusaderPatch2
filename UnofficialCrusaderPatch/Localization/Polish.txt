@@ -473,7 +473,7 @@ bez konieczności ponownego wybierania tego samego sprzętu oblężniczego za ka
 
 ai_demolish_trapped
 {
-	"If enclosed"
+	"Jeśli jest załączony"
 }
 
 ai_demolish_trapped_descr
@@ -484,57 +484,57 @@ ai_demolish_trapped_descr
 
 ai_attacknearest
 {
-	"Always attack nearest enemy"
+	"Zawsze atakuj najbliższego wroga"
 }
 
 ai_attacknearest_descr
 {
-	"With this setting, the AI lords always attack their nearest enemies. &
-This prevents troops switching targets during a castle assault as well as sending &
-them past other enemies' castles to gather."
+	"Przy takim ustawieniu władcy AI zawsze atakują najbliższych wrogów. &
+Zapobiega to oddziałom zmieniającym cele podczas zamachu na zamek, a także wysyłania i
+przeszukują zamki innych wrogów."
 }
 
 
 o_freetrader
 {
-	"Free trader post"
+	"Bezpłatne Targowisko"
 }
 
 o_freetrader_descr
 {
-	"Since the AI sometimes plays itself, when they're out of wood and their trader post &
-is destroyed. With this setting, the trader post will become free of cost to prevent this."
+	"Ponieważ sztuczna inteligencja czasami gra sama, gdy są poza drewnem, a ich
+jest zniszczony. Przy takim ustawieniu stanowisko inwestora stanie się wolne od kosztów, aby temu zapobiec."
 }
 
 ai_towerengines
 {
-	"No limit for siege engines on towers"
+	"Brak ograniczeń dla silników oblężniczych na wieżach"
 }
 
 ai_towerenginesdescr
 {
-	"Usually the AI only builds up to three mangonels and ballistae each on its towers. &
-This limit can be lifted here."
+	"Zazwyczaj sztuczna inteligencja buduje tylko trzy mangonele i balistę na swoich wieżach. &
+Ten limit można tutaj unieść."
 }
 
 ai_buywood
 {
-	"Buy enough wood"
+	"Kup tyle drewna"
 }
 
 ai_buywood_descr
 {
-	"To prevent thievish fletchers from stealing wood which the AI just bought for &
-buildings, 2 extra wood will now be bought for each building.
+	"Aby uniemożliwić złodziejskim zbirom kradzież drewna, które AI właśnie kupiła dla &
+budynków, 2 dodatkowe drewna będą teraz kupowane dla każdego budynku.
 }
 
 o_keys
 {
-	"WASD-Keys and quicksaves"
+	"WASD-Klucze i szybki zapis"
 }
 
 o_keys_descr
 {
-	"The WASD-keys can be used to move around with this setting as well as &
-CTRL-S and CTRL-L to quicksave and load respectively."
+	"Klawisze WASD mogą być używane do poruszania się z tym ustawieniem, jak również &
+CTRL-S i CTRL-L odpowiednio do szybkiego zapisania i załadowania."
 }
