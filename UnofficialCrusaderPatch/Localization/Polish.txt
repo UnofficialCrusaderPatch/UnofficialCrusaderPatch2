@@ -473,7 +473,7 @@ bez konieczności ponownego wybierania tego samego sprzętu oblężniczego za ka
 
 ai_demolish_trapped
 {
-	"Jeśli otoczony"
+	"Jeśli siedziba jest otoczona"
 }
 
 ai_demolish_trapped_descr
@@ -525,7 +525,7 @@ ai_buywood
 ai_buywood_descr
 {
 	"Aby uniemożliwić złodziejskim rzemieślnikom kradzież drewna, które gracz komputerowy właśnie kupił, aby postawić &
-budynki, boty będą kupować o 2 deski więcej za każdym razem.
+budynki, boty będą kupować o 2 deski więcej za każdym razem."
 }
 
 o_keys
