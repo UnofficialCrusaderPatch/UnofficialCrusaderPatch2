@@ -383,7 +383,7 @@ Instalator wyświetli wtedy komunikat o błędzie. Wersja tej łatki jest pokaza
 w lewym dolnym rogu głównego menu gry.
 
 Przed zmianami zostaną utworzone pliki kopii zapasowej. Można je przywrócić za pomocą &
-przycisku "Odinstaluj" lub ręcznie.
+przycisku 'Odinstaluj' lub ręcznie.
 
 
 W tym miejscu chciałbym podziękować społeczności Twierdzy za tak &
@@ -393,7 +393,7 @@ Specjalne podziękowania dla:
 FireFly Studios za stworzenie serii Twierdza
 Udwin, ponieważ jego kanał na YouTube przypomniał mi o Twierdzy
 Lolasik011 za rosyjskie tłumaczenie
-Radek2019 za polskie tłumaczenie
+Lutel & Radek2019 za polskie tłumaczenie
 Evrey za jego zamki SI"
 }
 
