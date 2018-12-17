@@ -1,28 +1,28 @@
 ﻿Name
 {
-	"Nieoficjalny Crusader Patcher"
+	"Nieoficjalna aktualizacja do Krzyżowca"
 }
 
 u_ArabXBow
 {
-	"Zwiększona obrona Arabskich szermierzy przeciwko kusznikom"
+	"Zwiększona obrona arabskich zbrojnych przeciwko kusznikom"
 }
 
 u_arabxbow_descr
 {
-	" - Arabscy szermierze umierają po 6 zamiast 3 strzałach z kuszy"
+	" - Arabscy zbrojni umierają po 6 strzałach z kuszy zamiast 3"
 }
 
 u_ArabWall
 {
-	"Arabscy szermierze niszczą szybciej mury"
+	"Arabscy zbrojni szybciej niszczą mury"
 }
 
 u_ArabWall_descr
 {
-	"W Wanili arabscy szermierze niszczą ściany wolniej niż jakakolwiek inna walka wręcz. &
-Dzięki tej opcji prędkość zrywania przy ścianach jest dla nich dwukrotnie większa, i &
-umieszczając je nieco powyżej włóczników."
+	"W oryginalnej grze arabscy zbrojni niszczą mury najwolniej ze wszystkich jednostek walczących wręcz. &
+Dzięki tej opcji prędkość niszczenia murów przez arabskich zbrojnych jest dwukrotnie większa, &
+nieco powyżej prędkości włóczników."
 }
 
 u_spearmen
@@ -32,22 +32,22 @@ u_spearmen
 
 u_spearmen_descr
 {
-	" - Włócznicy giną tylko po 5 strzałach zamiast 3
- - Włócznicy ledwie przeżywają jeden cios w kuszę, zamiast jednego strzału"
+	" - Włócznicy giną po 5 strzałach z łuku zamiast 3
+ - Włócznicy ledwie przeżywają jeden strzał z kuszy, zamiast od razu ginąć"
 }
 
 ai_buy
 {
-	"Ulepszone użycie traderów przez lordów AI"
+	"Ulepszone użycie targowiska przez przeciwników komputerowych"
 }
 
 ai_buy_descr
 {
-	"W wanilii, niektóre z nowych AI nie używają prawidłowo placówki handlowej. &
-Wprowadzone zostaną następujące ulepszenia: 
+	"W oryginalnej grze niektórzy przeciwnicy komputerowi nie używają poprawnie targowiska. &
+Wprowadzone zostały następujące ulepszenia: 
 - Fryderyk i Marszałek kupują broń i zbroje
  - Opat i Emir kupują łuki
- - Wazir kupuje jabłka takie jak Nizar i Emir"
+ - Wezyr kupuje jabłka, tak jak Nizar i Emir"
 }
 
 ui_error
@@ -57,7 +57,7 @@ ui_error
 
 ui_SearchPath
 {
-	"Wybierz folder w którym znajduję się zainstalowany stronghold Crusader:"
+	"Wybierz folder instalacyjny gry Twierdza Krzyżowiec:"
 }
 
 ui_search
@@ -72,7 +72,7 @@ ui_continue
 
 ui_wrongpath
 {
-	"Stronghold Crusader nie można znaleźć w podanej ścieżce!"
+	"Nie można znaleźć gry Twierdza Krzyżowiec w podanej ścieżce!"
 }
 
 ui_back
@@ -87,17 +87,17 @@ ui_install
 
 ui_finished
 {
-	"Zakończona sukcesem"
+	"Ukończono"
 }
 
 ui_chooseLangTitle
 {
-	"Ustaw język"
+	"Wybierz język"
 }
 
 ui_chooseLang
 {
-	"Wybierz język dla tej konfiguracji z poniższej listy."
+	"Wybierz język instalatora z poniższej listy."
 }
 
 ui_accept
@@ -112,28 +112,28 @@ ui_cancel
 
 aiv_evrey
 {
-	"Ulepszone zamki AI"
+	"Ulepszone zamki przeciwników komputerowych"
 }
 
 aiv_evreyfixed
 {
-	"Zamki waniliowe Evrey"
+	"Oryginalne zamki naprawione przez użytkownika Evrey"
 }
 
 aiv_evreyfixed_descr
 {
-	"Naprawiono błędy zamków waniliowych AI-Lord, takich jak brakujące domy i gildie &
-lub zablokowane wejścia."
+	"Naprawiono błędy oryginalnych zamków przeciwników komputerowych, na przykład brakujące domy i cechy kopaczy/inżynierów &
+lub zablokowane wejścia do zamku."
 }
 
 aiv_evreyimproved
 {
-	"Ulepszone zamki AI Evrey"
+	"Ulepszone zamki autorstwa użytkownika Evrey"
 }
 
 aiv_evreyimproved_descr
 {
-	"Nadaje AI-Lords nowe i ulepszone zamki, oparte na stylu waniliowym.
+	"Wprowadza nowe i ulepszone zamki przeciwników komputerowych, które bazują na oryginalnym stylu z gry.
 	
 Created by Evrey ([ref2])."
 }
@@ -145,7 +145,7 @@ ui_uninstall
 
 ui_uninstalldone
 {
-	"Odinstalowanie patcha zakończone prawidłowo."
+	"Odinstalowywanie patcha zakończone prawidłowo."
 }
 
 ai_recruitinterval
@@ -155,28 +155,29 @@ ai_recruitinterval
 
 ai_recruitinterval_descr
 {
-	"Ustawia interwał rekrutacji wszystkich SI na najniższą wartość (Szczur / Ryszard niveau)"
+	"Ustawia odstęp między rekrutacją jednostek przez wszystkich przeciwników komputerowych na najniższą wartość &
+	(poziom Szczura/Ryszarda)"
 }
 
 ai_recruitsleep
 {
-	"Dezaktywuj przerwy rekrutacyjne w sztucznej inteligencji"
+	"Dezaktywuj przerwy w rekrutacji jednostek przez przeciwników komputerowych"
 }
 
 ai_attacklimit
 {
-	"Zwiększenie granicy atakujących wojsk AI"
+	"Zwiększenie limitu ataku przeciwników komputerowych"
 }
 
 ai_attacklimit_descr
 {
-	"Liczba dodatkowych jednostek dodawanych po pierwszym ataku to &
-ograniczone do 200 w wanilii. Tutaj możesz zmienić ten limit."
+	"Liczba dodatkowych jednostek dodawanych po pierwszym ataku jest &
+ograniczona do 200 w oryginalnej grze. Tutaj możesz zmienić ten limit."
 }
 
 o_gamespeed
 {
-	"Rozszerzone ograniczenia prędkości gry"
+	"Jeszcze większa prędkość gry"
 }
 
 o_gamespeed_descr
@@ -185,18 +186,18 @@ o_gamespeed_descr
  - Od 10 do 90 w odstępach 5
  - Od 90 do 200 w odstępach 10
  - Od 200 do 1000 w odstępach 100
-Nowe wartości są dostępne tylko w grze za pomocą klawiszy +, suwak w menu &
-menu gry pozostaje niezmienione."
+Nowe wartości są dostępne w grze wyłącznie za pomocą klawiszy + i -, suwak w menu &
+gry pozostaje niezmieniony."
 }
 
 ui_bugfix
 {
-	"Poprawione błędy"
+	"Naprawione błędy"
 }
 
 ui_ailords
 {
-	"Przeciwnicy AI"
+	"Przeciwnicy komputerowi"
 }
 
 ui_troops
@@ -206,60 +207,59 @@ ui_troops
 
 ui_other
 {
-	"Inny"
+	"Pozostałe"
 }
 
 o_responsivegates
 {
-	"Szybsza reakcja bramek na wrogów"
+	"Szybsza reakcja bram"
 }
 
 o_responsivegates_descr
 {
-	"Bramy zamykają się później, gdy wrogowie znajdą się w zasięgu i otworzą się szybciej i &
-kiedy niebezpieczeństwo zniknie. Odległość wroga, dla którego zamyka się brama i &
-zostanie zmniejszona z 200 do 140. Czas, po którym otwierają się bramy, po i &
-wszyscy pozostali wrogowie zostaną zmniejszeni z 1200 do 100."
+	"Bramy zamykają się później, gdy wrogowie znajdą się w zasięgu i otworzą się szybciej, &
+kiedy niebezpieczeństwo zniknie. Odległość wroga od bramy, która wpływa na jej automatyczne zamykanie się &
+zostanie zmniejszona z 200 do 140. Czas, po którym otwierają się bramy, gdy &
+wszyscy wrogowie znikną, zostaje zmniejszony z 1200 do 100."
 }
 
 ai_addattack
 {
-	"Zwiększenie stawki dodatkowych oddziałów szturmowych"
+	"Zwiększenie liczby dodatkowych jednostek w kolejnych atakach SI"
 }
 
 ai_addattack_descr
 {
-	"W Vanilla liczba żołnierzy wzrasta po każdym ataku o 5 i &
-jednostki średnio. Ta wartość jest taka sama dla wszystkich lordów AI i można ją zmienić i &
+	"W oryginalnej grze liczba żołnierzy wzrasta po każdym ataku średnio o 5 &
+jednostek. Ta wartość jest taka sama dla wszystkich przeciwników komputerowych i można ją zmienić &
 tutaj."
 }
 
 ai_addattack_alt_descr
 {
 	"Ewentualnie dodatkowa liczba żołnierzy może być uzależniona od &
-liczba żołnierzy pierwszego ataku. Ponieważ ta wartość jest inna dla każdej AI, &
-Następujące ataki będą skalować, zamiast zwiększać o tę samą wartość i &
-dla każdego Lorda AI.
-Przykład: współczynnik skali = 0,5
-Oddziały szturmowe Sultana = 10, 15, 20, 25, ...
-Atak żołnierzy Saladyna = 50, 75, 100, 125, ..."
+liczby jednostek z pierwszego ataku. Ponieważ ta wartość jest inna dla każdego przeciwnika komputerowego, &
+następne ataki będą zmieniać rozmiar zależnie od tej początkowej wartości.
+Przykład: współczynnik zmiany rozmiaru = 0,5
+Ataki wysyłane przez Sułtana = 10, 15, 20, 25, ...
+Ataki wysyłane przez Saladyna = 50, 75, 100, 125, ..."
 }
 
 u_laddermen
 {
-	"Zwiększona zbroja z laddermenów przeciwko jednostkom strzelającym"
+	"Zwiększona obrona drabiniarzy przeciwko jednostkom strzelającym"
 }
 
 u_laddermen_descr
 {
-	" - Drabiniarz ginie po 12 strzałach zamiast po 5
- - Drabiniarz ginie po 5 trafieniach kuszy lub procy zamiast 2
- - Drabiniarz kosztuje 20 złotych zamiast 4"
+	" - Drabiniarz ginie po 12 strzałach z łuku zamiast po 5
+ - Drabiniarz ginie po 5 trafieniach z kuszy lub procy zamiast 2
+ - Drabiniarz kosztuje 20 złota zamiast 4"
 }
 
 o_playercolor
 {
-	"Zmień kolor gracza 1"
+	"Zmiana koloru pierwszego gracza"
 }
 
 o_playercolor_descr
@@ -274,23 +274,23 @@ o_trooplimit
 
 o_trooplimit_descr
 {
-	"Limit całkowitej liczby jednostek, które może policzyć jeden gracz, jest ustawiony na &
-2400 / Gracze w Vanilla. Wartość tę można tutaj zmienić."
+	"Całkowity limit wojsk na mapie jest ustawiony w oryginalnej grze na &
+2400 jednostek. Ta wartość może zostać tutaj zmieniona."
 }
 
 ai_demolish
 {
-	"Dezaktywuj wyburzenie dla pieniędzy władców sztucznej inteligencji"
+	"Dezaktywuj burzenie budynków dla pieniędzy przez przeciwników komputerowych"
 }
 
 ai_demolish_walls
 {
-	"budynki fortyfikacyjne"
+	"fortyfikacje obronne"
 }
 
 ai_demolish_eco
 {
-	"budynki ekononiczne"
+	"budynki ekonomiczne"
 }
 
 ai_demolish_walls_descr
@@ -300,21 +300,21 @@ ai_demolish_walls_descr
 
 ai_demolish_eco_descr
 {
-	"Jeśli AI czuje presję, lubi burzyć gospodarkę lub &
-budynki fortyfikacyjne, aby uzyskać szybkie pieniądze dla żołnierzy. Ta funkcja czasami i &
-wydaje się być uruchamiany bez widocznego powodu i dlatego można go wyłączyć tutaj."
+	"Jeśli przeciwnik komputerowy czuje presję, lubi burzyć gospodarkę lub &
+budynki fortyfikacyjne, aby uzyskać pieniądze w celu rekrutacji żołnierzy. Ta funkcja czasami &
+wydaje się być uruchamiana bez widocznego powodu i dlatego można to tutaj wyłączyć."
 }
 
 ai_tethers
 {
-	"Wyłącz spam związany z liną ox"
+	"Wyłącz niepotrzebne stawianie wołów pociągowych przez przeciwników komputerowych"
 }
 
 ai_tethers_descr
 {
-	"Zazwyczaj sztuczna inteligencja buduje dla każdego nowego kamieniołomu nową &
-niezależnie od tego, ile linków już istnieje. Można to wyłączyć tutaj, ponieważ &
-Prowadzi to do spamu w O-Ox, gdy kamieniołomy AI są wielokrotnie niszczone."
+	"Zazwyczaj sztuczna inteligencja buduje dla każdego nowego kamieniołomu kolejne &
+woły, niezależnie od tego, ile już postawiła wcześniej. Można to wyłączyć tutaj, ponieważ &
+prowadzi to do spamu wołami pociągowymi, gdy kamieniołomy sztucznej inteligencji są wielokrotnie niszczone."
 }
 
 
@@ -332,80 +332,80 @@ Prowadzi to do spamu w O-Ox, gdy kamieniołomy AI są wielokrotnie niszczone."
 
 ai_nosleep
 {
-	"Wyłącz tryb uśpienia z powodu braku zasobów"
+	"Wyłącz usypianie budynków z powodu braku zasobów"
 }
 
 ai_nosleep_descr
 {
-	"Sztuczna inteligencja zwykle usypia budynki przetwarzania, jak tylko &
-ponieważ brakuje wymaganego zasobu. Odbywa się to bez względu na &
-tracące produkty, które są już w drodze. Do zbrojowni na broń.
-Tę funkcję można całkowicie wyłączyć tutaj."
+	"Sztuczna inteligencja zwykle usypia budynki produkcyjne, gdy tylko &
+brakuje wymaganego zasobu. Odbywa się to bez względu na to, &
+czy straci produkty, które są już w drodze, np. do zbrojowni.
+Tę funkcję można tutaj całkowicie wyłączyć."
 }
 
 ai_overclock
 {
-	"Zmniejsza interwał zamówień AI [Test]"
+	"Zmniejsz odstępy pomiędzy akcjami przeciwników komputerowych [W fazie testów]"
 }
 
 ai_overclock_descr
 {
-	"Odstęp czasu, w którym sztuczna inteligencja nakłada zamówienia, f.e. atakowanie zamówień i &
-dla jednostek. Zmniejsza to czas, w którym jednostki stają w miejscu, nie robiąc nic i &
-po zniszczeniu / zabiciu ostatniego celu.
+	"Chodzi o odstęp czasu, w którym sztuczna inteligencja wydaje rozkazy, np. wysyłanie ataków i &
+rozkazywanie jednostkom. Zmniejsza to czas, w którym jednostki stoją w miejscu nie robiąc nic &
+po zniszczeniu/zabiciu ostatniego celu.
 
-Nie wiadomo, na jaki wpływ ma ten interwał, dlatego mogą pojawić się błędy i &
+Nie wiadomo na co jeszcze mają wpływ te odstępy, dlatego mogą pojawić się błędy &
 podczas korzystania z tej funkcji."
 }
 
 ai_attackwave
 {
-	"Poprawa fali ataków"
+	"Popraw fale ataków"
 }
 
 ai_attackwave_descr
 {
-	"SI w ataku w wanilii wysyła tylko tyle żołnierzy na raz, jak i &
-są dostępne części ścienne. Powoduje to, że jednostki wpadają w małe fale i &
-gdy docelowy zamek ma wiele budynków bezpośrednio na jego ścianach.
-Ta opcja sprawia, że jednostki atakują również budynki cywilne i fortyfikacyjne, ponieważ &
-oraz części ścian, które są już atakowane przez jedną jednostkę."
+	"W oryginalnej grze sztuczna inteligencja wysyła tylko tyle żołnierzy za jednym razem, ile jest wolnych &
+kawałków murów. Powoduje to, że jednostki poruszają się w małych grupach, &
+gdy atakowany zamek ma wiele budynków bezpośrednio przy murach.
+Ta opcja sprawia, że żołnierze atakują również budynki cywilne i fortyfikacyjne, a także &
+te części murów, które są już atakowane przez inną jednostkę."
 }
 
 ui_welcometext
 {
-"Jest to nieoficjalna łatka dla Twierdzy Krzyżowej.
-Projekt jest dostępny jako open-source przez [ref].
+"Jest to nieoficjalna łatka do Twierdzy Krzyżowiec.
+Projekt jest dostępny jako otwarte oprogramowanie przez [ref].
 
-Każda wersja Crusadera jest potencjalnie obsługiwana, ale od czasu zmian, gdzie &
-pochodzące z wersji 1.41 Steam, mogą pojawić się niekompatybilności. &
-wyświetla się wtedy komunikat o błędzie. Zainstalowana łatka jest pokazana w &
-w lewym dolnym rogu głównego menu.
+Każda wersja Krzyżowca jest potencjalnie obsługiwana, ale wprowadzone zmiany &
+pochodzą z wersji 1.41 Steam, dlatego mogą pojawić się problemy. &
+Instalator wyświetli wtedy komunikat o błędzie. Wersja tej łatki jest pokazana &
+w lewym dolnym rogu głównego menu gry.
 
-Przed zmianami zostaną utworzone pliki kopii zapasowej. Można je przywrócić za pośrednictwem &
-przycisk 'Odinstaluj' lub ręcznie.
+Przed zmianami zostaną utworzone pliki kopii zapasowej. Można je przywrócić za pomocą &
+przycisku "Odinstaluj" lub ręcznie.
 
 
-W tym miejscu chciałbym podziękować społeczności Stronghold za wsparcie i &
-Jestem taki entuzjastyczny.
+W tym miejscu chciałbym podziękować społeczności Twierdzy za tak &
+entuzjastyczne wsparcie.
 
 Specjalne podziękowania dla:
-FireFly Studios do stworzenia serii Stronghold
+FireFly Studios za stworzenie serii Twierdza
 Udwin, ponieważ jego kanał na YouTube przypomniał mi o Twierdzy
-Lolasik011 dla rosyjskiego tłumaczenia
-Radek2019 dla polskiego tłumaczenia
-Evrey za swoje zamki AI "
+Lolasik011 za rosyjskie tłumaczenie
+Radek2019 za polskie tłumaczenie
+Evrey za jego zamki SI"
 }
 
 aiv_evreypitch
 {
-	"Zamki waniliowe Evrey [PitchNeeded Edit]"
+	"Oryginalne zamki naprawione przez użytkownika Evrey [Dodatkowe zmiany autorstwa PitchNeeded]"
 }
 
 aiv_evreypitch_descr
 {
-	"Rozszerza 'stałe zamki waniliowe Evrey', dodając mangonele i &
-ballisty do wież Wezyla, Wieprza, Nizara i Emira. Edytowany przez &
+	"Ulepsza oryginalne zamki naprawione przez użytkownika Evrey, dodając mangonele i &
+balisty na wieże Wezyra, Wieprza, Nizara i Emira. Edytowane przez użytkownika &
 PitchNeeded."
 }
 
@@ -421,38 +421,38 @@ PitchNeeded."
 
 o_onlyai
 {
-	"Aktywuj tryb Spectator [Możliwy Błąd]"
+	"Aktywuj tryb Obserwatora [możliwy błąd]"
 }
 
 o_onlyai_descr
 {
 	"Usuwa głównego gracza, dzięki czemu możesz tylko obserwować i tworzyć &
-pojedynki między osmioma botami. Gra ładuje się teraz poprawnie w tym &
-trybie. Czasami pojawia się błąd, w którym losowe obiekty odradzają się na całej mapie. &
-Jest to tylko wizualnie i można je usunąć, zapisując grę, kończąc misję i &
-i ponownie załadować plik zapisu."
+pojedynki między ośmioma botami. Zapisy gry ładują się teraz poprawnie w tym &
+trybie. Czasami pojawia się błąd, w którym losowe obiekty pojawiają się na całej mapie. &
+Jest to tylko wizualny błąd i można go usunąć zapisując grę, kończąc misję i &
+ponownie wczytując zapis."
 }
 
 o_moatvisibility
 {
-	"Zawsze pokazuj planowaną fosę"
+	"Zawsze pokazuj zaplanowaną fosę"
 }
 
 o_moatvisibility_descr
 {
-	"Fosa będzie zawsze pokazywana z tym &
-ustawienie, nawet jeśli odznaczasz umieszczenie fosy."
+	"Zaplanowana, ale jeszcze nie wykopana fosa będzie zawsze pokazywana z tym &
+ustawieniem, nawet jeśli odznaczysz opcję rozmieszczania fosy."
 }
 
 o_engineertent
 {
-	"Bez wyboru cofnięcia namiotu oblężniczego"
+	"Brak anulowania wybranego namiotu oblężniczego"
 }
 
 o_engineertent_descr
 {
-	"Przy tym ustawieniu, gra nie odznacza wybranego urządzenia oblężniczego i &
-po umieszczeniu już jednego namiotu. W ten sposób możesz stworzyć kilka namiotów po drugim i &
+	"Przy tym ustawieniu gra nie odznacza wybranej machiny oblężniczej &
+po umieszczeniu już jednego namiotu. W ten sposób możesz stworzyć kilka namiotów &
 bez konieczności ponownego wybierania tego samego sprzętu oblężniczego za każdym razem."
 }
 
@@ -473,7 +473,7 @@ bez konieczności ponownego wybierania tego samego sprzętu oblężniczego za ka
 
 ai_demolish_trapped
 {
-	"Jeśli jest załączony"
+	"Jeśli otoczony"
 }
 
 ai_demolish_trapped_descr
@@ -489,52 +489,52 @@ ai_attacknearest
 
 ai_attacknearest_descr
 {
-	"Przy takim ustawieniu władcy AI zawsze atakują najbliższych wrogów. &
-Zapobiega to oddziałom zmieniającym cele podczas zamachu na zamek, a także wysyłania i &
-przeszukują zamki innych wrogów."
+	"Przy tym ustawieniu przeciwnicy komputerowi zawsze atakują najbliższych wrogów. &
+Dzięki temu oddziały nie rozchodzą się podczas oblężenia zamku, ani nie giną z powodu przechodzenia obok &
+zamku wroga, którego nie atakują w danej chwili."
 }
 
 
 o_freetrader
 {
-	"Bezpłatne Targowisko"
+	"Darmowe targowisko"
 }
 
 o_freetrader_descr
 {
-	"Ponieważ sztuczna inteligencja czasami gra sama, gdy są poza drewnem, a ich &
-jest zniszczony. Przy takim ustawieniu stanowisko inwestora stanie się wolne od kosztów, aby temu zapobiec."
+	"Czasami sztuczna inteligencja może nic nie robić, gdy nie ma drewna, a targowisko &
+zostało zniszczone. Aby temu zapobiec, można włączyć tę opcję, dzięki czemu targowisko będzie darmowe."
 }
 
 ai_towerengines
 {
-	"Brak ograniczeń dla silników oblężniczych na wieżach"
+	"Brak ograniczeń dla machin oblężniczych na wieżach"
 }
 
 ai_towerengines_descr
 {
-	"Zazwyczaj sztuczna inteligencja buduje tylko trzy mangonele i balistę na swoich wieżach. &
-Ten limit można tutaj unieść."
+	"Zazwyczaj sztuczna inteligencja buduje maksymalnie trzy mangonele i balisty na swoich wieżach. &
+Ten limit można tutaj znieść."
 }
 
 ai_buywood
 {
-	"Kup tyle drewna"
+	"Kupuj wystarczającą ilość drewna"
 }
 
 ai_buywood_descr
 {
-	"Aby uniemożliwić złodziejskim zbirom kradzież drewna, które AI właśnie kupiła dla &
-budynków, 2 dodatkowe drewna będą teraz kupowane dla każdego budynku.
+	"Aby uniemożliwić złodziejskim rzemieślnikom kradzież drewna, które gracz komputerowy właśnie kupił, aby postawić &
+budynki, boty będą kupować o 2 deski więcej za każdym razem.
 }
 
 o_keys
 {
-	"WASD-Klucze i szybki zapis"
+	"Klawisze WASD i szybki zapis"
 }
 
 o_keys_descr
 {
-	"Klawisze WASD mogą być używane do poruszania się z tym ustawieniem, jak również &
-CTRL-S i CTRL-L odpowiednio do szybkiego zapisania i załadowania."
+	"Klawisze WASD mogą być używane do poruszania kamerą. Dodatkowo &
+kombinacja klawiszy CTRL-S i CTRL-L służy do szybkiego zapisania i wczytania gry."
 }
