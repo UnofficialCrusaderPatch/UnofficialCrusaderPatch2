@@ -393,7 +393,7 @@ ui_welcometext
 FireFly Studios за создания серии Stronghold
 Udwin, потому что его канал YouTube напомнил мне о Stronghold
 Lolasik011 за Русский перевод
-Radek2019 за Польский перевод
+Lutel & Radek2019 за Польский перевод
 Evrey за свои замки AI"
 }
 
@@ -484,20 +484,6 @@ ai_demolish_trapped_descr
 	" "
 }
 
-
-ai_attacknearest
-{
-	"Всегда атакует ближайшего врага"
-}
-
-ai_attacknearest_descr
-{
-	"С этим параметром, Лорды АI всегда атакуют своих ближайших врагов. &
-Это предотвращает переключение войск во время штурма замка, а также отправку и &
-их мимо замков других врагов, чтобы собрать."
-}
-
-
 o_freetrader
 {
 	"Бесплатный рынок"
@@ -540,4 +526,67 @@ o_keys_descr
 {
 	"Клавиши WASD можно использовать для перемещения с этой настройкой, а также &
 CTRL-S и CTRL-L для быстрого сохранения и загрузки соответственно."
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===========
+//    2.07a
+// ===========
+
+
+
+ai_attacktarget
+{
+	"Set AI attack target"
+}
+
+ai_attacktarget_nearest
+{
+	"Nearest enemy"
+}
+
+ai_attacktarget_nearest_descr
+{
+	" "
+}
+
+ai_attacktarget_richest
+{
+	"Richest Enemy"
+}
+
+ai_attacktarget_richest_descr
+{
+	" "
+}
+
+ai_attacktarget_weakest
+{
+	"Weakest Enemy"
+}
+
+ai_attacktarget_weakest_descr
+{
+	"With this setting, all AI lords will chose their next attack target in &
+the same way. Это предотвращает переключение войск во время штурма замка, а также отправку и &
+их мимо замков других врагов, чтобы собрать."
 }

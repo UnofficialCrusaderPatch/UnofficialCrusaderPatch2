@@ -394,7 +394,7 @@ Special thanks go to:
 FireFly Studios for the creation of the Stronghold series
 Udwin, because his YouTube-Channel reminded me of Stronghold
 Lolasik011 for the russian translation
-Radek2019 for the polish translation
+Lutel & Radek2019 for the polish translation
 Evrey for his AI castles"
 }
 
