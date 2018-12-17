@@ -488,19 +488,6 @@ ai_demolish_trapped_descr
 }
 
 
-ai_attacknearest
-{
-	"Immer nähesten Gegner angreifen"
-}
-
-ai_attacknearest_descr
-{
-	"Mit dieser Einstellung greifen die KI-Lords immer den nähesten Gegner an. &
-Dies verhindert, dass die Truppen mittem im laufenden Angriff umschwenken oder &
-an Gegnerburgen vorbeigeschickt werden zum Sammeln."
-}
-
-
 o_freetrader
 {
 	"Kostenloser Marktplatz"
@@ -543,4 +530,60 @@ o_keys_descr
 {
 	"Mit dieser Einstellung werden die WASD-Tasten für die Kamera aktiviert.
 Außerdem kann mit STRG-S und STRG-L ein Quicksave erstellt und geladen werden."
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===========
+//    2.07a
+// ===========
+
+
+
+ai_attacktarget
+{
+	"AI-Angriffsziel einstellen"
+}
+
+ai_attacktarget_nearest
+{
+	"Nahegelegenster Gegner"
+}
+
+ai_attacktarget_nearest_descr
+{
+	" "
+}
+
+ai_attacktarget_richest
+{
+	"Reichster Gegner"
+}
+
+ai_attacktarget_richest_descr
+{
+	" "
+}
+
+ai_attacktarget_weakest
+{
+	"Schwächster Gegner"
+}
+
+ai_attacktarget_weakest_descr
+{
+	"Mit dieser Einstellung suchen sich die KI-Lords alle auf die selbe Weise,
+das Ziel für ihren nächsten Angriff. Dies verhindert, dass die Truppen mittem &
+im laufenden Angriff umschwenken oder an Gegnerburgen vorbeigeschickt werden &
+zum Sammeln."
 }

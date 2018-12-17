@@ -28,7 +28,7 @@ namespace UnofficialCrusaderPatch
 
     class Version
     {
-        public static string PatcherVersion = "2.07";
+        public static string PatcherVersion = "2.07a";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
@@ -212,14 +212,14 @@ namespace UnofficialCrusaderPatch
              */ 
 
             // 004D47B2
-            new Change("ai_attacknearest", ChangeType.AILords, false)
+            new Change("ai_attacktarget", ChangeType.AILords, false)
             {
-                new DefaultHeader("ai_attacknearest", true)
+                new DefaultHeader("ai_attacktarget_nearest", true)
                 {
                     BinBytes.CreateEdit("ai_attacktarget", 0xEB, 0x11, 0x90)
                 },
 
-                /*new DefaultHeader("ai_attacktarget_richest", false)
+                new DefaultHeader("ai_attacktarget_richest", false)
                 {
                     BinBytes.CreateEdit("ai_attacktarget", 0xEB, 0x3F, 0x90)
                 },
@@ -227,7 +227,7 @@ namespace UnofficialCrusaderPatch
                 new DefaultHeader("ai_attacktarget_weakest", false)
                 {
                     BinBytes.CreateEdit("ai_attacktarget", 0xEB, 0x52, 0x90)
-                },*/
+                },
             },
 
             /*

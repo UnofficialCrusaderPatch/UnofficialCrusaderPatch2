@@ -480,20 +480,6 @@ ai_demolish_trapped_descr
 	" "
 }
 
-
-ai_attacknearest
-{
-	"Always attack nearest enemy"
-}
-
-ai_attacknearest_descr
-{
-	"With this setting, the AI lords always attack their nearest enemies. &
-This prevents troops switching targets during a castle assault as well as sending &
-them past other enemies' castles to gather."
-}
-
-
 o_freetrader
 {
 	"Free trader post"
@@ -536,4 +522,67 @@ o_keys_descr
 {
 	"The WASD-keys can be used to move around with this setting as well as &
 CTRL-S and CTRL-L to quicksave and load respectively."
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===========
+//    2.07a
+// ===========
+
+
+
+ai_attacktarget
+{
+	"Set AI attack target"
+}
+
+ai_attacktarget_nearest
+{
+	"Nearest enemy"
+}
+
+ai_attacktarget_nearest_descr
+{
+	" "
+}
+
+ai_attacktarget_richest
+{
+	"Richest Enemy"
+}
+
+ai_attacktarget_richest_descr
+{
+	" "
+}
+
+ai_attacktarget_weakest
+{
+	"Weakest Enemy"
+}
+
+ai_attacktarget_weakest_descr
+{
+	"With this setting, all AI lords will chose their next attack target in &
+the same way. This prevents troops switching targets during a castle assault &
+as well as sending them past other enemies' castles to gather."
 }
