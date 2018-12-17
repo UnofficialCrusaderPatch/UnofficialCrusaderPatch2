@@ -556,12 +556,12 @@ CTRL-S и CTRL-L для быстрого сохранения и загрузк�
 
 ai_attacktarget
 {
-	"Set AI attack target"
+	"Установить цель атаки AI"
 }
 
 ai_attacktarget_nearest
 {
-	"Nearest enemy"
+	"Ближайший враг"
 }
 
 ai_attacktarget_nearest_descr
@@ -571,7 +571,7 @@ ai_attacktarget_nearest_descr
 
 ai_attacktarget_richest
 {
-	"Richest Enemy"
+	"Богатый враг"
 }
 
 ai_attacktarget_richest_descr
@@ -581,12 +581,12 @@ ai_attacktarget_richest_descr
 
 ai_attacktarget_weakest
 {
-	"Weakest Enemy"
+	"Слабый враг"
 }
 
 ai_attacktarget_weakest_descr
 {
-	"With this setting, all AI lords will chose their next attack target in &
-the same way. Это предотвращает переключение войск во время штурма замка, а также отправку и &
+	"С этим параметром все лорды AI выберут свою следующую цель атаки. &
+Это предотвращает переключение войск во время штурма замка, а также отправку &
 их мимо замков других врагов, чтобы собрать."
 }
