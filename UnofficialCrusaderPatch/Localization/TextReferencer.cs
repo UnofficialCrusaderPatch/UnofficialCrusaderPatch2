@@ -24,40 +24,51 @@ namespace UnofficialCrusaderPatch
                 this.reference = reference;
             }
         }
-        static List<TextRef> references = new List<TextRef>()
-        {
-            new TextRef("[ref]", @"https://git.io/fxyw1"),
-            new TextRef("[ref2]", @"https://git.io/fxNMZ"),
-        };
 
         public static void SetText(TextBlock tb, string ident)
         {
             string text = Localization.Get(ident);
 
-            foreach (TextRef r in references)
+            int last = 0, index = 0;
+            while (index < text.Length)
             {
-                int index = text.IndexOf(r.Keyword);
-                if (index >= 0)
+                if (text[index] == '[')
                 {
-                    string part = text.Remove(index);
-                    if (!string.IsNullOrWhiteSpace(part))
-                        tb.Inlines.Add(part);
+                    int start1 = index + 1;
+                    int end1 = text.IndexOf(']', start1);
+                    if (end1 >= 0 && end1 < text.Length - 2 && text[end1 + 1] == '(')
+                    {
+                        int start2 = end1 + 2;
+                        int end2 = text.IndexOf(')', start2);
+                        if (end2 >= 0)
+                        {
+                            string url = text.Substring(start2, end2 - start2);
+                            string urltext = text.Substring(start1, end1 - start1);
 
-                    Hyperlink hyperlink = new Hyperlink(new Run(r.Reference));
-                    hyperlink.NavigateUri = new Uri(r.Reference);
-                    hyperlink.RequestNavigate += (s, e) => Process.Start(r.Reference);
-                    tb.Inlines.Add(hyperlink);
+                            if (index > last)
+                            {
+                                tb.Inlines.Add(text.Substring(last, index - last));
+                            }
 
+                            Hyperlink hyperlink = new Hyperlink(new Run(urltext));
+                            hyperlink.RequestNavigate += (s, e) => Process.Start(url);
+                            hyperlink.NavigateUri = new Uri(url);
+                            hyperlink.ToolTip = url;
+                            tb.Inlines.Add(hyperlink);
 
-
-                    part = text.Substring(index + r.Keyword.Length);
-                    if (!string.IsNullOrWhiteSpace(part))
-                        tb.Inlines.Add(part);
-                    return;
+                            last = end2 + 1;
+                            index = end2;
+                        }
+                    }
                 }
+
+                index++;
             }
 
-            tb.Text = text;
+            if (index > last)
+            {
+                tb.Inlines.Add(text.Substring(last, index - last));
+            }
         }
     }
 }

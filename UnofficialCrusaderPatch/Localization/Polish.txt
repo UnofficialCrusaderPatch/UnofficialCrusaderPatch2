@@ -131,13 +131,6 @@ aiv_evreyimproved
 	"Ulepszone zamki autorstwa użytkownika Evrey"
 }
 
-aiv_evreyimproved_descr
-{
-	"Wprowadza nowe i ulepszone zamki przeciwników komputerowych, które bazują na oryginalnym stylu z gry.
-	
-Created by Evrey ([ref2])."
-}
-
 ui_uninstall
 {
 	"Odinstaluj"
@@ -372,41 +365,9 @@ Ta opcja sprawia, że żołnierze atakują również budynki cywilne i fortyfika
 te części murów, które są już atakowane przez inną jednostkę."
 }
 
-ui_welcometext
-{
-"Jest to nieoficjalna łatka do Twierdzy Krzyżowiec.
-Projekt jest dostępny jako otwarte oprogramowanie przez [ref].
-
-Każda wersja Krzyżowca jest potencjalnie obsługiwana, ale wprowadzone zmiany &
-pochodzą z wersji 1.41 Steam, dlatego mogą pojawić się problemy. &
-Instalator wyświetli wtedy komunikat o błędzie. Wersja tej łatki jest pokazana &
-w lewym dolnym rogu głównego menu gry.
-
-Przed zmianami zostaną utworzone pliki kopii zapasowej. Można je przywrócić za pomocą &
-przycisku 'Odinstaluj' lub ręcznie.
-
-
-W tym miejscu chciałbym podziękować społeczności Twierdzy za tak &
-entuzjastyczne wsparcie.
-
-Specjalne podziękowania dla:
-FireFly Studios za stworzenie serii Twierdza
-Udwin, ponieważ jego kanał na YouTube przypomniał mi o Twierdzy
-Lolasik011 za rosyjskie tłumaczenie
-Lutel & Radek2019 za polskie tłumaczenie
-Evrey za jego zamki SI"
-}
-
 aiv_evreypitch
 {
 	"Oryginalne zamki naprawione przez użytkownika Evrey [Dodatkowe zmiany autorstwa PitchNeeded]"
-}
-
-aiv_evreypitch_descr
-{
-	"Ulepsza oryginalne zamki naprawione przez użytkownika Evrey, dodając mangonele i &
-balisty na wieże Wezyra, Wieprza, Nizara i Emira. Edytowane przez użytkownika &
-PitchNeeded."
 }
 
 
@@ -600,4 +561,50 @@ ai_attacktarget_weakest_descr
 	"Dzięki tej opcji gracze komputerowi będą zawsze wybierać ten sam cel &
 ataku. Dzięki temu oddziały nie rozchodzą się podczas oblężenia zamku, &
 ani nie giną z powodu przechodzenia obok zamku wroga, którego nie atakują w danej chwili."
+}
+
+
+
+
+
+// =================
+//       2.08
+// =================
+
+
+
+ui_welcometext
+{
+"Jest to nieoficjalna łatka do Twierdzy Krzyżowiec.
+Projekt jest dostępny jako otwarte oprogramowanie przez [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
+
+Każda wersja Krzyżowca jest potencjalnie obsługiwana, ale wprowadzone zmiany &
+pochodzą z wersji 1.41 Steam, dlatego mogą pojawić się problemy. &
+Instalator wyświetli wtedy komunikat o błędzie. Wersja tej łatki jest pokazana &
+w lewym dolnym rogu głównego menu gry. Przed zmianami zostaną utworzone pliki &
+kopii zapasowej. Można je przywrócić za pomocą przycisku 'Odinstaluj' lub ręcznie.
+
+W tym miejscu chciałbym podziękować społeczności Twierdzy za tak &
+entuzjastyczne wsparcie.
+
+Specjalne podziękowania dla:
+[FireFly Studios](https://fireflyworlds.com/) za stworzenie serii Twierdza
+[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), because he made me remember Stronghold
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) & [Radek2019](https://github.com/Radek2019) za polskie tłumaczenie
+[Lolasik011](https://github.com/Lolasik011) za rosyjskie tłumaczenie
+[Evrey](https://github.com/Evrey) za jego zamki SI"
+}
+
+aiv_evreyimproved_descr
+{
+	"Wprowadza nowe i ulepszone zamki przeciwników komputerowych, które bazują na oryginalnym stylu z gry.
+	
+[Created by Evrey](https://github.com/Evrey/SHC_AIV/)"
+}
+
+aiv_evreypitch_descr
+{
+	"Ulepsza oryginalne zamki naprawione przez użytkownika Evrey, dodając mangonele i &
+balisty na wieże Wezyra, Wieprza, Nizara i Emira. Edytowane przez użytkownika &
+[PitchNeeded](https://github.com/PitchNeeded)."
 }
