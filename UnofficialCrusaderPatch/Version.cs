@@ -6,17 +6,24 @@ using System.Text;
 namespace UnofficialCrusaderPatch
 {
     // 2.08
-    // - mauern reparieren
-    // türme reparieren
+    // mauern reparieren
+    // türme reparieren + steindings
+    // baumeister, tunnel & öl dings
 
+    // farben:
+    // unit fade out
+    // trebuchet
 
 
 
     // farben:
-    // unit fade out
     // message shield
-    // baumeister
-    
+
+    // angriffswechsel
+    // friedenszeit etc
+
+
+
     // meuchelmörder direkt auf bergfried
 
     // ai spielen
@@ -224,16 +231,16 @@ namespace UnofficialCrusaderPatch
                     BinBytes.CreateEdit("ai_rebuildwalls", 0x01),
 
                     // 005161FB
-                    // ruinen: 0x56, 0x57, 0x58, 0x59, 0x4F
-                    // stein dings: 0x15
                     new BinaryEdit("ai_rebuildtowers")
                     {
                         new BinAddress("end", 2, true),
                         new BinHook(6, "end", 0x0F, 0x85)
                         {
+                            // quarry platform
                             0x66, 0x3D, 0x15, 0x00, // cmp ax, 15h
                             0x0F, 0x84, new BinRefTo("dem"),
 
+                            // tower ruins
                             0x66, 0x3D, 0x56, 0x00, // cmp ax, 56h
                             0x0F, 0x84, new BinRefTo("dem"),
                             0x66, 0x3D, 0x57, 0x00, // cmp ax, 57h
@@ -243,6 +250,14 @@ namespace UnofficialCrusaderPatch
                             0x66, 0x3D, 0x59, 0x00, // cmp ax, 59h
                             0x0F, 0x84, new BinRefTo("dem"),
                             0x66, 0x3D, 0x4F, 0x00, // cmp ax, 4Fh
+                            0x0F, 0x84, new BinRefTo("dem"),
+                            
+                            // engineer, tunnel & oil places
+                            0x66, 0x3D, 0x35, 0x00, // cmp ax, 35h
+                            0x0F, 0x84, new BinRefTo("dem"),
+                            0x66, 0x3D, 0x3B, 0x00, // cmp ax, 3Bh
+                            0x0F, 0x84, new BinRefTo("dem"),
+                            0x66, 0x3D, 0x33, 0x00, // cmp ax, 33h
                             0x0F, 0x84, new BinRefTo("dem"),
                         },
                         new BinLabel("dem"),
@@ -997,7 +1012,49 @@ namespace UnofficialCrusaderPatch
                         new BinRefTo("var", false),
 
                         new BinNops(2),
-                    }
+                    },
+
+                    // 00451E03
+                    BinHook.CreateEdit("o_playercolor_fade", 5,
+                        new BinBytes(0xA1), // mov eax, [var]
+                        new BinRefTo("var", false),
+
+                        new BinBytes(0x3C, 0x01), // cmp al, 1
+                        new BinBytes(0x75, 0x04), // jne to next cmp
+                        new BinBytes(0xB0), // mov al, value
+                        new BinByteValue(),
+                        new BinBytes(0xEB, 0x06), // jmp to end
+                        new BinBytes(0x3C), // cmp al, value
+                        new BinByteValue(),
+                        new BinBytes(0x75, 0x02), // jne to end
+                        new BinBytes(0xB0, 0x01) // mov al, 1
+                        // end
+                    ),
+
+                    // 004E7E45
+                    BinHook.CreateEdit("o_playercolor_trebuchet", 5,
+                        new BinBytes(0x50), // ori code: push eax
+
+                        new BinBytes(0xA1), // mov eax, [var]
+                        new BinRefTo("var", false),
+
+                        new BinBytes(0x3C, 0x01), // cmp al, 1
+                        new BinBytes(0x75, 0x04), // jne to next cmp
+                        new BinBytes(0xB0), // mov al, value
+                        new BinByteValue(),
+                        new BinBytes(0xEB, 0x06), // jmp to end
+                        new BinBytes(0x3C), // cmp al, value
+                        new BinByteValue(),
+                        new BinBytes(0x75, 0x02), // jne to end
+                        new BinBytes(0xB0, 0x01), // mov al, 1
+                        // end
+
+                        new BinBytes(0xA3), // mov [var], eax
+                        new BinRefTo("var", false),
+
+                        // ori code
+                        new BinBytes(0x8B, 0x44, 0x24, 0x14) // mov eax, [esp+14]
+                    ),
 
                     #endregion
                 },
