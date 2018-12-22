@@ -7,12 +7,11 @@ To install you just have to download the [latest UnofficialCrusaderPatch.exe rel
 
 The patch should work on most Crusader Version, if not you will receive errors during the installation.
 
-At this point I would like to thank the Stronghold community for supporting &
-me so enthusiastically.
+At this point I would like to thank the Stronghold community for supporting me so enthusiastically.
 
-Special thanks go to:
-[FireFly Studios](https://fireflyworlds.com/) for the creation of the Stronghold series
-[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), because he made me remember Stronghold
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) & [Radek2019](https://github.com/Radek2019) for the polish translation
-[Lolasik011](https://github.com/Lolasik011) for the russian translation
-[Evrey](https://github.com/Evrey) for his AI castles
+Special thanks go to:  
+[FireFly Studios](https://fireflyworlds.com/) for the creation of the Stronghold series  
+[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), because he made me remember Stronghold  
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) & [Radek2019](https://github.com/Radek2019) for the polish translation  
+[Lolasik011](https://github.com/Lolasik011) for the russian translation  
+[Evrey](https://github.com/Evrey) for his AI castles  
