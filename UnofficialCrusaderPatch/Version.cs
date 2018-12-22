@@ -14,13 +14,19 @@ namespace UnofficialCrusaderPatch
     // unit fade out
     // trebuchet
 
+    // holz fix
 
+
+
+
+
+    // angriffswechsel
+    // friedenszeit etc
 
     // farben:
     // message shield
 
-    // angriffswechsel
-    // friedenszeit etc
+
 
 
 
@@ -91,6 +97,117 @@ namespace UnofficialCrusaderPatch
                 }
             },
 
+            /*
+             *  IMPROVE WOOD BUYING
+             */ 
+
+            // 00457DF4
+            new Change("ai_buywood", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("ai_buywood")
+                {
+                    new BinaryEdit("ai_buywood")
+                    {
+                        new BinAddress("offset", 2),
+                        new BinHook(6)
+                        {
+                            0x83, 0xC3, 0x02, // add ebx, 2
+                            0x3B, 0x9E, new BinRefTo("offset", false), // ori code, cmp ebx, [esi+offset]
+                        }
+                    }
+                }
+            },
+
+            /*
+             * UNLIMITED SIEGE ENGINES ON TOWERS
+             */
+             
+            // 004D20A2
+            BinBytes.Change("ai_towerengines", ChangeType.Bugfix, true, 0xEB),
+            
+            /*
+             *  NO ASSAULT SWITCHES
+             */
+
+            
+            new Change("ai_assaultswitch", ChangeType.Bugfix)
+            {
+                new DefaultHeader("ai_assaultswitch")
+                {
+                    //4D3B41
+                    new BinaryEdit("ai_recruitinterval")
+                    { // 4d3c1a
+                        new BinAddress("order", 0xD9 + 2)
+                    },
+
+                    // 004D477B
+                    new BinaryEdit("ai_assaultswitch")
+                    {
+                        new BinAddress("target", 0x15E),
+                        new BinHook(8)
+                        {
+                            new BinBytes(0x83, 0xBB), // cmp [ebx+order], 3
+                            new BinRefTo("order",false),
+                            new BinBytes(0x03, 0x7C, 0x12, 0x39, 0xBB), // jl, cmp [ebx+target], edi
+                            new BinRefTo("target", false),
+                            new BinBytes(0x75, 0x0A),
+
+                            new BinBytes(0x5F, 0x5E, 0x5D, 0x5B, 0x83, 0xC4, 0x20, 0xC2, 0x04, 0x00), // ret
+
+                            new BinBytes(0x8B, 0x44, 0x24, 0x1C, 0x8B, 0x4C, 0x24, 0x20) // ori code
+                        }
+                    }
+                }
+            },
+
+
+            /*
+             *  AI REBUILD STUFF
+             */ 
+
+            new Change("ai_rebuild", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("ai_rebuild")
+                {
+                    // 004F94DA + 7
+                    BinBytes.CreateEdit("ai_rebuildwalls", 0x01),
+
+                    // 005161FB
+                    new BinaryEdit("ai_rebuildtowers")
+                    {
+                        new BinAddress("end", 2, true),
+                        new BinHook(6, "end", 0x0F, 0x85)
+                        {
+                            // quarry platform
+                            0x66, 0x3D, 0x15, 0x00, // cmp ax, 15h
+                            0x0F, 0x84, new BinRefTo("dem"),
+
+                            // tower ruins
+                            0x66, 0x3D, 0x56, 0x00, // cmp ax, 56h
+                            0x0F, 0x84, new BinRefTo("dem"),
+                            0x66, 0x3D, 0x57, 0x00, // cmp ax, 57h
+                            0x0F, 0x84, new BinRefTo("dem"),
+                            0x66, 0x3D, 0x58, 0x00, // cmp ax, 58h
+                            0x0F, 0x84, new BinRefTo("dem"),
+                            0x66, 0x3D, 0x59, 0x00, // cmp ax, 59h
+                            0x0F, 0x84, new BinRefTo("dem"),
+                            0x66, 0x3D, 0x4F, 0x00, // cmp ax, 4Fh
+                            0x0F, 0x84, new BinRefTo("dem"),
+                            
+                            // engineer, tunnel & oil places
+                            0x66, 0x3D, 0x35, 0x00, // cmp ax, 35h
+                            0x0F, 0x84, new BinRefTo("dem"),
+                            0x66, 0x3D, 0x3B, 0x00, // cmp ax, 3Bh
+                            0x0F, 0x84, new BinRefTo("dem"),
+                            0x66, 0x3D, 0x33, 0x00, // cmp ax, 33h
+                            0x0F, 0x84, new BinRefTo("dem"),
+                        },
+                        new BinLabel("dem"),
+                    }
+
+                }
+            },
+
 
             /*
             * FIXED AIV CASTLES - https://github.com/Evrey/SHC_AIV
@@ -107,39 +224,7 @@ namespace UnofficialCrusaderPatch
             #endregion
 
             #region AI LORDS
-
-            /*
-             *  IMPROVE WOOD BUYING
-             */ 
-
-            // 00457BC0
-            new Change("ai_buywood", ChangeType.AILords, true)
-            {
-                new DefaultHeader("ai_buywood")
-                {
-                    new BinaryEdit("ai_buywood")
-                    {
-                        new BinAddress("addr", 3),
-                        new BinHook(7, "ret", 0xE9)
-                        {
-                            0x8B, 0x9C, 0x00, new BinRefTo("addr", false), // ori code
-
-                            0x85, 0xDB, // test ebx, ebx
-                            0x74, 0x03, // jz over add
-                            0x83, 0xC3, 0x02, // add ebx, 2
-                        },
-                        new BinLabel("ret")
-                    }
-                }
-            },
                 
-
-            /*
-             * UNLIMITED SIEGE ENGINES ON TOWERS
-             */
-             
-            // 004D20A2
-            BinBytes.Change("ai_towerengines", ChangeType.AILords, true, 0xEB),
             
             /*
              *  AI RECRUIT ADDITIONAL ATTACK TROOPS 
@@ -219,52 +304,6 @@ namespace UnofficialCrusaderPatch
                 },
             },
 
-            /*
-             *  AI REBUILD STUFF
-             */ 
-
-            new Change("ai_rebuild", ChangeType.Bugfix, true)
-            {
-                new DefaultHeader("ai_rebuild")
-                {
-                    // 004F94DA + 7
-                    BinBytes.CreateEdit("ai_rebuildwalls", 0x01),
-
-                    // 005161FB
-                    new BinaryEdit("ai_rebuildtowers")
-                    {
-                        new BinAddress("end", 2, true),
-                        new BinHook(6, "end", 0x0F, 0x85)
-                        {
-                            // quarry platform
-                            0x66, 0x3D, 0x15, 0x00, // cmp ax, 15h
-                            0x0F, 0x84, new BinRefTo("dem"),
-
-                            // tower ruins
-                            0x66, 0x3D, 0x56, 0x00, // cmp ax, 56h
-                            0x0F, 0x84, new BinRefTo("dem"),
-                            0x66, 0x3D, 0x57, 0x00, // cmp ax, 57h
-                            0x0F, 0x84, new BinRefTo("dem"),
-                            0x66, 0x3D, 0x58, 0x00, // cmp ax, 58h
-                            0x0F, 0x84, new BinRefTo("dem"),
-                            0x66, 0x3D, 0x59, 0x00, // cmp ax, 59h
-                            0x0F, 0x84, new BinRefTo("dem"),
-                            0x66, 0x3D, 0x4F, 0x00, // cmp ax, 4Fh
-                            0x0F, 0x84, new BinRefTo("dem"),
-                            
-                            // engineer, tunnel & oil places
-                            0x66, 0x3D, 0x35, 0x00, // cmp ax, 35h
-                            0x0F, 0x84, new BinRefTo("dem"),
-                            0x66, 0x3D, 0x3B, 0x00, // cmp ax, 3Bh
-                            0x0F, 0x84, new BinRefTo("dem"),
-                            0x66, 0x3D, 0x33, 0x00, // cmp ax, 33h
-                            0x0F, 0x84, new BinRefTo("dem"),
-                        },
-                        new BinLabel("dem"),
-                    }
-                    
-                }
-            },
 
             /*
              * ALWAYS ATTACK NEAREST NEIGHBOR

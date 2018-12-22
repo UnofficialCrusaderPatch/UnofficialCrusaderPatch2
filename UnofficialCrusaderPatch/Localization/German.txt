@@ -598,3 +598,33 @@ aiv_evreypitch_descr
 Wazir, Schwein, Nizar und Emir Mangen und Ballisten hinzugefügt werden. &
 Editiert von [PitchNeeded](https://github.com/PitchNeeded)."
 }
+
+
+ai_assaultswitch
+{
+	"Kein KI-Angriffszielwechsel während Belagerung"
+}
+
+ai_assaultswitch_descr
+{
+	"KI-Lords die den mächtigsten oder schwächsten Gegner angreifen, &
+hatten manchmal die Tendenz mitten in einem Angriff das Ziel zu wechseln, &
+und ihre Truppen zu einer anderen Burg schicken. Mit dieser Einstellung, &
+passiert das nichtmehr, sobald der Angriff begonnen hat, d.h. während &
+des Sammelns vor der Burg kann ein Wechsel noch passieren."
+}
+
+
+
+ai_rebuild
+{
+	"Verbessertes KI-Reparieren"
+}
+
+ai_rebuild_descr
+{
+	"Mit dieser Einstellung reparieren KI-Lords auch Turmruinen, leicht &
+angeschlagene Mauern, sowie Baumeister-, Tunnelgilden und Ölkessel bei denen &
+der Sammelplatz übergeblieben ist. Weiterhin kann die KI nun auch die Sammelstelle &
+von Steinbrüchen überbauen."
+}

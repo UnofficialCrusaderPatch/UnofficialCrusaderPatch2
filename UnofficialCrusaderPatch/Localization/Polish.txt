@@ -608,3 +608,33 @@ aiv_evreypitch_descr
 balisty na wieże Wezyra, Wieprza, Nizara i Emira. Edytowane przez użytkownika &
 [PitchNeeded](https://github.com/PitchNeeded)."
 }
+
+
+ai_assaultswitch
+{
+	"No AI target change during sieges"
+}
+
+ai_assaultswitch_descr
+{
+	"AI lords which attack the mightiest oder weakest enemy sometimes &
+switch their target in the middle of an ongoing assault and send their &
+troops to a different castle. This is prevented with this setting, as soon &
+as the assault has started, i.e. during the troop gathering phase in front of &
+a castle a change can still happen."
+}
+
+
+
+ai_rebuild
+{
+	"Improved AI repairs"
+}
+
+ai_rebuild_descr
+{
+	"The AI will repair tower ruins, slightly damaged walls, as well as &
+destroyed engineer's and tunneler's guilds and oil smelters, of which the gathering place &
+still exists. Furthermore, the AI can now build over the collection platform &
+of quarries."
+}

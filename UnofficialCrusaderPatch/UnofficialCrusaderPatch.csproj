@@ -1114,6 +1114,7 @@
     <EmbeddedResource Include="CodeBlocks\ai_rebuildtowers.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_fade.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_trebuchet.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_assaultswitch.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
