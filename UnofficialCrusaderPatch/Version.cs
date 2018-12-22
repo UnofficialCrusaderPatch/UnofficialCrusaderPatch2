@@ -5,22 +5,7 @@ using System.Text;
 
 namespace UnofficialCrusaderPatch
 {
-    // 2.08
-    // mauern reparieren
-    // türme reparieren + steindings
-    // baumeister, tunnel & öl dings
 
-    // farben:
-    // unit fade out
-    // trebuchet
-
-    // holz fix
-
-
-
-
-
-    // angriffswechsel
     // friedenszeit etc
 
     // farben:
@@ -47,7 +32,7 @@ namespace UnofficialCrusaderPatch
 
     class Version
     {
-        public static string PatcherVersion = "2.07a";
+        public static string PatcherVersion = "2.08";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
