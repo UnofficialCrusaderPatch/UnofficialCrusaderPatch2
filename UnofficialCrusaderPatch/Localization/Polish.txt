@@ -589,8 +589,8 @@ entuzjastyczne wsparcie.
 
 Specjalne podziękowania dla:
 [FireFly Studios](https://fireflyworlds.com/) za stworzenie serii Twierdza
-[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), because he made me remember Stronghold
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) & [Radek2019](https://github.com/Radek2019) za polskie tłumaczenie
+[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), bo przypomniał mi o Twierdzy
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) i [Radek2019](https://github.com/Radek2019) za polskie tłumaczenie
 [Lolasik011](https://github.com/Lolasik011) za rosyjskie tłumaczenie
 [Evrey](https://github.com/Evrey) za jego zamki SI"
 }
@@ -599,7 +599,7 @@ aiv_evreyimproved_descr
 {
 	"Wprowadza nowe i ulepszone zamki przeciwników komputerowych, które bazują na oryginalnym stylu z gry.
 	
-[Created by Evrey](https://github.com/Evrey/SHC_AIV/)"
+[Stworzone przez użytkownika Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
 
 aiv_evreypitch_descr
@@ -612,29 +612,29 @@ balisty na wieże Wezyra, Wieprza, Nizara i Emira. Edytowane przez użytkownika 
 
 ai_assaultswitch
 {
-	"No AI target change during sieges"
+	"Brak zmiany celu podczas oblężenia"
 }
 
 ai_assaultswitch_descr
 {
-	"AI lords which attack the mightiest oder weakest enemy sometimes &
-switch their target in the middle of an ongoing assault and send their &
-troops to a different castle. This is prevented with this setting, as soon &
-as the assault has started, i.e. during the troop gathering phase in front of &
-a castle a change can still happen."
+	"Przeciwnicy komputerowi, którzy atakują najlepszego albo najsłabszego wroga, &
+czasami wysyłają swoich żołnierzy w trakcie oblężenia do innego &
+zamku. Ta opcja to uniemożliwia, &
+gdy atak już się rozpocznie. Jeżeli atak jeszcze się nie rozpoczął, np. w momencie &
+zbierania armii przed zamkiem, zmiana może nastąpić."
 }
 
 
 
 ai_rebuild
 {
-	"Improved AI repairs"
+	"Ulepszona naprawa budynków przez graczy komputerowych"
 }
 
 ai_rebuild_descr
 {
-	"The AI will repair tower ruins, slightly damaged walls, as well as &
-destroyed engineer's and tunneler's guilds and oil smelters, of which the gathering place &
-still exists. Furthermore, the AI can now build over the collection platform &
-of quarries."
+	"Gracze komputerowi będą naprawiać ruiny wież, trochę zniszczone mury oraz &
+zniszczone cechy inżynierów i kopaczy, a także kotły z olejem, których punkt zbiórki &
+dalej istnieje. Dodatkowo gracze komputerowi mogą teraz budować na składach kamienia &
+z kamieniołomów."
 }
