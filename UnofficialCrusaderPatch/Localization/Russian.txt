@@ -575,7 +575,7 @@ ui_welcometext
 
 Особая благодарность:
 [FireFly Studios](https://fireflyworlds.com/) за создания серии Stronghold
-[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), because he made me remember Stronghold
+[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), потому что он напомнил мне про Stronghold
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) & [Radek2019](https://github.com/Radek2019) за Польский перевод
 [Lolasik011](https://github.com/Lolasik011) за Русский перевод
 [Evrey](https://github.com/Evrey) за свои замки AI"
@@ -599,29 +599,28 @@ aiv_evreypitch_descr
 
 ai_assaultswitch
 {
-	"No AI target change during sieges"
+	"Нет изменения цели AI во время осады"
 }
 
 ai_assaultswitch_descr
 {
-	"AI lords which attack the mightiest oder weakest enemy sometimes &
-switch their target in the middle of an ongoing assault and send their &
-troops to a different castle. This is prevented with this setting, as soon &
-as the assault has started, i.e. during the troop gathering phase in front of &
-a castle a change can still happen."
+	"Лорды AI, которые иногда нападают на самого могущественного или самого слабого врага &
+они переключают свою цель в середине продолжающегося нападения и отправляют свои войска &
+в другой замок. Это предотвращается с помощью этой настройки, как только начался штурм,
+т. е. на этапе сбора войск перед замком, изменения все еще могут произойти."
 }
 
 
 
 ai_rebuild
 {
-	"Improved AI repairs"
+	"Улучшенный ремонт AI"
 }
 
 ai_rebuild_descr
 {
-	"The AI will repair tower ruins, slightly damaged walls, as well as &
-destroyed engineer's and tunneler's guilds and oil smelters, of which the gathering place &
-still exists. Furthermore, the AI can now build over the collection platform &
-of quarries."
+	"AI будет ремонтировать руины башни, слегка поврежденные стены, а также &
+уничтожит инженерные и туннельные гильдии и нефтеперерабатывающие платформы, & место сбора которых
+все еще существует. Кроме того, AI теперь может строить на платформе сбора &
+карьеров."
 }
