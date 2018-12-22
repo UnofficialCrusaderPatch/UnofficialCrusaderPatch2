@@ -17,5 +17,5 @@ Special thanks go to:
 [Evrey](https://github.com/Evrey) for his AI castles  
 
 
-If you would like to donate to this project, you can do it via PayPal:
+If you would like to donate to this project, you can do it via PayPal:  
 [![paypal](https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N3PDNDLPQXWPL)
