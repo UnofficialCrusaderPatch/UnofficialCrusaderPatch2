@@ -624,3 +624,26 @@ ai_rebuild_descr
 все еще существует. Кроме того, AI теперь может строить на платформе сбора &
 карьеров."
 }
+
+
+
+
+
+
+// ====================
+//        2.09
+// ====================
+
+o_healer
+{
+	"Healer heals casualties"
+}
+
+o_healer_descr
+{
+	"The healer of the apothecary building now actively seeks out injured soldiers, &
+civilists and animals to heal them. The nearest targets are treated first. With each &
+healing animation ca. 1/3 of a spearman's health is recovered. The strolling through &
+gardens and investigation of plague clouds is not replaced! Only the strolling through &
+the castle is skipped until no more wounded targets are in the area."
+}

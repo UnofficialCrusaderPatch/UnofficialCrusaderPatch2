@@ -628,3 +628,26 @@ angeschlagene Mauern, sowie Baumeister-, Tunnelgilden und Ölkessel bei denen &
 der Sammelplatz übergeblieben ist. Weiterhin kann die KI nun auch die Sammelstelle &
 von Steinbrüchen überbauen."
 }
+
+
+
+
+
+
+// ====================
+//        2.09
+// ====================
+
+o_healer
+{
+	"Heiler verarztet Verwundete"
+}
+
+o_healer_descr
+{
+	"Der Heiler des Apothekengebäudes sucht nun verletzte Soldaten, Zivilisten &
+und Tiere auf und heilt diese. Nahe Ziele werden dabei bevorzugt. Mit jeder Heil-Animation &
+wird ca. 1/3 des Lebens eines Lanzenträgers geheilt. Das Schlendern durch die Gärten und &
+Aufsuchen von Pestwolken wird dadurch nicht ersetzt! Nur das Schlendern durch die Burg & 
+wird ausgelassen, bis keine Verwundeten mehr in Reichweite sind."
+}

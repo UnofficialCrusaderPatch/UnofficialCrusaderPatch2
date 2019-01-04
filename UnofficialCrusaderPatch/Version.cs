@@ -11,10 +11,11 @@ namespace UnofficialCrusaderPatch
 
     // tribok farbe bei AIs
 
+
+
+
     // friedenszeit etc
-
-
-
+    
     // farben:
     // message shield
 
@@ -1443,6 +1444,7 @@ namespace UnofficialCrusaderPatch
                         new BinAddress("currentroam", 0x515),
                         new BinAddress("somevar", 0x69D),
                         new BinAddress("distance", 0x4F0),
+                        new BinAddress("walkspeed", 0x490),
 
                         new BinHook(5)
                         {
@@ -1456,7 +1458,21 @@ namespace UnofficialCrusaderPatch
                         new BinSkip(0x201),
                         new BinLabel("walkto"), // 56E587
 
-                        new BinSkip(0xF7),
+                        new BinSkip(0x93),
+                        new BinHook(0x13) // 0056E61D // walk fix
+                        {
+                            0x80, 0x3D, new BinRefTo("healerbool", false), 0x01, // cmp [healerbool], 1
+                            0x74, 0x05, // je
+                            
+                            0x66, 0x3B, 0xC5, // cmp ax,bp
+                            0x7D, 0x03, // jge 
+
+                            0x66, 0x89, 0xE8, // mov ax, bp
+                            
+                            0x66, 0x89, 0x86, new BinRefTo("walkspeed", false) // mov [walkspeed],ax
+                        },
+
+                        new BinSkip(0x51),
                         new BinHook(7) // 0056E67E // DISTANCE
                         {
                             0x8D, 0x43, 0x05, // lea eax, [ebx+5]
@@ -1519,7 +1535,7 @@ namespace UnofficialCrusaderPatch
                             0x8B, 0xA9, 0xE0, 0x09, 0x00, 0x00, // mov ebp, [ecx+9E0] == max hp
 
                             // Increase HP 
-                            0x05, 0xD0, 0x07, 0x00, 0x00, // add eax, 7D0
+                            0x05, 0xB8, 0x0B, 0x00, 0x00, // add eax, BB8
                             0x39, 0xE8, // cmp eax, ebp
                             0x7E, 0x02, // jle
                             0x8B, 0xC5, // mov eax, ebp
@@ -1621,9 +1637,9 @@ namespace UnofficialCrusaderPatch
                         new BinHook("othercmp", 0x0F, 0x85) // 54086C // JUMPS TO JESTER
                         {
                             0x66, 0x83, 0xFA, 0x07, // cmp dx, 7
-                            0x0F, 0x8E, new BinRefTo("walkto"), // // je to walk
+                            0x0F, 0x84, new BinRefTo("walkto"), // // je to walk
                             0x66, 0x83, 0xFA, 0x08, // cmp dx, 8
-                            0x0F, 0x8E, new BinRefTo("animation"),// // je to animation
+                            0x0F, 0x84, new BinRefTo("animation"),// // je to animation
                         },
 
                         new BinSkip(0xFB),
