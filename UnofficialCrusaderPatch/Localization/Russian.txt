@@ -636,14 +636,14 @@ ai_rebuild_descr
 
 o_healer
 {
-	"Healer heals casualties"
+	"Целитель лечит жертв"
 }
 
 o_healer_descr
 {
-	"The healer of the apothecary building now actively seeks out injured soldiers, &
-civilists and animals to heal them. The nearest targets are treated first. With each &
-healing animation ca. 1/3 of a spearman's health is recovered. The strolling through &
-gardens and investigation of plague clouds is not replaced! Only the strolling through &
-the castle is skipped until no more wounded targets are in the area."
+	"Целитель,здания аптеки теперь активно ищет раненых солдат,жителей и жывотных чтобы исцелить их.&
+	Ближайшие цели обрабатываются первыми. Проигрывается анимация ,и он исцеляет за 1/3 секунды &
+	здоровье копейщика. Когда Целитель прогуливается он может разсеять облако чумы которое он заметит &
+	Он будет лечить в одной области замка всех пока не вылечет до конца, а только потом он перейдет к &
+	другому участку замка.Также он не начнет разсеивать облака чумы пока он не сходит в сады.
 }
