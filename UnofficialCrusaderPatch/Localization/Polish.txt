@@ -650,14 +650,14 @@ z kamieniołomów."
 
 o_healer
 {
-	"Healer heals casualties"
+	"Zielarz leczy rannych"
 }
 
 o_healer_descr
 {
-	"The healer of the apothecary building now actively seeks out injured soldiers, &
-civilists and animals to heal them. The nearest targets are treated first. With each &
-healing animation ca. 1/3 of a spearman's health is recovered. The strolling through &
-gardens and investigation of plague clouds is not replaced! Only the strolling through &
-the castle is skipped until no more wounded targets are in the area."
+	"Zielarz będzie teraz szukał rannych żołnierzy, &
+zwierzęta i mieszkańców, aby ich uleczyć. Zielarz zaczyna leczyć od najbliższego celu. Każda &
+animacja leczenia leczy 1/3 życia włócznika. Chodzenie po ogrodach &
+i pozbywanie się zarazy nie zostało zastąpione! Zielarz pomija jedynie chodzenie &
+po zamku, dopóki nie wyleczy wszystkich rannych."
 }
