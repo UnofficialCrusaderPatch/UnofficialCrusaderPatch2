@@ -6,7 +6,7 @@ namespace UnofficialCrusaderPatch
 {
     public class BinBytes : BinElement
     {
-        protected readonly byte[] byteBuf;
+        protected byte[] byteBuf;
         public override int Length => byteBuf.Length;
 
         public BinBytes(params byte[] input)

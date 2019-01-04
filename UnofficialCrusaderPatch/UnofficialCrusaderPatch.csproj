@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="Localization\Localization.cs" />
     <Compile Include="Localization\TextReferencer.cs" />
+    <Compile Include="Patching\BinElements\BinCode.cs" />
     <Compile Include="Patching\BinElements\BinCollection.cs" />
     <Compile Include="Patching\BinElements\Referencers\BinAddress.cs" />
     <Compile Include="Patching\BinElements\Referencers\BinAlloc.cs" />
@@ -1115,6 +1116,15 @@
     <EmbeddedResource Include="CodeBlocks\o_playercolor_fade.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_trebuchet.block" />
     <EmbeddedResource Include="CodeBlocks\ai_assaultswitch.block" />
+    <EmbeddedResource Include="CodeBlocks\o_healer_find.block" />
+    <EmbeddedResource Include="CodeBlocks\o_healer_next.block" />
+    <EmbeddedResource Include="CodeBlocks\o_healer_jesternext.block" />
+    <EmbeddedResource Include="CodeBlocks\o_healerroam.block" />
+    <None Include="CodeBlocks\o_healer_cmp.block" />
+    <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
+    <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />
+    <EmbeddedResource Include="CodeBlocks\random.block" />
+    <EmbeddedResource Include="CodeBlocks\o_keys_menu.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
