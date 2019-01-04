@@ -5,19 +5,11 @@ using System.Text;
 
 namespace UnofficialCrusaderPatch
 {
-    // 2.09:
-    // healer
-    // shortcuts im menü ausschalten
-
-    // tribok farbe bei AIs
-
-
-
-
     // friedenszeit etc
-    
+
     // farben:
     // message shield
+    // tribok farbe bei AI 4
 
 
 
