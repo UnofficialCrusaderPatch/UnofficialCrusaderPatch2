@@ -11,12 +11,21 @@ namespace UnofficialCrusaderPatch
         public const string BackupIdent = "ucp_backup";
         public const string BackupFileEnding = "." + BackupIdent;
 
-        public static string GetOriginalBinary(string folderPath)
+        const string CrusaderExe = "Stronghold Crusader.exe";
+        const string XtremeExe = "Stronghold_Crusader_Extreme.exe";
+
+        public static bool CrusaderExists(string folderPath)
+        {
+            return GetOriginalBinary(folderPath, CrusaderExe) != null
+                  || GetOriginalBinary(folderPath, XtremeExe) != null;
+        }
+
+        static string GetOriginalBinary(string folderPath, string exe)
         {
             if (Directory.Exists(folderPath))
             {
                 // remove old file ending from v1.0
-                string path = Path.Combine(folderPath, "Stronghold Crusader.exe.ori");
+                string path = Path.Combine(folderPath, exe + ".ori");
                 if (File.Exists(path))
                 {
                     string dest = path.Remove(path.Length - ".ori".Length);
@@ -24,7 +33,7 @@ namespace UnofficialCrusaderPatch
                     File.Move(path, dest);
                 }
 
-                path = Path.Combine(folderPath, "Stronghold Crusader.exe" + BackupFileEnding);
+                path = Path.Combine(folderPath, exe + BackupFileEnding);
                 if (File.Exists(path))
                     return path;
 
@@ -36,15 +45,12 @@ namespace UnofficialCrusaderPatch
         }
 
         public delegate void SetPercentHandler(double percent);
-        public static void Install(string filePath, SetPercentHandler SetPercent = null)
+        public static void Install(string folderPath, SetPercentHandler SetPercent = null)
         {
-            if (!File.Exists(filePath))
-                throw new Exception("File not found!");
-
             SetPercent?.Invoke(0);
 
             // Do aiv folder backup
-            string dir = Path.Combine(Path.GetDirectoryName(filePath), "aiv", BackupIdent);
+            string dir = Path.Combine(folderPath, "aiv", BackupIdent);
             DirectoryInfo backupDir = new DirectoryInfo(dir);
             DirectoryInfo aivDir = backupDir.Parent;
             if (backupDir.Exists)
@@ -56,7 +62,9 @@ namespace UnofficialCrusaderPatch
                 backupDir.Delete(true);
             }
 
-            DoChanges(filePath, aivDir, SetPercent);
+            DoChanges(folderPath, false, aivDir, SetPercent);
+            DoChanges(folderPath, true, aivDir, SetPercent);
+
             SetPercent?.Invoke(1);
 
             if (fails.Count > 0)
@@ -71,14 +79,18 @@ namespace UnofficialCrusaderPatch
         }
 
 
-        static void DoChanges(string filePath, DirectoryInfo aivFolder, SetPercentHandler SetPercent)
+        static void DoChanges(string folderPath, bool xtreme, DirectoryInfo aivFolder, SetPercentHandler SetPercent)
         {
+            string filePath = GetOriginalBinary(folderPath, xtreme ? XtremeExe : CrusaderExe);
+
+            SectionEditor.Reset();
+
             List<Change> todo = new List<Change>(Version.Changes.Where(c => c.IsChecked));
 
             int index = 0;
             double count = 4 + todo.Count; // +1 from folder backup above, +1 for read, +1 for version edit, +1 for writing data
             SetPercent?.Invoke(++index / count);
-            
+
 
             // read original data & section preparation
             byte[] oriData = File.ReadAllBytes(filePath);
@@ -89,20 +101,19 @@ namespace UnofficialCrusaderPatch
             SetPercent?.Invoke(++index / count);
 
 
-
-
             // change version display in main menu
             try
             {
-                Version.MenuChange.Activate(args);
+                if (xtreme)
+                    Version.MenuChange_XT.Activate(args);
+                else
+                    Version.MenuChange.Activate(args);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.Error(e);
             }
             SetPercent?.Invoke(++index / count);
-
-            
 
             // change stuff
             foreach (Change change in todo)
@@ -122,25 +133,17 @@ namespace UnofficialCrusaderPatch
                 // create backup
                 File.WriteAllBytes(filePath + BackupFileEnding, oriData);
             }
-            
+
             File.WriteAllBytes(filePath, data);
         }
 
-        public static void RestoreOriginals(string dirPath)
+        public static void RestoreOriginals(string dir)
         {
-            // restore binary
-            string backupPath = Path.Combine(dirPath, "Stronghold Crusader.exe." + BackupIdent);
-            if (File.Exists(backupPath))
-            {
-                string oriPath = backupPath.Remove(backupPath.Length - (BackupIdent.Length + 1));
-                if (File.Exists(oriPath))
-                    File.Delete(oriPath);
-
-                File.Move(backupPath, oriPath);
-            }
+            RestoreBinary(dir, CrusaderExe);
+            RestoreBinary(dir, XtremeExe);
 
             // restore aiv folder
-            backupPath = Path.Combine(dirPath, "aiv", BackupIdent);
+            string backupPath = Path.Combine(dir, "aiv", BackupIdent);
             if (Directory.Exists(backupPath))
             {
                 string oriPath = backupPath.Remove(backupPath.Length - BackupIdent.Length);
@@ -153,8 +156,20 @@ namespace UnofficialCrusaderPatch
             }
         }
 
-        static readonly Dictionary<string, EditFailure> fails = new Dictionary<string, EditFailure>();
+        static void RestoreBinary(string dir, string exe)
+        {
+            string oriPath = Path.Combine(dir, exe);
+            string backupPath = Path.Combine(oriPath, BackupFileEnding);
+            if (File.Exists(backupPath))
+            {
+                if (File.Exists(oriPath))
+                    File.Delete(oriPath);
 
+                File.Move(backupPath, oriPath);
+            }
+        }
+
+        static readonly Dictionary<string, EditFailure> fails = new Dictionary<string, EditFailure>();
         public static void AddFailure(string ident, EditFailure failure)
         {
             fails.Add(ident, failure);

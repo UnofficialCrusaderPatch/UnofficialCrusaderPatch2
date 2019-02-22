@@ -98,7 +98,7 @@ namespace UnofficialCrusaderPatch
 
         void pButtonContinue_Click(object sender, RoutedEventArgs e)
         {
-            if (Patcher.GetOriginalBinary(pTextBoxPath.Text) == null)
+            if (!Patcher.CrusaderExists(pTextBoxPath.Text))
             {
                 Debug.Error(Localization.Get("ui_wrongpath"));
                 return;
@@ -125,8 +125,8 @@ namespace UnofficialCrusaderPatch
 
         void iButtonInstall_Click(object sender, RoutedEventArgs e)
         {
-            string filePath = Patcher.GetOriginalBinary(pTextBoxPath.Text);
-            if (filePath == null)
+            string path = pTextBoxPath.Text;
+            if (!Patcher.CrusaderExists(path))
             {
                 Debug.Error(Localization.Get("ui_wrongpath"));
                 return;
@@ -142,7 +142,7 @@ namespace UnofficialCrusaderPatch
 
             setupThread = new Thread(DoSetup);
             this.Closed += (s, args) => setupThread.Abort();
-            setupThread.Start(filePath);
+            setupThread.Start(pTextBoxPath.Text);
         }
 
         Thread setupThread;

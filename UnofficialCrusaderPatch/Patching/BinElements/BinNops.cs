@@ -15,5 +15,10 @@
             for (int i = 0; i < count; i++)
                 data.Buffer[this.RawAddress + i] = 0x90;
         }
+
+        public static BinaryEdit CreateEdit(string ident, int count)
+        {
+            return new BinaryEdit(ident) { new BinNops(count) };
+        }
     }
 }

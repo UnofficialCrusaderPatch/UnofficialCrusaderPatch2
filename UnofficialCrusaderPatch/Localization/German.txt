@@ -651,3 +651,26 @@ wird ca. 1/3 des Lebens eines Lanzenträgers geheilt. Das Schlendern durch die G
 Aufsuchen von Pestwolken wird dadurch nicht ersetzt! Nur das Schlendern durch die Burg &
 wird ausgelassen, bis keine Verwundeten mehr in Reichweite sind."
 }
+
+
+
+
+
+
+
+// ====================
+//        2.10
+// ====================
+
+
+
+o_xtreme
+{
+	"Magie-Leiste in Extreme entfernen."
+}
+
+o_xtreme_descr
+{
+	"Entfernt die Magie-Leiste in Crusader Extreme."
+}
+

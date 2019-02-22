@@ -32,12 +32,16 @@ namespace UnofficialCrusaderPatch
 
     class Version
     {
-        public static string PatcherVersion = "2.09";
+        public static string PatcherVersion = "2.10";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
         {
             BinRedirect.CreateEdit("menuversion", false, Encoding.ASCII.GetBytes("V1.%d UCP" + PatcherVersion + '\0'))
+        };
+        public static readonly ChangeHeader MenuChange_XT = new ChangeHeader()
+        {
+            BinRedirect.CreateEdit("menuversion", false, Encoding.ASCII.GetBytes("V1.%d-E UCP" + PatcherVersion + '\0'))
         };
 
 
@@ -285,6 +289,12 @@ namespace UnofficialCrusaderPatch
                         new BinBytes(0xEB, 0x10), // skip check if wallpart is taken
                         new BinSkip(0x21),
                         new BinNops(0xD) // skip check if wallpart is broken
+                    },
+
+                    // 4D31CD
+                    new BinaryEdit("ai_attackwave_lord")
+                    {
+                        new BinBytes(0xEB, 0x0B), // always send to enemy lord
                     },
                 },
             },
@@ -576,6 +586,22 @@ namespace UnofficialCrusaderPatch
 
             #region OTHER
             
+            /*
+             * EXTREME
+             */
+
+            new Change("o_xtreme", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_xtreme")
+                {
+                    // 0057CAC5 disable manabar rendering
+                    BinNops.CreateEdit("o_xtreme_bar1", 10),
+                    
+                    // 4DA3E0 disable manabar clicks
+                    BinBytes.CreateEdit("o_xtreme_bar2", 0xC3),
+                }
+            },
+
 
             /*
              * PLAYER 1 COLOR
@@ -1761,7 +1787,8 @@ namespace UnofficialCrusaderPatch
              * TOTAL TROOP LIMIT
              */
 
-            new Change("o_trooplimit", ChangeType.Other)
+            // useless, as crusader uses static arrays or smth
+            /*new Change("o_trooplimit", ChangeType.Other)
             {
                 // 00459E10 + 1
                 new SliderHeader("o_trooplimit", false, 1000, 10000, 100, 2400, 5000)
@@ -1771,7 +1798,7 @@ namespace UnofficialCrusaderPatch
                         new BinInt32Value()
                     }
                 }
-            },
+            },*/
 
 
 

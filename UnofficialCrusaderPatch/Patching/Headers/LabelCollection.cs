@@ -25,5 +25,7 @@ namespace UnofficialCrusaderPatch
                 throw new Exception("Label not found! " + labelName);
             return label.VirtAddress;
         }
+
+        public void Clear() => dict.Clear();
     }
 }

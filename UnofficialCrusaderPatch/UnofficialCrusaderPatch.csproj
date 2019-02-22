@@ -1120,11 +1120,14 @@
     <EmbeddedResource Include="CodeBlocks\o_healer_next.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_jesternext.block" />
     <EmbeddedResource Include="CodeBlocks\o_healerroam.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_attackwave_lord.block" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />
     <EmbeddedResource Include="CodeBlocks\random.block" />
     <EmbeddedResource Include="CodeBlocks\o_keys_menu.block" />
+    <EmbeddedResource Include="CodeBlocks\o_xtreme_bar1.block" />
+    <EmbeddedResource Include="CodeBlocks\o_xtreme_bar2.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

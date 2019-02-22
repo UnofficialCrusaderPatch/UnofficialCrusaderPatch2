@@ -9,6 +9,8 @@ namespace CodeBlox
 {
     class Program
     {
+        const bool xtreme = true;
+
         static void Main(string[] args)
         {
             try
@@ -69,7 +71,7 @@ namespace CodeBlox
                     break;
             }
 
-            byte[] data = File.ReadAllBytes("Stronghold Crusader.exe");
+            byte[] data = File.ReadAllBytes(xtreme ? "Stronghold Crusader Extreme.exe" : "Stronghold Crusader.exe");
 
             address -= 0x400000;
             if (address < 0x1000 || address >= data.Length)

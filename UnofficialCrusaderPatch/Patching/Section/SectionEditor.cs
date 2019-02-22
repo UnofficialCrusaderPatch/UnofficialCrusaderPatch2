@@ -5,6 +5,11 @@ namespace UnofficialCrusaderPatch
 {
     public static partial class SectionEditor
     {
+        public static void Reset()
+        {
+            currentLen = 0;
+        }
+
         static uint currentLen = 0;
         static byte[] buffer = new byte[0];
 

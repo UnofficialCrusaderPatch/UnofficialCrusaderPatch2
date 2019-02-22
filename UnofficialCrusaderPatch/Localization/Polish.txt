@@ -661,3 +661,27 @@ animacja leczenia leczy 1/3 życia włócznika. Chodzenie po ogrodach &
 i pozbywanie się zarazy nie zostało zastąpione! Zielarz pomija jedynie chodzenie &
 po zamku, dopóki nie wyleczy wszystkich rannych."
 }
+
+
+
+
+
+
+
+
+// ====================
+//        2.10
+// ====================
+
+
+
+o_xtreme
+{
+	"Remove the magic bar in Extreme"
+}
+
+o_xtreme_descr
+{
+	"Removes the magic bar in Crusader Extreme."
+}
+

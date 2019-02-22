@@ -9,6 +9,7 @@ namespace UnofficialCrusaderPatch
 {
     public class AIVEdit : ChangeEdit
     {
+        bool done = false;
         string resourceFolder;
         public string ResourceFolder => resourceFolder;
 
@@ -20,6 +21,8 @@ namespace UnofficialCrusaderPatch
         public override bool Initialize(ChangeArgs args) => true;
         public override void Activate(ChangeArgs args)
         {
+            if (done) return;
+
             var aivDir = args.AIVDir;
 
             // create backup
@@ -44,6 +47,8 @@ namespace UnofficialCrusaderPatch
                     }
                 }
             }
+
+            done = true;
         }
 
         public static DefaultHeader Header(string resourceFolder, bool isEnabled)

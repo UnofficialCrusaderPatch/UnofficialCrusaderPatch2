@@ -24,6 +24,7 @@ namespace UnofficialCrusaderPatch
 
         public void Activate(ChangeArgs args)
         {
+            this.labels.Clear();
             if (!editList.TrueForAll(e => e.Initialize(args)))
                 return;
 

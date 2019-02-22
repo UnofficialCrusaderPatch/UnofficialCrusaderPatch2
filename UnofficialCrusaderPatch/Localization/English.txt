@@ -651,3 +651,25 @@ healing animation ca. 1/3 of a spearman's health is recovered. The strolling thr
 gardens and investigation of plague clouds is not replaced! Only the strolling through &
 the castle is skipped until no more wounded targets are in the area."
 }
+
+
+
+
+
+
+// ====================
+//        2.10
+// ====================
+
+
+
+o_xtreme
+{
+	"Remove the magic bar in Extreme"
+}
+
+o_xtreme_descr
+{
+	"Removes the magic bar in Crusader Extreme."
+}
+
