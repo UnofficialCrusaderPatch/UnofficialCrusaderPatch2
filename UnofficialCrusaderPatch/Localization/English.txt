@@ -471,7 +471,7 @@ ai_buywood
 ai_buywood_descr
 {
 	"To prevent thievish fletchers from stealing wood which the AI just bought for &
-buildings, 2 extra wood will now be bought for each building.
+buildings, 2 extra wood will now be bought for each building."
 }
 
 o_keys
