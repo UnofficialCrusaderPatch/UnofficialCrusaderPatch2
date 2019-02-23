@@ -677,11 +677,11 @@ po zamku, dopóki nie wyleczy wszystkich rannych."
 
 o_xtreme
 {
-	"Remove the magic bar in Extreme"
+	"Usuń pasek mocy w wersji Extreme"
 }
 
 o_xtreme_descr
 {
-	"Removes the magic bar in Crusader Extreme."
+	"Usuwa pasek umiejętności w Twierdzy Krzyżowiec Extreme."
 }
 
