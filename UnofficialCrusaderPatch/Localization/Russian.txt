@@ -665,11 +665,11 @@ o_healer_descr
 
 o_xtreme
 {
-	"Remove the magic bar in Extreme"
+	"Умраны значки магии в Stronghold Crusader Extreme"
 }
 
 o_xtreme_descr
 {
-	"Removes the magic bar in Crusader Extreme."
+	"Убирает значки магии в Stronghold Crusader Extreme."
 }
 
