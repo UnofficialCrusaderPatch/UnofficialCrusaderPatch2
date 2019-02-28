@@ -674,3 +674,24 @@ o_xtreme_descr
 	"Entfernt die Magie-Leiste in Crusader Extreme."
 }
 
+
+
+
+
+
+
+// ======================
+//         2.11
+// ======================
+
+
+
+ui_AIV
+{
+	"AIV"
+}
+
+
+
+
+

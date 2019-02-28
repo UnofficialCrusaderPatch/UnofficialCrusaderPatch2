@@ -196,20 +196,6 @@ namespace UnofficialCrusaderPatch
 
                 }
             },
-
-
-            /*
-            * FIXED AIV CASTLES - https://github.com/Evrey/SHC_AIV
-            */
-
-            new Change("aiv_evrey", ChangeType.Bugfix)
-            {
-                AIVEdit.Header("evreyfixed", true),
-                AIVEdit.Header("evreyimproved", false),
-
-                AIVEdit.Header("evreypitch", false),
-            },
-
             #endregion
 
             #region AI LORDS
@@ -1842,7 +1828,7 @@ namespace UnofficialCrusaderPatch
                     },
 
                     // missing in 1.3
-                    // loading, buildings menu
+                    // after loading, hide buildings menu
                     // 0046B3FA => mov ecx, [selfindex]   to   xor ecx, ecx
                     //BinBytes.CreateEdit("o_onlyai_load2", 0x31, 0xC9, 0x90, 0x90, 0x90, 0x90),
 
@@ -1851,6 +1837,19 @@ namespace UnofficialCrusaderPatch
                     BinBytes.CreateEdit("o_onlyai_face", 0xB9, 0xD3, 0x13, 0x00, 0x00, 0x90),
                 }
             },
+
+            #endregion
+
+            #region AIVs
+            
+            /*
+            * FIXED AIV CASTLES - https://github.com/Evrey/SHC_AIV
+            */
+            
+            AIVChange.CreateDefault("EvreyFixed", true),
+            AIVChange.CreateDefault("EvreyImproved"),
+            AIVChange.CreateDefault("EvreyPitch"),
+
 
             #endregion
         };

@@ -44,82 +44,66 @@ namespace UnofficialCrusaderPatch
             return null;
         }
 
-        public delegate void SetPercentHandler(double percent);
-        public static void Install(string folderPath, SetPercentHandler SetPercent = null)
+        public static void Install(string folderPath, Percentage.SetHandler SetPercent)
         {
-            SetPercent?.Invoke(0);
+            Percentage perc = new Percentage(SetPercent);
+            perc.SetTotal(0);
 
-            // Do aiv folder backup
-            string dir = Path.Combine(folderPath, "aiv", BackupIdent);
-            DirectoryInfo backupDir = new DirectoryInfo(dir);
-            DirectoryInfo aivDir = backupDir.Parent;
-            if (backupDir.Exists)
+            perc.NextLimit = 0.1;
+            DoAIVChange(folderPath, perc);
+
+            string cPath = GetOriginalBinary(folderPath, CrusaderExe);
+            string ePath = GetOriginalBinary(folderPath, XtremeExe);
+
+            if (cPath != null)
             {
-                // restore originals
-                foreach (FileInfo fi in backupDir.EnumerateFiles("*.aiv"))
-                    fi.CopyTo(Path.Combine(aivDir.FullName, fi.Name), true);
-
-                backupDir.Delete(true);
+                perc.NextLimit = ePath == null ? 1.0 : 0.55;
+                DoChanges(cPath, false, perc);
             }
 
-            DoChanges(folderPath, false, aivDir, SetPercent);
-            DoChanges(folderPath, true, aivDir, SetPercent);
-
-            SetPercent?.Invoke(1);
-
-            if (fails.Count > 0)
+            if (ePath != null)
             {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine("The following changes could not be provided probably due to version differences:");
-                foreach (var f in fails)
-                    sb.AppendLine(f.Value + " " + f.Key);
-
-                Debug.Show(sb.ToString());
+                perc.NextLimit = 1;
+                DoChanges(ePath, true, perc);
             }
+
+            perc.SetTotal(1);
         }
 
 
-        static void DoChanges(string folderPath, bool xtreme, DirectoryInfo aivFolder, SetPercentHandler SetPercent)
+        static void DoChanges(string filePath, bool xtreme, Percentage perc)
         {
-            string filePath = GetOriginalBinary(folderPath, xtreme ? XtremeExe : CrusaderExe);
-
             SectionEditor.Reset();
 
-            List<Change> todo = new List<Change>(Version.Changes.Where(c => c.IsChecked));
-
-            int index = 0;
-            double count = 4 + todo.Count; // +1 from folder backup above, +1 for read, +1 for version edit, +1 for writing data
-            SetPercent?.Invoke(++index / count);
-
+            List<Change> todoList = new List<Change>(Version.Changes.Where(c => c.IsChecked));
+            int todoIndex = 0;
+            double todoCount = 7 + todoList.Count; // +3 for read, +1 for version edit, +3 for writing data
 
             // read original data & section preparation
             byte[] oriData = File.ReadAllBytes(filePath);
             byte[] data = (byte[])oriData.Clone();
             SectionEditor.Init(data);
+            todoIndex += 3;
 
-            ChangeArgs args = new ChangeArgs(data, oriData, aivFolder);
-            SetPercent?.Invoke(++index / count);
+            perc.Set(todoIndex / todoCount);
 
-
+            ChangeArgs args = new ChangeArgs(data, oriData);            
             // change version display in main menu
             try
             {
-                if (xtreme)
-                    Version.MenuChange_XT.Activate(args);
-                else
-                    Version.MenuChange.Activate(args);
+                (xtreme ? Version.MenuChange_XT : Version.MenuChange).Activate(args);
             }
             catch (Exception e)
             {
                 Debug.Error(e);
             }
-            SetPercent?.Invoke(++index / count);
+            perc.Set(++todoIndex / todoCount);
 
             // change stuff
-            foreach (Change change in todo)
+            foreach (Change change in todoList)
             {
                 change.Activate(args);
-                SetPercent?.Invoke(++index / count);
+                perc.Set(++todoIndex / todoCount);
             }
 
             data = SectionEditor.AttachSection(data);
@@ -130,36 +114,52 @@ namespace UnofficialCrusaderPatch
             }
             else
             {
-                // create backup
-                File.WriteAllBytes(filePath + BackupFileEnding, oriData);
+                File.WriteAllBytes(filePath + BackupFileEnding, oriData); // create backup
             }
 
             File.WriteAllBytes(filePath, data);
+
+            perc.Set(1);
+            
+            if (fails.Count > 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("Version Differences in ");
+                sb.Append(Path.GetFileName(filePath));
+                sb.AppendLine(":");
+                foreach (var f in fails)
+                    sb.AppendLine(f.Value + " " + f.Key);
+
+                fails.Clear();
+                Debug.Show(sb.ToString());
+            }
         }
 
         public static void RestoreOriginals(string dir)
         {
             RestoreBinary(dir, CrusaderExe);
             RestoreBinary(dir, XtremeExe);
+            RestoreAIVs(dir);
+        }
 
-            // restore aiv folder
-            string backupPath = Path.Combine(dir, "aiv", BackupIdent);
-            if (Directory.Exists(backupPath))
+        static void RestoreAIVs(string dir)
+        {
+            string aivPath = Path.Combine(dir, "aiv");
+            DirectoryInfo bupDir = new DirectoryInfo(Path.Combine(aivPath, BackupIdent));
+
+            if (bupDir.Exists)
             {
-                string oriPath = backupPath.Remove(backupPath.Length - BackupIdent.Length);
-                foreach (string file in Directory.EnumerateFiles(backupPath, "*.aiv"))
-                {
-                    File.Copy(file, oriPath + Path.GetFileName(file), true);
-                }
+                foreach (FileInfo fi in bupDir.EnumerateFiles("*.aiv"))
+                    fi.CopyTo(Path.Combine(aivPath, fi.Name), true);
 
-                Directory.Delete(backupPath, true);
+                bupDir.Delete(true);
             }
         }
 
         static void RestoreBinary(string dir, string exe)
         {
             string oriPath = Path.Combine(dir, exe);
-            string backupPath = Path.Combine(oriPath, BackupFileEnding);
+            string backupPath = oriPath + BackupFileEnding;
             if (File.Exists(backupPath))
             {
                 if (File.Exists(oriPath))
@@ -173,6 +173,29 @@ namespace UnofficialCrusaderPatch
         public static void AddFailure(string ident, EditFailure failure)
         {
             fails.Add(ident, failure);
+        }
+
+        static void DoAIVChange(string folderPath, Percentage perc)
+        {
+            DirectoryInfo aivDir = new DirectoryInfo(Path.Combine(folderPath, "aiv"));
+
+            // Restore Backup
+            RestoreAIVs(folderPath);
+
+            if (AIVChange.ActiveChange != null)
+            {
+                // create backup of current AIVs
+                string bupPath = Path.Combine(aivDir.FullName, BackupIdent);
+
+                Directory.CreateDirectory(bupPath);
+                foreach (FileInfo fi in aivDir.EnumerateFiles("*.aiv"))
+                    fi.CopyTo(Path.Combine(bupPath, fi.Name), true);
+
+                // copy modded AIVs
+                AIVChange.ActiveChange.CopyAIVs(aivDir);
+            }
+
+            perc.Set(1.0);
         }
     }
 }

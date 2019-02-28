@@ -6,5 +6,6 @@
         AILords,
         Troops,
         Other,
+        AIV,
     }
 }

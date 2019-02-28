@@ -6,13 +6,11 @@ namespace UnofficialCrusaderPatch
     {
         public byte[] Data;
         public byte[] OriData;
-        public DirectoryInfo AIVDir;
 
-        public ChangeArgs(byte[] data, byte[] oriData, DirectoryInfo aivDir)
+        public ChangeArgs(byte[] data, byte[] oriData)
         {
             this.Data = data;
             this.OriData = oriData;
-            this.AIVDir = aivDir;
         }
     }
 }

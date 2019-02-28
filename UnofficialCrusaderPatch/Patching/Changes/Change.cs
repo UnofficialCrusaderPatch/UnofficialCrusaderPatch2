@@ -37,7 +37,7 @@ namespace UnofficialCrusaderPatch
             this.enabledDefault = enabledDefault;
         }
 
-        public void Activate(ChangeArgs args)
+        public virtual void Activate(ChangeArgs args)
         {
             foreach (var header in headerList)
             {
@@ -48,7 +48,11 @@ namespace UnofficialCrusaderPatch
 
         #region UI
 
-        public bool IsChecked => headerList.Exists(h => h.IsEnabled);
+        public bool IsChecked
+        {
+            get { return headerList.Exists(h => h.IsEnabled); }
+            set { titleBox.IsChecked = value; }
+        }
 
         UIElement uiElement;
         public UIElement UIElement { get { return this.uiElement; } }
@@ -107,13 +111,13 @@ namespace UnofficialCrusaderPatch
             this.titleBox.IsChecked = enabledDefault;
         }
 
-        void TitleBox_Unchecked(object sender, RoutedEventArgs e)
+        protected virtual void TitleBox_Unchecked(object sender, RoutedEventArgs e)
         {
             headerList.ForEach(h => h.IsEnabled = false);
         }
 
         bool noCheck = false;
-        void TitleBox_Checked(object sender, RoutedEventArgs e)
+        protected virtual void TitleBox_Checked(object sender, RoutedEventArgs e)
         {
             if (noCheck) return;
             headerList.ForEach(h => h.IsEnabled = h.DefaultIsEnabled);
@@ -168,7 +172,7 @@ namespace UnofficialCrusaderPatch
             }
             grid.Height = height + 10;
         }
-
+        
         void Header_OnEnable(DefaultHeader header, bool enabled)
         {
             if (this.exclusive && enabled)
@@ -178,9 +182,13 @@ namespace UnofficialCrusaderPatch
                         h.IsEnabled = false;
             }
 
-            noCheck = true;
-            this.titleBox.IsChecked = IsChecked;
-            noCheck = false;
+            bool newChecked = this.IsChecked;
+            if (this.titleBox.IsChecked != newChecked)
+            {
+                noCheck = true;
+                this.titleBox.IsChecked = newChecked;
+                noCheck = false;
+            }
         }
 
         #endregion
