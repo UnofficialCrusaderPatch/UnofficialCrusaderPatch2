@@ -1125,6 +1125,10 @@
     <EmbeddedResource Include="CodeBlocks\o_healer_jesternext.block" />
     <EmbeddedResource Include="CodeBlocks\o_healerroam.block" />
     <EmbeddedResource Include="CodeBlocks\ai_attackwave_lord.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_defense_count.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_defense_group.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_defense_reset.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_defense_check.block" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />
