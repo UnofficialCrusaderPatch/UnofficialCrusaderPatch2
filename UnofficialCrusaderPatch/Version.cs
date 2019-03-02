@@ -51,6 +51,13 @@ namespace UnofficialCrusaderPatch
             #region BUG FIXES
 
             /*
+             * DISABLE DEMOLISHING OF INACCESSIBLE BUILDINGS
+             */
+
+            // 004242C3
+            BinBytes.Change("ai_access", ChangeType.Bugfix, true, 0xEB),
+            
+            /*
              * REMANNING WALL DEFENSES
              */
 
@@ -123,6 +130,21 @@ namespace UnofficialCrusaderPatch
                             // AI index
                             0x8B, 0x54, 0x24, 0x04, // mov edx,[esp+04]
                             0x8B, 0x14, 0x95, new BinRefTo("defNum", false), // mov edx,[edx*4 + defNum]
+                        }
+                    },
+
+                    // 004D3486
+                    new BinaryEdit("ai_defense_affinity")
+                    {
+                        // increase the general affinity to reman defenses
+                        // this value was zero for some AIs like the rat
+                        new BinHook(7)
+                        {
+                            // ori code
+                            0x8B, 0xAC, 0x87, 0x28, 0x01, 0x00, 0x00, // mov ebp,[edi+eax*4+00000128]
+
+                            // add a constant value of 20; snake's default f.e. is 30
+                            0x83, 0xC5, 0x14 // add ebp, 14h
                         }
                     }
                 }
@@ -279,7 +301,46 @@ namespace UnofficialCrusaderPatch
 
             #region AI LORDS
                 
-            
+            new Change("ai_moredef", ChangeType.AILords)
+            {
+                new DefaultHeader("ai_moredef")
+                {
+                    new AIEdit(AIIndex.Rat)
+                    {
+                        { AIProp.TotalDef, 50 }, // was 30
+                        { AIProp.WallDef, 40 }, // was 20
+                        { AIProp.DefUnit1, 0x18 }, // spearmen
+                        { AIProp.DefUnit2, 0x16 }, // archers
+
+                        { AIProp.DefUnit3, 0x16 },
+                        { AIProp.DefUnit4, 0x0 },
+                    },
+                    new AIEdit(AIIndex.Richard)
+                    {
+                        { AIProp.TotalDef, 60 }, // was 40
+                        { AIProp.WallDef, 40 }, // was 20
+                        { AIProp.DefUnit1, 0x19 }, // pikemen
+                        { AIProp.DefUnit2, 0x16 }, // archers
+                        { AIProp.DefUnit3, 0x16 },
+
+                        { AIProp.DefUnit4, 0x16 },
+                        { AIProp.DefUnit5, 0x16 },
+                    },
+                    new AIEdit(AIIndex.Philipp)
+                    {
+                        // philipp had 1 knight every 5 archers
+                        // increased to 1 knight every 7 archers
+
+                        { AIProp.TotalDef, 64 }, // was 20
+                        { AIProp.WallDef, 32 }, // was 4
+
+                        { AIProp.DefUnit7, 0x16 },
+                        { AIProp.DefUnit8, 0x16 },
+                    },
+
+                }
+            },
+
             /*
              *  AI RECRUIT ADDITIONAL ATTACK TROOPS 
              */
@@ -1925,6 +1986,7 @@ namespace UnofficialCrusaderPatch
             * FIXED AIV CASTLES - https://github.com/Evrey/SHC_AIV
             */
             
+            AIVChange.CreateDefault("Tatha"),
             AIVChange.CreateDefault("EvreyFixed", true),
             AIVChange.CreateDefault("EvreyImproved"),
             AIVChange.CreateDefault("EvreyPitch"),

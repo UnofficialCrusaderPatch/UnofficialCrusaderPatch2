@@ -110,27 +110,6 @@ ui_cancel
 	"Anuluj"
 }
 
-aiv_evrey
-{
-	"Ulepszone zamki przeciwników komputerowych"
-}
-
-aiv_evreyfixed
-{
-	"Oryginalne zamki naprawione przez użytkownika Evrey"
-}
-
-aiv_evreyfixed_descr
-{
-	"Naprawiono błędy oryginalnych zamków przeciwników komputerowych, na przykład brakujące domy i cechy kopaczy/inżynierów &
-lub zablokowane wejścia do zamku."
-}
-
-aiv_evreyimproved
-{
-	"Ulepszone zamki autorstwa użytkownika Evrey"
-}
-
 ui_uninstall
 {
 	"Odinstaluj"
@@ -349,25 +328,6 @@ po zniszczeniu/zabiciu ostatniego celu.
 
 Nie wiadomo na co jeszcze mają wpływ te odstępy, dlatego mogą pojawić się błędy &
 podczas korzystania z tej funkcji."
-}
-
-ai_attackwave
-{
-	"Popraw fale ataków"
-}
-
-ai_attackwave_descr
-{
-	"W oryginalnej grze sztuczna inteligencja wysyła tylko tyle żołnierzy za jednym razem, ile jest wolnych &
-kawałków murów. Powoduje to, że jednostki poruszają się w małych grupach, &
-gdy atakowany zamek ma wiele budynków bezpośrednio przy murach.
-Ta opcja sprawia, że żołnierze atakują również budynki cywilne i fortyfikacyjne, a także &
-te części murów, które są już atakowane przez inną jednostkę."
-}
-
-aiv_evreypitch
-{
-	"Oryginalne zamki naprawione przez użytkownika Evrey [Dodatkowe zmiany autorstwa PitchNeeded]"
 }
 
 
@@ -595,19 +555,6 @@ Specjalne podziękowania dla:
 [Evrey](https://github.com/Evrey) za jego zamki SI"
 }
 
-aiv_evreyimproved_descr
-{
-	"Wprowadza nowe i ulepszone zamki przeciwników komputerowych, które bazują na oryginalnym stylu z gry.
-	
-[Stworzone przez użytkownika Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreypitch_descr
-{
-	"Ulepsza oryginalne zamki naprawione przez użytkownika Evrey, dodając mangonele i &
-balisty na wieże Wezyra, Wieprza, Nizara i Emira. Edytowane przez użytkownika &
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
 
 
 ai_assaultswitch
@@ -685,3 +632,143 @@ o_xtreme_descr
 	"Usuwa pasek umiejętności w Twierdzy Krzyżowiec Extreme."
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ======================
+//         2.11
+// ======================
+
+
+ui_AIV
+{
+	"AIV"
+}
+
+ai_defense
+{
+	"Fix reinforcement of defense troops"
+}
+
+ai_defense_descr
+{
+	"Fixes a bug which stopped the AI from reinforcing missing troops &
+on walls and towers, as long as defensive patrols were still around. &
+Moreover, the probability for AIs to recruit defensive troops was generally &
+increased, as this value was vor some AIs zero."
+}
+
+ai_access
+{
+	"No demolishing of inaccessible buildings"
+}
+
+ai_access_descr
+{
+	"Prevents the AI from demolishing buildings without access. This should &
+stop the AI from continuously demolishing and rebuilding buildings where no &
+access is available."
+}
+
+ai_moredef
+{
+	"More defense troops for Richard, Rat & Philipp"
+}
+
+ai_moredef_descr
+{
+	"The AIs Richard, Rat and especially Philipp had very few defensive troops &
+on their walls in Vanilla. This setting increases the ranged troops by the &
+following amounts:
+
+Rat: 20 -> 40
+Richard: 20 -> 40
+Philipp: 4 -> 32
+
+It should be noted that the very first attack of those AIs will start later &
+with this setting."
+}
+
+aiv_tatha
+{
+	"Tatha's improved AI castles"
+}
+
+aiv_tatha_descr
+{
+	"Much stronger castles compared to Vanilla. The different castle variations of &
+each AI have the same strength. &
+[Presentation-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
+}
+
+
+
+
+// some edits in the descriptions _descr:
+
+
+ai_attackwave
+{
+	"Popraw fale ataków"
+}
+
+ai_attackwave_descr
+{
+	"W oryginalnej grze sztuczna inteligencja wysyła tylko tyle żołnierzy za jednym razem, ile jest wolnych &
+kawałków murów. Powoduje to, że jednostki poruszają się w małych grupach, &
+gdy atakowany zamek ma wiele budynków bezpośrednio przy murach.
+Ta opcja sprawia, że żołnierze atakują również budynki cywilne i fortyfikacyjne, a także &
+te części murów, które są już atakowane przez inną jednostkę. Moreover,
+the AI sends more troops to the enemy lord as soon as it detects a breach."
+}
+
+
+aiv_evreypitch
+{
+	"Oryginalne zamki naprawione przez użytkownika Evrey [Dodatkowe zmiany autorstwa PitchNeeded]"
+}
+
+aiv_evreypitch_descr
+{
+	"Ulepsza oryginalne zamki naprawione przez użytkownika Evrey, dodając mangonele i &
+balisty na wieże Wezyra, Wieprza, Nizara i Emira. Moreover, some &
+castles now have wells and apothecaries. Edytowane przez użytkownika &
+[PitchNeeded](https://github.com/PitchNeeded)."
+}
+
+
+// no edits, just formatting:
+
+
+
+aiv_evreyimproved
+{
+	"Ulepszone zamki autorstwa użytkownika Evrey"
+}
+
+aiv_evreyimproved_descr
+{
+	"Wprowadza nowe i ulepszone zamki przeciwników komputerowych, które bazują na oryginalnym stylu z gry. &
+[Stworzone przez użytkownika Evrey](https://github.com/Evrey/SHC_AIV/)"
+}
+
+aiv_evreyfixed
+{
+	"Oryginalne zamki naprawione przez użytkownika Evrey"
+}
+
+aiv_evreyfixed_descr
+{
+	"Naprawiono błędy oryginalnych zamków przeciwników komputerowych, na przykład brakujące domy i cechy kopaczy/inżynierów &
+lub zablokowane wejścia do zamku. [Stworzone przez użytkownika Evrey](https://github.com/Evrey/SHC_AIV/)"
+}

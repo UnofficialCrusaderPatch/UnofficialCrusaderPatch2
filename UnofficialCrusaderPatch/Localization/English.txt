@@ -110,27 +110,6 @@ ui_cancel
 	"Cancel"
 }
 
-aiv_evrey
-{
-	"Improved AI castles"
-}
-
-aiv_evreyfixed
-{
-	"Evrey's fixed vanilla castles"
-}
-
-aiv_evreyfixed_descr
-{
-	"Fixes bugs of the vanilla AI-Lord castles, like missing houses and guilds &
-or blocked entrances."
-}
-
-aiv_evreyimproved
-{
-	"Evrey's improved AI castles"
-}
-
 ui_uninstall
 {
 	"Uninstall"
@@ -352,25 +331,6 @@ It is unknown what else is influenced by this interval, thus, bugs may appear &
 when using this feature."
 }
 
-ai_attackwave
-{
-	"Improve attack waves"
-}
-
-ai_attackwave_descr
-{
-	"The AI in an attack in vanilla only sends as many troops at once as &
-there are wall parts reachable. This causes units to drop in in small waves &
-when the target castle has a lot of buildings directly at its walls.
-This option makes units also attack civil and fortification buildings, as &
-well as wall parts which are already being attacked by one unit."
-}
-
-aiv_evreypitch
-{
-	"Evrey's fixed vanilla castles [PitchNeeded Edit]"
-}
-
 
 
 
@@ -584,20 +544,6 @@ Special thanks go to:
 [Evrey](https://github.com/Evrey) for his AI castles"
 }
 
-aiv_evreyimproved_descr
-{
-	"Grants the AI-Lords new and improved castles, based on the vanilla style.
-	
-[Created by Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreypitch_descr
-{
-	"Extends 'Evrey's fixed vanilla castles', by adding mangonels and &
-ballistae to the towers of Wazir, Pig, Nizar and Emir. Edited by &
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
-
 
 
 
@@ -673,3 +619,130 @@ o_xtreme_descr
 	"Removes the magic bar in Crusader Extreme."
 }
 
+
+// ======================
+//         2.11
+// ======================
+
+
+ui_AIV
+{
+	"AIV"
+}
+
+ai_defense
+{
+	"Fix reinforcement of defense troops"
+}
+
+ai_defense_descr
+{
+	"Fixes a bug which stopped the AI from reinforcing missing troops &
+on walls and towers, as long as defensive patrols were still around. &
+Moreover, the probability for AIs to recruit defensive troops was generally &
+increased, as this value was vor some AIs zero."
+}
+
+ai_access
+{
+	"No demolishing of inaccessible buildings"
+}
+
+ai_access_descr
+{
+	"Prevents the AI from demolishing buildings without access. This should &
+stop the AI from continuously demolishing and rebuilding buildings where no &
+access is available."
+}
+
+ai_moredef
+{
+	"More defense troops for Richard, Rat & Philipp"
+}
+
+ai_moredef_descr
+{
+	"The AIs Richard, Rat and especially Philipp had very few defensive troops &
+on their walls in Vanilla. This setting increases the ranged troops by the &
+following amounts:
+
+Rat: 20 -> 40
+Richard: 20 -> 40
+Philipp: 4 -> 32
+
+It should be noted that the very first attack of those AIs will start later &
+with this setting."
+}
+
+aiv_tatha
+{
+	"Tatha's improved AI castles"
+}
+
+aiv_tatha_descr
+{
+	"Much stronger castles compared to Vanilla. The different castle variations of &
+each AI have the same strength. &
+[Presentation-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
+}
+
+
+
+
+// some edits:
+
+
+ai_attackwave
+{
+	"Improve attack waves"
+}
+
+ai_attackwave_descr
+{
+	"The AI in an attack in vanilla only sends as many troops at once as &
+there are wall parts reachable. This causes units to drop in in small waves &
+when the target castle has a lot of buildings directly at its walls.
+This option makes units also attack civil and fortification buildings, as &
+well as wall parts which are already being attacked by one unit. Moreover,
+the AI sends more troops to the enemy lord as soon as it detects a breach."
+}
+
+aiv_evreypitch
+{
+	"Evrey's fixed vanilla castles [PitchNeeded Edit]"
+}
+
+aiv_evreypitch_descr
+{
+	"Extends 'Evrey's fixed vanilla castles', by adding mangonels and &
+ballistae to the towers of Wazir, Pig, Nizar and Emir. Moreover, some &
+castles now have wells and apothecaries. Edited by &
+[PitchNeeded](https://github.com/PitchNeeded)."
+}
+
+
+// no edits, just formatting:
+
+
+
+aiv_evreyimproved
+{
+	"Evrey's improved AI castles"
+}
+
+aiv_evreyimproved_descr
+{
+	"Grants the AI-Lords new and improved castles, based on the vanilla style. &
+[Created by Evrey](https://github.com/Evrey/SHC_AIV/)"
+}
+
+aiv_evreyfixed
+{
+	"Evrey's fixed vanilla castles"
+}
+
+aiv_evreyfixed_descr
+{
+	"Fixes bugs of the vanilla AI-Lord castles, like missing houses and guilds &
+or blocked entrances. [Created by Evrey](https://github.com/Evrey/SHC_AIV/)"
+}

@@ -77,7 +77,7 @@ namespace UnofficialCrusaderPatch
 
             List<Change> todoList = new List<Change>(Version.Changes.Where(c => c.IsChecked));
             int todoIndex = 0;
-            double todoCount = 7 + todoList.Count; // +3 for read, +1 for version edit, +3 for writing data
+            double todoCount = 9 + todoList.Count; // +2 for AIprops +3 for read, +1 for version edit, +3 for writing data
 
             // read original data & section preparation
             byte[] oriData = File.ReadAllBytes(filePath);
@@ -87,7 +87,8 @@ namespace UnofficialCrusaderPatch
 
             perc.Set(todoIndex / todoCount);
 
-            ChangeArgs args = new ChangeArgs(data, oriData);            
+            ChangeArgs args = new ChangeArgs(data, oriData);    
+            
             // change version display in main menu
             try
             {
@@ -99,12 +100,25 @@ namespace UnofficialCrusaderPatch
             }
             perc.Set(++todoIndex / todoCount);
 
+
+
             // change stuff
             foreach (Change change in todoList)
             {
                 change.Activate(args);
                 perc.Set(++todoIndex / todoCount);
             }
+
+
+
+            // change AI properties
+            AIEdit.Write(args);
+            todoIndex += 2;
+            perc.Set(todoIndex / todoCount);
+
+
+
+            // Write everything to file
 
             data = SectionEditor.AttachSection(data);
 
@@ -121,6 +135,7 @@ namespace UnofficialCrusaderPatch
 
             perc.Set(1);
             
+            // Show failures
             if (fails.Count > 0)
             {
                 StringBuilder sb = new StringBuilder();

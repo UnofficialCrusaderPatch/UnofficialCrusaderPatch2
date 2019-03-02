@@ -111,27 +111,6 @@ ui_cancel
 	"Abbrechen"
 }
 
-aiv_evrey
-{
-	"Verbesserte KI-Burgen"
-}
-
-aiv_evreyfixed
-{
-	"Evreys gefixte Vanilla-Burgen"
-}
-
-aiv_evreyfixed_descr
-{
-	"Behebt Fehler der Vanilla-KI-Burgen, wie z.B. fehlende Häuser und Gilden &
-oder blockierte Ausgänge."
-}
-
-aiv_evreyimproved
-{
-	"Evreys verbesserte KI-Burgen"
-}
-
 ui_uninstall
 {
 	"Deinstallieren"
@@ -359,27 +338,6 @@ Es ist allerdings unbekannt was noch alles durch dieses Intervall &
 beeinflusst wird, darum ist es möglich dass Bugs auftreten."
 }
 
-ai_attackwave
-{
-	"Angriffswellen verbessern"
-}
-
-ai_attackwave_descr
-{
-	"In Vanilla schickt die KI bei einem Angriff immer nur &
-so viele Einheiten auf einmal los wie Mauernstücke erreichbar &
-sind. Bei Burgen die mit Gebäuden umbaut sind greifen die Einheiten &
-dadurch nur tröpfchenweise an.
-Durch die Aktivierung dieser Option greifen Einheiten auch Gebäude und &
-Befestigungsanlagen an, sowie Mauerstücke die bereits von einem Angreifer &
-besetzt sind."
-}
-
-aiv_evreypitch
-{
-	"Evreys gefixte Vanilla-Burgen [PitchNeeded Edit]"
-}
-
 
 
 
@@ -585,20 +543,6 @@ FireFly Studios für die Stronghold-Serie
 [Evrey](https://github.com/Evrey) für seine AI-Burgen"
 }
 
-aiv_evreyimproved_descr
-{
-	"Gibt den KI-Lords neue verbesserte Burgen, angelehnt an den Vanilla-Stil.
-
-[Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreypitch_descr
-{
-	"Erweitert 'Evreys gefixte Vanilla-Burgen', indem den Türmen von &
-Wazir, Schwein, Nizar und Emir Mangen und Ballisten hinzugefügt werden. &
-Editiert von [PitchNeeded](https://github.com/PitchNeeded)."
-}
-
 
 ai_assaultswitch
 {
@@ -685,13 +629,119 @@ o_xtreme_descr
 // ======================
 
 
-
 ui_AIV
 {
 	"AIV"
 }
 
+ai_defense
+{
+	"Verstärkung der Burgverteidigung fixen"
+}
+
+ai_defense_descr
+{
+	"Fixt einen Bug, der die KI davon abhielt fehlende Truppen auf &
+Wällen und Türmen zu verstärken, solange noch Defensivpatrouillen &
+vorhanden waren. Außerdem wurde generell die Wahrscheinlichkeit erhöht &
+Verstärkung zu rekrutieren, da diese bei einigen KIs auf null gesetzt war."
+}
+
+ai_access
+{
+	"Kein Abreißen von unzugänglichen Gebäuden"
+}
+
+ai_access_descr
+{
+	"Verhindert, dass die KI Gebäude abreißt zu denen es keinen Zuweg gibt. &
+Damit soll der Bug verhindert werden, bei dem manche KIs in ihren Burgen &
+andauernd Gebäude abreißen und wieder aufbauen zu denen es keinen Weg gibt."
+}
+
+ai_moredef
+{
+	"Mehr Burgverteidigung für Richard, Ratte & Philipp"
+}
+
+ai_moredef_descr
+{
+	"Die KIs Richard, Ratte und besonders Philipp haben in Vanilla sehr wenig &
+Truppen auf ihren Mauern und Türmen. Mit dieser Einstellung werden die Anzahlen &
+der Fernkämpfer folgendermaßen erhöht:
+
+Ratte: 20 -> 40
+Richard: 20 -> 40
+Philipp: 4 -> 32
+
+Es ist zu beachten, dass der allererste Angriff dieser KIs hierdurch etwas hinausgezögert wird."
+}
+
+aiv_tatha
+{
+	"Tathas verbesserte KI Burgen"
+}
+
+aiv_tatha_descr
+{
+	"Im Vergleich zu den Vanilla-Versionen deutlich stärkere Burgen. Die verschiedenen &
+Burgvariationen der einzelnen KIs sind alle gleich stark. &
+[Vorstellungs-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
+}
 
 
 
 
+// some edits:
+
+ai_attackwave
+{
+	"Angriffswellen verbessern"
+}
+
+ai_attackwave_descr
+{
+	"In Vanilla schickt die KI bei einem Angriff immer nur &
+so viele Einheiten auf einmal los wie Mauernstücke erreichbar &
+sind. Bei Burgen die mit Gebäuden umbaut sind greifen die Einheiten &
+dadurch nur tröpfchenweise an.
+Durch die Aktivierung dieser Option greifen Einheiten auch Gebäude und &
+Befestigungsanlagen an, sowie Mauerstücke die bereits von einem Angreifer &
+besetzt sind. Außerdem schickt die KI jetzt auch mehr Truppen auf den &
+gegnerischen Bergfried, sobald sie eine Bresche erkennt."
+}
+
+aiv_evreypitch
+{
+	"Evreys gefixte Vanilla-Burgen [PitchNeeded Edit]"
+}
+
+aiv_evreypitch_descr
+{
+	"Erweitert 'Evreys gefixte Vanilla-Burgen', indem den Türmen von &
+Wazir, Schwein, Nizar und Emir Mangen und Ballisten hinzugefügt werden. &
+Außerdem haben einige KIs Apotheken und Brunnen erhalten. Editiert von &
+[PitchNeeded](https://github.com/PitchNeeded)."
+}
+
+aiv_evreyfixed
+{
+	"Evreys gefixte Vanilla-Burgen"
+}
+
+aiv_evreyfixed_descr
+{
+	"Behebt Fehler der Vanilla-KI-Burgen, wie z.B. fehlende Häuser und Gilden &
+oder blockierte Ausgänge. [Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
+}
+
+aiv_evreyimproved
+{
+	"Evreys verbesserte KI-Burgen"
+}
+
+aiv_evreyimproved_descr
+{
+	"Gibt den KI-Lords neue verbesserte Burgen, angelehnt an den Vanilla-Stil. &
+[Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
+}

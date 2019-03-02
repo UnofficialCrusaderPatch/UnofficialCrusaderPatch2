@@ -110,27 +110,6 @@ ui_cancel
 	"Отмена"
 }
 
-aiv_evrey
-{
-	"Улучшенные замки AI"
-}
-
-aiv_evreyfixed
-{
-	"Evrey's фиксированные ванильные замки"
-}
-
-aiv_evreyfixed_descr
-{
-	"Исправляет ошибки ванильных замков AI-Лордов, таких как пропущенные дома и гильдии &
-или заблокированные входы."
-}
-
-aiv_evreyimproved
-{
-	"Evrey's улучшенные замки AI"
-}
-
 ui_uninstall
 {
 	"Удаление"
@@ -351,25 +330,6 @@ ai_overclock_descr
 при использовании этой функции."
 }
 
-ai_attackwave
-{
-	"Улучшение волны атаки"
-}
-
-ai_attackwave_descr
-{
-	"AI в атаке в ванили посылает сразу столько же войск, как и & 
-тогда когда стены целые.Это заставляет единицы умирать в маленьких волнах &
-когда у целевого замка много зданий прямо у его стен. Этот вариант позволяет &
-подразделениям атаковать гражданские & и фортификационные здания, &
-а также стены, которые уже атакованы одной единицей."
-}
-
-aiv_evreypitch
-{
-	"Улучшеные ванильные замки Evrey [PitchNeeded редактировано]"
-}
-
 
 
 
@@ -581,21 +541,6 @@ ui_welcometext
 [Evrey](https://github.com/Evrey) за свои замки AI"
 }
 
-aiv_evreyimproved_descr
-{
-	"Предоставляет AI-Лордам новые и улучшенные замки, основанные на стиле ванили.
-	
-[Создано Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreypitch_descr
-{
-	"Расширяет «улучшеные ванильные замки Evrey», добавляя мангонелей и &
-баллист к башням Вазира, Кабана, Низара и Эмира. Отредактировано &
-[PitchNeeded](https://github.com/PitchNeeded) «."
-}
-
-
 
 ai_assaultswitch
 {
@@ -673,3 +618,140 @@ o_xtreme_descr
 	"Убирает значки магии в Stronghold Crusader Extreme."
 }
 
+
+
+
+
+
+
+
+
+
+// ======================
+//         2.11
+// ======================
+
+
+ui_AIV
+{
+	"AIV"
+}
+
+ai_defense
+{
+	"Fix reinforcement of defense troops"
+}
+
+ai_defense_descr
+{
+	"Fixes a bug which stopped the AI from reinforcing missing troops &
+on walls and towers, as long as defensive patrols were still around. &
+Moreover, the probability for AIs to recruit defensive troops was generally &
+increased, as this value was vor some AIs zero."
+}
+
+ai_access
+{
+	"No demolishing of inaccessible buildings"
+}
+
+ai_access_descr
+{
+	"Prevents the AI from demolishing buildings without access. This should &
+stop the AI from continuously demolishing and rebuilding buildings where no &
+access is available."
+}
+
+ai_moredef
+{
+	"More defense troops for Richard, Rat & Philipp"
+}
+
+ai_moredef_descr
+{
+	"The AIs Richard, Rat and especially Philipp had very few defensive troops &
+on their walls in Vanilla. This setting increases the ranged troops by the &
+following amounts:
+
+Rat: 20 -> 40
+Richard: 20 -> 40
+Philipp: 4 -> 32
+
+It should be noted that the very first attack of those AIs will start later &
+with this setting."
+}
+
+aiv_tatha
+{
+	"Tatha's improved AI castles"
+}
+
+aiv_tatha_descr
+{
+	"Much stronger castles compared to Vanilla. The different castle variations of &
+each AI have the same strength. &
+[Presentation-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
+}
+
+
+
+
+// some edits in the descriptions _descr:
+
+
+ai_attackwave
+{
+	"Улучшение волны атаки"
+}
+
+ai_attackwave_descr
+{
+	"AI в атаке в ванили посылает сразу столько же войск, как и & 
+тогда когда стены целые.Это заставляет единицы умирать в маленьких волнах &
+когда у целевого замка много зданий прямо у его стен. Этот вариант позволяет &
+подразделениям атаковать гражданские & и фортификационные здания, &
+а также стены, которые уже атакованы одной единицей. Moreover,
+the AI sends more troops to the enemy lord as soon as it detects a breach."
+}
+
+aiv_evreypitch
+{
+	"Улучшеные ванильные замки Evrey [PitchNeeded редактировано]"
+}
+
+aiv_evreypitch_descr
+{
+	"Расширяет «улучшеные ванильные замки Evrey», добавляя мангонелей и &
+баллист к башням Вазира, Кабана, Низара и Эмира. Moreover, some &
+castles now have wells and apothecaries. Отредактировано &
+[PitchNeeded](https://github.com/PitchNeeded) «."
+}
+
+
+
+// no edits, just formatting:
+
+
+
+
+aiv_evreyimproved
+{
+	"Evrey's улучшенные замки AI"
+}
+
+aiv_evreyimproved_descr
+{
+	"Предоставляет AI-Лордам новые и улучшенные замки, основанные на стиле ванили. &
+[Создано Evrey](https://github.com/Evrey/SHC_AIV/)"
+}
+
+aiv_evreyfixed
+{
+	"Evrey's фиксированные ванильные замки"
+}
+
+aiv_evreyfixed_descr
+{
+	"Исправляет ошибки ванильных замков AI-Лордов, таких как пропущенные дома и гильдии &
+или заблокированные входы. [Создано Evrey](https://github.com/Evrey/SHC_AIV/)"
+}

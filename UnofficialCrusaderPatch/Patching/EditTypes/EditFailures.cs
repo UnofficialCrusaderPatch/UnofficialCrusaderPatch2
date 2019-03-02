@@ -4,5 +4,6 @@
     {
         BlockNotFound,
         MultipleBlocks,
+        AIMultipleProp,
     }
 }
