@@ -20,10 +20,13 @@ Special thanks go to:
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) & [Radek2019](https://github.com/Radek2019) for the polish translation  
 [Lolasik011](https://github.com/Lolasik011) for the russian translation  
 [Evrey](https://github.com/Evrey) for his AI castles  
+[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) for his AI castles  
+[PitchNeeded](https://github.com/PitchNeeded) for his AI castle edits  
+
 
 &nbsp;  
 &nbsp;  
 &nbsp;  
 
-If you would like to donate to this project, you can do so via PayPal:  
+If you would like to donate to me, you can do so via PayPal:  
 [![paypal](https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N3PDNDLPQXWPL)
