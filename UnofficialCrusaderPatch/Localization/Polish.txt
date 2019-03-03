@@ -550,9 +550,11 @@ entuzjastyczne wsparcie.
 Specjalne podziękowania dla:
 [FireFly Studios](https://fireflyworlds.com/) za stworzenie serii Twierdza
 [Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), bo przypomniał mi o Twierdzy
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) i [Radek2019](https://github.com/Radek2019) za polskie tłumaczenie
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) za polskie tłumaczenie
 [Lolasik011](https://github.com/Lolasik011) za rosyjskie tłumaczenie
-[Evrey](https://github.com/Evrey) za jego zamki SI"
+[Evrey](https://github.com/Evrey) za jego zamki SI
+[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) za jego zamki SI
+[PitchNeeded](https://github.com/PitchNeeded) za jego zamki SI"
 }
 
 

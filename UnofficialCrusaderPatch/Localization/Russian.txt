@@ -536,11 +536,12 @@ ui_welcometext
 Особая благодарность:
 [FireFly Studios](https://fireflyworlds.com/) за создания серии Stronghold
 [Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), потому что он напомнил мне про Stronghold
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) & [Radek2019](https://github.com/Radek2019) за Польский перевод
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) за Польский перевод
 [Lolasik011](https://github.com/Lolasik011) за Русский перевод
-[Evrey](https://github.com/Evrey) за свои замки AI"
+[Evrey](https://github.com/Evrey) за свои замки AI
+[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) за свои замки AI
+[PitchNeeded](https://github.com/PitchNeeded) за свои замки AI"
 }
-
 
 ai_assaultswitch
 {
