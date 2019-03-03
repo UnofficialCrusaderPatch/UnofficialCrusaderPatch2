@@ -657,58 +657,58 @@ ui_AIV
 
 ai_defense
 {
-	"Fix reinforcement of defense troops"
+	"Usprawnione wysyłanie posiłków do obrony"
 }
 
 ai_defense_descr
 {
-	"Fixes a bug which stopped the AI from reinforcing missing troops &
-on walls and towers, as long as defensive patrols were still around. &
-Moreover, the probability for AIs to recruit defensive troops was generally &
-increased, as this value was vor some AIs zero."
+	"Naprawniono błąd, który uniemożliwiał SI dosyłanie brakujących jednostek &
+na mury i wieże w momencie, gdy patrole defensywne były ciągle obecne. &
+Dodatkowo, szansa na to, że SI stworzy jednostki do obrony została &
+zwiększona, gdyż ta wartość była ustawiona jako 0 dla niektórych przeciwników."
 }
 
 ai_access
 {
-	"No demolishing of inaccessible buildings"
+	"Brak niszczenia niedostępnych budynków"
 }
 
 ai_access_descr
 {
-	"Prevents the AI from demolishing buildings without access. This should &
-stop the AI from continuously demolishing and rebuilding buildings where no &
-access is available."
+	"Ta opcja zapobiega niszczeniu budynków, do których nie ma dojścia. Dzięki temu &
+Sztuczna Inteligencja przestanie ciągle niszczyć i odbudowywać budynki, do których &
+nie da się dojść."
 }
 
 ai_moredef
 {
-	"More defense troops for Richard, Rat & Philipp"
+	"Więcej żołnierzy do obrony dla Ryszarda, Szczura i króla Filipa"
 }
 
 ai_moredef_descr
 {
-	"The AIs Richard, Rat and especially Philipp had very few defensive troops &
-on their walls in Vanilla. This setting increases the ranged troops by the &
-following amounts:
+	"Ryszard, Szczur i król Filip mieli niewielu żołnierzy &
+do obrony w swoich zamkach w oryginalnej wersji gry. Ta opcja zwiększa liczbę jednostek dystansowych &
+w poniższych proporcjach:
 
-Rat: 20 -> 40
-Richard: 20 -> 40
-Philipp: 4 -> 32
+Szczur: 20 -> 40
+Ryszard: 20 -> 40
+Król Filip: 4 -> 32
 
-It should be noted that the very first attack of those AIs will start later &
-with this setting."
+Należy zaznaczyć, że pierwszy atak tych przeciwników odbędzie się później, &
+gdy ma się włączoną tę opcję."
 }
 
 aiv_tatha
 {
-	"Tatha's improved AI castles"
+	"Ulepszone zamki użytkownika Tatha"
 }
 
 aiv_tatha_descr
 {
-	"Much stronger castles compared to Vanilla. The different castle variations of &
-each AI have the same strength. &
-[Presentation-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
+	"O wiele mocniejsze zamki w porównaniu z oryginałem. Różne rodzaje zamków &
+posiadające tę samą siłę. &
+[Prezentacja](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
 }
 
 
@@ -728,8 +728,8 @@ ai_attackwave_descr
 kawałków murów. Powoduje to, że jednostki poruszają się w małych grupach, &
 gdy atakowany zamek ma wiele budynków bezpośrednio przy murach.
 Ta opcja sprawia, że żołnierze atakują również budynki cywilne i fortyfikacyjne, a także &
-te części murów, które są już atakowane przez inną jednostkę. Moreover,
-the AI sends more troops to the enemy lord as soon as it detects a breach."
+te części murów, które są już atakowane przez inną jednostkę. Dodatkowo
+SI wysyła więcej jednostek do wrogiego lorda, gdy przełamie mury."
 }
 
 
@@ -741,8 +741,8 @@ aiv_evreypitch
 aiv_evreypitch_descr
 {
 	"Ulepsza oryginalne zamki naprawione przez użytkownika Evrey, dodając mangonele i &
-balisty na wieże Wezyra, Wieprza, Nizara i Emira. Moreover, some &
-castles now have wells and apothecaries. Edytowane przez użytkownika &
+balisty na wieże Wezyra, Wieprza, Nizara i Emira. Dodatkowo &
+niektóre zamki mają teraz studnie i apteki. Edytowane przez użytkownika &
 [PitchNeeded](https://github.com/PitchNeeded)."
 }
 
