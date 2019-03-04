@@ -1989,7 +1989,8 @@ namespace UnofficialCrusaderPatch
             AIVChange.CreateDefault("Tatha"),
             AIVChange.CreateDefault("EvreyFixed", true),
             AIVChange.CreateDefault("EvreyImproved"),
-            AIVChange.CreateDefault("EvreyPitch"),
+            AIVChange.CreateDefault("PitchWells"),
+            AIVChange.CreateDefault("PitchSiege"),
 
 
             #endregion

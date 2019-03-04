@@ -707,16 +707,28 @@ well as wall parts which are already being attacked by one unit. Moreover,
 the AI sends more troops to the enemy lord as soon as it detects a breach."
 }
 
-aiv_evreypitch
+aiv_pitchsiege
 {
-	"Evrey's fixed vanilla castles [PitchNeeded Edit]"
+	"PitchNeeded's Evrey Edit (mangonels & ballistae)"
 }
 
-aiv_evreypitch_descr
+aiv_pitchsiege_descr
 {
 	"Extends 'Evrey's fixed vanilla castles', by adding mangonels and &
-ballistae to the towers of Wazir, Pig, Nizar and Emir. Moreover, some &
-castles now have wells and apothecaries. Edited by &
+ballistae to the towers of Wazir, Pig, Nizar and Emir. Edited by &
+[PitchNeeded](https://github.com/PitchNeeded)."
+}
+
+
+aiv_PitchWells
+{
+	"PitchNeeded's Evrey Edit (wells & apothecaries)"
+}
+
+aiv_PitchWells_descr
+{
+	"Extends 'Evrey's fixed vanilla castles', by adding wells &
+apothecaries to some castles. Edited by &
 [PitchNeeded](https://github.com/PitchNeeded)."
 }
 

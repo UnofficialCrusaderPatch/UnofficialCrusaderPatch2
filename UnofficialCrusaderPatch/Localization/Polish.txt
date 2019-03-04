@@ -734,18 +734,27 @@ te części murów, które są już atakowane przez inną jednostkę. Dodatkowo
 SI wysyła więcej jednostek do wrogiego lorda, gdy przełamie mury."
 }
 
-
-aiv_evreypitch
+aiv_PitchSiege
 {
-	"Oryginalne zamki naprawione przez użytkownika Evrey [Dodatkowe zmiany autorstwa PitchNeeded]"
+	"Dodatkowe zmiany PitchNeeded do Evrey (mangonele & balisty)"
 }
 
-aiv_evreypitch_descr
+aiv_PitchSiege_descr
 {
 	"Ulepsza oryginalne zamki naprawione przez użytkownika Evrey, dodając mangonele i &
-balisty na wieże Wezyra, Wieprza, Nizara i Emira. Dodatkowo &
-niektóre zamki mają teraz studnie i apteki. Edytowane przez użytkownika &
+balisty na wieże Wezyra, Wieprza, Nizara i Emira. Edytowane przez użytkownika &
 [PitchNeeded](https://github.com/PitchNeeded)."
+}
+
+aiv_PitchWells
+{
+	"Dodatkowe zmiany PitchNeeded do Evrey (studnie & apteki)"
+}
+
+aiv_PitchWells_descr
+{
+	"Ulepsza oryginalne zamki naprawione przez użytkownika Evrey, dodając studnie i apteki dla niektórych AI.
+Edytowane przez użytkownika [PitchNeeded](https://github.com/PitchNeeded)."
 }
 
 

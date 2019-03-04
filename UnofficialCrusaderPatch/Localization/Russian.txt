@@ -715,19 +715,30 @@ ai_attackwave_descr
 the AI sends more troops to the enemy lord as soon as it detects a breach."
 }
 
-aiv_evreypitch
+aiv_pitchsiege
 {
-	"Улучшеные ванильные замки Evrey [PitchNeeded редактировано]"
+	"PitchNeeded's Evrey Edit (mangonels & ballistae)"
 }
 
-aiv_evreypitch_descr
+aiv_pitchsiege_descr
 {
 	"Расширяет «улучшеные ванильные замки Evrey», добавляя мангонелей и &
-баллист к башням Вазира, Кабана, Низара и Эмира. Moreover, some &
-castles now have wells and apothecaries. Отредактировано &
+баллист к башням Вазира, Кабана, Низара и Эмира. Отредактировано &
 [PitchNeeded](https://github.com/PitchNeeded) «."
 }
 
+
+aiv_PitchWells
+{
+	"PitchNeeded's Evrey Edit (wells & apothecaries)"
+}
+
+aiv_PitchWells_descr
+{
+	"Extends 'Evrey's fixed vanilla castles', by adding wells &
+apothecaries to some castles. Edited by &
+[PitchNeeded](https://github.com/PitchNeeded)."
+}
 
 
 // no edits, just formatting:

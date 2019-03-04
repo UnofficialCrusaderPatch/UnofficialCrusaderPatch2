@@ -712,17 +712,27 @@ besetzt sind. Außerdem schickt die KI jetzt auch mehr Truppen auf den &
 gegnerischen Bergfried, sobald sie eine Bresche erkennt."
 }
 
-aiv_evreypitch
+aiv_pitchsiege
 {
-	"Evreys gefixte Vanilla-Burgen [PitchNeeded Edit]"
+	"PitchNeededs Evrey Edit (Mangen & Ballisten)"
 }
 
-aiv_evreypitch_descr
+aiv_pitchsiege_descr
 {
-	"Erweitert 'Evreys gefixte Vanilla-Burgen', indem den Türmen von &
+	"Erweitert 'Evreys gefixte Vanilla-Burgen' indem den Türmen von &
 Wazir, Schwein, Nizar und Emir Mangen und Ballisten hinzugefügt werden. &
-Außerdem haben einige KIs Apotheken und Brunnen erhalten. Editiert von &
-[PitchNeeded](https://github.com/PitchNeeded)."
+Editiert von [PitchNeeded](https://github.com/PitchNeeded)."
+}
+
+aiv_pitchwells
+{
+	"PitchNeededs Evrey Edit (Brunnen & Apotheken)"
+}
+
+aiv_pitchwells_descr
+{
+	"Erweitert 'Evreys gefixte Vanilla-Burgen' indem einige KI-Burgen &
+Brunnen und Apotheken erhalten. Editiert von [PitchNeeded](https://github.com/PitchNeeded)."
 }
 
 aiv_evreyfixed
