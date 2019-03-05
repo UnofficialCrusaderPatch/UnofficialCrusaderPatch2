@@ -640,57 +640,57 @@ ui_AIV
 
 ai_defense
 {
-	"Fix reinforcement of defense troops"
+	"Исправляет подкрепление войск обороны AI"
 }
 
 ai_defense_descr
 {
-	"Fixes a bug which stopped the AI from reinforcing missing troops &
-on walls and towers, as long as defensive patrols were still around. &
-Moreover, the probability for AIs to recruit defensive troops was generally &
-increased, as this value was vor some AIs zero."
+	"Исправлен баг, из-за которого AI не усиливал недостающие войска
+на стенах и башнях, пока оборонительные патрули все еще были вокруг. &
+Более того, вероятность того, что AI вербуют оборонительные войска, была
+увеличился, так как это значение было равно нулю."
 }
 
 ai_access
 {
-	"No demolishing of inaccessible buildings"
+	"Нет сноса недоступных зданий"
 }
 
 ai_access_descr
 {
-	"Prevents the AI from demolishing buildings without access. This should &
-stop the AI from continuously demolishing and rebuilding buildings where no &
-access is available."
+	"Предотвращает AI от разрушения зданий без доступа. Это должно &
+остановить AI от непрерывного разрушения и восстановления зданий, где нет
+доступа к ним."
 }
 
 ai_moredef
 {
-	"More defense troops for Richard, Rat & Philipp"
+	"Больше войск обороны для Ричарда, Крыси и Филиппа"
 }
 
 ai_moredef_descr
 {
-	"The AIs Richard, Rat and especially Philipp had very few defensive troops &
-on their walls in Vanilla. This setting increases the ranged troops by the &
-following amounts:
+	"У AI Ричарда, Крыси и особенно Филиппа было очень мало защитных войск и
+на их стенах в ванили. Этот параметр увеличивает дальние войска на &
+следующие суммы:
 
-Rat: 20 -> 40
-Richard: 20 -> 40
-Philipp: 4 -> 32
+Крыса: 20 -> 40
+Ричард: 20 -> 40
+Филипп: 4 -> 32
 
-It should be noted that the very first attack of those AIs will start later &
-with this setting."
+Следует отметить, что самая первая атака этих AI начнется позже.
+с этой настройкой."
 }
 
 aiv_tatha
 {
-	"Tatha's improved AI castles"
+	"Tatha Улучшеные AI Замки"
 }
 
 aiv_tatha_descr
 {
-	"Much stronger castles compared to Vanilla. The different castle variations of &
-each AI have the same strength. &
+	"Гораздо сильнее замки по сравнению с ванилью. Различные варианты замка &
+Каждый AI имеет одинаковую силу. &
 [Presentation-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
 }
 
@@ -711,13 +711,13 @@ ai_attackwave_descr
 тогда когда стены целые.Это заставляет единицы умирать в маленьких волнах &
 когда у целевого замка много зданий прямо у его стен. Этот вариант позволяет &
 подразделениям атаковать гражданские & и фортификационные здания, &
-а также стены, которые уже атакованы одной единицей. Moreover,
-the AI sends more troops to the enemy lord as soon as it detects a breach."
+а также стены, которые уже атакованы одной единицей. Более того,
+AI посылает больше войск к вражескому лорду, как только обнаруживает нарушение."
 }
 
 aiv_pitchsiege
 {
-	"PitchNeeded's Evrey Edit (mangonels & ballistae)"
+	"PitchNeeded и Evrey Отредактировано (Мангонелли и Балисты)"
 }
 
 aiv_pitchsiege_descr
@@ -730,13 +730,13 @@ aiv_pitchsiege_descr
 
 aiv_PitchWells
 {
-	"PitchNeeded's Evrey Edit (wells & apothecaries)"
+	"PitchNeeded и Evrey Отредактировано (Колодцы и Аптеки)"
 }
 
 aiv_PitchWells_descr
 {
-	"Extends 'Evrey's fixed vanilla castles', by adding wells &
-apothecaries to some castles. Edited by &
+	"Расширяет «фиксированные ванильные замки Evrey», добавляя колодцы и
+аптекари для некоторых замков. Отредактировано &
 [PitchNeeded](https://github.com/PitchNeeded)."
 }
 
