@@ -492,774 +492,774 @@
     <EmbeddedResource Include="AIVs\Tatha\Wolf6.aiv" />
     <EmbeddedResource Include="AIVs\Tatha\Wolf7.aiv" />
     <EmbeddedResource Include="AIVs\Tatha\Wolf8.aiv" />
-    <None Include="..\SHC_AIV\aiv\Abbot1.aiv">
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Abbot1.aiv">
       <Link>AIVs\EvreyImproved\Abbot1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Abbot2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Abbot2.aiv">
       <Link>AIVs\EvreyImproved\Abbot2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Abbot3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Abbot3.aiv">
       <Link>AIVs\EvreyImproved\Abbot3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Abbot4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Abbot4.aiv">
       <Link>AIVs\EvreyImproved\Abbot4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Abbot5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Abbot5.aiv">
       <Link>AIVs\EvreyImproved\Abbot5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Abbot6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Abbot6.aiv">
       <Link>AIVs\EvreyImproved\Abbot6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Abbot7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Abbot7.aiv">
       <Link>AIVs\EvreyImproved\Abbot7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Abbot8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Abbot8.aiv">
       <Link>AIVs\EvreyImproved\Abbot8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\caliph1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\caliph1.aiv">
       <Link>AIVs\EvreyImproved\caliph1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\caliph2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\caliph2.aiv">
       <Link>AIVs\EvreyImproved\caliph2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\caliph3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\caliph3.aiv">
       <Link>AIVs\EvreyImproved\caliph3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\caliph4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\caliph4.aiv">
       <Link>AIVs\EvreyImproved\caliph4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\caliph5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\caliph5.aiv">
       <Link>AIVs\EvreyImproved\caliph5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\caliph6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\caliph6.aiv">
       <Link>AIVs\EvreyImproved\caliph6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\caliph7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\caliph7.aiv">
       <Link>AIVs\EvreyImproved\caliph7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\caliph8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\caliph8.aiv">
       <Link>AIVs\EvreyImproved\caliph8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Emir1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Emir1.aiv">
       <Link>AIVs\EvreyImproved\Emir1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Emir2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Emir2.aiv">
       <Link>AIVs\EvreyImproved\Emir2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Emir3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Emir3.aiv">
       <Link>AIVs\EvreyImproved\Emir3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Emir4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Emir4.aiv">
       <Link>AIVs\EvreyImproved\Emir4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Emir5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Emir5.aiv">
       <Link>AIVs\EvreyImproved\Emir5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Emir6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Emir6.aiv">
       <Link>AIVs\EvreyImproved\Emir6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Emir7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Emir7.aiv">
       <Link>AIVs\EvreyImproved\Emir7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Emir8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Emir8.aiv">
       <Link>AIVs\EvreyImproved\Emir8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\frederick1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\frederick1.aiv">
       <Link>AIVs\EvreyImproved\frederick1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\frederick2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\frederick2.aiv">
       <Link>AIVs\EvreyImproved\frederick2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\frederick3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\frederick3.aiv">
       <Link>AIVs\EvreyImproved\frederick3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\frederick4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\frederick4.aiv">
       <Link>AIVs\EvreyImproved\frederick4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\frederick5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\frederick5.aiv">
       <Link>AIVs\EvreyImproved\frederick5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\frederick6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\frederick6.aiv">
       <Link>AIVs\EvreyImproved\frederick6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\frederick7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\frederick7.aiv">
       <Link>AIVs\EvreyImproved\frederick7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\frederick8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\frederick8.aiv">
       <Link>AIVs\EvreyImproved\frederick8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\marshal1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\marshal1.aiv">
       <Link>AIVs\EvreyImproved\marshal1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\marshal2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\marshal2.aiv">
       <Link>AIVs\EvreyImproved\marshal2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\marshal3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\marshal3.aiv">
       <Link>AIVs\EvreyImproved\marshal3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\marshal4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\marshal4.aiv">
       <Link>AIVs\EvreyImproved\marshal4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\marshal5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\marshal5.aiv">
       <Link>AIVs\EvreyImproved\marshal5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\marshal6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\marshal6.aiv">
       <Link>AIVs\EvreyImproved\marshal6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\marshal7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\marshal7.aiv">
       <Link>AIVs\EvreyImproved\marshal7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\marshal8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\marshal8.aiv">
       <Link>AIVs\EvreyImproved\marshal8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Nizar1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Nizar1.aiv">
       <Link>AIVs\EvreyImproved\Nizar1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Nizar2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Nizar2.aiv">
       <Link>AIVs\EvreyImproved\Nizar2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Nizar3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Nizar3.aiv">
       <Link>AIVs\EvreyImproved\Nizar3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Nizar4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Nizar4.aiv">
       <Link>AIVs\EvreyImproved\Nizar4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Nizar5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Nizar5.aiv">
       <Link>AIVs\EvreyImproved\Nizar5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Nizar6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Nizar6.aiv">
       <Link>AIVs\EvreyImproved\Nizar6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Nizar7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Nizar7.aiv">
       <Link>AIVs\EvreyImproved\Nizar7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Nizar8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Nizar8.aiv">
       <Link>AIVs\EvreyImproved\Nizar8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\phillip1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\phillip1.aiv">
       <Link>AIVs\EvreyImproved\phillip1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\phillip2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\phillip2.aiv">
       <Link>AIVs\EvreyImproved\phillip2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\phillip3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\phillip3.aiv">
       <Link>AIVs\EvreyImproved\phillip3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\phillip4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\phillip4.aiv">
       <Link>AIVs\EvreyImproved\phillip4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\phillip5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\phillip5.aiv">
       <Link>AIVs\EvreyImproved\phillip5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\phillip6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\phillip6.aiv">
       <Link>AIVs\EvreyImproved\phillip6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\phillip7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\phillip7.aiv">
       <Link>AIVs\EvreyImproved\phillip7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\phillip8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\phillip8.aiv">
       <Link>AIVs\EvreyImproved\phillip8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\pig1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\pig1.aiv">
       <Link>AIVs\EvreyImproved\pig1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\pig2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\pig2.aiv">
       <Link>AIVs\EvreyImproved\pig2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\pig3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\pig3.aiv">
       <Link>AIVs\EvreyImproved\pig3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\pig4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\pig4.aiv">
       <Link>AIVs\EvreyImproved\pig4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\pig5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\pig5.aiv">
       <Link>AIVs\EvreyImproved\pig5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\pig6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\pig6.aiv">
       <Link>AIVs\EvreyImproved\pig6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\pig7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\pig7.aiv">
       <Link>AIVs\EvreyImproved\pig7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\pig8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\pig8.aiv">
       <Link>AIVs\EvreyImproved\pig8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\rat1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\rat1.aiv">
       <Link>AIVs\EvreyImproved\rat1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\rat2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\rat2.aiv">
       <Link>AIVs\EvreyImproved\rat2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\rat3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\rat3.aiv">
       <Link>AIVs\EvreyImproved\rat3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\rat4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\rat4.aiv">
       <Link>AIVs\EvreyImproved\rat4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\rat5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\rat5.aiv">
       <Link>AIVs\EvreyImproved\rat5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\rat6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\rat6.aiv">
       <Link>AIVs\EvreyImproved\rat6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\rat7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\rat7.aiv">
       <Link>AIVs\EvreyImproved\rat7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\rat8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\rat8.aiv">
       <Link>AIVs\EvreyImproved\rat8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\richard1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\richard1.aiv">
       <Link>AIVs\EvreyImproved\richard1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\richard2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\richard2.aiv">
       <Link>AIVs\EvreyImproved\richard2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\richard3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\richard3.aiv">
       <Link>AIVs\EvreyImproved\richard3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\richard4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\richard4.aiv">
       <Link>AIVs\EvreyImproved\richard4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\richard5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\richard5.aiv">
       <Link>AIVs\EvreyImproved\richard5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\richard6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\richard6.aiv">
       <Link>AIVs\EvreyImproved\richard6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\richard7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\richard7.aiv">
       <Link>AIVs\EvreyImproved\richard7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\richard8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\richard8.aiv">
       <Link>AIVs\EvreyImproved\richard8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\saladin1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\saladin1.aiv">
       <Link>AIVs\EvreyImproved\saladin1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\saladin2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\saladin2.aiv">
       <Link>AIVs\EvreyImproved\saladin2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\saladin3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\saladin3.aiv">
       <Link>AIVs\EvreyImproved\saladin3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\saladin4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\saladin4.aiv">
       <Link>AIVs\EvreyImproved\saladin4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\saladin5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\saladin5.aiv">
       <Link>AIVs\EvreyImproved\saladin5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\saladin6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\saladin6.aiv">
       <Link>AIVs\EvreyImproved\saladin6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\saladin7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\saladin7.aiv">
       <Link>AIVs\EvreyImproved\saladin7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\saladin8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\saladin8.aiv">
       <Link>AIVs\EvreyImproved\saladin8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\sheriff1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\sheriff1.aiv">
       <Link>AIVs\EvreyImproved\sheriff1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\sheriff2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\sheriff2.aiv">
       <Link>AIVs\EvreyImproved\sheriff2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\sheriff3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\sheriff3.aiv">
       <Link>AIVs\EvreyImproved\sheriff3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\sheriff4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\sheriff4.aiv">
       <Link>AIVs\EvreyImproved\sheriff4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\sheriff5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\sheriff5.aiv">
       <Link>AIVs\EvreyImproved\sheriff5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\sheriff6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\sheriff6.aiv">
       <Link>AIVs\EvreyImproved\sheriff6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\sheriff7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\sheriff7.aiv">
       <Link>AIVs\EvreyImproved\sheriff7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\sheriff8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\sheriff8.aiv">
       <Link>AIVs\EvreyImproved\sheriff8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\snake1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\snake1.aiv">
       <Link>AIVs\EvreyImproved\snake1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\snake2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\snake2.aiv">
       <Link>AIVs\EvreyImproved\snake2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\snake3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\snake3.aiv">
       <Link>AIVs\EvreyImproved\snake3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\snake4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\snake4.aiv">
       <Link>AIVs\EvreyImproved\snake4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\snake5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\snake5.aiv">
       <Link>AIVs\EvreyImproved\snake5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\snake6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\snake6.aiv">
       <Link>AIVs\EvreyImproved\snake6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\snake7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\snake7.aiv">
       <Link>AIVs\EvreyImproved\snake7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\snake8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\snake8.aiv">
       <Link>AIVs\EvreyImproved\snake8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Sultan1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Sultan1.aiv">
       <Link>AIVs\EvreyImproved\Sultan1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Sultan2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Sultan2.aiv">
       <Link>AIVs\EvreyImproved\Sultan2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Sultan3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Sultan3.aiv">
       <Link>AIVs\EvreyImproved\Sultan3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Sultan4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Sultan4.aiv">
       <Link>AIVs\EvreyImproved\Sultan4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Sultan5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Sultan5.aiv">
       <Link>AIVs\EvreyImproved\Sultan5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Sultan6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Sultan6.aiv">
       <Link>AIVs\EvreyImproved\Sultan6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Sultan7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Sultan7.aiv">
       <Link>AIVs\EvreyImproved\Sultan7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\Sultan8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\Sultan8.aiv">
       <Link>AIVs\EvreyImproved\Sultan8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wazir1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wazir1.aiv">
       <Link>AIVs\EvreyImproved\wazir1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wazir2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wazir2.aiv">
       <Link>AIVs\EvreyImproved\wazir2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wazir3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wazir3.aiv">
       <Link>AIVs\EvreyImproved\wazir3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wazir4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wazir4.aiv">
       <Link>AIVs\EvreyImproved\wazir4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wazir5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wazir5.aiv">
       <Link>AIVs\EvreyImproved\wazir5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wazir6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wazir6.aiv">
       <Link>AIVs\EvreyImproved\wazir6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wazir7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wazir7.aiv">
       <Link>AIVs\EvreyImproved\wazir7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wazir8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wazir8.aiv">
       <Link>AIVs\EvreyImproved\wazir8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wolf1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wolf1.aiv">
       <Link>AIVs\EvreyImproved\wolf1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wolf2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wolf2.aiv">
       <Link>AIVs\EvreyImproved\wolf2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wolf3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wolf3.aiv">
       <Link>AIVs\EvreyImproved\wolf3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wolf4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wolf4.aiv">
       <Link>AIVs\EvreyImproved\wolf4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wolf5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wolf5.aiv">
       <Link>AIVs\EvreyImproved\wolf5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wolf6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wolf6.aiv">
       <Link>AIVs\EvreyImproved\wolf6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wolf7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wolf7.aiv">
       <Link>AIVs\EvreyImproved\wolf7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\aiv\wolf8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\aiv\wolf8.aiv">
       <Link>AIVs\EvreyImproved\wolf8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Abbot1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot1.aiv">
       <Link>AIVs\EvreyFixed\Abbot1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Abbot2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot2.aiv">
       <Link>AIVs\EvreyFixed\Abbot2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Abbot3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot3.aiv">
       <Link>AIVs\EvreyFixed\Abbot3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Abbot4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot4.aiv">
       <Link>AIVs\EvreyFixed\Abbot4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Abbot5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot5.aiv">
       <Link>AIVs\EvreyFixed\Abbot5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Abbot6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot6.aiv">
       <Link>AIVs\EvreyFixed\Abbot6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Abbot7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot7.aiv">
       <Link>AIVs\EvreyFixed\Abbot7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Abbot8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot8.aiv">
       <Link>AIVs\EvreyFixed\Abbot8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\caliph1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph1.aiv">
       <Link>AIVs\EvreyFixed\caliph1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\caliph2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph2.aiv">
       <Link>AIVs\EvreyFixed\caliph2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\caliph3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph3.aiv">
       <Link>AIVs\EvreyFixed\caliph3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\caliph4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph4.aiv">
       <Link>AIVs\EvreyFixed\caliph4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\caliph5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph5.aiv">
       <Link>AIVs\EvreyFixed\caliph5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\caliph6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph6.aiv">
       <Link>AIVs\EvreyFixed\caliph6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\caliph7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph7.aiv">
       <Link>AIVs\EvreyFixed\caliph7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\caliph8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph8.aiv">
       <Link>AIVs\EvreyFixed\caliph8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Emir1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir1.aiv">
       <Link>AIVs\EvreyFixed\Emir1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Emir2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir2.aiv">
       <Link>AIVs\EvreyFixed\Emir2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Emir3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir3.aiv">
       <Link>AIVs\EvreyFixed\Emir3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Emir4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir4.aiv">
       <Link>AIVs\EvreyFixed\Emir4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Emir5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir5.aiv">
       <Link>AIVs\EvreyFixed\Emir5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Emir6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir6.aiv">
       <Link>AIVs\EvreyFixed\Emir6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Emir7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir7.aiv">
       <Link>AIVs\EvreyFixed\Emir7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Emir8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir8.aiv">
       <Link>AIVs\EvreyFixed\Emir8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\frederick1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick1.aiv">
       <Link>AIVs\EvreyFixed\frederick1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\frederick2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick2.aiv">
       <Link>AIVs\EvreyFixed\frederick2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\frederick3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick3.aiv">
       <Link>AIVs\EvreyFixed\frederick3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\frederick4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick4.aiv">
       <Link>AIVs\EvreyFixed\frederick4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\frederick5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick5.aiv">
       <Link>AIVs\EvreyFixed\frederick5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\frederick6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick6.aiv">
       <Link>AIVs\EvreyFixed\frederick6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\frederick7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick7.aiv">
       <Link>AIVs\EvreyFixed\frederick7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\frederick8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick8.aiv">
       <Link>AIVs\EvreyFixed\frederick8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\marshal1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal1.aiv">
       <Link>AIVs\EvreyFixed\marshal1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\marshal2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal2.aiv">
       <Link>AIVs\EvreyFixed\marshal2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\marshal3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal3.aiv">
       <Link>AIVs\EvreyFixed\marshal3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\marshal4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal4.aiv">
       <Link>AIVs\EvreyFixed\marshal4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\marshal5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal5.aiv">
       <Link>AIVs\EvreyFixed\marshal5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\marshal6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal6.aiv">
       <Link>AIVs\EvreyFixed\marshal6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\marshal7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal7.aiv">
       <Link>AIVs\EvreyFixed\marshal7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\marshal8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal8.aiv">
       <Link>AIVs\EvreyFixed\marshal8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Nizar1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Nizar1.aiv">
       <Link>AIVs\EvreyFixed\Nizar1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Nizar2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Nizar2.aiv">
       <Link>AIVs\EvreyFixed\Nizar2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Nizar3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Nizar3.aiv">
       <Link>AIVs\EvreyFixed\Nizar3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Nizar4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Nizar4.aiv">
       <Link>AIVs\EvreyFixed\Nizar4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Nizar5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Nizar5.aiv">
       <Link>AIVs\EvreyFixed\Nizar5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Nizar6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Nizar6.aiv">
       <Link>AIVs\EvreyFixed\Nizar6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Nizar7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Nizar7.aiv">
       <Link>AIVs\EvreyFixed\Nizar7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Nizar8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Nizar8.aiv">
       <Link>AIVs\EvreyFixed\Nizar8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\phillip1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\phillip1.aiv">
       <Link>AIVs\EvreyFixed\phillip1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\phillip2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\phillip2.aiv">
       <Link>AIVs\EvreyFixed\phillip2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\phillip3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\phillip3.aiv">
       <Link>AIVs\EvreyFixed\phillip3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\phillip4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\phillip4.aiv">
       <Link>AIVs\EvreyFixed\phillip4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\phillip5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\phillip5.aiv">
       <Link>AIVs\EvreyFixed\phillip5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\phillip6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\phillip6.aiv">
       <Link>AIVs\EvreyFixed\phillip6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\phillip7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\phillip7.aiv">
       <Link>AIVs\EvreyFixed\phillip7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\phillip8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\phillip8.aiv">
       <Link>AIVs\EvreyFixed\phillip8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\pig1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\pig1.aiv">
       <Link>AIVs\EvreyFixed\pig1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\pig2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\pig2.aiv">
       <Link>AIVs\EvreyFixed\pig2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\pig3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\pig3.aiv">
       <Link>AIVs\EvreyFixed\pig3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\pig4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\pig4.aiv">
       <Link>AIVs\EvreyFixed\pig4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\pig5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\pig5.aiv">
       <Link>AIVs\EvreyFixed\pig5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\pig6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\pig6.aiv">
       <Link>AIVs\EvreyFixed\pig6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\pig7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\pig7.aiv">
       <Link>AIVs\EvreyFixed\pig7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\pig8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\pig8.aiv">
       <Link>AIVs\EvreyFixed\pig8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\rat1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\rat1.aiv">
       <Link>AIVs\EvreyFixed\rat1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\rat2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\rat2.aiv">
       <Link>AIVs\EvreyFixed\rat2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\rat3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\rat3.aiv">
       <Link>AIVs\EvreyFixed\rat3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\rat4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\rat4.aiv">
       <Link>AIVs\EvreyFixed\rat4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\rat5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\rat5.aiv">
       <Link>AIVs\EvreyFixed\rat5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\rat6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\rat6.aiv">
       <Link>AIVs\EvreyFixed\rat6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\rat7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\rat7.aiv">
       <Link>AIVs\EvreyFixed\rat7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\rat8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\rat8.aiv">
       <Link>AIVs\EvreyFixed\rat8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\richard1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\richard1.aiv">
       <Link>AIVs\EvreyFixed\richard1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\richard2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\richard2.aiv">
       <Link>AIVs\EvreyFixed\richard2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\richard3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\richard3.aiv">
       <Link>AIVs\EvreyFixed\richard3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\richard4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\richard4.aiv">
       <Link>AIVs\EvreyFixed\richard4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\richard5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\richard5.aiv">
       <Link>AIVs\EvreyFixed\richard5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\richard6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\richard6.aiv">
       <Link>AIVs\EvreyFixed\richard6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\richard7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\richard7.aiv">
       <Link>AIVs\EvreyFixed\richard7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\richard8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\richard8.aiv">
       <Link>AIVs\EvreyFixed\richard8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\saladin1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\saladin1.aiv">
       <Link>AIVs\EvreyFixed\saladin1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\saladin2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\saladin2.aiv">
       <Link>AIVs\EvreyFixed\saladin2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\saladin3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\saladin3.aiv">
       <Link>AIVs\EvreyFixed\saladin3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\saladin4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\saladin4.aiv">
       <Link>AIVs\EvreyFixed\saladin4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\saladin5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\saladin5.aiv">
       <Link>AIVs\EvreyFixed\saladin5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\saladin6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\saladin6.aiv">
       <Link>AIVs\EvreyFixed\saladin6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\saladin7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\saladin7.aiv">
       <Link>AIVs\EvreyFixed\saladin7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\saladin8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\saladin8.aiv">
       <Link>AIVs\EvreyFixed\saladin8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\sheriff1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\sheriff1.aiv">
       <Link>AIVs\EvreyFixed\sheriff1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\sheriff2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\sheriff2.aiv">
       <Link>AIVs\EvreyFixed\sheriff2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\sheriff3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\sheriff3.aiv">
       <Link>AIVs\EvreyFixed\sheriff3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\sheriff4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\sheriff4.aiv">
       <Link>AIVs\EvreyFixed\sheriff4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\sheriff5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\sheriff5.aiv">
       <Link>AIVs\EvreyFixed\sheriff5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\sheriff6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\sheriff6.aiv">
       <Link>AIVs\EvreyFixed\sheriff6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\sheriff7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\sheriff7.aiv">
       <Link>AIVs\EvreyFixed\sheriff7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\sheriff8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\sheriff8.aiv">
       <Link>AIVs\EvreyFixed\sheriff8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\snake1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\snake1.aiv">
       <Link>AIVs\EvreyFixed\snake1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\snake2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\snake2.aiv">
       <Link>AIVs\EvreyFixed\snake2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\snake3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\snake3.aiv">
       <Link>AIVs\EvreyFixed\snake3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\snake4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\snake4.aiv">
       <Link>AIVs\EvreyFixed\snake4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\snake5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\snake5.aiv">
       <Link>AIVs\EvreyFixed\snake5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\snake6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\snake6.aiv">
       <Link>AIVs\EvreyFixed\snake6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\snake7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\snake7.aiv">
       <Link>AIVs\EvreyFixed\snake7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\snake8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\snake8.aiv">
       <Link>AIVs\EvreyFixed\snake8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Sultan1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Sultan1.aiv">
       <Link>AIVs\EvreyFixed\Sultan1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Sultan2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Sultan2.aiv">
       <Link>AIVs\EvreyFixed\Sultan2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Sultan3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Sultan3.aiv">
       <Link>AIVs\EvreyFixed\Sultan3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Sultan4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Sultan4.aiv">
       <Link>AIVs\EvreyFixed\Sultan4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Sultan5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Sultan5.aiv">
       <Link>AIVs\EvreyFixed\Sultan5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Sultan6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Sultan6.aiv">
       <Link>AIVs\EvreyFixed\Sultan6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Sultan7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Sultan7.aiv">
       <Link>AIVs\EvreyFixed\Sultan7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\Sultan8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Sultan8.aiv">
       <Link>AIVs\EvreyFixed\Sultan8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wazir1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wazir1.aiv">
       <Link>AIVs\EvreyFixed\wazir1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wazir2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wazir2.aiv">
       <Link>AIVs\EvreyFixed\wazir2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wazir3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wazir3.aiv">
       <Link>AIVs\EvreyFixed\wazir3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wazir4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wazir4.aiv">
       <Link>AIVs\EvreyFixed\wazir4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wazir5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wazir5.aiv">
       <Link>AIVs\EvreyFixed\wazir5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wazir6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wazir6.aiv">
       <Link>AIVs\EvreyFixed\wazir6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wazir7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wazir7.aiv">
       <Link>AIVs\EvreyFixed\wazir7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wazir8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wazir8.aiv">
       <Link>AIVs\EvreyFixed\wazir8.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wolf1.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wolf1.aiv">
       <Link>AIVs\EvreyFixed\wolf1.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wolf2.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wolf2.aiv">
       <Link>AIVs\EvreyFixed\wolf2.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wolf3.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wolf3.aiv">
       <Link>AIVs\EvreyFixed\wolf3.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wolf4.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wolf4.aiv">
       <Link>AIVs\EvreyFixed\wolf4.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wolf5.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wolf5.aiv">
       <Link>AIVs\EvreyFixed\wolf5.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wolf6.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wolf6.aiv">
       <Link>AIVs\EvreyFixed\wolf6.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wolf7.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wolf7.aiv">
       <Link>AIVs\EvreyFixed\wolf7.aiv</Link>
-    </None>
-    <None Include="..\SHC_AIV\firefly_fixed\wolf8.aiv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\wolf8.aiv">
       <Link>AIVs\EvreyFixed\wolf8.aiv</Link>
-    </None>
+    </EmbeddedResource>
     <EmbeddedResource Include="AIVs\PitchSiege\Abbot1.aiv" />
     <EmbeddedResource Include="AIVs\PitchSiege\Abbot2.aiv" />
     <EmbeddedResource Include="AIVs\PitchSiege\Abbot3.aiv" />
