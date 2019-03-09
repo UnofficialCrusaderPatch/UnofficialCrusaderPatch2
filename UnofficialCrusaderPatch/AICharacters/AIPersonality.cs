@@ -453,35 +453,35 @@ namespace UCP.AICharacters
 
         // Index: 107 Hex: 0x1AC
         [RWNames("Unknown107")]
-        public UnitType AttUnit1;
+        public UnitType RaidUnit1;
 
         // Index: 108 Hex: 0x1B0
         [RWNames("Unknown108")]
-        public UnitType AttUnit2;
+        public UnitType RaidUnit2;
 
         // Index: 109 Hex: 0x1B4
         [RWNames("Unknown109")]
-        public UnitType AttUnit3;
+        public UnitType RaidUnit3;
 
         // Index: 110 Hex: 0x1B8
         [RWNames("Unknown110")]
-        public UnitType AttUnit4;
+        public UnitType RaidUnit4;
 
         // Index: 111 Hex: 0x1BC
         [RWNames("Unknown111")]
-        public UnitType AttUnit5;
+        public UnitType RaidUnit5;
 
         // Index: 112 Hex: 0x1C0
         [RWNames("Unknown112")]
-        public UnitType AttUnit6;
+        public UnitType RaidUnit6;
 
         // Index: 113 Hex: 0x1C4
         [RWNames("Unknown113")]
-        public UnitType AttUnit7;
+        public UnitType RaidUnit7;
 
         // Index: 114 Hex: 0x1C8
         [RWNames("Unknown114")]
-        public UnitType AttUnit8;
+        public UnitType RaidUnit8;
 
         // Index: 115 Hex: 0x1CC
         [RWNames("Unknown115")]
