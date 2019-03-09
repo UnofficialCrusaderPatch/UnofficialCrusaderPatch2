@@ -62,8 +62,12 @@ namespace UCP.AICharacters
                 foreach(FieldInfo fi in type.GetFields(Flags))
                 {
                     object value = fi.GetValue(o);
-                    RWComment cmt = fi.GetCustomAttribute<RWComment>(); // get comment from attribute
-                    this.Write(value, fi.Name, cmt?.Comment);
+
+                    // get comment from attribute
+                    object[] attributes = fi.GetCustomAttributes(typeof(RWComment), false);
+                    string cmt = attributes.Length > 0 ? ((RWComment)attributes[0]).Comment : null;
+                    
+                    this.Write(value, fi.Name, cmt);
                 }
 
                 sections--;
