@@ -6,7 +6,7 @@ using System.Text;
 using System.Reflection;
 using System.IO;
 
-namespace UnofficialCrusaderPatch
+namespace UCP
 {
     static class Localization
     {

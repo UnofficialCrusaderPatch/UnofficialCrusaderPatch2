@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace UnofficialCrusaderPatch
+namespace UCP.Patching
 {
     public struct ChangeArgs
     {

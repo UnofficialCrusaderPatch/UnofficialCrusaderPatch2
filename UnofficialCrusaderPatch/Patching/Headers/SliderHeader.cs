@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace UnofficialCrusaderPatch
+namespace UCP.Patching
 {
     public class SliderHeader : ValueHeader
     {

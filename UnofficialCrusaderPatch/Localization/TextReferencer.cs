@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Diagnostics;
 
-namespace UnofficialCrusaderPatch
+namespace UCP
 {
     static class TextReferencer
     {

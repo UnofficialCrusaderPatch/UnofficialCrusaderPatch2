@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 
-namespace UnofficialCrusaderPatch
+namespace UCP.Patching
 {
     enum AIIndex
     {

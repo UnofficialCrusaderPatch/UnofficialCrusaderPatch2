@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UnofficialCrusaderPatch
+namespace UCP.Patching
 {
     public class BinRefTo : BinElement
     {

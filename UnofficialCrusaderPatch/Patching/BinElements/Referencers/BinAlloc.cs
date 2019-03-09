@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UnofficialCrusaderPatch
+namespace UCP.Patching
 {
     public class BinAlloc : BinElement, IEnumerable<BinElement>
     {

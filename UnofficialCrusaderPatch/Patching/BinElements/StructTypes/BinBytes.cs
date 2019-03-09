@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace UnofficialCrusaderPatch
+namespace UCP.Patching
 {
     public class BinBytes : BinElement
     {

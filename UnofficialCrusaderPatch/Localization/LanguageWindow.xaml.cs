@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Globalization;
 
-namespace UnofficialCrusaderPatch
+namespace UCP
 {
     /// <summary>
     /// Interaktionslogik für LanguageWindow.xaml

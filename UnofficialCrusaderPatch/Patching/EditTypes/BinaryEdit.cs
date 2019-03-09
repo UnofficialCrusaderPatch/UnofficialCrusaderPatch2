@@ -5,7 +5,7 @@ using System.Reflection;
 using System.IO;
 using CodeBlox;
 
-namespace UnofficialCrusaderPatch
+namespace UCP.Patching
 {
     public class BinaryEdit : BinaryEditBase
     {

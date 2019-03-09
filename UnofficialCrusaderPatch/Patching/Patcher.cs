@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace UnofficialCrusaderPatch
+namespace UCP.Patching
 {
     static class Patcher
     {

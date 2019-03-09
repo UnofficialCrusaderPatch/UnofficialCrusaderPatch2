@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace UnofficialCrusaderPatch
+namespace UCP.Patching
 {
 
     public static partial class SectionEditor

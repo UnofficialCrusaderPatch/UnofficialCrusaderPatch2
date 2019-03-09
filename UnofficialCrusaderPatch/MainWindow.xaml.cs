@@ -9,8 +9,9 @@ using Microsoft.Win32;
 using System.Windows.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using UCP.Patching;
 
-namespace UnofficialCrusaderPatch
+namespace UCP
 {
     public partial class MainWindow : Window
     {

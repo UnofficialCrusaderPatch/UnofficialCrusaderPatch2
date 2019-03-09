@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UCP.Patching;
 
-namespace UnofficialCrusaderPatch
+namespace UCP
 {
     // friedenszeit etc
 
@@ -32,7 +33,7 @@ namespace UnofficialCrusaderPatch
 
     class Version
     {
-        public static string PatcherVersion = "2.11a";
+        public static string PatcherVersion = "2.12";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()

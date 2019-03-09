@@ -1,4 +1,4 @@
-﻿namespace UnofficialCrusaderPatch
+﻿namespace UCP.Patching
 {
     public class BinArgs
     {

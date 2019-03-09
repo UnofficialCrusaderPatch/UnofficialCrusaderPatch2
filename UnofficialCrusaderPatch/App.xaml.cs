@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace UnofficialCrusaderPatch
+namespace UCP
 {
     /// <summary>
     /// Interaktionslogik für "App.xaml"

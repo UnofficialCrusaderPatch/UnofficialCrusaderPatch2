@@ -6,7 +6,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows;
 
-namespace UnofficialCrusaderPatch
+namespace UCP.Patching
 {
     class AIVChange : Change
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.Windows;
 
-namespace UnofficialCrusaderPatch
+namespace UCP
 {
     static class Debug
     {

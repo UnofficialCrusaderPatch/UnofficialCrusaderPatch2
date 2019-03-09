@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UnofficialCrusaderPatch.Properties {
+namespace UCP.Properties {
     using System;
     
     

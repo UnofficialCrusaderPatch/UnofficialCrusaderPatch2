@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UnofficialCrusaderPatch
+namespace UCP.Patching
 {
     /// <summary>
     /// Percentage handler which can be given limits for subdividing
