@@ -90,7 +90,7 @@ namespace UCP.AICharacters
                 
                 FieldInfo fi = type.GetField(fieldName, BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.Public);
                 if (fi == null)
-                    throw new FormatException("Field");
+                    throw new FormatException("Field " + fieldName);
 
                 object value;
                 Type fieldType = fi.FieldType;

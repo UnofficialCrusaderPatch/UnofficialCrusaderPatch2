@@ -21,7 +21,7 @@ namespace UCP.Patching
             if (buffer.Length < rawSize)
             {
                 byte[] newBuffer = new byte[rawSize];
-                buffer.CopyTo(newBuffer, currentLen);
+                buffer.CopyTo(newBuffer, 0);
                 buffer = newBuffer;
             }
 

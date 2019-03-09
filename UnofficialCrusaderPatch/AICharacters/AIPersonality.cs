@@ -8,11 +8,19 @@ namespace UCP.AICharacters
 {
     public class AIPersonality
     {
+        public const int TotalFields = 169;
+
         static readonly FieldInfo[] fieldInfos = typeof(AIPersonality).GetFields();
         public void SetByIndex(int index, int value)
         {
             FieldInfo fi = fieldInfos[index];
             fi.SetValue(this, value);
+        }
+
+        public int GetByIndex(int index)
+        {
+            FieldInfo fi = fieldInfos[index];
+            return (int)fi.GetValue(this);
         }
 
         // Index: 0 Hex: 0x00
@@ -149,7 +157,7 @@ namespace UCP.AICharacters
 
         // Index: 33 Hex: 0x84
         [RWNames("Unknown033")]
-        public int Unknown033;
+        public int TradeApples;
 
         // Index: 34 Hex: 0x88
         [RWNames("Unknown034")]
@@ -173,7 +181,7 @@ namespace UCP.AICharacters
 
         // Index: 39 Hex: 0x9C
         [RWNames("Unknown039")]
-        public int Unknown039;
+        public int TradeWeps;
 
         // Index: 40 Hex: 0xA0
         [RWNames("Unknown040")]
@@ -313,7 +321,7 @@ namespace UCP.AICharacters
 
         // Index: 74 Hex: 0x128
         [RWNames("Unknown074")]
-        public int DefRecruitAffinity;
+        public int Unknown074;
 
         // Index: 75 Hex: 0x12C
         [RWNames("Unknown075")]
@@ -321,7 +329,7 @@ namespace UCP.AICharacters
 
         // Index: 76 Hex: 0x130
         [RWNames("Unknown076")]
-        public int Unknown076;
+        public int DefRecruitAffinity;
 
         // Index: 77 Hex: 0x134
         [RWNames("Unknown077")]
@@ -445,35 +453,35 @@ namespace UCP.AICharacters
 
         // Index: 107 Hex: 0x1AC
         [RWNames("Unknown107")]
-        public int Unknown107;
+        public UnitType AttUnit1;
 
         // Index: 108 Hex: 0x1B0
         [RWNames("Unknown108")]
-        public int Unknown108;
+        public UnitType AttUnit2;
 
         // Index: 109 Hex: 0x1B4
         [RWNames("Unknown109")]
-        public int Unknown109;
+        public UnitType AttUnit3;
 
         // Index: 110 Hex: 0x1B8
         [RWNames("Unknown110")]
-        public int Unknown110;
+        public UnitType AttUnit4;
 
         // Index: 111 Hex: 0x1BC
         [RWNames("Unknown111")]
-        public int Unknown111;
+        public UnitType AttUnit5;
 
         // Index: 112 Hex: 0x1C0
         [RWNames("Unknown112")]
-        public int Unknown112;
+        public UnitType AttUnit6;
 
         // Index: 113 Hex: 0x1C4
         [RWNames("Unknown113")]
-        public int Unknown113;
+        public UnitType AttUnit7;
 
         // Index: 114 Hex: 0x1C8
         [RWNames("Unknown114")]
-        public int Unknown114;
+        public UnitType AttUnit8;
 
         // Index: 115 Hex: 0x1CC
         [RWNames("Unknown115")]

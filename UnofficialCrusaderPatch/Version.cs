@@ -301,46 +301,6 @@ namespace UCP
             #endregion
 
             #region AI LORDS
-                
-            new Change("ai_moredef", ChangeType.AILords)
-            {
-                new DefaultHeader("ai_moredef")
-                {
-                    new AIEdit(AIIndex.Rat)
-                    {
-                        { AIProp.TotalDef, 50 }, // was 30
-                        { AIProp.WallDef, 40 }, // was 20
-                        { AIProp.DefUnit1, 0x18 }, // spearmen
-                        { AIProp.DefUnit2, 0x16 }, // archers
-
-                        { AIProp.DefUnit3, 0x16 },
-                        { AIProp.DefUnit4, 0x0 },
-                    },
-                    new AIEdit(AIIndex.Richard)
-                    {
-                        { AIProp.TotalDef, 60 }, // was 40
-                        { AIProp.WallDef, 40 }, // was 20
-                        { AIProp.DefUnit1, 0x19 }, // pikemen
-                        { AIProp.DefUnit2, 0x16 }, // archers
-                        { AIProp.DefUnit3, 0x16 },
-
-                        { AIProp.DefUnit4, 0x16 },
-                        { AIProp.DefUnit5, 0x16 },
-                    },
-                    new AIEdit(AIIndex.Philipp)
-                    {
-                        // philipp had 1 knight every 5 archers
-                        // increased to 1 knight every 7 archers
-
-                        { AIProp.TotalDef, 64 }, // was 20
-                        { AIProp.WallDef, 32 }, // was 4
-
-                        { AIProp.DefUnit7, 0x16 },
-                        { AIProp.DefUnit8, 0x16 },
-                    },
-
-                }
-            },
 
             /*
              *  AI RECRUIT ADDITIONAL ATTACK TROOPS 

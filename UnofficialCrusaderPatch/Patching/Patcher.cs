@@ -112,7 +112,11 @@ namespace UCP.Patching
 
 
             // change AI properties
-            AIEdit.Write(args);
+            var coll = new AICharacters.AICCollection();
+            using (FileStream fs = new FileStream("vanilla.aic", FileMode.Open))
+                coll.Read(fs);
+
+            AICChange.Write(coll, args);
             todoIndex += 2;
             perc.Set(todoIndex / todoCount);
 

@@ -84,7 +84,7 @@
     <Compile Include="Patching\BinElements\Referencers\BinAddress.cs" />
     <Compile Include="Patching\BinElements\Referencers\BinAlloc.cs" />
     <Compile Include="Patching\Changes\AIVChange.cs" />
-    <Compile Include="Patching\EditTypes\AIEdit.cs" />
+    <Compile Include="Patching\Changes\AICChange.cs" />
     <Compile Include="Patching\EditTypes\BinArgs.cs" />
     <Compile Include="Patching\BinElements\StructTypes\BinBytes.cs" />
     <Compile Include="Patching\BinElements\BinElement.cs" />
