@@ -13,23 +13,24 @@ namespace UCP.AICharacters
     {
         public void Write(Stream stream)
         {
-            using (LineWriter lw = new LineWriter(stream))
+            using (AIWriter aiw = new AIWriter(stream))
             {
-                foreach (AICharacter aic in this.Values)
+                foreach(AICharacter c in this.Values)
                 {
-                    aic.Write(lw);
+                    aiw.Write(c);
+                    aiw.WriteLine();
                 }
             }
         }
 
         public void Read(Stream stream)
         {
-            using (LineReader lr = new LineReader(stream))
+            using (AIReader air = new AIReader(stream))
             {
-                AICharacter c;
-                while ((c = AICharacter.Read(lr)) != null)
+                AICharacter aic;
+                while ((aic = air.Read<AICharacter>()) != null)
                 {
-                    this.Add(c.Index, c);
+                    this.Add(aic.Index, aic);
                 }
             }
         }

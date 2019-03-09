@@ -68,10 +68,8 @@
     <Compile Include="AICharacters\AICharacter.cs" />
     <Compile Include="AICharacters\AICIndex.cs" />
     <Compile Include="AICharacters\AIPersonality.cs" />
-    <Compile Include="AICharacters\AIPField.cs" />
-    <Compile Include="AICharacters\AIPFieldType.cs" />
-    <Compile Include="AICharacters\LineReader.cs" />
-    <Compile Include="AICharacters\LineWriter.cs" />
+    <Compile Include="AICharacters\AIReader.cs" />
+    <Compile Include="AICharacters\AIWriter.cs" />
     <Compile Include="AICharacters\UnitType.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Extensions.cs" />
