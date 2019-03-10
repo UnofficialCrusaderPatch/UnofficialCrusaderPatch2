@@ -378,11 +378,11 @@ namespace UCP.AICharacters
 
         // Index: 88 Hex: 0x160
         [RWNames("Unknown088")]
-        public int Unknown088;
+        public UnitType UnknownUnit088;
 
         // Index: 89 Hex: 0x164
         [RWNames("Unknown089")]
-        public int Unknown089;
+        public int RecruitInterval;
 
         // Index: 90 Hex: 0x168
         [RWNames("Unknown090")]
@@ -446,7 +446,7 @@ namespace UCP.AICharacters
 
         // Index: 105 Hex: 0x1A4
         [RWNames("Unknown105")]
-        public int Unknown105;
+        public int RaidMaxUnits;
 
         // Index: 106 Hex: 0x1A8
         [RWNames("Unknown106")]
