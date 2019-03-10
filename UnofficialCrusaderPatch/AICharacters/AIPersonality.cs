@@ -157,31 +157,31 @@ namespace UCP.AICharacters
 
         // Index: 33 Hex: 0x84
         [RWNames("Unknown033")]
-        public int TradeApples;
+        public int MinimumApples;
 
         // Index: 34 Hex: 0x88
         [RWNames("Unknown034")]
-        public int Unknown034;
+        public int MinimumCheese;
 
         // Index: 35 Hex: 0x8C
         [RWNames("Unknown035")]
-        public int Unknown035;
+        public int MinimumBread;
 
         // Index: 36 Hex: 0x90
         [RWNames("Unknown036")]
-        public int Unknown036;
+        public int MinimumWheat;
 
         // Index: 37 Hex: 0x94
         [RWNames("Unknown037")]
-        public int Unknown037;
+        public int MinimumHop;
 
         // Index: 38 Hex: 0x98
         [RWNames("Unknown038")]
-        public int Unknown038;
+        public int TradeAmountFood;
 
         // Index: 39 Hex: 0x9C
         [RWNames("Unknown039")]
-        public int TradeWeps;
+        public int TradeAmountEquipment;
 
         // Index: 40 Hex: 0xA0
         [RWNames("Unknown040")]
@@ -328,6 +328,7 @@ namespace UCP.AICharacters
         public int Unknown075;
 
         // Index: 76 Hex: 0x130
+        [RWComment("The probability with which this AI reinforces missing defense troops.")]
         [RWNames("Unknown076")]
         public int DefRecruitAffinity;
 
@@ -524,12 +525,14 @@ namespace UCP.AICharacters
         public int Unknown124;
 
         // Index: 125 Hex: 0x1F4
+        [RWComment("The base amount of troops with which this AI attacks")]
         [RWNames("Unknown125")]
-        public int Unknown125;
+        public int AttForceBase;
 
         // Index: 126 Hex: 0x1F8
+        [RWComment("The maximum random amount of additional troops in an attack")]
         [RWNames("Unknown126")]
-        public int Unknown126;
+        public int AttForceRandom;
 
         // Index: 127 Hex: 0x1FC
         [RWNames("Unknown127")]
@@ -597,43 +600,43 @@ namespace UCP.AICharacters
 
         // Index: 143 Hex: 0x23C
         [RWNames("Unknown143")]
-        public int Unknown143;
+        public int AttMaxEngineers;
 
         // Index: 144 Hex: 0x240
         [RWNames("Unknown144")]
-        public int Unknown144;
+        public UnitType AttUnit1;
 
         // Index: 145 Hex: 0x244
         [RWNames("Unknown145")]
-        public int Unknown145;
+        public int AttMaxUnit1;
 
         // Index: 146 Hex: 0x248
         [RWNames("Unknown146")]
-        public int Unknown146;
+        public UnitType AttUnit2;
 
         // Index: 147 Hex: 0x24C
         [RWNames("Unknown147")]
-        public int Unknown147;
+        public int AttMaxUnit2;
 
         // Index: 148 Hex: 0x250
         [RWNames("Unknown148")]
-        public int Unknown148;
+        public int AttMaxAssassins;
 
         // Index: 149 Hex: 0x254
         [RWNames("Unknown149")]
-        public int Unknown149;
+        public int AttMaxLaddermen;
 
         // Index: 150 Hex: 0x258
         [RWNames("Unknown150")]
-        public int Unknown150;
+        public int AttMaxTunnelers;
 
         // Index: 151 Hex: 0x25C
         [RWNames("Unknown151")]
-        public int Unknown151;
+        public UnitType AttUnit3;
 
         // Index: 152 Hex: 0x260
         [RWNames("Unknown152")]
-        public int Unknown152;
+        public int AttMaxUnit3;
 
         // Index: 153 Hex: 0x264
         [RWNames("Unknown153")]
@@ -641,11 +644,11 @@ namespace UCP.AICharacters
 
         // Index: 154 Hex: 0x268
         [RWNames("Unknown154")]
-        public int Unknown154;
+        public UnitType AttUnit4; // ranged?
 
         // Index: 155 Hex: 0x26C
         [RWNames("Unknown155")]
-        public int Unknown155;
+        public int AttMaxUnit4;
 
         // Index: 156 Hex: 0x270
         [RWNames("Unknown156")]
@@ -653,19 +656,19 @@ namespace UCP.AICharacters
 
         // Index: 157 Hex: 0x274
         [RWNames("Unknown157")]
-        public int Unknown157;
+        public UnitType AttUnit5;
 
         // Index: 158 Hex: 0x278
         [RWNames("Unknown158")]
-        public int Unknown158;
+        public int AttMaxUnit5;
 
         // Index: 159 Hex: 0x27C
         [RWNames("Unknown159")]
-        public int Unknown159;
+        public UnitType AttUnit6;
 
         // Index: 160 Hex: 0x280
         [RWNames("Unknown160")]
-        public int Unknown160;
+        public int AttMaxUnit6;
 
         // Index: 161 Hex: 0x284
         [RWNames("Unknown161")]
@@ -673,7 +676,7 @@ namespace UCP.AICharacters
 
         // Index: 162 Hex: 0x288
         [RWNames("Unknown162")]
-        public int Unknown162;
+        public UnitType AttUnitDefault;
 
         // Index: 163 Hex: 0x28C
         [RWNames("Unknown163")]
@@ -688,8 +691,9 @@ namespace UCP.AICharacters
         public int Unknown165;
 
         // Index: 166 Hex: 0x298
+        [RWComment("This does nothing")]
         [RWNames("Unknown166")]
-        public int Unknown166;
+        public int AttMaxDefault;
 
         // Index: 167 Hex: 0x29C
         [RWNames("Unknown167")]
@@ -697,8 +701,6 @@ namespace UCP.AICharacters
 
         // Index: 168 Hex: 0x2A0
         [RWNames("Unknown168")]
-        public int Unknown168;
-
-
+        public TargetingType TargetChoice;
     }
 }

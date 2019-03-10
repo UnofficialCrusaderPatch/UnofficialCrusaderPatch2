@@ -9,8 +9,12 @@ namespace UCP.Patching
 {
     static class AICChange
     {
-        public static void Write(AICCollection coll, ChangeArgs args)
+        public static void Activate(ChangeArgs args)
         {
+            AICCollection coll;
+            using (FileStream fs = new FileStream("vanilla.aic", FileMode.Open))
+                coll = new AICCollection(fs);
+
             CreateEdit(coll).Activate(args);
         }
 

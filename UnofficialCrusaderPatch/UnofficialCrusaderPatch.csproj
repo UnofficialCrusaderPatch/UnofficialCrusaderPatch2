@@ -70,8 +70,9 @@
     <Compile Include="AICharacters\AIPersonality.cs" />
     <Compile Include="AICharacters\AIReader.cs" />
     <Compile Include="AICharacters\AIWriter.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\TargetingType.cs" />
     <Compile Include="AICharacters\RWAttributes.cs" />
-    <Compile Include="AICharacters\UnitType.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\UnitType.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Localization\LanguageWindow.xaml.cs">

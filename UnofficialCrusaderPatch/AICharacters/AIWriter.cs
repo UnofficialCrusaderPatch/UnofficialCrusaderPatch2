@@ -18,7 +18,7 @@ namespace UCP.AICharacters
 
         public AIWriter(Stream stream)
         {
-            sw = new StreamWriter(stream, Encoding.UTF8);
+            sw = new StreamWriter(stream, Encoding.ASCII);
         }
 
         public void Dispose()

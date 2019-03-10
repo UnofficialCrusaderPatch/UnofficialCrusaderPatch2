@@ -13,10 +13,12 @@ namespace UCP.AICharacters
     public class AIReader : IDisposable
     {
         StreamReader sr;
+        int lineNum = 0;
+        public int LineNumber => lineNum;
 
         public AIReader(Stream stream)
         {
-            sr = new StreamReader(stream, Encoding.UTF8, true);
+            sr = new StreamReader(stream, Encoding.ASCII, true);
         }
 
         public void Dispose()
@@ -30,6 +32,7 @@ namespace UCP.AICharacters
             // read until EOS
             while ((line = sr.ReadLine()) != null)
             {
+                lineNum++;
                 // remove comments
                 int commentIndex = line.IndexOf("//");
                 if (commentIndex >= 0)
@@ -69,7 +72,7 @@ namespace UCP.AICharacters
             if (line != "{")
                 throw new FormatException("{");
 
-            Type type = o.GetType();
+            Dictionary<string, FieldInfo> fieldNames = GetFieldNames(o.GetType());
             while ((line = this.ReadLine()) != null)
             {
                 if (line == "}")
@@ -88,10 +91,9 @@ namespace UCP.AICharacters
                 }
                 fieldName = fieldName.Trim();
                 
-                FieldInfo fi = type.GetField(fieldName, BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.Public);
-                if (fi == null)
-                    throw new FormatException("Field " + fieldName);
-
+                if (!fieldNames.TryGetValue(fieldName, out FieldInfo fi))
+                    throw new FormatException(fieldName + " in line " + lineNum);
+                
                 object value;
                 Type fieldType = fi.FieldType;
                 if (readFuncs.TryGetValue(fieldType, out ReadFunc func)
@@ -118,5 +120,39 @@ namespace UCP.AICharacters
             { typeof(string), (v, vt) => v },
             { typeof(Enum), (v, vt) => Enum.Parse(vt, v, true) },
         };
+
+        Dictionary<string, FieldInfo> GetFieldNames(Type type)
+        {
+            // get all fields from this type
+            FieldInfo[] fields = type.GetFields(BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.Public);
+
+            // create dictionary
+            var result = new Dictionary<string, FieldInfo>(fields.Length, StringComparer.OrdinalIgnoreCase);
+
+            foreach (FieldInfo fi in fields)
+            {
+                result.Add(fi.Name, fi);
+
+                // check for alternative / older names
+                object[] attributes = fi.GetCustomAttributes(typeof(RWNames), false);
+                if (attributes.Length > 0)
+                {
+                    foreach (string altName in ((RWNames)attributes[0]).Names)
+                    {
+                        if (result.TryGetValue(altName, out FieldInfo other))
+                        {
+                            if (other != fi)
+                                throw new Exception(altName + " duplicate FieldName");
+                        }
+                        else
+                        {
+                            result.Add(altName, fi);
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
     }
 }
