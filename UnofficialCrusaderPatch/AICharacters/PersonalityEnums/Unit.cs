@@ -6,9 +6,9 @@ using System.Text;
 namespace UCP.AICharacters
 {
     /// <summary>
-    /// Crusader-intern military unit types
+    /// Crusader-intern military unit IDs
     /// </summary>
-    public enum UnitType
+    public enum Unit
     {
         None = 0x00,
         Tunneler = 0x05,

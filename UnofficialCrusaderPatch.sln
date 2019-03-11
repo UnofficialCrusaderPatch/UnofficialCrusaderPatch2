@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnofficialCrusaderPatch", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeBlox", "CodeBlox\CodeBlox.csproj", "{7DEF41CF-C827-4E8F-8243-E600AF1651C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDAParser", "IDAParser\IDAParser.csproj", "{0A526306-B374-43C4-BC10-102CD6A242E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7DEF41CF-C827-4E8F-8243-E600AF1651C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DEF41CF-C827-4E8F-8243-E600AF1651C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DEF41CF-C827-4E8F-8243-E600AF1651C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A526306-B374-43C4-BC10-102CD6A242E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A526306-B374-43C4-BC10-102CD6A242E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A526306-B374-43C4-BC10-102CD6A242E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A526306-B374-43C4-BC10-102CD6A242E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

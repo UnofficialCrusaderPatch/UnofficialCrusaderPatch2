@@ -49,7 +49,8 @@ namespace UCP.AICharacters
 
         // Index: 6 Hex: 0x18
         [RWNames("Unknown006")]
-        public int Unknown006;
+        [RWComment("0 - 10000")]
+        public int CriticalPopularity;
 
         // Index: 7 Hex: 0x1C
         [RWNames("Unknown007")]
@@ -153,7 +154,8 @@ namespace UCP.AICharacters
 
         // Index: 32 Hex: 0x80
         [RWNames("Unknown032")]
-        public int Unknown032;
+        [RWComment("includes flour?")]
+        public int MaxFood;
 
         // Index: 33 Hex: 0x84
         [RWNames("Unknown033")]
@@ -197,27 +199,28 @@ namespace UCP.AICharacters
 
         // Index: 43 Hex: 0xAC
         [RWNames("Unknown043")]
-        public int Unknown043;
+        public int MaxWood;
 
         // Index: 44 Hex: 0xB0
         [RWNames("Unknown044")]
-        public int Unknown044;
+        public int MaxStone;
 
         // Index: 45 Hex: 0xB4
         [RWNames("Unknown045")]
-        public int Unknown045;
+        public int MaxResourceOther;
 
         // Index: 46 Hex: 0xB8
         [RWNames("Unknown046")]
-        public int Unknown046;
+        public int MaxEquipment;
 
         // Index: 47 Hex: 0xBC
         [RWNames("Unknown047")]
-        public int Unknown047;
+        public int MaxBeer;
 
         // Index: 48 Hex: 0xC0
         [RWNames("Unknown048")]
-        public int Unknown048;
+        [RWComment("added to all max resource values?")]
+        public int MaxResourceVariance;
 
         // Index: 49 Hex: 0xC4
         [RWNames("Unknown049")]
@@ -237,63 +240,63 @@ namespace UCP.AICharacters
 
         // Index: 53 Hex: 0xD4
         [RWNames("Unknown053")]
-        public int Unknown053;
+        public Resource SellResource01;
 
         // Index: 54 Hex: 0xD8
         [RWNames("Unknown054")]
-        public int Unknown054;
+        public Resource SellResource02;
 
         // Index: 55 Hex: 0xDC
         [RWNames("Unknown055")]
-        public int Unknown055;
+        public Resource SellResource03;
 
         // Index: 56 Hex: 0xE0
         [RWNames("Unknown056")]
-        public int Unknown056;
+        public Resource SellResource04;
 
         // Index: 57 Hex: 0xE4
         [RWNames("Unknown057")]
-        public int Unknown057;
+        public Resource SellResource05;
 
         // Index: 58 Hex: 0xE8
         [RWNames("Unknown058")]
-        public int Unknown058;
+        public Resource SellResource06;
 
         // Index: 59 Hex: 0xEC
         [RWNames("Unknown059")]
-        public int Unknown059;
+        public Resource SellResource07;
 
         // Index: 60 Hex: 0xF0
         [RWNames("Unknown060")]
-        public int Unknown060;
+        public Resource SellResource08;
 
         // Index: 61 Hex: 0xF4
         [RWNames("Unknown061")]
-        public int Unknown061;
+        public Resource SellResource09;
 
         // Index: 62 Hex: 0xF8
         [RWNames("Unknown062")]
-        public int Unknown062;
+        public Resource SellResource10;
 
         // Index: 63 Hex: 0xFC
         [RWNames("Unknown063")]
-        public int Unknown063;
+        public Resource SellResource11;
 
         // Index: 64 Hex: 0x100
         [RWNames("Unknown064")]
-        public int Unknown064;
+        public Resource SellResource12;
 
         // Index: 65 Hex: 0x104
         [RWNames("Unknown065")]
-        public int Unknown065;
+        public Resource SellResource13;
 
         // Index: 66 Hex: 0x108
         [RWNames("Unknown066")]
-        public int Unknown066;
+        public Resource SellResource14;
 
         // Index: 67 Hex: 0x10C
         [RWNames("Unknown067")]
-        public int Unknown067;
+        public Resource SellResource15;
 
         // Index: 68 Hex: 0x110
         [RWNames("Unknown068")]
@@ -378,7 +381,7 @@ namespace UCP.AICharacters
 
         // Index: 88 Hex: 0x160
         [RWNames("Unknown088")]
-        public UnitType UnknownUnit088;
+        public Unit UnknownUnit088;
 
         // Index: 89 Hex: 0x164
         [RWNames("Unknown089")]
@@ -414,35 +417,35 @@ namespace UCP.AICharacters
 
         // Index: 97 Hex: 0x184
         [RWNames("Unknown097")]
-        public UnitType DefUnit1;
+        public Unit DefUnit1;
 
         // Index: 98 Hex: 0x188
         [RWNames("Unknown098")]
-        public UnitType DefUnit2;
+        public Unit DefUnit2;
 
         // Index: 99 Hex: 0x18C
         [RWNames("Unknown099")]
-        public UnitType DefUnit3;
+        public Unit DefUnit3;
 
         // Index: 100 Hex: 0x190
         [RWNames("Unknown100")]
-        public UnitType DefUnit4;
+        public Unit DefUnit4;
 
         // Index: 101 Hex: 0x194
         [RWNames("Unknown101")]
-        public UnitType DefUnit5;
+        public Unit DefUnit5;
 
         // Index: 102 Hex: 0x198
         [RWNames("Unknown102")]
-        public UnitType DefUnit6;
+        public Unit DefUnit6;
 
         // Index: 103 Hex: 0x19C
         [RWNames("Unknown103")]
-        public UnitType DefUnit7;
+        public Unit DefUnit7;
 
         // Index: 104 Hex: 0x1A0
         [RWNames("Unknown104")]
-        public UnitType DefUnit8;
+        public Unit DefUnit8;
 
         // Index: 105 Hex: 0x1A4
         [RWNames("Unknown105")]
@@ -454,35 +457,35 @@ namespace UCP.AICharacters
 
         // Index: 107 Hex: 0x1AC
         [RWNames("Unknown107")]
-        public UnitType RaidUnit1;
+        public Unit RaidUnit1;
 
         // Index: 108 Hex: 0x1B0
         [RWNames("Unknown108")]
-        public UnitType RaidUnit2;
+        public Unit RaidUnit2;
 
         // Index: 109 Hex: 0x1B4
         [RWNames("Unknown109")]
-        public UnitType RaidUnit3;
+        public Unit RaidUnit3;
 
         // Index: 110 Hex: 0x1B8
         [RWNames("Unknown110")]
-        public UnitType RaidUnit4;
+        public Unit RaidUnit4;
 
         // Index: 111 Hex: 0x1BC
         [RWNames("Unknown111")]
-        public UnitType RaidUnit5;
+        public Unit RaidUnit5;
 
         // Index: 112 Hex: 0x1C0
         [RWNames("Unknown112")]
-        public UnitType RaidUnit6;
+        public Unit RaidUnit6;
 
         // Index: 113 Hex: 0x1C4
         [RWNames("Unknown113")]
-        public UnitType RaidUnit7;
+        public Unit RaidUnit7;
 
         // Index: 114 Hex: 0x1C8
         [RWNames("Unknown114")]
-        public UnitType RaidUnit8;
+        public Unit RaidUnit8;
 
         // Index: 115 Hex: 0x1CC
         [RWNames("Unknown115")]
@@ -604,7 +607,7 @@ namespace UCP.AICharacters
 
         // Index: 144 Hex: 0x240
         [RWNames("Unknown144")]
-        public UnitType AttUnit1;
+        public Unit AttUnit1;
 
         // Index: 145 Hex: 0x244
         [RWNames("Unknown145")]
@@ -612,7 +615,7 @@ namespace UCP.AICharacters
 
         // Index: 146 Hex: 0x248
         [RWNames("Unknown146")]
-        public UnitType AttUnit2;
+        public Unit AttUnit2;
 
         // Index: 147 Hex: 0x24C
         [RWNames("Unknown147")]
@@ -632,7 +635,7 @@ namespace UCP.AICharacters
 
         // Index: 151 Hex: 0x25C
         [RWNames("Unknown151")]
-        public UnitType AttUnit3;
+        public Unit AttUnit3;
 
         // Index: 152 Hex: 0x260
         [RWNames("Unknown152")]
@@ -644,7 +647,7 @@ namespace UCP.AICharacters
 
         // Index: 154 Hex: 0x268
         [RWNames("Unknown154")]
-        public UnitType AttUnit4; // ranged?
+        public Unit AttUnit4; // ranged?
 
         // Index: 155 Hex: 0x26C
         [RWNames("Unknown155")]
@@ -656,7 +659,7 @@ namespace UCP.AICharacters
 
         // Index: 157 Hex: 0x274
         [RWNames("Unknown157")]
-        public UnitType AttUnit5;
+        public Unit AttUnit5;
 
         // Index: 158 Hex: 0x278
         [RWNames("Unknown158")]
@@ -664,7 +667,7 @@ namespace UCP.AICharacters
 
         // Index: 159 Hex: 0x27C
         [RWNames("Unknown159")]
-        public UnitType AttUnit6;
+        public Unit AttUnit6;
 
         // Index: 160 Hex: 0x280
         [RWNames("Unknown160")]
@@ -676,7 +679,7 @@ namespace UCP.AICharacters
 
         // Index: 162 Hex: 0x288
         [RWNames("Unknown162")]
-        public UnitType AttUnitDefault;
+        public Unit AttUnitDefault;
 
         // Index: 163 Hex: 0x28C
         [RWNames("Unknown163")]
