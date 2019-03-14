@@ -364,23 +364,21 @@ namespace UCP.AICharacters
 
         // Index: 83 Hex: 0x14C
         [RWNames("Unknown083")]
-        [RWComment("Amount of ranged fallout units.")]
-        public int FalloutUnitRangedCount;
+        public int SortieUnitRangedCount;
 
         // Index: 84 Hex: 0x150
         [RWNames("Unknown084")]
         [RWComment("Type of ranged units that go to the last attacked farm or building, and guard it until another is attacked.")]
-        public Unit FalloutUnitRanged;
+        public Unit SortieUnitRanged;
 
         // Index: 85 Hex: 0x154
         [RWNames("Unknown085")]
-        [RWComment("Amount of melee fallout units.")]
-        public int FalloutUnitMeleeCount;
+        public int SortieUnitMeleeCount;
 
         // Index: 86 Hex: 0x158
         [RWNames("Unknown086")]
         [RWComment("Type of melee units to attack enemy units shooting at the AI's buildings or workers.")]
-        public Unit FalloutUnitMelee;
+        public Unit SortieUnitMelee;
 
         // Index: 87 Hex: 0x15C
         [RWNames("Unknown087")]
