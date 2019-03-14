@@ -19,7 +19,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -70,7 +70,9 @@
     <Compile Include="AICharacters\AIPersonality.cs" />
     <Compile Include="AICharacters\AIReader.cs" />
     <Compile Include="AICharacters\AIWriter.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\FarmBuildings.cs" />
     <Compile Include="AICharacters\PersonalityEnums\Resource.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\SiegeEngine.cs" />
     <Compile Include="AICharacters\PersonalityEnums\TargetingType.cs" />
     <Compile Include="AICharacters\RWAttributes.cs" />
     <Compile Include="AICharacters\PersonalityEnums\Unit.cs" />
@@ -1398,6 +1400,7 @@
     <EmbeddedResource Include="AIVs\PitchSiege\wolf6.aiv" />
     <EmbeddedResource Include="AIVs\PitchSiege\wolf7.aiv" />
     <EmbeddedResource Include="AIVs\PitchSiege\wolf8.aiv" />
+    <None Include="AICharacters\Kimberly_Balance_Files\Kimberly_Balance.aic" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />

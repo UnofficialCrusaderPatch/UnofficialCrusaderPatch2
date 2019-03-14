@@ -74,35 +74,35 @@ namespace UCP.AICharacters
 
         // Index: 12 Hex: 0x30
         [RWNames("Unknown012")]
-        public int Unknown012;
+        public FarmBuildingType Farm1;
 
         // Index: 13 Hex: 0x34
         [RWNames("Unknown013")]
-        public int Unknown013;
+        public FarmBuildingType Farm2;
 
         // Index: 14 Hex: 0x38
         [RWNames("Unknown014")]
-        public int Unknown014;
+        public FarmBuildingType Farm3;
 
         // Index: 15 Hex: 0x3C
         [RWNames("Unknown015")]
-        public int Unknown015;
+        public FarmBuildingType Farm4;
 
         // Index: 16 Hex: 0x40
         [RWNames("Unknown016")]
-        public int Unknown016;
+        public FarmBuildingType Farm5;
 
         // Index: 17 Hex: 0x44
         [RWNames("Unknown017")]
-        public int Unknown017;
+        public FarmBuildingType Farm6;
 
         // Index: 18 Hex: 0x48
         [RWNames("Unknown018")]
-        public int Unknown018;
+        public FarmBuildingType Farm7;
 
         // Index: 19 Hex: 0x4C
         [RWNames("Unknown019")]
-        public int Unknown019;
+        public FarmBuildingType Farm8;
 
         // Index: 20 Hex: 0x50
         [RWNames("Unknown020")]
@@ -118,15 +118,18 @@ namespace UCP.AICharacters
 
         // Index: 23 Hex: 0x5C
         [RWNames("Unknown023")]
-        public int Unknown023;
+        [RWComment("AIs with mines have a value of >= 10 there, don't know yet. But each value from 1 to 10 let's the rat build one iron mine.")]
+        public int MaxIronMines;
 
         // Index: 24 Hex: 0x60
         [RWNames("Unknown024")]
-        public int Unknown024;
+        [RWComment("Some AIs with pitch have a value higher than 10 here, e.g. Pig with 20. Caliph has 7 and builds a lot. Wolf has a 15 and builds less.")]
+        public int MaxPitchRigs;
 
         // Index: 25 Hex: 0x64
         [RWNames("Unknown025")]
-        public int Unknown025;
+        [RWComment("Philipp has a 1 here, but does not build any Quarries.")]
+        public int QuarriesMax;
 
         // Index: 26 Hex: 0x68
         [RWNames("Unknown026")]
@@ -361,27 +364,33 @@ namespace UCP.AICharacters
 
         // Index: 83 Hex: 0x14C
         [RWNames("Unknown083")]
-        public int Unknown083;
+        [RWComment("Amount of ranged fallout units.")]
+        public int FalloutUnitRangedCount;
 
         // Index: 84 Hex: 0x150
         [RWNames("Unknown084")]
-        public int Unknown084;
+        [RWComment("Type of ranged units that go to the last attacked farm or building, and guard it until another is attacked.")]
+        public Unit FalloutUnitRanged;
 
         // Index: 85 Hex: 0x154
         [RWNames("Unknown085")]
-        public int Unknown085;
+        [RWComment("Amount of melee fallout units.")]
+        public int FalloutUnitMeleeCount;
 
         // Index: 86 Hex: 0x158
         [RWNames("Unknown086")]
-        public int Unknown086;
+        [RWComment("Type of melee units to attack enemy units shooting at the AI's buildings or workers.")]
+        public Unit FalloutUnitMelee;
 
         // Index: 87 Hex: 0x15C
         [RWNames("Unknown087")]
-        public int Unknown087;
+        [RWComment("Amount of units that dig own moat.")]
+        public int DefensiveDiggingUnitCount;
 
         // Index: 88 Hex: 0x160
         [RWNames("Unknown088")]
-        public Unit UnknownUnit088;
+        [RWComment("Type of unit to dig own moat.")]
+        public Unit DefensiveDiggingUnit;
 
         // Index: 89 Hex: 0x164
         [RWNames("Unknown089")]
@@ -563,35 +572,35 @@ namespace UCP.AICharacters
 
         // Index: 133 Hex: 0x214
         [RWNames("Unknown133")]
-        public int Unknown133;
+        public SiegeEngine SiegeEngine1;
 
         // Index: 134 Hex: 0x218
         [RWNames("Unknown134")]
-        public int Unknown134;
+        public SiegeEngine SiegeEngine2;
 
         // Index: 135 Hex: 0x21C
         [RWNames("Unknown135")]
-        public int Unknown135;
+        public SiegeEngine SiegeEngine3;
 
         // Index: 136 Hex: 0x220
         [RWNames("Unknown136")]
-        public int Unknown136;
+        public SiegeEngine SiegeEngine4;
 
         // Index: 137 Hex: 0x224
         [RWNames("Unknown137")]
-        public int Unknown137;
+        public SiegeEngine SiegeEngine5;
 
         // Index: 138 Hex: 0x228
         [RWNames("Unknown138")]
-        public int Unknown138;
+        public SiegeEngine SiegeEngine6;
 
         // Index: 139 Hex: 0x22C
         [RWNames("Unknown139")]
-        public int Unknown139;
+        public SiegeEngine SiegeEngine7;
 
         // Index: 140 Hex: 0x230
         [RWNames("Unknown140")]
-        public int Unknown140;
+        public SiegeEngine siegeEngine8;
 
         // Index: 141 Hex: 0x234
         [RWNames("Unknown141")]
@@ -607,6 +616,7 @@ namespace UCP.AICharacters
 
         // Index: 144 Hex: 0x240
         [RWNames("Unknown144")]
+        [RWComment("This unit is only recruited if the target enemy has moat and used preferably to dig enemy moat.")]
         public Unit AttUnit1;
 
         // Index: 145 Hex: 0x244
@@ -647,6 +657,7 @@ namespace UCP.AICharacters
 
         // Index: 154 Hex: 0x268
         [RWNames("Unknown154")]
+        [RWComment("Attacking unit that never moves, except if wall is breached.")]
         public Unit AttUnit4; // ranged?
 
         // Index: 155 Hex: 0x26C
@@ -683,7 +694,7 @@ namespace UCP.AICharacters
 
         // Index: 163 Hex: 0x28C
         [RWNames("Unknown163")]
-        public int Unknown163;
+        public Unit UnknownUnit163;
 
         // Index: 164 Hex: 0x290
         [RWNames("Unknown164")]
