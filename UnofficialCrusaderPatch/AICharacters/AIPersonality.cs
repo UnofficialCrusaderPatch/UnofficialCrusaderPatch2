@@ -334,8 +334,8 @@ namespace UCP.AICharacters
         public int Unknown075;
 
         // Index: 76 Hex: 0x130
-        [RWComment("The probability with which this AI reinforces missing defense troops.")]
         [RWNames("Unknown076")]
+        [RWComment("The probability with which this AI reinforces missing defense troops.")]
         public int DefRecruitAffinity;
 
         // Index: 77 Hex: 0x134
@@ -598,7 +598,7 @@ namespace UCP.AICharacters
 
         // Index: 140 Hex: 0x230
         [RWNames("Unknown140")]
-        public SiegeEngine siegeEngine8;
+        public SiegeEngine SiegeEngine8;
 
         // Index: 141 Hex: 0x234
         [RWNames("Unknown141")]
@@ -615,11 +615,11 @@ namespace UCP.AICharacters
         // Index: 144 Hex: 0x240
         [RWNames("Unknown144")]
         [RWComment("This unit is only recruited if the target enemy has moat and used preferably to dig enemy moat.")]
-        public Unit AttUnit1;
+        public Unit OffDigUnit;
 
         // Index: 145 Hex: 0x244
         [RWNames("Unknown145")]
-        public int AttMaxUnit1;
+        public int MaxOffDigUnit;
 
         // Index: 146 Hex: 0x248
         [RWNames("Unknown146")]
@@ -676,11 +676,12 @@ namespace UCP.AICharacters
 
         // Index: 159 Hex: 0x27C
         [RWNames("Unknown159")]
-        public Unit AttUnit6;
+        [RWComment("These units patrol between siege enginees in order to protect them.")]
+        public Unit AttUnitSiegeDef;
 
         // Index: 160 Hex: 0x280
         [RWNames("Unknown160")]
-        public int AttMaxUnit6;
+        public int AttUnitSiegeDefMax;
 
         // Index: 161 Hex: 0x284
         [RWNames("Unknown161")]
@@ -688,10 +689,12 @@ namespace UCP.AICharacters
 
         // Index: 162 Hex: 0x288
         [RWNames("Unknown162")]
+        [RWComment("The units the AI recruits as main part of the strike force")]
         public Unit AttUnitMain1;
 
         // Index: 163 Hex: 0x28C
         [RWNames("Unknown163")]
+        [RWComment("The units the AI recruits as secondary part of the strike force")]
         public Unit AttUnitMain2;
 
         // Index: 164 Hex: 0x290
