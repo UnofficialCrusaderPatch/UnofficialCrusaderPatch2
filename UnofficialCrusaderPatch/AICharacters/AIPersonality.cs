@@ -688,11 +688,11 @@ namespace UCP.AICharacters
 
         // Index: 162 Hex: 0x288
         [RWNames("Unknown162")]
-        public Unit AttUnitDefault;
+        public Unit AttUnitMain1;
 
         // Index: 163 Hex: 0x28C
         [RWNames("Unknown163")]
-        public Unit UnknownUnit163;
+        public Unit AttUnitMain2;
 
         // Index: 164 Hex: 0x290
         [RWNames("Unknown164")]
