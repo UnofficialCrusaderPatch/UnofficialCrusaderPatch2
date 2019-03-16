@@ -643,11 +643,12 @@ namespace UCP.AICharacters
 
         // Index: 151 Hex: 0x25C
         [RWNames("Unknown151")]
-        public Unit AttUnit3;
+        [RWComment("Ranged attack unit that moves towards the enemy keep and shoots")]
+        public Unit AttUnitRangedPush;
 
         // Index: 152 Hex: 0x260
         [RWNames("Unknown152")]
-        public int AttMaxUnit3;
+        public int AttMaxUnitRangedPush;
 
         // Index: 153 Hex: 0x264
         [RWNames("Unknown153")]
