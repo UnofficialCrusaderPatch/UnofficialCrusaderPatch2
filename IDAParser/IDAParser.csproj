@@ -60,8 +60,14 @@
     <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AIWriter.cs">
       <Link>AICharacters\AIWriter.cs</Link>
     </Compile>
+    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\FarmBuildings.cs">
+      <Link>AICharacters\PersonalityEnums\FarmBuildings.cs</Link>
+    </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Resource.cs">
       <Link>AICharacters\PersonalityEnums\Resource.cs</Link>
+    </Compile>
+    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\SiegeEngine.cs">
+      <Link>AICharacters\PersonalityEnums\SiegeEngine.cs</Link>
     </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\TargetingType.cs">
       <Link>AICharacters\PersonalityEnums\TargetingType.cs</Link>
