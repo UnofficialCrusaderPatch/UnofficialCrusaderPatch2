@@ -369,7 +369,7 @@ namespace UCP.AICharacters
         // Index: 84 Hex: 0x150
         [RWNames("Unknown084")]
         [RWComment("Type of ranged units that go to the last attacked farm or building, and guard it until another is attacked.")]
-        public Unit SortieUnitRanged;
+        public RangedUnit SortieUnitRanged;
 
         // Index: 85 Hex: 0x154
         [RWNames("Unknown085")]
@@ -378,7 +378,7 @@ namespace UCP.AICharacters
         // Index: 86 Hex: 0x158
         [RWNames("Unknown086")]
         [RWComment("Type of melee units to attack enemy units shooting at the AI's buildings or workers.")]
-        public Unit SortieUnitMelee;
+        public MeleeUnit SortieUnitMelee;
 
         // Index: 87 Hex: 0x15C
         [RWNames("Unknown087")]
@@ -388,7 +388,7 @@ namespace UCP.AICharacters
         // Index: 88 Hex: 0x160
         [RWNames("Unknown088")]
         [RWComment("Type of unit to dig own moat.")]
-        public Unit DefensiveDiggingUnit;
+        public DiggingUnit DefensiveDiggingUnit;
 
         // Index: 89 Hex: 0x164
         [RWNames("Unknown089")]
@@ -615,11 +615,11 @@ namespace UCP.AICharacters
         // Index: 144 Hex: 0x240
         [RWNames("Unknown144")]
         [RWComment("This unit is only recruited if the target enemy has moat and used preferably to dig enemy moat.")]
-        public Unit OffDigUnit;
+        public DiggingUnit OffDiggingUnit;
 
         // Index: 145 Hex: 0x244
         [RWNames("Unknown145")]
-        public int MaxOffDigUnit;
+        public int MaxOffDiggingUnit;
 
         // Index: 146 Hex: 0x248
         [RWNames("Unknown146")]
