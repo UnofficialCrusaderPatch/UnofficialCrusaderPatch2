@@ -42,7 +42,7 @@ namespace UCP.AICharacters
         public int Unknown005;
 
         // Index: 6 Hex: 0x18
-        [RWComment("0 - 10000")]
+        [RWComment("(0 - 10000) Below this value, the AI sells more stuff than usual to get money.")]
         public int CriticalPopularity;
 
         // Index: 7 Hex: 0x1C
@@ -61,28 +61,28 @@ namespace UCP.AICharacters
         public int Unknown011;
 
         // Index: 12 Hex: 0x30
-        public FarmBuildingType Farm1;
+        public FarmBuilding Farm1;
 
         // Index: 13 Hex: 0x34
-        public FarmBuildingType Farm2;
+        public FarmBuilding Farm2;
 
         // Index: 14 Hex: 0x38
-        public FarmBuildingType Farm3;
+        public FarmBuilding Farm3;
 
         // Index: 15 Hex: 0x3C
-        public FarmBuildingType Farm4;
+        public FarmBuilding Farm4;
 
         // Index: 16 Hex: 0x40
-        public FarmBuildingType Farm5;
+        public FarmBuilding Farm5;
 
         // Index: 17 Hex: 0x44
-        public FarmBuildingType Farm6;
+        public FarmBuilding Farm6;
 
         // Index: 18 Hex: 0x48
-        public FarmBuildingType Farm7;
+        public FarmBuilding Farm7;
 
         // Index: 19 Hex: 0x4C
-        public FarmBuildingType Farm8;
+        public FarmBuilding Farm8;
 
         // Index: 20 Hex: 0x50
         public int Unknown020;
@@ -103,7 +103,7 @@ namespace UCP.AICharacters
 
         // Index: 25 Hex: 0x64
         [RWComment("Philipp has a 1 here, but does not build any Quarries.")]
-        public int QuarriesMax;
+        public int MaxQuarries;
 
         // Index: 26 Hex: 0x68
         public int Unknown026;
@@ -280,26 +280,26 @@ namespace UCP.AICharacters
         public int Unknown082;
 
         // Index: 83 Hex: 0x14C
-        public int SortieUnitRangedCount;
+        public int SortieUnitRangedMax;
 
         // Index: 84 Hex: 0x150
         [RWComment("Type of ranged units that go to the last attacked farm or building, and guard it until another is attacked.")]
-        public RangedUnit SortieUnitRanged;
+        public Unit SortieUnitRanged;
 
         // Index: 85 Hex: 0x154
-        public int SortieUnitMeleeCount;
+        public int SortieUnitMeleeMax;
 
         // Index: 86 Hex: 0x158
         [RWComment("Type of melee units to attack enemy units shooting at the AI's buildings or workers.")]
-        public MeleeUnit SortieUnitMelee;
+        public Unit SortieUnitMelee;
 
         // Index: 87 Hex: 0x15C
         [RWComment("Amount of units that dig own moat.")]
-        public int DefensiveDiggingUnitCount;
+        public int DefDiggingUnitMax;
 
         // Index: 88 Hex: 0x160
         [RWComment("Type of unit to dig own moat.")]
-        public DiggingUnit DefensiveDiggingUnit;
+        public DiggingUnit DefDiggingUnit;
 
         // Index: 89 Hex: 0x164
         public int RecruitInterval;
@@ -350,7 +350,7 @@ namespace UCP.AICharacters
         public Unit DefUnit8;
 
         // Index: 105 Hex: 0x1A4
-        public int RaidMaxUnits;
+        public int RaidUnitsMax;
 
         // Index: 106 Hex: 0x1A8
         public int Unknown106;
@@ -470,10 +470,10 @@ namespace UCP.AICharacters
 
         // Index: 144 Hex: 0x240
         [RWComment("This unit is only recruited if the target enemy has moat and used preferably to dig enemy moat.")]
-        public DiggingUnit OffDiggingUnit;
+        public DiggingUnit AttDiggingUnit;
 
         // Index: 145 Hex: 0x244
-        public int MaxOffDiggingUnit;
+        public int AttDiggingUnitMax;
 
         // Index: 146 Hex: 0x248
         public Unit AttUnit2;
@@ -495,17 +495,17 @@ namespace UCP.AICharacters
         public Unit AttUnitRangedPush;
 
         // Index: 152 Hex: 0x260
-        public int AttMaxUnitRangedPush;
+        public int AttUnitRangedPushMax;
 
         // Index: 153 Hex: 0x264
         public int Unknown153;
 
         // Index: 154 Hex: 0x268
-        [RWComment("Attacking unit that never moves, except if wall is breached.")]
-        public Unit AttUnit4; // ranged?
+        [RWComment("Attacking unit that holds position and doesn't attack until the walls are breached.")]
+        public Unit AttUnitBackup; // ranged?
 
         // Index: 155 Hex: 0x26C
-        public int AttMaxUnit4;
+        public int AttUnitBackupMax;
 
         // Index: 156 Hex: 0x270
         public int Unknown156;
@@ -514,7 +514,7 @@ namespace UCP.AICharacters
         public Unit AttUnit5;
 
         // Index: 158 Hex: 0x278
-        public int AttMaxUnit5;
+        public int AttUnit5Max;
 
         // Index: 159 Hex: 0x27C
         [RWComment("These units patrol between siege enginees in order to protect them.")]

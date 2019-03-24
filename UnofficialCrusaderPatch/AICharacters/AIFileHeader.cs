@@ -11,8 +11,8 @@ namespace UCP.AICharacters
         {
             "// This file contains parameters which determine the personalities of Crusader's AI-Characters.",
             "// DO NOT SWITCH, ADD OR REMOVE ANY PARAMETER LINES! The program sets the parameters internally",
-            "// by order of appearance, not by the parameter names! The names are just there to help you",
-            "// editing and guarentee downwards compatibility, since they might be subject to change."
+            "// by order of appearance, not by the parameter names! This is done to guarentee backwards",
+            "// compatibility, as the names might be subject to change. They are just there to help you editing."
         };
 
         public string DescrGer = "";

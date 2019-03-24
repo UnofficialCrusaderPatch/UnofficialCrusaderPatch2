@@ -63,20 +63,20 @@
     <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AIWriter.cs">
       <Link>AICharacters\AIWriter.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\FarmBuildings.cs">
-      <Link>AICharacters\PersonalityEnums\FarmBuildings.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Buildings.cs">
+      <Link>AICharacters\PersonalityEnums\Buildings.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Resource.cs">
-      <Link>AICharacters\PersonalityEnums\Resource.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Resources.cs">
+      <Link>AICharacters\PersonalityEnums\Resources.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\SiegeEngine.cs">
-      <Link>AICharacters\PersonalityEnums\SiegeEngine.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\SiegeEngines.cs">
+      <Link>AICharacters\PersonalityEnums\SiegeEngines.cs</Link>
     </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\TargetingType.cs">
       <Link>AICharacters\PersonalityEnums\TargetingType.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Unit.cs">
-      <Link>AICharacters\PersonalityEnums\Unit.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Units.cs">
+      <Link>AICharacters\PersonalityEnums\Units.cs</Link>
     </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\AICharacters\RWComment.cs">
       <Link>AICharacters\RWComment.cs</Link>

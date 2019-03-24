@@ -71,12 +71,12 @@
     <Compile Include="AICharacters\AIPersonality.cs" />
     <Compile Include="AICharacters\AIReader.cs" />
     <Compile Include="AICharacters\AIWriter.cs" />
-    <Compile Include="AICharacters\PersonalityEnums\FarmBuildings.cs" />
-    <Compile Include="AICharacters\PersonalityEnums\Resource.cs" />
-    <Compile Include="AICharacters\PersonalityEnums\SiegeEngine.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\Buildings.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\Resources.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\SiegeEngines.cs" />
     <Compile Include="AICharacters\PersonalityEnums\TargetingType.cs" />
     <Compile Include="AICharacters\RWComment.cs" />
-    <Compile Include="AICharacters\PersonalityEnums\Unit.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\Units.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Localization\LanguageWindow.xaml.cs">

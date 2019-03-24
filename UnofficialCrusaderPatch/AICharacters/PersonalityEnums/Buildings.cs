@@ -8,12 +8,12 @@ namespace UCP.AICharacters
     /// <summary>
     /// Crusader-intern military unit IDs
     /// </summary>
-    public enum FarmBuildingType
+    public enum FarmBuilding
     {
         None = 0x00,
         WheatFarm = 0x1E,
         HopFarm = 0x1F,
-        AppleOrchard = 0x20,
+        AppleFarm = 0x20,
         DairyFarm = 0x21
     }
 }
