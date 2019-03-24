@@ -1,3 +1,18 @@
+// This file contains parameters which determine the personalities of Crusader's AI-Characters.
+// DO NOT SWITCH, ADD OR REMOVE ANY PARAMETER LINES! The program sets the parameters internally
+// by order of appearance, not by the parameter names! The names are just there to help you
+// editing and guarentee downwards compatibility, since they might be subject to change.
+
+
+
+AIFileHeader
+{
+	DescrGer	= Test Test Test
+	DescrEng	= 
+	DescrPol	= 
+	DescrRus	= 
+}
+
 AICharacter
 {
 	Index	= Abbot
@@ -154,7 +169,7 @@ AICharacter
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= None
+		AttUnitRangedPush	= None	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 0
 		Unknown153	= 0
 		AttUnit4	= EuropArcher	// Attacking unit that never moves, except if wall is breached.
@@ -331,7 +346,7 @@ AICharacter
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= HorseArcher
+		AttUnitRangedPush	= HorseArcher	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 0
 		Unknown153	= 0
 		AttUnit4	= HorseArcher	// Attacking unit that never moves, except if wall is breached.
@@ -492,7 +507,7 @@ AICharacter
 		Unknown132	= 80
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult
-		SiegeEngine3	= 61
+		SiegeEngine3	= TowerBallista
 		SiegeEngine4	= None
 		SiegeEngine5	= None
 		SiegeEngine6	= None
@@ -508,7 +523,7 @@ AICharacter
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= None
+		AttUnitRangedPush	= None	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 0
 		Unknown153	= 0
 		AttUnit4	= HorseArcher	// Attacking unit that never moves, except if wall is breached.
@@ -685,7 +700,7 @@ AICharacter
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= Crossbowman
+		AttUnitRangedPush	= Crossbowman	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 20
 		Unknown153	= 1
 		AttUnit4	= EuropArcher	// Attacking unit that never moves, except if wall is breached.
@@ -862,7 +877,7 @@ AICharacter
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= None
+		AttUnitRangedPush	= None	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 0
 		Unknown153	= 0
 		AttUnit4	= EuropArcher	// Attacking unit that never moves, except if wall is breached.
@@ -1039,7 +1054,7 @@ AICharacter
 		AttMaxAssassins	= 40
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= None
+		AttUnitRangedPush	= None	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 0
 		Unknown153	= 0
 		AttUnit4	= HorseArcher	// Attacking unit that never moves, except if wall is breached.
@@ -1216,7 +1231,7 @@ AICharacter
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= None
+		AttUnitRangedPush	= None	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 0
 		Unknown153	= 0
 		AttUnit4	= None	// Attacking unit that never moves, except if wall is breached.
@@ -1393,7 +1408,7 @@ AICharacter
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= Crossbowman
+		AttUnitRangedPush	= Crossbowman	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 120
 		Unknown153	= 0
 		AttUnit4	= Crossbowman	// Attacking unit that never moves, except if wall is breached.
@@ -1570,7 +1585,7 @@ AICharacter
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= EuropArcher
+		AttUnitRangedPush	= EuropArcher	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 8
 		Unknown153	= 0
 		AttUnit4	= EuropArcher	// Attacking unit that never moves, except if wall is breached.
@@ -1747,7 +1762,7 @@ AICharacter
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 10
-		AttUnitRangedPush	= EuropArcher
+		AttUnitRangedPush	= EuropArcher	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 75
 		Unknown153	= 0
 		AttUnit4	= EuropArcher	// Attacking unit that never moves, except if wall is breached.
@@ -1924,7 +1939,7 @@ AICharacter
 		AttMaxAssassins	= 5
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= HorseArcher
+		AttUnitRangedPush	= HorseArcher	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 20
 		Unknown153	= 1
 		AttUnit4	= ArabArcher	// Attacking unit that never moves, except if wall is breached.
@@ -2101,7 +2116,7 @@ AICharacter
 		AttMaxAssassins	= 10
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= FireThrower
+		AttUnitRangedPush	= FireThrower	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 0
 		Unknown153	= 0
 		AttUnit4	= Crossbowman	// Attacking unit that never moves, except if wall is breached.
@@ -2278,7 +2293,7 @@ AICharacter
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 16
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= Slinger
+		AttUnitRangedPush	= Slinger	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 50
 		Unknown153	= 0
 		AttUnit4	= ArabArcher	// Attacking unit that never moves, except if wall is breached.
@@ -2455,7 +2470,7 @@ AICharacter
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= Slinger
+		AttUnitRangedPush	= Slinger	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 90
 		Unknown153	= 0
 		AttUnit4	= ArabArcher	// Attacking unit that never moves, except if wall is breached.
@@ -2632,7 +2647,7 @@ AICharacter
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= HorseArcher
+		AttUnitRangedPush	= HorseArcher	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 50
 		Unknown153	= 0
 		AttUnit4	= HorseArcher	// Attacking unit that never moves, except if wall is breached.
@@ -2809,7 +2824,7 @@ AICharacter
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
-		AttUnitRangedPush	= EuropArcher
+		AttUnitRangedPush	= EuropArcher	// Ranged attack unit that moves towards the enemy keep and shoots
 		AttMaxUnitRangedPush	= 10
 		Unknown153	= 0
 		AttUnit4	= Crossbowman	// Attacking unit that never moves, except if wall is breached.

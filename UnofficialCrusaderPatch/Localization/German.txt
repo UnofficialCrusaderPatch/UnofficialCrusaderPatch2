@@ -756,3 +756,40 @@ aiv_evreyimproved_descr
 	"Gibt den KI-Lords neue verbesserte Burgen, angelehnt an den Vanilla-Stil. &
 [Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
+
+
+
+
+
+
+
+
+
+// ======================
+//         2.12
+// ======================
+
+
+
+
+
+
+ui_AIC
+{
+	"AIC"
+}
+
+ui_aicExport
+{
+	"Export"
+}
+
+ui_aicExport_success
+{
+	"Erfolgreich exportiert."
+}
+
+ui_aicHint
+{
+	"Exportiert die .aic-Datei aus dem Installer in das Crusader-Verzeichnis."
+}

@@ -11,9 +11,11 @@ namespace UCP.Patching
 {
     public class Change : IEnumerable<DefaultHeader>
     {
+        public bool NoLocalization = false;
+
         string titleIdent;
         public string TitleIdent => titleIdent;
-        public string GetTitle() { return Localization.Get(titleIdent); }
+        public string GetTitle() { return NoLocalization ? titleIdent : Localization.Get(titleIdent); }
 
         ChangeType type;
         public ChangeType Type => type;
@@ -57,9 +59,10 @@ namespace UCP.Patching
         UIElement uiElement;
         public UIElement UIElement { get { return this.uiElement; } }
 
-        CheckBox titleBox;
+        protected CheckBox titleBox;
+        protected Grid grid;
 
-        public void InitUI()
+        public virtual void InitUI()
         {
             this.titleBox = new CheckBox()
             {
@@ -92,7 +95,7 @@ namespace UCP.Patching
                 titleBox.Unchecked += TitleBox_Unchecked;
             }
 
-            Grid content = new Grid()
+            grid = new Grid()
             {
                 Background = new SolidColorBrush(Color.FromArgb(150, 200, 200, 200)),
                 Width = 420,
@@ -101,9 +104,9 @@ namespace UCP.Patching
             };
 
 
-            FillGrid(content);
+            FillGrid(grid);
 
-            tvi.Items.Add(content);
+            tvi.Items.Add(grid);
             tvi.Items.Add(null); // spacing
 
             this.uiElement = tvi;
@@ -148,9 +151,9 @@ namespace UCP.Patching
 
                     grid.Children.Add(uiElement);
                 }
-
-                string descrIdent = header.DescrIdent + "_descr";
-                if (Localization.Get(descrIdent).Length > 1)
+                
+                string headerDescr = header.NoLocalization ? header.DescrIdent : Localization.Get(header.DescrIdent + "_descr");
+                if (!string.IsNullOrWhiteSpace(headerDescr))
                 {
                     // Description
                     TextBlock description = new TextBlock()
@@ -162,7 +165,8 @@ namespace UCP.Patching
                         FontSize = 13,
                         Width = grid.Width - 12,
                     };
-                    TextReferencer.SetText(description, descrIdent);
+                    
+                    TextReferencer.SetText(description, headerDescr);
                     grid.Children.Add(description);
                     height += description.MeasureHeight();
 

@@ -75,7 +75,10 @@ namespace UCP.Patching
         {
             SectionEditor.Reset();
 
-            List<Change> todoList = new List<Change>(Version.Changes.Where(c => c.IsChecked));
+            // only take binary changes
+            var changes = Version.Changes.Where(c => c.IsChecked && c.GetType() == typeof(Change));
+            List<Change> todoList = new List<Change>(changes);
+
             int todoIndex = 0;
             double todoCount = 9 + todoList.Count; // +2 for AIprops +3 for read, +1 for version edit, +3 for writing data
 
@@ -112,7 +115,7 @@ namespace UCP.Patching
 
 
             // change AI properties
-            AICChange.Activate(args);
+            AICChange.DoEdit(args);
             todoIndex += 2;
             perc.Set(todoIndex / todoCount);
 

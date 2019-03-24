@@ -7,5 +7,6 @@
         Troops,
         Other,
         AIV,
+        AIC,
     }
 }

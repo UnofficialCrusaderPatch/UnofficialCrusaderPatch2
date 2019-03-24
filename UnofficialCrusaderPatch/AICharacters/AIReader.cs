@@ -26,6 +26,13 @@ namespace UCP.AICharacters
             sr.Dispose();
         }
 
+        public void Reset()
+        {
+            sr.DiscardBufferedData();
+            sr.BaseStream.Seek(0, SeekOrigin.Begin);
+            lineNum = 0;
+        }
+
         public string ReadLine(bool skipEmpty = true)
         {
             string line;
@@ -51,18 +58,24 @@ namespace UCP.AICharacters
 
         public T Read<T>() where T : new()
         {
-            string line = ReadLine();
-            if (line == null)
-                return default(T);
-
+            string line;
             Type type = typeof(T);
-            if (line != type.Name)
-                throw new FormatException("name");
+            do
+            {
+                line = ReadLine();
+                if (line == null)
+                    return default(T);
 
+            } while (line != type.Name);
+            
             T result = new T();
             this.Read(result);
             return result;
         }
+
+        const BindingFlags BFlags = BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.Public;
+        static readonly Type[] emptyTypeArg = new Type[0];
+        static readonly object[] emptyObjectArg = new object[0];
 
         void Read(object o)
         {
@@ -72,40 +85,33 @@ namespace UCP.AICharacters
             if (line != "{")
                 throw new FormatException("{");
 
-            Dictionary<string, FieldInfo> fieldNames = GetFieldNames(o.GetType());
+            var fields = o.GetType().GetFields(BFlags);
+
+            int fieldIndex = 0;
             while ((line = this.ReadLine()) != null)
             {
                 if (line == "}")
                     break;
 
-                // get name of field
-                string fieldName;
-                int endIndex = line.IndexOf('=');
-                if (endIndex < 0)
-                {
-                    fieldName = line;
-                }
-                else
-                {
-                    fieldName = line.Remove(endIndex);
-                }
-                fieldName = fieldName.Trim();
-                
-                if (!fieldNames.TryGetValue(fieldName, out FieldInfo fi))
-                    throw new FormatException(fieldName + " in line " + lineNum);
-                
-                object value;
+                // read by index
+                FieldInfo fi = fields[fieldIndex++];
                 Type fieldType = fi.FieldType;
+
+                object value;
                 if (readFuncs.TryGetValue(fieldType, out ReadFunc func)
                    || readFuncs.TryGetValue(fieldType.BaseType, out func))
                 {
-                    string valueStr = line.Substring(endIndex + 1).Trim();
+                    int startIndex = line.IndexOf('=');
+                    if (startIndex < 0)
+                        throw new FormatException("=");
+
+                    string valueStr = line.Substring(startIndex + 1).Trim();
                     value = func?.Invoke(valueStr, fieldType);
                 }
                 else
                 {
-                    ConstructorInfo ci = fieldType.GetConstructor(new Type[0]);
-                    value = ci.Invoke(new object[0]);
+                    ConstructorInfo ci = fieldType.GetConstructor(emptyTypeArg);
+                    value = ci.Invoke(emptyObjectArg);
                     this.Read(value);
                 }
                 fi.SetValue(o, value);
@@ -121,38 +127,5 @@ namespace UCP.AICharacters
             { typeof(Enum), (v, vt) => Enum.Parse(vt, v, true) },
         };
 
-        Dictionary<string, FieldInfo> GetFieldNames(Type type)
-        {
-            // get all fields from this type
-            FieldInfo[] fields = type.GetFields(BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.Public);
-
-            // create dictionary
-            var result = new Dictionary<string, FieldInfo>(fields.Length, StringComparer.OrdinalIgnoreCase);
-
-            foreach (FieldInfo fi in fields)
-            {
-                result.Add(fi.Name, fi);
-
-                // check for alternative / older names
-                object[] attributes = fi.GetCustomAttributes(typeof(RWNames), false);
-                if (attributes.Length > 0)
-                {
-                    foreach (string altName in ((RWNames)attributes[0]).Names)
-                    {
-                        if (result.TryGetValue(altName, out FieldInfo other))
-                        {
-                            if (other != fi)
-                                throw new Exception(altName + " duplicate FieldName");
-                        }
-                        else
-                        {
-                            result.Add(altName, fi);
-                        }
-                    }
-                }
-            }
-
-            return result;
-        }
     }
 }

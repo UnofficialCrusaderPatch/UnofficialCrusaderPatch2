@@ -163,11 +163,16 @@ namespace UCP
             }
         }
 
+        static int langIndex;
+        public static int LanguageIndex => langIndex;
+
         public static void Load(int index)
         {
             try
             {
-                string path = string.Format("UnofficialCrusaderPatch.Localization.{0}.txt", translations[index].Ident);
+                langIndex = index;
+
+                string path = string.Format("UCP.Localization.{0}.txt", translations[index].Ident);
 
                 Assembly asm = Assembly.GetExecutingAssembly();
                 using (var s = asm.GetManifestResourceStream(path))

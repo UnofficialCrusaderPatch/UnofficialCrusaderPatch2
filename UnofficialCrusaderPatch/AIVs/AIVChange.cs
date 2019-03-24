@@ -18,7 +18,7 @@ namespace UCP.Patching
         public AIVChange(string titleIdent, bool enabledDefault = false)
             : base("aiv_" + titleIdent, ChangeType.AIV, enabledDefault, true)
         {
-            this.resFolder = "UnofficialCrusaderPatch.AIVs." + titleIdent;
+            this.resFolder = "UCP.AIVs." + titleIdent;
         }
 
         public static AIVChange CreateDefault(string titleIdent, bool enabledDefault = false)

@@ -51,6 +51,9 @@
     <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AICIndex.cs">
       <Link>AICharacters\AICIndex.cs</Link>
     </Compile>
+    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AIFileHeader.cs">
+      <Link>AICharacters\AIFileHeader.cs</Link>
+    </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AIPersonality.cs">
       <Link>AICharacters\AIPersonality.cs</Link>
     </Compile>
@@ -75,8 +78,8 @@
     <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Unit.cs">
       <Link>AICharacters\PersonalityEnums\Unit.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\RWAttributes.cs">
-      <Link>AICharacters\RWAttributes.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\RWComment.cs">
+      <Link>AICharacters\RWComment.cs</Link>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

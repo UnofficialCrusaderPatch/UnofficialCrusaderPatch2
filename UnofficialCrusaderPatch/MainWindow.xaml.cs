@@ -48,9 +48,6 @@ namespace UCP
                 pTextBoxPath.Text = path;
             }
 
-            // fill setup options list
-            FillTreeView(Version.Changes);
-
             // set translated ui elements
             pathBox.Text = Localization.Get("ui_searchpath");
             pButtonCancel.Content = Localization.Get("ui_cancel");
@@ -59,10 +56,10 @@ namespace UCP
             pButtonUninstall.Content = Localization.Get("ui_uninstall");
             iButtonBack.Content = Localization.Get("ui_back");
             iButtonInstall.Content = Localization.Get("ui_install");
-            TextReferencer.SetText(linkLabel, "ui_welcometext");
+            TextReferencer.SetText(linkLabel, Localization.Get("ui_welcometext"));
 
             var asm = System.Reflection.Assembly.GetExecutingAssembly();
-            using (Stream stream = asm.GetManifestResourceStream("UnofficialCrusaderPatch.license.txt"))
+            using (Stream stream = asm.GetManifestResourceStream("UCP.license.txt"))
             using (StreamReader sr = new StreamReader(stream))
                 linkLabel.Inlines.Add("\n\n\n\n\n\n" + sr.ReadToEnd());
         }
@@ -99,11 +96,18 @@ namespace UCP
 
         void pButtonContinue_Click(object sender, RoutedEventArgs e)
         {
-            if (!Patcher.CrusaderExists(pTextBoxPath.Text))
+            string cPath = pTextBoxPath.Text;
+            if (!Patcher.CrusaderExists(cPath))
             {
                 Debug.Error(Localization.Get("ui_wrongpath"));
                 return;
             }
+
+            // load aic files
+            AICChange.LoadFiles(cPath);
+
+            // fill setup options list
+            FillTreeView(Version.Changes);
 
             pathGrid.Visibility = Visibility.Hidden;
             installGrid.Visibility = Visibility.Visible;

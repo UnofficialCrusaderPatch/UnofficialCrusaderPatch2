@@ -46,7 +46,7 @@ namespace UCP
         };
 
 
-        public static IEnumerable<Change> Changes { get { return changes; } }
+        public static List<Change> Changes { get { return changes; } }
         static List<Change> changes = new List<Change>()
         {
             #region BUG FIXES

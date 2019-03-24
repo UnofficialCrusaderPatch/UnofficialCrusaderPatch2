@@ -11,6 +11,9 @@ namespace UCP.AICharacters
     /// </summary>
     public class AICCollection : Dictionary<AICIndex, AICharacter>
     {
+        AIFileHeader header = new AIFileHeader();
+        public AIFileHeader Header => header;
+
         /// <summary> Creates an empty AICharacter collection. </summary>
         public AICCollection() : base(16)
         {
@@ -27,6 +30,17 @@ namespace UCP.AICharacters
         {
             using (AIWriter aiw = new AIWriter(stream))
             {
+                // write some general infos
+                foreach (string str in AIFileHeader.GeneralInfo)
+                    aiw.WriteLine(str);
+
+                aiw.WriteLine();
+                aiw.WriteLine();
+                aiw.WriteLine();
+
+                aiw.Write(header);
+                aiw.WriteLine();
+
                 foreach(AICharacter c in this.Values)
                 {
                     aiw.Write(c);
@@ -43,6 +57,12 @@ namespace UCP.AICharacters
         {
             using (AIReader air = new AIReader(stream))
             {
+                var readHeader = air.Read<AIFileHeader>();
+                if (readHeader != null)
+                    this.header = readHeader;
+
+                air.Reset(); // for the case that the header was in the middle or not there at all
+
                 AICharacter aic;
                 while ((aic = air.Read<AICharacter>()) != null)
                 {

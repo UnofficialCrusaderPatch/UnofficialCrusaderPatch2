@@ -10,9 +10,11 @@ namespace UCP.Patching
 {
     public class DefaultHeader : ChangeHeader
     {
+        public bool NoLocalization = false;
+
         string descrIdent;
         public string DescrIdent => descrIdent;
-        public string GetDescription() { return Localization.Get(descrIdent); }
+        public string GetDescription() { return NoLocalization ? descrIdent : Localization.Get(descrIdent); }
 
         bool defaultIsEnabled;
         public bool DefaultIsEnabled => defaultIsEnabled;

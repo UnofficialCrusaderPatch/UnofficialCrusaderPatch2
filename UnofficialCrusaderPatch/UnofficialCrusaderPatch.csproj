@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{53FFBF10-68B1-474F-BD93-903195B2A14C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>UnofficialCrusaderPatch</RootNamespace>
+    <RootNamespace>UCP</RootNamespace>
     <AssemblyName>UnofficialCrusaderPatch</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -67,6 +67,7 @@
     <Compile Include="AICharacters\AICCollection.cs" />
     <Compile Include="AICharacters\AICharacter.cs" />
     <Compile Include="AICharacters\AICIndex.cs" />
+    <Compile Include="AICharacters\AIFileHeader.cs" />
     <Compile Include="AICharacters\AIPersonality.cs" />
     <Compile Include="AICharacters\AIReader.cs" />
     <Compile Include="AICharacters\AIWriter.cs" />
@@ -74,7 +75,7 @@
     <Compile Include="AICharacters\PersonalityEnums\Resource.cs" />
     <Compile Include="AICharacters\PersonalityEnums\SiegeEngine.cs" />
     <Compile Include="AICharacters\PersonalityEnums\TargetingType.cs" />
-    <Compile Include="AICharacters\RWAttributes.cs" />
+    <Compile Include="AICharacters\RWComment.cs" />
     <Compile Include="AICharacters\PersonalityEnums\Unit.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Extensions.cs" />
@@ -87,8 +88,8 @@
     <Compile Include="Patching\BinElements\BinCollection.cs" />
     <Compile Include="Patching\BinElements\Referencers\BinAddress.cs" />
     <Compile Include="Patching\BinElements\Referencers\BinAlloc.cs" />
-    <Compile Include="Patching\Changes\AIVChange.cs" />
-    <Compile Include="Patching\Changes\AICChange.cs" />
+    <Compile Include="AIVs\AIVChange.cs" />
+    <Compile Include="AICs\AICChange.cs" />
     <Compile Include="Patching\EditTypes\BinArgs.cs" />
     <Compile Include="Patching\BinElements\StructTypes\BinBytes.cs" />
     <Compile Include="Patching\BinElements\BinElement.cs" />
@@ -1400,7 +1401,8 @@
     <EmbeddedResource Include="AIVs\PitchSiege\wolf6.aiv" />
     <EmbeddedResource Include="AIVs\PitchSiege\wolf7.aiv" />
     <EmbeddedResource Include="AIVs\PitchSiege\wolf8.aiv" />
-    <None Include="AICharacters\Kimberly_Balance_Files\Kimberly_Balance.aic" />
+    <EmbeddedResource Include="AICs\Kimberly_Balance.aic" />
+    <EmbeddedResource Include="AICs\UCP-Bugfix.aic" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />

@@ -19,7 +19,7 @@ namespace UCP.Patching
             Assembly asm = Assembly.GetExecutingAssembly();
 
             // check if code block file is there
-            string file = string.Format("UnofficialCrusaderPatch.CodeBlocks.{0}.block", blockIdent);
+            string file = string.Format("UCP.CodeBlocks.{0}.block", blockIdent);
             if (!asm.GetManifestResourceNames().Contains(file))
                 throw new Exception("MISSING BLOCK FILE " + file);
 

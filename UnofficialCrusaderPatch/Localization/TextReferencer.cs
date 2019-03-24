@@ -25,10 +25,8 @@ namespace UCP
             }
         }
 
-        public static void SetText(TextBlock tb, string ident)
+        public static void SetText(TextBlock tb, string text)
         {
-            string text = Localization.Get(ident);
-
             int last = 0, index = 0;
             while (index < text.Length)
             {

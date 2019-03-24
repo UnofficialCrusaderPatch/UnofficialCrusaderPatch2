@@ -13,7 +13,10 @@ namespace IDAParser
         {
             try
             {
-                ParseAll();
+                //ParseAll();
+
+                string ucpPath = Directory.GetCurrentDirectory() + "../../../../UnofficialCrusaderPatch/AICs";
+                UpdateAICs(Path.GetFullPath(ucpPath));
             }
             catch (Exception e)
             {
@@ -21,6 +24,25 @@ namespace IDAParser
             }
 
             Console.ReadLine();
+        }
+
+        static void UpdateAICs(string folder)
+        {
+            foreach(string file in Directory.EnumerateFiles(folder, "*.aic"))
+            {
+                AICCollection aicc;
+                using (FileStream fs = new FileStream(file, FileMode.Open))
+                {
+                    aicc = new AICCollection(fs);
+                }
+
+
+                using (FileStream fs = new FileStream(file, FileMode.Create))
+                {
+                    aicc.Write(fs);
+                }
+                Console.WriteLine(file);
+            }
         }
 
         static void ParseAll()
