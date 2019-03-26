@@ -73,6 +73,7 @@ namespace UCP.Patching
 
         static void DoChanges(string filePath, bool xtreme, Percentage perc)
         {
+            fails.Clear();
             SectionEditor.Reset();
 
             // only take binary changes

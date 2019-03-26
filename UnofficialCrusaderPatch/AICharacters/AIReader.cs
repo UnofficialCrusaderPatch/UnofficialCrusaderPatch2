@@ -18,7 +18,7 @@ namespace UCP.AICharacters
 
         public AIReader(Stream stream)
         {
-            sr = new StreamReader(stream, Encoding.ASCII, true);
+            sr = new StreamReader(stream, Encoding.Default, true);
         }
 
         public void Dispose()

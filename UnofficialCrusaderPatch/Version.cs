@@ -173,7 +173,7 @@ namespace UCP
             */
 
             // ai1_buytable 0x01165C78
-            new Change("ai_buy", ChangeType.Bugfix)
+            /*new Change("ai_buy", ChangeType.Bugfix)
             {
                 new DefaultHeader("ai_buy")
                 {
@@ -186,7 +186,7 @@ namespace UCP
                     BinHook.CreateEdit("ai_wepbuy_emir", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4C99AB, runtime: 023FE898 + 0x9C
                     BinHook.CreateEdit("ai_wepbuy_abbot", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4CA95B, runtime: 023FF328 + 0x9C
                 }
-            },
+            },*/
 
             /*
              *  IMPROVE WOOD BUYING

@@ -1,4 +1,36 @@
-﻿Name
+﻿// ======================
+//         2.12
+// ======================
+
+ui_AIC
+{
+	"AIC"
+}
+
+ui_aicExport
+{
+	"Export"
+}
+
+ui_aicExport_success
+{
+	"Erfolgreich exportiert."
+}
+
+ui_aicHint
+{
+	"Exportiert die .aic-Datei aus dem Installer in das Crusader-Verzeichnis."
+}
+
+
+
+
+
+// ======================
+//         1.00
+// ======================
+
+Name
 {
 	"Inoffizieller Crusader Patcher"
 }
@@ -765,31 +797,3 @@ aiv_evreyimproved_descr
 
 
 
-// ======================
-//         2.12
-// ======================
-
-
-
-
-
-
-ui_AIC
-{
-	"AIC"
-}
-
-ui_aicExport
-{
-	"Export"
-}
-
-ui_aicExport_success
-{
-	"Erfolgreich exportiert."
-}
-
-ui_aicHint
-{
-	"Exportiert die .aic-Datei aus dem Installer in das Crusader-Verzeichnis."
-}

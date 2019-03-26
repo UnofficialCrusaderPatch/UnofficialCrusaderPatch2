@@ -13,10 +13,10 @@ namespace IDAParser
         {
             try
             {
-                //ParseAll();
+                ParseAll();
 
-                string ucpPath = Directory.GetCurrentDirectory() + "../../../../UnofficialCrusaderPatch/AICs";
-                UpdateAICs(Path.GetFullPath(ucpPath));
+                //string ucpPath = Directory.GetCurrentDirectory() + "../../../../UnofficialCrusaderPatch/AICs";
+                //UpdateAICs(Path.GetFullPath(ucpPath));
             }
             catch (Exception e)
             {

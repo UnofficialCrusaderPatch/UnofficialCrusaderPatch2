@@ -1,4 +1,38 @@
-﻿Name
+﻿// ======================
+//         2.12
+// ======================
+
+ui_AIC
+{
+	"AIC"
+}
+
+ui_aicExport
+{
+	"Export"
+}
+
+ui_aicExport_success
+{
+	"Exported successfully."
+}
+
+ui_aicHint
+{
+	"Exports the .aic-file from the installer into the crusader folder."
+}
+
+
+
+
+
+// ======================
+//         1.00
+// ======================
+
+
+
+Name
 {
 	"Nieoficjalna aktualizacja do Krzyżowca"
 }

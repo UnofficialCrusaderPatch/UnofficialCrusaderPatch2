@@ -180,13 +180,13 @@ namespace UCP.AICharacters
         public int Unknown049;
 
         // Index: 50 Hex: 0xC8
-        public int Unknown050;
+        public Resource BlacksmithSetting;
 
         // Index: 51 Hex: 0xCC
-        public int Unknown051;
+        public Resource FletcherSetting;
 
         // Index: 52 Hex: 0xD0
-        public int Unknown052;
+        public Resource PoleturnerSetting;
 
         // Index: 53 Hex: 0xD4
         public Resource SellResource01;
@@ -414,7 +414,7 @@ namespace UCP.AICharacters
         public int AttForceBase;
 
         // Index: 126 Hex: 0x1F8
-        [RWComment("The maximum random amount of additional troops in an attack")]
+        [RWComment("The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)")]
         public int AttForceRandom;
 
         // Index: 127 Hex: 0x1FC
