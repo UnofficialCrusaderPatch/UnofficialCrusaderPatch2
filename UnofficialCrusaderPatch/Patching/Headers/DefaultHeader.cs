@@ -19,10 +19,11 @@ namespace UCP.Patching
         bool defaultIsEnabled;
         public bool DefaultIsEnabled => defaultIsEnabled;
 
-        public DefaultHeader(string descrIdent, bool suggested = true)
+        public DefaultHeader(string descrIdent, bool suggested = true, bool noLocalization = false)
         {
             this.descrIdent = descrIdent;
             this.defaultIsEnabled = suggested;
+            this.NoLocalization = noLocalization;
         }
 
         #region UI

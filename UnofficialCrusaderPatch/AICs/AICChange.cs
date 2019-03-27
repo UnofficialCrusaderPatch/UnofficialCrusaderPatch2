@@ -19,18 +19,15 @@ namespace UCP.Patching
         AICCollection collection;
         public AICCollection Collection => collection;
 
-        public AICChange(string title, AICCollection coll, bool enabledDefault = false)
+        public AICChange(string title, AICCollection coll, bool enabledDefault = false, bool isIntern = false)
             : base(title, ChangeType.AIC, enabledDefault, false)
         {
             this.NoLocalization = true;
             this.collection = coll;
+            this.intern = isIntern;
 
             string descr = collection.Header.DescrByIndex(Localization.LanguageIndex);
-
-            this.Add(new DefaultHeader(descr)
-            {
-                NoLocalization = true
-            });
+            this.Add(new DefaultHeader(descr, true, true));
         }
 
         #region UI
@@ -80,6 +77,32 @@ namespace UCP.Patching
 
         #region Loading Files
 
+        static bool TryLoadCollection(string path, bool resource, out AICCollection result)
+        {
+            try
+            {
+                Stream stream;
+                if (resource)
+                {
+                    Assembly asm = Assembly.GetExecutingAssembly();
+                    stream = asm.GetManifestResourceStream(path);
+                }
+                else
+                {
+                    stream = new FileStream(path, FileMode.Open);
+                }
+
+                result = new AICCollection(stream);
+                return true;
+            }
+            catch (FormatException e)
+            {
+                Debug.Show(path + "\n" + e.Message);
+            }
+            result = null;
+            return false;
+        }
+
         /// <summary> Loads .aic files from the given path and setup directory. </summary>
         public static void LoadFiles(string cpath)
         {
@@ -97,25 +120,22 @@ namespace UCP.Patching
                 if (!str.StartsWith(searchString))
                     continue;
 
-                using (Stream fs = asm.GetManifestResourceStream(str))
-                {
-                    string name = str.Substring(searchString.Length);
+                if (!TryLoadCollection(str, true, out AICCollection collection))
+                    continue;
 
-                    bool isUCPFile = name == ucpFile;
-                    AICChange change = new AICChange(name, new AICCollection(fs), isUCPFile)
-                    {
-                        intern = true,
-                    };
-                    
-                    if (isUCPFile)
-                    {
-                        Version.Changes.Insert(beforeCount, change);
-                    }
-                    else
-                    {
-                        Version.Changes.Add(change);
-                    }
+                string name = str.Substring(searchString.Length);
+                bool isUCPFile = name == ucpFile;
+
+                AICChange change = new AICChange(name, collection, isUCPFile, true);
+                if (isUCPFile)
+                {
+                    Version.Changes.Insert(beforeCount, change);
                 }
+                else
+                {
+                    Version.Changes.Add(change);
+                }
+
             }
 
 
@@ -123,12 +143,11 @@ namespace UCP.Patching
             if (Directory.Exists(aicFolder))
                 foreach (string filePath in Directory.EnumerateFiles(aicFolder, "*.aic"))
                 {
-                    using (FileStream fs = new FileStream(filePath, FileMode.Open))
-                    {
-                        AICCollection collection = new AICCollection(fs);
-                        AICChange change = new AICChange(Path.GetFileName(filePath), collection);
-                        Version.Changes.Add(change);
-                    }
+                    if (!TryLoadCollection(filePath, false, out AICCollection collection))
+                        continue;
+
+                    AICChange change = new AICChange(Path.GetFileName(filePath), collection);
+                    Version.Changes.Add(change);
                 }
         }
 

@@ -48,7 +48,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -75,6 +74,7 @@
     <Compile Include="AICharacters\PersonalityEnums\Resources.cs" />
     <Compile Include="AICharacters\PersonalityEnums\SiegeEngines.cs" />
     <Compile Include="AICharacters\PersonalityEnums\TargetingType.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\WorkshopSettings.cs" />
     <Compile Include="AICharacters\RWComment.cs" />
     <Compile Include="AICharacters\PersonalityEnums\Units.cs" />
     <Compile Include="Debug.cs" />

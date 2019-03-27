@@ -78,6 +78,9 @@
     <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Units.cs">
       <Link>AICharacters\PersonalityEnums\Units.cs</Link>
     </Compile>
+    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\WorkshopSettings.cs">
+      <Link>AICharacters\PersonalityEnums\WorkshopSettings.cs</Link>
+    </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\AICharacters\RWComment.cs">
       <Link>AICharacters\RWComment.cs</Link>
     </Compile>

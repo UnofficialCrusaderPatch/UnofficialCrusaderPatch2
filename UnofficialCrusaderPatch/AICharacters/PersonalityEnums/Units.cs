@@ -34,11 +34,11 @@ namespace UCP.AICharacters
     public enum DiggingUnit
     {
         None = 0x00,
-        EuropArcher = 0x05,
+        EuropArcher = 0x16,
         Spearman = 0x18,
         Pikeman = 0x19,
         Maceman = 0x1A,
-        Engineer = 0x1D,
+        Engineer = 0x1E,
         Slave = 0x47
     }
 

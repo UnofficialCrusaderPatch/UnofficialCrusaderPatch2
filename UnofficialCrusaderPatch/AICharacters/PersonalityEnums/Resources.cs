@@ -34,6 +34,5 @@ namespace UCP.AICharacters
         Swords = 0x16,
         LeatherArmors = 0x17,
         IronArmors = 0x18,
-
     }
 }

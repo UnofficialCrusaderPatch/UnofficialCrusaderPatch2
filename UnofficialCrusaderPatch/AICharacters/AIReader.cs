@@ -104,9 +104,18 @@ namespace UCP.AICharacters
                     int startIndex = line.IndexOf('=');
                     if (startIndex < 0)
                         throw new FormatException("=");
-
+                    
                     string valueStr = line.Substring(startIndex + 1).Trim();
-                    value = func?.Invoke(valueStr, fieldType);
+                    
+                    try
+                    {
+                        value = func.Invoke(valueStr, fieldType);
+                    }
+                    catch
+                    {
+                        string msg = string.Format("Error in line {0} when parsing '{1}' to type {2}.", lineNum, valueStr, fieldType.Name);
+                        throw new FormatException(msg);
+                    }
                 }
                 else
                 {
@@ -126,6 +135,5 @@ namespace UCP.AICharacters
             { typeof(string), (v, vt) => v },
             { typeof(Enum), (v, vt) => Enum.Parse(vt, v, true) },
         };
-
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Reflection;
 
 namespace UCP.AICharacters
 {
@@ -41,14 +42,14 @@ namespace UCP.AICharacters
                 aiw.Write(header);
                 aiw.WriteLine();
 
-                foreach(AICharacter c in this.Values)
+                foreach (AICharacter c in this.Values)
                 {
                     aiw.Write(c);
                     aiw.WriteLine();
                 }
             }
         }
-        
+
         /// <summary>
         /// Reads ASCII encoded AICharacters into this collection from the given stream
         /// </summary>

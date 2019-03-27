@@ -180,13 +180,13 @@ namespace UCP.AICharacters
         public int Unknown049;
 
         // Index: 50 Hex: 0xC8
-        public Resource BlacksmithSetting;
+        public BlacksmithSetting BlacksmithSetting;
 
         // Index: 51 Hex: 0xCC
-        public Resource FletcherSetting;
+        public FletcherSetting FletcherSetting;
 
         // Index: 52 Hex: 0xD0
-        public Resource PoleturnerSetting;
+        public PoleturnerSetting PoleturnerSetting;
 
         // Index: 53 Hex: 0xD4
         public Resource SellResource01;
@@ -350,10 +350,12 @@ namespace UCP.AICharacters
         public Unit DefUnit8;
 
         // Index: 105 Hex: 0x1A4
-        public int RaidUnitsMax;
+        [RWComment("Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]")]
+        public int RaidUnitsBase;
 
         // Index: 106 Hex: 0x1A8
-        public int Unknown106;
+        [RWComment("Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]")]
+        public int RaidUnitsRandom;
 
         // Index: 107 Hex: 0x1AC
         public Unit RaidUnit1;
@@ -414,7 +416,7 @@ namespace UCP.AICharacters
         public int AttForceBase;
 
         // Index: 126 Hex: 0x1F8
-        [RWComment("The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)")]
+        [RWComment("The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)")]
         public int AttForceRandom;
 
         // Index: 127 Hex: 0x1FC
