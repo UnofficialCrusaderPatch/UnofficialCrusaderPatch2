@@ -85,37 +85,36 @@ namespace UCP.AICharacters
         public FarmBuilding Farm8;
 
         // Index: 20 Hex: 0x50
-        public int Unknown020;
+        [RWComment("The AI builds one farm for each amount of this population value. (Also check MaxFarms)")]
+        public int PopulationPerFarm;
 
         // Index: 21 Hex: 0x54
-        public int Unknown021;
+        public int PopulationPerWoodcutter;
 
         // Index: 22 Hex: 0x58
-        public int Unknown022;
+        public int PopulationPerQuarry;
 
         // Index: 23 Hex: 0x5C
-        [RWComment("AIs with mines have a value of >= 10 there, don't know yet. But each value from 1 to 10 let's the rat build one iron mine.")]
-        public int MaxIronMines;
+        public int PopulationPerIronmine;
 
         // Index: 24 Hex: 0x60
-        [RWComment("Some AIs with pitch have a value higher than 10 here, e.g. Pig with 20. Caliph has 7 and builds a lot. Wolf has a 15 and builds less.")]
-        public int MaxPitchRigs;
+        public int PopulationPerPitchrig;
 
         // Index: 25 Hex: 0x64
-        [RWComment("Philipp has a 1 here, but does not build any Quarries.")]
         public int MaxQuarries;
 
         // Index: 26 Hex: 0x68
-        public int Unknown026;
+        public int MaxIronmines;
 
         // Index: 27 Hex: 0x6C
-        public int Unknown027;
+        public int MaxWoodcutters;
 
         // Index: 28 Hex: 0x70
-        public int Unknown028;
+        public int MaxPitchrigs;
 
         // Index: 29 Hex: 0x74
-        public int Unknown029;
+        [RWComment("The maximum amount of farms the AI builds. (Also check PopulationPerFarm)")]
+        public int MaxFarms;
 
         // Index: 30 Hex: 0x78
         public int Unknown030;
@@ -140,6 +139,7 @@ namespace UCP.AICharacters
         public int MinimumWheat;
 
         // Index: 37 Hex: 0x94
+        [RWComment("unclear")]
         public int MinimumHop;
 
         // Index: 38 Hex: 0x98
