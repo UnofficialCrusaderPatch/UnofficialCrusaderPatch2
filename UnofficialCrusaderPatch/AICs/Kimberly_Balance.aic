@@ -7,10 +7,10 @@
 
 AIFileHeader
 {
-	DescrGer	= Ausgelegt so nah wie möglich an der Personalität jeder KI zu bleiben. https://github.com/ByBurton/
-	DescrEng	= A balance file aimed to stay near the character's personality. https://github.com/ByBurton/
-	DescrPol	= A balance file aimed to stay near the character's personality. https://github.com/ByBurton/
-	DescrRus	= A balance file aimed to stay near the character's personality. https://github.com/ByBurton/
+	DescrGer	= Ausgelegt so nah wie möglich an der Personalität jeder KI zu bleiben. https:
+	DescrEng	= A balance file aimed to stay near the character's personality. https:
+	DescrPol	= A balance file aimed to stay near the character's personality. https:
+	DescrRus	= A balance file aimed to stay near the character's personality. https:
 }
 
 AICharacter
@@ -123,8 +123,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 60
-		Unknown106	= 10
+		RaidUnitsBase	= 60	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 10	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Monk
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -144,7 +144,7 @@ AICharacter
 		Unknown123	= 5
 		Unknown124	= 4
 		AttForceBase	= 50	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 10	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 10	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 40
 		Unknown128	= 80
 		Unknown129	= 100
@@ -300,8 +300,8 @@ AICharacter
 		DefUnit6	= ArabArcher
 		DefUnit7	= ArabSwordsman
 		DefUnit8	= ArabArcher
-		RaidUnitsMax	= 60
-		Unknown106	= 30
+		RaidUnitsBase	= 60	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 30	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Slave
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -321,7 +321,7 @@ AICharacter
 		Unknown123	= 2
 		Unknown124	= 3
 		AttForceBase	= 15	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 10	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 10	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 70
 		Unknown128	= 100
 		Unknown129	= 100
@@ -477,8 +477,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 40
-		Unknown106	= 10
+		RaidUnitsBase	= 40	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 10	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= ArabSwordsman
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -498,7 +498,7 @@ AICharacter
 		Unknown123	= 3
 		Unknown124	= 4
 		AttForceBase	= 30	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 10	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 10	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 20
 		Unknown128	= 80
 		Unknown129	= 100
@@ -600,7 +600,7 @@ AICharacter
 		MaxResourceVariance	= 4	// added to all max resource values?
 		Unknown049	= 200
 		BlacksmithSetting	= Swords
-		FletcherSetting	= -999
+		FletcherSetting	= Both
 		PoleturnerSetting	= Pikes
 		SellResource01	= None
 		SellResource02	= None
@@ -654,8 +654,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 4
-		Unknown106	= 0
+		RaidUnitsBase	= 4	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 0	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Knight
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -675,7 +675,7 @@ AICharacter
 		Unknown123	= 2
 		Unknown124	= 6
 		AttForceBase	= 30	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 4	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 4	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 20
 		Unknown128	= 50
 		Unknown129	= 100
@@ -831,8 +831,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 16
-		Unknown106	= 4
+		RaidUnitsBase	= 16	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 4	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Knight
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -852,7 +852,7 @@ AICharacter
 		Unknown123	= 1
 		Unknown124	= 4
 		AttForceBase	= 10	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 20	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 20	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 10
 		Unknown128	= 50
 		Unknown129	= 100
@@ -1008,8 +1008,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 10
-		Unknown106	= 5
+		RaidUnitsBase	= 10	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 5	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Assassin
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -1029,7 +1029,7 @@ AICharacter
 		Unknown123	= 0
 		Unknown124	= 4
 		AttForceBase	= 40	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 0	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 0	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 10
 		Unknown128	= 50
 		Unknown129	= 100
@@ -1132,7 +1132,7 @@ AICharacter
 		Unknown049	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
-		PoleturnerSetting	= -999
+		PoleturnerSetting	= Both
 		SellResource01	= None
 		SellResource02	= Hop
 		SellResource03	= None
@@ -1185,8 +1185,8 @@ AICharacter
 		DefUnit6	= EuropArcher
 		DefUnit7	= EuropArcher
 		DefUnit8	= Pikeman
-		RaidUnitsMax	= 4
-		Unknown106	= 4
+		RaidUnitsBase	= 4	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 4	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Knight
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -1206,7 +1206,7 @@ AICharacter
 		Unknown123	= 1
 		Unknown124	= 4
 		AttForceBase	= 10	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 20	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 20	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 40
 		Unknown128	= 40
 		Unknown129	= 100
@@ -1362,8 +1362,8 @@ AICharacter
 		DefUnit6	= Crossbowman
 		DefUnit7	= Maceman
 		DefUnit8	= None
-		RaidUnitsMax	= 20
-		Unknown106	= 5
+		RaidUnitsBase	= 20	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 5	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Maceman
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -1383,7 +1383,7 @@ AICharacter
 		Unknown123	= 2
 		Unknown124	= 3
 		AttForceBase	= 10	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 70	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 70	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 10
 		Unknown128	= 60
 		Unknown129	= 100
@@ -1539,8 +1539,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 20
-		Unknown106	= 15
+		RaidUnitsBase	= 20	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 15	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Spearman
 		RaidUnit2	= Spearman
 		RaidUnit3	= EuropArcher
@@ -1560,7 +1560,7 @@ AICharacter
 		Unknown123	= 0
 		Unknown124	= 3
 		AttForceBase	= 20	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 40	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 40	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 15
 		Unknown128	= 50
 		Unknown129	= 100
@@ -1716,8 +1716,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 25
-		Unknown106	= 4
+		RaidUnitsBase	= 25	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 4	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= EuropArcher
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -1737,7 +1737,7 @@ AICharacter
 		Unknown123	= 2
 		Unknown124	= 5
 		AttForceBase	= 20	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 5	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 5	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 10
 		Unknown128	= 10
 		Unknown129	= 100
@@ -1893,8 +1893,8 @@ AICharacter
 		DefUnit6	= ArabArcher
 		DefUnit7	= FireThrower
 		DefUnit8	= Assassin
-		RaidUnitsMax	= 24
-		Unknown106	= 5
+		RaidUnitsBase	= 24	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 5	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= ArabSwordsman
 		RaidUnit2	= Assassin
 		RaidUnit3	= None
@@ -1914,7 +1914,7 @@ AICharacter
 		Unknown123	= 5
 		Unknown124	= 3
 		AttForceBase	= 50	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 10	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 10	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 8
 		Unknown128	= 80
 		Unknown129	= 100
@@ -2070,8 +2070,8 @@ AICharacter
 		DefUnit6	= Assassin
 		DefUnit7	= Maceman
 		DefUnit8	= None
-		RaidUnitsMax	= 14
-		Unknown106	= 4
+		RaidUnitsBase	= 14	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 4	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Maceman
 		RaidUnit2	= Maceman
 		RaidUnit3	= Maceman
@@ -2091,7 +2091,7 @@ AICharacter
 		Unknown123	= 5
 		Unknown124	= 4
 		AttForceBase	= 50	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 20	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 20	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 50
 		Unknown128	= 80
 		Unknown129	= 100
@@ -2247,8 +2247,8 @@ AICharacter
 		DefUnit6	= Slinger
 		DefUnit7	= Slinger
 		DefUnit8	= Spearman
-		RaidUnitsMax	= 30
-		Unknown106	= 10
+		RaidUnitsBase	= 30	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 10	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Slave
 		RaidUnit2	= Slave
 		RaidUnit3	= Slave
@@ -2268,7 +2268,7 @@ AICharacter
 		Unknown123	= 1
 		Unknown124	= 3
 		AttForceBase	= 30	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 10	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 10	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 30
 		Unknown128	= 50
 		Unknown129	= 100
@@ -2424,8 +2424,8 @@ AICharacter
 		DefUnit6	= ArabSwordsman
 		DefUnit7	= FireThrower
 		DefUnit8	= ArabArcher
-		RaidUnitsMax	= 32
-		Unknown106	= 10
+		RaidUnitsBase	= 32	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 10	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Slinger
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -2445,7 +2445,7 @@ AICharacter
 		Unknown123	= 0
 		Unknown124	= 3
 		AttForceBase	= 10	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 20	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 20	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 5
 		Unknown128	= 30
 		Unknown129	= 100
@@ -2601,8 +2601,8 @@ AICharacter
 		DefUnit6	= HorseArcher
 		DefUnit7	= HorseArcher
 		DefUnit8	= None
-		RaidUnitsMax	= 100
-		Unknown106	= 10
+		RaidUnitsBase	= 100	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 10	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= HorseArcher
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -2622,7 +2622,7 @@ AICharacter
 		Unknown123	= 4
 		Unknown124	= 4
 		AttForceBase	= 60	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 66	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 66	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 30
 		Unknown128	= 80
 		Unknown129	= 100
@@ -2724,7 +2724,7 @@ AICharacter
 		MaxResourceVariance	= 5	// added to all max resource values?
 		Unknown049	= 200
 		BlacksmithSetting	= Swords
-		FletcherSetting	= -999
+		FletcherSetting	= Both
 		PoleturnerSetting	= Pikes
 		SellResource01	= None
 		SellResource02	= None
@@ -2778,8 +2778,8 @@ AICharacter
 		DefUnit6	= EuropArcher
 		DefUnit7	= ArabArcher
 		DefUnit8	= None
-		RaidUnitsMax	= 10
-		Unknown106	= 20
+		RaidUnitsBase	= 10	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 20	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= HorseArcher
 		RaidUnit2	= HorseArcher
 		RaidUnit3	= None
@@ -2799,7 +2799,7 @@ AICharacter
 		Unknown123	= 4
 		Unknown124	= 5
 		AttForceBase	= 88	// The base amount of troops with which this AI attacks
-		AttForceRandom	= 88	// The maximum random amount of additional troops in an attack (this is not the increasement of troops each attack!)
+		AttForceRandom	= 88	// The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
 		Unknown127	= 30
 		Unknown128	= 80
 		Unknown129	= 100

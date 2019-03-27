@@ -123,8 +123,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 30
-		RaidUnitsMin	= 10
+		RaidUnitsBase	= 30	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 10	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Monk
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -300,8 +300,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 30
-		RaidUnitsMin	= 30
+		RaidUnitsBase	= 30	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 30	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Slave
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -477,8 +477,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 30
-		RaidUnitsMin	= 10
+		RaidUnitsBase	= 30	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 10	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= ArabSwordsman
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -654,8 +654,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 4
-		RaidUnitsMin	= 0
+		RaidUnitsBase	= 4	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 0	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Knight
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -831,8 +831,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 16
-		RaidUnitsMin	= 4
+		RaidUnitsBase	= 16	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 4	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Knight
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -1008,8 +1008,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 5
-		RaidUnitsMin	= 5
+		RaidUnitsBase	= 5	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 5	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Assassin
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -1185,8 +1185,8 @@ AICharacter
 		DefUnit6	= EuropArcher
 		DefUnit7	= EuropArcher
 		DefUnit8	= EuropArcher
-		RaidUnitsMax	= 4
-		RaidUnitsMin	= 4
+		RaidUnitsBase	= 4	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 4	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Knight
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -1362,8 +1362,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 10
-		RaidUnitsMin	= 5
+		RaidUnitsBase	= 10	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 5	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Maceman
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -1539,8 +1539,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 10
-		RaidUnitsMin	= 15
+		RaidUnitsBase	= 10	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 15	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Spearman
 		RaidUnit2	= Spearman
 		RaidUnit3	= EuropArcher
@@ -1716,8 +1716,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 10
-		RaidUnitsMin	= 4
+		RaidUnitsBase	= 10	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 4	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= EuropArcher
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -1893,8 +1893,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 10
-		RaidUnitsMin	= 5
+		RaidUnitsBase	= 10	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 5	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= HorseArcher
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -2070,8 +2070,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 10
-		RaidUnitsMin	= 4
+		RaidUnitsBase	= 10	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 4	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Maceman
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -2247,8 +2247,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 30
-		RaidUnitsMin	= 10
+		RaidUnitsBase	= 30	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 10	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Slave
 		RaidUnit2	= Slave
 		RaidUnit3	= Slave
@@ -2424,8 +2424,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 20
-		RaidUnitsMin	= 10
+		RaidUnitsBase	= 20	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 10	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= Slinger
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -2601,8 +2601,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 30
-		RaidUnitsMin	= 10
+		RaidUnitsBase	= 30	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 10	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= HorseArcher
 		RaidUnit2	= None
 		RaidUnit3	= None
@@ -2778,8 +2778,8 @@ AICharacter
 		DefUnit6	= None
 		DefUnit7	= None
 		DefUnit8	= None
-		RaidUnitsMax	= 5
-		RaidUnitsMin	= 20
+		RaidUnitsBase	= 5	// Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
+		RaidUnitsRandom	= 20	// Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
 		RaidUnit1	= HorseArcher
 		RaidUnit2	= HorseArcher
 		RaidUnit3	= None
