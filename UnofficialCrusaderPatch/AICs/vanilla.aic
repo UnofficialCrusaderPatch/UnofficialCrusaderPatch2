@@ -1,9 +1,9 @@
 AIFileHeader
 {
-	DescrGer	= Dies is die unge�nderte .aic-Datei von Crusader.
+	DescrGer	= Dies is die ungeänderte .aic-Datei von Crusader.
 	DescrEng	= This is the .aic file from vanilla Crusader.
 	DescrPol	= 
-	DescrRus	= 
+	DescrRus	= Это файл .aic от ванильной Stronghold Crusader.
 }
 
 /*
