@@ -171,5 +171,43 @@ namespace UCP.AICharacters
 
             w.CloseSec();
         }
+
+
+        public void WriteMarkdown(Type type, string name = null, string comment = null)
+        {
+            if (type == null)
+                throw new ArgumentNullException("type");
+
+            sb.Append("| ");
+            if (!String.IsNullOrWhiteSpace(name))
+            {
+                sb.Append(name);
+            }
+
+            sb.Append(" | ");
+            sb.Append(type.Name);
+            sb.Append(" | ");
+
+            if (!String.IsNullOrWhiteSpace(comment))
+            {
+                sb.Append(comment);
+            }
+            sb.Append(" |");
+
+            this.WriteLine(sb.ToString());
+            sb.Clear();
+
+            if (!writeFuncs.ContainsKey(type) && !writeFuncs.ContainsKey(type.BaseType))
+            {
+                foreach (FieldInfo fi in type.GetFields(Flags))
+                {
+                    // get comment from attribute
+                    object[] attributes = fi.GetCustomAttributes(typeof(RWComment), false);
+                    string cmt = attributes.Length > 0 ? ((RWComment)attributes[0]).Comment : null;
+
+                    this.WriteMarkdown(fi.FieldType, fi.Name, cmt);
+                }
+            }
+        }
     }
 }

@@ -14,7 +14,13 @@ namespace IDAParser
             try
             {
                 ParseAll();
-                
+
+                using (FileStream fs = new FileStream("wiki.md", FileMode.Create))
+                using (AIWriter aiw = new AIWriter(fs))
+                {
+                    aiw.WriteMarkdown(typeof(AIPersonality));
+                }
+
                 //string ucpPath = Directory.GetCurrentDirectory() + "../../../../UnofficialCrusaderPatch/AICs";
                 //UpdateAICs(Path.GetFullPath(ucpPath));
             }

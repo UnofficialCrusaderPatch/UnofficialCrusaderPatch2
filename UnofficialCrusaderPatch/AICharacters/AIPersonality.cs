@@ -42,11 +42,11 @@ namespace UCP.AICharacters
         public int Unknown005;
 
         // Index: 6 Hex: 0x18
-        [RWComment("(0 - 10000) Below this value, the AI sells more stuff than usual to get money.")]
+        [RWComment("Values range from 0 to 10000, where 100 popularity equals 10000. Below this value, the AI sells more stuff than usual to get money.")]
         public int CriticalPopularity;
 
         // Index: 7 Hex: 0x1C
-        [RWComment("Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.")]
+        [RWComment("Below this value the AI sets taxes to zero until it reaches 'HighestPopularity' again.")]
         public int LowestPopularity;
 
         // Index: 8 Hex: 0x20
@@ -63,6 +63,7 @@ namespace UCP.AICharacters
         public int Unknown011;
 
         // Index: 12 Hex: 0x30
+        [RWComment("An array of farm slots, which the AI builds in the given sequence.")]
         public FarmBuilding Farm1;
 
         // Index: 13 Hex: 0x34
