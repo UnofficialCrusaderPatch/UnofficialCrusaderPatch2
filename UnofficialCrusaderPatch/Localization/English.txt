@@ -23,6 +23,30 @@ ui_aicHint
 }
 
 
+ui_welcometext
+{
+"This is an unofficial patch for Stronghold Crusader.
+The project ist available as open-source on [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
+
+Any Crusader version is potentially supported, but since the changes where &
+derived with the 1.41 Steam-Version, incompatibilities may appear. The setup &
+will then show error messages. The installed patch version is shown in the &
+bottom left corner of the main menu. Before any changes, backup files will &
+be created. These can be restored via the 'Uninstall'-button or manually.
+
+At this point I would like to thank the Stronghold community for supporting &
+me so enthusiastically.
+
+Special thanks go to:
+[FireFly Studios](https://fireflyworlds.com/) for the creation of the Stronghold series
+[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), because he made me remember Stronghold
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) for the polish translation
+[Lolasik011](https://github.com/Lolasik011) for the russian translation
+[Evrey](https://github.com/Evrey) for his AI castles
+[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) for his AI castles
+[PitchNeeded](https://github.com/PitchNeeded) for his AI castles
+[ByBurton](https://github.com/ByBurton) for the AICE and help with the AIC parameters."
+}
 
 
 
@@ -554,29 +578,6 @@ as well as sending them past other enemies' castles to gather."
 
 
 
-ui_welcometext
-{
-"This is an unofficial patch for Stronghold Crusader.
-The project ist available as open-source on [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
-
-Any Crusader version is potentially supported, but since the changes where &
-derived with the 1.41 Steam-Version, incompatibilities may appear. The setup &
-will then show error messages. The installed patch version is shown in the &
-bottom left corner of the main menu. Before any changes, backup files will &
-be created. These can be restored via the 'Uninstall'-button or manually.
-
-At this point I would like to thank the Stronghold community for supporting &
-me so enthusiastically.
-
-Special thanks go to:
-[FireFly Studios](https://fireflyworlds.com/) for the creation of the Stronghold series
-[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), because he made me remember Stronghold
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) for the polish translation
-[Lolasik011](https://github.com/Lolasik011) for the russian translation
-[Evrey](https://github.com/Evrey) for his AI castles
-[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) for his AI castles
-[PitchNeeded](https://github.com/PitchNeeded) for his AI castles"
-}
 
 
 ai_assaultswitch

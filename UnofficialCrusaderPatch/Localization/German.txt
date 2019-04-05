@@ -22,6 +22,31 @@ ui_aicHint
 	"Exportiert die .aic-Datei aus dem Installer in das Crusader-Verzeichnis."
 }
 
+ui_welcometext
+{
+"Dies ist ein inoffizieller Patch für Stronghold Crusader.
+Das Projekt ist Open-Source auf [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch) zu finden.
+
+Potenziell wird jede Crusader-Version unterstützt, die Änderungen wurden &
+allerdings anhand der 1.41 Steam-Version hergeleitet. Im Falle von Versions-&
+Inkompatibilität wird der Setup Fehlermeldungen zeigen. Die installierte Patch-&
+Version wird unten links im Hauptmenü angezeigt. Vor jeglichen Änderungen werden &
+Backup-Dateien erstellt, die über den 'Deinstallieren'-Button oder manuell &
+wiederhergestellt werden können.
+
+An dieser Stelle möchte ich der Stronghold-Community danken die mich in &
+diesem Projekt so enthusiastisch unterstützt hat.
+
+Besonderer Dank geht an:
+FireFly Studios für die Stronghold-Serie
+[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), da er mich Stronghold hat erinnern lassen
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) für die polnische Übersetzung
+[Lolasik011](https://github.com/Lolasik011) für die russische Übersetzung
+[Evrey](https://github.com/Evrey) für seine AI-Burgen
+[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) für seine AI-Burgen
+[PitchNeeded](https://github.com/PitchNeeded) für seine AI-Burgen
+[ByBurton](https://github.com/ByBurton) für den AICE und Hilfe mit den AIC Parametern"
+}
 
 
 
@@ -552,30 +577,6 @@ zum Sammeln."
 //      2.08
 // ================
 
-ui_welcometext
-{
-"Dies ist ein inoffizieller Patch für Stronghold Crusader.
-Das Projekt ist Open-Source auf [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch) zu finden.
-
-Potenziell wird jede Crusader-Version unterstützt, die Änderungen wurden &
-allerdings anhand der 1.41 Steam-Version hergeleitet. Im Falle von Versions-&
-Inkompatibilität wird der Setup Fehlermeldungen zeigen. Die installierte Patch-&
-Version wird unten links im Hauptmenü angezeigt. Vor jeglichen Änderungen werden &
-Backup-Dateien erstellt, die über den 'Deinstallieren'-Button oder manuell &
-wiederhergestellt werden können.
-
-An dieser Stelle möchte ich der Stronghold-Community danken die mich in &
-diesem Projekt so enthusiastisch unterstützt hat.
-
-Besonderer Dank geht an:
-FireFly Studios für die Stronghold-Serie
-[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), da er mich Stronghold hat erinnern lassen
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) für die polnische Übersetzung
-[Lolasik011](https://github.com/Lolasik011) für die russische Übersetzung
-[Evrey](https://github.com/Evrey) für seine AI-Burgen
-[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) für seine AI-Burgen
-[PitchNeeded](https://github.com/PitchNeeded) für seine AI-Burgen"
-}
 
 ai_assaultswitch
 {
