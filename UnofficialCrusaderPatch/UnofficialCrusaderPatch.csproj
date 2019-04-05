@@ -1402,8 +1402,8 @@
     <EmbeddedResource Include="AIVs\PitchSiege\wolf6.aiv" />
     <EmbeddedResource Include="AIVs\PitchSiege\wolf7.aiv" />
     <EmbeddedResource Include="AIVs\PitchSiege\wolf8.aiv" />
-    <EmbeddedResource Include="AICs\Kimberly_Balance.aic" />
     <EmbeddedResource Include="AICs\UCP-Bugfix.aic" />
+    <EmbeddedResource Include="AICs\vanilla.aic" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />

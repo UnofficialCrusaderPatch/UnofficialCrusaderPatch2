@@ -14,8 +14,8 @@ namespace IDAParser
             try
             {
                 ParseAll();
-
-                string ucpPath = Directory.GetCurrentDirectory() + "../../../../UnofficialCrusaderPatch/AICs";
+                
+                //string ucpPath = Directory.GetCurrentDirectory() + "../../../../UnofficialCrusaderPatch/AICs";
                 //UpdateAICs(Path.GetFullPath(ucpPath));
             }
             catch (Exception e)

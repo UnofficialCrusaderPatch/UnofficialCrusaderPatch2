@@ -489,7 +489,7 @@ namespace UCP.AICharacters
         public Unit AttUnit2;
 
         // Index: 147 Hex: 0x24C
-        public int AttMaxUnit2;
+        public int AttUnit2Max;
 
         // Index: 148 Hex: 0x250
         public int AttMaxAssassins;

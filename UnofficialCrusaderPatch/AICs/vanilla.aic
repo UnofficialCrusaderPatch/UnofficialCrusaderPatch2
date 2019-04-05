@@ -1,31 +1,7 @@
 AIFileHeader
 {
-	DescrGer
-	{
-		Diese .aic behebt die folgenden Fehler und Macken der KIs:
-
-		- Die Ratte bemannt ihre Verteidigung wieder langsam
-		- Philipp besetzt seine Mauern auf Ratte-Niveau
-		- Friedrich, Marschall, Emir & Abt kaufen Ausrüstung
-		- Wazir kauft Brot in Not
-		- Nizar kauft Brot statt Äpfel
-		- Sultan kauft auch Käse & Brot
-		- Wazir strebt immer mindestens 5 Getreide im Lager an statt 2
-		- Wazir, Emir, Marschall & Philipp kaufen Nahrung & Getreide in 10er statt 20er Fuhren
-	}
-	DescrEng
-	{
-		This .aic fixes the following bugs and quirks of the AI:
-
-		- The Rat reinforces its defense again slowly
-		- Philipp has wall defenses on the niveau of The Rat
-		- Frederick, Marshal, Emir & The Abbot buy equipment
-		- Wazir buys bread in need
-		- Nizar buys bread instead of apples
-		- Sultan also buys Cheese & Bread
-		- Wazir always aims at at least 5 wheat in stock instead of 2
-		- Wazir, Emir, Marshal & Philipp buy food & wheat in stocks of 10 instead of 20
-	}
+	DescrGer	= Dies is die ungeänderte .aic-Datei von Crusader.
+	DescrEng	= This is the .aic file from vanilla Crusader.
 	DescrPol	= 
 	DescrRus	= 
 }
@@ -290,13 +266,13 @@ AICharacter
 		DefSiegeEngineBuildDelay	= 20
 		Unknown072	= 800
 		Unknown073	= 80
-		RecruitProbDefDefault	= 10
+		RecruitProbDefDefault	= 0
 		RecruitProbDefWeak	= 50
 		RecruitProbDefStrong	= 0
-		RecruitProbRaidDefault	= 45
+		RecruitProbRaidDefault	= 50
 		RecruitProbRaidWeak	= 50
 		RecruitProbRaidStrong	= 0
-		RecruitProbAttackDefault	= 45
+		RecruitProbAttackDefault	= 50
 		RecruitProbAttackWeak	= 0
 		RecruitProbAttackStrong	= 100
 		SortieUnitRangedMax	= 5
@@ -1318,8 +1294,8 @@ AICharacter
 		ResourceRebuildDelay	= 80
 		MaxFood	= 500
 		MinimumApples	= 20
-		MinimumCheese	= 20
-		MinimumBread	= 20
+		MinimumCheese	= -1
+		MinimumBread	= -1
 		MinimumWheat	= -1
 		MinimumHop	= -1
 		TradeAmountFood	= 10
@@ -1679,7 +1655,7 @@ AICharacter
 		MinimumWheat	= -1
 		MinimumHop	= -1
 		TradeAmountFood	= 10
-		TradeAmountEquipment	= 2
+		TradeAmountEquipment	= 0
 		Unknown040	= 22
 		Unknown041	= 10
 		Unknown042	= 40
@@ -1856,7 +1832,7 @@ AICharacter
 		MinimumBread	= 10
 		MinimumWheat	= -1
 		MinimumHop	= -1
-		TradeAmountFood	= 10
+		TradeAmountFood	= 20
 		TradeAmountEquipment	= 2
 		Unknown040	= 12
 		Unknown041	= 10
@@ -1910,19 +1886,19 @@ AICharacter
 		RecruitInterval	= 4
 		RecruitIntervalWeak	= 4
 		RecruitIntervalStrong	= 4
-		DefTotal	= 30
+		DefTotal	= 20
 		Unknown093	= 4
 		Unknown094	= 1
 		Unknown095	= 2
-		DefWalls	= 20
+		DefWalls	= 4
 		DefUnit1	= Knight
 		DefUnit2	= EuropArcher
 		DefUnit3	= EuropArcher
 		DefUnit4	= EuropArcher
 		DefUnit5	= EuropArcher
 		DefUnit6	= EuropArcher
-		DefUnit7	= EuropArcher
-		DefUnit8	= EuropArcher
+		DefUnit7	= None
+		DefUnit8	= None
 		RaidUnitsBase	= 4
 		RaidUnitsRandom	= 4
 		RaidUnit1	= Knight
@@ -2031,10 +2007,10 @@ AICharacter
 		MaxFood	= 100
 		MinimumApples	= -1
 		MinimumCheese	= -1
-		MinimumBread	= 10
-		MinimumWheat	= 5
+		MinimumBread	= -1
+		MinimumWheat	= 2
 		MinimumHop	= -1
-		TradeAmountFood	= 10
+		TradeAmountFood	= 20
 		TradeAmountEquipment	= 0
 		Unknown040	= 22
 		Unknown041	= 30
@@ -2212,8 +2188,8 @@ AICharacter
 		MinimumBread	= -1
 		MinimumWheat	= 2
 		MinimumHop	= 2
-		TradeAmountFood	= 10
-		TradeAmountEquipment	= 2
+		TradeAmountFood	= 20
+		TradeAmountEquipment	= 0
 		Unknown040	= 12
 		Unknown041	= 10
 		Unknown042	= 40
@@ -2385,9 +2361,9 @@ AICharacter
 		BuildInterval	= 1
 		ResourceRebuildDelay	= 20
 		MaxFood	= 100
-		MinimumApples	= -1
+		MinimumApples	= 10
 		MinimumCheese	= -1
-		MinimumBread	= 10
+		MinimumBread	= -1
 		MinimumWheat	= 5
 		MinimumHop	= 5
 		TradeAmountFood	= 10
@@ -2746,8 +2722,8 @@ AICharacter
 		MinimumBread	= -1
 		MinimumWheat	= -1
 		MinimumHop	= 5
-		TradeAmountFood	= 10
-		TradeAmountEquipment	= 2
+		TradeAmountFood	= 20
+		TradeAmountEquipment	= 0
 		Unknown040	= 12
 		Unknown041	= 0
 		Unknown042	= 80
@@ -2926,7 +2902,7 @@ AICharacter
 		MinimumWheat	= 2
 		MinimumHop	= 2
 		TradeAmountFood	= 5
-		TradeAmountEquipment	= 2
+		TradeAmountEquipment	= 0
 		Unknown040	= 12
 		Unknown041	= 10
 		Unknown042	= 40

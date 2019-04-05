@@ -39,7 +39,7 @@ namespace UCP.AICharacters
                 aiw.CloseCommentSec();
                 aiw.WriteLine();
 
-                foreach (AICharacter c in this.Values)
+                foreach (AICharacter c in this.Values.OrderBy(c => c.Index))
                 {
                     aiw.Write(c);
                     aiw.WriteLine();
