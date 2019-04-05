@@ -22,7 +22,7 @@ Special thanks go to:
 [Evrey](https://github.com/Evrey) for his AI castles  
 [Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) for his AI castles  
 [PitchNeeded](https://github.com/PitchNeeded) for his AI castle edits  
-
+[ByBurton](https://github.com/ByBurton/AI_Character_Editor) for the AICE and help with identifying the AIC parameters
 
 &nbsp;  
 &nbsp;  
