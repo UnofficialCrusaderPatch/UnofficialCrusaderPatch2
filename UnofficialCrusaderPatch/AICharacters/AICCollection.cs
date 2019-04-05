@@ -10,7 +10,7 @@ namespace UCP.AICharacters
     /// <summary>
     /// AICharacter collection - a dictionary of type (AICIndex, AICharacter) which can be used to collect all AIC data
     /// </summary>
-    public class AICCollection : Dictionary<AICIndex, AICharacter>
+    public class AICCollection : Dictionary<int, AICharacter>
     {
         AIFileHeader header = new AIFileHeader();
         public AIFileHeader Header => header;
@@ -31,15 +31,12 @@ namespace UCP.AICharacters
         {
             using (AIWriter aiw = new AIWriter(stream))
             {
-                // write some general infos
-                foreach (string str in AIFileHeader.GeneralInfo)
-                    aiw.WriteLine(str);
-
-                aiw.WriteLine();
-                aiw.WriteLine();
-                aiw.WriteLine();
-
                 aiw.Write(header);
+                aiw.WriteLine();
+
+                aiw.OpenCommentSec();
+                aiw.WriteInfo(typeof(AICharacter));
+                aiw.CloseCommentSec();
                 aiw.WriteLine();
 
                 foreach (AICharacter c in this.Values)

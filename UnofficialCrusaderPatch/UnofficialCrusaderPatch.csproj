@@ -75,7 +75,7 @@
     <Compile Include="AICharacters\PersonalityEnums\SiegeEngines.cs" />
     <Compile Include="AICharacters\PersonalityEnums\TargetingType.cs" />
     <Compile Include="AICharacters\PersonalityEnums\WorkshopSettings.cs" />
-    <Compile Include="AICharacters\RWComment.cs" />
+    <Compile Include="AICharacters\RWAttributes.cs" />
     <Compile Include="AICharacters\PersonalityEnums\Units.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Extensions.cs" />
@@ -123,6 +123,7 @@
     <Compile Include="Patching\Section\SectionEditor.cs" />
     <Compile Include="Patching\Section\SectionHeader.cs" />
     <Compile Include="Version.cs" />
+    <Compile Include="_Crusader\UI_Button.cs" />
     <Page Include="Localization\LanguageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

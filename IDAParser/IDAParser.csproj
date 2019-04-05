@@ -81,8 +81,8 @@
     <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\WorkshopSettings.cs">
       <Link>AICharacters\PersonalityEnums\WorkshopSettings.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\RWComment.cs">
-      <Link>AICharacters\RWComment.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\RWAttributes.cs">
+      <Link>AICharacters\RWAttributes.cs</Link>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

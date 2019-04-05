@@ -46,10 +46,12 @@ namespace UCP.AICharacters
         public int CriticalPopularity;
 
         // Index: 7 Hex: 0x1C
-        public int Unknown007;
+        [RWComment("Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.")]
+        public int LowestPopularity;
 
         // Index: 8 Hex: 0x20
-        public int Unknown008;
+        [RWComment("Above this value the AI sets taxes back up")]
+        public int HighestPopularity;
 
         // Index: 9 Hex: 0x24
         public int Unknown009;
@@ -117,10 +119,12 @@ namespace UCP.AICharacters
         public int MaxFarms;
 
         // Index: 30 Hex: 0x78
-        public int Unknown030;
+        [RWComment("This is only considered <= 5000 gold")]
+        public int BuildInterval;
 
         // Index: 31 Hex: 0x7C
-        public int Unknown031;
+        [RWComment("The delay before the AI rebuilds destroyed buildings.")]
+        public int ResourceRebuildDelay;
 
         // Index: 32 Hex: 0x80
         [RWComment("includes flour?")]
@@ -240,10 +244,12 @@ namespace UCP.AICharacters
         public int Unknown069;
 
         // Index: 70 Hex: 0x118
-        public int Unknown070;
+        [RWComment("This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...")]
+        public int DefSiegeEngineGoldThreshold;
 
         // Index: 71 Hex: 0x11C
-        public int Unknown071;
+        [RWComment("The delay before the AI builds its first defensive siege engine.")]
+        public int DefSiegeEngineBuildDelay;
 
         // Index: 72 Hex: 0x120
         public int Unknown072;
@@ -252,32 +258,32 @@ namespace UCP.AICharacters
         public int Unknown073;
 
         // Index: 74 Hex: 0x128
-        public int Unknown074;
+        [RWComment("The probability with which this AI reinforces missing defense troops.")]
+        public int RecruitProbDefDefault;
 
         // Index: 75 Hex: 0x12C
-        public int Unknown075;
+        public int RecruitProbDefWeak;
 
         // Index: 76 Hex: 0x130
-        [RWComment("The probability with which this AI reinforces missing defense troops.")]
-        public int DefRecruitAffinity;
+        public int RecruitProbDefStrong;
 
         // Index: 77 Hex: 0x134
-        public int Unknown077;
+        public int RecruitProbRaidDefault;
 
         // Index: 78 Hex: 0x138
-        public int Unknown078;
+        public int RecruitProbRaidWeak;
 
         // Index: 79 Hex: 0x13C
-        public int Unknown079;
+        public int RecruitProbRaidStrong;
 
         // Index: 80 Hex: 0x140
-        public int Unknown080;
+        public int RecruitProbAttackDefault;
 
         // Index: 81 Hex: 0x144
-        public int Unknown081;
+        public int RecruitProbAttackWeak;
 
         // Index: 82 Hex: 0x148
-        public int Unknown082;
+        public int RecruitProbAttackStrong;
 
         // Index: 83 Hex: 0x14C
         public int SortieUnitRangedMax;
@@ -305,10 +311,12 @@ namespace UCP.AICharacters
         public int RecruitInterval;
 
         // Index: 90 Hex: 0x168
-        public int Unknown090;
+        [RWComment("The 'weak' state sets in if the AI is completely trashed. F.e. troops < 8, gold < 200, population < 15, ...")]
+        public int RecruitIntervalWeak;
 
         // Index: 91 Hex: 0x16C
-        public int Unknown091;
+        [RWComment("The 'strong' state sets in if f.e. the AI has troops >= 40, gold >= 200, population >= 40, ...")]
+        public int RecruitIntervalStrong;
 
         // Index: 92 Hex: 0x170
         public int DefTotal;

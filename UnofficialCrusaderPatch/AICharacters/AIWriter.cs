@@ -12,18 +12,22 @@ namespace UCP.AICharacters
     /// </summary>
     public class AIWriter : IDisposable
     {
+        StringBuilder sb;
         StreamWriter sw;
         int sections;
+        bool commenting;
         public int Sections => sections;
 
         public AIWriter(Stream stream)
         {
             sw = new StreamWriter(stream, Encoding.Default);
+            sb = new StringBuilder(20);
         }
 
         public void Dispose()
         {
             sw.Dispose();
+            sb = null;
         }
 
         public void WriteLine(string line = null, string comment = null)
@@ -42,47 +46,130 @@ namespace UCP.AICharacters
                 sw.WriteLine(comment);
             }
         }
+
+        public void OpenSec()
+        {
+            this.WriteLine("{");
+            sections++;
+        }
+
+        public void CloseSec()
+        {
+            sections--;
+            this.WriteLine("}");
+        }
+
+        public void OpenCommentSec()
+        {
+            commenting = true;
+            this.WriteLine("/*");
+        }
+
+        public void CloseCommentSec()
+        {
+            this.WriteLine("*/");
+            commenting = false;
+        }
         
-        public void Write(object o, string name = null, string comment = null)
+        public void Write(object o, string name = null)
         {
             if (o == null)
                 throw new ArgumentNullException("o");
 
             Type type = o.GetType();
-            if (writeTypes.Contains(type) || writeTypes.Contains(type.BaseType))
+            if (writeFuncs.TryGetValue(type, out WriteFunc func)
+                || writeFuncs.TryGetValue(type.BaseType, out func))
             {
-                this.WriteLine(string.Format("{0}\t= {1}", name, o.ToString()), comment);
+                func.Invoke(this, name, o);
             }
             else
             {
                 this.WriteLine(name ?? type.Name);
-                this.WriteLine("{");
-                sections++;
+                this.OpenSec();
 
                 foreach(FieldInfo fi in type.GetFields(Flags))
                 {
-                    object value = fi.GetValue(o);
-
-                    // get comment from attribute
-                    object[] attributes = fi.GetCustomAttributes(typeof(RWComment), false);
-                    string cmt = attributes.Length > 0 ? ((RWComment)attributes[0]).Comment : null;
-                    
-                    this.Write(value, fi.Name, cmt);
+                    object value = fi.GetValue(o);                    
+                    this.Write(value, fi.Name);
                 }
 
-                sections--;
-                this.WriteLine("}");
+                this.CloseSec();
             }
         }
 
         public const BindingFlags Flags = BindingFlags.Public | BindingFlags.GetField | BindingFlags.Instance;
 
-        static readonly Type[] writeTypes = new Type[]
+
+        public void WriteInfo(Type type, string name = null, string comment = null)
         {
-            typeof(int),
-            typeof(uint),
-            typeof(string),
-            typeof(Enum),
+            if (type == null)
+                throw new ArgumentNullException("type");
+            
+            if (!String.IsNullOrWhiteSpace(name))
+            {
+                sb.Append(name);
+                sb.Append(":\t");
+            }
+
+            sb.Append(type.Name);
+
+            if (!String.IsNullOrWhiteSpace(comment))
+            {
+                sb.Append(",\t");
+                sb.Append(comment);
+            }
+
+            this.WriteLine(sb.ToString());
+            sb.Clear();
+
+            if (!writeFuncs.ContainsKey(type) && !writeFuncs.ContainsKey(type.BaseType))
+            {
+                this.OpenSec();
+
+                foreach (FieldInfo fi in type.GetFields(Flags))
+                {
+                    // get comment from attribute
+                    object[] attributes = fi.GetCustomAttributes(typeof(RWComment), false);
+                    string cmt = attributes.Length > 0 ? ((RWComment)attributes[0]).Comment : null;
+
+                    this.WriteInfo(fi.FieldType, fi.Name, cmt);
+                }
+
+                this.CloseSec();
+            }
+        }
+
+        delegate void WriteFunc(AIWriter w, string name, object o);
+        static readonly Dictionary<Type, WriteFunc> writeFuncs = new Dictionary<Type, WriteFunc>()
+        {
+            { typeof(int), WriteDefault },
+            { typeof(string), WriteString },
+            { typeof(Enum), WriteDefault },
         };
+
+        static void WriteDefault(AIWriter w, string name, object o)
+        {
+            w.WriteLine(string.Format("{0}\t= {1}", name, o));
+        }
+
+        static readonly string[] lineBreakArr = { "\n" };
+        static void WriteString(AIWriter w, string name, object o)
+        {
+            string input = (string)o;
+            if (!input.Contains('\n'))
+            {
+                WriteDefault(w, name, o);
+                return;
+            }
+
+            w.WriteLine(name);
+            w.OpenSec();
+
+            string[] lines = input.Split(lineBreakArr, StringSplitOptions.None);
+            foreach (string line in lines)
+                w.WriteLine(line);
+
+            w.CloseSec();
+        }
     }
 }

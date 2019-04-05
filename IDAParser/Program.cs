@@ -16,7 +16,7 @@ namespace IDAParser
                 ParseAll();
 
                 string ucpPath = Directory.GetCurrentDirectory() + "../../../../UnofficialCrusaderPatch/AICs";
-                UpdateAICs(Path.GetFullPath(ucpPath));
+                //UpdateAICs(Path.GetFullPath(ucpPath));
             }
             catch (Exception e)
             {
@@ -60,10 +60,11 @@ namespace IDAParser
                 {
                     AICharacter aic = new AICharacter()
                     {
-                        Index = index,
+                        Index = (int)index,
+                        Name = index.ToString(),
                         Personality = Parse(sr)
                     };
-                    collection.Add(index, aic);
+                    collection.Add((int)index, aic);
                 }
             }
 

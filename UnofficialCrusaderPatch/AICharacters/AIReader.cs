@@ -40,12 +40,8 @@ namespace UCP.AICharacters
             while ((line = sr.ReadLine()) != null)
             {
                 lineNum++;
-                // remove comments
-                int commentIndex = line.IndexOf("//");
-                if (commentIndex >= 0)
-                {
-                    line = line.Remove(commentIndex);
-                }
+
+                CheckComments(ref line);
 
                 line = line.Trim(); // get rid of white spaces
 
@@ -54,6 +50,34 @@ namespace UCP.AICharacters
                     break;
             }
             return line;
+        }
+
+        void CheckComments(ref string line)
+        {
+            // remove line comments
+            int index = line.IndexOf("//");
+            if (index >= 0)
+            {
+                line = line.Remove(index);
+            }
+
+            // remove comment sections
+            index = line.IndexOf("/*");
+            if (index >= 0)
+            {
+                int read;
+                while ((read = sr.Read()) >= 0)
+                {
+                    if (read == '*' && sr.Peek() == '/')
+                    {
+                        sr.Read();
+                        break;
+                    }
+
+                    if (read == '\n')
+                        lineNum++;
+                }
+            }
         }
 
         public T Read<T>() where T : new()
@@ -76,6 +100,7 @@ namespace UCP.AICharacters
         const BindingFlags BFlags = BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.Public;
         static readonly Type[] emptyTypeArg = new Type[0];
         static readonly object[] emptyObjectArg = new object[0];
+        static readonly char[] whiteSpaces = { ' ', '\t' };
 
         void Read(object o)
         {
@@ -85,37 +110,34 @@ namespace UCP.AICharacters
             if (line != "{")
                 throw new FormatException("{");
 
-            var fields = o.GetType().GetFields(BFlags);
-
-            int fieldIndex = 0;
+            Dictionary<string, FieldInfo> fieldNames = GetFieldNames(o.GetType());
             while ((line = this.ReadLine()) != null)
             {
                 if (line == "}")
                     break;
+                
+                // get name of field
+                string fieldName;
+                int endIndex = line.IndexOfAny(whiteSpaces);
+                if (endIndex < 0)
+                {
+                    fieldName = line;
+                }
+                else
+                {
+                    fieldName = line.Remove(endIndex);
+                }
+                fieldName = fieldName.Trim();
 
-                // read by index
-                FieldInfo fi = fields[fieldIndex++];
-                Type fieldType = fi.FieldType;
+                if (!fieldNames.TryGetValue(fieldName, out FieldInfo fi))
+                    throw new FormatException("Unknown field name '" + fieldName + "' in line " + lineNum);
 
                 object value;
+                Type fieldType = fi.FieldType;
                 if (readFuncs.TryGetValue(fieldType, out ReadFunc func)
                    || readFuncs.TryGetValue(fieldType.BaseType, out func))
                 {
-                    int startIndex = line.IndexOf('=');
-                    if (startIndex < 0)
-                        throw new FormatException("=");
-                    
-                    string valueStr = line.Substring(startIndex + 1).Trim();
-                    
-                    try
-                    {
-                        value = func.Invoke(valueStr, fieldType);
-                    }
-                    catch
-                    {
-                        string msg = string.Format("Error in line {0} when parsing '{1}' to type {2}.", lineNum, valueStr, fieldType.Name);
-                        throw new FormatException(msg);
-                    }
+                    value = func.Invoke(this, line, fieldType);
                 }
                 else
                 {
@@ -127,13 +149,90 @@ namespace UCP.AICharacters
             }
         }
 
-        delegate object ReadFunc(string valueStr, Type valueType);
+        Dictionary<string, FieldInfo> GetFieldNames(Type type)
+        {
+            // get all fields from this type
+            FieldInfo[] fields = type.GetFields(BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.Public);
+
+            // create dictionary
+            var result = new Dictionary<string, FieldInfo>(fields.Length, StringComparer.OrdinalIgnoreCase);
+
+            foreach (FieldInfo fi in fields)
+            {
+                result.Add(fi.Name, fi);
+
+                // check for alternative / older names
+                object[] attributes = fi.GetCustomAttributes(typeof(RWNames), false);
+                if (attributes.Length > 0)
+                {
+                    foreach (string altName in ((RWNames)attributes[0]).Names)
+                    {
+                        if (result.TryGetValue(altName, out FieldInfo other))
+                        {
+                            if (other != fi)
+                                throw new Exception(altName + " duplicate FieldName");
+                        }
+                        else
+                        {
+                            result.Add(altName, fi);
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        delegate object ReadFunc(AIReader r, string line, Type valueType);
         static readonly Dictionary<Type, ReadFunc> readFuncs = new Dictionary<Type, ReadFunc>()
         {
-            { typeof(int), (v, vt) => int.Parse(v) },
-            { typeof(uint), (v, vt) => uint.Parse(v) },
-            { typeof(string), (v, vt) => v },
-            { typeof(Enum), (v, vt) => Enum.Parse(vt, v, true) },
+            { typeof(int), ReadInt },
+            { typeof(string), ReadString },
+            { typeof(Enum), ReadEnum },
         };
+
+        static object ReadInt(AIReader r, string line, Type valueType)
+        {
+            int index = line.IndexOf('=');
+            if (index < 0) throw new FormatException("Missing '=' in line " + r.lineNum);
+
+            line = line.Substring(index + 1).Trim();
+            return int.Parse(line);
+        }
+
+        static object ReadEnum(AIReader r, string line, Type valueType)
+        {
+            int index = line.IndexOf('=');
+            if (index < 0) throw new FormatException("Missing '=' in line " + r.lineNum);
+
+            line = line.Substring(index + 1).Trim();
+            return Enum.Parse(valueType, line, true);
+        }
+
+        static object ReadString(AIReader r, string line, Type valueType)
+        {
+            int index = line.IndexOf('=');
+            if (index >= 0)
+            {
+                return line.Substring(index + 1).Trim();
+            }
+
+            line = r.ReadLine();
+            if (line == null)
+                throw new FormatException("EOS");
+            if (line != "{")
+                throw new FormatException("{");
+
+            StringBuilder sb = new StringBuilder(20);
+            while ((line = r.ReadLine()) != null)
+            {
+                if (line == "}")
+                    break;
+
+                sb.AppendLine(line);
+            }
+
+            return sb.ToString();
+        }
     }
 }

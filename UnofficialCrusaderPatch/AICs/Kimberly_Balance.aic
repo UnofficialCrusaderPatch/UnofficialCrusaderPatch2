@@ -25,8 +25,8 @@ AICharacter
 		Unknown004	= 1
 		Unknown005	= 1
 		CriticalPopularity	= 4500	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 5000
-		Unknown008	= 9000
+		LowestPopularity	= 5000	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 9000	// Above this value the AI sets taxes back up
 		Unknown009	= 2
 		Unknown010	= 12
 		Unknown011	= 10
@@ -48,8 +48,8 @@ AICharacter
 		MaxWoodcutters	= 10
 		MaxPitchrigs	= 0
 		MaxFarms	= 12	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 2
-		Unknown031	= 40
+		BuildInterval	= 2	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 40	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 100	// includes flour?
 		MinimumApples	= 10
 		MinimumCheese	= -1
@@ -88,8 +88,8 @@ AICharacter
 		SellResource15	= IronArmors
 		Unknown068	= 2
 		Unknown069	= 3
-		Unknown070	= 100
-		Unknown071	= 4
+		DefSiegeEngineGoldThreshold	= 100	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 4	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 200
 		Unknown073	= 20
 		Unknown074	= 40
@@ -202,8 +202,8 @@ AICharacter
 		Unknown004	= 0
 		Unknown005	= 1
 		CriticalPopularity	= 4000	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 5000
-		Unknown008	= 9000
+		LowestPopularity	= 5000	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 9000	// Above this value the AI sets taxes back up
 		Unknown009	= 3
 		Unknown010	= 12
 		Unknown011	= 12
@@ -225,8 +225,8 @@ AICharacter
 		MaxWoodcutters	= 8
 		MaxPitchrigs	= 10
 		MaxFarms	= 10	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 3
-		Unknown031	= 60
+		BuildInterval	= 3	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 60	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 100	// includes flour?
 		MinimumApples	= 10
 		MinimumCheese	= -1
@@ -265,8 +265,8 @@ AICharacter
 		SellResource15	= IronArmors
 		Unknown068	= 5
 		Unknown069	= 2
-		Unknown070	= 120
-		Unknown071	= 8
+		DefSiegeEngineGoldThreshold	= 120	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 8	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 100
 		Unknown073	= 20
 		Unknown074	= 40
@@ -379,8 +379,8 @@ AICharacter
 		Unknown004	= 1
 		Unknown005	= 1
 		CriticalPopularity	= 4500	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 5000
-		Unknown008	= 9000
+		LowestPopularity	= 5000	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 9000	// Above this value the AI sets taxes back up
 		Unknown009	= 2
 		Unknown010	= 12
 		Unknown011	= 10
@@ -402,8 +402,8 @@ AICharacter
 		MaxWoodcutters	= 10
 		MaxPitchrigs	= 1
 		MaxFarms	= 16	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 2
-		Unknown031	= 40
+		BuildInterval	= 2	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 40	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 80	// includes flour?
 		MinimumApples	= 10
 		MinimumCheese	= -1
@@ -442,8 +442,8 @@ AICharacter
 		SellResource15	= IronArmors
 		Unknown068	= 2
 		Unknown069	= 3
-		Unknown070	= 100
-		Unknown071	= 4
+		DefSiegeEngineGoldThreshold	= 100	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 4	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 200
 		Unknown073	= 20
 		Unknown074	= 40
@@ -556,8 +556,8 @@ AICharacter
 		Unknown004	= 1
 		Unknown005	= 1
 		CriticalPopularity	= 4000	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 5500
-		Unknown008	= 9000
+		LowestPopularity	= 5500	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 9000	// Above this value the AI sets taxes back up
 		Unknown009	= 3
 		Unknown010	= 10
 		Unknown011	= 12
@@ -579,8 +579,8 @@ AICharacter
 		MaxWoodcutters	= 12
 		MaxPitchrigs	= 1
 		MaxFarms	= 12	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 4
-		Unknown031	= 30
+		BuildInterval	= 4	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 30	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 200	// includes flour?
 		MinimumApples	= 5
 		MinimumCheese	= 5
@@ -619,8 +619,8 @@ AICharacter
 		SellResource15	= None
 		Unknown068	= 8
 		Unknown069	= 2
-		Unknown070	= 200
-		Unknown071	= 2
+		DefSiegeEngineGoldThreshold	= 200	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 2	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 100
 		Unknown073	= 20
 		Unknown074	= 50
@@ -733,8 +733,8 @@ AICharacter
 		Unknown004	= 1
 		Unknown005	= 1
 		CriticalPopularity	= 4000	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 5000
-		Unknown008	= 8000
+		LowestPopularity	= 5000	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 8000	// Above this value the AI sets taxes back up
 		Unknown009	= 2
 		Unknown010	= 10
 		Unknown011	= 10
@@ -756,8 +756,8 @@ AICharacter
 		MaxWoodcutters	= 8
 		MaxPitchrigs	= 1
 		MaxFarms	= 9	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 3
-		Unknown031	= 40
+		BuildInterval	= 3	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 40	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 100	// includes flour?
 		MinimumApples	= 10
 		MinimumCheese	= 10
@@ -796,8 +796,8 @@ AICharacter
 		SellResource15	= None
 		Unknown068	= 2
 		Unknown069	= 3
-		Unknown070	= 100
-		Unknown071	= 4
+		DefSiegeEngineGoldThreshold	= 100	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 4	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 200
 		Unknown073	= 20
 		Unknown074	= 30
@@ -910,8 +910,8 @@ AICharacter
 		Unknown004	= 1
 		Unknown005	= 1
 		CriticalPopularity	= 4500	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 5000
-		Unknown008	= 9000
+		LowestPopularity	= 5000	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 9000	// Above this value the AI sets taxes back up
 		Unknown009	= 2
 		Unknown010	= 12
 		Unknown011	= 10
@@ -933,8 +933,8 @@ AICharacter
 		MaxWoodcutters	= 12
 		MaxPitchrigs	= 1
 		MaxFarms	= 16	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 1
-		Unknown031	= 20
+		BuildInterval	= 1	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 20	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 120	// includes flour?
 		MinimumApples	= 10
 		MinimumCheese	= -1
@@ -973,8 +973,8 @@ AICharacter
 		SellResource15	= IronArmors
 		Unknown068	= 2
 		Unknown069	= 3
-		Unknown070	= 100
-		Unknown071	= 4
+		DefSiegeEngineGoldThreshold	= 100	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 4	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 200
 		Unknown073	= 20
 		Unknown074	= 50
@@ -1087,8 +1087,8 @@ AICharacter
 		Unknown004	= 1
 		Unknown005	= 1
 		CriticalPopularity	= 4000	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 5000
-		Unknown008	= 8000
+		LowestPopularity	= 5000	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 8000	// Above this value the AI sets taxes back up
 		Unknown009	= 2
 		Unknown010	= 10
 		Unknown011	= 10
@@ -1110,8 +1110,8 @@ AICharacter
 		MaxWoodcutters	= 10
 		MaxPitchrigs	= 1
 		MaxFarms	= 8	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 4
-		Unknown031	= 60
+		BuildInterval	= 4	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 60	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 100	// includes flour?
 		MinimumApples	= 10
 		MinimumCheese	= 10
@@ -1150,8 +1150,8 @@ AICharacter
 		SellResource15	= None
 		Unknown068	= 2
 		Unknown069	= 3
-		Unknown070	= 100
-		Unknown071	= 4
+		DefSiegeEngineGoldThreshold	= 100	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 4	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 200
 		Unknown073	= 20
 		Unknown074	= 40
@@ -1264,8 +1264,8 @@ AICharacter
 		Unknown004	= 0
 		Unknown005	= 0
 		CriticalPopularity	= 5000	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 7000
-		Unknown008	= 8500
+		LowestPopularity	= 7000	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 8500	// Above this value the AI sets taxes back up
 		Unknown009	= 3
 		Unknown010	= 11
 		Unknown011	= 20
@@ -1287,8 +1287,8 @@ AICharacter
 		MaxWoodcutters	= 8
 		MaxPitchrigs	= 1
 		MaxFarms	= 12	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 3
-		Unknown031	= 50
+		BuildInterval	= 3	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 50	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 400	// includes flour?
 		MinimumApples	= 5
 		MinimumCheese	= 10
@@ -1327,8 +1327,8 @@ AICharacter
 		SellResource15	= IronArmors
 		Unknown068	= 10
 		Unknown069	= 4
-		Unknown070	= 100
-		Unknown071	= 20
+		DefSiegeEngineGoldThreshold	= 100	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 20	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 200
 		Unknown073	= 40
 		Unknown074	= 60
@@ -1441,8 +1441,8 @@ AICharacter
 		Unknown004	= 0
 		Unknown005	= 0
 		CriticalPopularity	= 4000	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 5500
-		Unknown008	= 7500
+		LowestPopularity	= 5500	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 7500	// Above this value the AI sets taxes back up
 		Unknown009	= 3
 		Unknown010	= 10
 		Unknown011	= 20
@@ -1464,8 +1464,8 @@ AICharacter
 		MaxWoodcutters	= 6
 		MaxPitchrigs	= 1
 		MaxFarms	= 6	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 1
-		Unknown031	= 10
+		BuildInterval	= 1	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 10	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 100	// includes flour?
 		MinimumApples	= 16
 		MinimumCheese	= 8
@@ -1504,8 +1504,8 @@ AICharacter
 		SellResource15	= IronArmors
 		Unknown068	= 20
 		Unknown069	= 1
-		Unknown070	= 200
-		Unknown071	= 20
+		DefSiegeEngineGoldThreshold	= 200	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 20	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 800
 		Unknown073	= 80
 		Unknown074	= 0
@@ -1618,8 +1618,8 @@ AICharacter
 		Unknown004	= 1
 		Unknown005	= 0
 		CriticalPopularity	= 4000	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 5000
-		Unknown008	= 8000
+		LowestPopularity	= 5000	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 8000	// Above this value the AI sets taxes back up
 		Unknown009	= 3
 		Unknown010	= 10
 		Unknown011	= 12
@@ -1641,8 +1641,8 @@ AICharacter
 		MaxWoodcutters	= 10
 		MaxPitchrigs	= 1
 		MaxFarms	= 15	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 4
-		Unknown031	= 20
+		BuildInterval	= 4	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 20	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 200	// includes flour?
 		MinimumApples	= 5
 		MinimumCheese	= 5
@@ -1681,8 +1681,8 @@ AICharacter
 		SellResource15	= None
 		Unknown068	= 8
 		Unknown069	= 4
-		Unknown070	= 200
-		Unknown071	= 2
+		DefSiegeEngineGoldThreshold	= 200	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 2	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 100
 		Unknown073	= 20
 		Unknown074	= 30
@@ -1795,8 +1795,8 @@ AICharacter
 		Unknown004	= 0
 		Unknown005	= 0
 		CriticalPopularity	= 4000	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 5000
-		Unknown008	= 8000
+		LowestPopularity	= 5000	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 8000	// Above this value the AI sets taxes back up
 		Unknown009	= 3
 		Unknown010	= 12
 		Unknown011	= 20
@@ -1818,8 +1818,8 @@ AICharacter
 		MaxWoodcutters	= 14
 		MaxPitchrigs	= 1
 		MaxFarms	= 15	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 2
-		Unknown031	= 40
+		BuildInterval	= 2	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 40	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 50	// includes flour?
 		MinimumApples	= 5
 		MinimumCheese	= 5
@@ -1858,8 +1858,8 @@ AICharacter
 		SellResource15	= None
 		Unknown068	= 3
 		Unknown069	= 4
-		Unknown070	= 20
-		Unknown071	= 8
+		DefSiegeEngineGoldThreshold	= 20	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 8	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 100
 		Unknown073	= 20
 		Unknown074	= 34
@@ -1972,8 +1972,8 @@ AICharacter
 		Unknown004	= 1
 		Unknown005	= 1
 		CriticalPopularity	= 4000	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 6000
-		Unknown008	= 9000
+		LowestPopularity	= 6000	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 9000	// Above this value the AI sets taxes back up
 		Unknown009	= 3
 		Unknown010	= 11
 		Unknown011	= 10
@@ -1995,8 +1995,8 @@ AICharacter
 		MaxWoodcutters	= 10
 		MaxPitchrigs	= 4
 		MaxFarms	= 10	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 3
-		Unknown031	= 8
+		BuildInterval	= 3	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 8	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 300	// includes flour?
 		MinimumApples	= 20
 		MinimumCheese	= 20
@@ -2035,8 +2035,8 @@ AICharacter
 		SellResource15	= IronArmors
 		Unknown068	= 8
 		Unknown069	= 2
-		Unknown070	= 200
-		Unknown071	= 4
+		DefSiegeEngineGoldThreshold	= 200	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 4	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 200
 		Unknown073	= 30
 		Unknown074	= 50
@@ -2149,8 +2149,8 @@ AICharacter
 		Unknown004	= 0
 		Unknown005	= 0
 		CriticalPopularity	= 4000	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 5000
-		Unknown008	= 8000
+		LowestPopularity	= 5000	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 8000	// Above this value the AI sets taxes back up
 		Unknown009	= 3
 		Unknown010	= 11
 		Unknown011	= 15
@@ -2172,8 +2172,8 @@ AICharacter
 		MaxWoodcutters	= 10
 		MaxPitchrigs	= 1
 		MaxFarms	= 10	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 2
-		Unknown031	= 12
+		BuildInterval	= 2	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 12	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 150	// includes flour?
 		MinimumApples	= 10
 		MinimumCheese	= 20
@@ -2212,8 +2212,8 @@ AICharacter
 		SellResource15	= IronArmors
 		Unknown068	= 2
 		Unknown069	= 4
-		Unknown070	= 500
-		Unknown071	= 20
+		DefSiegeEngineGoldThreshold	= 500	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 20	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 400
 		Unknown073	= 60
 		Unknown074	= 30
@@ -2326,8 +2326,8 @@ AICharacter
 		Unknown004	= 0
 		Unknown005	= 0
 		CriticalPopularity	= 5000	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 6000
-		Unknown008	= 9000
+		LowestPopularity	= 6000	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 9000	// Above this value the AI sets taxes back up
 		Unknown009	= 1
 		Unknown010	= 8
 		Unknown011	= 20
@@ -2349,8 +2349,8 @@ AICharacter
 		MaxWoodcutters	= 15
 		MaxPitchrigs	= 1
 		MaxFarms	= 6	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 5
-		Unknown031	= 80
+		BuildInterval	= 5	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 80	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 500	// includes flour?
 		MinimumApples	= 20
 		MinimumCheese	= 10
@@ -2389,8 +2389,8 @@ AICharacter
 		SellResource15	= IronArmors
 		Unknown068	= 10
 		Unknown069	= 2
-		Unknown070	= 200
-		Unknown071	= 20
+		DefSiegeEngineGoldThreshold	= 200	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 20	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 800
 		Unknown073	= 80
 		Unknown074	= 50
@@ -2503,8 +2503,8 @@ AICharacter
 		Unknown004	= 1
 		Unknown005	= 1
 		CriticalPopularity	= 4500	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 5000
-		Unknown008	= 8000
+		LowestPopularity	= 5000	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 8000	// Above this value the AI sets taxes back up
 		Unknown009	= 2
 		Unknown010	= 12
 		Unknown011	= 10
@@ -2526,8 +2526,8 @@ AICharacter
 		MaxWoodcutters	= 10
 		MaxPitchrigs	= 4
 		MaxFarms	= 8	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 3
-		Unknown031	= 50
+		BuildInterval	= 3	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 50	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 100	// includes flour?
 		MinimumApples	= -1
 		MinimumCheese	= -1
@@ -2566,8 +2566,8 @@ AICharacter
 		SellResource15	= IronArmors
 		Unknown068	= 2
 		Unknown069	= 3
-		Unknown070	= 100
-		Unknown071	= 4
+		DefSiegeEngineGoldThreshold	= 100	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 4	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 200
 		Unknown073	= 20
 		Unknown074	= 30
@@ -2680,8 +2680,8 @@ AICharacter
 		Unknown004	= 1
 		Unknown005	= 1
 		CriticalPopularity	= 4500	// (0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		Unknown007	= 6000
-		Unknown008	= 9000
+		LowestPopularity	= 6000	// Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		HighestPopularity	= 9000	// Above this value the AI sets taxes back up
 		Unknown009	= 3
 		Unknown010	= 11
 		Unknown011	= 12
@@ -2703,8 +2703,8 @@ AICharacter
 		MaxWoodcutters	= 12
 		MaxPitchrigs	= 2
 		MaxFarms	= 10	// The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
-		Unknown030	= 3
-		Unknown031	= 20
+		BuildInterval	= 3	// This is only considered <= 5000 gold
+		ResourceRebuildDelay	= 20	// The delay before the AI rebuilds destroyed buildings.
 		MaxFood	= 200	// includes flour?
 		MinimumApples	= 5
 		MinimumCheese	= 5
@@ -2743,8 +2743,8 @@ AICharacter
 		SellResource15	= None
 		Unknown068	= 4
 		Unknown069	= 3
-		Unknown070	= 250
-		Unknown071	= 2
+		DefSiegeEngineGoldThreshold	= 250	// This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
+		DefSiegeEngineBuildDelay	= 2	// The delay before the AI builds its first defensive siege engine.
 		Unknown072	= 100
 		Unknown073	= 20
 		Unknown074	= 60

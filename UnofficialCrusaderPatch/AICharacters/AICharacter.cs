@@ -10,7 +10,8 @@ namespace UCP.AICharacters
     /// </summary>
     public class AICharacter
     {
-        public AICIndex Index;
+        public int Index;
+        public string Name;
         public AIPersonality Personality;
     }
 }
