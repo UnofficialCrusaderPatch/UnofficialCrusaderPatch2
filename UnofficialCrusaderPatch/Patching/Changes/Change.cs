@@ -21,6 +21,7 @@ namespace UCP.Patching
         public ChangeType Type => type;
 
         bool exclusive, enabledDefault;
+        public bool EnabledDefault => enabledDefault;
         List<DefaultHeader> headerList = new List<DefaultHeader>();
 
         public IEnumerator<DefaultHeader> GetEnumerator() => headerList.GetEnumerator();
@@ -29,6 +30,7 @@ namespace UCP.Patching
         public void Add(DefaultHeader header)
         {
             headerList.Add(header);
+            header.SetParent(this);
         }
 
         public Change(string titleIdent, ChangeType type, bool enabledDefault = true, bool exclusive = true)
@@ -74,6 +76,7 @@ namespace UCP.Patching
                     FontSize = 14,
                     Width = 400,
                 },
+                IsChecked = headerList.Exists(h => h.IsEnabled),
             };
 
             TreeViewItem tvi = new TreeViewItem()
@@ -102,21 +105,20 @@ namespace UCP.Patching
                 Margin = new Thickness(-18, 5, 0, 0),
                 Focusable = false,
             };
-
-
+            
             FillGrid(grid);
 
             tvi.Items.Add(grid);
             tvi.Items.Add(null); // spacing
 
             this.uiElement = tvi;
-
-            this.titleBox.IsChecked = enabledDefault;
         }
 
         protected virtual void TitleBox_Unchecked(object sender, RoutedEventArgs e)
         {
             headerList.ForEach(h => h.IsEnabled = false);
+
+            Configuration.Save(this.titleIdent);
         }
 
         bool noCheck = false;
@@ -127,6 +129,8 @@ namespace UCP.Patching
             noCheck = true;
             titleBox.IsChecked = this.IsChecked;
             noCheck = false;
+
+            Configuration.Save(this.titleIdent);
         }
 
         void FillGrid(Grid grid)

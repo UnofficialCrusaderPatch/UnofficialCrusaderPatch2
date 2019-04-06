@@ -18,31 +18,37 @@ namespace UCP
             InitializeComponent();
         }
 
-        public static bool ShowSelection()
+        public static bool ShowSelection(int preset)
         {
             LanguageWindow win = new LanguageWindow();
             ComboBox cb = win.comboBox;
             cb.ItemsSource = Localization.Translations.Select(t => t.Name);
-
-            string culture = "en";
-
-            CultureInfo info = CultureInfo.CurrentCulture;
-            if (info != null)
+            if (preset >= 0)
             {
-                for (int i = 0; i < 3; i++) // just to be safe, I don't know enough about cultureinfos
+                cb.SelectedIndex = preset;
+            }
+            else
+            {
+                string culture = "en";
+
+                CultureInfo info = CultureInfo.CurrentCulture;
+                if (info != null)
                 {
-                    CultureInfo parent = info.Parent;
-                    if (parent == null || string.IsNullOrWhiteSpace(parent.Name))
-                        break;
-                    info = parent;
+                    for (int i = 0; i < 3; i++) // just to be safe, I don't know enough about cultureinfos
+                    {
+                        CultureInfo parent = info.Parent;
+                        if (parent == null || string.IsNullOrWhiteSpace(parent.Name))
+                            break;
+                        info = parent;
+                    }
+
+                    culture = info.Name;
                 }
 
-                culture = info.Name;
+                cb.SelectedIndex = Localization.GetLangByCulture(culture);
             }
 
-            cb.SelectedIndex = Localization.GetLangByCulture(culture);
             win.UpdateTexts();
-
             return win.ShowDialog() == true;
         }
 

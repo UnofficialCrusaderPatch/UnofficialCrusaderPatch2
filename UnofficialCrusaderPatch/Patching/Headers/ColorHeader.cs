@@ -73,7 +73,7 @@ namespace UCP.Patching
             }
 
             this.OnValueChange += ValueChange;
-            SetValue(1);
+            ValueChange();
 
             return grid;
         }

@@ -10,6 +10,7 @@ using System.Windows.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using UCP.Patching;
+using System.Windows.Media.Imaging;
 
 namespace UCP
 {
@@ -27,11 +28,19 @@ namespace UCP
 
         public MainWindow()
         {
+            Configuration.LoadGeneral();
+
             // choose language
-            if (!LanguageWindow.ShowSelection())
+            if (!LanguageWindow.ShowSelection(Configuration.Language))
             {
                 Close();
                 return;
+            }
+
+            if (Configuration.Language != Localization.LanguageIndex)
+            {
+                Configuration.Language = Localization.LanguageIndex;
+                Configuration.Save("Language");
             }
 
             // init main window
@@ -40,12 +49,19 @@ namespace UCP
             // set title
             this.Title = string.Format("{0} {1}", Localization.Get("Name"), Version.PatcherVersion);
 
-            // check if we can already find the steam path
-            const string key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 40970";
-            RegistryKey myKey = Registry.LocalMachine.OpenSubKey(key, false);
-            if (myKey != null && myKey.GetValue("InstallLocation") is string path && !string.IsNullOrWhiteSpace(path))
+            if (!Directory.Exists(Configuration.Path))
             {
-                pTextBoxPath.Text = path;
+                // check if we can already find the steam path
+                const string key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 40970";
+                RegistryKey myKey = Registry.LocalMachine.OpenSubKey(key, false);
+                if (myKey != null && myKey.GetValue("InstallLocation") is string path && !string.IsNullOrWhiteSpace(path))
+                {
+                    pTextBoxPath.Text = path;
+                }
+            }
+            else
+            {
+                pTextBoxPath.Text = Configuration.Path;
             }
 
             // set translated ui elements
@@ -94,6 +110,7 @@ namespace UCP
             }
         }
 
+        bool viewLoaded = false;
         void pButtonContinue_Click(object sender, RoutedEventArgs e)
         {
             string cPath = pTextBoxPath.Text;
@@ -103,11 +120,22 @@ namespace UCP
                 return;
             }
 
-            // load aic files
-            AICChange.LoadFiles(cPath);
+            if (Configuration.Path != cPath)
+            {
+                Configuration.Path = cPath;
+                Configuration.Save("Path");
+            }
 
-            // fill setup options list
-            FillTreeView(Version.Changes);
+            if (!viewLoaded)
+            {
+                // load aic files
+                AICChange.LoadFiles();
+                Configuration.LoadChanges();
+
+                // fill setup options list
+                FillTreeView(Version.Changes);
+                viewLoaded = true;
+            }
 
             pathGrid.Visibility = Visibility.Hidden;
             installGrid.Visibility = Visibility.Visible;
@@ -137,11 +165,7 @@ namespace UCP
                 return;
             }
 
-            iButtonInstall.Content = Localization.Get("ui_finished");
             iButtonInstall.IsEnabled = false;
-            iButtonInstall.Click -= iButtonInstall_Click;
-            iButtonInstall.Click += (s, a) => this.Close();
-
             pButtonSearch.IsEnabled = false;
             pTextBoxPath.IsReadOnly = true;
 
@@ -157,7 +181,12 @@ namespace UCP
             {
                 Patcher.Install((string)arg, SetPercent);
 
-                Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => iButtonInstall.IsEnabled = true));
+                Dispatcher.Invoke(DispatcherPriority.Render, new Action(() =>
+                {
+                    iButtonInstall.IsEnabled = true;
+                    pButtonSearch.IsEnabled = true;
+                    pTextBoxPath.IsReadOnly = false;
+                }));
             }
             catch (Exception e)
             {
@@ -186,13 +215,36 @@ namespace UCP
                     BorderThickness = new Thickness(0, 0, 0, 0),
                     Focusable = false,
                 };
-
                 view.SelectedItemChanged += View_SelectedItemChanged;
+
+                Grid grid = new Grid();
+                grid.Children.Add(view);
+
+                if (type == ChangeType.AIC)
+                {
+                    AICChange.View = view;
+
+                    Button button = new Button
+                    {
+                        ToolTip = "Reload .aics",
+                        Width = 20,
+                        Height = 20,
+                        HorizontalAlignment = HorizontalAlignment.Right,
+                        VerticalAlignment = VerticalAlignment.Bottom,
+                        Margin = new Thickness(0, 0, 5, 5),
+                        Content = new Image()
+                        {
+                            Source = new BitmapImage(new Uri("pack://application:,,,/UnofficialCrusaderPatch;component/Graphics/refresh.png")),
+                        }
+                    };
+                    button.Click += (s, e) => AICChange.RefreshLocalFiles();
+                    grid.Children.Add(button);
+                }
 
                 TabItem tab = new TabItem()
                 {
                     Header = Localization.Get("ui_" + typeName),
-                    Content = view,
+                    Content = grid,
                 };
                 tabControl.Items.Add(tab);
 

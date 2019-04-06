@@ -45,6 +45,16 @@ namespace UCP
 
         static Dictionary<string, string> localStrs = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
+        public static void Add(string identifier, string text)
+        {
+            localStrs.Add(identifier, text);
+        }
+
+        public static void Remove(string identifier)
+        {
+            localStrs.Remove(identifier);
+        }
+
         public static string Get(string identifier)
         {
             if (localStrs.TryGetValue(identifier, out string text))

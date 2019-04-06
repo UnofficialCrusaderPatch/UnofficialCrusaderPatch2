@@ -13,9 +13,14 @@ namespace UCP.Patching
 
         public ValueHeader(string descrIdent, bool isEnabled, double oriVal, double suggested) : base(descrIdent, isEnabled)
         {
-            this.value = oriVal;
             this.oriVal = oriVal;
             this.suggested = suggested;
+        }
+
+        public override void SetParent(Change change)
+        {
+            base.SetParent(change);
+            this.value = this.IsEnabled ? suggested : oriVal;
         }
 
         double value;
@@ -28,7 +33,7 @@ namespace UCP.Patching
             {
                 if (this.IsEnabled == value)
                     return;
-
+                
                 base.IsEnabled = value;
                 if (IsEnabled)
                 {
@@ -45,13 +50,46 @@ namespace UCP.Patching
         protected event Action OnValueChange;
         protected void SetValue(double value)
         {
-            if (this.value == value)
-                return;
+            try
+            {
+                if (this.value == value)
+                    return;
 
-            this.value = value;
-            SetEnabled(value != oriVal);
+                this.value = value;
 
-            this.OnValueChange?.Invoke();
+                bool enable = value != oriVal;
+                if (enable != this.IsEnabled)
+                {
+                    SetEnabled(enable);
+                }
+                else
+                {
+                    Configuration.Save(this.Parent.TitleIdent);
+                }
+
+                this.OnValueChange?.Invoke();
+            }
+            catch (Exception e)
+            {
+                Debug.Show(e, "ay");
+            }
+        }
+
+        public override string GetValueString()
+        {
+            return string.Format("{0};{1}", this.IsEnabled, this.value);
+        }
+
+        public override void LoadValueString(string valueStr)
+        {
+            int index = valueStr.IndexOf(';');
+            if (index < 0) return;
+
+            base.LoadValueString(valueStr.Remove(index));
+
+            valueStr = valueStr.Substring(index + 1).Trim();
+            if (Double.TryParse(valueStr, out double result))
+                this.value = result;
         }
     }
 }

@@ -12,6 +12,14 @@ namespace UCP.Patching
     {
         public bool NoLocalization = false;
 
+        Change parent;
+        public Change Parent => parent;
+        public virtual void SetParent(Change change)
+        {
+            this.parent = change;
+            this.isEnabled = parent.EnabledDefault && this.DefaultIsEnabled;
+        }
+
         string descrIdent;
         public string DescrIdent => descrIdent;
         public string GetDescription() { return NoLocalization ? descrIdent : Localization.Get(descrIdent); }
@@ -40,7 +48,7 @@ namespace UCP.Patching
             {
                 box = new CheckBox()
                 {
-                    IsChecked = this.isEnabled,
+                    IsChecked = isEnabled,
                     Content = content,
                     Height = content.Height,
                     HorizontalAlignment = HorizontalAlignment.Left,
@@ -58,13 +66,17 @@ namespace UCP.Patching
         void Box_Unchecked(object sender, RoutedEventArgs e)
         {
             if (this.IsEnabled)
+            {
                 SetEnabled(false);
+            }
         }
 
         void Box_Checked(object sender, RoutedEventArgs e)
         {
             if (!this.IsEnabled)
+            {
                 SetEnabled(true);
+            }
         }
 
         protected virtual FrameworkElement CreateUI()
@@ -86,6 +98,7 @@ namespace UCP.Patching
                     return;
 
                 isEnabled = value;
+
                 if (box != null)
                     box.IsChecked = value;
             }
@@ -98,9 +111,27 @@ namespace UCP.Patching
 
             IsEnabled = enabled;
             OnEnabledChange?.Invoke(this, enabled);
+            Configuration.Save(this.Parent.TitleIdent);
         }
 
         #endregion
 
+
+        #region Load & Save
+
+        public virtual string GetValueString()
+        {
+            return this.isEnabled.ToString();
+        }
+
+        public virtual void LoadValueString(string valueStr)
+        {
+            if (Boolean.TryParse(valueStr, out bool result))
+            {
+                this.isEnabled = result;
+            }
+        }
+
+        #endregion
     }
 }

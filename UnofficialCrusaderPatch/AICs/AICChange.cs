@@ -19,6 +19,8 @@ namespace UCP.Patching
         AICCollection collection;
         public AICCollection Collection => collection;
 
+        string headerKey;
+
         public AICChange(string title, AICCollection coll, bool enabledDefault = false, bool isIntern = false)
             : base(title, ChangeType.AIC, enabledDefault, false)
         {
@@ -26,8 +28,12 @@ namespace UCP.Patching
             this.collection = coll;
             this.intern = isIntern;
 
+            string descrIdent = title + isIntern;
             string descr = collection.Header.DescrByIndex(Localization.LanguageIndex);
-            this.Add(new DefaultHeader(descr, true, true));
+            this.headerKey = descrIdent + "_descr";
+            Localization.Add(headerKey, descr);
+
+            this.Add(new DefaultHeader(descrIdent, true));
         }
 
         #region UI
@@ -59,9 +65,9 @@ namespace UCP.Patching
             }
         }
 
-        static string aicFolder;
         void ExportFile()
         {
+            string aicFolder = Path.Combine(Configuration.Path, "aic");
             Directory.CreateDirectory(aicFolder);
 
             string fileName = Path.Combine(aicFolder, this.TitleIdent);
@@ -76,6 +82,24 @@ namespace UCP.Patching
         #endregion
 
         #region Loading Files
+
+        public static TreeView View;
+        public static void RefreshLocalFiles()
+        {
+            // remove olds
+            for (int i = Version.Changes.Count - 1; i >= 0; i--)
+            {
+                if (Version.Changes[i] is AICChange change && !change.intern)
+                {
+                    Version.Changes.RemoveAt(i);
+                    Localization.Remove(change.headerKey);
+                    View.Items.Remove(change.UIElement);
+                    change.collection = null;
+                }
+            }
+
+            LoadLocalFiles(true);
+        }
 
         static bool TryLoadCollection(string path, bool resource, out AICCollection result)
         {
@@ -103,13 +127,19 @@ namespace UCP.Patching
             return false;
         }
 
-        /// <summary> Loads .aic files from the given path and setup directory. </summary>
-        public static void LoadFiles(string cpath)
+        static bool loaded = false;
+        public static void LoadFiles()
         {
             const string searchString = "UCP.AICs.";
             const string ucpFile = "UCP-Bugfix.aic";
 
-            aicFolder = Path.Combine(cpath, "aic");
+            if (loaded)
+            {
+                RefreshLocalFiles();
+                return;
+            }
+
+            loaded = true;
 
             // load resource files
             int beforeCount = Version.Changes.Count;
@@ -135,9 +165,14 @@ namespace UCP.Patching
                 {
                     Version.Changes.Add(change);
                 }
-
             }
 
+            LoadLocalFiles(false);
+        }
+
+        static void LoadLocalFiles(bool add2UI)
+        {
+            string aicFolder = Path.Combine(Configuration.Path, "aic");
 
             // load files
             if (Directory.Exists(aicFolder))
@@ -147,6 +182,11 @@ namespace UCP.Patching
                         continue;
 
                     AICChange change = new AICChange(Path.GetFileName(filePath), collection);
+                    if (add2UI)
+                    {
+                        change.InitUI();
+                        View.Items.Add(change.UIElement);
+                    }
                     Version.Changes.Add(change);
                 }
         }
