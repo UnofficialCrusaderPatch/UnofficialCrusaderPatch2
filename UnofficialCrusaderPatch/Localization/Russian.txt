@@ -10,7 +10,7 @@ aiv_EvreyHistory
 aiv_EvreyHistory_descr
 {
 	"Добавляет один новый замок AI для каждого лорда, основываясь на реальных & исторических 
-замках или городах. [Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
+замках или городах. [Создано Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
 
 
