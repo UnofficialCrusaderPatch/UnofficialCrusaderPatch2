@@ -9,17 +9,17 @@ ui_AIC
 
 ui_aicExport
 {
-	"Export"
+	"Eksport"
 }
 
 ui_aicExport_success
 {
-	"Exported successfully."
+	"Eksportowanie powiodło się."
 }
 
 ui_aicHint
 {
-	"Exports the .aic-file from the installer into the crusader folder."
+	"Eksportuje plik .aic z instalatora do folderu z grą."
 }
 
 
@@ -45,9 +45,8 @@ Specjalne podziękowania dla:
 [Evrey](https://github.com/Evrey) za jego zamki SI
 [Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) za jego zamki SI
 [PitchNeeded](https://github.com/PitchNeeded) za jego zamki SI
-[ByBurton](https://github.com/ByBurton) for the AICE and help with the AIC parameters."
+[ByBurton](https://github.com/ByBurton) za AICE i pomoc w ustawieniach AIC."
 }
-
 
 
 // ======================
