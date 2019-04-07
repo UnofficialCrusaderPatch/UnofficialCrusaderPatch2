@@ -6,10 +6,10 @@ AIFileHeader
 
 		- Die Ratte bemannt ihre Verteidigung wieder langsam
 		- Philipp besetzt seine Mauern auf Ratte-Niveau
-		- Friedrich, Marschall, Emir & Abt kaufen Ausr�stung
+		- Friedrich, Marschall, Emir & Abt kaufen Ausrüstung
 		- Wazir kauft Brot in Not
-		- Nizar kauft Brot statt �pfel
-		- Sultan kauft auch K�se & Brot
+		- Nizar kauft Brot statt Äpfel
+		- Sultan kauft auch Käse & Brot
 		- Wazir strebt immer mindestens 5 Getreide im Lager an statt 2
 		- Wazir, Emir, Marschall & Philipp kaufen Nahrung & Getreide in 10er statt 20er Fuhren
 	}
@@ -27,8 +27,19 @@ AIFileHeader
 		- Wazir, Emir, Marshal & Philipp buy food & wheat in stocks of 10 instead of 20
 	}
 	DescrPol	= 
-	DescrRus	= 
-}
+	DescrRus	
+	{
+	        Этот .aic исправляет следующие ошибки и причуды AI:
+
+                - Крыса снова медленно усиливает свою защиту
+                - У Филиппа есть оборонительные сооружения на крыше Крысы
+                - Фредерик, Маршал, Эмир и Аббат покупают оборудование
+                - Вазир покупает хлеб если нужно
+                - Низар покупает хлеб вместо яблок
+                - Султан также покупает сыр и хлеб
+                - Вазир всегда стремится к как минимум 5 пшениц на складе вместо 2
+                - Вазир, Эмир, Маршал и Филипп покупают продовольствие и пшеницу в запасах по 10 вместо 20
+	}
 
 /*
 AICharacter
