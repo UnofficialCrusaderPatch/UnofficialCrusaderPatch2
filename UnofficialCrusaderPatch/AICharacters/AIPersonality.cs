@@ -415,6 +415,7 @@ namespace UCP.AICharacters
         public int Unknown122;
 
         // Index: 123 Hex: 0x1EC
+        [RWNames("Unknown123")]
         public int RaidCatapultsMax;
 
         // Index: 124 Hex: 0x1F0
