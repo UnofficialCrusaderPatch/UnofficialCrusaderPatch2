@@ -26,7 +26,19 @@ AIFileHeader
 		- Wazir always aims at at least 5 wheat in stock instead of 2
 		- Wazir, Emir, Marshal & Philipp buy food & wheat in stocks of 10 instead of 20
 	}
-	DescrPol	= 
+	DescrPol
+	{
+		Ten plik .aic naprawia następujące błędy i problemy przeciwników komputerowych:
+
+		- Szczur powoli odnawia swoją obronę
+		- Król Filip ma obronę na poziomie Szczura
+		- Fryderyk, Marszałek, Emir i Opat kupują bronie
+		- Wezyr kupuje chleb w razie potrzeby
+		- Nizar kupuje chleb, zamiast jabłek
+		- Sułtan kupuje też chleb i ser
+		- Wezyr zawsze stara się mieć przynajmniej 5 sztuk pszenicy w składzie, zamiast 2
+		- Wezyr, Emir, Marszałek i Król Filip kupują jedzenie i pszenicę po 10 sztuk, zamiast po 20
+	}
 	DescrRus	
 	{
 	        Этот .aic исправляет следующие ошибки и причуды AI:
@@ -40,6 +52,7 @@ AIFileHeader
                 - Вазир всегда стремится к как минимум 5 пшениц на складе вместо 2
                 - Вазир, Эмир, Маршал и Филипп покупают продовольствие и пшеницу в запасах по 10 вместо 20
 	}
+}
 
 /*
 AICharacter
