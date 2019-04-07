@@ -48,15 +48,20 @@ namespace UCP
 
             // set title
             this.Title = string.Format("{0} {1}", Localization.Get("Name"), Version.PatcherVersion);
-
+            
             if (!Directory.Exists(Configuration.Path))
             {
                 // check if we can already find the steam path
                 const string key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 40970";
                 RegistryKey myKey = Registry.LocalMachine.OpenSubKey(key, false);
-                if (myKey != null && myKey.GetValue("InstallLocation") is string path && !string.IsNullOrWhiteSpace(path))
+                if (myKey != null && myKey.GetValue("InstallLocation") is string path 
+                    && !string.IsNullOrWhiteSpace(path) && Patcher.CrusaderExists(path))
                 {
                     pTextBoxPath.Text = path;
+                }
+                else if (Patcher.CrusaderExists(Environment.CurrentDirectory))
+                {
+                    pTextBoxPath.Text = Environment.CurrentDirectory;
                 }
             }
             else

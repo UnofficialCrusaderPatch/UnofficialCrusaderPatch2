@@ -16,8 +16,14 @@ namespace UCP.Patching
 
         public static bool CrusaderExists(string folderPath)
         {
-            return GetOriginalBinary(folderPath, CrusaderExe) != null
-                  || GetOriginalBinary(folderPath, XtremeExe) != null;
+            if (!Directory.Exists(folderPath))
+                return false;
+
+            string path = Path.Combine(folderPath, CrusaderExe);
+            if (File.Exists(path)) return true;
+
+            path = Path.Combine(folderPath, XtremeExe);
+            return File.Exists(path);
         }
 
         static string GetOriginalBinary(string folderPath, string exe)
