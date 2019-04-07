@@ -605,31 +605,6 @@ ani nie giną z powodu przechodzenia obok zamku wroga, którego nie atakują w d
 
 
 
-ui_welcometext
-{
-"Jest to nieoficjalna łatka do Twierdzy Krzyżowiec.
-Projekt jest dostępny jako otwarte oprogramowanie przez [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
-
-Każda wersja Krzyżowca jest potencjalnie obsługiwana, ale wprowadzone zmiany &
-pochodzą z wersji 1.41 Steam, dlatego mogą pojawić się problemy. &
-Instalator wyświetli wtedy komunikat o błędzie. Wersja tej łatki jest pokazana &
-w lewym dolnym rogu głównego menu gry. Przed zmianami zostaną utworzone pliki &
-kopii zapasowej. Można je przywrócić za pomocą przycisku 'Odinstaluj' lub ręcznie.
-
-W tym miejscu chciałbym podziękować społeczności Twierdzy za tak &
-entuzjastyczne wsparcie.
-
-Specjalne podziękowania dla:
-[FireFly Studios](https://fireflyworlds.com/) za stworzenie serii Twierdza
-[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), bo przypomniał mi o Twierdzy
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) za polskie tłumaczenie
-[Lolasik011](https://github.com/Lolasik011) za rosyjskie tłumaczenie
-[Evrey](https://github.com/Evrey) za jego zamki SI
-[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) za jego zamki SI
-[PitchNeeded](https://github.com/PitchNeeded) za jego zamki SI"
-}
-
-
 
 ai_assaultswitch
 {

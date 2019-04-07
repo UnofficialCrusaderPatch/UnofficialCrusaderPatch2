@@ -592,31 +592,6 @@ ai_attacktarget_weakest_descr
 // =====================
 
 
-
-ui_welcometext
-{
-"Это неофициальный патч для Stronghold Crusader.
-Проект доступен с открытым исходным кодом через [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
-
-Любая версия Crusader потенциально поддерживается, но поскольку изменения, &
-выведенный со Steam версией 1.41, могут возникнуть несовместимости. Настройка &
-затем отобразит сообщения об ошибках. Установленная версия исправления показана в &
-нижнем левом углу главного меню.Перед любыми изменениями будут созданы резервные файлы. &
-Они могут быть восстановлены через кнопку «Удалить» или вручную.
-
-На этом этапе я хотел бы поблагодарить сообщество Stronghold за поддержку &
-меня так восторженно.
-
-Особая благодарность:
-[FireFly Studios](https://fireflyworlds.com/) за создания серии Stronghold
-[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), потому что он напомнил мне про Stronghold
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) за Польский перевод
-[Lolasik011](https://github.com/Lolasik011) за Русский перевод
-[Evrey](https://github.com/Evrey) за свои замки AI
-[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) за свои замки AI
-[PitchNeeded](https://github.com/PitchNeeded) за свои замки AI"
-}
-
 ai_assaultswitch
 {
 	"Нет изменения цели AI во время осады"

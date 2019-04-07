@@ -20,7 +20,7 @@ namespace UCP.AICharacters
 
         public AIWriter(Stream stream)
         {
-            sw = new StreamWriter(stream, Encoding.Default);
+            sw = new StreamWriter(stream);
             sb = new StringBuilder(20);
         }
 
