@@ -1,4 +1,19 @@
 ﻿// ======================
+//         2.13
+// ======================
+
+aiv_EvreyHistory
+{
+	"Evrey's historic AI castles"
+}
+
+aiv_EvreyHistory_descr
+{
+	"Adds one new AI castle for each lord, based on real historical &
+castles or cities. [Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
+}
+
+// ======================
 //         2.12
 // ======================
 

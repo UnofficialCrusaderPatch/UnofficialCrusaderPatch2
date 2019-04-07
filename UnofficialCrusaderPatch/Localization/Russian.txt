@@ -1,4 +1,20 @@
 ﻿// ======================
+//         2.13
+// ======================
+
+aiv_EvreyHistory
+{
+	"Evrey's historic AI castles"
+}
+
+aiv_EvreyHistory_descr
+{
+	"Adds one new AI castle for each lord, based on real historical &
+castles or cities. [Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
+}
+
+
+﻿// ======================
 //         2.12
 // ======================
 
@@ -9,17 +25,17 @@ ui_AIC
 
 ui_aicExport
 {
-	"Export"
+	"Экспорт"
 }
 
 ui_aicExport_success
 {
-	"Exported successfully."
+	"Экспортирование успешно."
 }
 
 ui_aicHint
 {
-	"Exports the .aic-file from the installer into the crusader folder."
+	"Экспортирует .aic-файл из установщика в папку Stronghold Crusader."
 }
 
 

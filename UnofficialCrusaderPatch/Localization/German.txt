@@ -1,4 +1,21 @@
 ﻿// ======================
+//         2.13
+// ======================
+
+aiv_EvreyHistory
+{
+	"Evreys historische KI-Burgen"
+}
+
+aiv_EvreyHistory_descr
+{
+	"Gibt den KI-Lords jeweils eine neue Burg, die auf einer realen, &
+zum Lord passenden, historischen Burg oder gar Stadt basiert. &
+[Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
+}
+
+
+// ======================
 //         2.12
 // ======================
 
