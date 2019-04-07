@@ -4,13 +4,13 @@
 
 aiv_EvreyHistory
 {
-	"Evrey's historic AI castles"
+	"Evrey Исторические AI Замки"
 }
 
 aiv_EvreyHistory_descr
 {
-	"Adds one new AI castle for each lord, based on real historical &
-castles or cities. [Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
+	"Добавляет один новый замок AI для каждого лорда, основываясь на реальных & исторических 
+замках или городах. [Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
 
 
