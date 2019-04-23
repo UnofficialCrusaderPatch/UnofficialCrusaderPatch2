@@ -253,10 +253,14 @@ namespace UCP.AICharacters
         public int DefSiegeEngineBuildDelay;
 
         // Index: 72 Hex: 0x120
-        public int Unknown072;
+        [RWNames("Unknown072")]
+        [RWComment("The threshold above which the AI builds harassing siege engines.")]
+        public int HarassingSiegeEngineThreshold;
 
         // Index: 73 Hex: 0x124
-        public int Unknown073;
+        [RWNames("Unknown073")]
+        [RWComment("The delay between building another harassign siege engine.")]
+        public int HarassingSiegeEngineDelay;
 
         // Index: 74 Hex: 0x128
         [RWComment("The probability with which this AI reinforces missing defense troops.")]
@@ -391,32 +395,41 @@ namespace UCP.AICharacters
         public Unit RaidUnit8;
 
         // Index: 115 Hex: 0x1CC
-        public int Unknown115;
+        [RWNames("Unknown115")]
+        public HarassingSiegeEngine HarassingSiegeEngine1;
 
         // Index: 116 Hex: 0x1D0
-        public int Unknown116;
+        [RWNames("Unknown116")]
+        public HarassingSiegeEngine HarassingSiegeEngine2;
 
         // Index: 117 Hex: 0x1D4
-        public int Unknown117;
+        [RWNames("Unknown117")]
+        public HarassingSiegeEngine HarassingSiegeEngine3;
 
         // Index: 118 Hex: 0x1D8
-        public int Unknown118;
+        [RWNames("Unknown118")]
+        public HarassingSiegeEngine HarassingSiegeEngine4;
 
         // Index: 119 Hex: 0x1DC
-        public int Unknown119;
+        [RWNames("Unknown119")]
+        public HarassingSiegeEngine HarassingSiegeEngine5;
 
         // Index: 120 Hex: 0x1E0
-        public int Unknown120;
+        [RWNames("Unknown120")]
+        public HarassingSiegeEngine HarassingSiegeEngine6;
 
         // Index: 121 Hex: 0x1E4
-        public int Unknown121;
+        [RWNames("Unknown121")]
+        public HarassingSiegeEngine HarassingSiegeEngine7;
 
         // Index: 122 Hex: 0x1E8
-        public int Unknown122;
+        [RWNames("Unknown122")]
+        public HarassingSiegeEngine HarassingSiegeEngine8;
 
         // Index: 123 Hex: 0x1EC
         [RWNames("Unknown123")]
-        public int RaidCatapultsMax;
+        [RWComment("The maximum of harassing siege engines an AI builds.")]
+        public int HarassingSiegeEnginesMax;
 
         // Index: 124 Hex: 0x1F0
         public int Unknown124;
@@ -510,7 +523,9 @@ namespace UCP.AICharacters
         public int AttUnitRangedPushMax;
 
         // Index: 153 Hex: 0x264
-        public int Unknown153;
+        [RWNames("Unknown153")]
+        [RWComment("# of groups the RangedPushUnits split into. BUGGY! More than 1 group results to only a single group attacking, the others standing idle.")]
+        public int RangedPushGroupsCount;
 
         // Index: 154 Hex: 0x268
         [RWComment("Attacking unit that holds position and doesn't attack until the walls are breached.")]
@@ -520,7 +535,9 @@ namespace UCP.AICharacters
         public int AttUnitBackupMax;
 
         // Index: 156 Hex: 0x270
-        public int Unknown156;
+        [RWNames("Unknown156")]
+        [RWComment("# of groups the RangedBackupUnits split into. If shields are present in the army, one will be added to each group (if possible).")]
+        public int RangedBackupGroupsCount;
 
         // Index: 157 Hex: 0x274
         public Unit AttUnit5;
