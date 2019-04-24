@@ -568,17 +568,18 @@ namespace UCP.AICharacters
         public int Unknown161;
 
         // Index: 162 Hex: 0x288
-        [RWComment("The units the AI recruits as main part of the strike force")]
+        [RWComment("AttUntiMain1 to AttUnitMain4 is a lsit of the main strike force the AI recruits for sieges. Priotizes in order of the list, but only recruits untis for which they have enough gold. So try to place expensive units higher up.")]
         public Unit AttUnitMain1;
 
         // Index: 163 Hex: 0x28C
-        [RWComment("The units the AI recruits as secondary part of the strike force")]
         public Unit AttUnitMain2;
 
         // Index: 164 Hex: 0x290
+        [RWNames("Unknown164")]
         public Unit AttUnitMain3;
 
         // Index: 165 Hex: 0x294
+        [RWNames("Unknown165")]
         public Unit AttUnitMain4;
 
         // Index: 166 Hex: 0x298
