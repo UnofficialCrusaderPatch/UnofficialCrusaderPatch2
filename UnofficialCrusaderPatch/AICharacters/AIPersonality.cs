@@ -337,6 +337,9 @@ namespace UCP.AICharacters
         public int OuterPatrolGroupsMove;
 
         // Index: 95 Hex: 0x17C
+        //[RWNames("Unknown095")]
+        //[RWComment("The amount of patrol units the AI saves up before sending them out to do their duty.")]
+        //NOT SURE HERE YET, NEEDS TESTING!
         public int Unknown095;
 
         // Index: 96 Hex: 0x180
@@ -573,10 +576,10 @@ namespace UCP.AICharacters
         public Unit AttUnitMain2;
 
         // Index: 164 Hex: 0x290
-        public int Unknown164;
+        public Unit AttUnitMain3;
 
         // Index: 165 Hex: 0x294
-        public int Unknown165;
+        public Unit AttUnitMain4;
 
         // Index: 166 Hex: 0x298
         [RWComment("This does nothing")]
