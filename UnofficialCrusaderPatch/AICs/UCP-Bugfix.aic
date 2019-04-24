@@ -2,55 +2,55 @@ AIFileHeader
 {
 	DescrGer
 	{
-		Diese .aic behebt die folgenden Fehler und Macken der KIs:
-
-		- Die Ratte bemannt ihre Verteidigung wieder langsam
-		- Philipp besetzt seine Mauern auf Ratte-Niveau
-		- Friedrich, Marschall, Emir & Abt kaufen Ausrüstung
-		- Wazir kauft Brot in Not
-		- Nizar kauft Brot statt Äpfel
-		- Sultan kauft auch Käse & Brot
-		- Wazir strebt immer mindestens 5 Getreide im Lager an statt 2
-		- Wazir, Emir, Marschall & Philipp kaufen Nahrung & Getreide in 10er statt 20er Fuhren
+		Diese .aic behebt die folgenden Fehler und Macken der KIs:
+		- Die Ratte bemannt ihre Verteidigung wieder langsam
+		- Philipp besetzt seine Mauern auf Ratte-Niveau
+		- Friedrich, Marschall, Emir & Abt kaufen Ausrüstung
+		- Wazir kauft Brot in Not
+		- Nizar kauft Brot statt Äpfel
+		- Sultan kauft auch Käse & Brot
+		- Wazir strebt immer mindestens 5 Getreide im Lager an statt 2
+		- Wazir, Emir, Marschall & Philipp kaufen Nahrung & Getreide in 10er statt 20er Fuhren
+		
 	}
 	DescrEng
 	{
-		This .aic fixes the following bugs and quirks of the AI:
-
-		- The Rat reinforces its defense again slowly
-		- Philipp has wall defenses on the niveau of The Rat
-		- Frederick, Marshal, Emir & The Abbot buy equipment
-		- Wazir buys bread in need
-		- Nizar buys bread instead of apples
-		- Sultan also buys Cheese & Bread
-		- Wazir always aims at at least 5 wheat in stock instead of 2
-		- Wazir, Emir, Marshal & Philipp buy food & wheat in stocks of 10 instead of 20
+		This .aic fixes the following bugs and quirks of the AI:
+		- The Rat reinforces its defense again slowly
+		- Philipp has wall defenses on the niveau of The Rat
+		- Frederick, Marshal, Emir & The Abbot buy equipment
+		- Wazir buys bread in need
+		- Nizar buys bread instead of apples
+		- Sultan also buys Cheese & Bread
+		- Wazir always aims at at least 5 wheat in stock instead of 2
+		- Wazir, Emir, Marshal & Philipp buy food & wheat in stocks of 10 instead of 20
+		
 	}
 	DescrPol
 	{
-		Ten plik .aic naprawia następujące błędy i problemy przeciwników komputerowych:
-
-		- Szczur powoli odnawia swoją obronę
-		- Król Filip ma obronę na poziomie Szczura
-		- Fryderyk, Marszałek, Emir i Opat kupują bronie
-		- Wezyr kupuje chleb w razie potrzeby
-		- Nizar kupuje chleb, zamiast jabłek
-		- Sułtan kupuje też chleb i ser
-		- Wezyr zawsze stara się mieć przynajmniej 5 sztuk pszenicy w składzie, zamiast 2
-		- Wezyr, Emir, Marszałek i Król Filip kupują jedzenie i pszenicę po 10 sztuk, zamiast po 20
+		Ten plik .aic naprawia następujące błędy i problemy przeciwników komputerowych:
+		- Szczur powoli odnawia swoją obronę
+		- Król Filip ma obronę na poziomie Szczura
+		- Fryderyk, Marszałek, Emir i Opat kupują bronie
+		- Wezyr kupuje chleb w razie potrzeby
+		- Nizar kupuje chleb, zamiast jabłek
+		- Sułtan kupuje też chleb i ser
+		- Wezyr zawsze stara się mieć przynajmniej 5 sztuk pszenicy w składzie, zamiast 2
+		- Wezyr, Emir, Marszałek i Król Filip kupują jedzenie i pszenicę po 10 sztuk, zamiast po 20
+		
 	}
-	DescrRus	
+	DescrRus
 	{
-	        Этот .aic исправляет следующие ошибки и причуды AI:
-
-                - Крыса снова медленно усиливает свою защиту
-                - У Филиппа есть оборонительные сооружения на крыше Крысы
-                - Фредерик, Маршал, Эмир и Аббат покупают оборудование
-                - Вазир покупает хлеб если нужно
-                - Низар покупает хлеб вместо яблок
-                - Султан также покупает сыр и хлеб
-                - Вазир всегда стремится к как минимум 5 пшениц на складе вместо 2
-                - Вазир, Эмир, Маршал и Филипп покупают продовольствие и пшеницу в запасах по 10 вместо 20
+		Этот .aic исправляет следующие ошибки и причуды AI:
+		- Крыса снова медленно усиливает свою защиту
+		- У Филиппа есть оборонительные сооружения на крыше Крысы
+		- Фредерик, Маршал, Эмир и Аббат покупают оборудование
+		- Вазир покупает хлеб если нужно
+		- Низар покупает хлеб вместо яблок
+		- Султан также покупает сыр и хлеб
+		- Вазир всегда стремится к как минимум 5 пшениц на складе вместо 2
+		- Вазир, Эмир, Маршал и Филипп покупают продовольствие и пшеницу в запасах по 10 вместо 20
+		
 	}
 }
 
@@ -67,13 +67,13 @@ AICharacter
 		Unknown003:	Int32
 		Unknown004:	Int32
 		Unknown005:	Int32
-		CriticalPopularity:	Int32,	(0 - 10000) Below this value, the AI sells more stuff than usual to get money.
-		LowestPopularity:	Int32,	Below this value the AI sets taxes zero until it reaches 'HighestPopularity' again.
+		CriticalPopularity:	Int32,	Values range from 0 to 10000, where 100 popularity equals 10000. Below this value, the AI sells more stuff than usual to get money.
+		LowestPopularity:	Int32,	Below this value the AI sets taxes to zero until it reaches 'HighestPopularity' again.
 		HighestPopularity:	Int32,	Above this value the AI sets taxes back up
 		Unknown009:	Int32
 		Unknown010:	Int32
 		Unknown011:	Int32
-		Farm1:	FarmBuilding
+		Farm1:	FarmBuilding,	An array of farm slots, which the AI builds in the given sequence.
 		Farm2:	FarmBuilding
 		Farm3:	FarmBuilding
 		Farm4:	FarmBuilding
@@ -176,15 +176,15 @@ AICharacter
 		RaidUnit6:	Unit
 		RaidUnit7:	Unit
 		RaidUnit8:	Unit
-		Unknown115:	Int32
-		Unknown116:	Int32
-		Unknown117:	Int32
-		Unknown118:	Int32
-		Unknown119:	Int32
-		Unknown120:	Int32
-		Unknown121:	Int32
-		Unknown122:	Int32
-		Unknown123:	Int32
+		HarassingSiegeEngine1:	HarassingSiegeEngine
+		HarassingSiegeEngine2:	HarassingSiegeEngine
+		HarassingSiegeEngine3:	HarassingSiegeEngine
+		HarassingSiegeEngine4:	HarassingSiegeEngine
+		HarassingSiegeEngine5:	HarassingSiegeEngine
+		HarassingSiegeEngine6:	HarassingSiegeEngine
+		HarassingSiegeEngine7:	HarassingSiegeEngine
+		HarassingSiegeEngine8:	HarassingSiegeEngine
+		HarassingSiegeEnginesMax:	Int32,	The maximum of harassing siege engines an AI builds.
 		Unknown124:	Int32
 		AttForceBase:	Int32,	The base amount of troops with which this AI attacks
 		AttForceRandom:	Int32,	The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
@@ -214,10 +214,10 @@ AICharacter
 		AttMaxTunnelers:	Int32
 		AttUnitRangedPush:	Unit,	Ranged attack unit that moves towards the enemy keep and shoots
 		AttUnitRangedPushMax:	Int32
-		Unknown153:	Int32
+		RangedPushGroupsCount:	Int32,	# of groups the RangedPushUnits split into. BUGGY! More than 1 group results to only a single group attacking, the others standing idle.
 		AttUnitBackup:	Unit,	Attacking unit that holds position and doesn't attack until the walls are breached.
 		AttUnitBackupMax:	Int32
-		Unknown156:	Int32
+		RangedBackupGroupsCount:	Int32,	# of groups the RangedBackupUnits split into. If shields are present in the army, one will be added to each group (if possible).
 		AttUnit5:	Unit
 		AttUnit5Max:	Int32
 		AttUnitSiegeDef:	Unit,	These units patrol between siege enginees in order to protect them.
@@ -355,15 +355,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 190
-		Unknown116	= 0
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 0
+		HarassingSiegeEngine1	= Catapult
+		HarassingSiegeEngine2	= None
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 0
 		Unknown124	= 3
 		AttForceBase	= 20
 		AttForceRandom	= 10
@@ -393,10 +393,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= EuropArcher
 		AttUnitRangedPushMax	= 0
-		Unknown153	= 0
+		RangedPushGroupsCount	= 0
 		AttUnitBackup	= EuropArcher
 		AttUnitBackupMax	= 16
-		Unknown156	= 0
+		RangedBackupGroupsCount	= 0
 		AttUnit5	= None
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= Spearman
@@ -533,15 +533,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 190
-		Unknown116	= 0
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 1
+		HarassingSiegeEngine1	= Catapult
+		HarassingSiegeEngine2	= None
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 1
 		Unknown124	= 3
 		AttForceBase	= 30
 		AttForceRandom	= 10
@@ -571,10 +571,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= Slinger
 		AttUnitRangedPushMax	= 0
-		Unknown153	= 0
+		RangedPushGroupsCount	= 0
 		AttUnitBackup	= ArabArcher
 		AttUnitBackupMax	= 50
-		Unknown156	= 1
+		RangedBackupGroupsCount	= 1
 		AttUnit5	= None
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= EuropArcher
@@ -711,15 +711,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 190
-		Unknown116	= 0
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 2
+		HarassingSiegeEngine1	= Catapult
+		HarassingSiegeEngine2	= None
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 2
 		Unknown124	= 3
 		AttForceBase	= 10
 		AttForceRandom	= 10
@@ -749,10 +749,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= None
 		AttUnitRangedPushMax	= 0
-		Unknown153	= 0
+		RangedPushGroupsCount	= 0
 		AttUnitBackup	= Crossbowman
 		AttUnitBackupMax	= 5
-		Unknown156	= 1
+		RangedBackupGroupsCount	= 1
 		AttUnit5	= None
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= Maceman
@@ -889,15 +889,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 190
-		Unknown116	= 0
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 4
+		HarassingSiegeEngine1	= Catapult
+		HarassingSiegeEngine2	= None
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 4
 		Unknown124	= 5
 		AttForceBase	= 40
 		AttForceRandom	= 15
@@ -927,10 +927,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= None
 		AttUnitRangedPushMax	= 0
-		Unknown153	= 0
+		RangedPushGroupsCount	= 0
 		AttUnitBackup	= Crossbowman
 		AttUnitBackupMax	= 30
-		Unknown156	= 3
+		RangedBackupGroupsCount	= 3
 		AttUnit5	= None
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= Swordsman
@@ -1067,15 +1067,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 190
-		Unknown116	= 0
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 5
+		HarassingSiegeEngine1	= Catapult
+		HarassingSiegeEngine2	= None
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 5
 		Unknown124	= 3
 		AttForceBase	= 50
 		AttForceRandom	= 10
@@ -1105,10 +1105,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= HorseArcher
 		AttUnitRangedPushMax	= 20
-		Unknown153	= 1
+		RangedPushGroupsCount	= 1
 		AttUnitBackup	= ArabArcher
 		AttUnitBackupMax	= 20
-		Unknown156	= 3
+		RangedBackupGroupsCount	= 3
 		AttUnit5	= FireThrower
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= FireThrower
@@ -1245,15 +1245,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 358
-		Unknown116	= 190
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 2
+		HarassingSiegeEngine1	= FireBallista
+		HarassingSiegeEngine2	= Catapult
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 2
 		Unknown124	= 3
 		AttForceBase	= 15
 		AttForceRandom	= 10
@@ -1283,10 +1283,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= HorseArcher
 		AttUnitRangedPushMax	= 0
-		Unknown153	= 0
+		RangedPushGroupsCount	= 0
 		AttUnitBackup	= HorseArcher
 		AttUnitBackupMax	= 40
-		Unknown156	= 2
+		RangedBackupGroupsCount	= 2
 		AttUnit5	= None
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= ArabArcher
@@ -1423,15 +1423,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 190
-		Unknown116	= 0
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 0
+		HarassingSiegeEngine1	= Catapult
+		HarassingSiegeEngine2	= None
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 0
 		Unknown124	= 3
 		AttForceBase	= 10
 		AttForceRandom	= 20
@@ -1461,10 +1461,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= None
 		AttUnitRangedPushMax	= 0
-		Unknown153	= 0
+		RangedPushGroupsCount	= 0
 		AttUnitBackup	= ArabArcher
 		AttUnitBackupMax	= 120
-		Unknown156	= 1
+		RangedBackupGroupsCount	= 1
 		AttUnit5	= None
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= None
@@ -1601,15 +1601,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 190
-		Unknown116	= 0
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 2
+		HarassingSiegeEngine1	= Catapult
+		HarassingSiegeEngine2	= None
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 2
 		Unknown124	= 5
 		AttForceBase	= 20
 		AttForceRandom	= 5
@@ -1639,10 +1639,10 @@ AICharacter
 		AttMaxTunnelers	= 3
 		AttUnitRangedPush	= None
 		AttUnitRangedPushMax	= 0
-		Unknown153	= 0
+		RangedPushGroupsCount	= 0
 		AttUnitBackup	= EuropArcher
 		AttUnitBackupMax	= 20
-		Unknown156	= 2
+		RangedBackupGroupsCount	= 2
 		AttUnit5	= None
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= Swordsman
@@ -1779,15 +1779,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 190
-		Unknown116	= 0
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 2
+		HarassingSiegeEngine1	= Catapult
+		HarassingSiegeEngine2	= None
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 2
 		Unknown124	= 6
 		AttForceBase	= 30
 		AttForceRandom	= 4
@@ -1817,10 +1817,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= Crossbowman
 		AttUnitRangedPushMax	= 20
-		Unknown153	= 1
+		RangedPushGroupsCount	= 1
 		AttUnitBackup	= EuropArcher
 		AttUnitBackupMax	= 30
-		Unknown156	= 2
+		RangedBackupGroupsCount	= 2
 		AttUnit5	= None
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= Crossbowman
@@ -1957,15 +1957,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 190
-		Unknown116	= 0
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 1
+		HarassingSiegeEngine1	= Catapult
+		HarassingSiegeEngine2	= None
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 1
 		Unknown124	= 4
 		AttForceBase	= 10
 		AttForceRandom	= 20
@@ -1995,10 +1995,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= None
 		AttUnitRangedPushMax	= 0
-		Unknown153	= 0
+		RangedPushGroupsCount	= 0
 		AttUnitBackup	= None
 		AttUnitBackupMax	= 0
-		Unknown156	= 0
+		RangedBackupGroupsCount	= 0
 		AttUnit5	= None
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= None
@@ -2135,15 +2135,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 358
-		Unknown116	= 0
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 4
+		HarassingSiegeEngine1	= FireBallista
+		HarassingSiegeEngine2	= None
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 4
 		Unknown124	= 4
 		AttForceBase	= 40
 		AttForceRandom	= 5
@@ -2173,10 +2173,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= None
 		AttUnitRangedPushMax	= 0
-		Unknown153	= 0
+		RangedPushGroupsCount	= 0
 		AttUnitBackup	= HorseArcher
 		AttUnitBackupMax	= 80
-		Unknown156	= 1
+		RangedBackupGroupsCount	= 1
 		AttUnit5	= FireThrower
 		AttUnit5Max	= 10
 		AttUnitSiegeDef	= None
@@ -2313,15 +2313,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 190
-		Unknown116	= 190
-		Unknown117	= 358
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 3
+		HarassingSiegeEngine1	= Catapult
+		HarassingSiegeEngine2	= Catapult
+		HarassingSiegeEngine3	= FireBallista
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 3
 		Unknown124	= 4
 		AttForceBase	= 30
 		AttForceRandom	= 10
@@ -2351,10 +2351,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= None
 		AttUnitRangedPushMax	= 0
-		Unknown153	= 0
+		RangedPushGroupsCount	= 0
 		AttUnitBackup	= HorseArcher
 		AttUnitBackupMax	= 80
-		Unknown156	= 1
+		RangedBackupGroupsCount	= 1
 		AttUnit5	= None
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= None
@@ -2491,15 +2491,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 190
-		Unknown116	= 0
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 0
+		HarassingSiegeEngine1	= Catapult
+		HarassingSiegeEngine2	= None
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 0
 		Unknown124	= 4
 		AttForceBase	= 40
 		AttForceRandom	= 0
@@ -2529,10 +2529,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= None
 		AttUnitRangedPushMax	= 0
-		Unknown153	= 0
+		RangedPushGroupsCount	= 0
 		AttUnitBackup	= HorseArcher
 		AttUnitBackupMax	= 0
-		Unknown156	= 0
+		RangedBackupGroupsCount	= 0
 		AttUnit5	= None
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= None
@@ -2669,15 +2669,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 190
-		Unknown116	= 358
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 5
+		HarassingSiegeEngine1	= Catapult
+		HarassingSiegeEngine2	= FireBallista
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 5
 		Unknown124	= 4
 		AttForceBase	= 50
 		AttForceRandom	= 20
@@ -2707,10 +2707,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= FireThrower
 		AttUnitRangedPushMax	= 0
-		Unknown153	= 0
+		RangedPushGroupsCount	= 0
 		AttUnitBackup	= Crossbowman
 		AttUnitBackupMax	= 50
-		Unknown156	= 1
+		RangedBackupGroupsCount	= 1
 		AttUnit5	= None
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= Maceman
@@ -2847,15 +2847,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 190
-		Unknown116	= 0
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 1
+		HarassingSiegeEngine1	= Catapult
+		HarassingSiegeEngine2	= None
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 1
 		Unknown124	= 4
 		AttForceBase	= 10
 		AttForceRandom	= 20
@@ -2885,10 +2885,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= None
 		AttUnitRangedPushMax	= 0
-		Unknown153	= 0
+		RangedPushGroupsCount	= 0
 		AttUnitBackup	= EuropArcher
 		AttUnitBackupMax	= 30
-		Unknown156	= 3
+		RangedBackupGroupsCount	= 3
 		AttUnit5	= None
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= None
@@ -2903,7 +2903,6 @@ AICharacter
 		TargetChoice	= Balanced
 	}
 }
-
 
 AICharacter
 {
@@ -3026,15 +3025,15 @@ AICharacter
 		RaidUnit6	= None
 		RaidUnit7	= None
 		RaidUnit8	= None
-		Unknown115	= 190
-		Unknown116	= 0
-		Unknown117	= 0
-		Unknown118	= 0
-		Unknown119	= 0
-		Unknown120	= 0
-		Unknown121	= 0
-		Unknown122	= 0
-		Unknown123	= 5
+		HarassingSiegeEngine1	= Catapult
+		HarassingSiegeEngine2	= None
+		HarassingSiegeEngine3	= None
+		HarassingSiegeEngine4	= None
+		HarassingSiegeEngine5	= None
+		HarassingSiegeEngine6	= None
+		HarassingSiegeEngine7	= None
+		HarassingSiegeEngine8	= None
+		HarassingSiegeEnginesMax	= 5
 		Unknown124	= 4
 		AttForceBase	= 50
 		AttForceRandom	= 10
@@ -3064,10 +3063,10 @@ AICharacter
 		AttMaxTunnelers	= 0
 		AttUnitRangedPush	= None
 		AttUnitRangedPushMax	= 0
-		Unknown153	= 0
+		RangedPushGroupsCount	= 0
 		AttUnitBackup	= EuropArcher
 		AttUnitBackupMax	= 40
-		Unknown156	= 1
+		RangedBackupGroupsCount	= 1
 		AttUnit5	= None
 		AttUnit5Max	= 0
 		AttUnitSiegeDef	= None
@@ -3082,3 +3081,4 @@ AICharacter
 		TargetChoice	= Balanced
 	}
 }
+
