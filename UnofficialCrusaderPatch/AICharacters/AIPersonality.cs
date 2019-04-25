@@ -560,7 +560,7 @@ namespace UCP.AICharacters
         public int AttUnitEngageMax;
 
         // Index: 159 Hex: 0x27C
-        [RWComment("These units patrol between siege enginees in order to protect them.")]
+        [RWComment("These units patrol between siege engines in order to protect them.")]
         public Unit AttUnitSiegeDef;
 
         // Index: 160 Hex: 0x280
@@ -570,7 +570,7 @@ namespace UCP.AICharacters
         public int Unknown161;
 
         // Index: 162 Hex: 0x288
-        [RWComment("AttUntiMain1 to AttUnitMain4 is a lsit of the main strike force the AI recruits for sieges. Priotizes in order of the list, but only recruits untis for which they have enough gold. So try to place expensive units higher up.")]
+        [RWComment("AttUntiMain1 to AttUnitMain4 is a list of the main strike force the AI recruits for sieges. Priotizes in order of the list, but only recruits untis for which they have enough gold. So try to place expensive units higher up.")]
         public Unit AttUnitMain1;
 
         // Index: 163 Hex: 0x28C
