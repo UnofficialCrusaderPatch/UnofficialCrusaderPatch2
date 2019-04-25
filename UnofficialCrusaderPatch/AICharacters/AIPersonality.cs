@@ -182,7 +182,9 @@ namespace UCP.AICharacters
         public int MaxResourceVariance;
 
         // Index: 49 Hex: 0xC4
-        public int Unknown049;
+        [RWNames("Unknown049")]
+        [RWComment("A (gold) threshold which disables any recruitment of all units except for raiding and sortie until it is met.")]
+        public int AttForceRecruitThreshold;
 
         // Index: 50 Hex: 0xC8
         public BlacksmithSetting BlacksmithSetting;
@@ -550,7 +552,7 @@ namespace UCP.AICharacters
 
         // Index: 157 Hex: 0x274
         [RWNames("Unknown157")]
-        [RWComment("Units that engage enemy groups of units outside the castle. Prioritizes larger groups no matter where they are on the map.")]
+        [RWComment("Units that engage enemy groups of units outside the castle. Prioritizes larger groups no matter where they are on the map. Otherwise destroys buildings outside the castle.")]
         public Unit AttUnitEngage;
 
         // Index: 158 Hex: 0x278
