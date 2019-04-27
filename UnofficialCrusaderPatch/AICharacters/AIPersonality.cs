@@ -184,7 +184,7 @@ namespace UCP.AICharacters
         // Index: 49 Hex: 0xC4
         [RWNames("Unknown049")]
         [RWComment("A (gold) threshold which disables any recruitment of all units except for raiding and sortie until it is met.")]
-        public int AttForceRecruitThreshold;
+        public int RecruitGoldThreshold;
 
         // Index: 50 Hex: 0xC8
         public BlacksmithSetting BlacksmithSetting;
