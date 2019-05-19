@@ -153,7 +153,7 @@ namespace UCP.Patching
                 sb.Append(Path.GetFileName(filePath));
                 sb.AppendLine(":");
                 foreach (var f in fails)
-                    sb.AppendLine(f.Value + " " + f.Key);
+                    sb.AppendLine(f.Ident + " " + f.Type);
 
                 fails.Clear();
                 Debug.Show(sb.ToString());
@@ -194,10 +194,15 @@ namespace UCP.Patching
             }
         }
 
-        static readonly Dictionary<string, EditFailure> fails = new Dictionary<string, EditFailure>();
+        struct EditFail
+        {
+            public string Ident;
+            public EditFailure Type;
+        }
+        static readonly List<EditFail> fails = new List<EditFail>();
         public static void AddFailure(string ident, EditFailure failure)
         {
-            fails.Add(ident, failure);
+            fails.Add(new EditFail(){ Ident=ident, Type=failure });
         }
 
         static void DoAIVChange(string folderPath, Percentage perc)

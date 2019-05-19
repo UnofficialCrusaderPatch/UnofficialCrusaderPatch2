@@ -116,7 +116,7 @@ namespace UCP.AICharacters
         public int MaxPitchrigs;
 
         // Index: 29 Hex: 0x74
-        [RWComment("The maximum amount of farms the AI builds. (Also check PopulationPerFarm)")]
+        [RWComment("The maximum amount of farms the AI builds. HopFarms are excluded from this! (Also check PopulationPerFarm)")]
         public int MaxFarms;
 
         // Index: 30 Hex: 0x78

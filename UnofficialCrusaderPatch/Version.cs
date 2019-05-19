@@ -33,7 +33,7 @@ namespace UCP
 
     class Version
     {
-        public static string PatcherVersion = "2.12";
+        public static string PatcherVersion = "2.13_pre-release";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
