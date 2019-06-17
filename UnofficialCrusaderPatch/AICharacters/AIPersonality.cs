@@ -455,7 +455,9 @@ namespace UCP.AICharacters
         public int Unknown127;
 
         // Index: 128 Hex: 0x200
-        public int Unknown128;
+        [RWComment("The %-amount of units of the attack force that the AI will rally before attacking. (0 - 100)")]
+        [RWNames("Unknown128")]
+        public int AttForceRallyPercentage;
 
         // Index: 129 Hex: 0x204
         public int Unknown129;

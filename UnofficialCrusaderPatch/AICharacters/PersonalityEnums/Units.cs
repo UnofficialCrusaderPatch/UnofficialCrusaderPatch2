@@ -82,7 +82,7 @@ namespace UCP.AICharacters
         Unknown7	= 7,
         Unknown8    = 8,
         Unknown9	= 9,
-        Unknown10	= 10,
+        PitchWorker	= 10,
         Unknown11	= 11,
         Unknown12	= 12,
         Unknown13	= 13,
