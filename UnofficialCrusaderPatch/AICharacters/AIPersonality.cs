@@ -591,7 +591,9 @@ namespace UCP.AICharacters
         public int AttMaxDefault;
 
         // Index: 167 Hex: 0x29C
-        public int Unknown167;
+        [RWComment("# of groups all the AttUnitMain split into. Maximum is 3")]
+        [RWNames("Unknown167")]
+        public int AttMainUnitsGroupsCount;
 
         // Index: 168 Hex: 0x2A0
         public TargetingType TargetChoice;
