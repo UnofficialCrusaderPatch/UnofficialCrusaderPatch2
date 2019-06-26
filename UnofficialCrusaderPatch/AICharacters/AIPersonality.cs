@@ -468,6 +468,7 @@ namespace UCP.AICharacters
 
         // Index: 130 Hex: 0x208
         [RWComment("The %-amount of (siege engines? engineers? laddermen? tunnelers? siege def?) that need to be destroyed / killed before the main units attack.")]
+        [RWNames("Unknown130")]
         public int AttForceCasualtiesPercentageBeforeAssault;
 
         // Index: 131 Hex: 0x20C
@@ -600,7 +601,7 @@ namespace UCP.AICharacters
         // Index: 167 Hex: 0x29C
         [RWComment("# of groups all the AttUnitMain split into. Maximum is 3")]
         [RWNames("Unknown167")]
-        public int AttMainUnitsGroupsCount;
+        public int AttMainGroupsCount;
 
         // Index: 168 Hex: 0x2A0
         public TargetingType TargetChoice;
