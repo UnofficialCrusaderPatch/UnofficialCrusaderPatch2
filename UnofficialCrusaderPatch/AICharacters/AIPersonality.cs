@@ -452,7 +452,9 @@ namespace UCP.AICharacters
         public int AttForceRandom;
 
         // Index: 127 Hex: 0x1FC
-        public int Unknown127;
+        [RWComment("The distance variance an AI will add to the default rally distance for sieges.")]
+        [RWNames("Unknown127")]
+        public int AttForceRallyDistanceRandom;
 
         // Index: 128 Hex: 0x200
         [RWComment("The %-amount of units of the attack force that the AI will rally before attacking. (0 - 100)")]
@@ -460,13 +462,18 @@ namespace UCP.AICharacters
         public int AttForceRallyPercentage;
 
         // Index: 129 Hex: 0x204
-        public int Unknown129;
+        [RWComment("The %-amount of units that must have survived for the AI to not retreat back but continue attacking.")]
+        [RWNames("Unknown129")]
+        public int AttForceSuccessContinueAttackPercentage;
 
         // Index: 130 Hex: 0x208
-        public int Unknown130;
+        [RWComment("The %-amount of (siege engines? engineers? laddermen? tunnelers? siege def?) that need to be destroyed / killed before the main units attack.")]
+        public int AttForceCasualtiesPercentageBeforeAssault;
 
         // Index: 131 Hex: 0x20C
-        public int Unknown131;
+        [RWComment("The %-amount of units of the attack force that will rally (at the bested enemy's keep location) before retreating or attacking again.")]
+        [RWNames("Unknown131")]
+        public int AttForceSuccessRallyPercentage;
 
         // Index: 132 Hex: 0x210
         public int Unknown132;
