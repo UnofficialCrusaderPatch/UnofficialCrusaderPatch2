@@ -600,7 +600,7 @@ namespace UCP.AICharacters
 
         // Index: 167 Hex: 0x29C
         [RWComment("# of groups all the AttUnitMain split into. Maximum is 3")]
-        [RWNames("Unknown167")]
+        [RWNames("Unknown167", "AttMainUnitsGroupsCount")]
         public int AttMainGroupsCount;
 
         // Index: 168 Hex: 0x2A0
