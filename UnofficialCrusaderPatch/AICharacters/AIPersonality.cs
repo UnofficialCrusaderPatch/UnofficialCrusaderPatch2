@@ -462,9 +462,7 @@ namespace UCP.AICharacters
         public int AttForceRallyPercentage;
 
         // Index: 129 Hex: 0x204
-        [RWComment("The %-amount of units that must have survived for the AI to not retreat back but continue attacking.")]
-        [RWNames("Unknown129")]
-        public int AttForceSuccessContinueAttackPercentage;
+        public int Unknown129;
 
         // Index: 130 Hex: 0x208
         [RWComment("The %-amount of (siege engines? engineers? laddermen? tunnelers? siege def?) that need to be destroyed / killed before the main units attack.")]
