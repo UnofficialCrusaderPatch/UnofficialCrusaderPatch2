@@ -21,4 +21,11 @@ namespace UCP.AICharacters
         TowerBallista = 0x3D,
         FireBallista = 0x4D
     }
+
+    public enum HarassingSiegeEngine
+    {
+        None = 0x00,
+        Catapult = 0xBE,
+        FireBallista = 0x166
+    }
 }
