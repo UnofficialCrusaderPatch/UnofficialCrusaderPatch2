@@ -186,10 +186,23 @@ namespace UCP.AICharacters
         delegate object ReadFunc(AIReader r, string line, Type valueType);
         static readonly Dictionary<Type, ReadFunc> readFuncs = new Dictionary<Type, ReadFunc>()
         {
+            { typeof(bool), ReadBool },
             { typeof(int), ReadInt },
             { typeof(string), ReadString },
             { typeof(Enum), ReadEnum },
         };
+
+        static object ReadBool(AIReader r, string line, Type valueType)
+        {
+            int index = line.IndexOf('=');
+            if (index < 0) throw new FormatException("Missing '=' in line " + r.lineNum);
+
+            line = line.Substring(index + 1).Trim();
+            if (int.TryParse(line, out int value))
+                return value != 0;
+
+            return bool.Parse(line);
+        }
 
         static object ReadInt(AIReader r, string line, Type valueType)
         {

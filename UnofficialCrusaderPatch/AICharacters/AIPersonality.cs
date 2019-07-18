@@ -14,7 +14,14 @@ namespace UCP.AICharacters
         public void SetByIndex(int index, int value)
         {
             FieldInfo fi = fieldInfos[index];
-            fi.SetValue(this, value);
+            if (fi.FieldType == typeof(bool))
+            {
+                fi.SetValue(this, value != 0);
+            }
+            else
+            {
+                fi.SetValue(this, value);
+            }
         }
 
         public int GetByIndex(int index)
@@ -330,13 +337,13 @@ namespace UCP.AICharacters
 
         // Index: 93 Hex: 0x174
         [RWNames("Unknown093")]
-        [RWComment("The # of groups the patrols defending the outer economy split into.")]
+        [RWComment("The number of groups the patrols defending the outer economy split into.")]
         public int OuterPatrolGroupsCount;
 
         // Index: 94 Hex: 0x178
         [RWNames("Unknown094")]
-        [RWComment("Should be 0 or 1. 0 means they will be dumped to one place (quarry), while 1 makes the AI move them around.")]
-        public int OuterPatrolGroupsMove;
+        [RWComment("Whether the patrols stay at one place (quarry) or move around.")]
+        public bool OuterPatrolGroupsMove;
 
         // Index: 95 Hex: 0x17C
         //[RWNames("Unknown095")]
@@ -452,8 +459,8 @@ namespace UCP.AICharacters
         public int AttForceRandom;
 
         // Index: 127 Hex: 0x1FC
-        [RWComment("The distance variance an AI will add to the default rally distance for sieges.")]
         [RWNames("Unknown127")]
+        [RWComment("The distance variance an AI will add to the default rally distance for sieges.")]
         public int AttForceRallyDistanceRandom;
 
         // Index: 128 Hex: 0x200
@@ -533,16 +540,16 @@ namespace UCP.AICharacters
         public int AttMaxTunnelers;
 
         // Index: 151 Hex: 0x25C
-        [RWNames("Unknown151")]
+        [RWNames("Unknown151", "AttUnitRangedPush")]
         [RWComment("Ranged attack unit that patrols around the enemy castle / keep. Preferably ranged units should be used here.")]
         public Unit AttUnitPatrol;
 
         // Index: 152 Hex: 0x260
-        [RWNames("Unknown152")]
+        [RWNames("Unknown152", "AttUnitRangedPushMax")]
         public int AttUnitPatrolMax;
 
         // Index: 153 Hex: 0x264
-        [RWNames("Unknown153")]
+        [RWNames("Unknown153", "RangedPushGroupsCount")]
         [RWComment("# of groups the AttUnitPatrol split into. BUGGY! More than 1 group results to only a single group attacking, the others standing idle.")]
         public int AttUnitPatrolGroupsCount;
 
@@ -559,12 +566,12 @@ namespace UCP.AICharacters
         public int RangedBackupGroupsCount;
 
         // Index: 157 Hex: 0x274
-        [RWNames("Unknown157")]
+        [RWNames("Unknown157", "AttUnit5")]
         [RWComment("Units that engage enemy groups of units outside the castle. Prioritizes larger groups no matter where they are on the map. Otherwise destroys buildings outside the castle.")]
         public Unit AttUnitEngage;
 
         // Index: 158 Hex: 0x278
-        [RWNames("Unknown158")]
+        [RWNames("Unknown158", "AttUnit5Max")]
         public int AttUnitEngageMax;
 
         // Index: 159 Hex: 0x27C
@@ -598,7 +605,7 @@ namespace UCP.AICharacters
 
         // Index: 167 Hex: 0x29C
         [RWComment("# of groups all the AttUnitMain split into. Maximum is 3")]
-        [RWNames("Unknown167", "AttMainUnitsGroupsCount")]
+        [RWNames("Unknown167")]
         public int AttMainGroupsCount;
 
         // Index: 168 Hex: 0x2A0

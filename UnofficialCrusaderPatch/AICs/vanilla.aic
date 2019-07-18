@@ -42,7 +42,7 @@ AICharacter
 		MaxIronmines:	Int32
 		MaxWoodcutters:	Int32
 		MaxPitchrigs:	Int32
-		MaxFarms:	Int32,	The maximum amount of farms the AI builds. (Also check PopulationPerFarm)
+		MaxFarms:	Int32,	The maximum amount of farms the AI builds. HopFarms are excluded from this! (Also check PopulationPerFarm)
 		BuildInterval:	Int32,	This is only considered <= 5000 gold
 		ResourceRebuildDelay:	Int32,	The delay before the AI rebuilds destroyed buildings.
 		MaxFood:	Int32,	includes flour?
@@ -62,7 +62,7 @@ AICharacter
 		MaxEquipment:	Int32
 		MaxBeer:	Int32
 		MaxResourceVariance:	Int32,	added to all max resource values?
-		Unknown049:	Int32
+		RecruitGoldThreshold:	Int32,	A (gold) threshold which disables any recruitment of all units except for raiding and sortie until it is met.
 		BlacksmithSetting:	BlacksmithSetting
 		FletcherSetting:	FletcherSetting
 		PoleturnerSetting:	PoleturnerSetting
@@ -106,8 +106,8 @@ AICharacter
 		RecruitIntervalWeak:	Int32,	The 'weak' state sets in if the AI is completely trashed. F.e. troops < 8, gold < 200, population < 15, ...
 		RecruitIntervalStrong:	Int32,	The 'strong' state sets in if f.e. the AI has troops >= 40, gold >= 200, population >= 40, ...
 		DefTotal:	Int32,	The total count of all defensive units (wall defense + patrols).
-		OuterPatrolGroupsCount:	Int32,	The # of groups the patrols defending the outer economy split into.
-		OuterPatrolGroupsMove:	Int32,	Should be 0 or 1. 0 means they will be dumped to one place (quarry), while 1 makes the AI move them around.
+		OuterPatrolGroupsCount:	Int32,	The number of groups the patrols defending the outer economy split into.
+		OuterPatrolGroupsMove:	Boolean,	Whether the patrols stay at one place (quarry) or move around.
 		Unknown095:	Int32
 		DefWalls:	Int32
 		DefUnit1:	Unit
@@ -140,11 +140,11 @@ AICharacter
 		Unknown124:	Int32
 		AttForceBase:	Int32,	The base amount of troops with which this AI attacks
 		AttForceRandom:	Int32,	The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
-		Unknown127:	Int32
-		Unknown128:	Int32
+		AttForceRallyDistanceRandom:	Int32,	The distance variance an AI will add to the default rally distance for sieges.
+		AttForceRallyPercentage:	Int32,	The %-amount of units of the attack force that the AI will rally before attacking. (0 - 100)
 		Unknown129:	Int32
-		Unknown130:	Int32
-		Unknown131:	Int32
+		AttForceCasualtiesPercentageBeforeAssault:	Int32,	The %-amount of (siege engines? engineers? laddermen? tunnelers? siege def?) that need to be destroyed / killed before the main units attack.
+		AttForceSuccessRallyPercentage:	Int32,	The %-amount of units of the attack force that will rally (at the bested enemy's keep location) before retreating or attacking again.
 		Unknown132:	Int32
 		SiegeEngine1:	SiegeEngine
 		SiegeEngine2:	SiegeEngine
@@ -170,17 +170,17 @@ AICharacter
 		AttUnitBackup:	Unit,	Attacking unit that holds position and doesn't attack until the walls are breached.
 		AttUnitBackupMax:	Int32
 		RangedBackupGroupsCount:	Int32,	# of groups the RangedBackupUnits split into. If shields are present in the army, one will be added to each group (if possible).
-		AttUnitEngage:	Unit,	Units that engage enemy groups of units outside the castle. Prioritizes larger groups no matter where they are on the map.
+		AttUnitEngage:	Unit,	Units that engage enemy groups of units outside the castle. Prioritizes larger groups no matter where they are on the map. Otherwise destroys buildings outside the castle.
 		AttUnitEngageMax:	Int32
-		AttUnitSiegeDef:	Unit,	These units patrol between siege enginees in order to protect them.
+		AttUnitSiegeDef:	Unit,	These units patrol between siege engines in order to protect them.
 		AttUnitSiegeDefMax:	Int32
 		Unknown161:	Int32
-		AttUnitMain1:	Unit,	The units the AI recruits as main part of the strike force
-		AttUnitMain2:	Unit,	The units the AI recruits as secondary part of the strike force
-		Unknown164:	Int32
-		Unknown165:	Int32
+		AttUnitMain1:	Unit,	AttUntiMain1 to AttUnitMain4 is a list of the main strike force the AI recruits for sieges. Priotizes in order of the list, but only recruits untis for which they have enough gold. So try to place expensive units higher up.
+		AttUnitMain2:	Unit
+		AttUnitMain3:	Unit
+		AttUnitMain4:	Unit
 		AttMaxDefault:	Int32,	This does nothing
-		Unknown167:	Int32
+		AttMainGroupsCount:	Int32,	# of groups all the AttUnitMain split into. Maximum is 3
 		TargetChoice:	TargetingType
 	}
 }
@@ -241,7 +241,7 @@ AICharacter
 		MaxEquipment	= 20
 		MaxBeer	= 20
 		MaxResourceVariance	= 5
-		Unknown049	= 200
+		RecruitGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -286,7 +286,7 @@ AICharacter
 		RecruitIntervalStrong	= 1
 		DefTotal	= 30
 		OuterPatrolGroupsCount	= 1
-		OuterPatrolGroupsMove	= 0
+		OuterPatrolGroupsMove	= False
 		Unknown095	= 10
 		DefWalls	= 20
 		DefUnit1	= Spearman
@@ -319,11 +319,11 @@ AICharacter
 		Unknown124	= 3
 		AttForceBase	= 20
 		AttForceRandom	= 10
-		Unknown127	= 15
-		Unknown128	= 50
+		AttForceRallyDistanceRandom	= 15
+		AttForceRallyPercentage	= 50
 		Unknown129	= 100
-		Unknown130	= 0
-		Unknown131	= 25
+		AttForceCasualtiesPercentageBeforeAssault	= 0
+		AttForceSuccessRallyPercentage	= 25
 		Unknown132	= 20
 		SiegeEngine1	= None
 		SiegeEngine2	= None
@@ -356,10 +356,10 @@ AICharacter
 		Unknown161	= 0
 		AttUnitMain1	= Spearman
 		AttUnitMain2	= None
-		Unknown164	= 0
-		Unknown165	= 0
+		AttUnitMain3	= None
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 1
+		AttMainGroupsCount	= 1
 		TargetChoice	= Player
 	}
 }
@@ -419,7 +419,7 @@ AICharacter
 		MaxEquipment	= 12
 		MaxBeer	= 5
 		MaxResourceVariance	= 5
-		Unknown049	= 200
+		RecruitGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -464,7 +464,7 @@ AICharacter
 		RecruitIntervalStrong	= 1
 		DefTotal	= 80
 		OuterPatrolGroupsCount	= 3
-		OuterPatrolGroupsMove	= 1
+		OuterPatrolGroupsMove	= True
 		Unknown095	= 2
 		DefWalls	= 50
 		DefUnit1	= EuropArcher
@@ -497,11 +497,11 @@ AICharacter
 		Unknown124	= 3
 		AttForceBase	= 30
 		AttForceRandom	= 10
-		Unknown127	= 30
-		Unknown128	= 50
+		AttForceRallyDistanceRandom	= 30
+		AttForceRallyPercentage	= 50
 		Unknown129	= 100
-		Unknown130	= 0
-		Unknown131	= 25
+		AttForceCasualtiesPercentageBeforeAssault	= 0
+		AttForceSuccessRallyPercentage	= 25
 		Unknown132	= 40
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= None
@@ -534,10 +534,10 @@ AICharacter
 		Unknown161	= 0
 		AttUnitMain1	= Spearman
 		AttUnitMain2	= None
-		Unknown164	= 0
-		Unknown165	= 0
+		AttUnitMain3	= None
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 1
+		AttMainGroupsCount	= 1
 		TargetChoice	= Balanced
 	}
 }
@@ -597,7 +597,7 @@ AICharacter
 		MaxEquipment	= 10
 		MaxBeer	= 5
 		MaxResourceVariance	= 5
-		Unknown049	= 200
+		RecruitGoldThreshold	= 200
 		BlacksmithSetting	= Maces
 		FletcherSetting	= Crossbows
 		PoleturnerSetting	= Spears
@@ -642,7 +642,7 @@ AICharacter
 		RecruitIntervalStrong	= 4
 		DefTotal	= 40
 		OuterPatrolGroupsCount	= 2
-		OuterPatrolGroupsMove	= 1
+		OuterPatrolGroupsMove	= True
 		Unknown095	= 20
 		DefWalls	= 30
 		DefUnit1	= Crossbowman
@@ -675,11 +675,11 @@ AICharacter
 		Unknown124	= 3
 		AttForceBase	= 10
 		AttForceRandom	= 10
-		Unknown127	= 10
-		Unknown128	= 60
+		AttForceRallyDistanceRandom	= 10
+		AttForceRallyPercentage	= 60
 		Unknown129	= 100
-		Unknown130	= 5
-		Unknown131	= 15
+		AttForceCasualtiesPercentageBeforeAssault	= 5
+		AttForceSuccessRallyPercentage	= 15
 		Unknown132	= 20
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult
@@ -712,10 +712,10 @@ AICharacter
 		Unknown161	= 0
 		AttUnitMain1	= Maceman
 		AttUnitMain2	= None
-		Unknown164	= 0
-		Unknown165	= 0
+		AttUnitMain3	= None
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 2
+		AttMainGroupsCount	= 2
 		TargetChoice	= Gold
 	}
 }
@@ -775,7 +775,7 @@ AICharacter
 		MaxEquipment	= 10
 		MaxBeer	= 15
 		MaxResourceVariance	= 5
-		Unknown049	= 200
+		RecruitGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Crossbows
 		PoleturnerSetting	= Pikes
@@ -820,7 +820,7 @@ AICharacter
 		RecruitIntervalStrong	= 4
 		DefTotal	= 100
 		OuterPatrolGroupsCount	= 4
-		OuterPatrolGroupsMove	= 1
+		OuterPatrolGroupsMove	= True
 		Unknown095	= 3
 		DefWalls	= 80
 		DefUnit1	= Crossbowman
@@ -853,11 +853,11 @@ AICharacter
 		Unknown124	= 5
 		AttForceBase	= 40
 		AttForceRandom	= 15
-		Unknown127	= 30
-		Unknown128	= 80
+		AttForceRallyDistanceRandom	= 30
+		AttForceRallyPercentage	= 80
 		Unknown129	= 100
-		Unknown130	= 12
-		Unknown131	= 5
+		AttForceCasualtiesPercentageBeforeAssault	= 12
+		AttForceSuccessRallyPercentage	= 5
 		Unknown132	= 50
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Trebuchet
@@ -890,10 +890,10 @@ AICharacter
 		Unknown161	= 1
 		AttUnitMain1	= Swordsman
 		AttUnitMain2	= Pikeman
-		Unknown164	= 25
-		Unknown165	= 0
+		AttUnitMain3	= Pikeman
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 3
+		AttMainGroupsCount	= 3
 		TargetChoice	= Closest
 	}
 }
@@ -953,7 +953,7 @@ AICharacter
 		MaxEquipment	= 5
 		MaxBeer	= 10
 		MaxResourceVariance	= 2
-		Unknown049	= 200
+		RecruitGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Crossbows
 		PoleturnerSetting	= Pikes
@@ -998,7 +998,7 @@ AICharacter
 		RecruitIntervalStrong	= 1
 		DefTotal	= 70
 		OuterPatrolGroupsCount	= 2
-		OuterPatrolGroupsMove	= 1
+		OuterPatrolGroupsMove	= True
 		Unknown095	= 10
 		DefWalls	= 50
 		DefUnit1	= ArabSwordsman
@@ -1031,11 +1031,11 @@ AICharacter
 		Unknown124	= 3
 		AttForceBase	= 50
 		AttForceRandom	= 10
-		Unknown127	= 8
-		Unknown128	= 80
+		AttForceRallyDistanceRandom	= 8
+		AttForceRallyPercentage	= 80
 		Unknown129	= 100
-		Unknown130	= 4
-		Unknown131	= 1
+		AttForceCasualtiesPercentageBeforeAssault	= 4
+		AttForceSuccessRallyPercentage	= 1
 		Unknown132	= 60
 		SiegeEngine1	= FireBallista
 		SiegeEngine2	= FireBallista
@@ -1068,10 +1068,10 @@ AICharacter
 		Unknown161	= 1
 		AttUnitMain1	= ArabSwordsman
 		AttUnitMain2	= None
-		Unknown164	= 0
-		Unknown165	= 0
+		AttUnitMain3	= None
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 3
+		AttMainGroupsCount	= 3
 		TargetChoice	= Gold
 	}
 }
@@ -1131,7 +1131,7 @@ AICharacter
 		MaxEquipment	= 5
 		MaxBeer	= 15
 		MaxResourceVariance	= 5
-		Unknown049	= 200
+		RecruitGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Crossbows
 		PoleturnerSetting	= Pikes
@@ -1176,7 +1176,7 @@ AICharacter
 		RecruitIntervalStrong	= 0
 		DefTotal	= 60
 		OuterPatrolGroupsCount	= 2
-		OuterPatrolGroupsMove	= 1
+		OuterPatrolGroupsMove	= True
 		Unknown095	= 10
 		DefWalls	= 60
 		DefUnit1	= FireThrower
@@ -1209,11 +1209,11 @@ AICharacter
 		Unknown124	= 3
 		AttForceBase	= 15
 		AttForceRandom	= 10
-		Unknown127	= 70
-		Unknown128	= 100
+		AttForceRallyDistanceRandom	= 70
+		AttForceRallyPercentage	= 100
 		Unknown129	= 100
-		Unknown130	= 2
-		Unknown131	= 10
+		AttForceCasualtiesPercentageBeforeAssault	= 2
+		AttForceSuccessRallyPercentage	= 10
 		Unknown132	= 50
 		SiegeEngine1	= FireBallista
 		SiegeEngine2	= FireBallista
@@ -1246,10 +1246,10 @@ AICharacter
 		Unknown161	= 1
 		AttUnitMain1	= ArabSwordsman
 		AttUnitMain2	= None
-		Unknown164	= 0
-		Unknown165	= 0
+		AttUnitMain3	= None
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 5
+		AttMainGroupsCount	= 5
 		TargetChoice	= Balanced
 	}
 }
@@ -1309,7 +1309,7 @@ AICharacter
 		MaxEquipment	= 5
 		MaxBeer	= 20
 		MaxResourceVariance	= 5
-		Unknown049	= 200
+		RecruitGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -1354,7 +1354,7 @@ AICharacter
 		RecruitIntervalStrong	= 4
 		DefTotal	= 50
 		OuterPatrolGroupsCount	= 1
-		OuterPatrolGroupsMove	= 0
+		OuterPatrolGroupsMove	= False
 		Unknown095	= 10
 		DefWalls	= 40
 		DefUnit1	= Slinger
@@ -1387,11 +1387,11 @@ AICharacter
 		Unknown124	= 3
 		AttForceBase	= 10
 		AttForceRandom	= 20
-		Unknown127	= 5
-		Unknown128	= 30
+		AttForceRallyDistanceRandom	= 5
+		AttForceRallyPercentage	= 30
 		Unknown129	= 100
-		Unknown130	= 0
-		Unknown131	= 40
+		AttForceCasualtiesPercentageBeforeAssault	= 0
+		AttForceSuccessRallyPercentage	= 40
 		Unknown132	= 20
 		SiegeEngine1	= None
 		SiegeEngine2	= None
@@ -1424,10 +1424,10 @@ AICharacter
 		Unknown161	= 0
 		AttUnitMain1	= ArabSwordsman
 		AttUnitMain2	= None
-		Unknown164	= 0
-		Unknown165	= 0
+		AttUnitMain3	= None
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 1
+		AttMainGroupsCount	= 1
 		TargetChoice	= Closest
 	}
 }
@@ -1487,7 +1487,7 @@ AICharacter
 		MaxEquipment	= 10
 		MaxBeer	= 10
 		MaxResourceVariance	= 4
-		Unknown049	= 200
+		RecruitGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Pikes
@@ -1532,7 +1532,7 @@ AICharacter
 		RecruitIntervalStrong	= 1
 		DefTotal	= 40
 		OuterPatrolGroupsCount	= 2
-		OuterPatrolGroupsMove	= 1
+		OuterPatrolGroupsMove	= True
 		Unknown095	= 5
 		DefWalls	= 20
 		DefUnit1	= EuropArcher
@@ -1565,11 +1565,11 @@ AICharacter
 		Unknown124	= 5
 		AttForceBase	= 20
 		AttForceRandom	= 5
-		Unknown127	= 10
-		Unknown128	= 10
+		AttForceRallyDistanceRandom	= 10
+		AttForceRallyPercentage	= 10
 		Unknown129	= 100
-		Unknown130	= 20
-		Unknown131	= 2
+		AttForceCasualtiesPercentageBeforeAssault	= 20
+		AttForceSuccessRallyPercentage	= 2
 		Unknown132	= 10
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult
@@ -1602,10 +1602,10 @@ AICharacter
 		Unknown161	= 2
 		AttUnitMain1	= Swordsman
 		AttUnitMain2	= Pikeman
-		Unknown164	= 25
-		Unknown165	= 0
+		AttUnitMain3	= Pikeman
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 3
+		AttMainGroupsCount	= 3
 		TargetChoice	= Closest
 	}
 }
@@ -1665,7 +1665,7 @@ AICharacter
 		MaxEquipment	= 20
 		MaxBeer	= 10
 		MaxResourceVariance	= 4
-		Unknown049	= 200
+		RecruitGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Both
 		PoleturnerSetting	= Pikes
@@ -1710,7 +1710,7 @@ AICharacter
 		RecruitIntervalStrong	= 4
 		DefTotal	= 80
 		OuterPatrolGroupsCount	= 2
-		OuterPatrolGroupsMove	= 1
+		OuterPatrolGroupsMove	= True
 		Unknown095	= 10
 		DefWalls	= 50
 		DefUnit1	= EuropArcher
@@ -1743,11 +1743,11 @@ AICharacter
 		Unknown124	= 6
 		AttForceBase	= 30
 		AttForceRandom	= 4
-		Unknown127	= 20
-		Unknown128	= 50
+		AttForceRallyDistanceRandom	= 20
+		AttForceRallyPercentage	= 50
 		Unknown129	= 100
-		Unknown130	= 20
-		Unknown131	= 5
+		AttForceCasualtiesPercentageBeforeAssault	= 20
+		AttForceSuccessRallyPercentage	= 5
 		Unknown132	= 50
 		SiegeEngine1	= Trebuchet
 		SiegeEngine2	= Trebuchet
@@ -1780,10 +1780,10 @@ AICharacter
 		Unknown161	= 1
 		AttUnitMain1	= Swordsman
 		AttUnitMain2	= Swordsman
-		Unknown164	= 0
-		Unknown165	= 0
+		AttUnitMain3	= None
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 4
+		AttMainGroupsCount	= 4
 		TargetChoice	= Gold
 	}
 }
@@ -1843,7 +1843,7 @@ AICharacter
 		MaxEquipment	= 6
 		MaxBeer	= 10
 		MaxResourceVariance	= 4
-		Unknown049	= 200
+		RecruitGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -1888,7 +1888,7 @@ AICharacter
 		RecruitIntervalStrong	= 4
 		DefTotal	= 20
 		OuterPatrolGroupsCount	= 4
-		OuterPatrolGroupsMove	= 1
+		OuterPatrolGroupsMove	= True
 		Unknown095	= 2
 		DefWalls	= 4
 		DefUnit1	= Knight
@@ -1921,11 +1921,11 @@ AICharacter
 		Unknown124	= 4
 		AttForceBase	= 10
 		AttForceRandom	= 20
-		Unknown127	= 40
-		Unknown128	= 40
+		AttForceRallyDistanceRandom	= 40
+		AttForceRallyPercentage	= 40
 		Unknown129	= 100
-		Unknown130	= 0
-		Unknown131	= 5
+		AttForceCasualtiesPercentageBeforeAssault	= 0
+		AttForceSuccessRallyPercentage	= 5
 		Unknown132	= 70
 		SiegeEngine1	= None
 		SiegeEngine2	= None
@@ -1958,10 +1958,10 @@ AICharacter
 		Unknown161	= 0
 		AttUnitMain1	= Spearman
 		AttUnitMain2	= Spearman
-		Unknown164	= 0
-		Unknown165	= 0
+		AttUnitMain3	= None
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 2
+		AttMainGroupsCount	= 2
 		TargetChoice	= Balanced
 	}
 }
@@ -2021,7 +2021,7 @@ AICharacter
 		MaxEquipment	= 4
 		MaxBeer	= 10
 		MaxResourceVariance	= 4
-		Unknown049	= 100
+		RecruitGoldThreshold	= 100
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -2066,7 +2066,7 @@ AICharacter
 		RecruitIntervalStrong	= 1
 		DefTotal	= 40
 		OuterPatrolGroupsCount	= 1
-		OuterPatrolGroupsMove	= 1
+		OuterPatrolGroupsMove	= True
 		Unknown095	= 2
 		DefWalls	= 40
 		DefUnit1	= ArabArcher
@@ -2099,11 +2099,11 @@ AICharacter
 		Unknown124	= 4
 		AttForceBase	= 40
 		AttForceRandom	= 5
-		Unknown127	= 30
-		Unknown128	= 80
+		AttForceRallyDistanceRandom	= 30
+		AttForceRallyPercentage	= 80
 		Unknown129	= 100
-		Unknown130	= 4
-		Unknown131	= 5
+		AttForceCasualtiesPercentageBeforeAssault	= 4
+		AttForceSuccessRallyPercentage	= 5
 		Unknown132	= 90
 		SiegeEngine1	= Trebuchet
 		SiegeEngine2	= FireBallista
@@ -2136,10 +2136,10 @@ AICharacter
 		Unknown161	= 0
 		AttUnitMain1	= ArabSwordsman
 		AttUnitMain2	= None
-		Unknown164	= 0
-		Unknown165	= 0
+		AttUnitMain3	= None
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 2
+		AttMainGroupsCount	= 2
 		TargetChoice	= Balanced
 	}
 }
@@ -2199,7 +2199,7 @@ AICharacter
 		MaxEquipment	= 4
 		MaxBeer	= 10
 		MaxResourceVariance	= 4
-		Unknown049	= 200
+		RecruitGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -2244,7 +2244,7 @@ AICharacter
 		RecruitIntervalStrong	= 0
 		DefTotal	= 50
 		OuterPatrolGroupsCount	= 1
-		OuterPatrolGroupsMove	= 1
+		OuterPatrolGroupsMove	= True
 		Unknown095	= 2
 		DefWalls	= 50
 		DefUnit1	= EuropArcher
@@ -2277,11 +2277,11 @@ AICharacter
 		Unknown124	= 4
 		AttForceBase	= 30
 		AttForceRandom	= 10
-		Unknown127	= 20
-		Unknown128	= 80
+		AttForceRallyDistanceRandom	= 20
+		AttForceRallyPercentage	= 80
 		Unknown129	= 100
-		Unknown130	= 0
-		Unknown131	= 5
+		AttForceCasualtiesPercentageBeforeAssault	= 0
+		AttForceSuccessRallyPercentage	= 5
 		Unknown132	= 80
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult
@@ -2314,10 +2314,10 @@ AICharacter
 		Unknown161	= 0
 		AttUnitMain1	= ArabSwordsman
 		AttUnitMain2	= None
-		Unknown164	= 0
-		Unknown165	= 0
+		AttUnitMain3	= None
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 2
+		AttMainGroupsCount	= 2
 		TargetChoice	= Gold
 	}
 }
@@ -2377,7 +2377,7 @@ AICharacter
 		MaxEquipment	= 4
 		MaxBeer	= 10
 		MaxResourceVariance	= 4
-		Unknown049	= 100
+		RecruitGoldThreshold	= 100
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -2422,7 +2422,7 @@ AICharacter
 		RecruitIntervalStrong	= 1
 		DefTotal	= 80
 		OuterPatrolGroupsCount	= 1
-		OuterPatrolGroupsMove	= 1
+		OuterPatrolGroupsMove	= True
 		Unknown095	= 2
 		DefWalls	= 80
 		DefUnit1	= ArabArcher
@@ -2455,11 +2455,11 @@ AICharacter
 		Unknown124	= 4
 		AttForceBase	= 40
 		AttForceRandom	= 0
-		Unknown127	= 10
-		Unknown128	= 50
+		AttForceRallyDistanceRandom	= 10
+		AttForceRallyPercentage	= 50
 		Unknown129	= 100
-		Unknown130	= 0
-		Unknown131	= 5
+		AttForceCasualtiesPercentageBeforeAssault	= 0
+		AttForceSuccessRallyPercentage	= 5
 		Unknown132	= 50
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= None
@@ -2492,10 +2492,10 @@ AICharacter
 		Unknown161	= 0
 		AttUnitMain1	= Assassin
 		AttUnitMain2	= None
-		Unknown164	= 0
-		Unknown165	= 0
+		AttUnitMain3	= None
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 4
+		AttMainGroupsCount	= 4
 		TargetChoice	= Closest
 	}
 }
@@ -2555,7 +2555,7 @@ AICharacter
 		MaxEquipment	= 10
 		MaxBeer	= 10
 		MaxResourceVariance	= 5
-		Unknown049	= 200
+		RecruitGoldThreshold	= 200
 		BlacksmithSetting	= Maces
 		FletcherSetting	= Crossbows
 		PoleturnerSetting	= Pikes
@@ -2600,7 +2600,7 @@ AICharacter
 		RecruitIntervalStrong	= 4
 		DefTotal	= 50
 		OuterPatrolGroupsCount	= 1
-		OuterPatrolGroupsMove	= 1
+		OuterPatrolGroupsMove	= True
 		Unknown095	= 5
 		DefWalls	= 40
 		DefUnit1	= Crossbowman
@@ -2633,11 +2633,11 @@ AICharacter
 		Unknown124	= 4
 		AttForceBase	= 50
 		AttForceRandom	= 20
-		Unknown127	= 50
-		Unknown128	= 80
+		AttForceRallyDistanceRandom	= 50
+		AttForceRallyPercentage	= 80
 		Unknown129	= 100
-		Unknown130	= 5
-		Unknown131	= 8
+		AttForceCasualtiesPercentageBeforeAssault	= 5
+		AttForceSuccessRallyPercentage	= 8
 		Unknown132	= 50
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult
@@ -2670,10 +2670,10 @@ AICharacter
 		Unknown161	= 1
 		AttUnitMain1	= Maceman
 		AttUnitMain2	= Maceman
-		Unknown164	= 0
-		Unknown165	= 0
+		AttUnitMain3	= None
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 3
+		AttMainGroupsCount	= 3
 		TargetChoice	= Closest
 	}
 }
@@ -2733,7 +2733,7 @@ AICharacter
 		MaxEquipment	= 10
 		MaxBeer	= 6
 		MaxResourceVariance	= 4
-		Unknown049	= 200
+		RecruitGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -2778,7 +2778,7 @@ AICharacter
 		RecruitIntervalStrong	= 4
 		DefTotal	= 40
 		OuterPatrolGroupsCount	= 1
-		OuterPatrolGroupsMove	= 1
+		OuterPatrolGroupsMove	= True
 		Unknown095	= 2
 		DefWalls	= 30
 		DefUnit1	= EuropArcher
@@ -2811,11 +2811,11 @@ AICharacter
 		Unknown124	= 4
 		AttForceBase	= 10
 		AttForceRandom	= 20
-		Unknown127	= 10
-		Unknown128	= 50
+		AttForceRallyDistanceRandom	= 10
+		AttForceRallyPercentage	= 50
 		Unknown129	= 100
-		Unknown130	= 0
-		Unknown131	= 5
+		AttForceCasualtiesPercentageBeforeAssault	= 0
+		AttForceSuccessRallyPercentage	= 5
 		Unknown132	= 70
 		SiegeEngine1	= Trebuchet
 		SiegeEngine2	= Trebuchet
@@ -2848,10 +2848,10 @@ AICharacter
 		Unknown161	= 0
 		AttUnitMain1	= Swordsman
 		AttUnitMain2	= None
-		Unknown164	= 0
-		Unknown165	= 0
+		AttUnitMain3	= None
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 2
+		AttMainGroupsCount	= 2
 		TargetChoice	= Balanced
 	}
 }
@@ -2911,7 +2911,7 @@ AICharacter
 		MaxEquipment	= 4
 		MaxBeer	= 5
 		MaxResourceVariance	= 4
-		Unknown049	= 50
+		RecruitGoldThreshold	= 50
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -2956,7 +2956,7 @@ AICharacter
 		RecruitIntervalStrong	= 1
 		DefTotal	= 30
 		OuterPatrolGroupsCount	= 1
-		OuterPatrolGroupsMove	= 1
+		OuterPatrolGroupsMove	= True
 		Unknown095	= 2
 		DefWalls	= 30
 		DefUnit1	= EuropArcher
@@ -2989,11 +2989,11 @@ AICharacter
 		Unknown124	= 4
 		AttForceBase	= 50
 		AttForceRandom	= 10
-		Unknown127	= 40
-		Unknown128	= 80
+		AttForceRallyDistanceRandom	= 40
+		AttForceRallyPercentage	= 80
 		Unknown129	= 100
-		Unknown130	= 0
-		Unknown131	= 5
+		AttForceCasualtiesPercentageBeforeAssault	= 0
+		AttForceSuccessRallyPercentage	= 5
 		Unknown132	= 80
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult
@@ -3026,10 +3026,10 @@ AICharacter
 		Unknown161	= 0
 		AttUnitMain1	= Monk
 		AttUnitMain2	= None
-		Unknown164	= 0
-		Unknown165	= 0
+		AttUnitMain3	= None
+		AttUnitMain4	= None
 		AttMaxDefault	= 200
-		Unknown167	= 2
+		AttMainGroupsCount	= 2
 		TargetChoice	= Balanced
 	}
 }

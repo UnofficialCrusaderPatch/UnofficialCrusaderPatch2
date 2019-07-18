@@ -142,6 +142,7 @@ namespace UCP.AICharacters
         delegate void WriteFunc(AIWriter w, string name, object o);
         static readonly Dictionary<Type, WriteFunc> writeFuncs = new Dictionary<Type, WriteFunc>()
         {
+            { typeof(bool), WriteDefault },
             { typeof(int), WriteDefault },
             { typeof(string), WriteString },
             { typeof(Enum), WriteDefault },
