@@ -43,6 +43,21 @@ namespace UCP.Patching
         }
     }
 
+    class BinInt16Value : BinValue
+    {
+        public override int Length => 2;
+
+        public BinInt16Value(double factor = 1, double offset = 0)
+            : base(factor, offset)
+        {
+        }
+
+        protected override byte[] GetBytes(double value)
+        {
+            return BitConverter.GetBytes((short)value);
+        }
+    }
+
     class BinByteValue : BinValue
     {
         public override int Length => 1;

@@ -210,6 +210,9 @@ namespace UCP.AICharacters
             if (index < 0) throw new FormatException("Missing '=' in line " + r.lineNum);
 
             line = line.Substring(index + 1).Trim();
+            if (bool.TryParse(line, out bool value)) // in case the type gets changed between versions
+                return value ? 1 : 0;
+
             return int.Parse(line);
         }
 

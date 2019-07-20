@@ -33,7 +33,7 @@ namespace UCP
 
     class Version
     {
-        public static string PatcherVersion = "2.13_pre-release";
+        public static string PatcherVersion = "2.13";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
@@ -50,6 +50,12 @@ namespace UCP
         static List<Change> changes = new List<Change>()
         {
             #region BUG FIXES
+
+            /*
+             * BALLISTAS ATTACK MONKS
+             */
+
+            BinBytes.Change("u_ballistamonk", ChangeType.Bugfix, true, 0x00), // 0x0054BF3B, change a jumptable
 
             /*
              * DISABLE DEMOLISHING OF INACCESSIBLE BUILDINGS
@@ -667,12 +673,30 @@ namespace UCP
                     BinInt32.CreateEdit("u_spearbow", 2000), // B4EAA0 + 4 * 18   (vanilla = 3500)
                     BinInt32.CreateEdit("u_spearxbow", 9999), // B4EBE0 + 4 * 18   (vanilla = 15000)
                 }
-            },                
+            },
 
             #endregion
 
             #region OTHER
-            
+
+            /*
+             *  FIRE COOLDOWN
+             */
+
+            // 0x00410A30 + 8 ushort default = 2000
+            new Change("o_firecooldown", ChangeType.Other)
+            {
+                new SliderHeader("o_firecooldown", true, 0, 20000, 500, 2000, 6000)
+                {
+                    new BinaryEdit("o_firecooldown")
+                    {
+                        new BinSkip(8),
+                        new BinInt16Value()
+                    },
+                }
+            },
+
+
             /*
              * EXTREME
              */

@@ -2,6 +2,26 @@
 //         2.13
 // ======================
 
+o_firecooldown
+{
+	"Extend fireproof duration of extinguished buildings"
+}
+
+o_firecooldown_descr
+{
+	"The duration in which extinguished buildings cannot catch fire again can be extended here."
+}
+
+u_ballistamonk
+{
+	"Fire ballistas shoot monks"
+}
+
+u_ballistamonk_descr
+{
+	"Fire ballistas shoot automatically at monks with this setting."
+}
+
 aiv_EvreyHistory
 {
 	"Evrey's historic AI castles"

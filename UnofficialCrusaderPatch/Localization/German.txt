@@ -2,6 +2,26 @@
 //         2.13
 // ======================
 
+o_firecooldown
+{
+	"Feuerfeste Zeit gelöschter Gebäude verlängern"
+}
+
+o_firecooldown_descr
+{
+	"Der Zeitraum in dem gelöschte Häuser nicht wieder brennen können kann hier verlängert werden."
+}
+
+u_ballistamonk
+{
+	"Feuerballisten schießen auf Mönche"
+}
+
+u_ballistamonk_descr
+{
+	"Lässt Feuerballisten automatisch auch auf Mönche schießen."
+}
+
 aiv_EvreyHistory
 {
 	"Evreys historische KI-Burgen"

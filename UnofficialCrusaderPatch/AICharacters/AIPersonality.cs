@@ -27,6 +27,10 @@ namespace UCP.AICharacters
         public int GetByIndex(int index)
         {
             FieldInfo fi = fieldInfos[index];
+            if (fi.FieldType == typeof(bool))
+            {
+                return (bool)fi.GetValue(this) ? 1 : 0;
+            }
             return (int)fi.GetValue(this);
         }
 
