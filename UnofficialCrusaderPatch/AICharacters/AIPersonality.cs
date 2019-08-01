@@ -65,10 +65,14 @@ namespace UCP.AICharacters
         public int HighestPopularity;
 
         // Index: 9 Hex: 0x24
-        public int Unknown009;
+        [RWNames("Unknown009", "TaxMin")]
+        [RWComment("Ranging from 0 (being +7 gifts) to 11 (being -24 taxes)")]
+        public int TaxesMin;
 
         // Index: 10 Hex: 0x28
-        public int Unknown010;
+        [RWNames("Unknown010", "TaxMax")]
+        [RWComment("Ranging from 0 (being +7 gifts) to 11 (being -24 taxes)")]
+        public int TaxesMax;
 
         // Index: 11 Hex: 0x2C
         public int Unknown011;
@@ -148,12 +152,15 @@ namespace UCP.AICharacters
         public int MaxFood;
 
         // Index: 33 Hex: 0x84
+        [RWComment("Reserves that are only consumed if current popularity < LowestPopularity. If the AI has less than this amount it will prioritize buying the missing food.")]
         public int MinimumApples;
 
         // Index: 34 Hex: 0x88
+        [RWComment("Reserves that are only consumed if current popularity < LowestPopularity. If the AI has less than this amount it will prioritize buying the missing food.")]
         public int MinimumCheese;
 
         // Index: 35 Hex: 0x8C
+        [RWComment("Reserves that are only consumed if current popularity < LowestPopularity. If the AI has less than this amount it will prioritize buying the missing food.")]
         public int MinimumBread;
 
         // Index: 36 Hex: 0x90
@@ -173,10 +180,14 @@ namespace UCP.AICharacters
         public int Unknown040;
 
         // Index: 41 Hex: 0xA4
-        public int Unknown041;
+        [RWNames("Unknown041")]
+        [RWComment("If the AI would have less than this amount of a good after sending them it won't send them to the requesting player.")] //Includes ResourceVariance?
+        public int MinimumGoodsRequiredAfterTrade;
 
         // Index: 42 Hex: 0xA8
-        public int Unknown042;
+        [RWNames("Unknown042")]
+        [RWComment("Above this value of food the AI will give double rations out.")]
+        public int DoubleRationsFoodThreshold;
 
         // Index: 43 Hex: 0xAC
         public int MaxWood;
@@ -477,9 +488,9 @@ namespace UCP.AICharacters
         public int AttForceRandom;
 
         // Index: 127 Hex: 0x1FC
-        [RWNames("Unknown127")]
-        [RWComment("The distance variance an AI will add to the default rally distance for sieges.")]
-        public int AttForceRallyDistanceRandom;
+        [RWNames("Unknown127", "AttForceRallyDistanceRandom")]
+        [RWComment("If the AI has more than this amount of units in the attack force, it will help their allies or siege an enemy if commanded to do so.")]
+        public int AttForceSupportAllyThreshold;
 
         // Index: 128 Hex: 0x200
         [RWComment("The %-amount of units of the attack force that the AI will rally before attacking. (0 - 100)")]
