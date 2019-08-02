@@ -130,7 +130,7 @@ AICharacter
 		SellResource14:	Resource
 		SellResource15:	Resource
 		DefWallPatrolRallyTime:	Int32,	The amount of time for castle patrols set up in the AIV to move from one rally point to the next. (Remark: Only spearmen, horse archers and macemen currently do)
-		Unknown069:	Int32
+		DefWallPatrolGroups:	Int32
 		DefSiegeEngineGoldThreshold:	Int32,	This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...
 		DefSiegeEngineBuildDelay:	Int32,	The delay before the AI builds its first defensive siege engine.
 		Unknown072:	Int32
@@ -156,7 +156,7 @@ AICharacter
 		DefTotal:	Int32,	The total count of all defensive units (wall defense + patrols).
 		OuterPatrolGroupsCount:	Int32,	The number of groups the patrols defending the outer economy split into.
 		OuterPatrolGroupsMove:	Boolean,	Whether the patrols stay at one place (quarry) or move around.
-		Unknown095:	Int32
+		OuterPatrolRallyDelay:	Int32,	The delay after which the AI sends out patrols to defend the outer economy. 4 is approximately one month, 24 being half a year.
 		DefWalls:	Int32
 		DefUnit1:	Unit
 		DefUnit2:	Unit
@@ -192,7 +192,7 @@ AICharacter
 		AttForceRallyPercentage:	Int32,	The %-amount of units of the attack force that the AI will rally before attacking. (0 - 100)
 		Unknown129:	Int32
 		Unknown130:	Int32
-		AttForceSuccessRallyPercentage:	Int32,	The %-amount of units of the attack force that will rally (at the bested enemy's keep location) before retreating.
+		Unknown131:	Int32
 		Unknown132:	Int32
 		SiegeEngine1:	SiegeEngine
 		SiegeEngine2:	SiegeEngine
@@ -223,7 +223,7 @@ AICharacter
 		AttUnitSiegeDef:	Unit,	These units patrol between siege engines in order to protect them.
 		AttUnitSiegeDefMax:	Int32
 		Unknown161:	Int32
-		AttUnitMain1:	Unit,	AttUntiMain1 to AttUnitMain4 is a list of the main strike force the AI recruits for sieges. Priotizes in order of the list, but only recruits untis for which they have enough gold. So try to place expensive units higher up.
+		AttUnitMain1:	Unit,	AttUntiMain1 to AttUnitMain4 is a list of the main strike force the AI recruits for sieges. Priotizes in order of the list, but only recruits units for which they have enough gold. So try to place expensive units higher up.
 		AttUnitMain2:	Unit
 		AttUnitMain3:	Unit
 		AttUnitMain4:	Unit
@@ -309,7 +309,7 @@ AICharacter
 		SellResource14	= LeatherArmors
 		SellResource15	= IronArmors
 		DefWallPatrolRallyTime	= 20
-		Unknown069	= 1
+		DefWallPatrolGroups	= 1
 		DefSiegeEngineGoldThreshold	= 200
 		DefSiegeEngineBuildDelay	= 20
 		Unknown072	= 800
@@ -335,7 +335,7 @@ AICharacter
 		DefTotal	= 30
 		OuterPatrolGroupsCount	= 1
 		OuterPatrolGroupsMove	= False
-		Unknown095	= 10
+		OuterPatrolRallyDelay	= 10
 		DefWalls	= 20
 		DefUnit1	= Spearman
 		DefUnit2	= Spearman
@@ -371,7 +371,7 @@ AICharacter
 		AttForceRallyPercentage	= 50
 		Unknown129	= 100
 		Unknown130	= 0
-		AttForceSuccessRallyPercentage	= 25
+		Unknown131	= 25
 		Unknown132	= 20
 		SiegeEngine1	= None
 		SiegeEngine2	= None
@@ -487,7 +487,7 @@ AICharacter
 		SellResource14	= LeatherArmors
 		SellResource15	= IronArmors
 		DefWallPatrolRallyTime	= 2
-		Unknown069	= 4
+		DefWallPatrolGroups	= 4
 		DefSiegeEngineGoldThreshold	= 500
 		DefSiegeEngineBuildDelay	= 20
 		Unknown072	= 400
@@ -513,7 +513,7 @@ AICharacter
 		DefTotal	= 80
 		OuterPatrolGroupsCount	= 3
 		OuterPatrolGroupsMove	= True
-		Unknown095	= 2
+		OuterPatrolRallyDelay	= 2
 		DefWalls	= 50
 		DefUnit1	= EuropArcher
 		DefUnit2	= None
@@ -549,7 +549,7 @@ AICharacter
 		AttForceRallyPercentage	= 50
 		Unknown129	= 100
 		Unknown130	= 0
-		AttForceSuccessRallyPercentage	= 25
+		Unknown131	= 25
 		Unknown132	= 40
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= None
@@ -665,7 +665,7 @@ AICharacter
 		SellResource14	= None
 		SellResource15	= IronArmors
 		DefWallPatrolRallyTime	= 10
-		Unknown069	= 4
+		DefWallPatrolGroups	= 4
 		DefSiegeEngineGoldThreshold	= 100
 		DefSiegeEngineBuildDelay	= 20
 		Unknown072	= 200
@@ -691,7 +691,7 @@ AICharacter
 		DefTotal	= 40
 		OuterPatrolGroupsCount	= 2
 		OuterPatrolGroupsMove	= True
-		Unknown095	= 20
+		OuterPatrolRallyDelay	= 20
 		DefWalls	= 30
 		DefUnit1	= Crossbowman
 		DefUnit2	= Crossbowman
@@ -727,7 +727,7 @@ AICharacter
 		AttForceRallyPercentage	= 60
 		Unknown129	= 100
 		Unknown130	= 5
-		AttForceSuccessRallyPercentage	= 15
+		Unknown131	= 15
 		Unknown132	= 20
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult
@@ -843,7 +843,7 @@ AICharacter
 		SellResource14	= None
 		SellResource15	= None
 		DefWallPatrolRallyTime	= 4
-		Unknown069	= 3
+		DefWallPatrolGroups	= 3
 		DefSiegeEngineGoldThreshold	= 250
 		DefSiegeEngineBuildDelay	= 2
 		Unknown072	= 100
@@ -869,7 +869,7 @@ AICharacter
 		DefTotal	= 100
 		OuterPatrolGroupsCount	= 4
 		OuterPatrolGroupsMove	= True
-		Unknown095	= 3
+		OuterPatrolRallyDelay	= 3
 		DefWalls	= 80
 		DefUnit1	= Crossbowman
 		DefUnit2	= Crossbowman
@@ -905,7 +905,7 @@ AICharacter
 		AttForceRallyPercentage	= 80
 		Unknown129	= 100
 		Unknown130	= 12
-		AttForceSuccessRallyPercentage	= 5
+		Unknown131	= 5
 		Unknown132	= 50
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Trebuchet
@@ -1021,7 +1021,7 @@ AICharacter
 		SellResource14	= LeatherArmors
 		SellResource15	= None
 		DefWallPatrolRallyTime	= 3
-		Unknown069	= 4
+		DefWallPatrolGroups	= 4
 		DefSiegeEngineGoldThreshold	= 20
 		DefSiegeEngineBuildDelay	= 8
 		Unknown072	= 100
@@ -1047,7 +1047,7 @@ AICharacter
 		DefTotal	= 70
 		OuterPatrolGroupsCount	= 2
 		OuterPatrolGroupsMove	= True
-		Unknown095	= 10
+		OuterPatrolRallyDelay	= 10
 		DefWalls	= 50
 		DefUnit1	= ArabSwordsman
 		DefUnit2	= ArabArcher
@@ -1083,7 +1083,7 @@ AICharacter
 		AttForceRallyPercentage	= 80
 		Unknown129	= 100
 		Unknown130	= 4
-		AttForceSuccessRallyPercentage	= 1
+		Unknown131	= 1
 		Unknown132	= 60
 		SiegeEngine1	= FireBallista
 		SiegeEngine2	= FireBallista
@@ -1199,7 +1199,7 @@ AICharacter
 		SellResource14	= LeatherArmors
 		SellResource15	= IronArmors
 		DefWallPatrolRallyTime	= 5
-		Unknown069	= 2
+		DefWallPatrolGroups	= 2
 		DefSiegeEngineGoldThreshold	= 120
 		DefSiegeEngineBuildDelay	= 8
 		Unknown072	= 100
@@ -1225,7 +1225,7 @@ AICharacter
 		DefTotal	= 60
 		OuterPatrolGroupsCount	= 2
 		OuterPatrolGroupsMove	= True
-		Unknown095	= 10
+		OuterPatrolRallyDelay	= 10
 		DefWalls	= 60
 		DefUnit1	= FireThrower
 		DefUnit2	= ArabArcher
@@ -1261,7 +1261,7 @@ AICharacter
 		AttForceRallyPercentage	= 100
 		Unknown129	= 100
 		Unknown130	= 2
-		AttForceSuccessRallyPercentage	= 10
+		Unknown131	= 10
 		Unknown132	= 50
 		SiegeEngine1	= FireBallista
 		SiegeEngine2	= FireBallista
@@ -1377,7 +1377,7 @@ AICharacter
 		SellResource14	= LeatherArmors
 		SellResource15	= IronArmors
 		DefWallPatrolRallyTime	= 10
-		Unknown069	= 2
+		DefWallPatrolGroups	= 2
 		DefSiegeEngineGoldThreshold	= 200
 		DefSiegeEngineBuildDelay	= 20
 		Unknown072	= 800
@@ -1403,7 +1403,7 @@ AICharacter
 		DefTotal	= 50
 		OuterPatrolGroupsCount	= 1
 		OuterPatrolGroupsMove	= False
-		Unknown095	= 10
+		OuterPatrolRallyDelay	= 10
 		DefWalls	= 40
 		DefUnit1	= Slinger
 		DefUnit2	= Slinger
@@ -1439,7 +1439,7 @@ AICharacter
 		AttForceRallyPercentage	= 30
 		Unknown129	= 100
 		Unknown130	= 0
-		AttForceSuccessRallyPercentage	= 40
+		Unknown131	= 40
 		Unknown132	= 20
 		SiegeEngine1	= None
 		SiegeEngine2	= None
@@ -1555,7 +1555,7 @@ AICharacter
 		SellResource14	= LeatherArmors
 		SellResource15	= None
 		DefWallPatrolRallyTime	= 8
-		Unknown069	= 4
+		DefWallPatrolGroups	= 4
 		DefSiegeEngineGoldThreshold	= 200
 		DefSiegeEngineBuildDelay	= 2
 		Unknown072	= 100
@@ -1581,7 +1581,7 @@ AICharacter
 		DefTotal	= 40
 		OuterPatrolGroupsCount	= 2
 		OuterPatrolGroupsMove	= True
-		Unknown095	= 5
+		OuterPatrolRallyDelay	= 5
 		DefWalls	= 20
 		DefUnit1	= EuropArcher
 		DefUnit2	= EuropArcher
@@ -1617,7 +1617,7 @@ AICharacter
 		AttForceRallyPercentage	= 10
 		Unknown129	= 100
 		Unknown130	= 20
-		AttForceSuccessRallyPercentage	= 2
+		Unknown131	= 2
 		Unknown132	= 10
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult
@@ -1733,7 +1733,7 @@ AICharacter
 		SellResource14	= None
 		SellResource15	= None
 		DefWallPatrolRallyTime	= 8
-		Unknown069	= 2
+		DefWallPatrolGroups	= 2
 		DefSiegeEngineGoldThreshold	= 200
 		DefSiegeEngineBuildDelay	= 2
 		Unknown072	= 100
@@ -1759,7 +1759,7 @@ AICharacter
 		DefTotal	= 80
 		OuterPatrolGroupsCount	= 2
 		OuterPatrolGroupsMove	= True
-		Unknown095	= 10
+		OuterPatrolRallyDelay	= 10
 		DefWalls	= 50
 		DefUnit1	= EuropArcher
 		DefUnit2	= EuropArcher
@@ -1795,7 +1795,7 @@ AICharacter
 		AttForceRallyPercentage	= 50
 		Unknown129	= 100
 		Unknown130	= 20
-		AttForceSuccessRallyPercentage	= 5
+		Unknown131	= 5
 		Unknown132	= 50
 		SiegeEngine1	= Trebuchet
 		SiegeEngine2	= Trebuchet
@@ -1911,7 +1911,7 @@ AICharacter
 		SellResource14	= LeatherArmors
 		SellResource15	= None
 		DefWallPatrolRallyTime	= 2
-		Unknown069	= 3
+		DefWallPatrolGroups	= 3
 		DefSiegeEngineGoldThreshold	= 100
 		DefSiegeEngineBuildDelay	= 4
 		Unknown072	= 200
@@ -1937,7 +1937,7 @@ AICharacter
 		DefTotal	= 30
 		OuterPatrolGroupsCount	= 4
 		OuterPatrolGroupsMove	= True
-		Unknown095	= 2
+		OuterPatrolRallyDelay	= 2
 		DefWalls	= 20
 		DefUnit1	= Knight
 		DefUnit2	= EuropArcher
@@ -1973,7 +1973,7 @@ AICharacter
 		AttForceRallyPercentage	= 40
 		Unknown129	= 100
 		Unknown130	= 0
-		AttForceSuccessRallyPercentage	= 5
+		Unknown131	= 5
 		Unknown132	= 70
 		SiegeEngine1	= None
 		SiegeEngine2	= None
@@ -2089,7 +2089,7 @@ AICharacter
 		SellResource14	= LeatherArmors
 		SellResource15	= IronArmors
 		DefWallPatrolRallyTime	= 2
-		Unknown069	= 3
+		DefWallPatrolGroups	= 3
 		DefSiegeEngineGoldThreshold	= 100
 		DefSiegeEngineBuildDelay	= 4
 		Unknown072	= 200
@@ -2115,7 +2115,7 @@ AICharacter
 		DefTotal	= 40
 		OuterPatrolGroupsCount	= 1
 		OuterPatrolGroupsMove	= True
-		Unknown095	= 2
+		OuterPatrolRallyDelay	= 2
 		DefWalls	= 40
 		DefUnit1	= ArabArcher
 		DefUnit2	= FireThrower
@@ -2151,7 +2151,7 @@ AICharacter
 		AttForceRallyPercentage	= 80
 		Unknown129	= 100
 		Unknown130	= 4
-		AttForceSuccessRallyPercentage	= 5
+		Unknown131	= 5
 		Unknown132	= 90
 		SiegeEngine1	= Trebuchet
 		SiegeEngine2	= FireBallista
@@ -2267,7 +2267,7 @@ AICharacter
 		SellResource14	= LeatherArmors
 		SellResource15	= IronArmors
 		DefWallPatrolRallyTime	= 2
-		Unknown069	= 3
+		DefWallPatrolGroups	= 3
 		DefSiegeEngineGoldThreshold	= 100
 		DefSiegeEngineBuildDelay	= 4
 		Unknown072	= 200
@@ -2293,7 +2293,7 @@ AICharacter
 		DefTotal	= 50
 		OuterPatrolGroupsCount	= 1
 		OuterPatrolGroupsMove	= True
-		Unknown095	= 2
+		OuterPatrolRallyDelay	= 2
 		DefWalls	= 50
 		DefUnit1	= EuropArcher
 		DefUnit2	= ArabArcher
@@ -2329,7 +2329,7 @@ AICharacter
 		AttForceRallyPercentage	= 80
 		Unknown129	= 100
 		Unknown130	= 0
-		AttForceSuccessRallyPercentage	= 5
+		Unknown131	= 5
 		Unknown132	= 80
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult
@@ -2445,7 +2445,7 @@ AICharacter
 		SellResource14	= LeatherArmors
 		SellResource15	= IronArmors
 		DefWallPatrolRallyTime	= 2
-		Unknown069	= 3
+		DefWallPatrolGroups	= 3
 		DefSiegeEngineGoldThreshold	= 100
 		DefSiegeEngineBuildDelay	= 4
 		Unknown072	= 200
@@ -2471,7 +2471,7 @@ AICharacter
 		DefTotal	= 80
 		OuterPatrolGroupsCount	= 1
 		OuterPatrolGroupsMove	= True
-		Unknown095	= 2
+		OuterPatrolRallyDelay	= 2
 		DefWalls	= 80
 		DefUnit1	= ArabArcher
 		DefUnit2	= None
@@ -2507,7 +2507,7 @@ AICharacter
 		AttForceRallyPercentage	= 50
 		Unknown129	= 100
 		Unknown130	= 0
-		AttForceSuccessRallyPercentage	= 5
+		Unknown131	= 5
 		Unknown132	= 50
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= None
@@ -2623,7 +2623,7 @@ AICharacter
 		SellResource14	= None
 		SellResource15	= IronArmors
 		DefWallPatrolRallyTime	= 8
-		Unknown069	= 2
+		DefWallPatrolGroups	= 2
 		DefSiegeEngineGoldThreshold	= 200
 		DefSiegeEngineBuildDelay	= 4
 		Unknown072	= 200
@@ -2649,7 +2649,7 @@ AICharacter
 		DefTotal	= 50
 		OuterPatrolGroupsCount	= 1
 		OuterPatrolGroupsMove	= True
-		Unknown095	= 5
+		OuterPatrolRallyDelay	= 5
 		DefWalls	= 40
 		DefUnit1	= Crossbowman
 		DefUnit2	= Crossbowman
@@ -2685,7 +2685,7 @@ AICharacter
 		AttForceRallyPercentage	= 80
 		Unknown129	= 100
 		Unknown130	= 5
-		AttForceSuccessRallyPercentage	= 8
+		Unknown131	= 8
 		Unknown132	= 50
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult
@@ -2801,7 +2801,7 @@ AICharacter
 		SellResource14	= LeatherArmors
 		SellResource15	= None
 		DefWallPatrolRallyTime	= 2
-		Unknown069	= 3
+		DefWallPatrolGroups	= 3
 		DefSiegeEngineGoldThreshold	= 100
 		DefSiegeEngineBuildDelay	= 4
 		Unknown072	= 200
@@ -2827,7 +2827,7 @@ AICharacter
 		DefTotal	= 40
 		OuterPatrolGroupsCount	= 1
 		OuterPatrolGroupsMove	= True
-		Unknown095	= 2
+		OuterPatrolRallyDelay	= 2
 		DefWalls	= 30
 		DefUnit1	= EuropArcher
 		DefUnit2	= None
@@ -2863,7 +2863,7 @@ AICharacter
 		AttForceRallyPercentage	= 50
 		Unknown129	= 100
 		Unknown130	= 0
-		AttForceSuccessRallyPercentage	= 5
+		Unknown131	= 5
 		Unknown132	= 70
 		SiegeEngine1	= Trebuchet
 		SiegeEngine2	= Trebuchet
@@ -2979,7 +2979,7 @@ AICharacter
 		SellResource14	= LeatherArmors
 		SellResource15	= IronArmors
 		DefWallPatrolRallyTime	= 2
-		Unknown069	= 3
+		DefWallPatrolGroups	= 3
 		DefSiegeEngineGoldThreshold	= 100
 		DefSiegeEngineBuildDelay	= 4
 		Unknown072	= 200
@@ -3005,7 +3005,7 @@ AICharacter
 		DefTotal	= 30
 		OuterPatrolGroupsCount	= 1
 		OuterPatrolGroupsMove	= True
-		Unknown095	= 2
+		OuterPatrolRallyDelay	= 2
 		DefWalls	= 30
 		DefUnit1	= EuropArcher
 		DefUnit2	= None
@@ -3041,7 +3041,7 @@ AICharacter
 		AttForceRallyPercentage	= 80
 		Unknown129	= 100
 		Unknown130	= 0
-		AttForceSuccessRallyPercentage	= 5
+		Unknown131	= 5
 		Unknown132	= 80
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult

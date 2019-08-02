@@ -275,8 +275,7 @@ namespace UCP.AICharacters
 
         // Index: 69 Hex: 0x114
         [RWNames("Unknown069")]
-        [RWComment("")]
-        public int Unknown069;
+        public int DefWallPatrolGroups;
 
         // Index: 70 Hex: 0x118
         [RWComment("This one makes no sense. In code: [if (Gold + Threshold > 30) then RecruitEngineer()], maybe it was supposed to be minus...")]
@@ -375,10 +374,10 @@ namespace UCP.AICharacters
         public bool OuterPatrolGroupsMove;
 
         // Index: 95 Hex: 0x17C
-        //[RWNames("Unknown095")]
+        [RWNames("Unknown095")]
         //[RWComment("The amount of patrol units the AI saves up before sending them out to do their duty.")]
-        //NOT SURE HERE YET, NEEDS TESTING!
-        public int Unknown095;
+        [RWComment("The delay after which the AI sends out patrols to defend the outer economy. 4 is approximately one month, 24 being half a year.")]
+        public int OuterPatrolRallyDelay;
 
         // Index: 96 Hex: 0x180
         public int DefWalls;
@@ -508,9 +507,9 @@ namespace UCP.AICharacters
 
         // Index: 131 Hex: 0x20C
         //Maybe a delay instead of a percentage
-        [RWComment("The %-amount of units of the attack force that will rally (at the bested enemy's keep location) before retreating.")]
-        [RWNames("Unknown131")]
-        public int AttForceSuccessRallyPercentage;
+        //[RWComment("The %-amount of units of the attack force that will rally (at the bested enemy's keep location) before retreating.")]
+        [RWNames("Unknown131", "AttForceSuccessRallyPercentage")]
+        public int Unknown131;
 
         // Index: 132 Hex: 0x210
         public int Unknown132;
@@ -540,6 +539,7 @@ namespace UCP.AICharacters
         public SiegeEngine SiegeEngine8;
 
         // Index: 141 Hex: 0x234
+        //Maybe the amount of stones thrown by all catapults until a cow is thrown instead
         public int Unknown141;
 
         // Index: 142 Hex: 0x238
@@ -616,7 +616,7 @@ namespace UCP.AICharacters
         public int Unknown161;
 
         // Index: 162 Hex: 0x288
-        [RWComment("AttUntiMain1 to AttUnitMain4 is a list of the main strike force the AI recruits for sieges. Priotizes in order of the list, but only recruits untis for which they have enough gold. So try to place expensive units higher up.")]
+        [RWComment("AttUntiMain1 to AttUnitMain4 is a list of the main strike force the AI recruits for sieges. Priotizes in order of the list, but only recruits units for which they have enough gold. So try to place expensive units higher up.")]
         public Unit AttUnitMain1;
 
         // Index: 163 Hex: 0x28C
