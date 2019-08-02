@@ -135,7 +135,7 @@ AICharacter
 		DefSiegeEngineBuildDelay:	Int32,	The delay before the AI builds its first defensive siege engine.
 		Unknown072:	Int32
 		Unknown073:	Int32
-		RecruitProbDefDefault:	Int32,	The probability with which this AI reinforces missing defense troops.
+		RecruitProbDefDefault:	Int32,	The probability with which this AI reinforces missing defense troops. Note: These are ignored at the beginning of the game, as there are only sortie and defensive units being recruited.
 		RecruitProbDefWeak:	Int32
 		RecruitProbDefStrong:	Int32
 		RecruitProbRaidDefault:	Int32
@@ -202,7 +202,7 @@ AICharacter
 		SiegeEngine6:	SiegeEngine
 		SiegeEngine7:	SiegeEngine
 		SiegeEngine8:	SiegeEngine
-		Unknown141:	Int32
+		CowThrowInterval:	Int32,	The amount of stones needed to be thrown until the AI throws a diseased cow instead (catapults & trebuchets).
 		Unknown142:	Int32
 		AttMaxEngineers:	Int32
 		AttDiggingUnit:	DiggingUnit,	This unit is only recruited if the target enemy has moat and used preferably to fill up enemy moat.
@@ -381,7 +381,7 @@ AICharacter
 		SiegeEngine6	= None
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 1000
+		CowThrowInterval	= 1000
 		Unknown142	= 0
 		AttMaxEngineers	= 0
 		AttDiggingUnit	= Spearman
@@ -559,7 +559,7 @@ AICharacter
 		SiegeEngine6	= None
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 1000
+		CowThrowInterval	= 1000
 		Unknown142	= 0
 		AttMaxEngineers	= 2
 		AttDiggingUnit	= Spearman
@@ -737,7 +737,7 @@ AICharacter
 		SiegeEngine6	= None
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 30
+		CowThrowInterval	= 30
 		Unknown142	= 0
 		AttMaxEngineers	= 10
 		AttDiggingUnit	= Maceman
@@ -915,7 +915,7 @@ AICharacter
 		SiegeEngine6	= None
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 8
+		CowThrowInterval	= 8
 		Unknown142	= 0
 		AttMaxEngineers	= 12
 		AttDiggingUnit	= Pikeman
@@ -1093,7 +1093,7 @@ AICharacter
 		SiegeEngine6	= None
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 2000
+		CowThrowInterval	= 2000
 		Unknown142	= 0
 		AttMaxEngineers	= 10
 		AttDiggingUnit	= Slave
@@ -1271,7 +1271,7 @@ AICharacter
 		SiegeEngine6	= None
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 7
+		CowThrowInterval	= 7
 		Unknown142	= 0
 		AttMaxEngineers	= 6
 		AttDiggingUnit	= Slave
@@ -1449,7 +1449,7 @@ AICharacter
 		SiegeEngine6	= None
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 10000
+		CowThrowInterval	= 10000
 		Unknown142	= 0
 		AttMaxEngineers	= 0
 		AttDiggingUnit	= None
@@ -1627,7 +1627,7 @@ AICharacter
 		SiegeEngine6	= Trebuchet
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 10000
+		CowThrowInterval	= 10000
 		Unknown142	= 0
 		AttMaxEngineers	= 16
 		AttDiggingUnit	= Pikeman
@@ -1805,7 +1805,7 @@ AICharacter
 		SiegeEngine6	= Trebuchet
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 10000
+		CowThrowInterval	= 10000
 		Unknown142	= 0
 		AttMaxEngineers	= 18
 		AttDiggingUnit	= EuropArcher
@@ -1983,7 +1983,7 @@ AICharacter
 		SiegeEngine6	= None
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 10000
+		CowThrowInterval	= 10000
 		Unknown142	= 0
 		AttMaxEngineers	= 0
 		AttDiggingUnit	= Spearman
@@ -2161,7 +2161,7 @@ AICharacter
 		SiegeEngine6	= None
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 10000
+		CowThrowInterval	= 10000
 		Unknown142	= 0
 		AttMaxEngineers	= 9
 		AttDiggingUnit	= Slave
@@ -2339,7 +2339,7 @@ AICharacter
 		SiegeEngine6	= None
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 10000
+		CowThrowInterval	= 10000
 		Unknown142	= 0
 		AttMaxEngineers	= 6
 		AttDiggingUnit	= EuropArcher
@@ -2517,7 +2517,7 @@ AICharacter
 		SiegeEngine6	= None
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 10000
+		CowThrowInterval	= 10000
 		Unknown142	= 0
 		AttMaxEngineers	= 0
 		AttDiggingUnit	= Slave
@@ -2695,7 +2695,7 @@ AICharacter
 		SiegeEngine6	= None
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 6
+		CowThrowInterval	= 6
 		Unknown142	= 0
 		AttMaxEngineers	= 10
 		AttDiggingUnit	= Slave
@@ -2873,7 +2873,7 @@ AICharacter
 		SiegeEngine6	= None
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 10000
+		CowThrowInterval	= 10000
 		Unknown142	= 0
 		AttMaxEngineers	= 6
 		AttDiggingUnit	= EuropArcher
@@ -3051,7 +3051,7 @@ AICharacter
 		SiegeEngine6	= None
 		SiegeEngine7	= None
 		SiegeEngine8	= None
-		Unknown141	= 10000
+		CowThrowInterval	= 10000
 		Unknown142	= 0
 		AttMaxEngineers	= 8
 		AttDiggingUnit	= EuropArcher

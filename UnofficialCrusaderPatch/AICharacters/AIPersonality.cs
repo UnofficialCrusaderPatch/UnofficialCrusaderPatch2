@@ -294,7 +294,7 @@ namespace UCP.AICharacters
         public int Unknown073;
 
         // Index: 74 Hex: 0x128
-        [RWComment("The probability with which this AI reinforces missing defense troops.")]
+        [RWComment("The probability with which this AI reinforces missing defense troops. Note: These are ignored at the beginning of the game, as there are only sortie and defensive units being recruited.")]
         public int RecruitProbDefDefault;
 
         // Index: 75 Hex: 0x12C
@@ -540,7 +540,9 @@ namespace UCP.AICharacters
 
         // Index: 141 Hex: 0x234
         //Maybe the amount of stones thrown by all catapults until a cow is thrown instead
-        public int Unknown141;
+        [RWNames("Unknown141")]
+        [RWComment("The amount of stones needed to be thrown until the AI throws a diseased cow instead (catapults & trebuchets).")]
+        public int CowThrowInterval;
 
         // Index: 142 Hex: 0x238
         public int Unknown142;
