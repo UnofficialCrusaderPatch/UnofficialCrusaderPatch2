@@ -202,7 +202,7 @@ AICharacter
 		SiegeEngine6:	SiegeEngine
 		SiegeEngine7:	SiegeEngine
 		SiegeEngine8:	SiegeEngine
-		CowThrowInterval:	Int32,	The amount of stones needed to be thrown until the AI throws a diseased cow instead (catapults & trebuchets).
+		CowThrowInterval:	Int32,	The amount of stones needed to be thrown until the AI throws a diseased cow instead (catapults & trebuchets). Value 0 disables cows and -1 makes the AI not throw any bolders, only cows.
 		Unknown142:	Int32
 		AttMaxEngineers:	Int32
 		AttDiggingUnit:	DiggingUnit,	This unit is only recruited if the target enemy has moat and used preferably to fill up enemy moat.

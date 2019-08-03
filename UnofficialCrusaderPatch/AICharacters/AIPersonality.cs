@@ -541,7 +541,7 @@ namespace UCP.AICharacters
         // Index: 141 Hex: 0x234
         //Maybe the amount of stones thrown by all catapults until a cow is thrown instead
         [RWNames("Unknown141")]
-        [RWComment("The amount of stones needed to be thrown until the AI throws a diseased cow instead (catapults & trebuchets).")]
+        [RWComment("The amount of stones needed to be thrown until the AI throws a diseased cow instead (catapults & trebuchets). Value 0 disables cows and -1 makes the AI not throw any bolders, only cows.")]
         public int CowThrowInterval;
 
         // Index: 142 Hex: 0x238
