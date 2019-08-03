@@ -31,6 +31,13 @@ namespace UCP.Patching
         Image focus;
         const int ButtonSpacing = 53;
 
+        List<Border> buttons = new List<Border>();
+        public override void SetUIEnabled(bool enabled)
+        {
+            base.SetUIEnabled(enabled);
+            buttons.ForEach(b => b.IsEnabled = enabled);
+        }
+
         protected override FrameworkElement CreateUI()
         {
             Grid grid = new Grid()
@@ -70,6 +77,7 @@ namespace UCP.Patching
                 button.MouseUp += (s, e) => SetValue(value);
 
                 grid.Children.Insert(0, button);
+                buttons.Add(button);
             }
 
             this.OnValueChange += ValueChange;
