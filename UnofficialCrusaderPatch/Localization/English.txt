@@ -30,7 +30,7 @@ aiv_EvreyHistory
 aiv_EvreyHistory_descr
 {
 	"Adds one new AI castle for each lord, based on real historical &
-castles or cities. [Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
+castles or cities. [Created by Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
 
 

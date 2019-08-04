@@ -1,6 +1,26 @@
 ﻿// ======================
-//         2.12
+//         2.13
 // ======================
+
+o_firecooldown
+{
+	"Extend fireproof duration of extinguished buildings"
+}
+
+o_firecooldown_descr
+{
+	"The duration in which extinguished buildings cannot catch fire again can be extended here."
+}
+
+u_ballistamonk
+{
+	"Fire ballistas shoot monks"
+}
+
+u_ballistamonk_descr
+{
+	"Fire ballistas shoot automatically at monks with this setting."
+}
 
 aiv_EvreyHistory
 {
@@ -12,6 +32,12 @@ aiv_EvreyHistory_descr
 	"Добавляет один новый замок AI для каждого лорда, основываясь на реальных &
 исторических замках или городах. [Создано Evrey](https://github.com/Evrey/SHC_AIV/) "
 }
+
+
+// ======================
+//         2.12
+// ======================
+
 
 ui_AIC
 {

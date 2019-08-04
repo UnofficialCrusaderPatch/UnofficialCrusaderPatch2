@@ -1914,7 +1914,7 @@ namespace UCP
 
 
             /*
-             * ONLY AI
+             * ONLY AI / SPECTATOR MODE
              */
 
             new Change("o_onlyai", ChangeType.Other, false)
@@ -1960,6 +1960,10 @@ namespace UCP
                     // happy face :)
                     // 0x4334A6
                     BinBytes.CreateEdit("o_onlyai_face", 0xB9, 0xD3, 0x13, 0x00, 0x00, 0x90),
+
+                    // show assassins
+                    // 004EA265
+                    BinBytes.CreateEdit("o_onlyai_assassins", 0xEB), // change je to jmp
                 }
             },
 

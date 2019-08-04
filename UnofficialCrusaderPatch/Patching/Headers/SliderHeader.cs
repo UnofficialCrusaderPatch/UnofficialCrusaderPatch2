@@ -22,6 +22,12 @@ namespace UCP.Patching
         Slider slider;
         TextBlock sliderText;
 
+        public override void SetUIEnabled(bool enabled)
+        {
+            base.SetUIEnabled(enabled);
+            slider.IsEnabled = enabled;
+        }
+
         protected override FrameworkElement CreateUI()
         {
             const int sliderWidth = 260;

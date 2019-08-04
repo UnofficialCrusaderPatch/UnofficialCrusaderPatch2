@@ -41,9 +41,10 @@
             Height="{Binding ActualHeight, RelativeSource ={RelativeSource AncestorType = {x:Type Grid}}}">
 
             <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="238" Margin="0,56,0,0" VerticalAlignment="Top" Width="470" Background="#CCFFFFFF" Focusable="true"/>
-            <ProgressBar x:Name="pbSetup" HorizontalAlignment="Center" Height="13" Margin="0,0,0,53" VerticalAlignment="Bottom" Width="468" Background="#99FFFFFF" Foreground="#FF832708"/>
+            <ProgressBar x:Name="pbSetup" HorizontalAlignment="Center" Height="19" Margin="0,0,0,53" VerticalAlignment="Bottom" Width="468" Background="#99FFFFFF" Foreground="#FF832708"/>
             <Button x:Name="iButtonBack" Content="Zurück" HorizontalAlignment="Left" Height="30" Margin="8,0,0,13" VerticalAlignment="Bottom" Width="120" Click="iButtonBack_Click"/>
             <Button x:Name="iButtonInstall" Content="Installieren" HorizontalAlignment="Right" Height="30" Margin="0,0,8,13" VerticalAlignment="Bottom" Width="120" Click="iButtonInstall_Click"/>
+            <Label x:Name="pbLabel" HorizontalAlignment="Center" Height="40" Margin="0,0,0,43" VerticalAlignment="Bottom" Width="468" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="16"/>
         </Grid>
     </Grid>
 </Window>

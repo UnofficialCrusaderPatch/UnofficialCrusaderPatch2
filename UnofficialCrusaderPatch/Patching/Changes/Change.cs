@@ -52,6 +52,12 @@ namespace UCP.Patching
 
         #region UI
 
+        public void SetUIEnabled(bool enabled)
+        {
+            titleBox.IsEnabled = enabled;
+            headerList.ForEach(h => h.SetUIEnabled(enabled));
+        }
+
         public bool IsChecked
         {
             get { return headerList.Exists(h => h.IsEnabled); }

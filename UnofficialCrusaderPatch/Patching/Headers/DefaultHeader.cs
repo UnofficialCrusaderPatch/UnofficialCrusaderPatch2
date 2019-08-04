@@ -36,6 +36,12 @@ namespace UCP.Patching
 
         #region UI
 
+        public virtual void SetUIEnabled(bool enabled)
+        {
+            if (box != null)
+                this.box.IsEnabled = enabled;
+        }
+
         public event Action<DefaultHeader, bool> OnEnabledChange;
 
         CheckBox box;

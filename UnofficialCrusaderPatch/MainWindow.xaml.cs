@@ -173,6 +173,8 @@ namespace UCP
             iButtonInstall.IsEnabled = false;
             pButtonSearch.IsEnabled = false;
             pTextBoxPath.IsReadOnly = true;
+            Version.Changes.ForEach(c => c.SetUIEnabled(false));
+            pbLabel.Content = "";
 
             setupThread = new Thread(DoSetup);
             this.Closed += (s, args) => setupThread.Abort();
@@ -191,6 +193,9 @@ namespace UCP
                     iButtonInstall.IsEnabled = true;
                     pButtonSearch.IsEnabled = true;
                     pTextBoxPath.IsReadOnly = false;
+                    Version.Changes.ForEach(c => c.SetUIEnabled(true));
+                    pbSetup.Value = 0;
+                    pbLabel.Content = Localization.Get("ui_finished");
                 }));
             }
             catch (Exception e)
@@ -281,5 +286,6 @@ namespace UCP
         }
 
         #endregion
+        
     }
 }
