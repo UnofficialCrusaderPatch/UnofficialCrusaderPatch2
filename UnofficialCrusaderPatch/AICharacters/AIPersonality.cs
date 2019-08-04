@@ -558,10 +558,13 @@ namespace UCP.AICharacters
         public int AttDiggingUnitMax;
 
         // Index: 146 Hex: 0x248
-        public Unit AttUnit2;
+        [RWNames("Unknown146", "AttUnit2")]
+        [RWComment("These units split from the main attack force to destroy enemy buildings. If the enemy walls are nearby those may be attacked.")]
+        public Unit AttUnitRaid;
 
         // Index: 147 Hex: 0x24C
-        public int AttUnit2Max;
+        [RWNames("Unknown147", "AttUnit2Max")]
+        public int AttUnitRaidMax;
 
         // Index: 148 Hex: 0x250
         public int AttMaxAssassins;
