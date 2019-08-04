@@ -4,33 +4,32 @@
 
 o_firecooldown
 {
-	"Extend fireproof duration of extinguished buildings"
+	"Wydłuż czas, po którym budynek może ponownie się zapalić"
 }
 
 o_firecooldown_descr
 {
-	"The duration in which extinguished buildings cannot catch fire again can be extended here."
+	"Można tutaj wydłużyć czas, po którym budynek może ponownie się zapalić po ugaszeniu."
 }
 
 u_ballistamonk
 {
-	"Fire ballistas shoot monks"
+	"Balista ogniowa strzela do mnichów"
 }
 
 u_ballistamonk_descr
 {
-	"Fire ballistas shoot automatically at monks with this setting."
+	"Balisty ogniowe strzelają automatycznie do mnichów."
 }
 
 aiv_EvreyHistory
 {
-	"Evrey's historic AI castles"
+	"Historyczne zamki SI od użytkownika Evrey"
 }
 
 aiv_EvreyHistory_descr
 {
-	"Adds one new AI castle for each lord, based on real historical &
-castles or cities. [Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
+	"Dodaje zamki dla każdego lorda SI, bazujące na prawdziwych zamkach historycznych. [Autorstwa gracza Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
 
 // ======================
