@@ -4,22 +4,22 @@
 
 o_firecooldown
 {
-	"Extend fireproof duration of extinguished buildings"
+	"Увеличить пожаробезопасную продолжительность пожаротушащих зданий"
 }
 
 o_firecooldown_descr
 {
-	"The duration in which extinguished buildings cannot catch fire again can be extended here."
+	"Здесь можно продлить срок, в течение которого потухшие здания больше не смогут загореться."
 }
 
 u_ballistamonk
 {
-	"Fire ballistas shoot monks"
+	"Огненные баллисты стреляют в монахов."
 }
 
 u_ballistamonk_descr
 {
-	"Fire ballistas shoot automatically at monks with this setting."
+	"Огненные баллисты стреляют автоматически в монахов с этой настройкой."
 }
 
 aiv_EvreyHistory
