@@ -207,8 +207,8 @@ AICharacter
 		AttMaxEngineers:	Int32
 		AttDiggingUnit:	DiggingUnit,	This unit is only recruited if the target enemy has moat and used preferably to fill up enemy moat.
 		AttDiggingUnitMax:	Int32
-		AttUnitRaid:	Unit,	These units split from the main attack force to destroy enemy buildings. If the enemy walls are nearby those may be attacked.
-		AttUnitRaidMax:	Int32
+		AttUnit2:	Unit
+		AttUnit2Max:	Int32
 		AttMaxAssassins:	Int32
 		AttMaxLaddermen:	Int32
 		AttMaxTunnelers:	Int32
@@ -386,8 +386,8 @@ AICharacter
 		AttMaxEngineers	= 0
 		AttDiggingUnit	= Spearman
 		AttDiggingUnitMax	= 20
-		AttUnitRaid	= EuropArcher
-		AttUnitRaidMax	= 0
+		AttUnit2	= EuropArcher
+		AttUnit2Max	= 0
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
@@ -564,8 +564,8 @@ AICharacter
 		AttMaxEngineers	= 2
 		AttDiggingUnit	= Spearman
 		AttDiggingUnitMax	= 20
-		AttUnitRaid	= EuropArcher
-		AttUnitRaidMax	= 20
+		AttUnit2	= EuropArcher
+		AttUnit2Max	= 20
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 10
 		AttMaxTunnelers	= 0
@@ -742,8 +742,8 @@ AICharacter
 		AttMaxEngineers	= 10
 		AttDiggingUnit	= Maceman
 		AttDiggingUnitMax	= 10
-		AttUnitRaid	= None
-		AttUnitRaidMax	= 0
+		AttUnit2	= None
+		AttUnit2Max	= 0
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
@@ -920,8 +920,8 @@ AICharacter
 		AttMaxEngineers	= 12
 		AttDiggingUnit	= Pikeman
 		AttDiggingUnitMax	= 20
-		AttUnitRaid	= None
-		AttUnitRaidMax	= 0
+		AttUnit2	= None
+		AttUnit2Max	= 0
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
@@ -1098,8 +1098,8 @@ AICharacter
 		AttMaxEngineers	= 10
 		AttDiggingUnit	= Slave
 		AttDiggingUnitMax	= 20
-		AttUnitRaid	= HorseArcher
-		AttUnitRaidMax	= 20
+		AttUnit2	= HorseArcher
+		AttUnit2Max	= 20
 		AttMaxAssassins	= 5
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
@@ -1276,8 +1276,8 @@ AICharacter
 		AttMaxEngineers	= 6
 		AttDiggingUnit	= Slave
 		AttDiggingUnitMax	= 20
-		AttUnitRaid	= ArabSwordsman
-		AttUnitRaidMax	= 0
+		AttUnit2	= ArabSwordsman
+		AttUnit2Max	= 0
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
@@ -1454,8 +1454,8 @@ AICharacter
 		AttMaxEngineers	= 0
 		AttDiggingUnit	= None
 		AttDiggingUnitMax	= 0
-		AttUnitRaid	= None
-		AttUnitRaidMax	= 0
+		AttUnit2	= None
+		AttUnit2Max	= 0
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
@@ -1632,8 +1632,8 @@ AICharacter
 		AttMaxEngineers	= 16
 		AttDiggingUnit	= Pikeman
 		AttDiggingUnitMax	= 6
-		AttUnitRaid	= None
-		AttUnitRaidMax	= 0
+		AttUnit2	= None
+		AttUnit2Max	= 0
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 3
@@ -1810,8 +1810,8 @@ AICharacter
 		AttMaxEngineers	= 18
 		AttDiggingUnit	= EuropArcher
 		AttDiggingUnitMax	= 20
-		AttUnitRaid	= None
-		AttUnitRaidMax	= 0
+		AttUnit2	= None
+		AttUnit2Max	= 0
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
@@ -1988,8 +1988,8 @@ AICharacter
 		AttMaxEngineers	= 0
 		AttDiggingUnit	= Spearman
 		AttDiggingUnitMax	= 60
-		AttUnitRaid	= None
-		AttUnitRaidMax	= 24
+		AttUnit2	= None
+		AttUnit2Max	= 24
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
@@ -2166,8 +2166,8 @@ AICharacter
 		AttMaxEngineers	= 9
 		AttDiggingUnit	= Slave
 		AttDiggingUnitMax	= 15
-		AttUnitRaid	= None
-		AttUnitRaidMax	= 0
+		AttUnit2	= None
+		AttUnit2Max	= 0
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
@@ -2344,8 +2344,8 @@ AICharacter
 		AttMaxEngineers	= 6
 		AttDiggingUnit	= EuropArcher
 		AttDiggingUnitMax	= 15
-		AttUnitRaid	= None
-		AttUnitRaidMax	= 0
+		AttUnit2	= None
+		AttUnit2Max	= 0
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
@@ -2522,8 +2522,8 @@ AICharacter
 		AttMaxEngineers	= 0
 		AttDiggingUnit	= Slave
 		AttDiggingUnitMax	= 20
-		AttUnitRaid	= None
-		AttUnitRaidMax	= 0
+		AttUnit2	= None
+		AttUnit2Max	= 0
 		AttMaxAssassins	= 40
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
@@ -2700,8 +2700,8 @@ AICharacter
 		AttMaxEngineers	= 10
 		AttDiggingUnit	= Slave
 		AttDiggingUnitMax	= 80
-		AttUnitRaid	= Maceman
-		AttUnitRaidMax	= 10
+		AttUnit2	= Maceman
+		AttUnit2Max	= 10
 		AttMaxAssassins	= 10
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
@@ -2878,8 +2878,8 @@ AICharacter
 		AttMaxEngineers	= 6
 		AttDiggingUnit	= EuropArcher
 		AttDiggingUnitMax	= 20
-		AttUnitRaid	= None
-		AttUnitRaidMax	= 0
+		AttUnit2	= None
+		AttUnit2Max	= 0
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
@@ -3056,8 +3056,8 @@ AICharacter
 		AttMaxEngineers	= 8
 		AttDiggingUnit	= EuropArcher
 		AttDiggingUnitMax	= 10
-		AttUnitRaid	= None
-		AttUnitRaidMax	= 0
+		AttUnit2	= None
+		AttUnit2Max	= 0
 		AttMaxAssassins	= 0
 		AttMaxLaddermen	= 0
 		AttMaxTunnelers	= 0
