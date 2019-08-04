@@ -242,7 +242,7 @@ namespace UCP
                         Height = 20,
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Bottom,
-                        Margin = new Thickness(0, 0, 5, 5),
+                        Margin = new Thickness(0, 0, 20, 5),
                         Content = new Image()
                         {
                             Source = new BitmapImage(new Uri("pack://application:,,,/UnofficialCrusaderPatch;component/Graphics/refresh.png")),

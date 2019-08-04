@@ -23,8 +23,6 @@ namespace IDAParser
 
                 string ucpPath = Directory.GetCurrentDirectory() + "../../../../UnofficialCrusaderPatch/AICs";
                 UpdateAICs(Path.GetFullPath(ucpPath));
-                if(Directory.Exists(Path.GetFullPath(ucpPath) + "/KimberlyAICs"))
-                    UpdateAICs(Path.GetFullPath(ucpPath) + "/KimberlyAICs");
             }
             catch (Exception e)
             {

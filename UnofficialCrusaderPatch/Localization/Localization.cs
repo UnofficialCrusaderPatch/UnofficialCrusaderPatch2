@@ -29,6 +29,9 @@ namespace UCP
             }
         }
 
+        static int[] loadOrder = { 1, 0, 2, 3 };
+        public static IEnumerable<int> IndexLoadOrder => loadOrder;
+
         static List<Language> translations = new List<Language>()
         {
             new Language("Deutsch", "German", "de"),

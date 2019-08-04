@@ -21,6 +21,16 @@ namespace UCP.Patching
 
         string headerKey;
 
+        protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
+        {
+            base.TitleBox_Checked(sender, e);
+            foreach (var c in Version.Changes)
+            {
+                if (c != this && c is AICChange)
+                    c.IsChecked = false;
+            }
+        }
+
         public AICChange(string title, AICCollection coll, bool enabledDefault = false, bool isIntern = false)
             : base(title, ChangeType.AIC, enabledDefault, false)
         {
@@ -29,7 +39,21 @@ namespace UCP.Patching
             this.intern = isIntern;
 
             string descrIdent = title + isIntern;
-            string descr = collection.Header.DescrByIndex(Localization.LanguageIndex);
+
+            // set localized description, if it's empty seek a non-empty description
+            var header = collection.Header;
+            string descr = header.DescrByIndex(Localization.LanguageIndex);
+
+            if (string.IsNullOrWhiteSpace(descr))
+            {
+                foreach(int index in Localization.IndexLoadOrder)
+                {
+                    descr = header.DescrByIndex(index);
+                    if (!string.IsNullOrWhiteSpace(descr))
+                        break;
+                }
+            }
+
             this.headerKey = descrIdent + "_descr";
             Localization.Add(headerKey, descr);
 
@@ -145,7 +169,8 @@ namespace UCP.Patching
             int beforeCount = Version.Changes.Count;
             Assembly asm = Assembly.GetExecutingAssembly();
 
-            foreach (string str in asm.GetManifestResourceNames())
+            var names = asm.GetManifestResourceNames().Where(s => s.StartsWith(searchString));
+            foreach (string str in names.OrderBy(s => s))
             {
                 if (!str.StartsWith(searchString))
                     continue;

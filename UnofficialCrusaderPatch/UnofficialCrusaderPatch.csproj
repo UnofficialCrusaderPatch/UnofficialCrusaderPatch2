@@ -1455,6 +1455,10 @@
       <Link>AIVs\EvreyHistory\wolf1.aiv</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="CodeBlocks\o_firecooldown.block" />
+    <EmbeddedResource Include="AICs\Tatha 0.5.1.aic" />
+    <EmbeddedResource Include="AICs\Krarilotus-aggressiveAI-v1.0.aic" />
+    <EmbeddedResource Include="AICs\Xander10alpha-v1.0.aic" />
+    <EmbeddedResource Include="AICs\Kimberly-Balance-v1.0.aic" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />

@@ -65,12 +65,12 @@ namespace UCP.AICharacters
         public int HighestPopularity;
 
         // Index: 9 Hex: 0x24
-        [RWNames("Unknown009", "TaxMin")]
+        [RWNames("Unknown009")]
         [RWComment("Ranging from 0 (being +7 gifts) to 11 (being -24 taxes)")]
         public int TaxesMin;
 
         // Index: 10 Hex: 0x28
-        [RWNames("Unknown010", "TaxMax")]
+        [RWNames("Unknown010")]
         [RWComment("Ranging from 0 (being +7 gifts) to 11 (being -24 taxes)")]
         public int TaxesMax;
 
@@ -471,7 +471,7 @@ namespace UCP.AICharacters
         public HarassingSiegeEngine HarassingSiegeEngine8;
 
         // Index: 123 Hex: 0x1EC
-        [RWNames("Unknown123")]
+        [RWNames("Unknown123", "RaidCatapultsMax")]
         [RWComment("The maximum of harassing siege engines an AI builds.")]
         public int HarassingSiegeEnginesMax;
 
