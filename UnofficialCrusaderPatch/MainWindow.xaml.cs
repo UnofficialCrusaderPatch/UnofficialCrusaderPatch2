@@ -29,6 +29,7 @@ namespace UCP
         public MainWindow()
         {
             Configuration.LoadGeneral();
+            Configuration.LoadChanges();
 
             // choose language
             if (!LanguageWindow.ShowSelection(Configuration.Language))

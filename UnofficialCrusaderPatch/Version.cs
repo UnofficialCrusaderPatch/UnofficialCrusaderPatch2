@@ -1225,7 +1225,7 @@ namespace UCP
              *  WASD
              */
              
-            new Change("o_keys", ChangeType.Other)
+            new Change("o_keys", ChangeType.Other, false)
             {
                 new DefaultHeader("o_keys")
                 {

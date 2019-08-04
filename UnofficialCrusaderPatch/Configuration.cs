@@ -19,7 +19,7 @@ namespace UCP
         public static void Save(string str = null)
         {
             if (loading) return;
-
+            
             using (StreamWriter sw = new StreamWriter(ConfigFile))
             {
                 // install path
