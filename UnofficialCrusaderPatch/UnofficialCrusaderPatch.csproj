@@ -126,6 +126,7 @@
     <Compile Include="Version.cs" />
     <Compile Include="_Crusader\Building.cs" />
     <Compile Include="_Crusader\UI_Button.cs" />
+    <Compile Include="_Crusader\Unit.cs" />
     <Page Include="Localization\LanguageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1459,6 +1460,7 @@
     <EmbeddedResource Include="AICs\Krarilotus-aggressiveAI-v1.0.aic" />
     <EmbeddedResource Include="AICs\Xander10alpha-v1.0.aic" />
     <EmbeddedResource Include="AICs\Kimberly-Balance-v1.0.aic" />
+    <EmbeddedResource Include="CodeBlocks\laddermadness.block" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />

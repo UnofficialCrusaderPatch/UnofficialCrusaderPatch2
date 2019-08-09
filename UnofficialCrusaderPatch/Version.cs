@@ -636,6 +636,9 @@ namespace UCP
 
             #region UNITS
             
+            //BinInt32.Change("laddermadness", ChangeType.Troops, 1),
+
+            
             // Armbrust dmg table: 0xB4ED20
             // Bogen dmg table: 0xB4EAA0
             // Sling dmg table: 0xB4EBE0
@@ -650,7 +653,7 @@ namespace UCP
                     BinInt32.CreateEdit("u_ladderarmor_xbow", 1000), // B4ED20 + 4 * 1D   (vanilla = 2500)
 
                     // 0052EC37 + 2
-                    BinBytes.CreateEdit("u_laddergold", 9), // 1D - 9 = 14h            (vanilla: 1D - 19 = 4)
+                    BinBytes.CreateEdit("u_laddergold", 0xF7), // 1D - 9 = 14h            (vanilla: 1D - 19 = 4)
                 }
             },         
             
@@ -674,6 +677,8 @@ namespace UCP
                     BinInt32.CreateEdit("u_spearxbow", 9999), // B4EBE0 + 4 * 18   (vanilla = 15000)
                 }
             },
+
+            // ladderman: 0xB55AF4 = soldier bool
 
             #endregion
 
