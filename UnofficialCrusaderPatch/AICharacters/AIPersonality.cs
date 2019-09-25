@@ -618,7 +618,8 @@ namespace UCP.AICharacters
         public int AttUnitSiegeDefMax;
 
         // Index: 161 Hex: 0x284
-        public int Unknown161;
+        [RWNames("Unknown161")]
+        public int AttUnitSiegeDefGroupsCount;
 
         // Index: 162 Hex: 0x288
         [RWComment("AttUntiMain1 to AttUnitMain4 is a list of the main strike force the AI recruits for sieges. Priotizes in order of the list, but only recruits units for which they have enough gold. So try to place expensive units higher up.")]
