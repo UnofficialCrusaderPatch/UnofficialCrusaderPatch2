@@ -597,9 +597,9 @@ namespace UCP.AICharacters
         public int AttUnitBackupMax;
 
         // Index: 156 Hex: 0x270
-        [RWNames("Unknown156")]
-        [RWComment("# of groups the RangedBackupUnits split into. If shields are present in the army, one will be added to each group (if possible).")]
-        public int RangedBackupGroupsCount;
+        [RWNames("Unknown156", "RangedBackupGroupsCount")]
+        [RWComment("# of groups the AttUnitBackup split into. If shields are present in the army, one will be added to each group (if possible).")]
+        public int AttUnitBackupGroupsCount;
 
         // Index: 157 Hex: 0x274
         [RWNames("Unknown157", "AttUnit5")]
