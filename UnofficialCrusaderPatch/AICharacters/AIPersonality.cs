@@ -506,10 +506,9 @@ namespace UCP.AICharacters
         public int Unknown130;
 
         // Index: 131 Hex: 0x20C
-        //Maybe a delay instead of a percentage
-        //[RWComment("The %-amount of units of the attack force that will rally (at the bested enemy's keep location) before retreating.")]
-        [RWNames("Unknown131", "AttForceSuccessRallyPercentage")]
-        public int Unknown131;
+        [RWComment("The delay that the AI waits until the AttUnitPatrol get a new attack-move order.")]
+        [RWNames("Unknown131")]
+        public int AttUnitPatrolRecommandDelay;
 
         // Index: 132 Hex: 0x210
         public int Unknown132;
