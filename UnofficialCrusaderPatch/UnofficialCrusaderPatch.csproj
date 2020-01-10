@@ -158,6 +158,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix1.block" />
+    <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix2.block" />
+    <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix3.block" />
+    <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix4.block" />
+    <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix5.block" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

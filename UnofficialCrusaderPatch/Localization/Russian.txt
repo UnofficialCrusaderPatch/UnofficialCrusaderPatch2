@@ -345,6 +345,16 @@ o_trooplimit_descr
 2400 / Игроки в Ваниле. Это значение можно изменить здесь."
 }
 
+o_armory_marketplace_weapon_order_fix
+{
+	"Fix armory/marketplace weapon orders to match"
+}
+
+o_armory_marketplace_weapon_order_fix_descr
+{
+	"Reorders Weapon icons in Armory and Marketplace to have the same order. Also moves Leather Armor between Mace and Crossbow, and moves Metal Armor between Polearm and Sword for easier access while in Marketplace scrolling through items."
+}
+
 ai_demolish
 {
 	"Деактивировать снос за деньги AI Лордов"
