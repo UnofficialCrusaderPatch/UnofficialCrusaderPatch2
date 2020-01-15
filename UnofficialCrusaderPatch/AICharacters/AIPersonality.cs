@@ -180,7 +180,7 @@ namespace UCP.AICharacters
         public int Unknown040;
 
         // Index: 41 Hex: 0xA4
-        [RWNames("Unknown041")]
+        [RWNames("Unknown041", "MinimumGoodsRequiredAfterTrade")]
         [RWComment("If the AI would have less than this amount of a good after sending them it won't send them to the requesting player.")] //Includes ResourceVariance?
         public int MinimumGoodsRequiredAfterTribute;
 
@@ -210,7 +210,7 @@ namespace UCP.AICharacters
         public int MaxResourceVariance;
 
         // Index: 49 Hex: 0xC4
-        [RWNames("Unknown049")]
+        [RWNames("Unknown049", "RecruitGoldThreshold")]
         [RWComment("A (gold) threshold which disables buying resources for production chains, weapons / armour and recruiting of most units.")]
         public int InvestmentGoldThreshold;
 

@@ -96,15 +96,15 @@ AICharacter
 		TradeAmountFood:	Int32
 		TradeAmountEquipment:	Int32
 		Unknown040:	Int32
-		MinimumGoodsRequiredAfterTrade:	Int32,	If the AI would have less than this amount of a good after sending them it won't send them to the requesting player.
-		DoubleRationsFoodThreshold:	Int32,	Above this value of food the AI will give double rations out.
+		MinimumGoodsRequiredAfterTribute:	Int32,	If the AI would have less than this amount of a good after sending them it won't send them to the requesting player.
+		DoubleRationsFoodThreshold:	Int32,	Above this value of food the AI will give out double rations.
 		MaxWood:	Int32
 		MaxStone:	Int32
 		MaxResourceOther:	Int32
 		MaxEquipment:	Int32,	Applies to each type of weapon or armour.
 		MaxBeer:	Int32
 		MaxResourceVariance:	Int32,	added to all max resource values?
-		RecruitGoldThreshold:	Int32,	A (gold) threshold which disables any recruitment of all units except for raiding and sortie until it is met.
+		InvestmentGoldThreshold:	Int32,	A (gold) threshold which disables buying resources for production chains, weapons / armour and recruiting of most units.
 		BlacksmithSetting:	BlacksmithSetting
 		FletcherSetting:	FletcherSetting
 		PoleturnerSetting:	PoleturnerSetting
@@ -275,7 +275,7 @@ AICharacter
 		TradeAmountFood	= 5
 		TradeAmountEquipment	= 1
 		Unknown040	= 18
-		MinimumGoodsRequiredAfterTrade	= 0
+		MinimumGoodsRequiredAfterTribute	= 0
 		DoubleRationsFoodThreshold	= 70
 		MaxWood	= 50
 		MaxStone	= 40
@@ -283,7 +283,7 @@ AICharacter
 		MaxEquipment	= 19
 		MaxBeer	= 20
 		MaxResourceVariance	= 5
-		RecruitGoldThreshold	= 200
+		InvestmentGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -453,7 +453,7 @@ AICharacter
 		TradeAmountFood	= 5
 		TradeAmountEquipment	= 6
 		Unknown040	= 12
-		MinimumGoodsRequiredAfterTrade	= 0
+		MinimumGoodsRequiredAfterTribute	= 0
 		DoubleRationsFoodThreshold	= 80
 		MaxWood	= 48
 		MaxStone	= 40
@@ -461,7 +461,7 @@ AICharacter
 		MaxEquipment	= 12
 		MaxBeer	= 5
 		MaxResourceVariance	= 5
-		RecruitGoldThreshold	= 200
+		InvestmentGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -631,7 +631,7 @@ AICharacter
 		TradeAmountFood	= 5
 		TradeAmountEquipment	= 4
 		Unknown040	= 12
-		MinimumGoodsRequiredAfterTrade	= 50
+		MinimumGoodsRequiredAfterTribute	= 50
 		DoubleRationsFoodThreshold	= 60
 		MaxWood	= 70
 		MaxStone	= 40
@@ -639,7 +639,7 @@ AICharacter
 		MaxEquipment	= 10
 		MaxBeer	= 5
 		MaxResourceVariance	= 5
-		RecruitGoldThreshold	= 200
+		InvestmentGoldThreshold	= 200
 		BlacksmithSetting	= Maces
 		FletcherSetting	= Crossbows
 		PoleturnerSetting	= Spears
@@ -809,7 +809,7 @@ AICharacter
 		TradeAmountFood	= 10
 		TradeAmountEquipment	= 4
 		Unknown040	= 20
-		MinimumGoodsRequiredAfterTrade	= 40
+		MinimumGoodsRequiredAfterTribute	= 40
 		DoubleRationsFoodThreshold	= 40
 		MaxWood	= 60
 		MaxStone	= 50
@@ -817,7 +817,7 @@ AICharacter
 		MaxEquipment	= 6
 		MaxBeer	= 15
 		MaxResourceVariance	= 5
-		RecruitGoldThreshold	= 666
+		InvestmentGoldThreshold	= 666
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Crossbows
 		PoleturnerSetting	= Pikes
@@ -987,7 +987,7 @@ AICharacter
 		TradeAmountFood	= 2
 		TradeAmountEquipment	= 0
 		Unknown040	= 40
-		MinimumGoodsRequiredAfterTrade	= 0
+		MinimumGoodsRequiredAfterTribute	= 0
 		DoubleRationsFoodThreshold	= 20
 		MaxWood	= 60
 		MaxStone	= 50
@@ -995,7 +995,7 @@ AICharacter
 		MaxEquipment	= 5
 		MaxBeer	= 10
 		MaxResourceVariance	= 2
-		RecruitGoldThreshold	= 200
+		InvestmentGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Crossbows
 		PoleturnerSetting	= Pikes
@@ -1165,7 +1165,7 @@ AICharacter
 		TradeAmountFood	= 2
 		TradeAmountEquipment	= 0
 		Unknown040	= 12
-		MinimumGoodsRequiredAfterTrade	= 50
+		MinimumGoodsRequiredAfterTribute	= 50
 		DoubleRationsFoodThreshold	= 50
 		MaxWood	= 50
 		MaxStone	= 50
@@ -1173,7 +1173,7 @@ AICharacter
 		MaxEquipment	= 5
 		MaxBeer	= 15
 		MaxResourceVariance	= 5
-		RecruitGoldThreshold	= 500
+		InvestmentGoldThreshold	= 500
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Crossbows
 		PoleturnerSetting	= Pikes
@@ -1343,7 +1343,7 @@ AICharacter
 		TradeAmountFood	= 10
 		TradeAmountEquipment	= 0
 		Unknown040	= 30
-		MinimumGoodsRequiredAfterTrade	= 0
+		MinimumGoodsRequiredAfterTribute	= 0
 		DoubleRationsFoodThreshold	= 0
 		MaxWood	= 50
 		MaxStone	= 50
@@ -1351,7 +1351,7 @@ AICharacter
 		MaxEquipment	= 5
 		MaxBeer	= 20
 		MaxResourceVariance	= 5
-		RecruitGoldThreshold	= 200
+		InvestmentGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -1521,7 +1521,7 @@ AICharacter
 		TradeAmountFood	= 5
 		TradeAmountEquipment	= 2
 		Unknown040	= 22
-		MinimumGoodsRequiredAfterTrade	= 10
+		MinimumGoodsRequiredAfterTribute	= 10
 		DoubleRationsFoodThreshold	= 40
 		MaxWood	= 50
 		MaxStone	= 60
@@ -1529,7 +1529,7 @@ AICharacter
 		MaxEquipment	= 10
 		MaxBeer	= 10
 		MaxResourceVariance	= 4
-		RecruitGoldThreshold	= 200
+		InvestmentGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Pikes
@@ -1699,7 +1699,7 @@ AICharacter
 		TradeAmountFood	= 4
 		TradeAmountEquipment	= 4
 		Unknown040	= 22
-		MinimumGoodsRequiredAfterTrade	= 10
+		MinimumGoodsRequiredAfterTribute	= 10
 		DoubleRationsFoodThreshold	= 40
 		MaxWood	= 60
 		MaxStone	= 60
@@ -1707,7 +1707,7 @@ AICharacter
 		MaxEquipment	= 20
 		MaxBeer	= 10
 		MaxResourceVariance	= 4
-		RecruitGoldThreshold	= 200
+		InvestmentGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Both
 		PoleturnerSetting	= Both
@@ -1877,7 +1877,7 @@ AICharacter
 		TradeAmountFood	= 20
 		TradeAmountEquipment	= 2
 		Unknown040	= 12
-		MinimumGoodsRequiredAfterTrade	= 10
+		MinimumGoodsRequiredAfterTribute	= 10
 		DoubleRationsFoodThreshold	= 50
 		MaxWood	= 60
 		MaxStone	= 60
@@ -1885,7 +1885,7 @@ AICharacter
 		MaxEquipment	= 5
 		MaxBeer	= 10
 		MaxResourceVariance	= 4
-		RecruitGoldThreshold	= 1200
+		InvestmentGoldThreshold	= 1200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Crossbows
 		PoleturnerSetting	= Both
@@ -2055,7 +2055,7 @@ AICharacter
 		TradeAmountFood	= 2
 		TradeAmountEquipment	= 0
 		Unknown040	= 22
-		MinimumGoodsRequiredAfterTrade	= 30
+		MinimumGoodsRequiredAfterTribute	= 30
 		DoubleRationsFoodThreshold	= 50
 		MaxWood	= 60
 		MaxStone	= 40
@@ -2063,7 +2063,7 @@ AICharacter
 		MaxEquipment	= 4
 		MaxBeer	= 10
 		MaxResourceVariance	= 4
-		RecruitGoldThreshold	= 100
+		InvestmentGoldThreshold	= 100
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -2233,7 +2233,7 @@ AICharacter
 		TradeAmountFood	= 5
 		TradeAmountEquipment	= 0
 		Unknown040	= 12
-		MinimumGoodsRequiredAfterTrade	= 10
+		MinimumGoodsRequiredAfterTribute	= 10
 		DoubleRationsFoodThreshold	= 40
 		MaxWood	= 60
 		MaxStone	= 60
@@ -2241,7 +2241,7 @@ AICharacter
 		MaxEquipment	= 4
 		MaxBeer	= 10
 		MaxResourceVariance	= 4
-		RecruitGoldThreshold	= 200
+		InvestmentGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -2411,7 +2411,7 @@ AICharacter
 		TradeAmountFood	= 2
 		TradeAmountEquipment	= 0
 		Unknown040	= 12
-		MinimumGoodsRequiredAfterTrade	= 30
+		MinimumGoodsRequiredAfterTribute	= 30
 		DoubleRationsFoodThreshold	= 30
 		MaxWood	= 50
 		MaxStone	= 40
@@ -2419,7 +2419,7 @@ AICharacter
 		MaxEquipment	= 4
 		MaxBeer	= 10
 		MaxResourceVariance	= 4
-		RecruitGoldThreshold	= 100
+		InvestmentGoldThreshold	= 100
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -2589,7 +2589,7 @@ AICharacter
 		TradeAmountFood	= 10
 		TradeAmountEquipment	= 2
 		Unknown040	= 40
-		MinimumGoodsRequiredAfterTrade	= 40
+		MinimumGoodsRequiredAfterTribute	= 40
 		DoubleRationsFoodThreshold	= 40
 		MaxWood	= 50
 		MaxStone	= 50
@@ -2597,7 +2597,7 @@ AICharacter
 		MaxEquipment	= 10
 		MaxBeer	= 10
 		MaxResourceVariance	= 5
-		RecruitGoldThreshold	= 750
+		InvestmentGoldThreshold	= 750
 		BlacksmithSetting	= Maces
 		FletcherSetting	= Crossbows
 		PoleturnerSetting	= Pikes
@@ -2767,7 +2767,7 @@ AICharacter
 		TradeAmountFood	= 20
 		TradeAmountEquipment	= 7
 		Unknown040	= 12
-		MinimumGoodsRequiredAfterTrade	= 0
+		MinimumGoodsRequiredAfterTribute	= 0
 		DoubleRationsFoodThreshold	= 80
 		MaxWood	= 60
 		MaxStone	= 50
@@ -2775,7 +2775,7 @@ AICharacter
 		MaxEquipment	= 10
 		MaxBeer	= 6
 		MaxResourceVariance	= 4
-		RecruitGoldThreshold	= 200
+		InvestmentGoldThreshold	= 200
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
@@ -2945,7 +2945,7 @@ AICharacter
 		TradeAmountFood	= 5
 		TradeAmountEquipment	= 10
 		Unknown040	= 12
-		MinimumGoodsRequiredAfterTrade	= 10
+		MinimumGoodsRequiredAfterTribute	= 10
 		DoubleRationsFoodThreshold	= 40
 		MaxWood	= 60
 		MaxStone	= 40
@@ -2953,7 +2953,7 @@ AICharacter
 		MaxEquipment	= 12
 		MaxBeer	= 5
 		MaxResourceVariance	= 4
-		RecruitGoldThreshold	= 50
+		InvestmentGoldThreshold	= 50
 		BlacksmithSetting	= Swords
 		FletcherSetting	= Bows
 		PoleturnerSetting	= Spears
