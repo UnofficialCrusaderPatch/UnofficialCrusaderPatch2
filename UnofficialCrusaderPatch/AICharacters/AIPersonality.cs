@@ -182,11 +182,11 @@ namespace UCP.AICharacters
         // Index: 41 Hex: 0xA4
         [RWNames("Unknown041")]
         [RWComment("If the AI would have less than this amount of a good after sending them it won't send them to the requesting player.")] //Includes ResourceVariance?
-        public int MinimumGoodsRequiredAfterTrade;
+        public int MinimumGoodsRequiredAfterTribute;
 
         // Index: 42 Hex: 0xA8
         [RWNames("Unknown042")]
-        [RWComment("Above this value of food the AI will give double rations out.")]
+        [RWComment("Above this value of food the AI will give out double rations.")]
         public int DoubleRationsFoodThreshold;
 
         // Index: 43 Hex: 0xAC
@@ -211,8 +211,8 @@ namespace UCP.AICharacters
 
         // Index: 49 Hex: 0xC4
         [RWNames("Unknown049")]
-        [RWComment("A (gold) threshold which disables any recruitment of all units except for raiding and sortie until it is met.")]
-        public int RecruitGoldThreshold;
+        [RWComment("A (gold) threshold which disables buying resources for production chains, weapons / armour and recruiting of most units.")]
+        public int InvestmentGoldThreshold;
 
         // Index: 50 Hex: 0xC8
         public BlacksmithSetting BlacksmithSetting;
@@ -500,9 +500,7 @@ namespace UCP.AICharacters
         public int Unknown129;
 
         // Index: 130 Hex: 0x208
-        //[RWComment("The %-amount of (siege engines? engineers? laddermen? tunnelers? siege def?) that need to be destroyed / killed before the main units attack.")]
-        [RWNames("Unknown130", "AttForceCasualtiesPercentageBeforeAssault")]
-        //public int AttForceCasualtiesPercentageBeforeAssault;
+        [RWNames("Unknown130")] //Delay between siege engines being build and the army moving?
         public int Unknown130;
 
         // Index: 131 Hex: 0x20C
