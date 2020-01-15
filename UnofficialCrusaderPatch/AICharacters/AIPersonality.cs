@@ -182,11 +182,11 @@ namespace UCP.AICharacters
         // Index: 41 Hex: 0xA4
         [RWNames("Unknown041")]
         [RWComment("If the AI would have less than this amount of a good after sending them it won't send them to the requesting player.")] //Includes ResourceVariance?
-        public int MinimumGoodsRequiredAfterTrade;
+        public int MinimumGoodsRequiredAfterTribute;
 
         // Index: 42 Hex: 0xA8
         [RWNames("Unknown042")]
-        [RWComment("Above this value of food the AI will give double rations out.")]
+        [RWComment("Above this value of food the AI will give out double rations.")]
         public int DoubleRationsFoodThreshold;
 
         // Index: 43 Hex: 0xAC
@@ -211,8 +211,8 @@ namespace UCP.AICharacters
 
         // Index: 49 Hex: 0xC4
         [RWNames("Unknown049")]
-        [RWComment("A (gold) threshold which disables any recruitment of all units except for raiding and sortie until it is met.")]
-        public int RecruitGoldThreshold;
+        [RWComment("A (gold) threshold which disables buying resources for production chains, weapons / armour and recruiting of most units.")]
+        public int InvestmentGoldThreshold;
 
         // Index: 50 Hex: 0xC8
         public BlacksmithSetting BlacksmithSetting;
@@ -500,16 +500,13 @@ namespace UCP.AICharacters
         public int Unknown129;
 
         // Index: 130 Hex: 0x208
-        //[RWComment("The %-amount of (siege engines? engineers? laddermen? tunnelers? siege def?) that need to be destroyed / killed before the main units attack.")]
-        [RWNames("Unknown130", "AttForceCasualtiesPercentageBeforeAssault")]
-        //public int AttForceCasualtiesPercentageBeforeAssault;
+        [RWNames("Unknown130")] //Delay between siege engines being build and the army moving?
         public int Unknown130;
 
         // Index: 131 Hex: 0x20C
-        //Maybe a delay instead of a percentage
-        //[RWComment("The %-amount of units of the attack force that will rally (at the bested enemy's keep location) before retreating.")]
-        [RWNames("Unknown131", "AttForceSuccessRallyPercentage")]
-        public int Unknown131;
+        [RWComment("The delay that the AI waits until the AttUnitPatrol get a new attack-move order.")]
+        [RWNames("Unknown131")]
+        public int AttUnitPatrolRecommandDelay;
 
         // Index: 132 Hex: 0x210
         public int Unknown132;
@@ -597,9 +594,9 @@ namespace UCP.AICharacters
         public int AttUnitBackupMax;
 
         // Index: 156 Hex: 0x270
-        [RWNames("Unknown156")]
-        [RWComment("# of groups the RangedBackupUnits split into. If shields are present in the army, one will be added to each group (if possible).")]
-        public int RangedBackupGroupsCount;
+        [RWNames("Unknown156", "RangedBackupGroupsCount")]
+        [RWComment("# of groups the AttUnitBackup split into. If shields are present in the army, one will be added to each group (if possible).")]
+        public int AttUnitBackupGroupsCount;
 
         // Index: 157 Hex: 0x274
         [RWNames("Unknown157", "AttUnit5")]
@@ -618,7 +615,8 @@ namespace UCP.AICharacters
         public int AttUnitSiegeDefMax;
 
         // Index: 161 Hex: 0x284
-        public int Unknown161;
+        [RWNames("Unknown161")]
+        public int AttUnitSiegeDefGroupsCount;
 
         // Index: 162 Hex: 0x288
         [RWComment("AttUntiMain1 to AttUnitMain4 is a list of the main strike force the AI recruits for sieges. Priotizes in order of the list, but only recruits units for which they have enough gold. So try to place expensive units higher up.")]

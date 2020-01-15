@@ -268,7 +268,7 @@ AICharacter
 		AttForceRallyPercentage:	Int32,	The %-amount of units of the attack force that the AI will rally before attacking. (0 - 100)
 		Unknown129:	Int32
 		Unknown130:	Int32
-		Unknown131:	Int32
+		AttUnitPatrolRecommandDelay:	Int32,	The delay that the AI waits until the AttUnitPatrol get a new attack-move order.
 		Unknown132:	Int32
 		SiegeEngine1:	SiegeEngine
 		SiegeEngine2:	SiegeEngine
@@ -293,12 +293,12 @@ AICharacter
 		AttUnitPatrolGroupsCount:	Int32,	# of groups the AttUnitPatrol split into. BUGGY! More than 1 group results to only a single group attacking, the others standing idle.
 		AttUnitBackup:	Unit,	Attacking unit that holds position and doesn't attack until the walls are breached.
 		AttUnitBackupMax:	Int32
-		RangedBackupGroupsCount:	Int32,	# of groups the RangedBackupUnits split into. If shields are present in the army, one will be added to each group (if possible).
+		AttUnitBackupGroupsCount:	Int32,	# of groups the AttUnitBackup split into. If shields are present in the army, one will be added to each group (if possible).
 		AttUnitEngage:	Unit,	Units that engage enemy groups of units outside the castle. Prioritizes larger groups no matter where they are on the map. Otherwise destroys buildings outside the castle.
 		AttUnitEngageMax:	Int32
 		AttUnitSiegeDef:	Unit,	These units patrol between siege engines in order to protect them.
 		AttUnitSiegeDefMax:	Int32
-		Unknown161:	Int32
+		AttUnitSiegeDefGroupsCount:	Int32
 		AttUnitMain1:	Unit,	AttUntiMain1 to AttUnitMain4 is a list of the main strike force the AI recruits for sieges. Priotizes in order of the list, but only recruits units for which they have enough gold. So try to place expensive units higher up.
 		AttUnitMain2:	Unit
 		AttUnitMain3:	Unit
@@ -447,7 +447,7 @@ AICharacter
 		AttForceRallyPercentage	= 50
 		Unknown129	= 100
 		Unknown130	= 0
-		Unknown131	= 25
+		AttUnitPatrolRecommandDelay	= 25
 		Unknown132	= 20
 		SiegeEngine1	= None
 		SiegeEngine2	= None
@@ -472,12 +472,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 0
 		AttUnitBackup	= EuropArcher
 		AttUnitBackupMax	= 16
-		RangedBackupGroupsCount	= 0
+		AttUnitBackupGroupsCount	= 0
 		AttUnitEngage	= None
 		AttUnitEngageMax	= 0
 		AttUnitSiegeDef	= EuropArcher
 		AttUnitSiegeDefMax	= 20
-		Unknown161	= 0
+		AttUnitSiegeDefGroupsCount	= 0
 		AttUnitMain1	= Spearman
 		AttUnitMain2	= None
 		AttUnitMain3	= None
@@ -625,7 +625,7 @@ AICharacter
 		AttForceRallyPercentage	= 50
 		Unknown129	= 100
 		Unknown130	= 0
-		Unknown131	= 25
+		AttUnitPatrolRecommandDelay	= 25
 		Unknown132	= 40
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult
@@ -650,12 +650,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 0
 		AttUnitBackup	= ArabArcher
 		AttUnitBackupMax	= 50
-		RangedBackupGroupsCount	= 1
+		AttUnitBackupGroupsCount	= 1
 		AttUnitEngage	= None
 		AttUnitEngageMax	= 0
 		AttUnitSiegeDef	= EuropArcher
 		AttUnitSiegeDefMax	= 30
-		Unknown161	= 0
+		AttUnitSiegeDefGroupsCount	= 0
 		AttUnitMain1	= Spearman
 		AttUnitMain2	= None
 		AttUnitMain3	= None
@@ -803,7 +803,7 @@ AICharacter
 		AttForceRallyPercentage	= 60
 		Unknown129	= 100
 		Unknown130	= 5
-		Unknown131	= 15
+		AttUnitPatrolRecommandDelay	= 15
 		Unknown132	= 20
 		SiegeEngine1	= BatteringRam
 		SiegeEngine2	= Catapult
@@ -828,12 +828,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 0
 		AttUnitBackup	= Crossbowman
 		AttUnitBackupMax	= 5
-		RangedBackupGroupsCount	= 1
+		AttUnitBackupGroupsCount	= 1
 		AttUnitEngage	= None
 		AttUnitEngageMax	= 0
 		AttUnitSiegeDef	= Crossbowman
 		AttUnitSiegeDefMax	= 0
-		Unknown161	= 0
+		AttUnitSiegeDefGroupsCount	= 0
 		AttUnitMain1	= Maceman
 		AttUnitMain2	= None
 		AttUnitMain3	= None
@@ -981,7 +981,7 @@ AICharacter
 		AttForceRallyPercentage	= 80
 		Unknown129	= 100
 		Unknown130	= 12
-		Unknown131	= 5
+		AttUnitPatrolRecommandDelay	= 5
 		Unknown132	= 50
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Trebuchet
@@ -1006,12 +1006,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 0
 		AttUnitBackup	= Crossbowman
 		AttUnitBackupMax	= 30
-		RangedBackupGroupsCount	= 3
+		AttUnitBackupGroupsCount	= 3
 		AttUnitEngage	= None
 		AttUnitEngageMax	= 0
 		AttUnitSiegeDef	= Crossbowman
 		AttUnitSiegeDefMax	= 15
-		Unknown161	= 1
+		AttUnitSiegeDefGroupsCount	= 1
 		AttUnitMain1	= Swordsman
 		AttUnitMain2	= Pikeman
 		AttUnitMain3	= Pikeman
@@ -1159,7 +1159,7 @@ AICharacter
 		AttForceRallyPercentage	= 80
 		Unknown129	= 100
 		Unknown130	= 4
-		Unknown131	= 1
+		AttUnitPatrolRecommandDelay	= 1
 		Unknown132	= 60
 		SiegeEngine1	= FireBallista
 		SiegeEngine2	= Catapult
@@ -1184,12 +1184,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 1
 		AttUnitBackup	= ArabArcher
 		AttUnitBackupMax	= 20
-		RangedBackupGroupsCount	= 3
+		AttUnitBackupGroupsCount	= 3
 		AttUnitEngage	= ArabArcher
 		AttUnitEngageMax	= 20
 		AttUnitSiegeDef	= ArabArcher
 		AttUnitSiegeDefMax	= 20
-		Unknown161	= 1
+		AttUnitSiegeDefGroupsCount	= 1
 		AttUnitMain1	= ArabSwordsman
 		AttUnitMain2	= None
 		AttUnitMain3	= None
@@ -1337,7 +1337,7 @@ AICharacter
 		AttForceRallyPercentage	= 100
 		Unknown129	= 100
 		Unknown130	= 2
-		Unknown131	= 10
+		AttUnitPatrolRecommandDelay	= 10
 		Unknown132	= 50
 		SiegeEngine1	= FireBallista
 		SiegeEngine2	= FireBallista
@@ -1362,12 +1362,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 0
 		AttUnitBackup	= ArabArcher
 		AttUnitBackupMax	= 40
-		RangedBackupGroupsCount	= 2
+		AttUnitBackupGroupsCount	= 2
 		AttUnitEngage	= None
 		AttUnitEngageMax	= 0
 		AttUnitSiegeDef	= ArabArcher
 		AttUnitSiegeDefMax	= 10
-		Unknown161	= 1
+		AttUnitSiegeDefGroupsCount	= 1
 		AttUnitMain1	= ArabSwordsman
 		AttUnitMain2	= None
 		AttUnitMain3	= None
@@ -1515,7 +1515,7 @@ AICharacter
 		AttForceRallyPercentage	= 30
 		Unknown129	= 100
 		Unknown130	= 0
-		Unknown131	= 40
+		AttUnitPatrolRecommandDelay	= 40
 		Unknown132	= 20
 		SiegeEngine1	= None
 		SiegeEngine2	= None
@@ -1540,12 +1540,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 0
 		AttUnitBackup	= ArabArcher
 		AttUnitBackupMax	= 120
-		RangedBackupGroupsCount	= 1
+		AttUnitBackupGroupsCount	= 1
 		AttUnitEngage	= None
 		AttUnitEngageMax	= 0
 		AttUnitSiegeDef	= None
 		AttUnitSiegeDefMax	= 0
-		Unknown161	= 0
+		AttUnitSiegeDefGroupsCount	= 0
 		AttUnitMain1	= ArabSwordsman
 		AttUnitMain2	= None
 		AttUnitMain3	= None
@@ -1693,7 +1693,7 @@ AICharacter
 		AttForceRallyPercentage	= 10
 		Unknown129	= 100
 		Unknown130	= 20
-		Unknown131	= 2
+		AttUnitPatrolRecommandDelay	= 2
 		Unknown132	= 10
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult
@@ -1718,12 +1718,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 0
 		AttUnitBackup	= EuropArcher
 		AttUnitBackupMax	= 20
-		RangedBackupGroupsCount	= 2
+		AttUnitBackupGroupsCount	= 2
 		AttUnitEngage	= None
 		AttUnitEngageMax	= 0
 		AttUnitSiegeDef	= EuropArcher
 		AttUnitSiegeDefMax	= 20
-		Unknown161	= 2
+		AttUnitSiegeDefGroupsCount	= 2
 		AttUnitMain1	= Swordsman
 		AttUnitMain2	= Pikeman
 		AttUnitMain3	= Pikeman
@@ -1871,7 +1871,7 @@ AICharacter
 		AttForceRallyPercentage	= 50
 		Unknown129	= 100
 		Unknown130	= 20
-		Unknown131	= 5
+		AttUnitPatrolRecommandDelay	= 5
 		Unknown132	= 50
 		SiegeEngine1	= Trebuchet
 		SiegeEngine2	= Trebuchet
@@ -1896,12 +1896,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 1
 		AttUnitBackup	= EuropArcher
 		AttUnitBackupMax	= 30
-		RangedBackupGroupsCount	= 2
+		AttUnitBackupGroupsCount	= 2
 		AttUnitEngage	= None
 		AttUnitEngageMax	= 0
 		AttUnitSiegeDef	= Crossbowman
 		AttUnitSiegeDefMax	= 10
-		Unknown161	= 1
+		AttUnitSiegeDefGroupsCount	= 1
 		AttUnitMain1	= Swordsman
 		AttUnitMain2	= Swordsman
 		AttUnitMain3	= None
@@ -2049,7 +2049,7 @@ AICharacter
 		AttForceRallyPercentage	= 40
 		Unknown129	= 100
 		Unknown130	= 0
-		Unknown131	= 5
+		AttUnitPatrolRecommandDelay	= 5
 		Unknown132	= 70
 		SiegeEngine1	= BatteringRam
 		SiegeEngine2	= BatteringRam
@@ -2074,12 +2074,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 0
 		AttUnitBackup	= None
 		AttUnitBackupMax	= 0
-		RangedBackupGroupsCount	= 0
+		AttUnitBackupGroupsCount	= 0
 		AttUnitEngage	= None
 		AttUnitEngageMax	= 0
 		AttUnitSiegeDef	= EuropArcher
 		AttUnitSiegeDefMax	= 10
-		Unknown161	= 0
+		AttUnitSiegeDefGroupsCount	= 0
 		AttUnitMain1	= Spearman
 		AttUnitMain2	= Spearman
 		AttUnitMain3	= None
@@ -2227,7 +2227,7 @@ AICharacter
 		AttForceRallyPercentage	= 80
 		Unknown129	= 100
 		Unknown130	= 4
-		Unknown131	= 5
+		AttUnitPatrolRecommandDelay	= 5
 		Unknown132	= 90
 		SiegeEngine1	= Trebuchet
 		SiegeEngine2	= FireBallista
@@ -2252,12 +2252,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 0
 		AttUnitBackup	= HorseArcher
 		AttUnitBackupMax	= 20
-		RangedBackupGroupsCount	= 1
+		AttUnitBackupGroupsCount	= 1
 		AttUnitEngage	= None
 		AttUnitEngageMax	= 10
 		AttUnitSiegeDef	= ArabArcher
 		AttUnitSiegeDefMax	= 20
-		Unknown161	= 0
+		AttUnitSiegeDefGroupsCount	= 0
 		AttUnitMain1	= ArabSwordsman
 		AttUnitMain2	= None
 		AttUnitMain3	= None
@@ -2405,7 +2405,7 @@ AICharacter
 		AttForceRallyPercentage	= 80
 		Unknown129	= 100
 		Unknown130	= 0
-		Unknown131	= 5
+		AttUnitPatrolRecommandDelay	= 5
 		Unknown132	= 80
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= FireBallista
@@ -2430,12 +2430,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 0
 		AttUnitBackup	= EuropArcher
 		AttUnitBackupMax	= 40
-		RangedBackupGroupsCount	= 1
+		AttUnitBackupGroupsCount	= 1
 		AttUnitEngage	= None
 		AttUnitEngageMax	= 0
 		AttUnitSiegeDef	= ArabArcher
 		AttUnitSiegeDefMax	= 20
-		Unknown161	= 0
+		AttUnitSiegeDefGroupsCount	= 0
 		AttUnitMain1	= ArabSwordsman
 		AttUnitMain2	= None
 		AttUnitMain3	= None
@@ -2583,7 +2583,7 @@ AICharacter
 		AttForceRallyPercentage	= 50
 		Unknown129	= 100
 		Unknown130	= 0
-		Unknown131	= 5
+		AttUnitPatrolRecommandDelay	= 5
 		Unknown132	= 50
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult
@@ -2608,12 +2608,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 0
 		AttUnitBackup	= HorseArcher
 		AttUnitBackupMax	= 10
-		RangedBackupGroupsCount	= 0
+		AttUnitBackupGroupsCount	= 0
 		AttUnitEngage	= None
 		AttUnitEngageMax	= 0
 		AttUnitSiegeDef	= ArabArcher
 		AttUnitSiegeDefMax	= 20
-		Unknown161	= 0
+		AttUnitSiegeDefGroupsCount	= 0
 		AttUnitMain1	= Assassin
 		AttUnitMain2	= None
 		AttUnitMain3	= None
@@ -2761,7 +2761,7 @@ AICharacter
 		AttForceRallyPercentage	= 80
 		Unknown129	= 100
 		Unknown130	= 5
-		Unknown131	= 8
+		AttUnitPatrolRecommandDelay	= 8
 		Unknown132	= 50
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= FireBallista
@@ -2786,12 +2786,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 0
 		AttUnitBackup	= Crossbowman
 		AttUnitBackupMax	= 10
-		RangedBackupGroupsCount	= 1
+		AttUnitBackupGroupsCount	= 1
 		AttUnitEngage	= None
 		AttUnitEngageMax	= 0
 		AttUnitSiegeDef	= Crossbowman
 		AttUnitSiegeDefMax	= 10
-		Unknown161	= 1
+		AttUnitSiegeDefGroupsCount	= 1
 		AttUnitMain1	= Maceman
 		AttUnitMain2	= Maceman
 		AttUnitMain3	= None
@@ -2939,7 +2939,7 @@ AICharacter
 		AttForceRallyPercentage	= 50
 		Unknown129	= 100
 		Unknown130	= 0
-		Unknown131	= 5
+		AttUnitPatrolRecommandDelay	= 5
 		Unknown132	= 70
 		SiegeEngine1	= Trebuchet
 		SiegeEngine2	= Trebuchet
@@ -2964,12 +2964,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 0
 		AttUnitBackup	= EuropArcher
 		AttUnitBackupMax	= 15
-		RangedBackupGroupsCount	= 3
+		AttUnitBackupGroupsCount	= 3
 		AttUnitEngage	= None
 		AttUnitEngageMax	= 0
 		AttUnitSiegeDef	= EuropArcher
 		AttUnitSiegeDefMax	= 15
-		Unknown161	= 0
+		AttUnitSiegeDefGroupsCount	= 0
 		AttUnitMain1	= Swordsman
 		AttUnitMain2	= None
 		AttUnitMain3	= None
@@ -3117,7 +3117,7 @@ AICharacter
 		AttForceRallyPercentage	= 80
 		Unknown129	= 100
 		Unknown130	= 0
-		Unknown131	= 5
+		AttUnitPatrolRecommandDelay	= 5
 		Unknown132	= 80
 		SiegeEngine1	= Catapult
 		SiegeEngine2	= Catapult
@@ -3142,12 +3142,12 @@ AICharacter
 		AttUnitPatrolGroupsCount	= 0
 		AttUnitBackup	= Swordsman
 		AttUnitBackupMax	= 40
-		RangedBackupGroupsCount	= 1
+		AttUnitBackupGroupsCount	= 1
 		AttUnitEngage	= Swordsman
 		AttUnitEngageMax	= 20
 		AttUnitSiegeDef	= EuropArcher
 		AttUnitSiegeDefMax	= 20
-		Unknown161	= 0
+		AttUnitSiegeDefGroupsCount	= 0
 		AttUnitMain1	= Monk
 		AttUnitMain2	= None
 		AttUnitMain3	= None
