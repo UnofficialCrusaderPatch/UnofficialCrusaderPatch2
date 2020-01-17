@@ -1,4 +1,24 @@
-﻿// ======================
+﻿o_armory_marketplace_weapon_order_fix
+{
+	"Fix armory/marketplace weapon orders to match"
+}
+
+o_armory_marketplace_weapon_order_fix_descr
+{
+	"Reorders Weapon icons in Armory and Marketplace to have the same order. Also moves Leather Armor between Mace and Crossbow, and moves Metal Armor between Polearm and Sword for easier access while in Marketplace scrolling through items."
+}
+
+ai_fix_laddermen_with_enclosed_keep
+{
+    "Fix AI not using laddermen if they are enclosed"
+}
+
+ai_fix_laddermen_with_enclosed_keep_descr
+{
+    "AI (notably Snake) no longer stops using Laddermen with their sieging units if their keep is enclosed."
+}
+
+// ======================
 //         2.13
 // ======================
 
@@ -343,16 +363,6 @@ o_trooplimit_descr
 {
 	"Предел для общего количества единиц  одного игрока может быть установлен в &
 2400 / Игроки в Ваниле. Это значение можно изменить здесь."
-}
-
-o_armory_marketplace_weapon_order_fix
-{
-	"Fix armory/marketplace weapon orders to match"
-}
-
-o_armory_marketplace_weapon_order_fix_descr
-{
-	"Reorders Weapon icons in Armory and Marketplace to have the same order. Also moves Leather Armor between Mace and Crossbow, and moves Metal Armor between Polearm and Sword for easier access while in Marketplace scrolling through items."
 }
 
 ai_demolish
