@@ -1147,6 +1147,23 @@ namespace UCP
                         0x50, 0x51, 0x8D, 0x96, 0x22, 0x02, 0x00, 0x00 // original code
                     ),
 
+                    // 004ACEED
+                    BinHook.CreateEdit("o_playercolor_ai_allied_menu_attack_emblem", 5,
+                        0x83, 0xF8, new BinByteValue(), //  CMP EAX, value
+                        0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
+                        0xB8, 0x01, 0x00, 0x00, 0x00, //  MOV EAX,1
+                        0x05, 0xCE, 0x02, 0x00, 0x00 //  ADD EAX,2CE
+                    ),
+
+                    // 004AD556
+                    BinHook.CreateEdit("o_playercolor_ai_order_menu_emblem", 6,
+                        0x83, 0xFE, new BinByteValue(), //  CMP ESI, value
+                        0x0F, 0x85, 0x0B, 0x00, 0x00, 0x00, //  JNE SHORT 11h
+                        0x8D, 0x15, 0x23, 0x02, 0x00, 0x00, //  LEA edx,[00000223]
+                        0xEB, 0x09, 0x90, 0x90, 0x90, //  JMP SHORT 9
+                        0x8D, 0x96, 0x22, 0x02, 0x00, 0x00 //  LEA edx,[00000223]
+                    ),
+
                     // 004ACC84
                     BinHook.CreateEdit("o_playercolor_ai_allied_menu_ally_name", 7,
                         0x83, 0xEA, 0x01, //  SUB EDX, 1

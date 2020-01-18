@@ -160,7 +160,9 @@
     </Compile>
     <EmbeddedResource Include="CodeBlocks\ai_fix_laddermen_with_enclosed_keep.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_ally_name.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_attack_emblem.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_emblem.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_order_menu_emblem.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_emblem.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield_pre.block" />
