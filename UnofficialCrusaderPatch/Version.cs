@@ -1114,7 +1114,7 @@ namespace UCP
 
                     #region ingame
 
-                    // 000BE94F
+                    // 004BE94F
                     BinHook.CreateEdit("o_playercolor_ai_video_message_shield", 9,
                         0x80, 0xFB, new BinByteValue(), //  CMP EBX, value
                         0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
@@ -1123,12 +1123,20 @@ namespace UCP
                         0x50, 0x52, 0xC7, 0x41, 0x04, 0x01, 0x00, 0x00, 0x00 // original code
                     ),
 
-                    // 000B7B2C
+                    // 004B7B2C
                     BinHook.CreateEdit("o_playercolor_ai_video_message_shield_pre", 6,
                         0x8B, 0x86, 0xD4, 0x00, 0x00, 0x00, //  MOV EAX, [esi+D4]
                         0x83, 0xF8, new BinByteValue(), //  CMP EAX, value
                         0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
                         0xB8, 0x01, 0x00, 0x00, 0x00 //  MOV EAX, 1
+                    ),
+
+                    // 004B660A
+                    BinHook.CreateEdit("o_playercolor_ai_video_message_shield_enemy_taunt", 6,
+                        0x83, 0xF8, new BinByteValue(), //  CMP EAX, value
+                        0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
+                        0xB8, 0x01, 0x00, 0x00, 0x00, //  MOV EAX, 1
+                        0x52, 0x05, 0xD5, 0x01, 0x00, 0x00 //  original code
                     ),
 
                     // 000B7E7F
