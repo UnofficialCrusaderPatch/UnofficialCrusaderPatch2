@@ -1114,6 +1114,31 @@ namespace UCP
 
                     #region ingame
 
+                    // 000BE94F
+                    BinHook.CreateEdit("o_playercolor_ai_video_message_shield", 9,
+                        0x80, 0xFB, new BinByteValue(), //  CMP EBX, value
+                        0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
+                        0xBB, 0x01, 0x00, 0x00, 0x00, //  MOV EBX, 1
+
+                        0x50, 0x52, 0xC7, 0x41, 0x04, 0x01, 0x00, 0x00, 0x00 // original code
+                    ),
+
+                    // 000B7B2C
+                    BinHook.CreateEdit("o_playercolor_ai_video_message_shield_pre", 6,
+                        0x8B, 0x86, 0xD4, 0x00, 0x00, 0x00, //  MOV EAX, [esi+D4]
+                        0x83, 0xF8, new BinByteValue(), //  CMP EAX, value
+                        0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
+                        0xB8, 0x01, 0x00, 0x00, 0x00 //  MOV EAX, 1
+                    ),
+
+                    // 000B7E7F
+                    BinHook.CreateEdit("o_playercolor_ai_video_message_emblem", 7,
+                        0x83, 0xF8, new BinByteValue(), //  CMP EAX, value
+                        0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
+                        0xB8, 0x01, 0x00, 0x00, 0x00, //  MOV EAX, 1
+                        0x55, 0x53, 0x05, 0x22, 0x02, 0x00, 0x00 // original code
+                    ),
+
                     // 004B6CC3
                     BinHook.CreateEdit("o_playercolor_minimap", 6,
                         0x80, 0xF9, 0x01, //  CMP CL,1

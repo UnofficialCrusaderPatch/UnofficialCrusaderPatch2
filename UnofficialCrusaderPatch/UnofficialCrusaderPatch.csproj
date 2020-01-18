@@ -159,6 +159,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="CodeBlocks\ai_fix_laddermen_with_enclosed_keep.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_emblem.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield.block" />
+    <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield_pre.block" />
     <EmbeddedResource Include="CodeBlocks\ui_fix_laddermen_cost_display_in_engineers_guild.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix1.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix2.block" />
