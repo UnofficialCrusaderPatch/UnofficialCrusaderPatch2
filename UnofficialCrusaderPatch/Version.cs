@@ -318,20 +318,6 @@ namespace UCP
                     
                 }
             },
-            
-            // Fix laddermen cost display in engineer's guild 
-            new Change("ui_fix_laddermen_cost_display_in_engineers_guild", ChangeType.Bugfix, true)
-            {
-                new DefaultHeader("ui_fix_laddermen_cost_display_in_engineers_guild")
-                {
-                    
-                    new BinaryEdit("ui_fix_laddermen_cost_display_in_engineers_guild") // F5C91
-                    {
-                        new BinBytes(0xBB, 0x14),
-                    }
-                    
-                }
-            },
             #endregion
 
             #region AI LORDS
@@ -682,6 +668,11 @@ namespace UCP
 
                     // 0052EC37 + 2
                     BinBytes.CreateEdit("u_laddergold", 0xF7), // 1D - 9 = 14h            (vanilla: 1D - 19 = 4)
+                    
+                    new BinaryEdit("ui_fix_laddermen_cost_display_in_engineers_guild") // F5C91
+                    {
+                        new BinBytes(0xBB, 0x14),
+                    }
                 }
             },         
             

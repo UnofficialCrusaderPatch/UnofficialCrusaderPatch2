@@ -18,16 +18,6 @@ ai_fix_laddermen_with_enclosed_keep_descr
     "AI (notably Snake) no longer stops using Laddermen with their sieging units if their keep is enclosed."
 }
 
-ui_fix_laddermen_cost_display_in_engineers_guild
-{
-    "Fix laddermen cost display in engineer's guild"
-}
-
-ui_fix_laddermen_cost_display_in_engineers_guild_descr
-{
-    "Hovering Ladderman in Engineer's Guild states that it costs 4 gold, but it actually costs 20! This option fixes that display error."
-}
-
 
 // ======================
 //         2.13
