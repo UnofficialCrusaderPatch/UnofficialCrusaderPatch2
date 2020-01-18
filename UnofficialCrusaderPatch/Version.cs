@@ -668,6 +668,11 @@ namespace UCP
 
                     // 0052EC37 + 2
                     BinBytes.CreateEdit("u_laddergold", 0xF7), // 1D - 9 = 14h            (vanilla: 1D - 19 = 4)
+                    
+                    new BinaryEdit("ui_fix_laddermen_cost_display_in_engineers_guild") // F5C91
+                    {
+                        new BinBytes(0xBB, 0x14),
+                    }
                 }
             },         
             
@@ -1108,6 +1113,66 @@ namespace UCP
                     #endregion
 
                     #region ingame
+
+                    // 000BE94F
+                    BinHook.CreateEdit("o_playercolor_ai_video_message_shield", 9,
+                        0x80, 0xFB, new BinByteValue(), //  CMP EBX, value
+                        0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
+                        0xBB, 0x01, 0x00, 0x00, 0x00, //  MOV EBX, 1
+
+                        0x50, 0x52, 0xC7, 0x41, 0x04, 0x01, 0x00, 0x00, 0x00 // original code
+                    ),
+
+                    // 000B7B2C
+                    BinHook.CreateEdit("o_playercolor_ai_video_message_shield_pre", 6,
+                        0x8B, 0x86, 0xD4, 0x00, 0x00, 0x00, //  MOV EAX, [esi+D4]
+                        0x83, 0xF8, new BinByteValue(), //  CMP EAX, value
+                        0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
+                        0xB8, 0x01, 0x00, 0x00, 0x00 //  MOV EAX, 1
+                    ),
+
+                    // 000B7E7F
+                    BinHook.CreateEdit("o_playercolor_ai_video_message_emblem", 7,
+                        0x83, 0xF8, new BinByteValue(), //  CMP EAX, value
+                        0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
+                        0xB8, 0x01, 0x00, 0x00, 0x00, //  MOV EAX, 1
+                        0x55, 0x53, 0x05, 0x22, 0x02, 0x00, 0x00 // original code
+                    ),
+
+                    // 004AC8A5
+                    BinHook.CreateEdit("o_playercolor_ai_allied_menu_emblem", 8,
+                        0x83, 0xFE, new BinByteValue(), //  CMP ESI, value
+                        0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
+                        0xBE, 0x01, 0x00, 0x00, 0x00, //  MOV ESI, 1
+                        0x50, 0x51, 0x8D, 0x96, 0x22, 0x02, 0x00, 0x00 // original code
+                    ),
+
+                    // 004ACEED
+                    BinHook.CreateEdit("o_playercolor_ai_allied_menu_attack_emblem", 5,
+                        0x83, 0xF8, new BinByteValue(), //  CMP EAX, value
+                        0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
+                        0xB8, 0x01, 0x00, 0x00, 0x00, //  MOV EAX,1
+                        0x05, 0xCE, 0x02, 0x00, 0x00 //  ADD EAX,2CE
+                    ),
+
+                    // 004AD556
+                    BinHook.CreateEdit("o_playercolor_ai_order_menu_emblem", 6,
+                        0x83, 0xFE, new BinByteValue(), //  CMP ESI, value
+                        0x0F, 0x85, 0x0B, 0x00, 0x00, 0x00, //  JNE SHORT 11h
+                        0x8D, 0x15, 0x23, 0x02, 0x00, 0x00, //  LEA edx,[00000223]
+                        0xEB, 0x09, 0x90, 0x90, 0x90, //  JMP SHORT 9
+                        0x8D, 0x96, 0x22, 0x02, 0x00, 0x00 //  LEA edx,[00000223]
+                    ),
+
+                    // 004ACC84
+                    BinHook.CreateEdit("o_playercolor_ai_allied_menu_ally_name", 7,
+                        0x83, 0xEA, 0x01, //  SUB EDX, 1
+                        0x83, 0xFA, new BinByteValue(), //  CMP EDX, value
+                        0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
+                        0xBA, 0x00, 0x00, 0x00, 0x00, //  MOV EDX, 0
+                        0x83, 0xC2, 0x01, //  ADD edx, 1
+                        0x8B, 0x04, 0x95, 0x7C, 0x50, 0x61, 0x00 //  original code
+                    ),
 
                     // 004B6CC3
                     BinHook.CreateEdit("o_playercolor_minimap", 6,
