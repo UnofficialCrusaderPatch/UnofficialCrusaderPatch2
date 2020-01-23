@@ -1139,90 +1139,113 @@ namespace UCP
                         0x52, 0x05, 0xD5, 0x01, 0x00, 0x00 //  original code
                     ),
 
-                    // 000B7E7F
+                    // 004B7E7F
                     BinHook.CreateEdit("o_playercolor_ai_video_message_emblem", 7,
                         0x83, 0xF8, new BinByteValue(), //  CMP EAX, value
                         0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
                         0xB8, 0x01, 0x00, 0x00, 0x00, //  MOV EAX, 1
                         0x55, 0x53, 0x05, 0x22, 0x02, 0x00, 0x00 // original code
                     ),
-
+                    
                     // 004AC8A5
-                    BinHook.CreateEdit("o_playercolor_ai_allied_menu_emblem", 8,
-                        0x83, 0xFE, new BinByteValue(), //  CMP ESI, value
-                        0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
-                        0xBE, 0x01, 0x00, 0x00, 0x00, //  MOV ESI, 1
-                        0x50, 0x51, 0x8D, 0x96, 0x22, 0x02, 0x00, 0x00 // original code
-                    ),
-
+                    new BinaryEdit("o_playercolor_ai_allied_menu_emblem")
+                    {
+                        new BinSkip(16),
+                        new BinHook(8)
+                        {
+                            0x83, 0xFE, new BinByteValue(), //  CMP ESI, value
+                            0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
+                            0xBE, 0x01, 0x00, 0x00, 0x00, //  MOV ESI, 1
+                            0x50, 0x51, 0x8D, 0x96, 0x22, 0x02, 0x00, 0x00 // original code
+                        }
+                    },
+                    
                     // 004ACEED
-                    BinHook.CreateEdit("o_playercolor_ai_allied_menu_attack_emblem", 5,
-                        0x83, 0xF8, new BinByteValue(), //  CMP EAX, value
-                        0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
-                        0xB8, 0x01, 0x00, 0x00, 0x00, //  MOV EAX,1
-                        0x05, 0xCE, 0x02, 0x00, 0x00 //  ADD EAX,2CE
-                    ),
-
+                    new BinaryEdit("o_playercolor_ai_allied_menu_attack_emblem")
+                    {
+                        new BinSkip(1),
+                        new BinHook(5)
+                        {
+                            0x83, 0xF8, new BinByteValue(), //  CMP EAX, value
+                            0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  JNE SHORT 5
+                            0xB8, 0x01, 0x00, 0x00, 0x00, //  MOV EAX,1
+                            0x05, 0xCE, 0x02, 0x00, 0x00 //  ADD EAX,2CE
+                        }
+                    },
+                    
                     // 004AD556
-                    BinHook.CreateEdit("o_playercolor_ai_order_menu_emblem", 6,
-                        0x83, 0xFE, new BinByteValue(), //  CMP ESI, value
-                        0x0F, 0x85, 0x0B, 0x00, 0x00, 0x00, //  JNE SHORT 11h
-                        0x8D, 0x15, 0x23, 0x02, 0x00, 0x00, //  LEA edx,[00000223]
-                        0xEB, 0x09, 0x90, 0x90, 0x90, //  JMP SHORT 9
-                        0x8D, 0x96, 0x22, 0x02, 0x00, 0x00 //  LEA edx,[00000223]
-                    ),
-
+                    new BinaryEdit("o_playercolor_ai_order_menu_emblem")
+                    {
+                        new BinSkip(62),
+                        new BinHook(6)
+                        {
+                            0x83, 0xFE, new BinByteValue(), //  CMP ESI, value
+                            0x0F, 0x85, 0x0B, 0x00, 0x00, 0x00, //  JNE SHORT 11h
+                            0x8D, 0x15, 0x23, 0x02, 0x00, 0x00, //  LEA edx,[00000223]
+                            0xEB, 0x09, 0x90, 0x90, 0x90, //  JMP SHORT 9
+                            0x8D, 0x96, 0x22, 0x02, 0x00, 0x00 //  LEA edx,[00000223]
+                        }
+                    },
+                    
                     // 004ACC84
-                    BinHook.CreateEdit("o_playercolor_ai_allied_menu_ally_name", 7,
-                        0x51, //  PUSH EAX
-                        0xB9, new BinByteValue(), 0x00, 0x00, 0x00, //  MOV ECX, value
-                        0x83, 0xF9, 0x01, //  CMP ECX, 1
-                        0x0F, 0x84, 0x97, 0x00, 0x00, 0x00, //  JE SHORT 97h
-                        
-                        0x83, 0xF9, 0x07, //  CMP ECX, 7
-                        0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
-                        0xB9, 0x07, 0x00, 0x00, 0x00,  //  MOV ECX, 7
-                        0xE9, 0x72, 0x00, 0x00, 0x00,  //  JMP SHORT 72h
-                        
-                        0x83, 0xF9, 0x08, //  CMP ECX, 8
-                        0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
-                        0xB9, 0x08, 0x00, 0x00, 0x00,  //  MOV ECX, 8
-                        0xE9, 0x5F, 0x00, 0x00, 0x00,  //  JMP SHORT 5Fh
-                        
-                        0x83, 0xF9, 0x06, //  CMP ECX, 6
-                        0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
-                        0xB9, 0x05, 0x00, 0x00, 0x00,  //  MOV ECX, 5
-                        0xE9, 0x4C, 0x00, 0x00, 0x00,  //  JMP SHORT 4Ch
-                        
-                        0x83, 0xF9, 0x02, //  CMP ECX, 2
-                        0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
-                        0xB9, 0x03, 0x00, 0x00, 0x00,  //  MOV ECX, 3
-                        0xE9, 0x39, 0x00, 0x00, 0x00,  //  JMP SHORT 39h
-                        
-                        0x83, 0xF9, 0x03, //  CMP ECX, 3
-                        0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
-                        0xB9, 0x04, 0x00, 0x00, 0x00,  //  MOV ECX, 4
-                        0xE9, 0x26, 0x00, 0x00, 0x00,  //  JMP SHORT 26h
-                        
-                        0x83, 0xF9, 0x04, //  CMP ECX, 4
-                        0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
-                        0xB9, 0x02, 0x00, 0x00, 0x00,  //  MOV ECX, 2
-                        0xE9, 0x13, 0x00, 0x00, 0x00,  //  JMP SHORT 13h
-                        
-                        0x83, 0xF9, 0x05, //  CMP ECX, 5
-                        0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
-                        0xB9, 0x06, 0x00, 0x00, 0x00,  //  MOV ECX, 6
-                        0xE9, 0x00, 0x00, 0x00, 0x00,  //  JMP SHORT 0
-                        
-                        0x39, 0xCA, //  CMP EDX,ECX
-                        0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
-                        0xBA, 0x01, 0x00, 0x00, 0x00, //  MOV EDX, 1
-                        0xE9, 0x00, 0x00, 0x00, 0x00, //  JMP SHORT 0
-                        
-                        0x59, //  POP ECX
-                        
-                        0x8B, 0x04, 0x95, 0x7C, 0x50, 0x61, 0x00 //  original code
-                    ),
+                    new BinaryEdit("o_playercolor_ai_allied_menu_ally_name")
+                    {
+                        new BinHook(7)
+                        {
+                            0x51, //  PUSH EAX
+                            0xB9, new BinByteValue(), 0x00, 0x00, 0x00, //  MOV ECX, value
+                            0x83, 0xF9, 0x01, //  CMP ECX, 1
+                            0x0F, 0x84, 0x97, 0x00, 0x00, 0x00, //  JE SHORT 97h
+                            
+                            0x83, 0xF9, 0x07, //  CMP ECX, 7
+                            0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
+                            0xB9, 0x07, 0x00, 0x00, 0x00,  //  MOV ECX, 7
+                            0xE9, 0x72, 0x00, 0x00, 0x00,  //  JMP SHORT 72h
+                            
+                            0x83, 0xF9, 0x08, //  CMP ECX, 8
+                            0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
+                            0xB9, 0x08, 0x00, 0x00, 0x00,  //  MOV ECX, 8
+                            0xE9, 0x5F, 0x00, 0x00, 0x00,  //  JMP SHORT 5Fh
+                            
+                            0x83, 0xF9, 0x06, //  CMP ECX, 6
+                            0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
+                            0xB9, 0x05, 0x00, 0x00, 0x00,  //  MOV ECX, 5
+                            0xE9, 0x4C, 0x00, 0x00, 0x00,  //  JMP SHORT 4Ch
+                            
+                            0x83, 0xF9, 0x02, //  CMP ECX, 2
+                            0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
+                            0xB9, 0x03, 0x00, 0x00, 0x00,  //  MOV ECX, 3
+                            0xE9, 0x39, 0x00, 0x00, 0x00,  //  JMP SHORT 39h
+                            
+                            0x83, 0xF9, 0x03, //  CMP ECX, 3
+                            0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
+                            0xB9, 0x04, 0x00, 0x00, 0x00,  //  MOV ECX, 4
+                            0xE9, 0x26, 0x00, 0x00, 0x00,  //  JMP SHORT 26h
+                            
+                            0x83, 0xF9, 0x04, //  CMP ECX, 4
+                            0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
+                            0xB9, 0x02, 0x00, 0x00, 0x00,  //  MOV ECX, 2
+                            0xE9, 0x13, 0x00, 0x00, 0x00,  //  JMP SHORT 13h
+                            
+                            0x83, 0xF9, 0x05, //  CMP ECX, 5
+                            0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
+                            0xB9, 0x06, 0x00, 0x00, 0x00,  //  MOV ECX, 6
+                            0xE9, 0x00, 0x00, 0x00, 0x00,  //  JMP SHORT 0
+                            
+                            0x39, 0xCA, //  CMP EDX,ECX
+                            0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  JNE SHORT 0Ah
+                            0xBA, 0x01, 0x00, 0x00, 0x00, //  MOV EDX, 1
+                            0xE9, 0x00, 0x00, 0x00, 0x00, //  JMP SHORT 0
+                            
+                            0x8B, 0x0D, 0x7C, 0x50, 0x61, 0x00, //  MOV ECX,0061507C
+                            0x83, 0xF9, 0x00, //  CMP ECX,00
+                            0x75, 0x0C, //  JNE SHORT C
+                            0x8B, 0x04, 0x95, 0x0C, 0x52, 0x61, 0x00, //  extreme
+                            0xE9, 0x07, 0x00, 0x00, 0x00, //  JMP SHORT 7
+                            0x8B, 0x04, 0x95, 0x7C, 0x50, 0x61, 0x00,  //  original
+                            0x59, //  POP ECX
+                        }
+                    },
 
                     // 004B6CC3
                     BinHook.CreateEdit("o_playercolor_minimap", 6,
