@@ -2103,6 +2103,43 @@ namespace UCP
                 }
             },
 
+            new Change("o_shfy", ChangeType.Other, false, false)
+            {
+                new DefaultHeader("o_shfy_beer", false)
+                // fixes beer popularity bonus
+                {
+                    new BinaryEdit("o_shfy_beerpopularity")
+                    {
+                        new BinSkip(21),
+                        new BinBytes(0xB8, 0x19, 0x00, 0x00, 0x00),
+                        new BinSkip(7),
+                        new BinBytes(0xB8, 0x32, 0x00, 0x00, 0x00),
+                        new BinSkip(13),
+                        new BinBytes(0x83, 0xE2, 0x9C, 0x83, 0xC2, 0x64, 0x90, 0x90, 0x90)
+                    },
+
+                    new BinaryEdit("o_shfy_beerpopularitytab")
+                    {
+                        new BinSkip(14),
+                        new BinBytes(0xBE, 0x19, 0x00, 0x00, 0x00),
+                        new BinSkip(7),
+                        new BinBytes(0xBE, 0x32, 0x00, 0x00, 0x00),
+                        new BinSkip(13),
+                        new BinBytes(0x83, 0xE1, 0xE7, 0x83, 0xC1, 0x64, 0x90, 0x90, 0x90)
+                    },
+
+                    new BinaryEdit("o_shfy_beertab")
+                    {
+                        new BinSkip(14),
+                        new BinBytes(0xB8, 0x19, 0x00, 0x00, 0x00),
+                        new BinSkip(7),
+                        new BinBytes(0xB8, 0x32, 0x00, 0x00, 0x00),
+                        new BinSkip(13),
+                        new BinBytes(0x83, 0xE0, 0xE7, 0x83, 0xC0, 0x64, 0x90, 0x90)
+                    }
+                },
+            },
+
             #endregion
 
             #region AIVs

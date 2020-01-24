@@ -1,4 +1,39 @@
-﻿o_armory_marketplace_weapon_order_fix
+﻿o_shfy
+{
+	"Strongholdify"
+}
+
+o_shfy_beer
+{
+	"Popularity bonus from beer"
+}
+
+o_shfy_beer_descr
+{
+	" "
+}
+
+o_shfy_religion
+{
+	"Popularity bonus from cathedral and church"
+}
+
+o_shfy_religion_descr
+{
+	" "
+}
+
+o_shfy_resourcequantity
+{
+	"Quantity of delivered resources"
+}
+
+o_shfy_resourcequantity_descr
+{
+	"Adapts listed aspects to match Stronghold 1. Attention: Every change influences the AI lords, in the worst case renders them useless!"
+}
+
+o_armory_marketplace_weapon_order_fix
 {
 	"Fix armory/marketplace weapon orders to match"
 }

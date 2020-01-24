@@ -1,4 +1,39 @@
-﻿o_armory_marketplace_weapon_order_fix
+﻿o_shfy
+{
+	"Strongholdify"
+}
+
+o_shfy_beer
+{
+	"Beliebtheitsbonus durch Bier"
+}
+
+o_shfy_beer_descr
+{
+	" "
+}
+
+o_shfy_religion
+{
+	"Beliebtheitsbonus Kathedrale und Kirche"
+}
+
+o_shfy_religion_descr
+{
+	" "
+}
+
+o_shfy_resourcequantity
+{
+	"Anzahl der gelieferten Resourcen"
+}
+
+o_shfy_resourcequantity_descr
+{
+	"Passt aufgelistete Aspekte an Stronghold 1 an. Achtung: Jede Annpassung nimmt Einfluss auf die KI Lords, schlimmstenfalls werden diese nutzlos!"
+}
+
+o_armory_marketplace_weapon_order_fix
 {
 	"Fix armory/marketplace weapon orders to match"
 }
