@@ -1485,6 +1485,13 @@
     <EmbeddedResource Include="CodeBlocks\o_xtreme_bar2.block" />
     <EmbeddedResource Include="CodeBlocks\u_ballistamonk.block" />
     <EmbeddedResource Include="CodeBlocks\o_onlyai_assassins.block" />
+    <EmbeddedResource Include="CodeBlocks\o_shfy_beerpopularity.block" />
+    <EmbeddedResource Include="CodeBlocks\o_shfy_beerpopularitytab.block" />
+    <EmbeddedResource Include="CodeBlocks\o_shfy_beertab.block" />
+    <EmbeddedResource Include="CodeBlocks\o_shfy_religionpopularity.block" />
+    <EmbeddedResource Include="CodeBlocks\o_shfy_religionpopularitytab.block" />
+    <EmbeddedResource Include="CodeBlocks\o_shfy_religiontab.block" />
+    <EmbeddedResource Include="CodeBlocks\o_shfy_resourcequantity.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
