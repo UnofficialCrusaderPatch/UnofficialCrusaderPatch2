@@ -1674,17 +1674,17 @@ namespace UCP
                             
                             0x83, 0xFA, 0x01, //  cmp edx,01
                             0x0F, 0x84, 0x20, 0x00, 0x00, 0x00, //  je short 20
+                            0x42, //  inc edx
                             
                             0x50, //  push eax
                             0xB8, new BinRefTo("IsExtremeBool", false), //  mov eax,IsExtremeBool
                             0x83, 0x38, 0x01, //  cmp [eax],01
                             0x58, //  pop eax
-                            0x42, //  inc edx
                             
                             0xA1, new BinRefTo("NormalArabUnitListAddress", false), //  mov eax,NormalArabUnitListAddress
-                            0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  jne short A
+                            0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  jne short 5
                             0xA1, new BinRefTo("ExtremeNormalArabUnitListAddress", false), //  mov eax,ExtremeNormalArabUnitListAddress
-                            0xE9, new BinRefTo("ResetMeleeUnitsInList"), //  jmp ResetMeleeUnitsInList
+                            0xE9, new BinRefTo("ResetRangedUnitsInList"), //  jmp ResetMeleeUnitsInList
                             
                             0x5A,  // pop edx
                             0x59,  // pop ecx
@@ -1814,15 +1814,15 @@ namespace UCP
                             
                             0x83, 0xFA, 0x01, //  cmp edx,01
                             0x0F, 0x84, 0x20, 0x00, 0x00, 0x00, //  je short 20
+                            0x42, //  inc edx
                             
                             0x50, //  push eax
                             0xB8, new BinRefTo("IsExtremeBool", false), //  mov eax,IsExtremeBool
                             0x83, 0x38, 0x01, //  cmp [eax],01
                             0x58, //  pop eax
-                            0x42, //  inc edx
                             
                             0xA1, new BinRefTo("NormalArabUnitListAddress", false), //  mov eax,NormalArabUnitListAddress
-                            0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, //  jne short A
+                            0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  jne short 5
                             0xA1, new BinRefTo("ExtremeNormalArabUnitListAddress", false), //  mov eax,ExtremeNormalArabUnitListAddress
                             0xE9, new BinRefTo("ResetMeleeUnitsInList"), //  jmp ResetMeleeUnitsInList
                             
