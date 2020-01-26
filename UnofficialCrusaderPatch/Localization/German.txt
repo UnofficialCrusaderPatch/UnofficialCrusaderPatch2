@@ -28,6 +28,15 @@ o_override_identity_menu_descr
     "Adds Ranged and Melee unit selection to Set-up Identity menu. ONLY FOR NORMAL GAME MODE!"
 }
 
+o_default_multiplayer_speed
+{
+    "Set default multiplayer speed."
+}
+
+o_default_multiplayer_speed_descr
+{
+    " "
+}
 
 // ======================
 //         2.13
