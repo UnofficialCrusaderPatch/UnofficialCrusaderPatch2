@@ -52,6 +52,22 @@ namespace UCP
             #region BUG FIXES
 
             /*
+             * BALLISTAS ATTACK TUNNELERS
+             */
+
+            new Change("u_ballistatunneler", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("u_ballistatunneler")
+                {
+                    new BinaryEdit("u_ballistatunneler")
+                    {
+                        new BinSkip(3),
+                        new BinBytes(0xEB)
+                    }
+                }
+            },
+
+            /*
              * BALLISTAS ATTACK MONKS
              */
 

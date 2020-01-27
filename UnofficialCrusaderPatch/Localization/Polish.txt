@@ -38,6 +38,16 @@ o_default_multiplayer_speed_descr
     " "
 }
 
+u_ballistatunneler
+{
+    "Fire ballistas shoot tunnelers"
+}
+
+u_ballistatunneler_descr
+{
+    "Fire ballistas shoot automatically at tunnelers with this setting."
+}
+
 // ======================
 //         2.13
 // ======================
