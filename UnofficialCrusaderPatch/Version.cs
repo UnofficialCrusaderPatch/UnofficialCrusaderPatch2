@@ -52,26 +52,24 @@ namespace UCP
             #region BUG FIXES
 
             /*
-             * BALLISTAS ATTACK TUNNELERS
+             * BALLISTAS ATTACK MONKS AND TUNNELERS
              */
 
-            new Change("u_ballistatunneler", ChangeType.Bugfix, true)
+            new Change("u_ballistafix", ChangeType.Bugfix, true)
             {
-                new DefaultHeader("u_ballistatunneler")
+                new DefaultHeader("u_ballistafix")
                 {
                     new BinaryEdit("u_ballistatunneler")
                     {
                         new BinSkip(3),
                         new BinBytes(0xEB)
+                    },
+                    new BinaryEdit("u_ballistamonk")
+                    {
+                        new BinBytes(0x00)
                     }
                 }
             },
-
-            /*
-             * BALLISTAS ATTACK MONKS
-             */
-
-            BinBytes.Change("u_ballistamonk", ChangeType.Bugfix, true, 0x00), // 0x0054BF3B, change a jumptable
 
             /*
              * DISABLE DEMOLISHING OF INACCESSIBLE BUILDINGS

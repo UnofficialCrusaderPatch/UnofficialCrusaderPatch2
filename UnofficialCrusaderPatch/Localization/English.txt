@@ -39,14 +39,14 @@ o_default_multiplayer_speed_descr
     " "
 }
 
-u_ballistatunneler
+u_ballistafix
 {
-    "Fire ballistas shoot tunnelers"
+    "Fire ballistas shoot monks and tunnelers"
 }
 
-u_ballistatunneler_descr
+u_ballistafix_descr
 {
-    "Fire ballistas shoot automatically at tunnelers with this setting."
+    "Fire ballistas automatically shoot at monks and tunnelers."
 }
 
 // ======================
