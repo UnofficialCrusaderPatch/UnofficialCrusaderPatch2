@@ -53,6 +53,35 @@ ai_fix_laddermen_with_enclosed_keep_descr
     "Mit diesem Fix können Belagerungseinheiten von KIs, deren Bergfried abgeschlossen ist, weiterhin die Leitern der Leiterträger nutzen (betrifft vanilla nur die Schlange)."
 }
 
+o_override_identity_menu
+{
+    "Override the Set-up Identity menu adding new features"
+}
+
+o_override_identity_menu_descr
+{
+    "Adds Ranged and Melee unit selection to Set-up Identity menu. ONLY FOR NORMAL GAME MODE!"
+}
+
+o_default_multiplayer_speed
+{
+    "Set default multiplayer speed."
+}
+
+o_default_multiplayer_speed_descr
+{
+    " "
+}
+
+u_ballistafix
+{
+    "Fire ballistas shoot monks and tunnelers"
+}
+
+u_ballistafix_descr
+{
+    "Fire ballistas automatically shoot at monks and tunnelers."
+}
 
 // ======================
 //         2.13

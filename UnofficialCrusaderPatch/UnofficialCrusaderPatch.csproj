@@ -159,6 +159,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="CodeBlocks\ai_fix_laddermen_with_enclosed_keep.block" />
+    <EmbeddedResource Include="CodeBlocks\o_override_identity_menu.block" />
+    <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_ally_name.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_attack_emblem.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_emblem.block" />
@@ -173,6 +175,7 @@
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix3.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix4.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix5.block" />
+    <EmbeddedResource Include="CodeBlocks\u_ballistatunneler.block" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
