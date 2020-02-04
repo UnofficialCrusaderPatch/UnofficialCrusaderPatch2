@@ -55,17 +55,17 @@ ai_fix_laddermen_with_enclosed_keep_descr
 
 o_override_identity_menu
 {
-    "Override the Set-up Identity menu adding new features"
+    "Fügt neue Optionen zum Menüpunkt 'Identität zulegen' hinzu"
 }
 
 o_override_identity_menu_descr
 {
-    "Adds Ranged and Melee unit selection to Set-up Identity menu. ONLY FOR NORMAL GAME MODE!"
+    "Im Menüpunkt 'Identität zulegen' kann man nun die Starteinheiten für 'Normales Spiel' ändern"
 }
 
 o_default_multiplayer_speed
 {
-    "Set default multiplayer speed."
+    "Setzt Mehrspieler Standardgeschwindigkeit"
 }
 
 o_default_multiplayer_speed_descr
@@ -75,12 +75,12 @@ o_default_multiplayer_speed_descr
 
 u_fireballistafix
 {
-    "Fire ballistas shoot monks and tunnelers"
+    "Feuerballisten schießen auf Mönche und Tunnelgräber"
 }
 
 u_fireballistafix_descr
 {
-    "Fire ballistas automatically shoot at monks and tunnelers."
+    "Feuerballisten erkennen nun Mönche und Tunnelgräber als Feinde und schießen auf diese."
 }
 
 // ======================
