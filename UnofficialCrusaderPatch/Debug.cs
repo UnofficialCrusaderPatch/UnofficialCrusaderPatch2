@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace UCP
 {
-    static class Debug
+    public static class Debug
     {
         public static void Show(object message, object title = null)
         {

@@ -8,7 +8,7 @@ using System.IO;
 
 namespace UCP
 {
-    static class Localization
+    public static class Localization
     {
         public class Language
         {

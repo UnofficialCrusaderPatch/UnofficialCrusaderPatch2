@@ -31,7 +31,7 @@ namespace UCP
 
     // europäische Bogenschützen mit leicht erhöhter Reichweite.
 
-    class Version
+    public class Version
     {
         public static string PatcherVersion = "2.13";
 
