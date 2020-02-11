@@ -201,19 +201,28 @@ namespace UCP.Patching
 
             // load files
             if (Directory.Exists(aicFolder))
+            {
                 foreach (string filePath in Directory.EnumerateFiles(aicFolder, "*.aic"))
                 {
                     if (!TryLoadCollection(filePath, false, out AICCollection collection))
                         continue;
 
                     AICChange change = new AICChange(Path.GetFileName(filePath), collection);
-                    if (add2UI)
-                    {
-                        change.InitUI();
-                        View.Items.Add(change.UIElement);
-                    }
                     Version.Changes.Add(change);
                 }
+                Configuration.LoadChanges(true);
+                foreach (Change change in Version.Changes)
+                {
+                    if (change is AICChange aicChange && !aicChange.intern)
+                    {
+                        if (add2UI)
+                        {
+                            aicChange.InitUI();
+                            View.Items.Add(aicChange.UIElement);
+                        }
+                    }
+                }
+            }
         }
 
         #endregion
