@@ -129,7 +129,6 @@ namespace UCP
             if (Configuration.Path != cPath)
             {
                 Configuration.Path = cPath;
-                Configuration.Save("Path");
             }
 
             if (!viewLoaded)
@@ -137,6 +136,7 @@ namespace UCP
                 // load aic files
                 AICChange.LoadFiles();
                 Configuration.LoadChanges();
+                Configuration.Save("Path");
 
                 // fill setup options list
                 FillTreeView(Version.Changes);
