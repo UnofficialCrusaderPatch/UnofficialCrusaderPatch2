@@ -23,6 +23,16 @@ o_shfy_religion_descr
 	" "
 }
 
+o_shfy_peasantspawnrate
+{
+	"Spawnrate peasants"
+}
+
+o_shfy_peasantspawnrate_descr
+{
+	" "
+}
+
 o_shfy_resourcequantity
 {
 	"Quantity of delivered resources"
