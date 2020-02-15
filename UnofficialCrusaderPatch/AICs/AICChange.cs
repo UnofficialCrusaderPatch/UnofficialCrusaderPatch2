@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace UCP.Patching
 {
@@ -19,15 +20,19 @@ namespace UCP.Patching
         AICCollection collection;
         public AICCollection Collection => collection;
 
+
         string headerKey;
 
         protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
         {
             base.TitleBox_Checked(sender, e);
-            foreach (var c in Version.Changes)
+            if (!(Keyboard.Modifiers == ModifierKeys.Control))
             {
-                if (c != this && c is AICChange)
-                    c.IsChecked = false;
+                foreach (var c in Version.Changes)
+                {
+                    if (c != this && c is AICChange)
+                        c.IsChecked = false;
+                }
             }
         }
 
