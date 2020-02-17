@@ -2647,6 +2647,18 @@ namespace UCP
                     }
                 },
 
+                new DefaultHeader("o_shfy_peasantspawnrate", false)
+                // fixes peasant spawnrate
+                {
+                    new BinaryEdit("o_shfy_peasantspawnrate")
+                    {
+                        new BinSkip(8),
+                        new BinBytes(0x83, 0xFB, 0x00, 0x90, 0x90, 0x90),
+                        new BinSkip(8),
+                        new BinBytes(0x83, 0xFB, 0x00, 0x90, 0x90, 0x90)
+                    }
+                },
+
                 new DefaultHeader("o_shfy_resourcequantity", false)
                 // fixes resource quantity
                 {

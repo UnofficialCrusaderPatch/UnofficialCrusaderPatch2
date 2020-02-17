@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -77,7 +78,7 @@ namespace UCP.Patching
 
         public override string GetValueString()
         {
-            return string.Format("{0};{1}", this.IsEnabled, this.value);
+            return string.Format("{0};{1}", this.IsEnabled, this.value.ToString(CultureInfo.InvariantCulture));
         }
 
         public override void LoadValueString(string valueStr)
@@ -88,7 +89,7 @@ namespace UCP.Patching
             base.LoadValueString(valueStr.Remove(index));
 
             valueStr = valueStr.Substring(index + 1).Trim();
-            if (Double.TryParse(valueStr, out double result))
+            if (Double.TryParse(valueStr, NumberStyles.Any, CultureInfo.InvariantCulture, out double result))
                 this.value = result;
         }
     }

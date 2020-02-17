@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace UCP.Patching
 {
@@ -19,15 +20,19 @@ namespace UCP.Patching
         AICCollection collection;
         public AICCollection Collection => collection;
 
+
         string headerKey;
 
         protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
         {
             base.TitleBox_Checked(sender, e);
-            foreach (var c in Version.Changes)
+            if (!(Keyboard.Modifiers == ModifierKeys.Control))
             {
-                if (c != this && c is AICChange)
-                    c.IsChecked = false;
+                foreach (var c in Version.Changes)
+                {
+                    if (c != this && c is AICChange)
+                        c.IsChecked = false;
+                }
             }
         }
 
@@ -201,19 +206,28 @@ namespace UCP.Patching
 
             // load files
             if (Directory.Exists(aicFolder))
+            {
                 foreach (string filePath in Directory.EnumerateFiles(aicFolder, "*.aic"))
                 {
                     if (!TryLoadCollection(filePath, false, out AICCollection collection))
                         continue;
 
                     AICChange change = new AICChange(Path.GetFileName(filePath), collection);
-                    if (add2UI)
-                    {
-                        change.InitUI();
-                        View.Items.Add(change.UIElement);
-                    }
                     Version.Changes.Add(change);
                 }
+                Configuration.LoadChanges(true);
+                foreach (Change change in Version.Changes)
+                {
+                    if (change is AICChange aicChange && !aicChange.intern)
+                    {
+                        if (add2UI)
+                        {
+                            aicChange.InitUI();
+                            View.Items.Add(aicChange.UIElement);
+                        }
+                    }
+                }
+            }
         }
 
         #endregion

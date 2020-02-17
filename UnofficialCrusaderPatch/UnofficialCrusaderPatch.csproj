@@ -1480,6 +1480,7 @@
     <EmbeddedResource Include="CodeBlocks\o_shfy_religionpopularitytab.block" />
     <EmbeddedResource Include="CodeBlocks\o_shfy_religiontab.block" />
     <EmbeddedResource Include="CodeBlocks\o_shfy_resourcequantity.block" />
+    <EmbeddedResource Include="CodeBlocks\o_shfy_peasantspawnrate.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

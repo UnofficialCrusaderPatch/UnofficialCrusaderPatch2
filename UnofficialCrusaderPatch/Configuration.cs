@@ -81,7 +81,7 @@ namespace UCP
             loading = false;
         }
 
-        public static void LoadChanges()
+        public static void LoadChanges(bool aionly = false)
         {
             loading = true;
             if (File.Exists(ConfigFile))
@@ -96,7 +96,7 @@ namespace UCP
                         // change
                         string changeStr = line.Remove(index).Trim();
                         Change change = Version.Changes.Find(c => c.TitleIdent == changeStr);
-                        if (change == null) continue;
+                        if (change == null || (aionly == true && change.Type != ChangeType.AIC)) continue;
 
                         int startIndex = line.IndexOf('{', index + 1);
                         if (startIndex < 0) continue;

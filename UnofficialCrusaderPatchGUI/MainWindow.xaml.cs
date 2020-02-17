@@ -130,7 +130,6 @@ namespace UCP
             if (Configuration.Path != cPath)
             {
                 Configuration.Path = cPath;
-                Configuration.Save("Path");
             }
 
             if (!viewLoaded)
@@ -138,12 +137,12 @@ namespace UCP
                 // load aic files
                 AICChange.LoadFiles();
                 Configuration.LoadChanges();
+                Configuration.Save("Path");
 
                 // fill setup options list
                 FillTreeView(Version.Changes);
                 viewLoaded = true;
             }
-
             pathGrid.Visibility = Visibility.Hidden;
             installGrid.Visibility = Visibility.Visible;
         }
@@ -171,12 +170,12 @@ namespace UCP
                 Debug.Error(Localization.Get("ui_wrongpath"));
                 return;
             }
-
             iButtonInstall.IsEnabled = false;
             pButtonSearch.IsEnabled = false;
             pTextBoxPath.IsReadOnly = true;
             Version.Changes.ForEach(c => c.SetUIEnabled(false));
             pbLabel.Content = "";
+            changeHint.Text = "";
 
             setupThread = new Thread(DoSetup);
             this.Closed += (s, args) => setupThread.Abort();
@@ -271,6 +270,17 @@ namespace UCP
             }
         }
 
+        void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TabControl tab = (TabControl) sender;
+            if ((String) (((TabItem) tab.SelectedItem).Header) == "AIC"){
+                changeHint.Text = "Ctrl+Click to select multiple aic files";
+            } else
+            {
+                changeHint.Text = "";
+            }
+        }
+
         static void View_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             TreeView view = (TreeView)sender;
@@ -288,6 +298,5 @@ namespace UCP
         }
 
         #endregion
-        
     }
 }
