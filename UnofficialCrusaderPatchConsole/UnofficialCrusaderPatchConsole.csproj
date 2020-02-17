@@ -7,7 +7,7 @@
     <ProjectGuid>{743F77E0-AD5A-42FE-B928-535AAF40AC4D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>UnofficialCrusaderPatchConsole</RootNamespace>
-    <AssemblyName>UnofficialCrusaderPatchConsole</AssemblyName>
+    <AssemblyName>UnofficialCrusaderPatchCLI</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
