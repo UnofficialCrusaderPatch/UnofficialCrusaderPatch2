@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{53FFBF10-68B1-474F-BD93-903195B2A14C}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>UCP</RootNamespace>
     <AssemblyName>UnofficialCrusaderPatch</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -37,7 +37,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon6.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -56,10 +60,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
     <Compile Include="..\CodeBlox\CodeBlock.cs">
       <Link>CodeBlocks\CodeBlock.cs</Link>
     </Compile>
@@ -127,22 +127,6 @@
     <Compile Include="_Crusader\Building.cs" />
     <Compile Include="_Crusader\UI_Button.cs" />
     <Compile Include="_Crusader\Unit.cs" />
-    <Page Include="Localization\LanguageWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -1479,6 +1463,7 @@
     <EmbeddedResource Include="AICs\Xander10alpha-v1.0.aic" />
     <EmbeddedResource Include="AICs\Kimberly-Balance-v1.0.aic" />
     <EmbeddedResource Include="CodeBlocks\laddermadness.block" />
+    <None Include="App.config" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />
@@ -1502,7 +1487,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <EmbeddedResource Include="Localization\English.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\German.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Localization\LanguageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Polish.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Russian.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Graphics\background.jpg" />
@@ -1511,24 +1511,10 @@
     <Resource Include="Graphics\frame.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="license.txt" />
+    <Resource Include="Graphics\refresh.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Graphics\shield.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\English.txt" />
-    <EmbeddedResource Include="Localization\German.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\Polish.txt" />
-    <EmbeddedResource Include="Localization\Russian.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icon6.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

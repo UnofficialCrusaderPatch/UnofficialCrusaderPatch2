@@ -7,7 +7,7 @@ using UCP.Patching;
 
 namespace UCP
 {
-    static class Configuration
+    public static class Configuration
     {
         public const string ConfigFile = "ucp.cfg";
 

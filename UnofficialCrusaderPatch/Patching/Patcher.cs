@@ -6,7 +6,7 @@ using System.IO;
 
 namespace UCP.Patching
 {
-    static class Patcher
+    public static class Patcher
     {
         public const string BackupIdent = "ucp_backup";
         public const string BackupFileEnding = "." + BackupIdent;

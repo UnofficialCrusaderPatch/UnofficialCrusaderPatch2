@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace UCP
 {
-    static class TextReferencer
+    public static class TextReferencer
     {
         struct TextRef
         {
