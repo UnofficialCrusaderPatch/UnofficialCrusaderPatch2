@@ -23,10 +23,3 @@ Special thanks go to:
 [Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) for his AI castles  
 [PitchNeeded](https://github.com/PitchNeeded) for his AI castle edits  
 [ByBurton](https://github.com/ByBurton/AI_Character_Editor) AKA Kimberly for help with identifying the AIC parameters
-
-&nbsp;  
-&nbsp;  
-&nbsp;  
-
-If you would like to donate to me, you can do so via PayPal:  
-[![paypal](https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N3PDNDLPQXWPL)
