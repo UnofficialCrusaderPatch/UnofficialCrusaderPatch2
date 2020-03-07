@@ -63,26 +63,11 @@
     <Compile Include="..\CodeBlox\CodeBlock.cs">
       <Link>CodeBlocks\CodeBlock.cs</Link>
     </Compile>
-    <Compile Include="AICharacters\AICCollection.cs" />
-    <Compile Include="AICharacters\AICharacter.cs" />
-    <Compile Include="AICharacters\AICIndex.cs" />
-    <Compile Include="AICharacters\AIFileHeader.cs" />
-    <Compile Include="AICharacters\AIPersonality.cs" />
-    <Compile Include="AICharacters\AIReader.cs" />
-    <Compile Include="AICharacters\AIWriter.cs" />
-    <Compile Include="AICharacters\PersonalityEnums\Buildings.cs" />
-    <Compile Include="AICharacters\PersonalityEnums\Resources.cs" />
-    <Compile Include="AICharacters\PersonalityEnums\SiegeEngines.cs" />
-    <Compile Include="AICharacters\PersonalityEnums\TargetingType.cs" />
-    <Compile Include="AICharacters\PersonalityEnums\WorkshopSettings.cs" />
-    <Compile Include="AICharacters\RWAttributes.cs" />
-    <Compile Include="AICharacters\PersonalityEnums\Units.cs" />
+    <Compile Include="AIC\AICView.cs" />
+    <Compile Include="AIVs\AIVView.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="Localization\LanguageWindow.xaml.cs">
-      <DependentUpon>LanguageWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Localization\Localization.cs" />
     <Compile Include="Localization\TextReferencer.cs" />
     <Compile Include="Patching\BinElements\BinCode.cs" />
@@ -90,7 +75,6 @@
     <Compile Include="Patching\BinElements\Referencers\BinAddress.cs" />
     <Compile Include="Patching\BinElements\Referencers\BinAlloc.cs" />
     <Compile Include="AIVs\AIVChange.cs" />
-    <Compile Include="AICs\AICChange.cs" />
     <Compile Include="Patching\EditTypes\BinArgs.cs" />
     <Compile Include="Patching\BinElements\StructTypes\BinBytes.cs" />
     <Compile Include="Patching\BinElements\BinElement.cs" />
@@ -1023,8 +1007,6 @@
     <EmbeddedResource Include="AIVs\PitchSiege\wolf6.aiv" />
     <EmbeddedResource Include="AIVs\PitchSiege\wolf7.aiv" />
     <EmbeddedResource Include="AIVs\PitchSiege\wolf8.aiv" />
-    <EmbeddedResource Include="AICs\UCP-Bugfix.aic" />
-    <EmbeddedResource Include="AICs\vanilla.aic" />
     <EmbeddedResource Include="..\SHC_AIV\skirmish\Abbot1.aiv">
       <Link>AIVs\EvreyImproved\Abbot1.aiv</Link>
     </EmbeddedResource>
@@ -1458,10 +1440,6 @@
       <Link>AIVs\EvreyHistory\wolf1.aiv</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="CodeBlocks\o_firecooldown.block" />
-    <EmbeddedResource Include="AICs\Tatha 0.5.1.aic" />
-    <EmbeddedResource Include="AICs\Krarilotus-aggressiveAI-v1.0.aic" />
-    <EmbeddedResource Include="AICs\Xander10alpha-v1.0.aic" />
-    <EmbeddedResource Include="AICs\Kimberly-Balance-v1.0.aic" />
     <EmbeddedResource Include="CodeBlocks\laddermadness.block" />
     <None Include="App.config" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
@@ -1486,6 +1464,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Localization\English.txt" />
   </ItemGroup>
@@ -1493,25 +1472,10 @@
     <EmbeddedResource Include="Localization\German.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Localization\LanguageWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Localization\Polish.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Localization\Russian.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\background.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\frame.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\refresh.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Graphics\shield.png" />

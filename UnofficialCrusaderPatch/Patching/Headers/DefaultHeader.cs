@@ -138,6 +138,11 @@ namespace UCP.Patching
             }
         }
 
+        public override string ToString()
+        {
+            return DescrIdent + "={" + GetValueString() + "} ";
+        }
+
         #endregion
     }
 }

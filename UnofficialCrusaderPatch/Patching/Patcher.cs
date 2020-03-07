@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using UCP.AIVs;
 
 namespace UCP.Patching
 {
@@ -24,6 +25,26 @@ namespace UCP.Patching
 
             path = Path.Combine(folderPath, XtremeExe);
             return File.Exists(path);
+        }
+        public static void Install(string folderPath, Percentage.SetHandler SetPercent)
+        {
+            Percentage perc = new Percentage(SetPercent);
+            perc.SetTotal(0);
+
+            perc.NextLimit = 0.1;
+            AIVChange.DoChange(folderPath);
+            perc.Set(1.0);
+
+            DoChanges(folderPath, perc);
+
+            perc.SetTotal(1);
+        }
+
+        public static void RestoreOriginals(string dir)
+        {
+            RestoreBinary(dir, CrusaderExe);
+            RestoreBinary(dir, XtremeExe);
+            AIVChange.Restore(dir);
         }
 
         static string GetOriginalBinary(string folderPath, string exe)
@@ -50,34 +71,27 @@ namespace UCP.Patching
             return null;
         }
 
-        public static void Install(string folderPath, Percentage.SetHandler SetPercent)
+
+        static void DoChanges(string folderPath, Percentage perc)
         {
-            Percentage perc = new Percentage(SetPercent);
-            perc.SetTotal(0);
-
-            perc.NextLimit = 0.1;
-            DoAIVChange(folderPath, perc);
-
             string cPath = GetOriginalBinary(folderPath, CrusaderExe);
             string ePath = GetOriginalBinary(folderPath, XtremeExe);
 
             if (cPath != null)
             {
                 perc.NextLimit = ePath == null ? 1.0 : 0.55;
-                DoChanges(cPath, false, perc);
+                DoBinaryChanges(cPath, false, perc);
             }
 
             if (ePath != null)
             {
                 perc.NextLimit = 1;
-                DoChanges(ePath, true, perc);
+                DoBinaryChanges(ePath, true, perc);
             }
-
-            perc.SetTotal(1);
         }
 
 
-        static void DoChanges(string filePath, bool xtreme, Percentage perc)
+        static void DoBinaryChanges(string filePath, bool xtreme, Percentage perc)
         {
             fails.Clear();
             SectionEditor.Reset();
@@ -122,14 +136,13 @@ namespace UCP.Patching
 
 
             // change AI properties
-            AICChange.DoEdit(args);
+            //AICChange.DoEdit(args);
             todoIndex += 2;
             perc.Set(todoIndex / todoCount);
 
 
 
             // Write everything to file
-
             data = SectionEditor.AttachSection(data);
 
             if (filePath.EndsWith(BackupFileEnding))
@@ -140,45 +153,11 @@ namespace UCP.Patching
             {
                 File.WriteAllBytes(filePath + BackupFileEnding, oriData); // create backup
             }
-
             File.WriteAllBytes(filePath, data);
 
             perc.Set(1);
-            
-            // Show failures
-            if (fails.Count > 0)
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append("Version Differences in ");
-                sb.Append(Path.GetFileName(filePath));
-                sb.AppendLine(":");
-                foreach (var f in fails)
-                    sb.AppendLine(f.Ident + " " + f.Type);
 
-                fails.Clear();
-                Debug.Show(sb.ToString());
-            }
-        }
-
-        public static void RestoreOriginals(string dir)
-        {
-            RestoreBinary(dir, CrusaderExe);
-            RestoreBinary(dir, XtremeExe);
-            RestoreAIVs(dir);
-        }
-
-        static void RestoreAIVs(string dir)
-        {
-            string aivPath = Path.Combine(dir, "aiv");
-            DirectoryInfo bupDir = new DirectoryInfo(Path.Combine(aivPath, BackupIdent));
-
-            if (bupDir.Exists)
-            {
-                foreach (FileInfo fi in bupDir.EnumerateFiles("*.aiv"))
-                    fi.CopyTo(Path.Combine(aivPath, fi.Name), true);
-
-                bupDir.Delete(true);
-            }
+            ShowFailures(filePath);
         }
 
         static void RestoreBinary(string dir, string exe)
@@ -194,6 +173,22 @@ namespace UCP.Patching
             }
         }
 
+        static void ShowFailures(string filePath)
+        {
+            if (fails.Count > 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("Version Differences in ");
+                sb.Append(Path.GetFileName(filePath));
+                sb.AppendLine(":");
+                foreach (var f in fails)
+                    sb.AppendLine(f.Ident + " " + f.Type);
+
+                fails.Clear();
+                Debug.Show(sb.ToString());
+            }
+        }
+
         struct EditFail
         {
             public string Ident;
@@ -203,29 +198,6 @@ namespace UCP.Patching
         public static void AddFailure(string ident, EditFailure failure)
         {
             fails.Add(new EditFail(){ Ident=ident, Type=failure });
-        }
-
-        static void DoAIVChange(string folderPath, Percentage perc)
-        {
-            DirectoryInfo aivDir = new DirectoryInfo(Path.Combine(folderPath, "aiv"));
-
-            // Restore Backup
-            RestoreAIVs(folderPath);
-
-            if (AIVChange.ActiveChange != null)
-            {
-                // create backup of current AIVs
-                string bupPath = Path.Combine(aivDir.FullName, BackupIdent);
-
-                Directory.CreateDirectory(bupPath);
-                foreach (FileInfo fi in aivDir.EnumerateFiles("*.aiv"))
-                    fi.CopyTo(Path.Combine(bupPath, fi.Name), true);
-
-                // copy modded AIVs
-                AIVChange.ActiveChange.CopyAIVs(aivDir);
-            }
-
-            perc.Set(1.0);
         }
     }
 }

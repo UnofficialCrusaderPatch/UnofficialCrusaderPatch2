@@ -93,6 +93,11 @@ u_fireballistafix_descr
     "Feuerballisten erkennen nun Mönche und Tunnelgräber als Feinde und schießen auf diese."
 }
 
+ui_browsepath
+{
+	"Bitte wähle dein Stronghold Crusader - Installationsverzeichnis."
+}
+
 // ======================
 //         2.13
 // ======================

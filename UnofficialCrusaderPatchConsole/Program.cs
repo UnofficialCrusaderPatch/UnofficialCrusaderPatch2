@@ -11,7 +11,7 @@ namespace UCP
     {
         static void Main(string[] args)
         {
-            Configuration.LoadGeneral();
+            Configuration.Load();
             ResolvePath();
             ResolveArgs(args);
             SilentInstall();
@@ -74,9 +74,9 @@ namespace UCP
 
         static void SilentInstall()
         {
-            Configuration.LoadChanges();
-            AICChange.LoadFiles();
-            Configuration.LoadChanges();
+            Configuration.Load();
+            //AICChange.LoadFiles();
+            //Configuration.LoadChanges();
             Version.Changes.Contains(null);
             Patcher.Install(Configuration.Path, null);
             Console.WriteLine("UCP successfully installed");

@@ -50,6 +50,17 @@ namespace UCP.Patching
             }
         }
 
+        public override string ToString()
+        {
+            string str = TitleIdent + "={ ";
+            foreach (DefaultHeader h in headerList)
+            {
+                str += h.ToString();
+            }
+            str += "}";
+            return str;
+        }
+
         #region UI
 
         public void SetUIEnabled(bool enabled)
