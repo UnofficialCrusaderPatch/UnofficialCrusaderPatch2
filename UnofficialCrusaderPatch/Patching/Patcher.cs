@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using UCP.AIVs;
+using UCP.AIV;
 
 namespace UCP.Patching
 {

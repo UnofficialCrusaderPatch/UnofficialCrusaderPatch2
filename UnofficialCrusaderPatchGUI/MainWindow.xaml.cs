@@ -11,7 +11,7 @@ using System.Windows.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using UCP;
-using UCP.AIVs;
+using UCP.AIV;
 using UCP.Patching;
 using System.Windows.Media.Imaging;
 using UCP.AIC;
@@ -248,12 +248,10 @@ namespace UCP
             foreach (ChangeType type in Enum.GetValues(typeof(ChangeType)))
             {
                 string typeName = type.ToString();
-                
-                //view.SelectedItemChanged += View_SelectedItemChanged;
-                StackPanel panel = new StackPanel();
-                Grid grid = new Grid();
-                grid.Children.Add(panel);
 
+                //view.SelectedItemChanged += View_SelectedItemChanged;
+
+                Grid grid = new Grid();
                 TabItem tab = new TabItem()
                 {
                     Header = Localization.Get("ui_" + typeName),
@@ -263,12 +261,12 @@ namespace UCP
 
                 if (type == ChangeType.AIV)
                 {
-                    new AIVView().InitUI(panel);
+                    new AIVView().InitUI(grid, View_SelectedItemChanged);
                     continue;
                 } 
                 else if (type == ChangeType.AIC)
                 {
-                    new AICView().InitUI(panel);
+                    new AICView().InitUI(grid, View_SelectedItemChanged);
                     continue;
                 }
 
@@ -278,6 +276,9 @@ namespace UCP
                     BorderThickness = new Thickness(0, 0, 0, 0),
                     Focusable = false,
                 };
+                view.SelectedItemChanged += View_SelectedItemChanged;
+
+                grid.Children.Add(view);
                 foreach (Change change in changes)
                 {
                     if (change.Type != type)
@@ -285,8 +286,7 @@ namespace UCP
 
                     change.InitUI();
                     view.Items.Add(change.UIElement);
-                }
-                panel.Children.Add(view);
+                }   
             }
         }
 
@@ -300,6 +300,22 @@ namespace UCP
             {
                 changeHint.Text = "";
             }
+        }
+
+        static void View_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            TreeView view = (TreeView)sender;
+            view.SelectedItemChanged -= View_SelectedItemChanged;
+
+            object[] items = new object[view.Items.Count];
+            view.Items.CopyTo(items, 0);
+
+            view.Items.Clear();
+
+            foreach (object o in items)
+                view.Items.Add(o);
+
+            view.SelectedItemChanged += View_SelectedItemChanged;
         }
         #endregion
     }

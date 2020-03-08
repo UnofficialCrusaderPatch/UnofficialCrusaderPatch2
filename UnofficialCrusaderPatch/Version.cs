@@ -2681,7 +2681,8 @@ namespace UCP
 
         public static void AddExternalChanges()
         {
-            changes.AddRange(AIVs.AIVChange.changes);
+            changes.AddRange(AIV.AIVChange.changes);
+            changes.AddRange(AIC.AICChange.changes);
         }
     }
 }

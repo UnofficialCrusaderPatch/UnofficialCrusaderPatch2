@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Windows;
 using UCP.Patching;
 
-namespace UCP.AIVs
+namespace UCP.AIV
 {
     class AIVChange : Change
     {
@@ -31,7 +31,7 @@ namespace UCP.AIVs
         public AIVChange(string titleIdent, bool enabledDefault = false)
             : base("aiv_" + titleIdent, ChangeType.AIV, enabledDefault, true)
         {
-            this.resFolder = "UCP.AIVs." + titleIdent;
+            this.resFolder = "UCP.AIV." + titleIdent;
         }
 
         public override void InitUI()

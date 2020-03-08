@@ -75,7 +75,7 @@ namespace UCP.Patching
             set { titleBox.IsChecked = value; }
         }
 
-        UIElement uiElement;
+        protected UIElement uiElement;
         public UIElement UIElement { get { return this.uiElement; } }
 
         protected CheckBox titleBox;
@@ -150,7 +150,7 @@ namespace UCP.Patching
             Configuration.Save(this.titleIdent);
         }
 
-        void FillGrid(Grid grid)
+        protected void FillGrid(Grid grid)
         {
             bool singleDefault = headerList.Count == 1 && headerList[0].GetType() == typeof(DefaultHeader);
 

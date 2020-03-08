@@ -10,8 +10,23 @@ namespace UCP.AIC
 {
     public class AICView
     {
-        public void InitUI(StackPanel panel)
+        public void InitUI(Grid grid, RoutedPropertyChangedEventHandler<object> SelectionDisabler)
         {
+            TreeView view = new TreeView()
+            {
+                Background = null,
+                BorderThickness = new Thickness(0, 0, 0, 0),
+                Focusable = false,
+                Name = "AICView"
+            };
+            view.SelectedItemChanged += SelectionDisabler;
+
+            foreach (AICChange change in AICChange.changes)
+            {
+                change.InitUI();
+                view.Items.Add(change.UIElement);
+            }
+            grid.Children.Add(view);
             Button button = new Button
             {
                 ToolTip = "Reload .aics",
@@ -25,9 +40,20 @@ namespace UCP.AIC
                     Source = new BitmapImage(new Uri("pack://application:,,,/UnofficialCrusaderPatchGUI;component/Graphics/refresh.png")),
                 }
             };
-            panel.Children.Add(button);
-            //button.Click += (s, e) => AICChange.RefreshLocalFiles();
+            grid.Children.Add(button);
+            button.Click += (s, e) => Refresh(s, e, view);
             //grid.Children.Add(button);
+        }
+
+        private void Refresh(object s, RoutedEventArgs e, TreeView view)
+        {
+            AICChange.Refresh(s, e);
+            Version.Changes.AddRange(AICChange.changes);
+            foreach (AICChange change in AICChange.changes)
+            {
+                change.InitUI();
+                view.Items.Add(change.UIElement);
+            }
         }
     }
 }
