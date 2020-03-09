@@ -13,6 +13,7 @@ namespace AIConversion
         {
             StreamReader reader = new StreamReader(srcFile, Encoding.UTF8);
             string aicSrcFile = reader.ReadToEnd();
+            reader.Close();
 
             aicSrcFile = Regex.Replace(aicSrcFile, "/[*]([^*]|([*][^/]))*[*]+/", String.Empty);
 

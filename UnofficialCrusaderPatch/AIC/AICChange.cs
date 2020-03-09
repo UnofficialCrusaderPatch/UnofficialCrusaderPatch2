@@ -29,11 +29,11 @@ namespace UCP.AIC
         //static List<AICharacterName> currentSelection;
         static List<AICharacterName> emptySelection = new List<AICharacterName>();
 
-        static List<AICChange> _changes = new List<AICChange>()
-        {
-            AICChange.CreateDefault("vanilla.aic"),
-            AICChange.CreateDefault("special.aic"),
-        };
+        static List<AICChange> _changes = new List<AICChange>();
+        //{
+        //    AICChange.CreateDefault("vanilla.aic"),
+        //    AICChange.CreateDefault("special.aic"),
+        //};
         
 
         public static List<AICChange> changes { get { return _changes; } }
@@ -44,9 +44,11 @@ namespace UCP.AIC
 
             StreamReader reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("UCP.AIC.Resources.errors.json"), Encoding.UTF8);
             string errorText = reader.ReadToEnd();
+            reader.Close();
 
             reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("UCP.AIC.Resources.descriptions.json"), Encoding.UTF8);
             string errorHintText = reader.ReadToEnd();
+            reader.Close();
 
             
             JavaScriptSerializer errorSerializer = new JavaScriptSerializer();
@@ -181,30 +183,15 @@ namespace UCP.AIC
 
         public static void Load()
         {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            serializer.RegisterConverters(new ReadOnlyCollection<JavaScriptConverter>(new List<JavaScriptConverter>() { new AISerializer(errorMessages, errorHints) }));
-            StreamReader reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("UCP.AIC.Resources.vanilla.aic.json"), Encoding.UTF8);
-            string text = reader.ReadToEnd();
-            try
-            {
-                AICollection ch = serializer.Deserialize<AICollection>(text);
-                Console.WriteLine(ch.AIDescription.DescrEng);
-                Console.WriteLine(ch.AIDescription.DescrRus);
+            LoadAIC("UCP.AIC.Resources.vanilla.aic.json");
 
-                AICChange change = new AICChange("vanilla.aic.json", true)
-                {
-                    new DefaultHeader("vanilla.aic.json", true, true)
-                    {
-                    }
-                };
-                change.collection = ch;
-                change.characters = ch.GetCharacters();
-                availableSelection[change.TitleIdent] = ch.GetCharacters();
-                changes.Add(change);
+            foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic", SearchOption.TopDirectoryOnly)){
+                LoadAIC(file);
             }
-            catch (AICSerializationException e)
+
+            foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic.json", SearchOption.TopDirectoryOnly))
             {
-                Console.WriteLine(e.ToErrorString("AIConversion.vanilla.json"));
+                LoadAIC(file);
             }
         }
 
@@ -321,6 +308,58 @@ namespace UCP.AIC
             }
         }
 
+        private static void LoadAIC(string fileName)
+        {
+            if (fileName.EndsWith(".aic"))
+            {
+                AICChange change = new AICChange(Path.GetFileName(fileName), true)
+                {
+                    new DefaultHeader(Path.GetFileName(fileName), true, true)
+                    {
+                    }
+                };
+                changes.Add(change);
+                return;
+            }
+            
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.RegisterConverters(new ReadOnlyCollection<JavaScriptConverter>(new List<JavaScriptConverter>() { new AISerializer(errorMessages, errorHints) }));
+            StreamReader reader;
+            
+            if (fileName.StartsWith("UCP.AIC.Resources"))
+            {
+                reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(fileName), Encoding.UTF8);
+            } else
+            {
+                reader = new StreamReader(new FileStream(fileName, FileMode.Open), Encoding.UTF8);
+            }
+            string text = reader.ReadToEnd();
+            reader.Close();
+
+            string aicName = Path.GetFileName(fileName).Replace("UCP.AIC.Resources.", "");
+            try
+            {
+                AICollection ch = serializer.Deserialize<AICollection>(text);
+                Console.WriteLine(ch.AIDescription.DescrEng);
+                Console.WriteLine(ch.AIDescription.DescrRus);
+
+                AICChange change = new AICChange(aicName, true)
+                {
+                    new DefaultHeader(aicName, true, true)
+                    {
+                    }
+                };
+                change.collection = ch;
+                change.characters = ch.GetCharacters();
+                availableSelection[change.TitleIdent] = ch.GetCharacters();
+                changes.Add(change);
+            }
+            catch (AICSerializationException e)
+            {
+                Console.WriteLine(e.ToErrorString(fileName));
+            }
+        }
+
         private void Convert()
         {
             string fileName = Path.Combine(Environment.CurrentDirectory, "aic", this.TitleIdent);
@@ -331,16 +370,17 @@ namespace UCP.AIC
             {
                 backupFileName = backupFileName + ".bak";
             }
-            //File.Move(fileName, backupFileName);
             try
             {
                 bool result = AICHelper.Convert(fileName, newFileName);
                 if (result)
                 {
+                    File.Move(fileName, backupFileName);
                     Debug.Show("AIC file successfully converted. Please click refresh to see updated AIC list");
                 }
             } catch (Exception e)
             {
+                throw e;
                 Debug.Show("Errors found in conversion. Please see convert manually and confirm valid JSON before reloading");
             }
         }
