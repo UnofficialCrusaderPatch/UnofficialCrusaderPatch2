@@ -100,6 +100,7 @@ namespace UCP.AIC
             };
 
             titleBox.Checked += TitleBox_Checked;
+            titleBox.Indeterminate += TitleBox_Indeterminate;
             titleBox.Unchecked += TitleBox_Unchecked;
 
             grid = new Grid()
@@ -160,6 +161,52 @@ namespace UCP.AIC
                     Margin = new Thickness(0, 0, 30, 0),
                     Background = new SolidColorBrush(Color.FromRgb(0, 255, 0)),
 
+                };
+                selectButton.Click += (s, e) =>
+                {
+                    Window aicWindow = new Window()
+                    {
+                        Width = 200,
+                        Height = 360,
+                        Title = "AIs",
+                        Background = new SolidColorBrush(Color.FromRgb(220, 220, 220)),
+                    };
+                    Grid grid = new Grid();
+
+                    int heightOffset = 0;
+                    foreach (AICharacterName characterName in this.characters)
+                    {
+                        CheckBox checkBox = new CheckBox()
+                        {
+                            FontSize = 15,
+                            Content = new TextBlock() {
+                                Text = Enum.GetName(typeof(AICharacterName), characterName),
+                                TextDecorations = !(currentSelection.ContainsKey(characterName) 
+                                && !currentSelection[characterName].Equals(this.TitleIdent)) ? null : TextDecorations.Strikethrough,
+                            },
+                            Margin = new Thickness(0, 20 * (heightOffset++), 0, 0),
+                            IsChecked = currentSelection.ContainsKey(characterName) && currentSelection[characterName] == this.TitleIdent,
+                        };
+                        if (currentSelection.ContainsKey(characterName)){
+                            checkBox.ToolTip = "This AI has already been selected. Select this to overwrite.";
+                        }
+                        checkBox.Click += (s1, e1) =>
+                        {
+                            ((TextBlock)((CheckBox)s1).Content).TextDecorations = null;
+                            if ((bool)((CheckBox)s1).IsChecked){
+                                currentSelection[characterName] = this.TitleIdent;
+                                return;
+                            }
+                            else if (currentSelection.ContainsKey(characterName))
+                            {
+                                currentSelection.Remove(characterName);
+                            }
+                        };
+                        grid.Children.Add(checkBox);
+                    }
+                    
+                    aicWindow.Content = grid;
+                    bool? selection = aicWindow.ShowDialog();
                 };
                 panel.Children.Add(selectButton);
             }
@@ -292,6 +339,12 @@ namespace UCP.AIC
             Console.WriteLine(currentSelection);
         }
 
+        protected void TitleBox_Indeterminate(object sender, RoutedEventArgs e)
+        {
+            ((CheckBox)sender).IsChecked = false;
+            TitleBox_Unchecked(sender, e);
+        }
+
         protected override void TitleBox_Unchecked(object sender, RoutedEventArgs e)
         {
             base.TitleBox_Unchecked(sender, e);
@@ -299,12 +352,17 @@ namespace UCP.AIC
             if (activeChange == this)
                 activeChange = null;
 
+            List<AICharacterName> namesToRemove = new List<AICharacterName>();
             foreach (KeyValuePair<AICharacterName, string> sel in currentSelection)
             {
                 if (sel.Value == this.TitleIdent)
                 {
-                    currentSelection.Remove(sel.Key);
+                    namesToRemove.Add(sel.Key);
                 }
+            }
+            foreach (AICharacterName name in namesToRemove)
+            {
+                currentSelection.Remove(name);
             }
         }
 
@@ -378,9 +436,8 @@ namespace UCP.AIC
                     File.Move(fileName, backupFileName);
                     Debug.Show("AIC file successfully converted. Please click refresh to see updated AIC list");
                 }
-            } catch (Exception e)
+            } catch (Exception)
             {
-                throw e;
                 Debug.Show("Errors found in conversion. Please see convert manually and confirm valid JSON before reloading");
             }
         }
