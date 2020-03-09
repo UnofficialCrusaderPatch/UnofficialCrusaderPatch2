@@ -79,7 +79,7 @@ namespace UCP.AIC
                 Content = new TextBlock()
                 {
                     Text = this.GetTitle(),
-                    TextDecorations = TextDecorations.Strikethrough,
+                    TextDecorations = this.GetTitle().EndsWith(".aic") ? TextDecorations.Strikethrough : null,
                     TextWrapping = TextWrapping.Wrap,
                     Margin = new Thickness(0, -1, 0, 0),
                     FontSize = 14,
@@ -115,45 +115,52 @@ namespace UCP.AIC
             Grid panel = new Grid();
             panel.Children.Add(tvi);
 
-            Button selectButton = new Button()
+            if (this.GetTitle().EndsWith(".aic"))
             {
-                Width = 17,
-                Height = 17,
-                Content = "\u2713",
-                FontSize = 10,
-                HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Top,
-                Background = new SolidColorBrush(Color.FromRgb(0, 255, 0)),
-
-            };
-            panel.Children.Add(selectButton);
-
-            Button infoButton = new Button()
-            {
-                Width = 17,
-                Height = 17,
-                Content = "\uFF1F",
-                FontSize = 10,
-                FontWeight = FontWeights.Bold,
-                HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Top,
-                Margin = new Thickness(0, 0, 30, 0),
-                Background = new SolidColorBrush(Color.FromRgb(246, 53, 53)),
-            };
-            infoButton.Click += (s, e) =>
-            {
-
-                MessageBoxResult result = MessageBox.Show("Convert aic file to newer version?", "AIC Conversion", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-                switch (result)
+                Button infoButton = new Button()
                 {
-                    case MessageBoxResult.Yes:
-                        Convert();
-                        break;
-                    default:
-                        break;
-                }
-            };
-            panel.Children.Add(infoButton);
+                    ToolTip = "Old version detected. Click to convert",
+                    Width = 17,
+                    Height = 17,
+                    Content = "\uFF1F",
+                    FontSize = 10,
+                    FontWeight = FontWeights.Bold,
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Top,
+                    Margin = new Thickness(0, 0, 30, 0),
+                    Background = new SolidColorBrush(Color.FromRgb(246, 53, 53)),
+                };
+                infoButton.Click += (s, e) =>
+                {
+
+                    MessageBoxResult result = MessageBox.Show("Convert aic file to newer version?", "AIC Conversion", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                    switch (result)
+                    {
+                        case MessageBoxResult.Yes:
+                            Convert();
+                            break;
+                        default:
+                            break;
+                    }
+                };
+                panel.Children.Add(infoButton);
+            } else
+            {
+                Button selectButton = new Button()
+                {
+                    ToolTip = "Select individual AIs",
+                    Width = 17,
+                    Height = 17,
+                    Content = "\u2713",
+                    FontSize = 10,
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Top,
+                    Margin = new Thickness(0, 0, 30, 0),
+                    Background = new SolidColorBrush(Color.FromRgb(0, 255, 0)),
+
+                };
+                panel.Children.Add(selectButton);
+            }
 
             Button exportButton = new Button()
             {
@@ -176,7 +183,7 @@ namespace UCP.AIC
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             serializer.RegisterConverters(new ReadOnlyCollection<JavaScriptConverter>(new List<JavaScriptConverter>() { new AISerializer(errorMessages, errorHints) }));
-            StreamReader reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("UCP.AIC.Resources.vanilla.json"), Encoding.UTF8);
+            StreamReader reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("UCP.AIC.Resources.vanilla.aic.json"), Encoding.UTF8);
             string text = reader.ReadToEnd();
             try
             {
@@ -184,9 +191,9 @@ namespace UCP.AIC
                 Console.WriteLine(ch.AIDescription.DescrEng);
                 Console.WriteLine(ch.AIDescription.DescrRus);
 
-                AICChange change = new AICChange("vanilla.json", true)
+                AICChange change = new AICChange("vanilla.aic.json", true)
                 {
-                    new DefaultHeader("vanilla.json", true, true)
+                    new DefaultHeader("vanilla.aic.json", true, true)
                     {
                     }
                 };
@@ -305,16 +312,19 @@ namespace UCP.AIC
             if (activeChange == this)
                 activeChange = null;
 
-            foreach (AICharacterName character in this.characters)
+            foreach (KeyValuePair<AICharacterName, string> sel in currentSelection)
             {
-                currentSelection.Add(character, this.TitleIdent);
+                if (sel.Value == this.TitleIdent)
+                {
+                    currentSelection.Remove(sel.Key);
+                }
             }
         }
 
         private void Convert()
         {
             string fileName = Path.Combine(Environment.CurrentDirectory, "aic", this.TitleIdent);
-            string newFileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(this.TitleIdent), ".aic.json");
+            string newFileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(this.TitleIdent) + ".aic.json");
 
             string backupFileName = fileName;
             while (File.Exists(backupFileName))
@@ -322,13 +332,16 @@ namespace UCP.AIC
                 backupFileName = backupFileName + ".bak";
             }
             //File.Move(fileName, backupFileName);
-            bool result = AICHelper.Convert(fileName, newFileName);
-            if (result)
+            try
             {
-                Debug.Show("AIC file successfully converted. Please click refresh to see updated AIC list");
-            } else
+                bool result = AICHelper.Convert(fileName, newFileName);
+                if (result)
+                {
+                    Debug.Show("AIC file successfully converted. Please click refresh to see updated AIC list");
+                }
+            } catch (Exception e)
             {
-                Debug.Show("Errors found in conversion. Please see " + this.TitleIdent + ".log for error log");
+                Debug.Show("Errors found in conversion. Please see convert manually and confirm valid JSON before reloading");
             }
         }
 

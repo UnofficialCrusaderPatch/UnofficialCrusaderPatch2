@@ -1463,7 +1463,7 @@
     <EmbeddedResource Include="CodeBlocks\laddermadness.block" />
     <EmbeddedResource Include="AIC\Resources\descriptions.json" />
     <EmbeddedResource Include="AIC\Resources\errors.json" />
-    <EmbeddedResource Include="AIC\Resources\vanilla.json" />
+    <EmbeddedResource Include="AIC\Resources\vanilla.aic.json" />
     <None Include="App.config" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
