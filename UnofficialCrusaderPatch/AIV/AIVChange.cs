@@ -115,9 +115,10 @@ namespace UCP.AIV
                 string bupPath = Path.Combine(aivDir.FullName);
 
                 Directory.CreateDirectory(bupPath);
-                foreach (FileInfo fi in aivDir.EnumerateFiles("*.aiv"))
-                    fi.CopyTo(Path.Combine(bupPath, fi.Name), true);
-
+                foreach (string file in Directory.EnumerateFiles(aivDir.FullName, "*.aiv", SearchOption.TopDirectoryOnly))
+                {
+                    File.Move(file, Path.Combine(bupPath, file));
+                }
                 // copy modded AIVs
                 AIVChange.ActiveChange.CopyAIVs(aivDir);
             }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using UCP.AIV;
+using UCP.AIC;
 
 namespace UCP.Patching
 {
@@ -111,8 +112,9 @@ namespace UCP.Patching
 
             perc.Set(todoIndex / todoCount);
 
-            ChangeArgs args = new ChangeArgs(data, oriData);    
-            
+            ChangeArgs args = new ChangeArgs(data, oriData);
+            AICChange.DoChange(args);
+
             // change version display in main menu
             try
             {

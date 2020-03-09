@@ -18,7 +18,6 @@ namespace UCP.AIC
     {
         private AICollection collection;
         private List<AICharacterName> characters;
-        private List<AICharacterName> selectedCharacters;
 
         static AICChange activeChange = null;
         static Dictionary<String, String> errorMessages;
@@ -26,15 +25,10 @@ namespace UCP.AIC
 
         static Dictionary<String, List<AICharacterName>> availableSelection;
         static Dictionary<AICharacterName, String> currentSelection;
-        //static List<AICharacterName> currentSelection;
+
         static List<AICharacterName> emptySelection = new List<AICharacterName>();
 
         static List<AICChange> _changes = new List<AICChange>();
-        //{
-        //    AICChange.CreateDefault("vanilla.aic"),
-        //    AICChange.CreateDefault("special.aic"),
-        //};
-        
 
         public static List<AICChange> changes { get { return _changes; } }
 
@@ -89,6 +83,7 @@ namespace UCP.AIC
                 },
                 IsChecked = false,//headerList.Exists(h => h.IsEnabled),
                 IsThreeState = true,
+                IsEnabled = !this.GetTitle().EndsWith(".aic"),
             };
 
             TreeViewItem tvi = new TreeViewItem()
@@ -140,7 +135,7 @@ namespace UCP.AIC
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
-                            Convert();
+                            ConvertAIC();
                             break;
                         default:
                             break;
@@ -167,7 +162,7 @@ namespace UCP.AIC
                     Window aicWindow = new Window()
                     {
                         Width = 200,
-                        Height = 360,
+                        Height = 400,
                         Title = "AIs",
                         Background = new SolidColorBrush(Color.FromRgb(220, 220, 220)),
                     };
@@ -204,9 +199,33 @@ namespace UCP.AIC
                         };
                         grid.Children.Add(checkBox);
                     }
-                    
+
+                    Button acceptSelection = new Button()
+                    {
+                        Content = "Confirm Selection",
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Bottom,
+                        Margin = new Thickness(0, 0, 0, 10),
+                    };
+                    acceptSelection.Click += (s2, e2) => aicWindow.Close();
+                    grid.Children.Add(acceptSelection);
                     aicWindow.Content = grid;
                     bool? selection = aicWindow.ShowDialog();
+
+                    int count = 0;
+                    foreach (string entry in currentSelection.Values)
+                    {
+                        if (entry == this.TitleIdent)
+                        {
+                            count++;
+                        }
+                    }
+                    if (count < 16)
+                    {
+                        this.titleBox.Indeterminate -= TitleBox_Indeterminate;
+                        this.titleBox.IsChecked = null;
+                        this.titleBox.Indeterminate += TitleBox_Indeterminate;
+                    }
                 };
                 panel.Children.Add(selectButton);
             }
@@ -259,13 +278,47 @@ namespace UCP.AIC
             Load();
         }
 
-        public static ChangeHeader CreateEdit(AICollection coll)
+        public static void DoChange(ChangeArgs args)
         {
+            CreateEdit().Activate(args);
+        }
+
+        public static ChangeHeader CreateEdit()
+        {
+            List<AICharacter> characterChanges = new List<AICharacter>();
+
+            foreach (AICharacterName name in Enum.GetValues(typeof(AICharacterName))){
+                if (!currentSelection.ContainsKey(name))
+                {
+                    continue;
+                }
+                string changeLocation = currentSelection[name];
+                AICChange changeSource = null;
+
+                foreach (AICChange change in changes)
+                {
+                    if (change.TitleIdent == changeLocation)
+                    {
+                        changeSource = change;
+                        break;
+                    }
+                }
+
+                foreach (AICharacter character in changeSource.collection.AICharacters)
+                {
+                    if (character._Name == name)
+                    {
+                        characterChanges.Add(character);
+                        break;
+                    }
+                }
+            }
+
             byte[] data;
             using (MemoryStream ms = new MemoryStream())
             using (BinaryWriter bw = new BinaryWriter(ms))
             {
-                foreach (AICharacter aic in coll.AICharacters)
+                foreach (AICharacter aic in characterChanges)
                 {
                     // mov eax, index
                     bw.Write((byte)0xB8);
@@ -281,14 +334,23 @@ namespace UCP.AIC
                     bw.Write((byte)0xF0);
 
                     // edit AI's properties
-                    //for (int i = 0; i < AIPersonality.TotalFields; i++)
-                    //{
-                    //    // mov [eax + prop], value
-                    //    bw.Write((byte)0xC7);
-                    //    bw.Write((byte)0x80);
-                    //    bw.Write((int)(i * 4));
-                    //    bw.Write((int)aic.Personality.GetByIndex(i));
-                    //}
+                    for (int i = 0; i < Enum.GetNames(typeof(AIPersonalityFieldsEnum)).Length; i++)
+                    {
+                        string propertyName = Enum.GetName(typeof(AIPersonalityFieldsEnum), i);
+                        PropertyInfo property = typeof(AIPersonality).GetProperty("_" + propertyName);
+                        if (property == null)
+                        {
+                            property = typeof(AIPersonality).GetProperty(propertyName);
+                        }
+                        
+                        int value = Convert.ToInt32(property.GetValue(aic.Personality, null));
+
+                        // mov [eax + prop], value
+                        bw.Write((byte)0xC7);
+                        bw.Write((byte)0x80);
+                        bw.Write((int)(i * 4));
+                        bw.Write(value);
+                    }
                 }
                 data = ms.ToArray();
             }
@@ -418,7 +480,7 @@ namespace UCP.AIC
             }
         }
 
-        private void Convert()
+        private void ConvertAIC()
         {
             string fileName = Path.Combine(Environment.CurrentDirectory, "aic", this.TitleIdent);
             string newFileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(this.TitleIdent) + ".aic.json");
