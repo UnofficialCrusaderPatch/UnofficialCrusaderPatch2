@@ -162,9 +162,6 @@ namespace UCP
 
             if (!viewLoaded)
             {
-                // load aic files
-                //AICChange.LoadFiles();
-                //Configuration.Load();
                 Configuration.Save();
 
                 // fill setup options list
@@ -248,8 +245,6 @@ namespace UCP
             foreach (ChangeType type in Enum.GetValues(typeof(ChangeType)))
             {
                 string typeName = type.ToString();
-
-                //view.SelectedItemChanged += View_SelectedItemChanged;
 
                 Grid grid = new Grid();
                 TabItem tab = new TabItem()

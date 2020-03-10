@@ -48,7 +48,6 @@ namespace UCP.AIC
             JavaScriptSerializer errorSerializer = new JavaScriptSerializer();
             errorMessages = errorSerializer.Deserialize<Dictionary<String, String>>(errorText);
             errorHints = errorSerializer.Deserialize<Dictionary<String, String>>(errorHintText);
-            Load();
         }
 
         public AICChange(string titleIdent, bool enabledDefault = false)
@@ -239,7 +238,6 @@ namespace UCP.AIC
                 VerticalAlignment = VerticalAlignment.Bottom,
                 Margin = new Thickness(0, 0, 5, 5),
                 ToolTip = Localization.Get("ui_aichint"),
-                //Background = ButtonBrush,
             };
             exportButton.Click += (s, e) => this.ExportFile();
 
@@ -251,7 +249,8 @@ namespace UCP.AIC
         {
             LoadAIC("UCP.AIC.Resources.vanilla.aic.json");
 
-            foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic", SearchOption.TopDirectoryOnly)){
+            foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic", SearchOption.TopDirectoryOnly))
+            {
                 LoadAIC(file);
             }
 
@@ -263,16 +262,11 @@ namespace UCP.AIC
 
         public static void Refresh(object sender, RoutedEventArgs args)
         {
-            // remove olds
-            for (int i = Version.Changes.Count - 1; i >= 0; i--)
+            for (int i = 0; i < changes.Count; i++)
             {
-                if (Version.Changes[i] is AICChange change)
-                {
-                    Version.Changes.RemoveAt(i);
-                    ((TreeView)((Grid)((Button)sender).Parent).Children[0]).Items.Remove(change.UIElement);
-                    availableSelection.Clear();
-                    currentSelection.Clear();
-                }
+                ((TreeView)((Grid)((Button)sender).Parent).Children[0]).Items.Remove(changes.ElementAt(i).UIElement);
+                availableSelection.Clear();
+                currentSelection.Clear();
             }
             changes.Clear();
             Load();
@@ -342,8 +336,9 @@ namespace UCP.AIC
                         {
                             property = typeof(AIPersonality).GetProperty(propertyName);
                         }
-                        
-                        int value = Convert.ToInt32(property.GetValue(aic.Personality, null));
+                        if (property == null) throw new Exception(propertyName);
+                        object objValue = property.GetValue(aic.Personality, null);
+                        int value = Convert.ToInt32(objValue);
 
                         // mov [eax + prop], value
                         bw.Write((byte)0xC7);
@@ -398,7 +393,6 @@ namespace UCP.AIC
             {
                 currentSelection.Add(character, this.TitleIdent);
             }
-            Console.WriteLine(currentSelection);
         }
 
         protected void TitleBox_Indeterminate(object sender, RoutedEventArgs e)

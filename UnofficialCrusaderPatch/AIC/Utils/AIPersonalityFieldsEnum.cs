@@ -137,7 +137,7 @@ namespace AIConversion
 		AttForceRallyPercentage,
 		Unknown129,
 		Unknown130,
-		Unknown131,
+		AttUnitPatrolRecommandDelay,
 		Unknown132,
 		SiegeEngine1,
 		SiegeEngine2,

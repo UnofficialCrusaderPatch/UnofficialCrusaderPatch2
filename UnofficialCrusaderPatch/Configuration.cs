@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using UCP.Patching;
+using UCP.AIC;
 
 namespace UCP
 {
@@ -113,6 +114,7 @@ namespace UCP
                         }
                     }
                 }
+                AICChange.Load();
             }
         }
     }

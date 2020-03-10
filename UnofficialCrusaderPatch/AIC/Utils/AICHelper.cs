@@ -47,7 +47,11 @@ namespace AIConversion
                     string trimmedLine = Regex.Replace(line.Trim(), @"[\n\r\t]+", String.Empty);
                     if (trimmedLine != String.Empty)
                     {
-                        descriptions.Add("\"Descr" + trimmedLine.Substring(3) + "\": \"" + trimmedLine.Substring(3) + "\",");
+                        string description = trimmedLine.Substring(4);
+                        description = description.Replace("\"", "\\\"");
+                        int indexEnd = description.IndexOf("}");
+                        description = description.Substring(0, indexEnd);
+                        descriptions.Add("\"Descr" + trimmedLine.Substring(0, 3) + "\": \"" + description + "\",");
                     }
                 }
             }
@@ -107,13 +111,14 @@ namespace AIConversion
                     string[] fieldData = parsedField.Split("=".ToCharArray());
                     if (fieldData.Length > 1)
                     {
+                        string fieldName = UpdateFieldName(fieldData[0]);
                         try
                         {
-                            personalityFields.Add('"' + fieldData[0] + "\": " + int.Parse(fieldData[1]).ToString());
+                            personalityFields.Add('"' + fieldName + "\": " + int.Parse(fieldData[1]).ToString());
                         }
                         catch (FormatException)
                         {
-                            personalityFields.Add('"' + fieldData[0] + "\": \"" + fieldData[1] + "\"");
+                            personalityFields.Add('"' + fieldName + "\": \"" + fieldData[1] + "\"");
                         }
                     }
                 }
@@ -126,6 +131,15 @@ namespace AIConversion
             aicJSON = aicJSON.Substring(0, aicJSON.Length - 2) + "}]\n}";
             File.WriteAllText(destFile, aicJSON, Encoding.UTF8);
             return true;
+        }
+
+        private static string UpdateFieldName(string fieldName)
+        {
+            if (fieldName == "Unknown131")
+            {
+                return "AttUnitPatrolRecommandDelay";
+            }
+            return fieldName;
         }
     }
 }

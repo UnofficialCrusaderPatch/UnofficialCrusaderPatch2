@@ -2670,19 +2670,11 @@ namespace UCP
             },
 
             #endregion
-
-            //AIVChange.CreateDefault("Tatha"),
-            //AIVChange.CreateDefault("EvreyFixed", true),
-            //AIVChange.CreateDefault("EvreyImproved"),
-            //AIVChange.CreateDefault("EvreyHistory"),
-            //AIVChange.CreateDefault("PitchWells"),
-            //AIVChange.CreateDefault("PitchSiege"),
         };
 
         public static void AddExternalChanges()
         {
             changes.AddRange(AIV.AIVChange.changes);
-            changes.AddRange(AIC.AICChange.changes);
         }
     }
 }
