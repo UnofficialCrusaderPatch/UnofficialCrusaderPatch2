@@ -123,12 +123,7 @@ namespace AIConversion
 
                 aicJSON += "\n\t{" + characterJson + ",";
             }
-            if (characters.Length > 2)
-            {
-                aicJSON = aicJSON.Substring(0, aicJSON.Length - 1);
-            }
-
-            aicJSON = aicJSON.Substring(0, aicJSON.Length - 1) + "}]\n}";
+            aicJSON = aicJSON.Substring(0, aicJSON.Length - 2) + "}]\n}";
             File.WriteAllText(destFile, aicJSON, Encoding.UTF8);
             return true;
         }

@@ -968,7 +968,16 @@ namespace AIConversion
 
         // Index: 84 Hex: 0x150
         [RWComment("Type of ranged units that go to the last attacked farm or building, and guard it until another is attacked. Setting it to None may cause buggy recruitment behavior.")]
-        public Unit SortieUnitRanged { get; set; }
+        public Unit _SortieUnitRanged { get; set; }
+        public string SortieUnitRanged
+        {
+            get => Enum.GetName(typeof(Unit), _SortieUnitRanged);
+            set
+            {
+                _SortieUnitRanged = (Unit)Enum.Parse(typeof(Unit), value);
+            }
+        }
+
 
         // Index: 85 Hex: 0x154
         [RWNames("SortieUnitMeleeMax", "Unknown085")]
@@ -1450,7 +1459,7 @@ namespace AIConversion
         // Index: 131 Hex: 0x20C
         [RWComment("The delay that the AI waits until the AttUnitPatrol get a new attack-move order.")]
         [RWNames("AttUnitPatrolRecommandDelay")]
-        public int Unknown131 { get; set; }
+        public int AttUnitPatrolRecommandDelay { get; set; }
 
         // Index: 132 Hex: 0x210
         public int Unknown132 { get; set; }

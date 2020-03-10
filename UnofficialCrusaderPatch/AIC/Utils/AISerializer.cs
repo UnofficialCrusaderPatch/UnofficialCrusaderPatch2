@@ -127,6 +127,7 @@ namespace AIConversion
             }
             if (AICSerializationExceptionList.ErrorList.Count > 0)
             {
+                System.IO.File.WriteAllText("Conversion.log", AICSerializationExceptionList.ToString());
                 throw AICSerializationExceptionList;
             }
             collection.AIDescription = header;
@@ -141,12 +142,11 @@ namespace AIConversion
 
         private void SetProperty(Type targetType, object target, String expectedFieldName, object expectedFieldValue)
         {
-            PropertyInfo parameter = targetType.GetProperty(expectedFieldName);
-            if (parameter.PropertyType.IsEnum && expectedFieldName != "Name" && expectedFieldName != "Farm1")
+            if (expectedFieldName == "Unknown131")
             {
-                parameter.SetValue(target, Enum.Parse(parameter.PropertyType, expectedFieldValue.ToString()), null);
+                expectedFieldName = "AttUnitPatrolRecommandDelay";
             }
-            else
+            PropertyInfo parameter = targetType.GetProperty(expectedFieldName);
             if (parameter.PropertyType == typeof(bool))
             {
                 parameter.SetValue(target, Convert.ToBoolean(expectedFieldValue), null);

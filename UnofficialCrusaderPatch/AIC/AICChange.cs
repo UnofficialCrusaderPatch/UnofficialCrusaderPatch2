@@ -67,7 +67,6 @@ namespace UCP.AIC
             };
         }
 
-
         public override void InitUI()
         {
             this.titleBox = new CheckBox()
@@ -125,7 +124,7 @@ namespace UCP.AIC
                     FontWeight = FontWeights.Bold,
                     HorizontalAlignment = HorizontalAlignment.Right,
                     VerticalAlignment = VerticalAlignment.Top,
-                    Margin = new Thickness(0, 0, 30, 0),
+                    Margin = new Thickness(0, 0, 45, 0),
                     Background = new SolidColorBrush(Color.FromRgb(246, 53, 53)),
                 };
                 infoButton.Click += (s, e) =>
@@ -142,7 +141,8 @@ namespace UCP.AIC
                     }
                 };
                 panel.Children.Add(infoButton);
-            } else
+            } 
+            else
             {
                 Button selectButton = new Button()
                 {
@@ -153,7 +153,7 @@ namespace UCP.AIC
                     FontSize = 10,
                     HorizontalAlignment = HorizontalAlignment.Right,
                     VerticalAlignment = VerticalAlignment.Top,
-                    Margin = new Thickness(0, 0, 30, 0),
+                    Margin = new Thickness(0, 0, 45, 0),
                     Background = new SolidColorBrush(Color.FromRgb(0, 255, 0)),
 
                 };
@@ -459,9 +459,7 @@ namespace UCP.AIC
             string aicName = Path.GetFileName(fileName).Replace("UCP.AIC.Resources.", "");
             try
             {
-                AICollection ch = serializer.Deserialize<AICollection>(text);
-                Console.WriteLine(ch.AIDescription.DescrEng);
-                Console.WriteLine(ch.AIDescription.DescrRus);
+                AICollection ch = serializer.Deserialize<AICollection>(text);;
 
                 AICChange change = new AICChange(aicName, true)
                 {
