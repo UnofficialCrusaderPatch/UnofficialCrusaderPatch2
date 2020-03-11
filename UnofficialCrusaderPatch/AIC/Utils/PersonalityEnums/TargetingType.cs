@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AIConversion
+namespace UCPAIConversion
 {
     /// <summary> How the AI determines its next attack target. </summary>
     public enum TargetingType

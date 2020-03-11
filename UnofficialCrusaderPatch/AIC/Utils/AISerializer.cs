@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
-namespace AIConversion
+namespace UCPAIConversion
 {
     class AISerializer : JavaScriptConverter
     {
@@ -108,7 +108,12 @@ namespace AIConversion
                                     try
                                     {
                                         SetProperty(AIPersonalityType, currentPersonality, personalityValue.Key, personalityValue.Value);
-                                    } catch (ArgumentException)
+                                    }
+                                    catch (ArgumentException)
+                                    {
+                                        SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, currentCharacter._Name.ToString()));
+                                    }
+                                    catch (NullReferenceException)
                                     {
                                         SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, currentCharacter._Name.ToString()));
                                     }

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using UCP.Patching;
-using UCP.AIC;
+using System.Linq;
 using System.Text.RegularExpressions;
+using UCP.AIC;
+using UCP.Patching;
 
 namespace UCP
 {

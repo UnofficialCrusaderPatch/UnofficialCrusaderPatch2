@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AIConversion
+namespace UCPAIConversion
 {
     /// <summary>
     /// Crusader-intern military unit IDs

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
-namespace AIConversion
+namespace UCPAIConversion
 {
     public class AIPersonality
     {
@@ -44,7 +44,7 @@ namespace AIConversion
         private int _AttForceRallyPercentage;
         private int _CowThrowInterval;
         private int _AttUnitPatrolGroupsCount;
-        private int _RangedBackupGroupsCount;
+        private int _AttUnitBackupGroupsCount;
         private int _AttMainGroupsCount;
 
         // Index: 0 Hex: 0x00
@@ -1686,11 +1686,11 @@ namespace AIConversion
         // Index: 156 Hex: 0x270
         [RWNames("Unknown156", "RangedBackupGroupsCount")]
         [RWComment("# of groups the AttUnitBackup split into. If shields are present in the army, one will be added to each group (if possible).")]
-        public int RangedBackupGroupsCount
+        public int AttUnitBackupGroupsCount
         {
             get
             {
-                return _RangedBackupGroupsCount;
+                return _AttUnitBackupGroupsCount;
             }
             set
             {
@@ -1698,7 +1698,7 @@ namespace AIConversion
                 {
                     throw new ArgumentException();
                 }
-                _RangedBackupGroupsCount = value;
+                _AttUnitBackupGroupsCount = value;
             }
         }
 
@@ -1738,7 +1738,7 @@ namespace AIConversion
 
         // Index: 161 Hex: 0x284
         [RWNames("AttUnitSiegeDefGroupsCount")]
-        public int Unknown161 { get; set; }
+        public int AttUnitSiegeDefGroupsCount { get; set; }
 
         // Index: 162 Hex: 0x288
         [ScriptIgnore]

@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using System.Reflection;
-using System.Windows;
-using UCP.Patching;
-using System.Windows.Controls;
-using System.Web.Script.Serialization;
 using System.Collections.ObjectModel;
-using AIConversion;
-using System.Windows.Media;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Web.Script.Serialization;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using UCP.Patching;
+using UCPAIConversion;
 
 namespace UCP.AIC
 {
@@ -409,16 +409,24 @@ namespace UCP.AIC
 
         private static void Load()
         {
+            LoadAIC("UCP.AIC.Resources.UCP-Bugfix.aic.json");
             LoadAIC("UCP.AIC.Resources.vanilla.aic.json");
+            LoadAIC("UCP.AIC.Resources.Kimberly-Balance-v1.0.aic.json");
+            LoadAIC("UCP.AIC.Resources.Krarilotus-aggressiveAI-v1.0.aic.json");
+            LoadAIC("UCP.AIC.Resources.Tatha 0.5.1.aic.json");
+            LoadAIC("UCP.AIC.Resources.Xander10alpha-v1.0.aic.json");
 
-            foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic", SearchOption.TopDirectoryOnly))
+            if (Directory.Exists(Path.Combine(Environment.CurrentDirectory, "aic")))
             {
-                LoadAIC(file);
-            }
+                foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic", SearchOption.TopDirectoryOnly))
+                {
+                    LoadAIC(file);
+                }
 
-            foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic.json", SearchOption.TopDirectoryOnly))
-            {
-                LoadAIC(file);
+                foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic.json", SearchOption.TopDirectoryOnly))
+                {
+                    LoadAIC(file);
+                }
             }
         }
 

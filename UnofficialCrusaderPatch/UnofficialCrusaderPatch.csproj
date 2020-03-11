@@ -83,7 +83,6 @@
     <Compile Include="AIC\Utils\PersonalityEnums\TargetingType.cs" />
     <Compile Include="AIC\Utils\PersonalityEnums\Units.cs" />
     <Compile Include="AIC\Utils\PersonalityEnums\WorkshopSettings.cs" />
-    <Compile Include="AIC\Utils\Program.cs" />
     <Compile Include="AIC\Utils\RWAttributes.cs" />
     <Compile Include="AIV\AIVView.cs" />
     <Compile Include="Configuration.cs" />
@@ -649,6 +648,11 @@
     <EmbeddedResource Include="AIC\Resources\descriptions.json" />
     <EmbeddedResource Include="AIC\Resources\errors.json" />
     <EmbeddedResource Include="AIC\Resources\vanilla.aic.json" />
+    <EmbeddedResource Include="AIC\Resources\Kimberly-Balance-v1.0.aic.json" />
+    <EmbeddedResource Include="AIC\Resources\Krarilotus-aggressiveAI-v1.0.aic.json" />
+    <EmbeddedResource Include="AIC\Resources\Tatha 0.5.1.aic.json" />
+    <EmbeddedResource Include="AIC\Resources\UCP-Bugfix.aic.json" />
+    <EmbeddedResource Include="AIC\Resources\Xander10alpha-v1.0.aic.json" />
     <None Include="App.config" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />

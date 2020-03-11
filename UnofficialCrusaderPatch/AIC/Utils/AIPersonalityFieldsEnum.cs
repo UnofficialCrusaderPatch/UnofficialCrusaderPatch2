@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-namespace AIConversion
+namespace UCPAIConversion
 {
     enum AIPersonalityFieldsEnum
     {
@@ -162,12 +162,12 @@ namespace AIConversion
 		AttUnitPatrolGroupsCount,
 		AttUnitBackup,
 		AttUnitBackupMax,
-		RangedBackupGroupsCount,
+		AttUnitBackupGroupsCount,
 		AttUnitEngage,
 		AttUnitEngageMax,
 		AttUnitSiegeDef,
 		AttUnitSiegeDefMax,
-		Unknown161,
+		AttUnitSiegeDefGroupsCount,
 		AttUnitMain1,
 		AttUnitMain2,
 		AttUnitMain3,
