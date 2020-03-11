@@ -11,6 +11,7 @@ using System.Web.Script.Serialization;
 using System.Collections.ObjectModel;
 using AIConversion;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace UCP.AIC
 {
@@ -19,7 +20,6 @@ namespace UCP.AIC
         private AICollection collection;
         private List<AICharacterName> characters;
 
-        static AICChange activeChange = null;
         static Dictionary<String, String> errorMessages;
         static Dictionary<String, String> errorHints;
 
@@ -27,6 +27,13 @@ namespace UCP.AIC
         static Dictionary<AICharacterName, String> currentSelection;
 
         static List<AICharacterName> emptySelection = new List<AICharacterName>();
+
+        static List<string> internalAIC = new List<string>()
+        {
+            "vanilla.aic.json", "UCP-Bugfix.aic.json", "Kimberly-Balance-v1.0.aic.json",
+            "Krarilotus-aggressive-AI-v1.0.aic.json", "Tatha 0.5.1.aic.json",
+            "Xander10Alpha-v1.0.aic.json"
+        };
 
         static List<AICChange> _changes = new List<AICChange>();
 
@@ -56,16 +63,6 @@ namespace UCP.AIC
             this.NoLocalization = true;
         }
 
-        public static AICChange CreateDefault(string titleIdent, bool enabledDefault = false)
-        {
-            return new AICChange(titleIdent, enabledDefault)
-            {
-                new DefaultHeader(titleIdent, true, true)
-                {
-                }
-            };
-        }
-
         public override void InitUI()
         {
             this.titleBox = new CheckBox()
@@ -79,7 +76,7 @@ namespace UCP.AIC
                     FontSize = 14,
                     Width = 400,
                 },
-                IsChecked = false,//headerList.Exists(h => h.IsEnabled),
+                IsChecked = currentSelection.ContainsValue(this.TitleIdent),
                 IsThreeState = true,
                 IsEnabled = !this.GetTitle().EndsWith(".aic"),
             };
@@ -245,19 +242,147 @@ namespace UCP.AIC
             this.uiElement = panel;
         }
 
-        public static void Load()
+        protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
         {
-            LoadAIC("UCP.AIC.Resources.vanilla.aic.json");
-
-            foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic", SearchOption.TopDirectoryOnly))
+            if (!(System.Windows.Input.Keyboard.Modifiers == System.Windows.Input.ModifierKeys.Control))
             {
-                LoadAIC(file);
+                foreach (var change in changes)
+                {
+                    if (change != this)
+                    {
+                        foreach (KeyValuePair<AICharacterName, string> sel in currentSelection)
+                        {
+                            if (sel.Value == change.TitleIdent)
+                            {
+                                currentSelection.Remove(sel.Key);
+                            }
+                        }
+                    }
+                }
+            }
+            foreach (AICharacterName character in this.characters)
+            {
+                currentSelection.Add(character, this.TitleIdent);
+            }
+            base.TitleBox_Checked(sender, e);
+        }
+
+        protected void TitleBox_Indeterminate(object sender, RoutedEventArgs e)
+        {
+            ((CheckBox)sender).IsChecked = false;
+            TitleBox_Unchecked(sender, e);
+        }
+
+        protected override void TitleBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            List<AICharacterName> namesToRemove = new List<AICharacterName>();
+            foreach (KeyValuePair<AICharacterName, string> sel in currentSelection)
+            {
+                if (sel.Value == this.TitleIdent)
+                {
+                    namesToRemove.Add(sel.Key);
+                }
+            }
+            foreach (AICharacterName name in namesToRemove)
+            {
+                currentSelection.Remove(name);
+            }
+            base.TitleBox_Unchecked(sender, e);
+        }
+
+        private void ConvertAIC()
+        {
+            string fileName = Path.Combine(Environment.CurrentDirectory, "aic", this.TitleIdent);
+            string newFileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(this.TitleIdent) + ".aic.json");
+
+            string backupFileName = fileName;
+            while (File.Exists(backupFileName))
+            {
+                backupFileName = backupFileName + ".bak";
+            }
+            try
+            {
+                bool result = AICHelper.Convert(fileName, newFileName);
+                if (result)
+                {
+                    File.Move(fileName, backupFileName);
+                    Debug.Show("AIC file successfully converted. Please click refresh to see updated AIC list");
+                }
+            }
+            catch (Exception e)
+            {
+                File.WriteAllText("AICLoading.log", e.ToString());
+                Debug.Show("Errors found in conversion. Please see convert manually and confirm valid JSON before reloading");
+            }
+        }
+
+        private void ExportFile()
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string fileName = Path.Combine(Environment.CurrentDirectory, "aic", this.TitleIdent);
+            string backupFileName = fileName;
+            while (File.Exists(backupFileName))
+            {
+                backupFileName = backupFileName + ".bak";
+            }
+            File.Move(fileName, backupFileName);
+            File.WriteAllText(fileName, Format(serializer.Serialize(collection)));
+
+            Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent);
+        }
+
+        private String Format(String aicJson)
+        {
+            return aicJson.Replace(",\"", ",\n\t\"").Replace("{", "{\n\t").Replace("}", "\n}");
+        }
+
+        public static void LoadConfiguration(List<string> configuration = null)
+        {
+            Load();
+            if (configuration == null)
+            {
+                return;
             }
 
-            foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic.json", SearchOption.TopDirectoryOnly))
+            foreach (string change in configuration)
             {
-                LoadAIC(file);
+                string[] changeLine = change.Split(new char[] { '=' }, 2, StringSplitOptions.RemoveEmptyEntries).Select(str => str.Trim()).ToArray();
+                if (changeLine.Length < 2)
+                {
+                    continue;
+                }
+
+                string changeKey = changeLine[0];
+                string changeSetting = changeLine[1];
+
+                bool bundledAIC = changeSetting.Contains("aicFalse");
+                bool selected = Regex.Replace(@"\s+", "", changeSetting).Contains("True");
+
+                if (!changeKey.EndsWith(".aic"))
+                {
+                    foreach (AICChange aicChange in changes)
+                    {
+                        if (aicChange.TitleIdent == changeKey && selected == true)
+                        {
+                            //aicChange.titleBox.IsChecked = true;
+                            foreach (AICharacter character in aicChange.collection.AICharacters)
+                            {
+                                currentSelection[character._Name] = aicChange.TitleIdent;
+                            }
+                        }
+                    }
+                }
             }
+        }
+
+        public static List<string> GetConfiguration()
+        {
+            List<string> configuration = new List<string>();
+            foreach (AICChange aicChange in changes)
+            {
+                configuration.Add(aicChange.TitleIdent + "= { " + aicChange.TitleIdent + IsInternal(aicChange.TitleIdent).ToString() + "={" + (currentSelection.ContainsValue(aicChange.TitleIdent)).ToString() + "}");
+            }
+            return configuration;
         }
 
         public static void Refresh(object sender, RoutedEventArgs args)
@@ -277,11 +402,82 @@ namespace UCP.AIC
             CreateEdit().Activate(args);
         }
 
-        public static ChangeHeader CreateEdit()
+        private static bool IsInternal(string titleIdent)
+        {
+            return internalAIC.Contains(titleIdent);
+        }
+
+        private static void Load()
+        {
+            LoadAIC("UCP.AIC.Resources.vanilla.aic.json");
+
+            foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic", SearchOption.TopDirectoryOnly))
+            {
+                LoadAIC(file);
+            }
+
+            foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic.json", SearchOption.TopDirectoryOnly))
+            {
+                LoadAIC(file);
+            }
+        }
+
+        private static void LoadAIC(string fileName)
+        {
+            if (fileName.EndsWith(".aic"))
+            {
+                AICChange change = new AICChange(Path.GetFileName(fileName), true)
+                {
+                    new DefaultHeader(Path.GetFileName(fileName), true, true)
+                    {
+                    }
+                };
+                changes.Add(change);
+                return;
+            }
+            
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.RegisterConverters(new ReadOnlyCollection<JavaScriptConverter>(new List<JavaScriptConverter>() { new AISerializer(errorMessages, errorHints) }));
+            StreamReader reader;
+            
+            if (fileName.StartsWith("UCP.AIC.Resources"))
+            {
+                reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(fileName), Encoding.UTF8);
+            } else
+            {
+                reader = new StreamReader(new FileStream(fileName, FileMode.Open), Encoding.UTF8);
+            }
+            string text = reader.ReadToEnd();
+            reader.Close();
+
+            string aicName = Path.GetFileName(fileName).Replace("UCP.AIC.Resources.", "");
+            try
+            {
+                AICollection ch = serializer.Deserialize<AICollection>(text);;
+
+                AICChange change = new AICChange(aicName, true)
+                {
+                    new DefaultHeader(aicName, true, true)
+                    {
+                    }
+                };
+                change.collection = ch;
+                change.characters = ch.GetCharacters();
+                availableSelection[change.TitleIdent] = ch.GetCharacters();
+                changes.Add(change);
+            }
+            catch (AICSerializationException e)
+            {
+                File.AppendAllText("Conversion.log", e.ToErrorString(fileName));
+            }
+        }
+
+        private static ChangeHeader CreateEdit()
         {
             List<AICharacter> characterChanges = new List<AICharacter>();
 
-            foreach (AICharacterName name in Enum.GetValues(typeof(AICharacterName))){
+            foreach (AICharacterName name in Enum.GetValues(typeof(AICharacterName)))
+            {
                 if (!currentSelection.ContainsKey(name))
                 {
                     continue;
@@ -367,153 +563,6 @@ namespace UCP.AIC
             };
 
             return new DefaultHeader("ai_prop") { be };
-        }
-
-        protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
-        {
-            base.TitleBox_Checked(sender, e);
-            if (!(System.Windows.Input.Keyboard.Modifiers == System.Windows.Input.ModifierKeys.Control))
-            {
-                foreach (var c in Version.Changes)
-                {
-                    if (c != this && c is AICChange)
-                    {
-                        c.IsChecked = false;
-                        foreach (KeyValuePair<AICharacterName, string> sel in currentSelection)
-                        {
-                            if (sel.Value == c.TitleIdent)
-                            {
-                                currentSelection.Remove(sel.Key);
-                            }
-                        }
-                    }
-                }
-            }
-            foreach (AICharacterName character in this.characters)
-            {
-                currentSelection.Add(character, this.TitleIdent);
-            }
-        }
-
-        protected void TitleBox_Indeterminate(object sender, RoutedEventArgs e)
-        {
-            ((CheckBox)sender).IsChecked = false;
-            TitleBox_Unchecked(sender, e);
-        }
-
-        protected override void TitleBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            base.TitleBox_Unchecked(sender, e);
-
-            if (activeChange == this)
-                activeChange = null;
-
-            List<AICharacterName> namesToRemove = new List<AICharacterName>();
-            foreach (KeyValuePair<AICharacterName, string> sel in currentSelection)
-            {
-                if (sel.Value == this.TitleIdent)
-                {
-                    namesToRemove.Add(sel.Key);
-                }
-            }
-            foreach (AICharacterName name in namesToRemove)
-            {
-                currentSelection.Remove(name);
-            }
-        }
-
-        private static void LoadAIC(string fileName)
-        {
-            if (fileName.EndsWith(".aic"))
-            {
-                AICChange change = new AICChange(Path.GetFileName(fileName), true)
-                {
-                    new DefaultHeader(Path.GetFileName(fileName), true, true)
-                    {
-                    }
-                };
-                changes.Add(change);
-                return;
-            }
-            
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            serializer.RegisterConverters(new ReadOnlyCollection<JavaScriptConverter>(new List<JavaScriptConverter>() { new AISerializer(errorMessages, errorHints) }));
-            StreamReader reader;
-            
-            if (fileName.StartsWith("UCP.AIC.Resources"))
-            {
-                reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(fileName), Encoding.UTF8);
-            } else
-            {
-                reader = new StreamReader(new FileStream(fileName, FileMode.Open), Encoding.UTF8);
-            }
-            string text = reader.ReadToEnd();
-            reader.Close();
-
-            string aicName = Path.GetFileName(fileName).Replace("UCP.AIC.Resources.", "");
-            try
-            {
-                AICollection ch = serializer.Deserialize<AICollection>(text);;
-
-                AICChange change = new AICChange(aicName, true)
-                {
-                    new DefaultHeader(aicName, true, true)
-                    {
-                    }
-                };
-                change.collection = ch;
-                change.characters = ch.GetCharacters();
-                availableSelection[change.TitleIdent] = ch.GetCharacters();
-                changes.Add(change);
-            }
-            catch (AICSerializationException e)
-            {
-                Console.WriteLine(e.ToErrorString(fileName));
-            }
-        }
-
-        private void ConvertAIC()
-        {
-            string fileName = Path.Combine(Environment.CurrentDirectory, "aic", this.TitleIdent);
-            string newFileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(this.TitleIdent) + ".aic.json");
-
-            string backupFileName = fileName;
-            while (File.Exists(backupFileName))
-            {
-                backupFileName = backupFileName + ".bak";
-            }
-            try
-            {
-                bool result = AICHelper.Convert(fileName, newFileName);
-                if (result)
-                {
-                    File.Move(fileName, backupFileName);
-                    Debug.Show("AIC file successfully converted. Please click refresh to see updated AIC list");
-                }
-            } catch (Exception)
-            {
-                Debug.Show("Errors found in conversion. Please see convert manually and confirm valid JSON before reloading");
-            }
-        }
-
-        private void ExportFile()
-        {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            string fileName = Path.Combine(Environment.CurrentDirectory, "aic", this.TitleIdent);
-            string backupFileName = fileName;
-            while (File.Exists(backupFileName))
-            {
-                backupFileName = backupFileName + ".bak";
-            }
-            File.Move(fileName, backupFileName);
-            File.WriteAllText(fileName, Format(serializer.Serialize(collection)));
-
-            Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent);
-        }
-
-        private String Format(String aicJson)
-        {
-            return aicJson.Replace(",\"", ",\n\t\"").Replace("{", "{\n\t").Replace("}", "\n}");
         }
     }
 }

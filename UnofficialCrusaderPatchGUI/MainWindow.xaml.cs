@@ -32,7 +32,7 @@ namespace UCP
 
         public MainWindow()
         {
-            Configuration.Load();
+            Configuration.Load(false);
             Version.AddExternalChanges();
 
             // choose language
@@ -45,7 +45,6 @@ namespace UCP
             if (Configuration.Language != Localization.LanguageIndex)
             {
                 Configuration.Language = Localization.LanguageIndex;
-                Configuration.Save("Language");
             }
 
             // init main window
@@ -162,8 +161,6 @@ namespace UCP
 
             if (!viewLoaded)
             {
-                Configuration.Save();
-
                 // fill setup options list
                 FillTreeView(Version.Changes);
                 viewLoaded = true;

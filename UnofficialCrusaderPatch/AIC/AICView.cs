@@ -10,6 +10,7 @@ namespace UCP.AIC
 {
     public class AICView
     {
+
         public void InitUI(Grid grid, RoutedPropertyChangedEventHandler<object> SelectionDisabler)
         {
             TreeView view = new TreeView()
@@ -42,13 +43,11 @@ namespace UCP.AIC
             };
             grid.Children.Add(button);
             button.Click += (s, e) => Refresh(s, e, view);
-            //grid.Children.Add(button);
         }
 
         private void Refresh(object s, RoutedEventArgs e, TreeView view)
         {
             AICChange.Refresh(s, e);
-            Version.Changes.AddRange(AICChange.changes);
             foreach (AICChange change in AICChange.changes)
             {
                 change.InitUI();

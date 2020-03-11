@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using UCP.Patching;
 using UCP.AIC;
+using System.Text.RegularExpressions;
 
 namespace UCP
 {
@@ -60,13 +61,22 @@ namespace UCP
                 // edits
                 foreach (Change change in Version.Changes)
                 {
-                    sw.WriteLine(change.ToString());
+                    if (change.Type != ChangeType.AIC)
+                    {
+                        sw.WriteLine(change.ToString());
+                    }
+                }
+                
+                foreach(string line in AICChange.GetConfiguration())
+                {
+                    sw.WriteLine(line);
                 }
             }
         }
 
-        public static void Load(bool changesOnly = false, bool aionly = false)
+        public static void Load(bool changesOnly = false, bool generalOnly = false)
         {
+            List<string> aicConfigurationList = null;
             if (File.Exists(ConfigFile))
             {
                 using (StreamReader sr = new StreamReader(ConfigFile))
@@ -74,11 +84,22 @@ namespace UCP
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
+                        if (Regex.Replace(@"\s+","", line).Contains("aic=") || Regex.Replace(@"\s+", "", line).Contains("aic.json="))
+                        {
+                            if (aicConfigurationList == null)
+                            {
+                                aicConfigurationList = new List<string>();
+                            }
+                            aicConfigurationList.Add(line);
+                            continue;
+                        }
+
                         string[] changeLine = line.Split(new char[] { '=' }, 2, StringSplitOptions.RemoveEmptyEntries).Select(str => str.Trim()).ToArray();
                         if (changeLine.Length < 2)
                         {
                             continue;
                         }
+
                         string changeKey = changeLine[0];
                         string changeSetting = changeLine[1];
 
@@ -93,14 +114,27 @@ namespace UCP
                                 if (int.TryParse(changeSetting, out int result))
                                     Configuration.Language = result;
                             }
-                        } else
+                        }
+                        else if (generalOnly)
+                        {
+                            if (changeKey == "Path")
+                            {
+                                Configuration.Path = changeSetting;
+                            }
+                            else if (changeKey == "Language")
+                            {
+                                if (int.TryParse(changeSetting, out int result))
+                                    Configuration.Language = result;
+                            }
+                        }
+                        else
                         {
                             if (changeKey == "Path" || changeKey == "Language")
                             {
                                 continue;
                             }
                             Change change = Version.Changes.Find(c => c.TitleIdent == changeKey);
-                            if (change == null || (aionly == true && change.Type != ChangeType.AIC)) continue;
+                            if (change == null) continue;
 
                             int numChanges = changeSetting.Count(ch => ch == '=');
                             string[] changes = changeSetting.Split(new char[] { '}' }, numChanges, StringSplitOptions.RemoveEmptyEntries);
@@ -114,8 +148,8 @@ namespace UCP
                         }
                     }
                 }
-                AICChange.Load();
             }
+            AICChange.LoadConfiguration(aicConfigurationList);
         }
     }
 }

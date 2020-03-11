@@ -126,8 +126,7 @@ namespace AIConversion
                 }
             }
             if (AICSerializationExceptionList.ErrorList.Count > 0)
-            {
-                System.IO.File.WriteAllText("Conversion.log", AICSerializationExceptionList.ToString());
+            {                
                 throw AICSerializationExceptionList;
             }
             collection.AIDescription = header;
