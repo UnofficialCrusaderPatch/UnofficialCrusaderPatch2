@@ -2677,7 +2677,7 @@
 			"LowestPopularity": 7500,
 			"HighestPopularity": 10000,
 			"TaxesMin": 1,
-			"TaxesMax": 12,
+			"TaxesMax": 11,
 			"Unknown011": 10,
 			"Farm1": "AppleFarm",
 			"Farm2": "WheatFarm",
