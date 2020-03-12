@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using UCP.AICharacters;
+using UCPAIConversion;
 
 namespace IDAParser
 {
@@ -21,7 +21,7 @@ namespace IDAParser
                     aiw.WriteMarkdown(typeof(AIPersonality));
                 }*/
 
-                string ucpPath = Directory.GetCurrentDirectory() + "../../../../UnofficialCrusaderPatch/AICs";
+                string ucpPath = Directory.GetCurrentDirectory() + "../../../../UnofficialCrusaderPatch/AIC/Resources";
                 UpdateAICs(Path.GetFullPath(ucpPath));
             }
             catch (Exception e)

@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using UCP.AICharacters;
+using UCPAIConversion;
+using System.Web.Script.Serialization;
 
 namespace AICUpdater
 {
@@ -13,7 +14,7 @@ namespace AICUpdater
         static void Main(string[] args)
         {
             Console.Title = "AIC-Updater";
-            var files = Directory.EnumerateFiles(Directory.GetCurrentDirectory(), "*.aic");
+            var files = Directory.EnumerateFiles(Environment.CurrentDirectory, "*.aic");
             if (files.Count() == 0)
             {
                 Console.WriteLine("No .aic files found!");
@@ -33,21 +34,32 @@ namespace AICUpdater
 
                 foreach (string file in files)
                 {
-                    AICCollection aicc;
-                    using (FileStream fs = new FileStream(file, FileMode.Open))
+                    string newfile = Path.Combine(Path.GetDirectoryName(file), Path.GetFileNameWithoutExtension(file) + ".aic.json");
+
+                    string backupfile = file;
+                    while (File.Exists(backupfile))
                     {
-                        aicc = new AICCollection(fs);
+                        backupfile = backupfile + ".bak";
                     }
-
-
-                    using (FileStream fs = new FileStream(file, FileMode.Create))
+                    try
                     {
-                        aicc.Write(fs);
+                        string result = AICUpdaterHelper.Convert(file, newfile);
+                        File.Move(file, backupfile);
+                        File.WriteAllText(newfile, Format(result));
+                    }
+                    catch (Exception e)
+                    {
+                        File.AppendAllText("AICLoading.log", e.ToString());
                     }
                 }
                 Console.WriteLine("Done.");
             }
             Console.ReadLine();
+        }
+
+        private static String Format(String aicJson)
+        {
+            return aicJson.Replace(",\"", ",\n\t\"").Replace("{", "{\n\t").Replace("}", "\n}");
         }
     }
 }
