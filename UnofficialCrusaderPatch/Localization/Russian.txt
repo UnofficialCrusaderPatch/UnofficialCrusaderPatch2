@@ -53,6 +53,36 @@ ui_browsepath
 	"Пожалуйста, выберите каталог установки Stronghold Crusader."
 }
 
+ui_aicoldversion
+{
+	"Обнаружена старая версия. Нажмите, чтобы конвертировать"
+}
+
+ui_aicofferconvert
+{
+	"Конвертировать файл в новую версию?"
+}
+
+ui_aicconvertprompt
+{
+	"AIC Conversion"
+}
+
+ui_aicselecttooltip
+{
+	"Выберите отдельных ИИ"
+}
+
+ui_aicalreadyselectedtooltip
+{
+	"Этот ИИ уже был выбран. Выберите это, чтобы перезаписать."
+}
+
+ui_aicconfirm
+{
+	"Подтвердите выбор"
+}
+
 // ======================
 //         2.13
 // ======================

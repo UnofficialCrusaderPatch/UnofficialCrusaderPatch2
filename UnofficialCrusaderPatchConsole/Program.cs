@@ -74,7 +74,6 @@ namespace UCP
 
         static void SilentInstall()
         {
-            Configuration.Load();
             Version.Changes.Contains(null);
             Patcher.Install(Configuration.Path, null);
             Console.WriteLine("UCP successfully installed");

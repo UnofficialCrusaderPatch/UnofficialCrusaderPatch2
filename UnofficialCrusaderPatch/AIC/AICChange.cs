@@ -112,7 +112,7 @@ namespace UCP.AIC
             {
                 Button infoButton = new Button()
                 {
-                    ToolTip = "Old version detected. Click to convert",
+                    ToolTip = Localization.Get("ui_aicoldversion"),
                     Width = 17,
                     Height = 17,
                     Content = "\uFF1F",
@@ -126,7 +126,7 @@ namespace UCP.AIC
                 infoButton.Click += (s, e) =>
                 {
 
-                    MessageBoxResult result = MessageBox.Show("Convert aic file to newer version?", "AIC Conversion", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                    MessageBoxResult result = MessageBox.Show(Localization.Get("ui_aicofferconvert"), Localization.Get("ui_aicconvertprompt"), MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
@@ -142,7 +142,7 @@ namespace UCP.AIC
             {
                 Button selectButton = new Button()
                 {
-                    ToolTip = "Select individual AIs",
+                    ToolTip = Localization.Get("ui_aicselecttooltip"),
                     Width = 17,
                     Height = 17,
                     Content = "\u2713",
@@ -179,7 +179,7 @@ namespace UCP.AIC
                             IsChecked = currentSelection.ContainsKey(characterName) && currentSelection[characterName] == this.TitleIdent,
                         };
                         if (currentSelection.ContainsKey(characterName)){
-                            checkBox.ToolTip = "This AI has already been selected. Select this to overwrite.";
+                            checkBox.ToolTip = Localization.Get("ui_aicalreadyselectedtooltip");
                         }
                         checkBox.Click += (s1, e1) =>
                         {
@@ -198,7 +198,7 @@ namespace UCP.AIC
 
                     Button acceptSelection = new Button()
                     {
-                        Content = "Confirm Selection",
+                        Content = Localization.Get("ui_aicconfirm"),
                         HorizontalAlignment = HorizontalAlignment.Center,
                         VerticalAlignment = VerticalAlignment.Bottom,
                         Margin = new Thickness(0, 0, 0, 10),
