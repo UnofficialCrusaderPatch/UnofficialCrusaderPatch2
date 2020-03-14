@@ -113,7 +113,6 @@ namespace UCP.Patching
             perc.Set(todoIndex / todoCount);
 
             ChangeArgs args = new ChangeArgs(data, oriData);
-            AICChange.DoChange(args);
 
             // change version display in main menu
             try
@@ -126,19 +125,14 @@ namespace UCP.Patching
             }
             perc.Set(++todoIndex / todoCount);
 
-
-
             // change stuff
             foreach (Change change in todoList)
             {
                 change.Activate(args);
                 perc.Set(++todoIndex / todoCount);
             }
+            AICChange.DoChange(args);
 
-
-
-            // change AI properties
-            //AICChange.DoEdit(args);
             todoIndex += 2;
             perc.Set(todoIndex / todoCount);
 

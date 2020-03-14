@@ -192,6 +192,7 @@ namespace UCP
                 Debug.Error(Localization.Get("ui_wrongpath"));
                 return;
             }
+            Configuration.Save();
             iButtonInstall.IsEnabled = false;
             pButtonSearch.IsEnabled = false;
             pTextBoxPath.IsReadOnly = true;

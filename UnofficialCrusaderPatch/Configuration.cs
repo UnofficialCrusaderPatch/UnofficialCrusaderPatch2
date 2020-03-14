@@ -73,7 +73,7 @@ namespace UCP
             }
         }
 
-        public static void Load(bool changesOnly = false, bool generalOnly = false)
+        public static void Load(bool changesOnly = false)
         {
             List<string> aicConfigurationList = null;
             if (File.Exists(ConfigFile))
@@ -114,36 +114,21 @@ namespace UCP
                                     Configuration.Language = result;
                             }
                         }
-                        else if (generalOnly)
+                        if (changeKey == "Path" || changeKey == "Language")
                         {
-                            if (changeKey == "Path")
-                            {
-                                Configuration.Path = changeSetting;
-                            }
-                            else if (changeKey == "Language")
-                            {
-                                if (int.TryParse(changeSetting, out int result))
-                                    Configuration.Language = result;
-                            }
+                            continue;
                         }
-                        else
-                        {
-                            if (changeKey == "Path" || changeKey == "Language")
-                            {
-                                continue;
-                            }
-                            Change change = Version.Changes.Find(c => c.TitleIdent == changeKey);
-                            if (change == null) continue;
+                        Change change = Version.Changes.Find(c => c.TitleIdent == changeKey);
+                        if (change == null) continue;
 
-                            int numChanges = changeSetting.Count(ch => ch == '=');
-                            string[] changes = changeSetting.Split(new char[] { '}' }, numChanges, StringSplitOptions.RemoveEmptyEntries);
-                            for (int i = 0; i < numChanges; i++)
-                            {
-                                string headerKey = changes[i].Split('=')[0].Replace(" ", "");
-                                string headerValue = changes[i].Split('=')[1].Replace(" ", "").Replace("{", "");
-                                DefaultHeader header = change.FirstOrDefault(c => c.DescrIdent == headerKey);
-                                header.LoadValueString(headerValue);
-                            }
+                        int numChanges = changeSetting.Count(ch => ch == '=');
+                        string[] changes = changeSetting.Split(new char[] { '}' }, numChanges, StringSplitOptions.RemoveEmptyEntries);
+                        for (int i = 0; i < numChanges; i++)
+                        {
+                            string headerKey = changes[i].Split('=')[0].Replace(" ", "").Replace("{", String.Empty);
+                            string headerValue = changes[i].Split('=')[1].Replace(" ", "").Replace("{", String.Empty).Replace("}", String.Empty);
+                            DefaultHeader header = change.FirstOrDefault(c => c.DescrIdent == headerKey);
+                            header.LoadValueString(headerValue);
                         }
                     }
                 }

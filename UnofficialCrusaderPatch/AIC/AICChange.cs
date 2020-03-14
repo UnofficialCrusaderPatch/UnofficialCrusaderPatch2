@@ -250,13 +250,19 @@ namespace UCP.AIC
                 {
                     if (change != this)
                     {
+                        List<AICharacterName> namesToRemove = new List<AICharacterName>();
                         foreach (KeyValuePair<AICharacterName, string> sel in currentSelection)
                         {
                             if (sel.Value == change.TitleIdent)
                             {
-                                currentSelection.Remove(sel.Key);
+                                namesToRemove.Add(sel.Key);
                             }
                         }
+                        foreach (AICharacterName name in namesToRemove)
+                        {
+                            currentSelection.Remove(name);
+                        }
+                        change.titleBox.IsChecked = false;
                     }
                 }
             }

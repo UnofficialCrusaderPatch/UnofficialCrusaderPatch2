@@ -749,10 +749,10 @@ namespace UCPAIConversion
         public Resource _SellResource14 { get; set; }
         public string SellResource14
         {
-            get => Enum.GetName(typeof(Resource), _SellResource01);
+            get => Enum.GetName(typeof(Resource), _SellResource14);
             set
             {
-                _SellResource01 = (Resource)Enum.Parse(typeof(Resource), value);
+                _SellResource14 = (Resource)Enum.Parse(typeof(Resource), value);
             }
         }
 
