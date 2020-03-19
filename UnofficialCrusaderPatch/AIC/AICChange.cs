@@ -79,6 +79,7 @@ namespace UCP.AIC
                 IsChecked = currentSelection.ContainsValue(this.TitleIdent),
                 IsThreeState = true,
                 IsEnabled = !this.GetTitle().EndsWith(".aic"),
+                Background = internalAIC.Contains(this.TitleIdent) ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque)
             };
 
             TreeViewItem tvi = new TreeViewItem()
