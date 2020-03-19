@@ -331,7 +331,10 @@ namespace UCP.AIC
             {
                 backupFileName = backupFileName + ".bak";
             }
-            File.Move(fileName, backupFileName);
+            if (File.Exists(fileName))
+            {
+                File.Move(fileName, backupFileName);
+            }
             File.WriteAllText(fileName, Format(serializer.Serialize(collection)));
 
             Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent);
