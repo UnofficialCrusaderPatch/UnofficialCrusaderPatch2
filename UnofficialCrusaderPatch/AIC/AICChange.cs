@@ -336,6 +336,7 @@ namespace UCP.AIC
             {
                 File.Move(fileName, backupFileName);
             }
+            Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "aic"));
             File.WriteAllText(fileName, Format(serializer.Serialize(collection)));
 
             Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent);
