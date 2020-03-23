@@ -114,6 +114,10 @@ ui_aicconvertprompt
 	"AIC Conversion"
 }
 
+ui_aicselect
+{
+	"Please deselect other AIC file(s) first. The following aic characters are already selected: "
+}
 
 // ======================
 //         2.13

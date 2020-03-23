@@ -68,6 +68,10 @@ ui_aicconvertprompt
 	"Konwersja AIC"
 }
 
+ui_aicselect
+{
+	"Najpierw usuń zaznaczenie innych plików AIC. Następujące znaki AIC są już wybrane: "
+}
 
 // ======================
 //         2.13

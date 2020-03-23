@@ -113,6 +113,11 @@ ui_aicconvertprompt
 	"AIC-Konvertierung"
 }
 
+ui_aicselect
+{
+	"Bitte deaktivieren Sie zuerst andere AIC-Dateien. Die folgenden aic-Zeichen sind bereits ausgewählt: "
+}
+
 
 // ======================
 //         2.13

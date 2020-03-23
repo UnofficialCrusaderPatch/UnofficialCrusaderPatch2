@@ -177,6 +177,22 @@ namespace UCP.AIC
                         change.titleBox.IsChecked = false;
                     }
                 }
+            } else
+            {
+                List<String> conflicts = new List<String>();
+                foreach (AICharacterName character in this.characters)
+                {
+                    if (currentSelection.ContainsKey(character))
+                    {
+                        conflicts.Add(Enum.GetName(typeof(AICharacterName), character));
+                    }
+                }
+                if (conflicts.Count > 0)
+                {
+                    Debug.Show(Localization.Get("ui_aicselect") + String.Join(",", conflicts));
+                    this.titleBox.IsChecked = false;
+                    return;
+                }
             }
             foreach (AICharacterName character in this.characters)
             {
