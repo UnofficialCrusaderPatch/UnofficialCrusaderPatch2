@@ -31,8 +31,8 @@ namespace UCP.AIC
         static List<string> internalAIC = new List<string>()
         {
             "vanilla.aic.json", "UCP-Bugfix.aic.json", "Kimberly-Balance-v1.0.aic.json",
-            "Krarilotus-aggressive-AI-v1.0.aic.json", "Tatha 0.5.1.aic.json",
-            "Xander10Alpha-v1.0.aic.json"
+            "Krarilotus-aggressiveAI-v1.0.aic.json", "Tatha 0.5.1.aic.json",
+            "Xander10alpha-v1.0.aic.json"
         };
 
         static List<AICChange> _changes = new List<AICChange>();
@@ -77,7 +77,6 @@ namespace UCP.AIC
                     Width = 400,
                 },
                 IsChecked = currentSelection.ContainsValue(this.TitleIdent),
-                IsThreeState = true,
                 IsEnabled = !this.GetTitle().EndsWith(".aic"),
                 Background = internalAIC.Contains(this.TitleIdent) ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque)
             };
@@ -91,7 +90,6 @@ namespace UCP.AIC
             };
 
             titleBox.Checked += TitleBox_Checked;
-            titleBox.Indeterminate += TitleBox_Indeterminate;
             titleBox.Unchecked += TitleBox_Unchecked;
 
             grid = new Grid()
@@ -138,93 +136,6 @@ namespace UCP.AIC
                     }
                 };
                 panel.Children.Add(infoButton);
-            } 
-            else
-            {
-                Button selectButton = new Button()
-                {
-                    ToolTip = Localization.Get("ui_aicselecttooltip"),
-                    Width = 17,
-                    Height = 17,
-                    Content = "\u2713",
-                    FontSize = 10,
-                    HorizontalAlignment = HorizontalAlignment.Right,
-                    VerticalAlignment = VerticalAlignment.Top,
-                    Margin = new Thickness(0, 0, 45, 0),
-                    Background = new SolidColorBrush(Color.FromRgb(0, 255, 0)),
-
-                };
-                selectButton.Click += (s, e) =>
-                {
-                    Window aicWindow = new Window()
-                    {
-                        Width = 200,
-                        Height = 400,
-                        Title = "AIs",
-                        Background = new SolidColorBrush(Color.FromRgb(220, 220, 220)),
-                    };
-                    Grid grid = new Grid();
-
-                    int heightOffset = 0;
-                    foreach (AICharacterName characterName in this.characters)
-                    {
-                        CheckBox checkBox = new CheckBox()
-                        {
-                            FontSize = 15,
-                            Content = new TextBlock() {
-                                Text = Enum.GetName(typeof(AICharacterName), characterName),
-                                TextDecorations = !(currentSelection.ContainsKey(characterName) 
-                                && !currentSelection[characterName].Equals(this.TitleIdent)) ? null : TextDecorations.Strikethrough,
-                            },
-                            Margin = new Thickness(0, 20 * (heightOffset++), 0, 0),
-                            IsChecked = currentSelection.ContainsKey(characterName) && currentSelection[characterName] == this.TitleIdent,
-                        };
-                        if (currentSelection.ContainsKey(characterName)){
-                            checkBox.ToolTip = Localization.Get("ui_aicalreadyselectedtooltip");
-                        }
-                        checkBox.Click += (s1, e1) =>
-                        {
-                            ((TextBlock)((CheckBox)s1).Content).TextDecorations = null;
-                            if ((bool)((CheckBox)s1).IsChecked){
-                                currentSelection[characterName] = this.TitleIdent;
-                                return;
-                            }
-                            else if (currentSelection.ContainsKey(characterName))
-                            {
-                                currentSelection.Remove(characterName);
-                            }
-                        };
-                        grid.Children.Add(checkBox);
-                    }
-
-                    Button acceptSelection = new Button()
-                    {
-                        Content = Localization.Get("ui_aicconfirm"),
-                        HorizontalAlignment = HorizontalAlignment.Center,
-                        VerticalAlignment = VerticalAlignment.Bottom,
-                        Margin = new Thickness(0, 0, 0, 10),
-                    };
-                    acceptSelection.Click += (s2, e2) => aicWindow.Close();
-                    grid.Children.Add(acceptSelection);
-                    aicWindow.Content = grid;
-                    bool? selection = aicWindow.ShowDialog();
-
-                    int count = 0;
-                    foreach (string entry in currentSelection.Values)
-                    {
-                        if (entry == this.TitleIdent)
-                        {
-                            count++;
-                        }
-                    }
-                    if (count < 16)
-                    {
-                        this.titleBox.Indeterminate -= TitleBox_Indeterminate;
-                        this.titleBox.IsChecked = null;
-                        this.titleBox.Indeterminate += TitleBox_Indeterminate;
-                    }
-                };
-                panel.Children.Add(selectButton);
             }
 
             Button exportButton = new Button()
@@ -272,12 +183,6 @@ namespace UCP.AIC
                 currentSelection.Add(character, this.TitleIdent);
             }
             base.TitleBox_Checked(sender, e);
-        }
-
-        protected void TitleBox_Indeterminate(object sender, RoutedEventArgs e)
-        {
-            ((CheckBox)sender).IsChecked = false;
-            TitleBox_Unchecked(sender, e);
         }
 
         protected override void TitleBox_Unchecked(object sender, RoutedEventArgs e)
@@ -391,7 +296,7 @@ namespace UCP.AIC
             List<string> configuration = new List<string>();
             foreach (AICChange aicChange in changes)
             {
-                configuration.Add(aicChange.TitleIdent + "= { " + aicChange.TitleIdent + IsInternal(aicChange.TitleIdent).ToString() + "={" + (currentSelection.ContainsValue(aicChange.TitleIdent)).ToString() + "}");
+                configuration.Add(aicChange.TitleIdent + "= { " + aicChange.TitleIdent + IsInternal(aicChange.TitleIdent).ToString() + "={" + (currentSelection.ContainsValue(aicChange.TitleIdent)).ToString() + "} }");
             }
             return configuration;
         }
