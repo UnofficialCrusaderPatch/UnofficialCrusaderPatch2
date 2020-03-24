@@ -10,6 +10,8 @@ If you have suggestions, you are welcome to post new ideas or discuss already ex
 - try to check if your suggestion already has a topic and join that discussion instead of creating a new one
 - keep the tone nice and civil
 
+Alternatively you can join our Discord for quick help and feedback by following this link:
+https://discord.gg/vmy7CBR
 &nbsp;  
 
 At this point I would like to thank the Stronghold community for supporting me so enthusiastically.
