@@ -1464,6 +1464,7 @@
     <EmbeddedResource Include="AICs\Kimberly-Balance-v1.0.aic" />
     <EmbeddedResource Include="CodeBlocks\laddermadness.block" />
     <None Include="App.config" />
+    <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed_reset.block" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />
