@@ -1516,5 +1516,8 @@
   <ItemGroup>
     <Resource Include="Graphics\shield.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Chinese.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

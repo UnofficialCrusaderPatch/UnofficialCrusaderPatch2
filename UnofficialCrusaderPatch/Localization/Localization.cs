@@ -38,6 +38,7 @@ namespace UCP
             new Language("English", "English", "en"),
             new Language("Polski", "Polish", "pl"),
             new Language("Русский", "Russian", "ru"),
+            new Language("中文", "Chinese", "ch")
         };
         public static IEnumerable<Language> Translations => translations;
         public static int GetLangByCulture(string culture)
@@ -65,6 +66,7 @@ namespace UCP
                 return text;
             }
             return string.Format("{{Unknown Identifier: {0}}}", identifier);
+
         }
 
         class Reader : IDisposable
@@ -209,6 +211,7 @@ namespace UCP
                     }
                 }
             }
+
             catch (Exception e)
             {
                 Debug.Error(e);
