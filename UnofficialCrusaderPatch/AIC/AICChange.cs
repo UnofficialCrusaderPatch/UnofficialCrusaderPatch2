@@ -19,6 +19,7 @@ namespace UCP.AIC
     {
         private AICollection collection;
         private List<AICharacterName> characters;
+        //private string headerKey;
 
         static Dictionary<String, String> errorMessages;
         static Dictionary<String, String> errorHints;
@@ -26,13 +27,11 @@ namespace UCP.AIC
         static Dictionary<String, List<AICharacterName>> availableSelection;
         static Dictionary<AICharacterName, String> currentSelection;
 
-        static List<AICharacterName> emptySelection = new List<AICharacterName>();
-
         static List<string> internalAIC = new List<string>()
         {
-            "vanilla.aic.json", "UCP-Bugfix.aic.json", "Kimberly-Balance-v1.0.aic.json",
-            "Krarilotus-aggressive-AI-v1.0.aic.json", "Tatha 0.5.1.aic.json",
-            "Xander10Alpha-v1.0.aic.json"
+            "vanilla.json", "UCP-Bugfix.json", "Kimberly-Balance-v1.0.json",
+            "Krarilotus-aggressiveAI-v1.0.json", "Tatha 0.5.1.json",
+            "Xander10alpha-v1.0.json"
         };
 
         static List<AICChange> _changes = new List<AICChange>();
@@ -65,6 +64,9 @@ namespace UCP.AIC
 
         public override void InitUI()
         {
+            string descr = GetLocalizedDescription(this.collection);
+            descr = descr == String.Empty ? this.TitleIdent : descr;
+            Localization.Add(this.TitleIdent + "_descr", descr);
             this.titleBox = new CheckBox()
             {
                 Content = new TextBlock()
@@ -77,7 +79,6 @@ namespace UCP.AIC
                     Width = 400,
                 },
                 IsChecked = currentSelection.ContainsValue(this.TitleIdent),
-                IsThreeState = true,
                 IsEnabled = !this.GetTitle().EndsWith(".aic"),
                 Background = internalAIC.Contains(this.TitleIdent) ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque)
             };
@@ -91,14 +92,13 @@ namespace UCP.AIC
             };
 
             titleBox.Checked += TitleBox_Checked;
-            titleBox.Indeterminate += TitleBox_Indeterminate;
             titleBox.Unchecked += TitleBox_Unchecked;
 
             grid = new Grid()
             {
                 Background = new SolidColorBrush(Color.FromArgb(150, 200, 200, 200)),
                 Width = 420,
-                Margin = new Thickness(-18, 5, 0, 0),
+                Margin = new Thickness(-18, 5, -1, -1),
                 Focusable = false,
             };
 
@@ -108,6 +108,7 @@ namespace UCP.AIC
             tvi.Items.Add(null); // spacing
             Grid panel = new Grid();
             panel.Children.Add(tvi);
+            panel.Margin = new Thickness(-20, 0, 0, 0);
 
             if (this.GetTitle().EndsWith(".aic"))
             {
@@ -138,108 +139,24 @@ namespace UCP.AIC
                     }
                 };
                 panel.Children.Add(infoButton);
-            } 
-            else
-            {
-                Button selectButton = new Button()
-                {
-                    ToolTip = Localization.Get("ui_aicselecttooltip"),
-                    Width = 17,
-                    Height = 17,
-                    Content = "\u2713",
-                    FontSize = 10,
-                    HorizontalAlignment = HorizontalAlignment.Right,
-                    VerticalAlignment = VerticalAlignment.Top,
-                    Margin = new Thickness(0, 0, 45, 0),
-                    Background = new SolidColorBrush(Color.FromRgb(0, 255, 0)),
-
-                };
-                selectButton.Click += (s, e) =>
-                {
-                    Window aicWindow = new Window()
-                    {
-                        Width = 200,
-                        Height = 400,
-                        Title = "AIs",
-                        Background = new SolidColorBrush(Color.FromRgb(220, 220, 220)),
-                    };
-                    Grid grid = new Grid();
-
-                    int heightOffset = 0;
-                    foreach (AICharacterName characterName in this.characters)
-                    {
-                        CheckBox checkBox = new CheckBox()
-                        {
-                            FontSize = 15,
-                            Content = new TextBlock() {
-                                Text = Enum.GetName(typeof(AICharacterName), characterName),
-                                TextDecorations = !(currentSelection.ContainsKey(characterName) 
-                                && !currentSelection[characterName].Equals(this.TitleIdent)) ? null : TextDecorations.Strikethrough,
-                            },
-                            Margin = new Thickness(0, 20 * (heightOffset++), 0, 0),
-                            IsChecked = currentSelection.ContainsKey(characterName) && currentSelection[characterName] == this.TitleIdent,
-                        };
-                        if (currentSelection.ContainsKey(characterName)){
-                            checkBox.ToolTip = Localization.Get("ui_aicalreadyselectedtooltip");
-                        }
-                        checkBox.Click += (s1, e1) =>
-                        {
-                            ((TextBlock)((CheckBox)s1).Content).TextDecorations = null;
-                            if ((bool)((CheckBox)s1).IsChecked){
-                                currentSelection[characterName] = this.TitleIdent;
-                                return;
-                            }
-                            else if (currentSelection.ContainsKey(characterName))
-                            {
-                                currentSelection.Remove(characterName);
-                            }
-                        };
-                        grid.Children.Add(checkBox);
-                    }
-
-                    Button acceptSelection = new Button()
-                    {
-                        Content = Localization.Get("ui_aicconfirm"),
-                        HorizontalAlignment = HorizontalAlignment.Center,
-                        VerticalAlignment = VerticalAlignment.Bottom,
-                        Margin = new Thickness(0, 0, 0, 10),
-                    };
-                    acceptSelection.Click += (s2, e2) => aicWindow.Close();
-                    grid.Children.Add(acceptSelection);
-                    aicWindow.Content = grid;
-                    bool? selection = aicWindow.ShowDialog();
-
-                    int count = 0;
-                    foreach (string entry in currentSelection.Values)
-                    {
-                        if (entry == this.TitleIdent)
-                        {
-                            count++;
-                        }
-                    }
-                    if (count < 16)
-                    {
-                        this.titleBox.Indeterminate -= TitleBox_Indeterminate;
-                        this.titleBox.IsChecked = null;
-                        this.titleBox.Indeterminate += TitleBox_Indeterminate;
-                    }
-                };
-                panel.Children.Add(selectButton);
             }
 
-            Button exportButton = new Button()
+            if (internalAIC.Contains(this.TitleIdent))
             {
-                //Width = 40,
-                Height = 20,
-                Content = Localization.Get("ui_aicexport"),
-                HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Bottom,
-                Margin = new Thickness(0, 0, 5, 5),
-                ToolTip = Localization.Get("ui_aichint"),
-            };
-            exportButton.Click += (s, e) => this.ExportFile();
+                Button exportButton = new Button()
+                {
+                    //Width = 40,
+                    Height = 20,
+                    Content = Localization.Get("ui_aicexport"),
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Bottom,
+                    Margin = new Thickness(0, 0, 5, 5),
+                    ToolTip = Localization.Get("ui_aichint"),
+                };
+                exportButton.Click += (s, e) => this.ExportFile();
 
-            this.grid.Children.Add(exportButton);
+                this.grid.Children.Add(exportButton);
+            }
             this.uiElement = panel;
         }
 
@@ -266,18 +183,28 @@ namespace UCP.AIC
                         change.titleBox.IsChecked = false;
                     }
                 }
+            } else
+            {
+                List<String> conflicts = new List<String>();
+                foreach (AICharacterName character in this.characters)
+                {
+                    if (currentSelection.ContainsKey(character))
+                    {
+                        conflicts.Add(Enum.GetName(typeof(AICharacterName), character));
+                    }
+                }
+                if (conflicts.Count > 0)
+                {
+                    Debug.Show(Localization.Get("ui_aicselect") + String.Join(",", conflicts));
+                    this.titleBox.IsChecked = false;
+                    return;
+                }
             }
             foreach (AICharacterName character in this.characters)
             {
                 currentSelection.Add(character, this.TitleIdent);
             }
             base.TitleBox_Checked(sender, e);
-        }
-
-        protected void TitleBox_Indeterminate(object sender, RoutedEventArgs e)
-        {
-            ((CheckBox)sender).IsChecked = false;
-            TitleBox_Unchecked(sender, e);
         }
 
         protected override void TitleBox_Unchecked(object sender, RoutedEventArgs e)
@@ -299,8 +226,8 @@ namespace UCP.AIC
 
         private void ConvertAIC()
         {
-            string fileName = Path.Combine(Environment.CurrentDirectory, "aic", this.TitleIdent);
-            string newFileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(this.TitleIdent) + ".aic.json");
+            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "aic", this.TitleIdent);
+            string newFileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(this.TitleIdent) + ".json");
 
             string backupFileName = fileName;
             while (File.Exists(backupFileName))
@@ -326,7 +253,7 @@ namespace UCP.AIC
         private void ExportFile()
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            string fileName = Path.Combine(Environment.CurrentDirectory, "aic", this.TitleIdent);
+            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports", this.TitleIdent);
             string backupFileName = fileName;
             while (File.Exists(backupFileName))
             {
@@ -336,7 +263,7 @@ namespace UCP.AIC
             {
                 File.Move(fileName, backupFileName);
             }
-            Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "aic"));
+            Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports"));
             File.WriteAllText(fileName, Format(serializer.Serialize(collection)));
 
             Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent);
@@ -366,8 +293,7 @@ namespace UCP.AIC
                 string changeKey = changeLine[0];
                 string changeSetting = changeLine[1];
 
-                bool bundledAIC = changeSetting.Contains("aicFalse");
-                bool selected = Regex.Replace(@"\s+", "", changeSetting).Contains("True");
+                bool selected = Regex.Replace(@"\s+", "", changeSetting.Split('=')[1]).Contains("True");
 
                 if (!changeKey.EndsWith(".aic"))
                 {
@@ -391,21 +317,39 @@ namespace UCP.AIC
             List<string> configuration = new List<string>();
             foreach (AICChange aicChange in changes)
             {
-                configuration.Add(aicChange.TitleIdent + "= { " + aicChange.TitleIdent + IsInternal(aicChange.TitleIdent).ToString() + "={" + (currentSelection.ContainsValue(aicChange.TitleIdent)).ToString() + "}");
+                configuration.Add(aicChange.TitleIdent + "= { " + aicChange.TitleIdent + IsInternal(aicChange.TitleIdent).ToString() + "={" + (currentSelection.ContainsValue(aicChange.TitleIdent)).ToString() + "} }");
             }
             return configuration;
         }
 
         public static void Refresh(object sender, RoutedEventArgs args)
         {
+            String[] prevSelection = new String[currentSelection.Values.Count];
+            currentSelection.Values.CopyTo(prevSelection, 0);
+            availableSelection.Clear();
+            currentSelection.Clear();
             for (int i = 0; i < changes.Count; i++)
             {
                 ((TreeView)((Grid)((Button)sender).Parent).Children[0]).Items.Remove(changes.ElementAt(i).UIElement);
-                availableSelection.Clear();
-                currentSelection.Clear();
+                Localization.Remove(changes.ElementAt(i).TitleIdent + "_descr");
             }
             changes.Clear();
-            Load();
+            LoadConfiguration();
+            foreach (String selected in prevSelection)
+            {
+                foreach (AICChange aicChange in changes)
+                {
+                    if (aicChange.TitleIdent == selected)
+                    {
+                        //aicChange.titleBox.IsChecked = true;
+                        foreach (AICharacter character in aicChange.collection.AICharacters)
+                        {
+                            currentSelection[character._Name] = aicChange.TitleIdent;
+                        }
+                    }
+                }
+            }
+            Configuration.Save();
         }
 
         public static void DoChange(ChangeArgs args)
@@ -420,21 +364,21 @@ namespace UCP.AIC
 
         private static void Load()
         {
-            LoadAIC("UCP.AIC.Resources.UCP-Bugfix.aic.json");
-            LoadAIC("UCP.AIC.Resources.vanilla.aic.json");
-            LoadAIC("UCP.AIC.Resources.Kimberly-Balance-v1.0.aic.json");
-            LoadAIC("UCP.AIC.Resources.Krarilotus-aggressiveAI-v1.0.aic.json");
-            LoadAIC("UCP.AIC.Resources.Tatha 0.5.1.aic.json");
-            LoadAIC("UCP.AIC.Resources.Xander10alpha-v1.0.aic.json");
+            LoadAIC("UCP.AIC.Resources.UCP-Bugfix.json");
+            LoadAIC("UCP.AIC.Resources.vanilla.json");
+            LoadAIC("UCP.AIC.Resources.Kimberly-Balance-v1.0.json");
+            LoadAIC("UCP.AIC.Resources.Krarilotus-aggressiveAI-v1.0.json");
+            LoadAIC("UCP.AIC.Resources.Tatha 0.5.1.json");
+            LoadAIC("UCP.AIC.Resources.Xander10alpha-v1.0.json");
 
-            if (Directory.Exists(Path.Combine(Environment.CurrentDirectory, "aic")))
+            if (Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "aic")))
             {
-                foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic", SearchOption.TopDirectoryOnly))
+                foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "resources", "aic"), "*.aic", SearchOption.TopDirectoryOnly))
                 {
                     LoadAIC(file);
                 }
 
-                foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic.json", SearchOption.TopDirectoryOnly))
+                foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "resources", "aic"), "*.json", SearchOption.TopDirectoryOnly))
                 {
                     LoadAIC(file);
                 }
@@ -447,7 +391,7 @@ namespace UCP.AIC
             {
                 AICChange change = new AICChange(Path.GetFileName(fileName), true)
                 {
-                    new DefaultHeader(Path.GetFileName(fileName), true, true)
+                    new DefaultHeader(String.Empty, true, true)
                     {
                     }
                 };
@@ -473,10 +417,9 @@ namespace UCP.AIC
             try
             {
                 AICollection ch = serializer.Deserialize<AICollection>(text);;
-
                 AICChange change = new AICChange(aicName, true)
                 {
-                    new DefaultHeader(aicName, true, true)
+                    new DefaultHeader(aicName, true)
                     {
                     }
                 };
@@ -487,8 +430,38 @@ namespace UCP.AIC
             }
             catch (AICSerializationException e)
             {
-                File.AppendAllText("Conversion.log", e.ToErrorString(fileName));
+                File.AppendAllText("AICParsing.log", e.ToErrorString(fileName));
             }
+            catch (Exception e)
+            {
+                File.AppendAllText("AICParsing.log", "\n" + aicName + ": " + e.Message + "\n");
+            }
+        }
+
+        private static string GetLocalizedDescription(AICollection ch)
+        {
+            string currentLang = Localization.Translations.ToArray()[Localization.LanguageIndex].Ident.Substring(0, 3);
+            string descr = String.Empty;
+            try
+            {
+                descr = typeof(AIHeader).GetProperty("Descr" + currentLang).GetValue(ch.AIDescription, null).ToString();
+            }
+            catch (Exception)
+            {
+                foreach (var lang in Localization.Translations)
+                {
+                    try
+                    {
+                        descr = typeof(AIHeader).GetProperty("Descr" + lang).GetValue(ch.AIDescription, null).ToString();
+                        break;
+                    }
+                    catch (Exception)
+                    {
+                        continue;
+                    }
+                }
+            }
+            return descr;
         }
 
         private static ChangeHeader CreateEdit()

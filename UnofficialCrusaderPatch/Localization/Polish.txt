@@ -68,19 +68,9 @@ ui_aicconvertprompt
 	"Konwersja AIC"
 }
 
-ui_aicselecttooltip
+ui_aicselect
 {
-	"Wybierz poszczególne AI"
-}
-
-ui_aicalreadyselectedtooltip
-{
-	"Ta sztuczna inteligencja została już wybrana. Wybierz to, aby zastąpić."
-}
-
-ui_aicconfirm
-{
-	"Potwierdź wybór"
+	"Najpierw usuń zaznaczenie innych plików AIC. Następujące znaki AIC są już wybrane: "
 }
 
 // ======================
@@ -212,20 +202,6 @@ u_spearmen_descr
  - Włócznicy ledwie przeżywają jeden strzał z kuszy, zamiast od razu ginąć"
 }
 
-ai_buy
-{
-	"Ulepszone użycie targowiska przez przeciwników komputerowych"
-}
-
-ai_buy_descr
-{
-	"W oryginalnej grze niektórzy przeciwnicy komputerowi nie używają poprawnie targowiska. &
-Wprowadzone zostały następujące ulepszenia: 
-- Fryderyk i Marszałek kupują broń i zbroje
- - Opat i Emir kupują łuki
- - Wezyr kupuje jabłka, tak jak Nizar i Emir"
-}
-
 ui_error
 {
 	"Błąd"
@@ -305,11 +281,6 @@ ai_recruitinterval_descr
 {
 	"Ustawia odstęp między rekrutacją jednostek przez wszystkich przeciwników komputerowych na najniższą wartość &
 	(poziom Szczura/Ryszarda)"
-}
-
-ai_recruitsleep
-{
-	"Dezaktywuj przerwy w rekrutacji jednostek przez przeciwników komputerowych"
 }
 
 ai_attacklimit
@@ -415,17 +386,6 @@ o_playercolor_descr
 	" "
 }
 
-o_trooplimit
-{
-	"Zwiększenie całkowitego limitu wojsk"
-}
-
-o_trooplimit_descr
-{
-	"Całkowity limit wojsk na mapie jest ustawiony w oryginalnej grze na &
-2400 jednostek. Ta wartość może zostać tutaj zmieniona."
-}
-
 ai_demolish
 {
 	"Dezaktywuj burzenie budynków dla pieniędzy przez przeciwników komputerowych"
@@ -489,21 +449,6 @@ ai_nosleep_descr
 brakuje wymaganego zasobu. Odbywa się to bez względu na to, &
 czy straci produkty, które są już w drodze, np. do zbrojowni.
 Tę funkcję można tutaj całkowicie wyłączyć."
-}
-
-ai_overclock
-{
-	"Zmniejsz odstępy pomiędzy akcjami przeciwników komputerowych [W fazie testów]"
-}
-
-ai_overclock_descr
-{
-	"Chodzi o odstęp czasu, w którym sztuczna inteligencja wydaje rozkazy, np. wysyłanie ataków i &
-rozkazywanie jednostkom. Zmniejsza to czas, w którym jednostki stoją w miejscu nie robiąc nic &
-po zniszczeniu/zabiciu ostatniego celu.
-
-Nie wiadomo na co jeszcze mają wpływ te odstępy, dlatego mogą pojawić się błędy &
-podczas korzystania z tej funkcji."
 }
 
 
@@ -831,25 +776,6 @@ ai_access_descr
 	"Ta opcja zapobiega niszczeniu budynków, do których nie ma dojścia. Dzięki temu &
 Sztuczna Inteligencja przestanie ciągle niszczyć i odbudowywać budynki, do których &
 nie da się dojść."
-}
-
-ai_moredef
-{
-	"Więcej żołnierzy do obrony dla Ryszarda, Szczura i króla Filipa"
-}
-
-ai_moredef_descr
-{
-	"Ryszard, Szczur i król Filip mieli niewielu żołnierzy &
-do obrony w swoich zamkach w oryginalnej wersji gry. Ta opcja zwiększa liczbę jednostek dystansowych &
-w poniższych proporcjach:
-
-Szczur: 20 -> 40
-Ryszard: 20 -> 40
-Król Filip: 4 -> 32
-
-Należy zaznaczyć, że pierwszy atak tych przeciwników odbędzie się później, &
-gdy ma się włączoną tę opcję."
 }
 
 aiv_tatha

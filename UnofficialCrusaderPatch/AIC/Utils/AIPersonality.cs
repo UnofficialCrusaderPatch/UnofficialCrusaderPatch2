@@ -967,6 +967,7 @@ namespace UCPAIConversion
         }
 
         // Index: 84 Hex: 0x150
+        [ScriptIgnore]
         [RWComment("Type of ranged units that go to the last attacked farm or building, and guard it until another is attacked. Setting it to None may cause buggy recruitment behavior.")]
         public Unit _SortieUnitRanged { get; set; }
         public string SortieUnitRanged

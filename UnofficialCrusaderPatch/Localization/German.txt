@@ -113,20 +113,11 @@ ui_aicconvertprompt
 	"AIC-Konvertierung"
 }
 
-ui_aicselecttooltip
+ui_aicselect
 {
-	"Wählen Sie einzelne AIs aus"
+	"Bitte deaktivieren Sie zuerst andere AIC-Dateien. Die folgenden aic-Zeichen sind bereits ausgewählt: "
 }
 
-ui_aicalreadyselectedtooltip
-{
-	"Diese KI wurde bereits ausgewählt. Wählen Sie diese Option zum Überschreiben."
-}
-
-ui_aicconfirm
-{
-	"Auswahl bestätigen"
-}
 
 // ======================
 //         2.13
@@ -260,20 +251,6 @@ u_spearmen_descr
  - Lanzenträger überleben knapp einen Armbrusttreffer"
 }
 
-ai_buy
-{
-	"Verbesserte Marktplatznutzung der KI-Lords"
-}
-
-ai_buy_descr
-{
-	"In Vanilla benutzen einige der neuen KIs den Marktplatz nicht richtig. Die &
-folgenden Verbesserungen werden hiermit vorgenommen:
- - Friedrich und Marschall kaufen Waffen und Rüstungen
- - Der Abt und Emir kaufen Bögen
- - Wazir kauft Obst wie Nizar & Emir"
-}
-
 ui_error
 {
 	"Fehler"
@@ -354,11 +331,6 @@ ai_recruitinterval_descr
 {
 	"Setzt das Rekrutierungsintervall aller KIs auf den niedrigsten Wert. &
 (Ratte/Richard-Niveau)"
-}
-
-ai_recruitsleep
-{
-	"Deaktiviere Rekrutierungspausen der KI"
 }
 
 ai_attacklimit
@@ -466,17 +438,6 @@ o_playercolor_descr
 	" "
 }
 
-o_trooplimit
-{
-	"Erhöhung des allgemeinen Einheitenlimits"
-}
-
-o_trooplimit_descr
-{
-	"In Vanilla liegt das absolute Einheitenlimit für den Spieler bei 
-2400/Spieleranzahl. Hier kann dieser Wert geändert werden."
-}
-
 ai_demolish
 {
 	"Einreißen für Geld der KI-Lords deaktivieren"
@@ -543,23 +504,6 @@ sobald der nötige Rohstoff nicht mehr im Lager vorhanden ist. Dabei &
 wird keine Rücksicht genommen ob Produkte verloren gehen die &
 z.B. gerade zur Waffenkammer gebracht werden. Diese Funktion kann hier &
 komplett deaktiviert werden."
-}
-
-
-ai_overclock
-{
-	"Befehlsintervall verringern [Test]"
-}
-
-ai_overclock_descr
-{
-	"Hier kann das Intervall verändert werden, in dem die KI Befehle &
-wie z.B. Angriffsbefehle für Einheiten erteilt. Dadurch stehen Einheiten &
-nicht mehr so lange herum, nachdem sie ihr Angriffsziel zerstört/besiegt &
-haben.
-
-Es ist allerdings unbekannt was noch alles durch dieses Intervall &
-beeinflusst wird, darum ist es möglich dass Bugs auftreten."
 }
 
 
@@ -860,23 +804,6 @@ Damit soll der Bug verhindert werden, bei dem manche KIs in ihren Burgen &
 andauernd Gebäude abreißen und wieder aufbauen zu denen es keinen Weg gibt."
 }
 
-ai_moredef
-{
-	"Mehr Burgverteidigung für Richard, Ratte & Philipp"
-}
-
-ai_moredef_descr
-{
-	"Die KIs Richard, Ratte und besonders Philipp haben in Vanilla sehr wenig &
-Truppen auf ihren Mauern und Türmen. Mit dieser Einstellung werden die Anzahlen &
-der Fernkämpfer folgendermaßen erhöht:
-
-Ratte: 20 -> 40
-Richard: 20 -> 40
-Philipp: 4 -> 32
-
-Es ist zu beachten, dass der allererste Angriff dieser KIs hierdurch etwas hinausgezögert wird."
-}
 
 aiv_tatha
 {

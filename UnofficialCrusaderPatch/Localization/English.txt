@@ -114,19 +114,9 @@ ui_aicconvertprompt
 	"AIC Conversion"
 }
 
-ui_aicselecttooltip
+ui_aicselect
 {
-	"Select individual AIs"
-}
-
-ui_aicalreadyselectedtooltip
-{
-	"This AI has already been selected. Select this to overwrite."
-}
-
-ui_aicconfirm
-{
-	"Confirm Selection"
+	"Please deselect other AIC file(s) first. The following aic characters are already selected: "
 }
 
 // ======================
@@ -260,20 +250,6 @@ u_spearmen_descr
  - Spearmen barely survive one crossbow hit, instead of getting one-shot"
 }
 
-ai_buy
-{
-	"Improved trader usage of the AI lords"
-}
-
-ai_buy_descr
-{
-	"In vanilla, some of the new AIs do not use the trading outpost correctly. &
-The following improvements will be carried out with this:
- - Frederick and Marshal buy weapons and armors
- - The Abbot and Emir buy bows
- - Wazir buys apples like Nizar & Emir do"
-}
-
 ui_error
 {
 	"Error"
@@ -352,11 +328,6 @@ ai_recruitinterval
 ai_recruitinterval_descr
 {
 	"Sets the recruitment interval of all AIs to the lowest value (Rat/Richard niveau)"
-}
-
-ai_recruitsleep
-{
-	"Deactivate recruitment pauses of the AI"
 }
 
 ai_attacklimit
@@ -463,17 +434,6 @@ o_playercolor_descr
 	" "
 }
 
-o_trooplimit
-{
-	"Increasement of the total troop limit"
-}
-
-o_trooplimit_descr
-{
-	"The limit for the total amount of units one player can field is set to &
-2400/Players in Vanilla. This value can be changed here."
-}
-
 ai_demolish
 {
 	"Deactivate demolishing for money of the AI lords"
@@ -537,22 +497,6 @@ ai_nosleep_descr
 as the needed resource is missing. This is done without the regard for &
 losing products which are just on the way f.e. to the weapon chamber.
 This feature can be completely disabled here."
-}
-
-
-ai_overclock
-{
-	"Reduce AI order interval [Test]"
-}
-
-ai_overclock_descr
-{
-	"The interval in which the AI imposes orders, f.e. attacking orders &
-for units. This reduces the time in which units stand around doing nothing &
-after destroying/killing their last target.
-
-It is unknown what else is influenced by this interval, thus, bugs may appear &
-when using this feature."
 }
 
 
@@ -854,25 +798,6 @@ ai_access_descr
 	"Prevents the AI from demolishing buildings without access. This should &
 stop the AI from continuously demolishing and rebuilding buildings where no &
 access is available."
-}
-
-ai_moredef
-{
-	"More defense troops for Richard, Rat & Philipp"
-}
-
-ai_moredef_descr
-{
-	"The AIs Richard, Rat and especially Philipp had very few defensive troops &
-on their walls in Vanilla. This setting increases the ranged troops by the &
-following amounts:
-
-Rat: 20 -> 40
-Richard: 20 -> 40
-Philipp: 4 -> 32
-
-It should be noted that the very first attack of those AIs will start later &
-with this setting."
 }
 
 aiv_tatha
