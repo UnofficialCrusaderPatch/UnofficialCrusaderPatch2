@@ -19,6 +19,7 @@ namespace UCP.AIC
     {
         private AICollection collection;
         private List<AICharacterName> characters;
+        //private string headerKey;
 
         static Dictionary<String, String> errorMessages;
         static Dictionary<String, String> errorHints;
@@ -65,6 +66,9 @@ namespace UCP.AIC
 
         public override void InitUI()
         {
+            string descr = GetLocalizedDescription(this.collection);
+            descr = descr == String.Empty ? this.TitleIdent : descr;
+            Localization.Add(this.TitleIdent + "_descr", descr);
             this.titleBox = new CheckBox()
             {
                 Content = new TextBlock()
@@ -96,7 +100,7 @@ namespace UCP.AIC
             {
                 Background = new SolidColorBrush(Color.FromArgb(150, 200, 200, 200)),
                 Width = 420,
-                Margin = new Thickness(-18, 5, 0, 0),
+                Margin = new Thickness(-18, 5, -1, -1),
                 Focusable = false,
             };
 
@@ -106,6 +110,7 @@ namespace UCP.AIC
             tvi.Items.Add(null); // spacing
             Grid panel = new Grid();
             panel.Children.Add(tvi);
+            panel.Margin = new Thickness(-20, 0, 0, 0);
 
             if (this.GetTitle().EndsWith(".aic"))
             {
@@ -138,19 +143,22 @@ namespace UCP.AIC
                 panel.Children.Add(infoButton);
             }
 
-            Button exportButton = new Button()
+            if (internalAIC.Contains(this.TitleIdent))
             {
-                //Width = 40,
-                Height = 20,
-                Content = Localization.Get("ui_aicexport"),
-                HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Bottom,
-                Margin = new Thickness(0, 0, 5, 5),
-                ToolTip = Localization.Get("ui_aichint"),
-            };
-            exportButton.Click += (s, e) => this.ExportFile();
+                Button exportButton = new Button()
+                {
+                    //Width = 40,
+                    Height = 20,
+                    Content = Localization.Get("ui_aicexport"),
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Bottom,
+                    Margin = new Thickness(0, 0, 5, 5),
+                    ToolTip = Localization.Get("ui_aichint"),
+                };
+                exportButton.Click += (s, e) => this.ExportFile();
 
-            this.grid.Children.Add(exportButton);
+                this.grid.Children.Add(exportButton);
+            }
             this.uiElement = panel;
         }
 
@@ -247,7 +255,7 @@ namespace UCP.AIC
         private void ExportFile()
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            string fileName = Path.Combine(Environment.CurrentDirectory, "aic", this.TitleIdent);
+            string fileName = Path.Combine(Environment.CurrentDirectory, "aic", "exports", this.TitleIdent);
             string backupFileName = fileName;
             while (File.Exists(backupFileName))
             {
@@ -257,7 +265,7 @@ namespace UCP.AIC
             {
                 File.Move(fileName, backupFileName);
             }
-            Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "aic"));
+            Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "aic", "exports"));
             File.WriteAllText(fileName, Format(serializer.Serialize(collection)));
 
             Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent);
@@ -287,8 +295,7 @@ namespace UCP.AIC
                 string changeKey = changeLine[0];
                 string changeSetting = changeLine[1];
 
-                bool bundledAIC = changeSetting.Contains("aicFalse");
-                bool selected = Regex.Replace(@"\s+", "", changeSetting).Contains("True");
+                bool selected = Regex.Replace(@"\s+", "", changeSetting.Split('=')[1]).Contains("True");
 
                 if (!changeKey.EndsWith(".aic"))
                 {
@@ -319,14 +326,32 @@ namespace UCP.AIC
 
         public static void Refresh(object sender, RoutedEventArgs args)
         {
+            String[] prevSelection = new String[currentSelection.Values.Count];
+            currentSelection.Values.CopyTo(prevSelection, 0);
+            availableSelection.Clear();
+            currentSelection.Clear();
             for (int i = 0; i < changes.Count; i++)
             {
                 ((TreeView)((Grid)((Button)sender).Parent).Children[0]).Items.Remove(changes.ElementAt(i).UIElement);
-                availableSelection.Clear();
-                currentSelection.Clear();
+                Localization.Remove(changes.ElementAt(i).TitleIdent + "_descr");
             }
             changes.Clear();
-            Load();
+            LoadConfiguration();
+            foreach (String selected in prevSelection)
+            {
+                foreach (AICChange aicChange in changes)
+                {
+                    if (aicChange.TitleIdent == selected)
+                    {
+                        //aicChange.titleBox.IsChecked = true;
+                        foreach (AICharacter character in aicChange.collection.AICharacters)
+                        {
+                            currentSelection[character._Name] = aicChange.TitleIdent;
+                        }
+                    }
+                }
+            }
+            Configuration.Save();
         }
 
         public static void DoChange(ChangeArgs args)
@@ -368,7 +393,7 @@ namespace UCP.AIC
             {
                 AICChange change = new AICChange(Path.GetFileName(fileName), true)
                 {
-                    new DefaultHeader(Path.GetFileName(fileName), true, true)
+                    new DefaultHeader(String.Empty, true, true)
                     {
                     }
                 };
@@ -394,10 +419,9 @@ namespace UCP.AIC
             try
             {
                 AICollection ch = serializer.Deserialize<AICollection>(text);;
-
                 AICChange change = new AICChange(aicName, true)
                 {
-                    new DefaultHeader(aicName, true, true)
+                    new DefaultHeader(aicName, true)
                     {
                     }
                 };
@@ -408,8 +432,38 @@ namespace UCP.AIC
             }
             catch (AICSerializationException e)
             {
-                File.AppendAllText("Conversion.log", e.ToErrorString(fileName));
+                File.AppendAllText("AICParsing.log", e.ToErrorString(fileName));
             }
+            catch (Exception e)
+            {
+                File.AppendAllText("AICParsing.log", "\n" + aicName + ": " + e.Message + "\n");
+            }
+        }
+
+        private static string GetLocalizedDescription(AICollection ch)
+        {
+            string currentLang = Localization.Translations.ToArray()[Localization.LanguageIndex].Ident.Substring(0, 3);
+            string descr = String.Empty;
+            try
+            {
+                descr = typeof(AIHeader).GetProperty("Descr" + currentLang).GetValue(ch.AIDescription, null).ToString();
+            }
+            catch (Exception)
+            {
+                foreach (var lang in Localization.Translations)
+                {
+                    try
+                    {
+                        descr = typeof(AIHeader).GetProperty("Descr" + lang).GetValue(ch.AIDescription, null).ToString();
+                        break;
+                    }
+                    catch (Exception)
+                    {
+                        continue;
+                    }
+                }
+            }
+            return descr;
         }
 
         private static ChangeHeader CreateEdit()
