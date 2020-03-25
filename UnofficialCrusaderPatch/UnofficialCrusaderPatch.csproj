@@ -46,6 +46,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -123,6 +124,8 @@
     <Compile Include="Patching\Section\PEHeader.cs" />
     <Compile Include="Patching\Section\SectionEditor.cs" />
     <Compile Include="Patching\Section\SectionHeader.cs" />
+    <Compile Include="Startup\StartingResource.cs" />
+    <Compile Include="Startup\ResourceChange.cs" />
     <Compile Include="Version.cs" />
     <Compile Include="_Crusader\Building.cs" />
     <Compile Include="_Crusader\UI_Button.cs" />
@@ -1464,6 +1467,7 @@
     <EmbeddedResource Include="AICs\Kimberly-Balance-v1.0.aic" />
     <EmbeddedResource Include="CodeBlocks\laddermadness.block" />
     <None Include="App.config" />
+    <EmbeddedResource Include="CodeBlocks\s_resource.block" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />
@@ -1481,6 +1485,7 @@
     <EmbeddedResource Include="CodeBlocks\o_shfy_religiontab.block" />
     <EmbeddedResource Include="CodeBlocks\o_shfy_resourcequantity.block" />
     <EmbeddedResource Include="CodeBlocks\o_shfy_peasantspawnrate.block" />
+    <EmbeddedResource Include="CodeBlocks\s_gold.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

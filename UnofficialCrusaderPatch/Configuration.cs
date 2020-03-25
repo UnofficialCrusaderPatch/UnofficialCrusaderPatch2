@@ -16,6 +16,11 @@ namespace UCP
 
         static bool loading = false;
 
+        static Configuration()
+        {
+            Version.AddExternalChanges();
+        }
+
         public static void Save(string str = null)
         {
             if (loading) return;

@@ -2687,5 +2687,10 @@ namespace UCP
 
             #endregion
         };
+
+        public static void AddExternalChanges()
+        {
+            Version.changes.AddRange(ResourceChange.changes);
+        }
     }
 }
