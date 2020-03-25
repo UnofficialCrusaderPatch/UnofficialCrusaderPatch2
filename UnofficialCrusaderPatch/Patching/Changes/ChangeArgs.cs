@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace UCP.Patching
+﻿namespace UCP.Patching
 {
     public struct ChangeArgs
     {

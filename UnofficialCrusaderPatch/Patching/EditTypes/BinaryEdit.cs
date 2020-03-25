@@ -1,9 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using CodeBlox;
+using System;
 using System.IO;
-using CodeBlox;
+using System.Linq;
+using System.Reflection;
 
 namespace UCP.Patching
 {

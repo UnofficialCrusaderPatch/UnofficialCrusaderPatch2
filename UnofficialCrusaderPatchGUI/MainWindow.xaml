@@ -14,14 +14,8 @@
         Stretch="None"/>
     </Window.Background>
     <Grid>
+        <Image Source="Graphics/frame.jpg" Margin="0,0,0,0" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50"/>
         <Image Source="Graphics/frame.jpg" Margin="0,0,0,0" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="50"/>
-        <Image Source="Graphics/frame.jpg" Margin="0,0,0,0" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50">
-            <Image.LayoutTransform>
-                <TransformGroup>
-                    <RotateTransform Angle="180"/>
-                </TransformGroup>
-            </Image.LayoutTransform>
-        </Image>
         <Grid x:Name="pathGrid" Visibility="Visible" HorizontalAlignment="Left" VerticalAlignment="Top" 
             Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type Grid}}}"
             Height="{Binding ActualHeight, RelativeSource ={RelativeSource AncestorType = {x:Type Grid}}}">

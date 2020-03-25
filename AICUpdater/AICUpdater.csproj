@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,48 +43,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AICCollection.cs">
-      <Link>AICharacters\AICCollection.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AICharacter.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AICharacter.cs">
       <Link>AICharacters\AICharacter.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AICIndex.cs">
-      <Link>AICharacters\AICIndex.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AICharacterName.cs">
+      <Link>AICharacters\AICharacterName.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AIFileHeader.cs">
-      <Link>AICharacters\AIFileHeader.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AICharacterSerializationException.cs">
+      <Link>AICharacters\AICharacterSerializationException.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AIPersonality.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AICollection.cs">
+      <Link>AICharacters\AICollection.cs</Link>
+    </Compile>
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AICSerializationException.cs">
+      <Link>AICharacters\AICSerializationException.cs</Link>
+    </Compile>
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AIHeader.cs">
+      <Link>AICharacters\AIHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AIPersonality.cs">
       <Link>AICharacters\AIPersonality.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AIReader.cs">
-      <Link>AICharacters\AIReader.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AIPersonalityFieldsEnum.cs">
+      <Link>AICharacters\AIPersonalityFieldsEnum.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AIWriter.cs">
-      <Link>AICharacters\AIWriter.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AISerializer.cs">
+      <Link>AICharacters\AISerializer.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Buildings.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\PersonalityEnums\Buildings.cs">
       <Link>AICharacters\PersonalityEnums\Buildings.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Resources.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\PersonalityEnums\Resources.cs">
       <Link>AICharacters\PersonalityEnums\Resources.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\SiegeEngines.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\PersonalityEnums\SiegeEngines.cs">
       <Link>AICharacters\PersonalityEnums\SiegeEngines.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\TargetingType.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\PersonalityEnums\TargetingType.cs">
       <Link>AICharacters\PersonalityEnums\TargetingType.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Units.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\PersonalityEnums\Units.cs">
       <Link>AICharacters\PersonalityEnums\Units.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\WorkshopSettings.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\PersonalityEnums\WorkshopSettings.cs">
       <Link>AICharacters\PersonalityEnums\WorkshopSettings.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\RWAttributes.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\RWAttributes.cs">
       <Link>AICharacters\RWAttributes.cs</Link>
     </Compile>
+    <Compile Include="AICUpdaterHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

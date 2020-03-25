@@ -48,6 +48,41 @@ u_fireballistafix_descr
     "Fire ballistas automatically shoot at monks and tunnelers."
 }
 
+ui_browsepath
+{
+	"Wybierz katalog instalacyjny Stronghold Crusader."
+}
+
+ui_aicoldversion
+{
+	"Wykryto starą wersję. Kliknij, aby przekonwertować"
+}
+
+ui_aicofferconvert
+{
+	"Konwertuj plik AIC do nowszej wersji?"
+}
+
+ui_aicconvertprompt
+{
+	"Konwersja AIC"
+}
+
+ui_aicselecttooltip
+{
+	"Wybierz poszczególne AI"
+}
+
+ui_aicalreadyselectedtooltip
+{
+	"Ta sztuczna inteligencja została już wybrana. Wybierz to, aby zastąpić."
+}
+
+ui_aicconfirm
+{
+	"Potwierdź wybór"
+}
+
 // ======================
 //         2.13
 // ======================

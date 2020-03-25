@@ -93,6 +93,41 @@ u_fireballistafix_descr
     "Feuerballisten erkennen nun Mönche und Tunnelgräber als Feinde und schießen auf diese."
 }
 
+ui_browsepath
+{
+	"Bitte wähle dein Stronghold Crusader - Installationsverzeichnis."
+}
+
+ui_aicoldversion
+{
+	"Alte Version erkannt. Klicken Sie zum Konvertieren"
+}
+
+ui_aicofferconvert
+{
+	"AIC-Datei in neuere Version konvertieren?"
+}
+
+ui_aicconvertprompt
+{
+	"AIC-Konvertierung"
+}
+
+ui_aicselecttooltip
+{
+	"Wählen Sie einzelne AIs aus"
+}
+
+ui_aicalreadyselectedtooltip
+{
+	"Diese KI wurde bereits ausgewählt. Wählen Sie diese Option zum Überschreiben."
+}
+
+ui_aicconfirm
+{
+	"Auswahl bestätigen"
+}
+
 // ======================
 //         2.13
 // ======================
