@@ -27,13 +27,11 @@ namespace UCP.AIC
         static Dictionary<String, List<AICharacterName>> availableSelection;
         static Dictionary<AICharacterName, String> currentSelection;
 
-        static List<AICharacterName> emptySelection = new List<AICharacterName>();
-
         static List<string> internalAIC = new List<string>()
         {
-            "vanilla.aic.json", "UCP-Bugfix.aic.json", "Kimberly-Balance-v1.0.aic.json",
-            "Krarilotus-aggressiveAI-v1.0.aic.json", "Tatha 0.5.1.aic.json",
-            "Xander10alpha-v1.0.aic.json"
+            "vanilla.json", "UCP-Bugfix.json", "Kimberly-Balance-v1.0.json",
+            "Krarilotus-aggressiveAI-v1.0.json", "Tatha 0.5.1.json",
+            "Xander10alpha-v1.0.json"
         };
 
         static List<AICChange> _changes = new List<AICChange>();
@@ -228,8 +226,8 @@ namespace UCP.AIC
 
         private void ConvertAIC()
         {
-            string fileName = Path.Combine(Environment.CurrentDirectory, "aic", this.TitleIdent);
-            string newFileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(this.TitleIdent) + ".aic.json");
+            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "aic", this.TitleIdent);
+            string newFileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(this.TitleIdent) + ".json");
 
             string backupFileName = fileName;
             while (File.Exists(backupFileName))
@@ -255,7 +253,7 @@ namespace UCP.AIC
         private void ExportFile()
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            string fileName = Path.Combine(Environment.CurrentDirectory, "aic", "exports", this.TitleIdent);
+            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports", this.TitleIdent);
             string backupFileName = fileName;
             while (File.Exists(backupFileName))
             {
@@ -265,7 +263,7 @@ namespace UCP.AIC
             {
                 File.Move(fileName, backupFileName);
             }
-            Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "aic", "exports"));
+            Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports"));
             File.WriteAllText(fileName, Format(serializer.Serialize(collection)));
 
             Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent);
@@ -366,21 +364,21 @@ namespace UCP.AIC
 
         private static void Load()
         {
-            LoadAIC("UCP.AIC.Resources.UCP-Bugfix.aic.json");
-            LoadAIC("UCP.AIC.Resources.vanilla.aic.json");
-            LoadAIC("UCP.AIC.Resources.Kimberly-Balance-v1.0.aic.json");
-            LoadAIC("UCP.AIC.Resources.Krarilotus-aggressiveAI-v1.0.aic.json");
-            LoadAIC("UCP.AIC.Resources.Tatha 0.5.1.aic.json");
-            LoadAIC("UCP.AIC.Resources.Xander10alpha-v1.0.aic.json");
+            LoadAIC("UCP.AIC.Resources.UCP-Bugfix.json");
+            LoadAIC("UCP.AIC.Resources.vanilla.json");
+            LoadAIC("UCP.AIC.Resources.Kimberly-Balance-v1.0.json");
+            LoadAIC("UCP.AIC.Resources.Krarilotus-aggressiveAI-v1.0.json");
+            LoadAIC("UCP.AIC.Resources.Tatha 0.5.1.json");
+            LoadAIC("UCP.AIC.Resources.Xander10alpha-v1.0.json");
 
-            if (Directory.Exists(Path.Combine(Environment.CurrentDirectory, "aic")))
+            if (Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "aic")))
             {
-                foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic", SearchOption.TopDirectoryOnly))
+                foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "resources", "aic"), "*.aic", SearchOption.TopDirectoryOnly))
                 {
                     LoadAIC(file);
                 }
 
-                foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "aic"), "*.aic.json", SearchOption.TopDirectoryOnly))
+                foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "resources", "aic"), "*.json", SearchOption.TopDirectoryOnly))
                 {
                     LoadAIC(file);
                 }

@@ -647,12 +647,12 @@
     <EmbeddedResource Include="CodeBlocks\laddermadness.block" />
     <EmbeddedResource Include="AIC\Resources\descriptions.json" />
     <EmbeddedResource Include="AIC\Resources\errors.json" />
-    <EmbeddedResource Include="AIC\Resources\vanilla.aic.json" />
-    <EmbeddedResource Include="AIC\Resources\Kimberly-Balance-v1.0.aic.json" />
-    <EmbeddedResource Include="AIC\Resources\Krarilotus-aggressiveAI-v1.0.aic.json" />
-    <EmbeddedResource Include="AIC\Resources\Tatha 0.5.1.aic.json" />
-    <EmbeddedResource Include="AIC\Resources\UCP-Bugfix.aic.json" />
-    <EmbeddedResource Include="AIC\Resources\Xander10alpha-v1.0.aic.json" />
+    <EmbeddedResource Include="AIC\Resources\vanilla.json" />
+    <EmbeddedResource Include="AIC\Resources\Kimberly-Balance-v1.0.json" />
+    <EmbeddedResource Include="AIC\Resources\Krarilotus-aggressiveAI-v1.0.json" />
+    <EmbeddedResource Include="AIC\Resources\Tatha 0.5.1.json" />
+    <EmbeddedResource Include="AIC\Resources\UCP-Bugfix.json" />
+    <EmbeddedResource Include="AIC\Resources\Xander10alpha-v1.0.json" />
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot1.aiv">
       <Link>AIV\EvreyFixed\Abbot1.aiv</Link>
     </EmbeddedResource>
