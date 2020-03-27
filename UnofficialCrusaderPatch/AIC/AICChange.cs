@@ -19,7 +19,6 @@ namespace UCP.AIC
     {
         private AICollection collection;
         private List<AICharacterName> characters;
-        //private string headerKey;
 
         static Dictionary<String, String> errorMessages;
         static Dictionary<String, String> errorHints;
@@ -378,9 +377,22 @@ namespace UCP.AIC
                     LoadAIC(file);
                 }
 
+                List<string> exceptions = new List<string>();
                 foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "resources", "aic"), "*.json", SearchOption.TopDirectoryOnly))
                 {
-                    LoadAIC(file);
+                    try
+                    {
+                        LoadAIC(file);
+                    }
+                    catch (Exception)
+                    {
+                        exceptions.Add(file);
+                    }
+                    
+                }
+                if (exceptions.Count > 0)
+                {
+                    Debug.Show("Error loading AIC files: " + String.Join(",", exceptions));
                 }
             }
         }
@@ -416,6 +428,11 @@ namespace UCP.AIC
             string aicName = Path.GetFileName(fileName).Replace("UCP.AIC.Resources.", "");
             try
             {
+                if (availableSelection.ContainsKey(aicName))
+                {
+                    throw new Exception("AIC with the same filename has already been loaded");
+                }
+
                 AICollection ch = serializer.Deserialize<AICollection>(text);;
                 AICChange change = new AICChange(aicName, true)
                 {
@@ -431,20 +448,40 @@ namespace UCP.AIC
             catch (AICSerializationException e)
             {
                 File.AppendAllText("AICParsing.log", e.ToErrorString(fileName));
+                throw e;
             }
             catch (Exception e)
             {
                 File.AppendAllText("AICParsing.log", "\n" + aicName + ": " + e.Message + "\n");
+                throw e;
             }
         }
 
         private static string GetLocalizedDescription(AICollection ch)
         {
-            string currentLang = Localization.Translations.ToArray()[Localization.LanguageIndex].Ident.Substring(0, 3);
+            string currentLang = Localization.Translations.ToArray()[Localization.LanguageIndex].Ident;
             string descr = String.Empty;
             try
             {
-                descr = typeof(AIHeader).GetProperty("Descr" + currentLang).GetValue(ch.AIDescription, null).ToString();
+                descr = ch.AIDescription[currentLang];
+                if (descr == String.Empty)
+                {
+                    foreach (var lang in Localization.Translations)
+                    {
+                        try
+                        {
+                            descr = ch.AIDescription[lang.Ident];
+                            if (descr != String.Empty)
+                            {
+                                break;
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            continue;
+                        }
+                    }
+                }
             }
             catch (Exception)
             {
@@ -452,8 +489,11 @@ namespace UCP.AIC
                 {
                     try
                     {
-                        descr = typeof(AIHeader).GetProperty("Descr" + lang).GetValue(ch.AIDescription, null).ToString();
-                        break;
+                        descr = ch.AIDescription[lang.Ident];
+                        if (descr != String.Empty)
+                        {
+                            break;
+                        }
                     }
                     catch (Exception)
                     {

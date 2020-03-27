@@ -58,9 +58,6 @@
     <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AICSerializationException.cs">
       <Link>AICharacters\AICSerializationException.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AIHeader.cs">
-      <Link>AICharacters\AIHeader.cs</Link>
-    </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AIPersonality.cs">
       <Link>AICharacters\AIPersonality.cs</Link>
     </Compile>

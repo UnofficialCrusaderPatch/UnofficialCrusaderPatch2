@@ -23,47 +23,64 @@ namespace UCPAIConversion
             int end = aicSrcFile.IndexOf("AICharacter", start);
 
             List<string> descriptions = new List<string>();
-            string headerSubstring = aicSrcFile.Substring(headerTitleEnd, end);
-            if (headerSubstring.IndexOf('=') > -1)
-            {
-                string[] headerLines = headerSubstring.Split('\n');
-                foreach(string line in headerLines)
-                {
-                    string[] descr = line.Split('=');
-                    if (descr.Length > 1)
-                    {
-                        string descrKey = Regex.Replace(descr[0], @"\s +", "").Trim();
-                        string descrValue = descr[1].Trim();
-                        descriptions.Add('"' + descrKey + "\": " + '"' + descrValue + "\",");
-                    }
-                }
-            }
-            else
-            {
-                string[] headerLines = aicSrcFile.Substring(headerTitleEnd, end).Split(new string[] { "Descr" }, StringSplitOptions.None);
-                List<string> descrLines = new List<string>();
-                foreach(string line in headerLines)
-                {
-                    string trimmedLine = Regex.Replace(line.Trim(), @"[\n\r\t]+", String.Empty);
-                    if (trimmedLine != String.Empty)
-                    {
-                        string description = trimmedLine.Substring(4);
-                        description = description.Replace("\"", "\\\"");
-                        int indexEnd = description.IndexOf("}");
-                        description = description.Substring(0, indexEnd);
-                        descriptions.Add("\"Descr" + trimmedLine.Substring(0, 3) + "\": \"" + description + "\",");
-                    }
-                }
-            }
-            string headerJson = "\"AIDescription\": {\n\t\t";
-            headerJson = headerJson + String.Join("\n\t\t", descriptions);
+            string[] headerLines = aicSrcFile.Substring(headerTitleEnd, end).Split(new string[] { "Descr" }, StringSplitOptions.None);
 
-            if (headerJson.Length > 1)
+            List<string> descrLines = new List<string>();
+            String language = "";
+            for (int i = 0; i < headerLines.Length; i++)
             {
-                headerJson = headerJson.Substring(0, headerJson.Length - 1);
+                string line = headerLines[i];
+                if (Regex.Replace(line.Trim(), @"[\n\r\t]+", String.Empty).Equals(String.Empty))
+                {
+                    continue;
+                }
+
+                if (line.StartsWith("Ger"))
+                {
+                    language = "German";
+                } 
+                else if (line.StartsWith("Eng"))
+                {
+                    language = "English";
+                }
+                else if (line.StartsWith("Rus"))
+                {
+                    language = "Russian";
+                }
+                else if (line.StartsWith("Pol"))
+                {
+                    language = "Polish";
+                }
+                
+                if (i == headerLines.Length - 1)
+                {
+                    line = line.Substring(0, line.LastIndexOf("AICharacter")).Trim("\r\n\t =}".ToCharArray());
+                }
+
+                string description = line;
+                if (!Regex.Replace(line.Trim(), @"[\n\r\t]+", String.Empty).Equals(String.Empty))
+                {
+                    description = description.Substring(Math.Min(description.Length, 3));
+                    description = description.Trim("\n\r\t ".ToCharArray());
+                    if (description.StartsWith("=") || description.StartsWith("{"))
+                    {
+                        description = description.Substring(1).Trim("\n\r\t ".ToCharArray());
+                    }
+                    if (description.EndsWith("{"))
+                    {
+                        description = description.Substring(0, description.Length - 1).Trim("\n\r\t ".ToCharArray());
+                    }
+                }
+                description = description.Replace("\r\n", "\n").Replace("\"", "\\\"");
+                descriptions.Add("\"" + language + "\":" + " \"" + description + "\"");
             }
+
+            string headerJson = "\"AIDescription\": {\n\t\t";
+            headerJson = headerJson + String.Join(",\n\t\t", descriptions);
             headerJson = headerJson + "\n\t}";
 
+
+            aicSrcFile = Regex.Replace(aicSrcFile, "/[*]([^*]|([*][^/]))*[*]+/", "");
             string[] characterSearch = aicSrcFile.Split(new string[] { "AICharacter" }, StringSplitOptions.None);
             string[] characters = new string[characterSearch.Length-1];
             Array.Copy(characterSearch, 1, characters, 0, characters.Length);
@@ -105,20 +122,45 @@ namespace UCPAIConversion
                 }
 
                 List<string> personalityFields = new List<string>();
-                foreach (string field in fields)
+                const int numPersonalityFields = 169;
+
+                if (fields.Count == numPersonalityFields)
                 {
-                    string parsedField = Regex.Replace(field, @"\s+", String.Empty);
-                    string[] fieldData = parsedField.Split("=".ToCharArray());
-                    if (fieldData.Length > 1)
+                    for (int index = 0; index < numPersonalityFields; index++)
                     {
-                        string fieldName = UpdateFieldName(fieldData[0]);
-                        try
+                        string parsedField = Regex.Replace(fields[index], @"\s+", String.Empty);
+                        string[] fieldData = parsedField.Split("=".ToCharArray());
+                        if (fieldData.Length > 1)
                         {
-                            personalityFields.Add('"' + fieldName + "\": " + int.Parse(fieldData[1]).ToString());
+                            string fieldName = Enum.GetName(typeof(AIPersonalityFieldsEnum), index);
+                            try
+                            {
+                                personalityFields.Add('"' + fieldName + "\": " + int.Parse(fieldData[1]).ToString());
+                            }
+                            catch (FormatException)
+                            {
+                                personalityFields.Add('"' + fieldName + "\": \"" + fieldData[1] + "\"");
+                            }
                         }
-                        catch (FormatException)
+                    }
+                }
+                else
+                {
+                    foreach (string field in fields)
+                    {
+                        string parsedField = Regex.Replace(field, @"\s+", String.Empty);
+                        string[] fieldData = parsedField.Split("=".ToCharArray());
+                        if (fieldData.Length > 1)
                         {
-                            personalityFields.Add('"' + fieldName + "\": \"" + fieldData[1] + "\"");
+                            string fieldName = UpdateFieldName(fieldData[0]);
+                            try
+                            {
+                                personalityFields.Add('"' + fieldName + "\": " + int.Parse(fieldData[1]).ToString());
+                            }
+                            catch (FormatException)
+                            {
+                                personalityFields.Add('"' + fieldName + "\": \"" + fieldData[1] + "\"");
+                            }
                         }
                     }
                 }
@@ -138,6 +180,18 @@ namespace UCPAIConversion
             if (fieldName == "Unknown131")
             {
                 return "AttUnitPatrolRecommandDelay";
+            }
+            else if (fieldName == "RangedBackupUnitGroupsCount")
+            {
+                return "AttUnitBackupGroupsCount";
+            }
+            else if (fieldName == "MinimumGoodsRequiredAfterTribute")
+            {
+                return "MinimumGoodsRequiredAfterTrade";
+            }
+            else if (fieldName == "InvestmentGoldThreshold")
+            {
+                return "RecruitGoldThreshold";
             }
             return fieldName;
         }

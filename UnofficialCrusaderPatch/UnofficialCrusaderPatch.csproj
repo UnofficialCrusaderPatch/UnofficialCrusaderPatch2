@@ -73,7 +73,6 @@
     <Compile Include="AIC\Utils\AICHelper.cs" />
     <Compile Include="AIC\Utils\AICollection.cs" />
     <Compile Include="AIC\Utils\AICSerializationException.cs" />
-    <Compile Include="AIC\Utils\AIHeader.cs" />
     <Compile Include="AIC\Utils\AIPersonality.cs" />
     <Compile Include="AIC\Utils\AISerializer.cs" />
     <Compile Include="AIC\Utils\AIPersonalityFieldsEnum.cs" />

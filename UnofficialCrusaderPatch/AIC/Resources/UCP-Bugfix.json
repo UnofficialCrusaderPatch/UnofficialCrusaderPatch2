@@ -1,17 +1,63 @@
-﻿{
+{
+	
 "AIDescription": {
-		"DescrGer": "Diese .aic behebt die folgenden Fehler und Macken der KIs:- Die Ratte bemannt ihre Verteidigung wieder langsam- Philipp besetzt seine Mauern auf Ratte-Niveau- Friedrich, Marschall, Emir & Abt kaufen Ausrüstung- Wazir kauft Brot in Not- Nizar kauft Brot statt Äpfel- Sultan kauft auch Käse & Brot- Wazir strebt immer mindestens 5 Getreide im Lager an statt 2- Wazir, Emir, Marschall & Philipp kaufen Nahrung & Getreide in 10er statt 20er Fuhren",
-		"DescrEng": "This .aic fixes the following bugs and quirks of the AI:- The Rat reinforces its defense again slowly- Philipp has wall defenses on the niveau of The Rat- Frederick, Marshal, Emir & The Abbot buy equipment- Wazir buys bread in need- Nizar buys bread instead of apples- Sultan also buys Cheese & Bread- Wazir always aims at at least 5 wheat in stock instead of 2- Wazir, Emir, Marshal & Philipp buy food & wheat in stocks of 10 instead of 20",
-		"DescrPol": "Ten plik .aic naprawia następujące błędy i problemy przeciwników komputerowych:- Szczur powoli odnawia swoją obronę- Król Filip ma obronę na poziomie Szczura- Fryderyk, Marszałek, Emir i Opat kupują bronie- Wezyr kupuje chleb w razie potrzeby- Nizar kupuje chleb, zamiast jabłek- Sułtan kupuje też chleb i ser- Wezyr zawsze stara się mieć przynajmniej 5 sztuk pszenicy w składzie, zamiast 2- Wezyr, Emir, Marszałek i Król Filip kupują jedzenie i pszenicę po 10 sztuk, zamiast po 20",
-		"DescrRus": "Этот .aic исправляет следующие ошибки и причуды AI:- Крыса снова медленно усиливает свою защиту- У Филиппа есть оборонительные сооружения на крыше Крысы- Фредерик, Маршал, Эмир и Аббат покупают оборудование- Вазир покупает хлеб если нужно- Низар покупает хлеб вместо яблок- Султан также покупает сыр и хлеб- Вазир всегда стремится к как минимум 5 пшениц на складе вместо 2- Вазир, Эмир, Маршал и Филипп покупают продовольствие и пшеницу в запасах по 10 вместо 20"
-	},
+	
+		"German": "Diese .aic behebt die folgenden Fehler und Macken der KIs:
+		- Die Ratte bemannt ihre Verteidigung wieder langsam
+		- Philipp besetzt seine Mauern auf Ratte-Niveau
+		- Friedrich, Marschall, Emir & Abt kaufen Ausrüstung
+		- Wazir kauft Brot in Not
+		- Nizar kauft Brot statt Äpfel
+		- Sultan kauft auch Käse & Brot
+		- Wazir strebt immer mindestens 5 Getreide im Lager an statt 2
+		- Wazir, Emir, Marschall & Philipp kaufen Nahrung & Getreide in 10er statt 20er Fuhren
+		
+	
+}",
+		"English": "This .aic fixes the following bugs and quirks of the AI:
+		- The Rat reinforces its defense again slowly
+		- Philipp has wall defenses on the niveau of The Rat
+		- Frederick, Marshal, Emir & The Abbot buy equipment
+		- Wazir buys bread in need
+		- Nizar buys bread instead of apples
+		- Sultan also buys Cheese & Bread
+		- Wazir always aims at at least 5 wheat in stock instead of 2
+		- Wazir, Emir, Marshal & Philipp buy food & wheat in stocks of 10 instead of 20
+		
+	
+}",
+		"Polish": "Ten plik .aic naprawia następujące błędy i problemy przeciwników komputerowych:
+		- Szczur powoli odnawia swoją obronę
+		- Król Filip ma obronę na poziomie Szczura
+		- Fryderyk, Marszałek, Emir i Opat kupują bronie
+		- Wezyr kupuje chleb w razie potrzeby
+		- Nizar kupuje chleb, zamiast jabłek
+		- Sułtan kupuje też chleb i ser
+		- Wezyr zawsze stara się mieć przynajmniej 5 sztuk pszenicy w składzie, zamiast 2
+		- Wezyr, Emir, Marszałek i Król Filip kupują jedzenie i pszenicę po 10 sztuk, zamiast po 20
+		
+	
+}",
+		"Russian": "Этот .aic исправляет следующие ошибки и причуды AI:
+		- Крыса снова медленно усиливает свою защиту
+		- У Филиппа есть оборонительные сооружения на крыше Крысы
+		- Фредерик, Маршал, Эмир и Аббат покупают оборудование
+		- Вазир покупает хлеб если нужно
+		- Низар покупает хлеб вместо яблок
+		- Султан также покупает сыр и хлеб
+		- Вазир всегда стремится к как минимум 5 пшениц на складе вместо 2
+		- Вазир, Эмир, Маршал и Филипп покупают продовольствие и пшеницу в запасах по 10 вместо 20"
+	
+},
 
 "AICharacters": [
 	{
+	
 		"Description": "AICharacter",
 		"Index": 1,
 		"Name": "Rat",
 		"Personality" : {
+	
 
 			"Unknown000": 12,
 			"Unknown001": 0,
@@ -182,13 +228,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 1,
 			"TargetChoice": "Player"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 2,
 		"Name": "Snake",
 		"Personality" : {
+	
 
 			"Unknown000": 12,
 			"Unknown001": 0,
@@ -359,13 +409,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 1,
 			"TargetChoice": "Balanced"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 3,
 		"Name": "Pig",
 		"Personality" : {
+	
 
 			"Unknown000": 12,
 			"Unknown001": 0,
@@ -536,13 +590,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Gold"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 4,
 		"Name": "Wolf",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -713,13 +771,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 3,
 			"TargetChoice": "Closest"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 5,
 		"Name": "Saladin",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -731,7 +793,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 8000,
 			"TaxesMin": 3,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 20,
 			"Farm1": "HopFarm",
 			"Farm2": "WheatFarm",
@@ -890,13 +952,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 3,
 			"TargetChoice": "Gold"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 6,
 		"Name": "Caliph",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -908,7 +974,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 9000,
 			"TaxesMin": 3,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 12,
 			"Farm1": "AppleFarm",
 			"Farm2": "HopFarm",
@@ -1067,13 +1133,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 5,
 			"TargetChoice": "Balanced"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 7,
 		"Name": "Sultan",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -1244,13 +1314,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 1,
 			"TargetChoice": "Closest"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 8,
 		"Name": "Richard",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -1421,13 +1495,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 3,
 			"TargetChoice": "Closest"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 9,
 		"Name": "Frederick",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -1598,13 +1676,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 4,
 			"TargetChoice": "Gold"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 10,
 		"Name": "Philipp",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -1775,13 +1857,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Balanced"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 11,
 		"Name": "Wazir",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -1793,7 +1879,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 8000,
 			"TaxesMin": 2,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 10,
 			"Farm1": "WheatFarm",
 			"Farm2": "None",
@@ -1952,13 +2038,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Balanced"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 12,
 		"Name": "Emir",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -1970,7 +2060,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 9000,
 			"TaxesMin": 2,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 10,
 			"Farm1": "WheatFarm",
 			"Farm2": "AppleFarm",
@@ -2129,13 +2219,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Gold"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 13,
 		"Name": "Nizar",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -2147,7 +2241,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 9000,
 			"TaxesMin": 2,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 10,
 			"Farm1": "WheatFarm",
 			"Farm2": "WheatFarm",
@@ -2306,13 +2400,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 4,
 			"TargetChoice": "Closest"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 14,
 		"Name": "Sheriff",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -2483,13 +2581,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 3,
 			"TargetChoice": "Closest"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 15,
 		"Name": "Marshal",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -2660,13 +2762,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Balanced"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 16,
 		"Name": "Abbot",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -2678,7 +2784,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 9000,
 			"TaxesMin": 2,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 10,
 			"Farm1": "HopFarm",
 			"Farm2": "WheatFarm",
@@ -2837,6 +2943,9 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Balanced"
-		}
-	}]
+		
+}
+	
+}]
+
 }

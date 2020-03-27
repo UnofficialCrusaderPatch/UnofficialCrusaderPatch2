@@ -8,7 +8,7 @@ namespace UCPAIConversion
 {
     class AICollection
     {
-        public AIHeader AIDescription { get; set; }
+        public Dictionary<String, String> AIDescription { get; set; }
         public List<AICharacter> AICharacters { get; set; }
 
         public List<AICharacterName> GetCharacters()

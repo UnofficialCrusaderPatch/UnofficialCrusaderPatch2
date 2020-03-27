@@ -1,17 +1,22 @@
 {
+	
 "AIDescription": {
-		"DescrGer": "Dies is die ungeänderte .aic-Datei von Crusader.",
-		"DescrEng": "This is the .aic file from vanilla Crusader.",
-		"DescrPol": "To jest plik .aic z oryginalnego Krzyżowca.",
-		"DescrRus": "Это файл .aic от ванильной Stronghold Crusader."
-	},
+	
+		"German": "Dies is die ungeänderte .aic-Datei von Crusader.",
+		"English": "This is the .aic file from vanilla Crusader.",
+		"Polish": "To jest plik .aic z oryginalnego Krzyżowca.",
+		"Russian": "Это файл .aic от ванильной Stronghold Crusader."
+	
+},
 
 "AICharacters": [
 	{
+	
 		"Description": "AICharacter",
 		"Index": 1,
 		"Name": "Rat",
 		"Personality" : {
+	
 
 			"Unknown000": 12,
 			"Unknown001": 0,
@@ -182,13 +187,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 1,
 			"TargetChoice": "Player"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 2,
 		"Name": "Snake",
 		"Personality" : {
+	
 
 			"Unknown000": 12,
 			"Unknown001": 0,
@@ -359,13 +368,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 1,
 			"TargetChoice": "Balanced"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 3,
 		"Name": "Pig",
 		"Personality" : {
+	
 
 			"Unknown000": 12,
 			"Unknown001": 0,
@@ -536,13 +549,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Gold"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 4,
 		"Name": "Wolf",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -713,13 +730,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 3,
 			"TargetChoice": "Closest"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 5,
 		"Name": "Saladin",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -731,7 +752,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 8000,
 			"TaxesMin": 3,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 20,
 			"Farm1": "HopFarm",
 			"Farm2": "WheatFarm",
@@ -890,13 +911,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 3,
 			"TargetChoice": "Gold"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 6,
 		"Name": "Caliph",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -908,7 +933,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 9000,
 			"TaxesMin": 3,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 12,
 			"Farm1": "AppleFarm",
 			"Farm2": "HopFarm",
@@ -1067,13 +1092,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 5,
 			"TargetChoice": "Balanced"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 7,
 		"Name": "Sultan",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -1244,13 +1273,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 1,
 			"TargetChoice": "Closest"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 8,
 		"Name": "Richard",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -1421,13 +1454,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 3,
 			"TargetChoice": "Closest"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 9,
 		"Name": "Frederick",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -1598,13 +1635,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 4,
 			"TargetChoice": "Gold"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 10,
 		"Name": "Philipp",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -1775,13 +1816,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Balanced"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 11,
 		"Name": "Wazir",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -1793,7 +1838,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 8000,
 			"TaxesMin": 2,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 10,
 			"Farm1": "WheatFarm",
 			"Farm2": "None",
@@ -1952,13 +1997,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Balanced"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 12,
 		"Name": "Emir",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -1970,7 +2019,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 9000,
 			"TaxesMin": 2,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 10,
 			"Farm1": "WheatFarm",
 			"Farm2": "AppleFarm",
@@ -2129,13 +2178,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Gold"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 13,
 		"Name": "Nizar",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -2147,7 +2200,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 9000,
 			"TaxesMin": 2,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 10,
 			"Farm1": "WheatFarm",
 			"Farm2": "WheatFarm",
@@ -2306,13 +2359,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 4,
 			"TargetChoice": "Closest"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 14,
 		"Name": "Sheriff",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -2483,13 +2540,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 3,
 			"TargetChoice": "Closest"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 15,
 		"Name": "Marshal",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -2660,13 +2721,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Balanced"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 16,
 		"Name": "Abbot",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -2678,7 +2743,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 9000,
 			"TaxesMin": 2,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 10,
 			"Farm1": "HopFarm",
 			"Farm2": "WheatFarm",
@@ -2837,6 +2902,9 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Balanced"
-		}
-	}]
+		
+}
+	
+}]
+
 }

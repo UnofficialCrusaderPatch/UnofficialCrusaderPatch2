@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using UCPAIConversion;
-using System.Web.Script.Serialization;
+using System.Linq;
 
 namespace AICUpdater
 {
@@ -34,17 +29,10 @@ namespace AICUpdater
 
                 foreach (string file in files)
                 {
-                    string newfile = Path.Combine(Path.GetDirectoryName(file), Path.GetFileNameWithoutExtension(file) + ".aic.json");
-
-                    string backupfile = file;
-                    while (File.Exists(backupfile))
-                    {
-                        backupfile = backupfile + ".bak";
-                    }
+                    string newfile = Path.Combine(Path.GetDirectoryName(file), Path.GetFileNameWithoutExtension(file) + ".json");
                     try
                     {
                         string result = AICUpdaterHelper.Convert(file, newfile);
-                        File.Move(file, backupfile);
                         File.WriteAllText(newfile, Format(result));
                     }
                     catch (Exception e)

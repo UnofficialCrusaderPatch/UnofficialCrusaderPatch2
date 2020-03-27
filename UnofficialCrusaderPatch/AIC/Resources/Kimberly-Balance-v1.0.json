@@ -1,15 +1,62 @@
-﻿{
+{
+	
 "AIDescription": {
-		"DescrPol": "",
-		"DescrRus": ""
-	},
+	
+		"German": "(Version 1.0 vom August.04.2019)
+		Alle KI-Fürsten wurden von mir überarbeitet. Jede Kreuzritter-KI kauft nun Waffen und Rüstungen. Für die meisten KI-Fürsten wurde die Wirtschaft überarbeitet, sodass diese insgesamt effektiver ist. Das Balancing wurde von mir etwas überarbeitet, denn die vier Tierfürsten Ratte, Schlange, Schwein und Wolf wurden im Vergleich zu den anderen Fürsten wesentlich verstärkt. Kurze Zusammenfassung der wichtigsten Änderungen für die einzelnen Fürsten:
+		Ratte: Greift nun mit sehr viel mehr Einheiten an und auch die Verteidungsarmee wurde erhöht.
+		Schlange: Greift nun zusätzlich mit vielen Schleuderschützen an. Benutzt Schilde neben Katapulten im Angriff.
+		Schwein: Die Wirtschaftskraft und die Verteidigungsarmee wurde erhöht. Rekrutiert nun auch Störtruppen. Benutzt mehr Belagerungsgeräte. Die Anzahl an Einheiten in der Angriffsarmee wurde dramatisch angehoben.
+		Wolf: Verteidigungsarmee fast verdoppelt. Diese beinhaltet nun auch arabische Bogenschützen. Wirtschaftskraft verbessert. Angriffsarmeegröße wurde erhöht.
+		Saladin: Wurde fast unverändert gelassen. Baut weniger Holzfäller und dafür mehr Farmen.
+		Kalif: Verteidigungsarmee verstärkt. Verkauft kein Eisen mehr. Benutzt mehr Sklaven bei Störangriffen.
+		Sultan: Rekrutiert nun auch einige arabische Bogenschützen und Feuerwerfer zur Verteidigung. Greift zusätzlich mit sehr vielen Schleuderschützen an.
+		Richard: Seine Verteidigungsarmee wurde verstärkt und er baut nun mehr Eisenminen. Schwertkämpfer wurden zur Verteidigungsarmee hinzugefügt. Baut nun bis zu acht Belagerungsgeräte.
+		Friedrich: Wurde fast unverändert gelassen. Benutzt nun Ritter für Ausfälle.
+		Phillip: Rekrutiert nun Armbrustschützen für Ausfälle und Angriffe. Pikeniere und Speerträger wurden zur Verteidigungsarmee hinzugefügt. Verteidigungsarmee und Wirtschaft verbessert. Ritter, Armbrustschützen und Pikeniere wurden zur Angriffsarmee hinzugefügt.
+		Wazir: Anzahl an Getreidefarmen und Anzahl der Einheiten in der Verteidigungsarmee erhöht. Arabische Schwertkämpfer zur Verteidigungsarmee hinzugefügt. Baut mehr Belagerungsgeräte.
+		Emir: Wurde fast unverändert gelassen, baut nur mehr Belagerungsgeräte.
+		Nizar: Anzahl der Einheiten in der Verteidigungsarmee erhöht und dieser Meuchelmörder hinzugefügt. Die Angriffsarmee wurde so verändert, dass fast alle Assassinen die Mauern erklettern werden.
+		Sheriff: Anzahl an Einheiten in der Verteidigungsarmee erhöht und dieser Streitkolbenkämpfer hinzugefügt. Die Angriffsarmee beinhaltet nun viele Armbrustschützen die versuchen werden die gegnerischen Türme und Mauern von Verteidigern zu befreien.
+		Marschall: Benutzt nun Ritter für Angriffe. Anzahl an Verteidigern erhöht.
+		Abt: Rekrutiert jetzt zusätzlich Kampfmönche zur Verteidigung. Anzahl der Einheiten in dieser erhöht. Kauft nun Schwerter und Rüstungen für Schwertkämpfer in seiner Angriffsarmee.
+		
+	
+}",
+		"English": "(Version 1.0 of August, 04th, 2019)
+		All AI-Lords received an overhaul. Every crusader-ai is now allowed to buy weapons and armour. Most ai-lords had their economy reworked for more efficiency. The balancing was also changed dramatically, as the four animal lords Rat, Snake, Pig and Wolf had been strengthened a lot more than the other lords. A short summary of the most importan changes to each lord:
+		Rat: Now attacks with a lot more units and has more units defending the labyrinth castle.
+		Snake: Now attacks with a lot of slingers. Uses shields in a siege.
+		Pig: Improved defensive unit count and economy. Now recruits raiding units. Uses more siege engines. Dramatically increased starting siege force unit count.
+		Wolf: Almost doubled the amount of units he recruits for defense and added arabian archers. Improved economy. Starting siege force unit count increased.
+		Saladin: Left almost untouched. Decreased woodcutter count but increased farm count.
+		Caliph: Increased defensive unit count, does not sell iron anymore. Uses more slaves for raids.
+		Sultan: Now also recruits a few arabian archers and fire throwers for defense. Uses tons of slingers in attacks.
+		Richard: Increased defensive unit count, uses more iron mines. Added swordsmen to defensive units. Builds up to 8 siege engines.
+		Frederick: Left almost untouched. Now uses knights for sortie.
+		Phillip: Now uses crossbowmen for sortie and attacks. Added spearmen and pikemen to the defensive units. Increased defensive unit count and economy. Added knights, crossbowmen and pikemen to the siege force.
+		Wazir: Added more farms, increased defensive unit count. Added arabian swordsmen to defensive units. Builds more siege engines.
+		Emir: Left almost unchanged just added more siege engines.
+		Nizar: Increased defensive unit count and added assassins to defense. Attackforce changed to make almost all the assassins climb walls.
+		Sheriff: Increased defensive unit count and added macemen to defense. Attackforce now includes a lot of crossbowmen that try to clear enemy towers and walls.
+		Marshal: Now uses knights in sieges. Increased defensive unit count.
+		Abbot: Now recruits battle monks for defense as well. Increased defensive unit count. Now buys swords and armour for swordsmen in his siege force.
+		
+	
+}",
+		"Polish": "",
+		"Russian": ""
+	
+},
 
 "AICharacters": [
 	{
+	
 		"Description": "AICharacter",
 		"Index": 1,
 		"Name": "Rat",
 		"Personality" : {
+	
 
 			"Unknown000": 12,
 			"Unknown001": 0,
@@ -180,13 +227,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 1,
 			"TargetChoice": "Player"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 2,
 		"Name": "Snake",
 		"Personality" : {
+	
 
 			"Unknown000": 12,
 			"Unknown001": 0,
@@ -357,13 +408,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 1,
 			"TargetChoice": "Player"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 3,
 		"Name": "Pig",
 		"Personality" : {
+	
 
 			"Unknown000": 12,
 			"Unknown001": 0,
@@ -534,13 +589,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Player"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 4,
 		"Name": "Wolf",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -711,13 +770,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 3,
 			"TargetChoice": "Player"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 5,
 		"Name": "Saladin",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -729,7 +792,7 @@
 			"LowestPopularity": 8000,
 			"HighestPopularity": 10000,
 			"TaxesMin": 3,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 20,
 			"Farm1": "HopFarm",
 			"Farm2": "WheatFarm",
@@ -888,13 +951,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 3,
 			"TargetChoice": "Gold"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 6,
 		"Name": "Caliph",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -906,7 +973,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 9000,
 			"TaxesMin": 4,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 12,
 			"Farm1": "AppleFarm",
 			"Farm2": "HopFarm",
@@ -1065,13 +1132,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 5,
 			"TargetChoice": "Balanced"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 7,
 		"Name": "Sultan",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -1242,13 +1313,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 1,
 			"TargetChoice": "Closest"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 8,
 		"Name": "Richard",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -1419,13 +1494,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 3,
 			"TargetChoice": "Closest"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 9,
 		"Name": "Frederick",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -1596,13 +1675,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 4,
 			"TargetChoice": "Gold"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 10,
 		"Name": "Philipp",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -1773,13 +1856,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Balanced"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 11,
 		"Name": "Wazir",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -1791,7 +1878,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 9000,
 			"TaxesMin": 2,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 10,
 			"Farm1": "WheatFarm",
 			"Farm2": "None",
@@ -1950,13 +2037,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Balanced"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 12,
 		"Name": "Emir",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -2127,13 +2218,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Gold"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 13,
 		"Name": "Nizar",
 		"Personality" : {
+	
 
 			"Unknown000": 10,
 			"Unknown001": 0,
@@ -2145,7 +2240,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 9000,
 			"TaxesMin": 0,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 10,
 			"Farm1": "WheatFarm",
 			"Farm2": "WheatFarm",
@@ -2304,13 +2399,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 4,
 			"TargetChoice": "Closest"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 14,
 		"Name": "Sheriff",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -2322,7 +2421,7 @@
 			"LowestPopularity": 6000,
 			"HighestPopularity": 9000,
 			"TaxesMin": 5,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 10,
 			"Farm1": "AppleFarm",
 			"Farm2": "HopFarm",
@@ -2481,13 +2580,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 3,
 			"TargetChoice": "Closest"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 15,
 		"Name": "Marshal",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -2658,13 +2761,17 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Balanced"
-		}
-	},
+		
+}
+	
+},
 	{
+	
 		"Description": "AICharacter",
 		"Index": 16,
 		"Name": "Abbot",
 		"Personality" : {
+	
 
 			"Unknown000": 13,
 			"Unknown001": 0,
@@ -2676,7 +2783,7 @@
 			"LowestPopularity": 5000,
 			"HighestPopularity": 9000,
 			"TaxesMin": 5,
-			"TaxesMax": 11,
+			"TaxesMax": 12,
 			"Unknown011": 10,
 			"Farm1": "HopFarm",
 			"Farm2": "WheatFarm",
@@ -2835,6 +2942,9 @@
 			"AttMaxDefault": 200,
 			"AttMainGroupsCount": 2,
 			"TargetChoice": "Gold"
-		}
-	}]
+		
+}
+	
+}]
+
 }

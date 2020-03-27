@@ -43,11 +43,10 @@ namespace UCPAIConversion
 
         public override object Deserialize(IDictionary<string, object> dictionary, Type type, JavaScriptSerializer serializer)
         {
-            AIHeader header = new AIHeader(); ;
+            Dictionary<string, string> header = new Dictionary<string, string>();
             List<AICharacter> AICharacters = new List<AICharacter>();
             AICollection collection = new AICollection();
 
-            Type AIHeaderType = typeof(AIHeader);
             Type AICharacterType = typeof(AICharacter);
             Type AIPersonalityType = typeof(AIPersonality);
 
@@ -62,7 +61,7 @@ namespace UCPAIConversion
                     {
                         try
                         {
-                            SetProperty(AIHeaderType, header, field.Key, field.Value);
+                            header[field.Key] = field.Value.ToString().Substring(0, Math.Min(field.Value.ToString().Length, 1000)).ToString();
                         }
                         catch (ArgumentException)
                         {
