@@ -1,6 +1,6 @@
 {
 	
-"AIDescription": {
+"AICShortDescription": {
 	
 		"German": "Diese .aic stammt von Xander10alpha und behebt die folgenden Fehler und Macken der KIs:
 		-Allgemein:
@@ -172,10 +172,7 @@
 		-setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
 		-Bug: Fängt bei den Farmen nicht bei 1 an sondern zählt von hinten nach vorne
 		-DefDiggingUnitMax von 4->10
-		-Abt spart 1000 Gold für seine Kathedrahle
-		
-	
-}",
+		-Abt spart 1000 Gold für seine Kathedrahle",
 		"English": "",
 		"Polish": "",
 		"Russian": ""

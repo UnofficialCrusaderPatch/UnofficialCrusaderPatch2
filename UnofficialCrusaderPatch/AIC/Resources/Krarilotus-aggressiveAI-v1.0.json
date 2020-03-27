@@ -1,6 +1,6 @@
 {
 	
-"AIDescription": {
+"AICShortDescription": {
 	
 		"German": "Diese .aic behebt die folgenden Fehler und Macken der KIs:
 		- Grundlegende Verteidigungen werden nachbesetzt
@@ -48,10 +48,7 @@
 		- Marschall baut nun auch Obstfarmen
 		- Marschall baut 2 Steinbrüche und 8 Farmen (+1, -1)
 		- Abt baut 8 Farmen und 5 Steinbrüche (-4, +1)
-		- Abt benutzt Europäische Schwertkämpfer und 10 Pikiniere im Angriff
-		
-	
-}",
+		- Abt benutzt Europäische Schwertkämpfer und 10 Pikiniere im Angriff",
 		"English": "This .aic fixes the following bugs and quirks of the AIs:
 		- Base Defenses will be replaced
 		- Efficiency of defensive troops buffed slightly
@@ -98,10 +95,7 @@
 		- Marschall builds also applefarms now
 		- Marschall builds 2 quarries and 8 farms (+1, -1)
 		- Abt builds 8 farms and 5 quarries (-4, +1)
-		- Abt uses european swordsman and 10 pikeman in his attack
-		
-	
-}",
+		- Abt uses european swordsman and 10 pikeman in his attack",
 		"Polish": "Ten plik .aic naprawia następujące błędy i problemy przeciwników komputerowych:
 		- Base Defenses will be replaced
 		- Efficiency of defensive troops buffed slightly
@@ -148,10 +142,7 @@
 		- Marschall builds also applefarms now
 		- Marschall builds 2 quarries and 8 farms (+1, -1)
 		- Abt builds 8 farms and 5 quarries (-4, +1)
-		- Abt uses european swordsman and 10 pikeman in his attack
-		
-	
-}",
+		- Abt uses european swordsman and 10 pikeman in his attack",
 		"Russian": "Этот .aic исправляет следующие ошибки и причуды AI:
 		- Крыса снова медленно усиливает свою защиту
 		- У Филиппа есть оборонительные сооружения на крыше Крысы

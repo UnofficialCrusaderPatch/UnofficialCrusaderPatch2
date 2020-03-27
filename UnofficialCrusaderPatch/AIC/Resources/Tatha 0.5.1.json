@@ -1,6 +1,6 @@
 {
 	
-"AIDescription": {
+"AICShortDescription": {
 	
 		"German": "Das Ziel meiner AICs ist eine natürliche Verbesserung des KI Verhaltens. Bis auf die Schwertkämpfer beim Abt hat sich nichts groß geändert. Die KIs bleiben sich treu sind aber jetzt durch bessere Wirtschaft, Verteidigung und Angriffe stärker. Die AIC zielt explizit darauf ab, das man Sie auch ohne irgendwelche AIVs benutzen kann.
 		Diese .aic stammt von Tatha und behebt die folgenden Fehler und Macken der KIs:
@@ -122,10 +122,7 @@
 		-kauft jetzt auch Waffen
 		-die maximal Anzahl an Holzfäller wurde geringfügig verringert
 		-setzt seine Schwertkämpfer im Angriff jetzt als Backupeinheit (wird erst genutzt wenn die Burg offen ist) ein
-		-setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		
-	
-}",
+		-setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein",
 		"English": "",
 		"Polish": "",
 		"Russian": ""

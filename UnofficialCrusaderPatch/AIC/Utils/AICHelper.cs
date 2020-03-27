@@ -72,10 +72,16 @@ namespace UCPAIConversion
                     }
                 }
                 description = description.Replace("\r\n", "\n").Replace("\"", "\\\"");
+
+                if (description.EndsWith("{") || description.EndsWith("}") || description.EndsWith("="))
+                {
+                    description = description.Substring(0, description.Length - 1).Trim("\n\r\t ".ToCharArray());
+                }
+
                 descriptions.Add("\"" + language + "\":" + " \"" + description + "\"");
             }
 
-            string headerJson = "\"AIDescription\": {\n\t\t";
+            string headerJson = "\"AICShortDescription\": {\n\t\t";
             headerJson = headerJson + String.Join(",\n\t\t", descriptions);
             headerJson = headerJson + "\n\t}";
 

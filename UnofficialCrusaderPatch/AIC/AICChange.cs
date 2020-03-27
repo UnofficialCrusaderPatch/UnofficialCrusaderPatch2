@@ -463,14 +463,14 @@ namespace UCP.AIC
             string descr = String.Empty;
             try
             {
-                descr = ch.AIDescription[currentLang];
+                descr = ch.AICShortDescription[currentLang];
                 if (descr == String.Empty)
                 {
                     foreach (var lang in Localization.Translations)
                     {
                         try
                         {
-                            descr = ch.AIDescription[lang.Ident];
+                            descr = ch.AICShortDescription[lang.Ident];
                             if (descr != String.Empty)
                             {
                                 break;
@@ -489,7 +489,7 @@ namespace UCP.AIC
                 {
                     try
                     {
-                        descr = ch.AIDescription[lang.Ident];
+                        descr = ch.AICShortDescription[lang.Ident];
                         if (descr != String.Empty)
                         {
                             break;

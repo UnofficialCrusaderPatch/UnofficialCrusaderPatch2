@@ -55,7 +55,7 @@ namespace UCPAIConversion
                 AICharacterSerializationException SerializationErrors = new AICharacterSerializationException();
                 SerializationErrors.Errors = new List<string>();
 
-                if (entry.Key == "AIDescription")
+                if (entry.Key == "AICShortDescription")
                 {
                     foreach (KeyValuePair<string, object> field in (Dictionary<string, object>)entry.Value)
                     {
@@ -133,7 +133,7 @@ namespace UCPAIConversion
             {                
                 throw AICSerializationExceptionList;
             }
-            collection.AIDescription = header;
+            collection.AICShortDescription = header;
             collection.AICharacters = AICharacters;
             return collection;
         }
@@ -156,7 +156,18 @@ namespace UCPAIConversion
             }
             else
             {
-                parameter.SetValue(target, expectedFieldValue, null);
+               try
+                {
+                    parameter.SetValue(target, expectedFieldValue, null);
+                }
+                catch (ArgumentException)
+                {
+                    if (typeof(AIPersonality).GetProperty("_" + expectedFieldValue) != null)
+                    {
+                        PropertyInfo enumParam = typeof(AIPersonality).GetProperty("_" + expectedFieldValue);
+                        enumParam.SetValue(target, expectedFieldValue, null);
+                    }
+                }
             }
         }
     }
