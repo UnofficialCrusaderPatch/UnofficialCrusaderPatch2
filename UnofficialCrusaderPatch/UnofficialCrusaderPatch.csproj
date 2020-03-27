@@ -124,7 +124,8 @@
     <Compile Include="Patching\Section\PEHeader.cs" />
     <Compile Include="Patching\Section\SectionEditor.cs" />
     <Compile Include="Patching\Section\SectionHeader.cs" />
-    <Compile Include="Startup\StartingResource.cs" />
+    <Compile Include="Startup\ResourceView.cs" />
+    <Compile Include="Startup\StartingEnums.cs" />
     <Compile Include="Startup\ResourceChange.cs" />
     <Compile Include="Version.cs" />
     <Compile Include="_Crusader\Building.cs" />

@@ -8,5 +8,6 @@
         Other,
         AIV,
         AIC,
+        Resource,
     }
 }

@@ -18,7 +18,7 @@ namespace UCP
 
         static Configuration()
         {
-            Version.AddExternalChanges();
+
         }
 
         public static void Save(string str = null)

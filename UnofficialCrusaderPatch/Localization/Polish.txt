@@ -1,4 +1,9 @@
-﻿o_armory_marketplace_weapon_order_fix
+﻿ui_Resource
+{
+	"Resource"
+}
+
+o_armory_marketplace_weapon_order_fix
 {
 	"Fix armory/marketplace weapon orders to match"
 }

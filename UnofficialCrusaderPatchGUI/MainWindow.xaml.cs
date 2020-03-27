@@ -12,6 +12,7 @@ using System.Windows.Controls;
 using UCP;
 using UCP.Patching;
 using System.Windows.Media.Imaging;
+using UCP.Startup;
 
 namespace UCP
 {
@@ -44,7 +45,7 @@ namespace UCP
                 Configuration.Language = Localization.LanguageIndex;
                 Configuration.Save("Language");
             }
-
+            Version.AddExternalChanges();
             // init main window
             InitializeComponent();
 
@@ -220,6 +221,21 @@ namespace UCP
             foreach (ChangeType type in Enum.GetValues(typeof(ChangeType)))
             {
                 string typeName = type.ToString();
+                Grid grid = new Grid();
+                TabItem tab = new TabItem()
+                {
+                    Header = Localization.Get("ui_" + typeName),
+                    Content = grid,
+                };
+                tabControl.Items.Add(tab);
+
+                if (type == ChangeType.Resource)
+                {
+                    new ResourceView().InitUI(grid, View_SelectedItemChanged);
+                    continue;
+                }
+
+
                 TreeView view = new TreeView()
                 {
                     Background = null,
@@ -227,8 +243,6 @@ namespace UCP
                     Focusable = false,
                 };
                 view.SelectedItemChanged += View_SelectedItemChanged;
-
-                Grid grid = new Grid();
                 grid.Children.Add(view);
 
                 if (type == ChangeType.AIC)
@@ -251,13 +265,6 @@ namespace UCP
                     button.Click += (s, e) => AICChange.RefreshLocalFiles();
                     grid.Children.Add(button);
                 }
-
-                TabItem tab = new TabItem()
-                {
-                    Header = Localization.Get("ui_" + typeName),
-                    Content = grid,
-                };
-                tabControl.Items.Add(tab);
 
                 foreach (Change change in changes)
                 {

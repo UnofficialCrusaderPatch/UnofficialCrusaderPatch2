@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UCP.Patching;
+using UCP.Startup;
 
 namespace UCP
 {

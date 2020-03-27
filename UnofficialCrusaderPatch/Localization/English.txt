@@ -1,4 +1,9 @@
-﻿o_shfy
+﻿ui_Resource
+{
+	"Resource"
+}
+
+o_shfy
 {
 	"Strongholdify"
 }
