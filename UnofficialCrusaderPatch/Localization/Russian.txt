@@ -1,4 +1,9 @@
-﻿o_armory_marketplace_weapon_order_fix
+﻿ui_aicconflict
+{
+	"конфликт и будет игнорироваться"
+}
+
+o_armory_marketplace_weapon_order_fix
 {
 	"Fix armory/marketplace weapon orders to match"
 }

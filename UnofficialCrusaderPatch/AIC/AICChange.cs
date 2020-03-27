@@ -19,6 +19,7 @@ namespace UCP.AIC
     {
         private AICollection collection;
         private List<AICharacterName> characters;
+        private Button conflict;
 
         static Dictionary<String, String> errorMessages;
         static Dictionary<String, String> errorHints;
@@ -116,7 +117,7 @@ namespace UCP.AIC
                     ToolTip = Localization.Get("ui_aicoldversion"),
                     Width = 17,
                     Height = 17,
-                    Content = "\uFF1F",
+                    Content = "!",
                     FontSize = 10,
                     FontWeight = FontWeights.Bold,
                     HorizontalAlignment = HorizontalAlignment.Right,
@@ -139,6 +140,27 @@ namespace UCP.AIC
                 };
                 panel.Children.Add(infoButton);
             }
+            else
+            {
+                this.conflict = new Button()
+                {
+                    ToolTip = Localization.Get("ui_aicconflict"),
+                    Width = 17,
+                    Height = 17,
+                    Content = "!",
+                    FontSize = 10,
+                    FontWeight = FontWeights.Bold,
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Top,
+                    Margin = new Thickness(0, 0, 45, 0),
+                    Background = new SolidColorBrush(Color.FromRgb(255, 255, 0)),
+                    Visibility = Visibility.Hidden
+                };
+                panel.Children.Add(conflict);
+            }
+
+
+
 
             if (internalAIC.Contains(this.TitleIdent))
             {
@@ -194,8 +216,10 @@ namespace UCP.AIC
                 }
                 if (conflicts.Count > 0)
                 {
-                    Debug.Show(Localization.Get("ui_aicselect") + String.Join(",", conflicts));
-                    this.titleBox.IsChecked = false;
+                    this.conflict.Visibility = Visibility.Visible;
+                    this.conflict.ToolTip = String.Join(",\n", conflicts) + " " + Localization.Get("ui_aicconflict");
+                    //Debug.Show(Localization.Get("ui_aicselect") + String.Join(",", conflicts));
+                    //this.titleBox.IsChecked = false;
                     return;
                 }
             }
