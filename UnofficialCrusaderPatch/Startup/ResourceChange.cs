@@ -68,6 +68,11 @@ namespace UCP.Startup
         {
             List<String> exceptionList = new List<string>();
             JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+            if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "goods"))) {
+                return;
+            }
+
             foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "resources", "goods"), "*.json", SearchOption.TopDirectoryOnly))
             {
                 StreamReader reader = new StreamReader(new FileStream(file, FileMode.Open), Encoding.UTF8);
