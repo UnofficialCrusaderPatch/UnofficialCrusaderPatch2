@@ -116,6 +116,10 @@ namespace UCPAIConversion
                                     {
                                         SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, currentCharacter._Name.ToString()));
                                     }
+                                    catch (Exception)
+                                    {
+                                        SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, currentCharacter._Name.ToString()));
+                                    }
                                 }
                                 currentCharacter.Personality = currentPersonality;
                             }
