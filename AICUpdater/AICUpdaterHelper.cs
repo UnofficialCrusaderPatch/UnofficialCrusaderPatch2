@@ -72,19 +72,19 @@ namespace AICUpdater
                         description = description.Substring(0, description.Length - 1).Trim("\n\r\t ".ToCharArray());
                     }
                 }
-                description = description.Replace("\r\n", "\n").Replace("\"", "\\\"");
+                description = description.Replace("\"", "\\\"");
 
                 if (description.EndsWith("{") || description.EndsWith("}") || description.EndsWith("="))
                 {
                     description = description.Substring(0, description.Length - 1).Trim("\n\r\t ".ToCharArray());
                 }
-
+                description = Regex.Replace(description, "\t", "  ");
                 descriptions.Add("\"" + language + "\":" + " \"" + description + "\"");
             }
 
-            string headerJson = "\"AICShortDescription\": {\n\t\t";
-            headerJson = headerJson + String.Join(",\n\t\t", descriptions);
-            headerJson = headerJson + "\n\t}";
+            string headerJson = "\"AICShortDescription\": {\n  ";
+            headerJson = headerJson + String.Join(",\n  ", descriptions);
+            headerJson = headerJson + "\n}";
 
 
             aicSrcFile = Regex.Replace(aicSrcFile, "/[*]([^*]|([*][^/]))*[*]+/", "");

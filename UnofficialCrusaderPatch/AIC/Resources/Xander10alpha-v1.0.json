@@ -2,181 +2,181 @@
 	
 "AICShortDescription": {
 	
-		"German": "Diese .aic stammt von Xander10alpha und behebt die folgenden Fehler und Macken der KIs:
-		-Allgemein:
-		-Alle KIs können jetzt Waffen kaufen
-		-Alle KIs lassen ihre Beliebtheit nicht mehr so niedrig fallen -> erhöhte Spawnrate für Bauern
-		-Alle KIs nutzen Ihre Fernkämpfer jetzt auch aktiv im Angriff und zur Verteidigung ihrer Belagerungsgeräte
-		-Alle KIs schicken deutlich mehr Truppen (200) um einen Feindlich Burggraben zu zuschütten oder (400), wenn es arabische sind
-		-Alle KIs können jetzt selber Burggräben ausheben
-		-Alle KIs haben angepasste MaxFood (bezieht sich, wie oft jede Nahrungseinheit drin ist)
-		-Alle KIs RecruitIntervalWeak auf 1 gesetzt damit sie notfall Rekurtieren können auf schnellster Stufe
-		-Alle KIs TradeAmountFood von 10->5 da er nur 5 Nahrung kaufen soll (eine KI hat damit kein Problem)
-		-Alle KIs alle Nahrungseiheiten (MinimumApples, MinimumCheese, MinimumBread, MinimumWheat, MinimumHop) auf 10 gesetzt (Minimum was sie immer haben sollen)
-		-Alle KIs haben jetzt MaxEquipment (bezieht sich, wie oft jede Waffe drin ist) auf 10 (die eine Waffenkammer besitzen)
-		oder MaxEquipment auf -1 (die keine Waffenkammer besitzen oder nur verkaufen)
-		-Alle KIs RecruitProbDefWeak auf 100 Wahrscheinlichkeit mit welcher die KI Verteidigungstruppen verstärkt (KI gehts schlecht)
-		-Alle KIs die kein Bier benutzen ist MaxBeer auf -1 oder die die es benutzen auf 10
-		-Alle KIs Unknown009 auf 1 gesetzt, da sie die Steuer besser setzen können
-		-Alle KIs Unknown010 auf 11 gesetzt, damit können sie bis maximal -24 Steuererheben (maximaler Steuersatz)
-		-Alle KIs DefSiegeEngineGoldThreshold auf -500, dann braucht die mindestens 500 Gold zum erneten Aufbau von Vertiedigenden Belargerungsgeräte
-		-Alle KIs DefSiegeEngineBuildDelay auf 2 (die Zeit wann die KI Vertiedigenden Belargerungsgeräte wieder aufbaut)
-		-Alle KIs haben jetzt Unknown042 auf 20 gesetzt (über 20 Nahrungseinheiten sind doppelte rationen eingestellt)
-		-Alle KIs RecruitProbRaidStrong liegt bei 100 Wahrscheinlichkeit mit welcher die KI Raid Truppen Rekutiert (KI gehts gut)
-		-Alle KIs RecruitProbAttackStrong liegt bei 100 Wahrscheinlichkeit mit welcher die KI Angriffs Truppen Rekutiert (KI gehts gut)
-		-Alle KIs RecruitProbAttackWeak liegt bei 0 Wahrscheinlichkeit mit welcher die KI Angriffs Raid Truppen Rekutiert (KI gehts schlecht)
-		-Alle KIs haben jetzt eine AttUnit5
-		-Alle KIs haben Unknown42 auf 10, damit sie auch Handeln können
-		-Ratte:
-		-erster Angriff 20->30,
-		-setzt jetzt Europäische Bogenschützen in der Verteidigung ein und ersetzt diese auch
-		-Burgeverteidigungstruppen 20->30
-		-MaxStone von 40->20, weil er kein Gebäude hat, was so viel Stein braucht
-		-RecruitProbDefStrong von 0->10 Wahrscheinlichkeit mit welcher die KI Verteidigungstruppen verstärkt (KI gehts Gut)
-		-RecruitProbRaidStrong von 0->100 Wahrscheinlichkeit mit welcher die KI Patrollien verstärkt (KI gehts Gut)
-		-MaxResourceOther 20->5
-		-SortieUnitRangedMax 5->10
-		-Schlange:
-		-setzt jetzt Schleuderschützen in der Verteidigung ein und ersetzt diese auch
-		-setzt bei größeren Angriffen ein zweites Katapult ein
-		-die maximal Anzahl an Holzfäller wurde geringfügig verringert
-		-setzt seine Speerträger im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		-Baut jetzt auch Käsefarm mit an
-		-MaxLadder (Leiterträger) von 10->20 erhöht
-		-TradeAmountEquipment von 6->2
-		-Schwein:
-		-jetzt auch Apfelfarmen
-		-Burgverteidigungstruppen 30->40
-		-erster Angriff 10->45,
-		-setzt jetzt mehr Belagerungsgeräte bei größeren Angriffe ein
-		-setzt abwechseln Katapult und Strumbock ein
-		-rekrutiert jetzt auch Störtruppen
-		-setzt seine Streitkolbenkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		-TradeAmountEquipment von 4->2
-		-Wolf:
-		-plus 2 Eisenminen
-		-minus 1 Steinbruch,
-		-setzt jetzt Arabische Bogenschützen in der Verteidigung ein und ersetzt diese auch
-		-setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
-		-setzt jetzt mehr Truppen ein den eigenen Burggraben ausheben
-		-setzt auch Pikiniere zum Stören ein
-		-die maximal Anzahl an Holzfäller wurde geringfügig verringert
-		-maximal 8 Belagerungsgeräte und setzt ein Rammbock ein dazu musste die AttMaxEngineers auf 20 gesetzt werden
-		-es wurde ein Fehler behoben das er keine Störangriffe geschickt hat, wenn es ihm besonders gut ging
-		-setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		-andere Reihnfolge beim Belargerungsbau
-		-TradeAmountEquipment von 4->2
-		-Saladin:
-		-Burgverteidigungstruppen 50->60,
-		-setzt jetzt mehr Truppen ein den eigenen Burggraben ausheben
-		-setzt keine Feuerwerfer mehr im Angriff ein
-		-setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
-		-die Anzahl an kletternden Meuchelmördern wurde erhöht
-		-die maximal Anzahl an Holzfäller wurde geringfügig verringert
-		-setzt seine Arabischebogenreiter im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		-TargetChioce von Gold auf Closest gesetzt, weil meistens die KI kein Geld hat und er der stärkste Araber ist. Er wechselt zu oft die Angriffe.
-		-Kalif:
-		-erster Angriff 15->30,
-		-setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
-		-die Anzahl an kletternden Meuchelmördern wurde erhöht
-		-hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
-		-schickt bis maximal 2 Katapulte zum Angriff
-		-setzt seine Arabischeschwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		-RecruitIntervalStrong und RecruitInterval von 0 auf 1 gesetzt (bei 0 rekutiert er nicht)
-		-Sultan:
-		-setzt jetzt Feuerwerfer und Arabische Bogenschützen in der Verteidigung ein und ersetzt diese auch
-		-seine Ausfalleinheiten wurden angepasst
-		-setzt auch Arabische Schwertkämpfer zum Stören ein
-		-plus 3 Obstfarm
-		-erster Angriff 10->15,
-		-Holzfäller 16->10
-		-die maximal Anzahl an Holzfäller wurde geringfügig verringert
-		-Richard:
-		-erster Angriff 20->40
-		-Burgverteidigungstruppen 20->60
-		-Dewegen ist die DefTotal auf 80
-		-rekrutiert jetzt auch Störtruppen
-		-setzt auch Pikiniere zum Stören ein
-		-setzt maximal 8 Belargerungsgeräte ein dazu musste die AttMaxEngineers auf 20 gesetzt werden
-		-setzt seine Pikenträger im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		-Verhältnis der Verteidiger ist jetzt statt 2 Bogenschützen und 1 Pikenträger zu 5 Bogenschützen und 1 Pikenträger
-		-Die maximale Anzahl an Tunnelbauer ist von 5 auf 10 erhöht
-		-andere Reihnfolge beim Belargerungsbau
-		-Friedrich:
-		-hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
-		-erster Angriff 30->40
-		-kauft jetzt auch Waffen
-		-die maximal Anzahl an Holzfäller wurde geringfügig verringert
-		-setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		-Phillip:
-		-plus 1 Steinbruch
-		-minus 2 Apfelfarmen
-		-seine Ausfalleinheiten wurden angepasst
-		-das Ersetzt seiner Verteidigungsrittern wurde gefixt
-		-erster Angriff 10->30
-		-setzt jetzt bis zu 2 Sturmböcke im Angriff ein
-		-setzt im Angriff jetzt auch Ritter und Bogenschützen mit ein
-		-Burgverteidigungstruppen 4->30
-		-setzt jetzt Europäische Bogenschützen in der Verteidigung ein und ersetzt diese auch
-		-die maximal Anzahl an Holzfäller wurde geringfügig verringert
-		-maximal 3 Belergerungsgeräte und setzt Catapult ein
-		-setzt seine Speerträger im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		-Burgverteidigung 30->50 erhöht
-		-Verhältnis der Verteidiger ist jetzt statt 1 Ritter und 2 Bogenschützen zu 1 Ritter und 4 Bogenschützen, damit Anzahl an Ritter 10 bleibt
-		-Wazir:
-		-seine Ausfalleinheiten wurden angepasst
-		-setzt auch Arabische Schwertkämpfer zum Stören ein
-		-Burgverteidigungstruppen 40->60
-		-setzt keine Feuerwerfer mehr im Angriff ein
-		-kauft in der Not auch Brot
-		-setzt seine Arabischebogenreiter im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		-Emir:
-		-Burgverteidigungstruppen 50->70
-		-setzt jetzt auch Feuerbalisten und Europäische Bogenschützen im Angriff ein
-		-setzt seine Arabischeschwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		-RecruitIntervalStrong und RecruitInterval von 0 auf 1 gesetzt (bei 0 rekutiert er nicht)
-		-Nizar:
-		-plus 1 Steinbruch,
-		-Farmen 16->12
-		-die Anzahl an kletternden Meuchelmördern wurde deutlich erhöht
-		-setzt jetzt bis zu 2 Katapulte und 2 Balagerungstürme im Angriff ein
-		-setzt jetzt auch Arabische und Berittene Bogenschützen im Angriff ein
-		-seine Ausfalleinheiten wurden angepasst
-		-setzt auch Arabische Meuchelmörder zum Stören ein
-		-verfügt jetzt auch über Patrouillien
-		-kauft Brot statt Äpfel
-		-die maximal Anzahl an Holzfäller wurde geringfügig verringert
-		-setzt seine Arabischebogenreiter im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		-andere Reihnfolge beim Belargerungsbau
-		-Sheriff:
-		-die Anzahl an kletternden Meuchelmördern wurde erhöht
-		-hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
-		-Burgverteidigungstruppen 40->55
-		-setzt jetzt Streitkolbenkämpfer statt Sklaven zum zuschütten von Gräben ein
-		-die maximal Anzahl an Holzfäller wurde geringfügig verringert
-		-der Sheriff hat jetzt eine höhere Priorität für Verteidigungstruppen
-		-setzt seine Streitkolbenkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		-Marschall:
-		-baut jetzt auch Apfelfarmen
-		-erster Angriff 10->25
-		-setzt seine Ritter im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		-Burgverteidigung von 30->50 erhöht
-		-Abt:
-		-baut jetzt auch Apfelfarmen
-		-verkauft keine Schwerter und Schwere Rüstungen mehr
-		-Burgverteidigungstruppen 30->60
-		-setzt jetzt auch Sturmböcke ein
-		-greift jetzt auch mit Schwertkämpfern an (Waffen werden gekauft)
-		-die maximal Anzahl an Holzfäller wurde geringfügig verringert
-		-setzt Bogenschützen als Backupeinheit ein (wird erst genutzt wenn die Burg offen ist) ein
-		-setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
-		-Bug: Fängt bei den Farmen nicht bei 1 an sondern zählt von hinten nach vorne
-		-DefDiggingUnitMax von 4->10
-		-Abt spart 1000 Gold für seine Kathedrahle",
-		"English": "",
-		"Polish": "",
-		"Russian": ""
-	
+  "German": "Diese .aic stammt von Xander10alpha und behebt die folgenden Fehler und Macken der KIs:
+    -Allgemein:
+    -Alle KIs können jetzt Waffen kaufen
+    -Alle KIs lassen ihre Beliebtheit nicht mehr so niedrig fallen -> erhöhte Spawnrate für Bauern
+    -Alle KIs nutzen Ihre Fernkämpfer jetzt auch aktiv im Angriff und zur Verteidigung ihrer Belagerungsgeräte
+    -Alle KIs schicken deutlich mehr Truppen (200) um einen Feindlich Burggraben zu zuschütten oder (400), wenn es arabische sind
+    -Alle KIs können jetzt selber Burggräben ausheben
+    -Alle KIs haben angepasste MaxFood (bezieht sich, wie oft jede Nahrungseinheit drin ist)
+    -Alle KIs RecruitIntervalWeak auf 1 gesetzt damit sie notfall Rekurtieren können auf schnellster Stufe
+    -Alle KIs TradeAmountFood von 10->5 da er nur 5 Nahrung kaufen soll (eine KI hat damit kein Problem)
+    -Alle KIs alle Nahrungseiheiten (MinimumApples, MinimumCheese, MinimumBread, MinimumWheat, MinimumHop) auf 10 gesetzt (Minimum was sie immer haben sollen)
+    -Alle KIs haben jetzt MaxEquipment (bezieht sich, wie oft jede Waffe drin ist) auf 10 (die eine Waffenkammer besitzen)
+    oder MaxEquipment auf -1 (die keine Waffenkammer besitzen oder nur verkaufen)
+    -Alle KIs RecruitProbDefWeak auf 100 Wahrscheinlichkeit mit welcher die KI Verteidigungstruppen verstärkt (KI gehts schlecht)
+    -Alle KIs die kein Bier benutzen ist MaxBeer auf -1 oder die die es benutzen auf 10
+    -Alle KIs Unknown009 auf 1 gesetzt, da sie die Steuer besser setzen können
+    -Alle KIs Unknown010 auf 11 gesetzt, damit können sie bis maximal -24 Steuererheben (maximaler Steuersatz)
+    -Alle KIs DefSiegeEngineGoldThreshold auf -500, dann braucht die mindestens 500 Gold zum erneten Aufbau von Vertiedigenden Belargerungsgeräte
+    -Alle KIs DefSiegeEngineBuildDelay auf 2 (die Zeit wann die KI Vertiedigenden Belargerungsgeräte wieder aufbaut)
+    -Alle KIs haben jetzt Unknown042 auf 20 gesetzt (über 20 Nahrungseinheiten sind doppelte rationen eingestellt)
+    -Alle KIs RecruitProbRaidStrong liegt bei 100 Wahrscheinlichkeit mit welcher die KI Raid Truppen Rekutiert (KI gehts gut)
+    -Alle KIs RecruitProbAttackStrong liegt bei 100 Wahrscheinlichkeit mit welcher die KI Angriffs Truppen Rekutiert (KI gehts gut)
+    -Alle KIs RecruitProbAttackWeak liegt bei 0 Wahrscheinlichkeit mit welcher die KI Angriffs Raid Truppen Rekutiert (KI gehts schlecht)
+    -Alle KIs haben jetzt eine AttUnit5
+    -Alle KIs haben Unknown42 auf 10, damit sie auch Handeln können
+    -Ratte:
+    -erster Angriff 20->30,
+    -setzt jetzt Europäische Bogenschützen in der Verteidigung ein und ersetzt diese auch
+    -Burgeverteidigungstruppen 20->30
+    -MaxStone von 40->20, weil er kein Gebäude hat, was so viel Stein braucht
+    -RecruitProbDefStrong von 0->10 Wahrscheinlichkeit mit welcher die KI Verteidigungstruppen verstärkt (KI gehts Gut)
+    -RecruitProbRaidStrong von 0->100 Wahrscheinlichkeit mit welcher die KI Patrollien verstärkt (KI gehts Gut)
+    -MaxResourceOther 20->5
+    -SortieUnitRangedMax 5->10
+    -Schlange:
+    -setzt jetzt Schleuderschützen in der Verteidigung ein und ersetzt diese auch
+    -setzt bei größeren Angriffen ein zweites Katapult ein
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -setzt seine Speerträger im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -Baut jetzt auch Käsefarm mit an
+    -MaxLadder (Leiterträger) von 10->20 erhöht
+    -TradeAmountEquipment von 6->2
+    -Schwein:
+    -jetzt auch Apfelfarmen
+    -Burgverteidigungstruppen 30->40
+    -erster Angriff 10->45,
+    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffe ein
+    -setzt abwechseln Katapult und Strumbock ein
+    -rekrutiert jetzt auch Störtruppen
+    -setzt seine Streitkolbenkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -TradeAmountEquipment von 4->2
+    -Wolf:
+    -plus 2 Eisenminen
+    -minus 1 Steinbruch,
+    -setzt jetzt Arabische Bogenschützen in der Verteidigung ein und ersetzt diese auch
+    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
+    -setzt jetzt mehr Truppen ein den eigenen Burggraben ausheben
+    -setzt auch Pikiniere zum Stören ein
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -maximal 8 Belagerungsgeräte und setzt ein Rammbock ein dazu musste die AttMaxEngineers auf 20 gesetzt werden
+    -es wurde ein Fehler behoben das er keine Störangriffe geschickt hat, wenn es ihm besonders gut ging
+    -setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -andere Reihnfolge beim Belargerungsbau
+    -TradeAmountEquipment von 4->2
+    -Saladin:
+    -Burgverteidigungstruppen 50->60,
+    -setzt jetzt mehr Truppen ein den eigenen Burggraben ausheben
+    -setzt keine Feuerwerfer mehr im Angriff ein
+    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
+    -die Anzahl an kletternden Meuchelmördern wurde erhöht
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -setzt seine Arabischebogenreiter im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -TargetChioce von Gold auf Closest gesetzt, weil meistens die KI kein Geld hat und er der stärkste Araber ist. Er wechselt zu oft die Angriffe.
+    -Kalif:
+    -erster Angriff 15->30,
+    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
+    -die Anzahl an kletternden Meuchelmördern wurde erhöht
+    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
+    -schickt bis maximal 2 Katapulte zum Angriff
+    -setzt seine Arabischeschwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -RecruitIntervalStrong und RecruitInterval von 0 auf 1 gesetzt (bei 0 rekutiert er nicht)
+    -Sultan:
+    -setzt jetzt Feuerwerfer und Arabische Bogenschützen in der Verteidigung ein und ersetzt diese auch
+    -seine Ausfalleinheiten wurden angepasst
+    -setzt auch Arabische Schwertkämpfer zum Stören ein
+    -plus 3 Obstfarm
+    -erster Angriff 10->15,
+    -Holzfäller 16->10
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -Richard:
+    -erster Angriff 20->40
+    -Burgverteidigungstruppen 20->60
+    -Dewegen ist die DefTotal auf 80
+    -rekrutiert jetzt auch Störtruppen
+    -setzt auch Pikiniere zum Stören ein
+    -setzt maximal 8 Belargerungsgeräte ein dazu musste die AttMaxEngineers auf 20 gesetzt werden
+    -setzt seine Pikenträger im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -Verhältnis der Verteidiger ist jetzt statt 2 Bogenschützen und 1 Pikenträger zu 5 Bogenschützen und 1 Pikenträger
+    -Die maximale Anzahl an Tunnelbauer ist von 5 auf 10 erhöht
+    -andere Reihnfolge beim Belargerungsbau
+    -Friedrich:
+    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
+    -erster Angriff 30->40
+    -kauft jetzt auch Waffen
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -Phillip:
+    -plus 1 Steinbruch
+    -minus 2 Apfelfarmen
+    -seine Ausfalleinheiten wurden angepasst
+    -das Ersetzt seiner Verteidigungsrittern wurde gefixt
+    -erster Angriff 10->30
+    -setzt jetzt bis zu 2 Sturmböcke im Angriff ein
+    -setzt im Angriff jetzt auch Ritter und Bogenschützen mit ein
+    -Burgverteidigungstruppen 4->30
+    -setzt jetzt Europäische Bogenschützen in der Verteidigung ein und ersetzt diese auch
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -maximal 3 Belergerungsgeräte und setzt Catapult ein
+    -setzt seine Speerträger im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -Burgverteidigung 30->50 erhöht
+    -Verhältnis der Verteidiger ist jetzt statt 1 Ritter und 2 Bogenschützen zu 1 Ritter und 4 Bogenschützen, damit Anzahl an Ritter 10 bleibt
+    -Wazir:
+    -seine Ausfalleinheiten wurden angepasst
+    -setzt auch Arabische Schwertkämpfer zum Stören ein
+    -Burgverteidigungstruppen 40->60
+    -setzt keine Feuerwerfer mehr im Angriff ein
+    -kauft in der Not auch Brot
+    -setzt seine Arabischebogenreiter im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -Emir:
+    -Burgverteidigungstruppen 50->70
+    -setzt jetzt auch Feuerbalisten und Europäische Bogenschützen im Angriff ein
+    -setzt seine Arabischeschwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -RecruitIntervalStrong und RecruitInterval von 0 auf 1 gesetzt (bei 0 rekutiert er nicht)
+    -Nizar:
+    -plus 1 Steinbruch,
+    -Farmen 16->12
+    -die Anzahl an kletternden Meuchelmördern wurde deutlich erhöht
+    -setzt jetzt bis zu 2 Katapulte und 2 Balagerungstürme im Angriff ein
+    -setzt jetzt auch Arabische und Berittene Bogenschützen im Angriff ein
+    -seine Ausfalleinheiten wurden angepasst
+    -setzt auch Arabische Meuchelmörder zum Stören ein
+    -verfügt jetzt auch über Patrouillien
+    -kauft Brot statt Äpfel
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -setzt seine Arabischebogenreiter im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -andere Reihnfolge beim Belargerungsbau
+    -Sheriff:
+    -die Anzahl an kletternden Meuchelmördern wurde erhöht
+    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
+    -Burgverteidigungstruppen 40->55
+    -setzt jetzt Streitkolbenkämpfer statt Sklaven zum zuschütten von Gräben ein
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -der Sheriff hat jetzt eine höhere Priorität für Verteidigungstruppen
+    -setzt seine Streitkolbenkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -Marschall:
+    -baut jetzt auch Apfelfarmen
+    -erster Angriff 10->25
+    -setzt seine Ritter im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -Burgverteidigung von 30->50 erhöht
+    -Abt:
+    -baut jetzt auch Apfelfarmen
+    -verkauft keine Schwerter und Schwere Rüstungen mehr
+    -Burgverteidigungstruppen 30->60
+    -setzt jetzt auch Sturmböcke ein
+    -greift jetzt auch mit Schwertkämpfern an (Waffen werden gekauft)
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -setzt Bogenschützen als Backupeinheit ein (wird erst genutzt wenn die Burg offen ist) ein
+    -setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -Bug: Fängt bei den Farmen nicht bei 1 an sondern zählt von hinten nach vorne
+    -DefDiggingUnitMax von 4->10
+    -Abt spart 1000 Gold für seine Kathedrahle",
+  "English": "",
+  "Polish": "",
+  "Russian": ""
+
 },
 
 "AICharacters": [

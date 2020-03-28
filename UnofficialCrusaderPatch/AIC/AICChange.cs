@@ -34,6 +34,8 @@ namespace UCP.AIC
             "Xander10alpha-v1.0.json"
         };
 
+        static LinkedList<AICChange> selectedChanges = new LinkedList<AICChange>();
+
         static List<AICChange> _changes = new List<AICChange>();
 
         public static List<AICChange> changes { get { return _changes; } }
@@ -185,26 +187,17 @@ namespace UCP.AIC
         {
             if (!(System.Windows.Input.Keyboard.Modifiers == System.Windows.Input.ModifierKeys.Control))
             {
-                foreach (var change in changes)
+                DeselectOthers(this);
+                selectedChanges.Clear();
+                currentSelection.Clear();
+                foreach (AICharacterName character in this.characters)
                 {
-                    if (change != this)
-                    {
-                        List<AICharacterName> namesToRemove = new List<AICharacterName>();
-                        foreach (KeyValuePair<AICharacterName, string> sel in currentSelection)
-                        {
-                            if (sel.Value == change.TitleIdent)
-                            {
-                                namesToRemove.Add(sel.Key);
-                            }
-                        }
-                        foreach (AICharacterName name in namesToRemove)
-                        {
-                            currentSelection.Remove(name);
-                        }
-                        change.titleBox.IsChecked = false;
-                    }
+                    currentSelection.Add(character, this.TitleIdent);
                 }
-            } else
+                selectedChanges.AddFirst(this);
+                //this.titleBox.IsChecked = true;
+            }
+            else
             {
                 List<String> conflicts = new List<String>();
                 foreach (AICharacterName character in this.characters)
@@ -213,25 +206,24 @@ namespace UCP.AIC
                     {
                         conflicts.Add(Enum.GetName(typeof(AICharacterName), character));
                     }
+                    else
+                    {
+                        currentSelection.Add(character, this.TitleIdent);
+                    }
                 }
                 if (conflicts.Count > 0)
                 {
                     this.conflict.Visibility = Visibility.Visible;
                     this.conflict.ToolTip = String.Join(",\n", conflicts) + " " + Localization.Get("ui_aicconflict");
-                    //Debug.Show(Localization.Get("ui_aicselect") + String.Join(",", conflicts));
-                    //this.titleBox.IsChecked = false;
-                    return;
                 }
-            }
-            foreach (AICharacterName character in this.characters)
-            {
-                currentSelection.Add(character, this.TitleIdent);
+                selectedChanges.AddLast(this);
             }
             base.TitleBox_Checked(sender, e);
         }
 
         protected override void TitleBox_Unchecked(object sender, RoutedEventArgs e)
         {
+            this.conflict.Visibility = Visibility.Hidden;
             List<AICharacterName> namesToRemove = new List<AICharacterName>();
             foreach (KeyValuePair<AICharacterName, string> sel in currentSelection)
             {
@@ -244,6 +236,30 @@ namespace UCP.AIC
             {
                 currentSelection.Remove(name);
             }
+            selectedChanges.Remove(this);
+
+            foreach (AICChange change in selectedChanges)
+            {
+                change.conflict.Visibility = Visibility.Hidden;
+                List<String> conflicts = new List<String>();
+                foreach (AICharacterName character in change.characters)
+                {
+                    if (!currentSelection.ContainsKey(character))
+                    {
+                        currentSelection.Add(character, change.TitleIdent);
+                    }
+                    else
+                    {
+                        if (currentSelection[character] != change.TitleIdent && change.characters.Contains(character))
+                        {
+                            conflicts.Add(Enum.GetName(typeof(AICharacterName), character));
+                            change.conflict.Visibility = Visibility.Visible;
+                        }
+                    }
+                }
+                change.conflict.ToolTip = String.Join(",\n", conflicts) + " " + Localization.Get("ui_aicconflict");
+            }
+
             base.TitleBox_Unchecked(sender, e);
         }
 
@@ -364,7 +380,6 @@ namespace UCP.AIC
                 {
                     if (aicChange.TitleIdent == selected)
                     {
-                        //aicChange.titleBox.IsChecked = true;
                         foreach (AICharacter character in aicChange.collection.AICharacters)
                         {
                             currentSelection[character._Name] = aicChange.TitleIdent;
@@ -378,6 +393,17 @@ namespace UCP.AIC
         public static void DoChange(ChangeArgs args)
         {
             CreateEdit().Activate(args);
+        }
+
+        private static void DeselectOthers(AICChange selected)
+        {
+            foreach (var change in changes)
+            {
+                if (change != selected)
+                {
+                    change.titleBox.IsChecked = false;
+                }
+            }
         }
 
         private static bool IsInternal(string titleIdent)

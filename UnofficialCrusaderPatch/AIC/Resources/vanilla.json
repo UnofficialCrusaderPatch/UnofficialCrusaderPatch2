@@ -2,11 +2,11 @@
 	
 "AICShortDescription": {
 	
-		"German": "Dies is die ungeänderte .aic-Datei von Crusader.",
-		"English": "This is the .aic file from vanilla Crusader.",
-		"Polish": "To jest plik .aic z oryginalnego Krzyżowca.",
-		"Russian": "Это файл .aic от ванильной Stronghold Crusader."
-	
+  "German": "Dies is die ungeänderte .aic-Datei von Crusader.",
+  "English": "This is the .aic file from vanilla Crusader.",
+  "Polish": "To jest plik .aic z oryginalnego Krzyżowca.",
+  "Russian": "Это файл .aic от ванильной Stronghold Crusader."
+
 },
 
 "AICharacters": [

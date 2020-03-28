@@ -2,206 +2,206 @@
 	
 "AICShortDescription": {
 	
-		"German": "Diese .aic behebt die folgenden Fehler und Macken der KIs:
-		- Grundlegende Verteidigungen werden nachbesetzt
-		- Verteidigungstruppen Effizienz wurde leicht gebufft
-		- Friedrich, Marschall, Emir & Abt kaufen Ausrüstung
-		- Wazir, Nizar und Caliph gehen nicht mehr so schnell bankrott
-		- Abt spart 1000 Gold für seine Kathedrale
-		Diese AIC macht neben grundsätzlichen Bugfixes folgende Balancechanges:
-		- Alle KI's haben aggressiveres Angriffs-und Verteidigungsverhalten
-		-> Dazu gehört seltsame 'Wartetruppen' zu reduzieren, die nur rumstehen
-		nach der Belagerung und die KI davon abhalten was Vernünftiges zu tun
-		- Alle KI's achten mehr auf höhere Beliebtheit für schnellere Rekrutierung
-		- Alle KI's managen Nahrung effizienter
-		- Ratte baut 2 Steinbrüche, 5 Holzfäller und 4 Farmen (+1, -1, -2)
-		- Ratte wartet 3 mal länger um ihre Ressourcengebäude zu erneuern, falls diese zerstört werden
-		- Schlange baut nun 2 Eisenminen und 8 Apfelfarmen (+2, -2)
-		- Schlange nutzt wenige Feuerwerfer und Assassinen
-		- Schwein baut 3 Steinbrüche, keine Pechgrube, 10 Käsefarmen (+1, -1, -2)
-		- Wolf baut eine Pechgrube und 4 Eisenminen sowie 12 Farmen (-1, +1, +2)
-		- Wolf nutzt wenige Feuerwerfer und Assassinen
-		- Saladin setzt Assassinen ein
-		- Caliph baut 8 Farmen, 3 Steinbrüche, 3 Eisenminen und 5 Pechgruben (-2, +1, +2, -5)
-		- Caliph verkauft Eisen nicht sofort und hat damit Eisen für seinen Pechkessel bereit
-		- Caliph baut nur noch Feuerballisten nach, wenn er mindestens 500 Gold übrig hat
-		- Caliph nutzt wenige Assassinen
-		- Sultan baut 3 Steinbrüche, 2 Eisenminen und 8 Holzfäller (+1, +1, -7)
-		- Sultan nutzt Sklaven
-		- Richard baut 4 Steinbrüche und 12 Farmen (+1, -3)
-		- Friedrich benutzt wenige Keulenkämpfer
-		- Phillip baut 4 Eisenminen, 1 Steinbruch und 7 Farmen (+1, +1, -1)
-		- Phillip benutzt seine Ritter auch im Angriff
-		- Phillip benutzt vereinzelt Armbrustschützen in der Verteidigung
-		- Wazir baut 11 Farmen, 12 Holzfäller und 2 Pechgruben (+3, +2, -2)
-		- Wazir benutzt wenige Assassinen
-		- Wazir baut nur noch Feuerballisten nach, wenn er mindestens 500 Gold übrig hat
-		- Wazir verkauft Eisen nicht sofort, und hat damit 10 Eisen für seinen pechkessel bereit
-		- Emir baut 12 Farmen und 5 Steinbrüche (-4, +1)
-		- Emir nutzt Keulenkämpfer im Angriff
-		- Nizar baut 12 Farmen, 0 Pechgruben, 3 Eisenminen und 2 Steinbrüche (-4, -1, +1, +1)
-		- Nizar nutzt wenige Feuerwerfer im Angriff
-		- Nizar baut nur noch Feuerballisten nach, wenn er mindestens 350 Gold übrig hat
-		- Nizar setzt einige Belagerungsgeräte ein + berittene Bogenschützen zur Verteidigung dieser
-		- Sheriff baut 12 Farmen und 3 Pechgruben (+2, -1)
-		- Sheriff baut nur noch Feuerballisten nach, wenn er mindestens 350 Gold übrig hat
-		- Marschall baut nun auch Obstfarmen
-		- Marschall baut 2 Steinbrüche und 8 Farmen (+1, -1)
-		- Abt baut 8 Farmen und 5 Steinbrüche (-4, +1)
-		- Abt benutzt Europäische Schwertkämpfer und 10 Pikiniere im Angriff",
-		"English": "This .aic fixes the following bugs and quirks of the AIs:
-		- Base Defenses will be replaced
-		- Efficiency of defensive troops buffed slightly
-		- Frederick, Marshal, Emir & Abbott buy equipment
-		- Wazir, Nizar und Caliph will not go bankrupt as fast
-		- Abbott saves 1000 Gold for his cathedral
-		This aic also applies following balance changes to the AI:
-		- All AI's have more agressive attack and defense behaviour
-		-> Therefore, they wont use Troops in their attack as much that stood around doing nothing,
-		hindering the AI from recruitment or beeing annoying in any way
-		- All AI's take care to have higher popularity for faster recruitment
-		- All AI's magae food more efficient
-		- Rat builds 2 quarries, 5 woodcutters and 4 farms (+1, -1, -2)
-		- Rat waits 3 times as long for rebuilding destroyed resource buildings
-		- Snake builds 2 iron mines and 8 farms (+2, -2)
-		- Snake uses some firethrowers and assassins
-		- Pig builds 3 quarries, no pitchrig, 10 cheese farms (+1, -1, -2)
-		- Wolf builds one pitchrig and 4 ironmines aswell as 12 farms (-1, +1, +2)
-		- Wolf uses some firethrowers and assassins
-		- Saladin uses assassins
-		- Caliph builds 8 farms, 3 quarries, 3 iron mines and 5 pitchrigs (-2, +1, +2, -5)
-		- Caliph doesnt sell iron immediatily, saving 10 for his oil smelter
-		- Caliph only rebuilds fireballistas with a minimum of 500 gold
-		- Caliph uses some assassins
-		- Sultan builds 3 quarries, 2 iron mines and 8 woodcutters (+1, +1, -7)
-		- Sultan uses slaves
-		- Richard builds 4 quarries and 12 farms (+1, -3)
-		- Frederick builds some Macemen
-		- Phillip builds 4 iron mines, 1 quarry and 7 farms (+1, +1, -1)
-		- Phillip uses his knights also for attacking
-		- Phillip uses single crossbowmen in Defense
-		- Wazir builds 11 farms, 12 woodcutters and 2 pitchrigs (+3, +2, -2)
-		- Wazir uses some assassins
-		- Wazir only rebuilds fireballistas with a minimum of 500 gold
-		- Wazir doesnt sell iron immediatily, saving 10 for his oil smelter
-		- Emir builds 12 farms and 5 quarries (-4, +1)
-		- Emir uses Macemen for his attack
-		- Nizar builds 12 farms, 0 pitchrigs, 3 iron mines and 2 quarries (-4, -1, +1, +1)
-		- Nizar uses very few Firethrowers in his attack
-		- Nizar only rebuilds fireballistas with a minimum of 350 gold
-		- Nizar uses some siegeengines + Horsearcher for their defense
-		- Sheriff builds 12 farms und 3 pitchrigs (+2, -1)
-		- Sheriff only rebuilds fireballistas with a minimum of 350 gold
-		- Marschall builds also applefarms now
-		- Marschall builds 2 quarries and 8 farms (+1, -1)
-		- Abt builds 8 farms and 5 quarries (-4, +1)
-		- Abt uses european swordsman and 10 pikeman in his attack",
-		"Polish": "Ten plik .aic naprawia następujące błędy i problemy przeciwników komputerowych:
-		- Base Defenses will be replaced
-		- Efficiency of defensive troops buffed slightly
-		- Frederick, Marshal, Emir & Abbott buy equipment
-		- Wazir, Nizar und Caliph will not go bankrupt as fast
-		- Abbott saves 1000 Gold for his cathedral
-		This aic also applies following balance changes to the AI:
-		- All AI's have more agressive attack and defense behaviour
-		-> Therefore, they wont use Troops in their attack as much that stood around doing nothing,
-		hindering the AI from recruitment or beeing annoying in any way
-		- All AI's take care to have higher popularity for faster recruitment
-		- All AI's magae food more efficient
-		- Rat builds 2 quarries, 5 woodcutters and 4 farms (+1, -1, -2)
-		- Rat waits 3 times as long for rebuilding destroyed resource buildings
-		- Snake builds 2 iron mines and 8 farms (+2, -2)
-		- Snake uses some firethrowers and assassins
-		- Pig builds 3 quarries, no pitchrig, 10 cheese farms (+1, -1, -2)
-		- Wolf builds one pitchrig and 4 ironmines aswell as 12 farms (-1, +1, +2)
-		- Wolf uses some firethrowers and assassins
-		- Saladin uses assassins
-		- Caliph builds 8 farms, 3 quarries, 3 iron mines and 5 pitchrigs (-2, +1, +2, -5)
-		- Caliph doesnt sell iron immediatily, saving 10 for his oil smelter
-		- Caliph only rebuilds fireballistas with a minimum of 500 gold
-		- Caliph uses some assassins
-		- Sultan builds 3 quarries, 2 iron mines and 8 woodcutters (+1, +1, -7)
-		- Sultan uses slaves
-		- Richard builds 4 quarries and 12 farms (+1, -3)
-		- Frederick builds some Macemen
-		- Phillip builds 4 iron mines, 1 quarry and 7 farms (+1, +1, -1)
-		- Phillip uses his knights also for attacking
-		- Phillip uses single crossbowmen in Defense
-		- Wazir builds 11 farms, 12 woodcutters and 2 pitchrigs (+3, +2, -2)
-		- Wazir uses some assassins
-		- Wazir only rebuilds fireballistas with a minimum of 500 gold
-		- Wazir doesnt sell iron immediatily, saving 10 for his oil smelter
-		- Emir builds 12 farms and 5 quarries (-4, +1)
-		- Emir uses Macemen for his attack
-		- Nizar builds 12 farms, 0 pitchrigs, 3 iron mines and 2 quarries (-4, -1, +1, +1)
-		- Nizar uses very few Firethrowers in his attack
-		- Nizar only rebuilds fireballistas with a minimum of 350 gold
-		- Nizar uses some siegeengines + Horsearcher for their defense
-		- Sheriff builds 12 farms und 3 pitchrigs (+2, -1)
-		- Sheriff only rebuilds fireballistas with a minimum of 350 gold
-		- Marschall builds also applefarms now
-		- Marschall builds 2 quarries and 8 farms (+1, -1)
-		- Abt builds 8 farms and 5 quarries (-4, +1)
-		- Abt uses european swordsman and 10 pikeman in his attack",
-		"Russian": "Этот .aic исправляет следующие ошибки и причуды AI:
-		- Крыса снова медленно усиливает свою защиту
-		- У Филиппа есть оборонительные сооружения на крыше Крысы
-		- Фредерик, Маршал, Эмир и Аббат покупают оборудование
-		- Вазир покупает хлеб если нужно
-		- Низар покупает хлеб вместо яблок
-		- Султан также покупает сыр и хлеб
-		- Вазир всегда стремится к как минимум 5 пшениц на складе вместо 2
-		- Вазир, Эмир, Маршал и Филипп покупают продовольствие и пшеницу в запасах по 10 вместо 20
-		- Базовая оборона будет вновь занята.
-		- Эффективность обороны была слегка заторможена.
-		- Фридрих, Маршалл, Эмир и Аббат покупают оборудование.
-		- Вазир, Низар и Халиф не обанкротятся так быстро.
-		- Аббат хранит 1000 золотых для своего собора.
-		Помимо основных исправлений ошибок, этот AIC выполняет следующие балансировочные механизмы:
-		- У всех искусственных интеллектуалов более агрессивное нападение и защитное поведение.
-		-> Это включает в себя сокращение странных \"ожидающих войск\", которые просто стоят рядом.
-		после осады и уберечь AI от любых разумных поступков!
-		- Все AI уделяют больше внимания повышению популярности для более быстрого набора персонала.
-		- Все AI управляют продуктами питания более эффективно.
-		- Крыса строит 2 карьера, 5 лесорубов и 4 фермы (+1, -1, -1, -2).
-		- Крыса ждет в 3 раза дольше, чтобы обновить свои здания ресурсов, если они будут разрушены.
-		- Змея строит 2 железные шахты и 8 ферм по выращиванию яблок (+2, -2).
-		- Змея использует несколько метателей огня и убийц.
-		- Свинья строит 3 карьера, без поля, 10 сыродельных ферм (+1, -1, -2).
-		- Волк строит поле и 4 железные шахты, а также 12 ферм (-1, +1, +2).
-		- Волк использует мало Огнеметателей и убийц.
-		- Салладин использует Ассасинов.
-		- Халиф строит 8 ферм, 3 карьера, 3 железные шахты и 5 карьеров (-2, +1, +2, -5).
-		- Халиф не продает железо сразу и имеет железо, готовое к подаче в чайник.
-		- Халиф будет строить групы огнеметателей только в том случае, если у него осталось не менее 500 золотых.
-		- Халиф использует немного Ассасинов.
-		- Султан строит 3 карьера, 2 железные шахты и 8 лесорубов (+1, +1, -7).
-		- Султан использует рабов.
-		- Ричард строит 4 карьера и 12 ферм (+1, -3).
-		- Фридрих использует несколько Пехотинцев.
-		- Филипп строит 4 железные шахты, 1 карьер и 7 ферм (+1, +1, -1, -1).
-		- Филипп использует своих рыцарей и в атаке.
-		- Филипп иногда использует арбалетов в свою защиту.
-		- Вазир строит 11 ферм, 12 лесорубов и 2 поля (+3, +2, -2, -2).
-		- Вазир использует несколько убийц.
-		- Вазир будет строить группы только в том случае, если у него осталось не менее 500 золотых.
-		- Вазир не продает железо сразу, а имеет 10 метала, готовых к подаче.
-		- Эмир строит 12 ферм и 5 карьеров (-4, +1).
-		- Эмир использует Пехотинцев в атаке.
-		- Низар строит 12 ферм, 0 карьеров, 3 железных рудника и 2 карьера (-4, -1, +1, +1, +1).
-		- Низар использует Прашников в обороне.
-		- Низар строит группы, только если у него осталось не менее 350 золотых.
-		- Низар использует несколько осадных устройств + установленных лучников для их защиты.
-		- Шериф строит 12 ферм и 3 поля (+2, -1).
-		- Шериф строит списки огнеметателей, только если у него осталось не менее 350 золотых.
-		- Сейчас Маршалл также строит яблочные фермы.
-		- Маршалл строит 2 карьера и 8 ферм (+1, -1).
-		- Аббат строит 8 ферм и 5 карьеров (-4, +1).
-		- Аббат использует европейских фехтовальщиков и 10 пикиньеров в атаке.
-		- Низар,Халиф,Вазир и Шериф строят Осадные Орудия только тогда, когда у них есть много золота (если меньне чем 350 или 500,то тогда Осадные орудия не строятся).
-		- Халиф и Вазир хранят железо в запасах по 10 штук для своего Нефтеперабатывающего завода, что дает их экономике огромный толчок, не продавая и не покупая железо каждые 3 секунды.
-		- Предоставление Халифу, Вазиру и Аббату более высокий минимальный предел набора золота, и каждому лорду, имеющему цепочку производства хлеба, как минимум 230 минимальных требований к золоту (чтобы он мог купить 10 штук пшеницы для обеспечения своей экономической устойчивости)."
-	
+  "German": "Diese .aic behebt die folgenden Fehler und Macken der KIs:
+    - Grundlegende Verteidigungen werden nachbesetzt
+    - Verteidigungstruppen Effizienz wurde leicht gebufft
+    - Friedrich, Marschall, Emir & Abt kaufen Ausrüstung
+    - Wazir, Nizar und Caliph gehen nicht mehr so schnell bankrott
+    - Abt spart 1000 Gold für seine Kathedrale
+    Diese AIC macht neben grundsätzlichen Bugfixes folgende Balancechanges:
+    - Alle KI's haben aggressiveres Angriffs-und Verteidigungsverhalten
+    -> Dazu gehört seltsame 'Wartetruppen' zu reduzieren, die nur rumstehen
+    nach der Belagerung und die KI davon abhalten was Vernünftiges zu tun
+    - Alle KI's achten mehr auf höhere Beliebtheit für schnellere Rekrutierung
+    - Alle KI's managen Nahrung effizienter
+    - Ratte baut 2 Steinbrüche, 5 Holzfäller und 4 Farmen (+1, -1, -2)
+    - Ratte wartet 3 mal länger um ihre Ressourcengebäude zu erneuern, falls diese zerstört werden
+    - Schlange baut nun 2 Eisenminen und 8 Apfelfarmen (+2, -2)
+    - Schlange nutzt wenige Feuerwerfer und Assassinen
+    - Schwein baut 3 Steinbrüche, keine Pechgrube, 10 Käsefarmen (+1, -1, -2)
+    - Wolf baut eine Pechgrube und 4 Eisenminen sowie 12 Farmen (-1, +1, +2)
+    - Wolf nutzt wenige Feuerwerfer und Assassinen
+    - Saladin setzt Assassinen ein
+    - Caliph baut 8 Farmen, 3 Steinbrüche, 3 Eisenminen und 5 Pechgruben (-2, +1, +2, -5)
+    - Caliph verkauft Eisen nicht sofort und hat damit Eisen für seinen Pechkessel bereit
+    - Caliph baut nur noch Feuerballisten nach, wenn er mindestens 500 Gold übrig hat
+    - Caliph nutzt wenige Assassinen
+    - Sultan baut 3 Steinbrüche, 2 Eisenminen und 8 Holzfäller (+1, +1, -7)
+    - Sultan nutzt Sklaven
+    - Richard baut 4 Steinbrüche und 12 Farmen (+1, -3)
+    - Friedrich benutzt wenige Keulenkämpfer
+    - Phillip baut 4 Eisenminen, 1 Steinbruch und 7 Farmen (+1, +1, -1)
+    - Phillip benutzt seine Ritter auch im Angriff
+    - Phillip benutzt vereinzelt Armbrustschützen in der Verteidigung
+    - Wazir baut 11 Farmen, 12 Holzfäller und 2 Pechgruben (+3, +2, -2)
+    - Wazir benutzt wenige Assassinen
+    - Wazir baut nur noch Feuerballisten nach, wenn er mindestens 500 Gold übrig hat
+    - Wazir verkauft Eisen nicht sofort, und hat damit 10 Eisen für seinen pechkessel bereit
+    - Emir baut 12 Farmen und 5 Steinbrüche (-4, +1)
+    - Emir nutzt Keulenkämpfer im Angriff
+    - Nizar baut 12 Farmen, 0 Pechgruben, 3 Eisenminen und 2 Steinbrüche (-4, -1, +1, +1)
+    - Nizar nutzt wenige Feuerwerfer im Angriff
+    - Nizar baut nur noch Feuerballisten nach, wenn er mindestens 350 Gold übrig hat
+    - Nizar setzt einige Belagerungsgeräte ein + berittene Bogenschützen zur Verteidigung dieser
+    - Sheriff baut 12 Farmen und 3 Pechgruben (+2, -1)
+    - Sheriff baut nur noch Feuerballisten nach, wenn er mindestens 350 Gold übrig hat
+    - Marschall baut nun auch Obstfarmen
+    - Marschall baut 2 Steinbrüche und 8 Farmen (+1, -1)
+    - Abt baut 8 Farmen und 5 Steinbrüche (-4, +1)
+    - Abt benutzt Europäische Schwertkämpfer und 10 Pikiniere im Angriff",
+  "English": "This .aic fixes the following bugs and quirks of the AIs:
+    - Base Defenses will be replaced
+    - Efficiency of defensive troops buffed slightly
+    - Frederick, Marshal, Emir & Abbott buy equipment
+    - Wazir, Nizar und Caliph will not go bankrupt as fast
+    - Abbott saves 1000 Gold for his cathedral
+    This aic also applies following balance changes to the AI:
+    - All AI's have more agressive attack and defense behaviour
+    -> Therefore, they wont use Troops in their attack as much that stood around doing nothing,
+    hindering the AI from recruitment or beeing annoying in any way
+    - All AI's take care to have higher popularity for faster recruitment
+    - All AI's magae food more efficient
+    - Rat builds 2 quarries, 5 woodcutters and 4 farms (+1, -1, -2)
+    - Rat waits 3 times as long for rebuilding destroyed resource buildings
+    - Snake builds 2 iron mines and 8 farms (+2, -2)
+    - Snake uses some firethrowers and assassins
+    - Pig builds 3 quarries, no pitchrig, 10 cheese farms (+1, -1, -2)
+    - Wolf builds one pitchrig and 4 ironmines aswell as 12 farms (-1, +1, +2)
+    - Wolf uses some firethrowers and assassins
+    - Saladin uses assassins
+    - Caliph builds 8 farms, 3 quarries, 3 iron mines and 5 pitchrigs (-2, +1, +2, -5)
+    - Caliph doesnt sell iron immediatily, saving 10 for his oil smelter
+    - Caliph only rebuilds fireballistas with a minimum of 500 gold
+    - Caliph uses some assassins
+    - Sultan builds 3 quarries, 2 iron mines and 8 woodcutters (+1, +1, -7)
+    - Sultan uses slaves
+    - Richard builds 4 quarries and 12 farms (+1, -3)
+    - Frederick builds some Macemen
+    - Phillip builds 4 iron mines, 1 quarry and 7 farms (+1, +1, -1)
+    - Phillip uses his knights also for attacking
+    - Phillip uses single crossbowmen in Defense
+    - Wazir builds 11 farms, 12 woodcutters and 2 pitchrigs (+3, +2, -2)
+    - Wazir uses some assassins
+    - Wazir only rebuilds fireballistas with a minimum of 500 gold
+    - Wazir doesnt sell iron immediatily, saving 10 for his oil smelter
+    - Emir builds 12 farms and 5 quarries (-4, +1)
+    - Emir uses Macemen for his attack
+    - Nizar builds 12 farms, 0 pitchrigs, 3 iron mines and 2 quarries (-4, -1, +1, +1)
+    - Nizar uses very few Firethrowers in his attack
+    - Nizar only rebuilds fireballistas with a minimum of 350 gold
+    - Nizar uses some siegeengines + Horsearcher for their defense
+    - Sheriff builds 12 farms und 3 pitchrigs (+2, -1)
+    - Sheriff only rebuilds fireballistas with a minimum of 350 gold
+    - Marschall builds also applefarms now
+    - Marschall builds 2 quarries and 8 farms (+1, -1)
+    - Abt builds 8 farms and 5 quarries (-4, +1)
+    - Abt uses european swordsman and 10 pikeman in his attack",
+  "Polish": "Ten plik .aic naprawia następujące błędy i problemy przeciwników komputerowych:
+    - Base Defenses will be replaced
+    - Efficiency of defensive troops buffed slightly
+    - Frederick, Marshal, Emir & Abbott buy equipment
+    - Wazir, Nizar und Caliph will not go bankrupt as fast
+    - Abbott saves 1000 Gold for his cathedral
+    This aic also applies following balance changes to the AI:
+    - All AI's have more agressive attack and defense behaviour
+    -> Therefore, they wont use Troops in their attack as much that stood around doing nothing,
+    hindering the AI from recruitment or beeing annoying in any way
+    - All AI's take care to have higher popularity for faster recruitment
+    - All AI's magae food more efficient
+    - Rat builds 2 quarries, 5 woodcutters and 4 farms (+1, -1, -2)
+    - Rat waits 3 times as long for rebuilding destroyed resource buildings
+    - Snake builds 2 iron mines and 8 farms (+2, -2)
+    - Snake uses some firethrowers and assassins
+    - Pig builds 3 quarries, no pitchrig, 10 cheese farms (+1, -1, -2)
+    - Wolf builds one pitchrig and 4 ironmines aswell as 12 farms (-1, +1, +2)
+    - Wolf uses some firethrowers and assassins
+    - Saladin uses assassins
+    - Caliph builds 8 farms, 3 quarries, 3 iron mines and 5 pitchrigs (-2, +1, +2, -5)
+    - Caliph doesnt sell iron immediatily, saving 10 for his oil smelter
+    - Caliph only rebuilds fireballistas with a minimum of 500 gold
+    - Caliph uses some assassins
+    - Sultan builds 3 quarries, 2 iron mines and 8 woodcutters (+1, +1, -7)
+    - Sultan uses slaves
+    - Richard builds 4 quarries and 12 farms (+1, -3)
+    - Frederick builds some Macemen
+    - Phillip builds 4 iron mines, 1 quarry and 7 farms (+1, +1, -1)
+    - Phillip uses his knights also for attacking
+    - Phillip uses single crossbowmen in Defense
+    - Wazir builds 11 farms, 12 woodcutters and 2 pitchrigs (+3, +2, -2)
+    - Wazir uses some assassins
+    - Wazir only rebuilds fireballistas with a minimum of 500 gold
+    - Wazir doesnt sell iron immediatily, saving 10 for his oil smelter
+    - Emir builds 12 farms and 5 quarries (-4, +1)
+    - Emir uses Macemen for his attack
+    - Nizar builds 12 farms, 0 pitchrigs, 3 iron mines and 2 quarries (-4, -1, +1, +1)
+    - Nizar uses very few Firethrowers in his attack
+    - Nizar only rebuilds fireballistas with a minimum of 350 gold
+    - Nizar uses some siegeengines + Horsearcher for their defense
+    - Sheriff builds 12 farms und 3 pitchrigs (+2, -1)
+    - Sheriff only rebuilds fireballistas with a minimum of 350 gold
+    - Marschall builds also applefarms now
+    - Marschall builds 2 quarries and 8 farms (+1, -1)
+    - Abt builds 8 farms and 5 quarries (-4, +1)
+    - Abt uses european swordsman and 10 pikeman in his attack",
+  "Russian": "Этот .aic исправляет следующие ошибки и причуды AI:
+    - Крыса снова медленно усиливает свою защиту
+    - У Филиппа есть оборонительные сооружения на крыше Крысы
+    - Фредерик, Маршал, Эмир и Аббат покупают оборудование
+    - Вазир покупает хлеб если нужно
+    - Низар покупает хлеб вместо яблок
+    - Султан также покупает сыр и хлеб
+    - Вазир всегда стремится к как минимум 5 пшениц на складе вместо 2
+    - Вазир, Эмир, Маршал и Филипп покупают продовольствие и пшеницу в запасах по 10 вместо 20
+    - Базовая оборона будет вновь занята.
+    - Эффективность обороны была слегка заторможена.
+    - Фридрих, Маршалл, Эмир и Аббат покупают оборудование.
+    - Вазир, Низар и Халиф не обанкротятся так быстро.
+    - Аббат хранит 1000 золотых для своего собора.
+    Помимо основных исправлений ошибок, этот AIC выполняет следующие балансировочные механизмы:
+    - У всех искусственных интеллектуалов более агрессивное нападение и защитное поведение.
+    -> Это включает в себя сокращение странных \"ожидающих войск\", которые просто стоят рядом.
+    после осады и уберечь AI от любых разумных поступков!
+    - Все AI уделяют больше внимания повышению популярности для более быстрого набора персонала.
+    - Все AI управляют продуктами питания более эффективно.
+    - Крыса строит 2 карьера, 5 лесорубов и 4 фермы (+1, -1, -1, -2).
+    - Крыса ждет в 3 раза дольше, чтобы обновить свои здания ресурсов, если они будут разрушены.
+    - Змея строит 2 железные шахты и 8 ферм по выращиванию яблок (+2, -2).
+    - Змея использует несколько метателей огня и убийц.
+    - Свинья строит 3 карьера, без поля, 10 сыродельных ферм (+1, -1, -2).
+    - Волк строит поле и 4 железные шахты, а также 12 ферм (-1, +1, +2).
+    - Волк использует мало Огнеметателей и убийц.
+    - Салладин использует Ассасинов.
+    - Халиф строит 8 ферм, 3 карьера, 3 железные шахты и 5 карьеров (-2, +1, +2, -5).
+    - Халиф не продает железо сразу и имеет железо, готовое к подаче в чайник.
+    - Халиф будет строить групы огнеметателей только в том случае, если у него осталось не менее 500 золотых.
+    - Халиф использует немного Ассасинов.
+    - Султан строит 3 карьера, 2 железные шахты и 8 лесорубов (+1, +1, -7).
+    - Султан использует рабов.
+    - Ричард строит 4 карьера и 12 ферм (+1, -3).
+    - Фридрих использует несколько Пехотинцев.
+    - Филипп строит 4 железные шахты, 1 карьер и 7 ферм (+1, +1, -1, -1).
+    - Филипп использует своих рыцарей и в атаке.
+    - Филипп иногда использует арбалетов в свою защиту.
+    - Вазир строит 11 ферм, 12 лесорубов и 2 поля (+3, +2, -2, -2).
+    - Вазир использует несколько убийц.
+    - Вазир будет строить группы только в том случае, если у него осталось не менее 500 золотых.
+    - Вазир не продает железо сразу, а имеет 10 метала, готовых к подаче.
+    - Эмир строит 12 ферм и 5 карьеров (-4, +1).
+    - Эмир использует Пехотинцев в атаке.
+    - Низар строит 12 ферм, 0 карьеров, 3 железных рудника и 2 карьера (-4, -1, +1, +1, +1).
+    - Низар использует Прашников в обороне.
+    - Низар строит группы, только если у него осталось не менее 350 золотых.
+    - Низар использует несколько осадных устройств + установленных лучников для их защиты.
+    - Шериф строит 12 ферм и 3 поля (+2, -1).
+    - Шериф строит списки огнеметателей, только если у него осталось не менее 350 золотых.
+    - Сейчас Маршалл также строит яблочные фермы.
+    - Маршалл строит 2 карьера и 8 ферм (+1, -1).
+    - Аббат строит 8 ферм и 5 карьеров (-4, +1).
+    - Аббат использует европейских фехтовальщиков и 10 пикиньеров в атаке.
+    - Низар,Халиф,Вазир и Шериф строят Осадные Орудия только тогда, когда у них есть много золота (если меньне чем 350 или 500,то тогда Осадные орудия не строятся).
+    - Халиф и Вазир хранят железо в запасах по 10 штук для своего Нефтеперабатывающего завода, что дает их экономике огромный толчок, не продавая и не покупая железо каждые 3 секунды.
+    - Предоставление Халифу, Вазиру и Аббату более высокий минимальный предел набора золота, и каждому лорду, имеющему цепочку производства хлеба, как минимум 230 минимальных требований к золоту (чтобы он мог купить 10 штук пшеницы для обеспечения своей экономической устойчивости)."
+
 },
 
 "AICharacters": [

@@ -2,43 +2,43 @@
 	
 "AICShortDescription": {
 	
-		"German": "Diese .aic behebt die folgenden Fehler und Macken der KIs:
-		- Die Ratte bemannt ihre Verteidigung wieder langsam
-		- Philipp besetzt seine Mauern auf Ratte-Niveau
-		- Friedrich, Marschall, Emir & Abt kaufen Ausrüstung
-		- Wazir kauft Brot in Not
-		- Nizar kauft Brot statt Äpfel
-		- Sultan kauft auch Käse & Brot
-		- Wazir strebt immer mindestens 5 Getreide im Lager an statt 2
-		- Wazir, Emir, Marschall & Philipp kaufen Nahrung & Getreide in 10er statt 20er Fuhren",
-		"English": "This .aic fixes the following bugs and quirks of the AI:
-		- The Rat reinforces its defense again slowly
-		- Philipp has wall defenses on the niveau of The Rat
-		- Frederick, Marshal, Emir & The Abbot buy equipment
-		- Wazir buys bread in need
-		- Nizar buys bread instead of apples
-		- Sultan also buys Cheese & Bread
-		- Wazir always aims at at least 5 wheat in stock instead of 2
-		- Wazir, Emir, Marshal & Philipp buy food & wheat in stocks of 10 instead of 20",
-		"Polish": "Ten plik .aic naprawia następujące błędy i problemy przeciwników komputerowych:
-		- Szczur powoli odnawia swoją obronę
-		- Król Filip ma obronę na poziomie Szczura
-		- Fryderyk, Marszałek, Emir i Opat kupują bronie
-		- Wezyr kupuje chleb w razie potrzeby
-		- Nizar kupuje chleb, zamiast jabłek
-		- Sułtan kupuje też chleb i ser
-		- Wezyr zawsze stara się mieć przynajmniej 5 sztuk pszenicy w składzie, zamiast 2
-		- Wezyr, Emir, Marszałek i Król Filip kupują jedzenie i pszenicę po 10 sztuk, zamiast po 20",
-		"Russian": "Этот .aic исправляет следующие ошибки и причуды AI:
-		- Крыса снова медленно усиливает свою защиту
-		- У Филиппа есть оборонительные сооружения на крыше Крысы
-		- Фредерик, Маршал, Эмир и Аббат покупают оборудование
-		- Вазир покупает хлеб если нужно
-		- Низар покупает хлеб вместо яблок
-		- Султан также покупает сыр и хлеб
-		- Вазир всегда стремится к как минимум 5 пшениц на складе вместо 2
-		- Вазир, Эмир, Маршал и Филипп покупают продовольствие и пшеницу в запасах по 10 вместо 20"
-	
+  "German": "Diese .aic behebt die folgenden Fehler und Macken der KIs:
+    - Die Ratte bemannt ihre Verteidigung wieder langsam
+    - Philipp besetzt seine Mauern auf Ratte-Niveau
+    - Friedrich, Marschall, Emir & Abt kaufen Ausrüstung
+    - Wazir kauft Brot in Not
+    - Nizar kauft Brot statt Äpfel
+    - Sultan kauft auch Käse & Brot
+    - Wazir strebt immer mindestens 5 Getreide im Lager an statt 2
+    - Wazir, Emir, Marschall & Philipp kaufen Nahrung & Getreide in 10er statt 20er Fuhren",
+  "English": "This .aic fixes the following bugs and quirks of the AI:
+    - The Rat reinforces its defense again slowly
+    - Philipp has wall defenses on the niveau of The Rat
+    - Frederick, Marshal, Emir & The Abbot buy equipment
+    - Wazir buys bread in need
+    - Nizar buys bread instead of apples
+    - Sultan also buys Cheese & Bread
+    - Wazir always aims at at least 5 wheat in stock instead of 2
+    - Wazir, Emir, Marshal & Philipp buy food & wheat in stocks of 10 instead of 20",
+  "Polish": "Ten plik .aic naprawia następujące błędy i problemy przeciwników komputerowych:
+    - Szczur powoli odnawia swoją obronę
+    - Król Filip ma obronę na poziomie Szczura
+    - Fryderyk, Marszałek, Emir i Opat kupują bronie
+    - Wezyr kupuje chleb w razie potrzeby
+    - Nizar kupuje chleb, zamiast jabłek
+    - Sułtan kupuje też chleb i ser
+    - Wezyr zawsze stara się mieć przynajmniej 5 sztuk pszenicy w składzie, zamiast 2
+    - Wezyr, Emir, Marszałek i Król Filip kupują jedzenie i pszenicę po 10 sztuk, zamiast po 20",
+  "Russian": "Этот .aic исправляет следующие ошибки и причуды AI:
+    - Крыса снова медленно усиливает свою защиту
+    - У Филиппа есть оборонительные сооружения на крыше Крысы
+    - Фредерик, Маршал, Эмир и Аббат покупают оборудование
+    - Вазир покупает хлеб если нужно
+    - Низар покупает хлеб вместо яблок
+    - Султан также покупает сыр и хлеб
+    - Вазир всегда стремится к как минимум 5 пшениц на складе вместо 2
+    - Вазир, Эмир, Маршал и Филипп покупают продовольствие и пшеницу в запасах по 10 вместо 20"
+
 },
 
 "AICharacters": [
