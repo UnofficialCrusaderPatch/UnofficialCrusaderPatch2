@@ -130,7 +130,7 @@ namespace UCP.AIC
                 infoButton.Click += (s, e) =>
                 {
 
-                    MessageBoxResult result = MessageBox.Show(Localization.Get("ui_aicofferconvert"), Localization.Get("ui_aicconvertprompt"), MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                    MessageBoxResult result = MessageBox.Show(Localization.Get("ui_aicofferconvert"), Localization.Get("ui_aicconvertprompt"), MessageBoxButton.YesNo, MessageBoxImage.Question);
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
@@ -218,6 +218,7 @@ namespace UCP.AIC
                 }
                 selectedChanges.AddLast(this);
             }
+            Configuration.Save();
             base.TitleBox_Checked(sender, e);
         }
 
@@ -259,7 +260,7 @@ namespace UCP.AIC
                 }
                 change.conflict.ToolTip = String.Join(",\n", conflicts) + " " + Localization.Get("ui_aicconflict");
             }
-
+            Configuration.Save();
             base.TitleBox_Unchecked(sender, e);
         }
 

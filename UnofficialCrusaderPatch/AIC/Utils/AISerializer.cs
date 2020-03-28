@@ -107,6 +107,10 @@ namespace UCPAIConversion
                                     try
                                     {
                                         SetProperty(AIPersonalityType, currentPersonality, personalityValue.Key, personalityValue.Value);
+                                        if (currentCharacter.Name == "Rat" && personalityValue.Key == "Unknown000")
+                                        {
+                                            Console.WriteLine("tets");
+                                        }
                                     }
                                     catch (ArgumentException)
                                     {
@@ -164,12 +168,15 @@ namespace UCPAIConversion
                 {
                     parameter.SetValue(target, expectedFieldValue, null);
                 }
-                catch (ArgumentException)
+                catch (ArgumentException e)
                 {
                     if (typeof(AIPersonality).GetProperty("_" + expectedFieldValue) != null)
                     {
                         PropertyInfo enumParam = typeof(AIPersonality).GetProperty("_" + expectedFieldValue);
                         enumParam.SetValue(target, expectedFieldValue, null);
+                    } else
+                    {
+                        throw e;
                     }
                 }
             }
