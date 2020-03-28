@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-
-namespace UCP.Patching
+﻿namespace UCP.Patching
 {
     public class BinBytes : BinElement
     {
