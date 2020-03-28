@@ -19,7 +19,7 @@ namespace UCP.AIC
     {
         private AICollection collection;
         private List<AICharacterName> characters;
-        //private string headerKey;
+        private Button conflict;
 
         static Dictionary<String, String> errorMessages;
         static Dictionary<String, String> errorHints;
@@ -33,6 +33,8 @@ namespace UCP.AIC
             "Krarilotus-aggressiveAI-v1.0.json", "Tatha 0.5.1.json",
             "Xander10alpha-v1.0.json"
         };
+
+        static LinkedList<AICChange> selectedChanges = new LinkedList<AICChange>();
 
         static List<AICChange> _changes = new List<AICChange>();
 
@@ -117,7 +119,7 @@ namespace UCP.AIC
                     ToolTip = Localization.Get("ui_aicoldversion"),
                     Width = 17,
                     Height = 17,
-                    Content = "\uFF1F",
+                    Content = "!",
                     FontSize = 10,
                     FontWeight = FontWeights.Bold,
                     HorizontalAlignment = HorizontalAlignment.Right,
@@ -128,7 +130,7 @@ namespace UCP.AIC
                 infoButton.Click += (s, e) =>
                 {
 
-                    MessageBoxResult result = MessageBox.Show(Localization.Get("ui_aicofferconvert"), Localization.Get("ui_aicconvertprompt"), MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                    MessageBoxResult result = MessageBox.Show(Localization.Get("ui_aicofferconvert"), Localization.Get("ui_aicconvertprompt"), MessageBoxButton.YesNo, MessageBoxImage.Question);
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
@@ -140,6 +142,27 @@ namespace UCP.AIC
                 };
                 panel.Children.Add(infoButton);
             }
+            else
+            {
+                this.conflict = new Button()
+                {
+                    ToolTip = Localization.Get("ui_aicconflict"),
+                    Width = 17,
+                    Height = 17,
+                    Content = "!",
+                    FontSize = 10,
+                    FontWeight = FontWeights.Bold,
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Top,
+                    Margin = new Thickness(0, 0, 45, 0),
+                    Background = new SolidColorBrush(Color.FromRgb(255, 255, 0)),
+                    Visibility = Visibility.Hidden
+                };
+                panel.Children.Add(conflict);
+            }
+
+
+
 
             if (internalAIC.Contains(this.TitleIdent))
             {
@@ -164,26 +187,17 @@ namespace UCP.AIC
         {
             if (!(System.Windows.Input.Keyboard.Modifiers == System.Windows.Input.ModifierKeys.Control))
             {
-                foreach (var change in changes)
+                DeselectOthers(this);
+                selectedChanges.Clear();
+                currentSelection.Clear();
+                foreach (AICharacterName character in this.characters)
                 {
-                    if (change != this)
-                    {
-                        List<AICharacterName> namesToRemove = new List<AICharacterName>();
-                        foreach (KeyValuePair<AICharacterName, string> sel in currentSelection)
-                        {
-                            if (sel.Value == change.TitleIdent)
-                            {
-                                namesToRemove.Add(sel.Key);
-                            }
-                        }
-                        foreach (AICharacterName name in namesToRemove)
-                        {
-                            currentSelection.Remove(name);
-                        }
-                        change.titleBox.IsChecked = false;
-                    }
+                    currentSelection.Add(character, this.TitleIdent);
                 }
-            } else
+                selectedChanges.AddFirst(this);
+                //this.titleBox.IsChecked = true;
+            }
+            else
             {
                 List<String> conflicts = new List<String>();
                 foreach (AICharacterName character in this.characters)
@@ -192,23 +206,25 @@ namespace UCP.AIC
                     {
                         conflicts.Add(Enum.GetName(typeof(AICharacterName), character));
                     }
+                    else
+                    {
+                        currentSelection.Add(character, this.TitleIdent);
+                    }
                 }
                 if (conflicts.Count > 0)
                 {
-                    Debug.Show(Localization.Get("ui_aicselect") + String.Join(",", conflicts));
-                    this.titleBox.IsChecked = false;
-                    return;
+                    this.conflict.Visibility = Visibility.Visible;
+                    this.conflict.ToolTip = String.Join(",\n", conflicts) + " " + Localization.Get("ui_aicconflict");
                 }
+                selectedChanges.AddLast(this);
             }
-            foreach (AICharacterName character in this.characters)
-            {
-                currentSelection.Add(character, this.TitleIdent);
-            }
+            Configuration.Save();
             base.TitleBox_Checked(sender, e);
         }
 
         protected override void TitleBox_Unchecked(object sender, RoutedEventArgs e)
         {
+            this.conflict.Visibility = Visibility.Hidden;
             List<AICharacterName> namesToRemove = new List<AICharacterName>();
             foreach (KeyValuePair<AICharacterName, string> sel in currentSelection)
             {
@@ -221,6 +237,30 @@ namespace UCP.AIC
             {
                 currentSelection.Remove(name);
             }
+            selectedChanges.Remove(this);
+
+            foreach (AICChange change in selectedChanges)
+            {
+                change.conflict.Visibility = Visibility.Hidden;
+                List<String> conflicts = new List<String>();
+                foreach (AICharacterName character in change.characters)
+                {
+                    if (!currentSelection.ContainsKey(character))
+                    {
+                        currentSelection.Add(character, change.TitleIdent);
+                    }
+                    else
+                    {
+                        if (currentSelection[character] != change.TitleIdent && change.characters.Contains(character))
+                        {
+                            conflicts.Add(Enum.GetName(typeof(AICharacterName), character));
+                            change.conflict.Visibility = Visibility.Visible;
+                        }
+                    }
+                }
+                change.conflict.ToolTip = String.Join(",\n", conflicts) + " " + Localization.Get("ui_aicconflict");
+            }
+            Configuration.Save();
             base.TitleBox_Unchecked(sender, e);
         }
 
@@ -341,7 +381,6 @@ namespace UCP.AIC
                 {
                     if (aicChange.TitleIdent == selected)
                     {
-                        //aicChange.titleBox.IsChecked = true;
                         foreach (AICharacter character in aicChange.collection.AICharacters)
                         {
                             currentSelection[character._Name] = aicChange.TitleIdent;
@@ -355,6 +394,17 @@ namespace UCP.AIC
         public static void DoChange(ChangeArgs args)
         {
             CreateEdit().Activate(args);
+        }
+
+        private static void DeselectOthers(AICChange selected)
+        {
+            foreach (var change in changes)
+            {
+                if (change != selected)
+                {
+                    change.titleBox.IsChecked = false;
+                }
+            }
         }
 
         private static bool IsInternal(string titleIdent)
@@ -378,9 +428,22 @@ namespace UCP.AIC
                     LoadAIC(file);
                 }
 
+                List<string> exceptions = new List<string>();
                 foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "resources", "aic"), "*.json", SearchOption.TopDirectoryOnly))
                 {
-                    LoadAIC(file);
+                    try
+                    {
+                        LoadAIC(file);
+                    }
+                    catch (Exception)
+                    {
+                        exceptions.Add(file);
+                    }
+                    
+                }
+                if (exceptions.Count > 0)
+                {
+                    Debug.Show("Error loading AIC files: " + String.Join(",", exceptions));
                 }
             }
         }
@@ -416,6 +479,11 @@ namespace UCP.AIC
             string aicName = Path.GetFileName(fileName).Replace("UCP.AIC.Resources.", "");
             try
             {
+                if (availableSelection.ContainsKey(aicName))
+                {
+                    throw new Exception("AIC with the same filename has already been loaded");
+                }
+
                 AICollection ch = serializer.Deserialize<AICollection>(text);;
                 AICChange change = new AICChange(aicName, true)
                 {
@@ -431,20 +499,40 @@ namespace UCP.AIC
             catch (AICSerializationException e)
             {
                 File.AppendAllText("AICParsing.log", e.ToErrorString(fileName));
+                throw e;
             }
             catch (Exception e)
             {
                 File.AppendAllText("AICParsing.log", "\n" + aicName + ": " + e.Message + "\n");
+                throw e;
             }
         }
 
         private static string GetLocalizedDescription(AICollection ch)
         {
-            string currentLang = Localization.Translations.ToArray()[Localization.LanguageIndex].Ident.Substring(0, 3);
+            string currentLang = Localization.Translations.ToArray()[Localization.LanguageIndex].Ident;
             string descr = String.Empty;
             try
             {
-                descr = typeof(AIHeader).GetProperty("Descr" + currentLang).GetValue(ch.AIDescription, null).ToString();
+                descr = ch.AICShortDescription[currentLang];
+                if (descr == String.Empty)
+                {
+                    foreach (var lang in Localization.Translations)
+                    {
+                        try
+                        {
+                            descr = ch.AICShortDescription[lang.Ident];
+                            if (descr != String.Empty)
+                            {
+                                break;
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            continue;
+                        }
+                    }
+                }
             }
             catch (Exception)
             {
@@ -452,8 +540,11 @@ namespace UCP.AIC
                 {
                     try
                     {
-                        descr = typeof(AIHeader).GetProperty("Descr" + lang).GetValue(ch.AIDescription, null).ToString();
-                        break;
+                        descr = ch.AICShortDescription[lang.Ident];
+                        if (descr != String.Empty)
+                        {
+                            break;
+                        }
                     }
                     catch (Exception)
                     {

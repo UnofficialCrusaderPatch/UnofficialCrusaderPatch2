@@ -1,4 +1,9 @@
-﻿o_shfy
+﻿ui_aicconflict
+{
+	"conflict and will be ignored"
+}
+
+o_shfy
 {
 	"Strongholdify"
 }

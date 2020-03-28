@@ -73,7 +73,6 @@
     <Compile Include="AIC\Utils\AICHelper.cs" />
     <Compile Include="AIC\Utils\AICollection.cs" />
     <Compile Include="AIC\Utils\AICSerializationException.cs" />
-    <Compile Include="AIC\Utils\AIHeader.cs" />
     <Compile Include="AIC\Utils\AIPersonality.cs" />
     <Compile Include="AIC\Utils\AISerializer.cs" />
     <Compile Include="AIC\Utils\AIPersonalityFieldsEnum.cs" />
@@ -1470,6 +1469,7 @@
       <Link>AIV\EvreyImproved\wolf8.aiv</Link>
     </EmbeddedResource>
     <None Include="App.config" />
+    <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed_reset.block" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />

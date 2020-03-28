@@ -43,11 +43,10 @@ namespace UCPAIConversion
 
         public override object Deserialize(IDictionary<string, object> dictionary, Type type, JavaScriptSerializer serializer)
         {
-            AIHeader header = new AIHeader(); ;
+            Dictionary<string, string> header = new Dictionary<string, string>();
             List<AICharacter> AICharacters = new List<AICharacter>();
             AICollection collection = new AICollection();
 
-            Type AIHeaderType = typeof(AIHeader);
             Type AICharacterType = typeof(AICharacter);
             Type AIPersonalityType = typeof(AIPersonality);
 
@@ -56,13 +55,13 @@ namespace UCPAIConversion
                 AICharacterSerializationException SerializationErrors = new AICharacterSerializationException();
                 SerializationErrors.Errors = new List<string>();
 
-                if (entry.Key == "AIDescription")
+                if (entry.Key == "AICShortDescription")
                 {
                     foreach (KeyValuePair<string, object> field in (Dictionary<string, object>)entry.Value)
                     {
                         try
                         {
-                            SetProperty(AIHeaderType, header, field.Key, field.Value);
+                            header[field.Key] = field.Value.ToString().Substring(0, Math.Min(field.Value.ToString().Length, 1000)).ToString();
                         }
                         catch (ArgumentException)
                         {
@@ -108,12 +107,20 @@ namespace UCPAIConversion
                                     try
                                     {
                                         SetProperty(AIPersonalityType, currentPersonality, personalityValue.Key, personalityValue.Value);
+                                        if (currentCharacter.Name == "Rat" && personalityValue.Key == "Unknown000")
+                                        {
+                                            Console.WriteLine("tets");
+                                        }
                                     }
                                     catch (ArgumentException)
                                     {
                                         SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, currentCharacter._Name.ToString()));
                                     }
                                     catch (NullReferenceException)
+                                    {
+                                        SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, currentCharacter._Name.ToString()));
+                                    }
+                                    catch (Exception)
                                     {
                                         SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, currentCharacter._Name.ToString()));
                                     }
@@ -134,7 +141,7 @@ namespace UCPAIConversion
             {                
                 throw AICSerializationExceptionList;
             }
-            collection.AIDescription = header;
+            collection.AICShortDescription = header;
             collection.AICharacters = AICharacters;
             return collection;
         }
@@ -157,7 +164,21 @@ namespace UCPAIConversion
             }
             else
             {
-                parameter.SetValue(target, expectedFieldValue, null);
+               try
+                {
+                    parameter.SetValue(target, expectedFieldValue, null);
+                }
+                catch (ArgumentException e)
+                {
+                    if (typeof(AIPersonality).GetProperty("_" + expectedFieldValue) != null)
+                    {
+                        PropertyInfo enumParam = typeof(AIPersonality).GetProperty("_" + expectedFieldValue);
+                        enumParam.SetValue(target, expectedFieldValue, null);
+                    } else
+                    {
+                        throw e;
+                    }
+                }
             }
         }
     }
