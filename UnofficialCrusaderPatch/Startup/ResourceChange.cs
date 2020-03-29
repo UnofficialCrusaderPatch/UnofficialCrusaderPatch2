@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,27 +29,28 @@ namespace UCP.Startup
 
         public static List<Change> changes = new List<Change>();
         public static TreeView View;
-        
 
+        private static string selectedChange = String.Empty;
         private static object resourceBlockFile = "s_resource";
         private static object goldBlockFile = "s_gold";
         private static byte[] resourceBlock;
         private static byte[] goldBlock;
 
         public ResourceChange(string title, bool enabledDefault = false, bool isIntern = false)
-            : base(title, ChangeType.Resource, enabledDefault, false)
+            : base("res_" + title, ChangeType.Resource, enabledDefault, false)
         {
             this.NoLocalization = true;
         }
 
         public override void InitUI()
         {
-            Localization.Add(this.TitleIdent + "_descr", this.description);
+            Localization.Add(this.TitleIdent.Substring(4) + "_descr", this.description);
             base.InitUI();
             if (this.IsChecked)
             {
                 activeChange = this;
             }
+            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(4);
 
             if (this.IsValid == false)
             {
@@ -56,6 +58,10 @@ namespace UCP.Startup
                 this.titleBox.IsEnabled = false;
                 this.titleBox.ToolTip = this.description;
                 ((TextBlock)this.titleBox.Content).Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+            }
+            else
+            {
+                this.titleBox.IsChecked = selectedChange.Equals(this.TitleIdent);
             }
         }
 
@@ -101,7 +107,32 @@ namespace UCP.Startup
 
             Load();
         }
-        
+
+        public static void LoadConfiguration(List<string> configuration = null)
+        {
+            if (configuration == null)
+            {
+                return;
+            }
+
+            foreach (string change in configuration)
+            {
+                string[] changeLine = change.Split(new char[] { '=' }, 2, StringSplitOptions.RemoveEmptyEntries).Select(str => str.Trim()).ToArray();
+                if (changeLine.Length < 2)
+                {
+                    continue;
+                }
+
+                string changeKey = changeLine[0];
+                string changeSetting = changeLine[1];
+
+                bool selected = Regex.Replace(@"\s+", "", changeSetting.Split('=')[1]).Contains("True");
+                if (selected == true)
+                {
+                    selectedChange = changeKey;
+                }
+            }
+        }
 
         public static void Load()
         {

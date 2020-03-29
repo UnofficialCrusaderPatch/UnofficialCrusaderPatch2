@@ -48,7 +48,7 @@ namespace UCP.Startup
             for (int i = 0; i < ResourceChange.changes.Count; i++)
             {
                 view.Items.Remove(ResourceChange.changes.ElementAt(i).UIElement);
-                Localization.Remove(ResourceChange.changes.ElementAt(i).TitleIdent + "_descr");
+                Localization.Remove(ResourceChange.changes.ElementAt(i).TitleIdent.Substring(4) + "_descr");
             }
             ResourceChange.Refresh(s, e);
             foreach (ResourceChange change in ResourceChange.changes)

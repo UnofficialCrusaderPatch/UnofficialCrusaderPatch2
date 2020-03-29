@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using UCP.AIC;
 using UCP.AIV;
 using UCP.Patching;
+using UCP.Startup;
 
 namespace UCP
 {
@@ -83,6 +84,7 @@ namespace UCP
         {
             List<string> aicConfigurationList = null;
             List<string> aivConfigurationList = null;
+            List<string> resourceConfigurationList = null;
             if (File.Exists(ConfigFile))
             {
                 using (StreamReader sr = new StreamReader(ConfigFile))
@@ -106,6 +108,15 @@ namespace UCP
                                 aivConfigurationList = new List<string>();
                             }
                             aivConfigurationList.Add(line);
+                            continue;
+                        }
+                        else if (Regex.Replace(@"\s+", "", line).Contains("res_"))
+                        {
+                            if (resourceConfigurationList == null)
+                            {
+                                resourceConfigurationList = new List<string>();
+                            }
+                            resourceConfigurationList.Add(line);
                             continue;
                         }
 
@@ -151,6 +162,7 @@ namespace UCP
             }
             AICChange.LoadConfiguration(aicConfigurationList);
             AIVChange.LoadConfiguration(aivConfigurationList);
+            ResourceChange.LoadConfiguration(resourceConfigurationList);
         }
     }
 }

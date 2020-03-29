@@ -2687,10 +2687,5 @@ namespace UCP
         {
             changes.RemoveAll(x => x.Type == type);
         }
-
-        public static void RemoveChanges(ChangeType type)
-        {
-            changes.RemoveAll(x => x.Type == type);
-        }
     }
 }
