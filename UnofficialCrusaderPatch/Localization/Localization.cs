@@ -54,7 +54,10 @@ namespace UCP
 
         public static void Remove(string identifier)
         {
-            localStrs.Remove(identifier);
+            if (localStrs.ContainsKey(identifier))
+            {
+                localStrs.Remove(identifier);
+            }
         }
 
         public static string Get(string identifier)

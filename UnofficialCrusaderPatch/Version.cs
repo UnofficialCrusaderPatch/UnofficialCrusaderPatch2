@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using UCP.Patching;
 using UCP.Startup;
 
@@ -2680,6 +2681,11 @@ namespace UCP
         {
             Version.changes.AddRange(ResourceChange.changes);
             Version.changes.AddRange(AIV.AIVChange.changes);
+        }
+
+        public static void RemoveChanges(ChangeType type)
+        {
+            changes.RemoveAll(x => x.Type == type);
         }
 
         public static void RemoveChanges(ChangeType type)
