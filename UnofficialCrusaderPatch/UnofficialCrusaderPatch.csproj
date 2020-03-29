@@ -126,6 +126,9 @@
     <Compile Include="Patching\Section\PEHeader.cs" />
     <Compile Include="Patching\Section\SectionEditor.cs" />
     <Compile Include="Patching\Section\SectionHeader.cs" />
+    <Compile Include="Startup\ResourceView.cs" />
+    <Compile Include="Startup\StartingEnums.cs" />
+    <Compile Include="Startup\ResourceChange.cs" />
     <Compile Include="Version.cs" />
     <Compile Include="_Crusader\Building.cs" />
     <Compile Include="_Crusader\UI_Button.cs" />
@@ -1469,6 +1472,7 @@
       <Link>AIV\EvreyImproved\wolf8.aiv</Link>
     </EmbeddedResource>
     <None Include="App.config" />
+    <EmbeddedResource Include="CodeBlocks\s_resource.block" />
     <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed_reset.block" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
@@ -1487,6 +1491,7 @@
     <EmbeddedResource Include="CodeBlocks\o_shfy_religiontab.block" />
     <EmbeddedResource Include="CodeBlocks\o_shfy_resourcequantity.block" />
     <EmbeddedResource Include="CodeBlocks\o_shfy_peasantspawnrate.block" />
+    <EmbeddedResource Include="CodeBlocks\s_gold.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

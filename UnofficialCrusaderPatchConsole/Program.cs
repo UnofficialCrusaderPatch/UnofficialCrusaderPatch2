@@ -9,6 +9,7 @@ namespace UCP
         static void Main(string[] args)
         {
             Configuration.Load();
+            Version.AddExternalChanges();
             ResolvePath();
             ResolveArgs(args);
             SilentInstall();

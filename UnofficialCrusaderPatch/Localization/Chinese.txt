@@ -1,4 +1,9 @@
-﻿o_shfy
+﻿ui_Resource
+{
+	"Resource"
+}
+
+o_shfy
 {
 	"要塞十字军东征修改"
 }

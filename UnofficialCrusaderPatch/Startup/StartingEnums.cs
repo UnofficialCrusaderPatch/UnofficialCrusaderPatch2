@@ -1,0 +1,29 @@
+﻿namespace UCP.Startup
+{
+    enum StartingResource
+    {
+        wood,
+        hop,
+        stone,
+        ignore1,
+        iron,
+        pitch,
+        ignore2,
+        wheat,
+        bread,
+        cheese,
+        meat,
+        fruit,
+        beer,
+        ignore3,
+        flour,
+        bows,
+        crossbows,
+        spears,
+        pikes,
+        maces,
+        swords,
+        leatherarmor,
+        metalarmor,
+    }
+}

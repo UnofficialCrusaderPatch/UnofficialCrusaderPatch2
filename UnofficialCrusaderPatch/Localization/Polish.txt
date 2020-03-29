@@ -1,3 +1,8 @@
+﻿ui_Resource
+{
+	"Resource"
+}
+
 ﻿ui_aicconflict
 {
 	"konflikt i zostaną zignorowane"

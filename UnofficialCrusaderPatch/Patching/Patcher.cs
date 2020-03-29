@@ -98,7 +98,7 @@ namespace UCP.Patching
             SectionEditor.Reset();
 
             // only take binary changes
-            var changes = Version.Changes.Where(c => c.IsChecked && c.GetType() == typeof(Change));
+            var changes = Version.Changes.Where(c => c.IsChecked && c is Change);
             List<Change> todoList = new List<Change>(changes);
 
             int todoIndex = 0;
