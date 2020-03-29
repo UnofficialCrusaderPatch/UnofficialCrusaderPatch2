@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -9,10 +10,12 @@ using Microsoft.Win32;
 using System.Windows.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using UCP;
-using UCP.Patching;
 using System.Windows.Media.Imaging;
+using UCP;
+using UCP.AIV;
+using UCP.Patching;
 using UCP.Startup;
+using UCP.AIC;
 
 namespace UCP
 {
@@ -30,8 +33,8 @@ namespace UCP
 
         public MainWindow()
         {
-            Configuration.LoadGeneral();
-            Configuration.LoadChanges();
+            Configuration.Load(false);
+            Version.AddExternalChanges();
 
             // choose language
             if (!LanguageWindow.ShowSelection(Configuration.Language))
@@ -43,7 +46,6 @@ namespace UCP
             if (Configuration.Language != Localization.LanguageIndex)
             {
                 Configuration.Language = Localization.LanguageIndex;
-                Configuration.Save("Language");
             }
             Version.AddExternalChanges();
             // init main window
@@ -51,28 +53,48 @@ namespace UCP
 
             // set title
             this.Title = string.Format("{0} {1}", Localization.Get("Name"), Version.PatcherVersion);
-            
+
+            // set search path in ui
+            SetBrowsePath();
+
+            SetLocalizedUIElements();
+            DisplayLicense();   
+        }
+
+        #region Settings
+
+        void SetBrowsePath()
+        {
             if (!Directory.Exists(Configuration.Path))
             {
-                // check if we can already find the steam path
-                const string key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 40970";
-                RegistryKey myKey = Registry.LocalMachine.OpenSubKey(key, false);
-                if (myKey != null && myKey.GetValue("InstallLocation") is string path 
-                    && !string.IsNullOrWhiteSpace(path) && Patcher.CrusaderExists(path))
-                {
-                    pTextBoxPath.Text = path;
-                }
-                else if (Patcher.CrusaderExists(Environment.CurrentDirectory))
+                if (Patcher.CrusaderExists(Environment.CurrentDirectory))
                 {
                     pTextBoxPath.Text = Environment.CurrentDirectory;
+                }
+                else if (Patcher.CrusaderExists(Path.Combine(Environment.CurrentDirectory, "..\\")))
+                {
+                    Configuration.Path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "..\\"));
+                }
+                else
+                {
+                    // check if we can already find the steam path
+                    const string key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 40970";
+                    RegistryKey myKey = Registry.LocalMachine.OpenSubKey(key, false);
+                    if (myKey != null && myKey.GetValue("InstallLocation") is string path
+                        && !string.IsNullOrWhiteSpace(path) && Patcher.CrusaderExists(path))
+                    {
+                        pTextBoxPath.Text = path;
+                    }
                 }
             }
             else
             {
                 pTextBoxPath.Text = Configuration.Path;
             }
+        }
 
-            // set translated ui elements
+        void SetLocalizedUIElements()
+        {
             pathBox.Text = Localization.Get("ui_searchpath");
             pButtonCancel.Content = Localization.Get("ui_cancel");
             pButtonContinue.Content = Localization.Get("ui_continue");
@@ -81,12 +103,17 @@ namespace UCP
             iButtonBack.Content = Localization.Get("ui_back");
             iButtonInstall.Content = Localization.Get("ui_install");
             TextReferencer.SetText(linkLabel, Localization.Get("ui_welcometext"));
+        }
 
+        void DisplayLicense()
+        {
             var asm = System.Reflection.Assembly.GetExecutingAssembly();
             using (Stream stream = asm.GetManifestResourceStream("UCP.license.txt"))
             using (StreamReader sr = new StreamReader(stream))
                 linkLabel.Inlines.Add("\n\n\n\n\n\n" + sr.ReadToEnd());
         }
+
+        #endregion
 
         #region Path finding
 
@@ -110,7 +137,7 @@ namespace UCP
             {
                 dialog.ShowNewFolderButton = false;
                 dialog.SelectedPath = Directory.Exists(pTextBoxPath.Text) ? pTextBoxPath.Text : null;
-                dialog.Description = "Bitte wähle dein Stronghold Crusader - Installationsverzeichnis.";
+                dialog.Description = Localization.Get("ui_browsepath");
 
                 var result = dialog.ShowDialog();
                 if ((int)result == 1)
@@ -135,11 +162,6 @@ namespace UCP
 
             if (!viewLoaded)
             {
-                // load aic files
-                AICChange.LoadFiles();
-                Configuration.LoadChanges();
-                Configuration.Save("Path");
-
                 // fill setup options list
                 FillTreeView(Version.Changes);
                 viewLoaded = true;
@@ -171,6 +193,7 @@ namespace UCP
                 Debug.Error(Localization.Get("ui_wrongpath"));
                 return;
             }
+            Configuration.Save();
             iButtonInstall.IsEnabled = false;
             pButtonSearch.IsEnabled = false;
             pTextBoxPath.IsReadOnly = true;
@@ -234,7 +257,16 @@ namespace UCP
                     new ResourceView().InitUI(grid, View_SelectedItemChanged);
                     continue;
                 }
-
+                else if (type == ChangeType.AIV)
+                {
+                    new AIVView().InitUI(grid, View_SelectedItemChanged);
+                    continue;
+                } 
+                else if (type == ChangeType.AIC)
+                {
+                    new AICView().InitUI(grid, View_SelectedItemChanged);
+                    continue;
+                }
 
                 TreeView view = new TreeView()
                 {
@@ -245,27 +277,6 @@ namespace UCP
                 view.SelectedItemChanged += View_SelectedItemChanged;
                 grid.Children.Add(view);
 
-                if (type == ChangeType.AIC)
-                {
-                    AICChange.View = view;
-
-                    Button button = new Button
-                    {
-                        ToolTip = "Reload .aics",
-                        Width = 20,
-                        Height = 20,
-                        HorizontalAlignment = HorizontalAlignment.Right,
-                        VerticalAlignment = VerticalAlignment.Bottom,
-                        Margin = new Thickness(0, 0, 20, 5),
-                        Content = new Image()
-                        {
-                            Source = new BitmapImage(new Uri("pack://application:,,,/UnofficialCrusaderPatch;component/Graphics/refresh.png")),
-                        }
-                    };
-                    button.Click += (s, e) => AICChange.RefreshLocalFiles();
-                    grid.Children.Add(button);
-                }
-
                 foreach (Change change in changes)
                 {
                     if (change.Type != type)
@@ -273,13 +284,14 @@ namespace UCP
 
                     change.InitUI();
                     view.Items.Add(change.UIElement);
-                }
+                }   
             }
         }
 
         void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TabControl tab = (TabControl) sender;
+            pbLabel.Content = "";
             if ((String) (((TabItem) tab.SelectedItem).Header) == "AIC"){
                 changeHint.Text = "Ctrl+Click to select multiple aic files";
             } else
@@ -303,7 +315,6 @@ namespace UCP
 
             view.SelectedItemChanged += View_SelectedItemChanged;
         }
-
         #endregion
     }
 }

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using UCP.AICharacters;
+using System.Linq;
 
 namespace AICUpdater
 {
@@ -13,7 +9,7 @@ namespace AICUpdater
         static void Main(string[] args)
         {
             Console.Title = "AIC-Updater";
-            var files = Directory.EnumerateFiles(Directory.GetCurrentDirectory(), "*.aic");
+            var files = Directory.EnumerateFiles(Environment.CurrentDirectory, "*.aic");
             if (files.Count() == 0)
             {
                 Console.WriteLine("No .aic files found!");
@@ -33,21 +29,25 @@ namespace AICUpdater
 
                 foreach (string file in files)
                 {
-                    AICCollection aicc;
-                    using (FileStream fs = new FileStream(file, FileMode.Open))
+                    string newfile = Path.Combine(Path.GetDirectoryName(file), Path.GetFileNameWithoutExtension(file) + ".json");
+                    try
                     {
-                        aicc = new AICCollection(fs);
+                        string result = AICUpdaterHelper.Convert(file, newfile);
+                        File.WriteAllText(newfile, Format(result));
                     }
-
-
-                    using (FileStream fs = new FileStream(file, FileMode.Create))
+                    catch (Exception e)
                     {
-                        aicc.Write(fs);
+                        File.AppendAllText("AICLoading.log", e.ToString());
                     }
                 }
                 Console.WriteLine("Done.");
             }
             Console.ReadLine();
+        }
+
+        private static String Format(String aicJson)
+        {
+            return aicJson.Replace(",\"", ",\n\t\"").Replace("{", "{\n\t").Replace("}", "\n}");
         }
     }
 }

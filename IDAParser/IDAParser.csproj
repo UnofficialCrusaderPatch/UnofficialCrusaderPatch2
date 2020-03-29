@@ -42,48 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AICCollection.cs">
-      <Link>AICharacters\AICCollection.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AICharacter.cs">
-      <Link>AICharacters\AICharacter.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AICIndex.cs">
-      <Link>AICharacters\AICIndex.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AIFileHeader.cs">
-      <Link>AICharacters\AIFileHeader.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AIPersonality.cs">
-      <Link>AICharacters\AIPersonality.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AIReader.cs">
-      <Link>AICharacters\AIReader.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\AIWriter.cs">
-      <Link>AICharacters\AIWriter.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Buildings.cs">
-      <Link>AICharacters\PersonalityEnums\Buildings.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Resources.cs">
-      <Link>AICharacters\PersonalityEnums\Resources.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\SiegeEngines.cs">
-      <Link>AICharacters\PersonalityEnums\SiegeEngines.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\TargetingType.cs">
-      <Link>AICharacters\PersonalityEnums\TargetingType.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Units.cs">
-      <Link>AICharacters\PersonalityEnums\Units.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\WorkshopSettings.cs">
-      <Link>AICharacters\PersonalityEnums\WorkshopSettings.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AICharacters\RWAttributes.cs">
-      <Link>AICharacters\RWAttributes.cs</Link>
-    </Compile>
+    <Compile Include="AICharacters\AICCollection.cs" />
+    <Compile Include="AICharacters\AICharacter.cs" />
+    <Compile Include="AICharacters\AICIndex.cs" />
+    <Compile Include="AICharacters\AIFileHeader.cs" />
+    <Compile Include="AICharacters\AIPersonality.cs" />
+    <Compile Include="AICharacters\AIReader.cs" />
+    <Compile Include="AICharacters\AIWriter.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\Buildings.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\Resources.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\SiegeEngines.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\TargetingType.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\Units.cs" />
+    <Compile Include="AICharacters\PersonalityEnums\WorkshopSettings.cs" />
+    <Compile Include="AICharacters\RWAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

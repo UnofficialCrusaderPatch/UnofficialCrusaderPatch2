@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -136,6 +132,11 @@ namespace UCP.Patching
             {
                 this.isEnabled = result;
             }
+        }
+
+        public override string ToString()
+        {
+            return DescrIdent + "={" + GetValueString() + "} ";
         }
 
         #endregion

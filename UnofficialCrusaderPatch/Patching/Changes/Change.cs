@@ -1,11 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Collections;
 
 namespace UCP.Patching
 {
@@ -50,6 +47,17 @@ namespace UCP.Patching
             }
         }
 
+        public override string ToString()
+        {
+            string str = TitleIdent + "={ ";
+            foreach (DefaultHeader h in headerList)
+            {
+                str += h.ToString();
+            }
+            str += "}";
+            return str;
+        }
+
         #region UI
 
         public void SetUIEnabled(bool enabled)
@@ -64,7 +72,7 @@ namespace UCP.Patching
             set { titleBox.IsChecked = value; }
         }
 
-        UIElement uiElement;
+        protected UIElement uiElement;
         public UIElement UIElement { get { return this.uiElement; } }
 
         protected CheckBox titleBox;
@@ -139,7 +147,7 @@ namespace UCP.Patching
             Configuration.Save(this.titleIdent);
         }
 
-        void FillGrid(Grid grid)
+        protected void FillGrid(Grid grid)
         {
             bool singleDefault = headerList.Count == 1 && headerList[0].GetType() == typeof(DefaultHeader);
 

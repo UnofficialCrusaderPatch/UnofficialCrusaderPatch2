@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text.RegularExpressions;
-using UCP;
 using UCP.Patching;
 
 namespace UCP
@@ -11,7 +8,7 @@ namespace UCP
     {
         static void Main(string[] args)
         {
-            Configuration.LoadGeneral();
+            Configuration.Load();
             Version.AddExternalChanges();
             ResolvePath();
             ResolveArgs(args);
@@ -44,6 +41,9 @@ namespace UCP
                 {
                     Console.WriteLine("Install failed. Invalid arguments provided.");
                     return;
+                } else if (arg.Contains("aic"))
+                {
+                    continue;
                 }
                 String srcPath = arg.Split('=')[1];
                 String rawOpt = arg.Split('=')[0].Substring(2);
@@ -75,9 +75,6 @@ namespace UCP
 
         static void SilentInstall()
         {
-            Configuration.LoadChanges();
-            AICChange.LoadFiles();
-            Configuration.LoadChanges();
             Version.Changes.Contains(null);
             Patcher.Install(Configuration.Path, null);
             Console.WriteLine("UCP successfully installed");

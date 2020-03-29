@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace UCP.Patching
+﻿namespace UCP.Patching
 {
     public class BinRedirect : BinAlloc, IBinCollection
     {
