@@ -107,10 +107,6 @@ namespace UCPAIConversion
                                     try
                                     {
                                         SetProperty(AIPersonalityType, currentPersonality, personalityValue.Key, personalityValue.Value);
-                                        if (currentCharacter.Name == "Rat" && personalityValue.Key == "Unknown000")
-                                        {
-                                            Console.WriteLine("tets");
-                                        }
                                     }
                                     catch (ArgumentException)
                                     {
