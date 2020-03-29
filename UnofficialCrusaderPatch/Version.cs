@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using UCP.Patching;
 
 namespace UCP
@@ -2678,6 +2679,11 @@ namespace UCP
         public static void AddExternalChanges()
         {
             changes.AddRange(AIV.AIVChange.changes);
+        }
+
+        public static void RemoveChanges(ChangeType type)
+        {
+            changes.RemoveAll(x => x.Type == type);
         }
     }
 }
