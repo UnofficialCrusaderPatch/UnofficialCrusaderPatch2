@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -43,11 +44,28 @@ namespace UCP.Startup
 
         private void Refresh(object s, RoutedEventArgs e, TreeView view)
         {
+            String activeChange = ResourceChange.activeChange == null ? String.Empty : ResourceChange.activeChange.TitleIdent;
+            for (int i = 0; i < ResourceChange.changes.Count; i++)
+            {
+                view.Items.Remove(ResourceChange.changes.ElementAt(i).UIElement);
+                Localization.Remove(ResourceChange.changes.ElementAt(i).TitleIdent + "_descr");
+            }
             ResourceChange.Refresh(s, e);
             foreach (ResourceChange change in ResourceChange.changes)
             {
                 change.InitUI();
                 view.Items.Add(change.UIElement);
+            }
+
+            if (ResourceChange.changes.Select(x => x.TitleIdent).Contains(activeChange))
+            {
+                foreach (ResourceChange change in ResourceChange.changes)
+                {
+                    if (change.TitleIdent == activeChange)
+                    {
+                        change.IsChecked = true;
+                    }
+                }
             }
         }
     }

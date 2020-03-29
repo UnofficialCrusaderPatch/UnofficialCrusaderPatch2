@@ -2693,5 +2693,10 @@ namespace UCP
         {
             Version.changes.AddRange(ResourceChange.changes);
         }
+
+        public static void RemoveChanges(ChangeType type)
+        {
+            changes.RemoveAll(x => x.Type == type);
+        }
     }
 }
