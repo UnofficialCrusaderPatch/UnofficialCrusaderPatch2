@@ -13,6 +13,8 @@ namespace UCP.AIV
 {
     class AIVChange : Change
     {
+        public bool isInternal = false;
+        
         string resFolder;
         const string BackupIdent = "ucp_backup";
 
@@ -47,12 +49,14 @@ namespace UCP.AIV
             : base("aiv_" + titleIdent, ChangeType.AIV, enabledDefault, true)
         {
             this.resFolder = "UCP.AIV." + titleIdent;
+            this.isInternal = true;
         }
 
         public AIVChange(string titleIdent, bool enabledDefault = false, bool isInternal = false)
             : base("aiv_" + titleIdent, ChangeType.AIV, enabledDefault, true)
         {
             this.resFolder = titleIdent;
+            this.isInternal = isInternal;
         }
 
         public override void InitUI()
