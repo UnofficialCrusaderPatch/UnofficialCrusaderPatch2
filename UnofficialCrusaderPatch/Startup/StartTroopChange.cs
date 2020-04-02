@@ -47,7 +47,7 @@ namespace UCP.Startup
         public static List<Change> changes = new List<Change>();
 
         public StartTroopChange(string title, bool enabledDefault = false, bool isIntern = false)
-            : base("s_" + title, ChangeType.StartTroops, enabledDefault, true)
+            : base("s_" + title, ChangeType.StartTroops, enabledDefault, false)
         {
             this.NoLocalization = true;
         }
@@ -133,12 +133,47 @@ namespace UCP.Startup
             }
         }
 
+
+        static void CreateNullChange(string file, string message)
+        {
+            StartTroopChange change = new StartTroopChange(Path.GetFileNameWithoutExtension(file).Replace(" ", ""), false)
+                        {
+                            new DefaultHeader(file, true)
+                            {
+                                new BinaryEdit(troopBlockFile)
+                                {
+                                    new BinSkip(0x50),
+                                },
+                                new BinaryEdit(lordStrengthBlockFile)
+                                {
+                                    new BinSkip(0x80),
+                                },
+                                new BinaryEdit(lordTypeBlockFile)
+                                {
+                                    new BinSkip(0x16),
+                                }
+                            }
+                        };
+            change.description = message;
+            change.IsValid = false;
+            changes.Add(change);
+        }
+
         private static void Load()
 
         {
             // load all premade Starttroop configurations that come with the UCP
             Load("UCP.Startup.Resources.vanilla.json");
-            //Load("UCP.Resources.Starttroops.vanilla.json");
+
+            if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "troops")))
+            {
+                return;
+            }
+
+            foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "resources", "troops"), "*.json", SearchOption.TopDirectoryOnly))
+            {
+                Load(file);
+            }
         }
 
         private static void Load(string fileName)
@@ -159,12 +194,21 @@ namespace UCP.Startup
             string startTroopConfigName = Path.GetFileName(fileName).Replace("UCP.Startup.Resources.", "");
             JavaScriptSerializer serializer = new JavaScriptSerializer();
 
+            Dictionary<String, Dictionary<String, Object>> startTroopConfig;
             try
             {
-                Dictionary<String, Dictionary<String, Object>> startTroopConfig = serializer.Deserialize<Dictionary<String, Dictionary<String, Object>>>(starttroopsText);
+                startTroopConfig = serializer.Deserialize<Dictionary<String, Dictionary<String, Object>>>(starttroopsText);
+            }
+            catch (Exception)
+            {
+                CreateNullChange(Path.GetFileNameWithoutExtension(startTroopConfigName).Replace(" ", ""), "Invalid JSON detected");
+                return;
+            }
 
+            try 
+            { 
                 string description = GetLocalizedDescription(startTroopConfigName, startTroopConfig);
-                StartTroopChange change = new StartTroopChange(startTroopConfigName, true)
+                StartTroopChange change = new StartTroopChange(startTroopConfigName, false)
                 {
                     CreateStartTroopHeader(startTroopConfigName, startTroopConfig),
                 };
@@ -174,6 +218,7 @@ namespace UCP.Startup
             //TODO error handling!
             catch (Exception e)
             {
+                CreateNullChange(Path.GetFileNameWithoutExtension(startTroopConfigName).Replace(" ", ""), e.Message);
                 File.AppendAllText("StartTroopsParsing.log", "\n" + startTroopConfigName + ": " + e.Message + "\n");
             }
         }
@@ -369,7 +414,15 @@ namespace UCP.Startup
 
                     if (playerIndex < 17)
                     {
-                        Dictionary<String, BinElement> lords = ParseLordType(Player);
+                        Dictionary<String, BinElement> lords;
+                        try
+                        {
+                            lords = ParseLordType(Player);
+                        }
+                        catch (Exception e)
+                        {
+                            throw e;
+                        }
                         lordStrengthChanges.Add(lords["Dots"]);
                         lordStrengthChanges.Add(lords["Strength"]);
                         lordTypeChanges.Add(lords["Type"]);
