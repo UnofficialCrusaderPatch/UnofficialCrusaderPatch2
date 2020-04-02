@@ -374,6 +374,10 @@ namespace UCP.Startup
                         lordStrengthChanges.Add(lords["Strength"]);
                         lordTypeChanges.Add(lords["Type"]);
                     }
+                    if (playerIndex == 16)
+                    {
+                        startTroopChanges.Add(new BinSkip(0xF0));
+                    }
                 }
             }
 

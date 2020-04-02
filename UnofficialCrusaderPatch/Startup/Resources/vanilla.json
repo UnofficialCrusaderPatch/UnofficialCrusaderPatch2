@@ -350,7 +350,7 @@
     },
     "normal": {
       "Units": [ "Spearman", "EuropArcher" ],
-      "Counts": [ 6, 6 ]
+      "Counts": [ 7, 5 ]
     },
     "crusader": {
       "Units": [ "Knight", "Swordsman", "EuropArcher" ],
@@ -358,7 +358,7 @@
     },
     "deathmatch": {
       "Units": [ "Spearman", "EuropArcher" ],
-      "Counts": [ 6, 6 ]
+      "Counts": [ 7, 5 ]
     }
   },
   "18": {
