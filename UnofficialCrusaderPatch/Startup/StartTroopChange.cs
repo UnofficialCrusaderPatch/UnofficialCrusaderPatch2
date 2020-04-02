@@ -404,7 +404,7 @@ namespace UCP.Startup
             List<BinElement> lordTypeChanges = new List<BinElement>();
 
             //look for each individual AI from Rat to Abbot
-            for (int playerIndex = 0; playerIndex < 18; ++playerIndex)
+            for (int playerIndex = 1; playerIndex <= 18; playerIndex++)
             {
                 string indexKey = playerIndex.ToString();
                 Dictionary<String, Object> Player;
