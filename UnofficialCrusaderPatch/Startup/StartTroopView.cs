@@ -47,7 +47,7 @@ namespace UCP.Startup
             for (int i = 0; i < StartTroopChange.changes.Count; i++)
             {
                 view.Items.Remove(StartTroopChange.changes.ElementAt(i).UIElement);
-                Localization.Remove(StartTroopChange.changes.ElementAt(i).TitleIdent.Substring(4) + "_descr");
+                Localization.Remove(StartTroopChange.changes.ElementAt(i).TitleIdent + "_descr");
             }
             StartTroopChange.Refresh(s, e);
             foreach (StartTroopChange change in StartTroopChange.changes)

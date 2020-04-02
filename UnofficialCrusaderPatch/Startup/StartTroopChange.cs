@@ -271,7 +271,8 @@ namespace UCP.Startup
 
             Dictionary<String, BinElement> resultConfig = new Dictionary<string, BinElement>()
                 {
-                    { "Strength", new BinSkip(0x8) },
+                    { "Strength", new BinSkip(0x4) },
+                    { "Dots", new BinSkip(0x4) },
                     { "Type", new BinSkip(0x1) }
                 };
 
@@ -282,7 +283,7 @@ namespace UCP.Startup
                 {
                     int dotCount = Convert.ToInt32(lordConfig["DotCount"]);
                     String dotColour = lordConfig["DotColour"].ToString();
-                    resultConfig["Strength"] = new BinInt32(lordDots[dotColour][dotCount]);
+                    resultConfig["Dots"] = new BinInt32(lordDots[dotColour][dotCount]);
                 }
                 catch (KeyNotFoundException) { }
                 catch (Exception)
@@ -369,6 +370,7 @@ namespace UCP.Startup
                     if (playerIndex < 17)
                     {
                         Dictionary<String, BinElement> lords = ParseLordType(Player);
+                        lordStrengthChanges.Add(lords["Dots"]);
                         lordStrengthChanges.Add(lords["Strength"]);
                         lordTypeChanges.Add(lords["Type"]);
                     }
