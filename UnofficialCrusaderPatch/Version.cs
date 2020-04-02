@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using UCP.AIV;
 using UCP.Patching;
 using UCP.Startup;
 
@@ -2680,7 +2681,8 @@ namespace UCP
         public static void AddExternalChanges()
         {
             Version.changes.AddRange(ResourceChange.changes);
-            Version.changes.AddRange(AIV.AIVChange.changes);
+            Version.changes.AddRange(AIVChange.changes);
+            Version.changes.AddRange(StartTroopChange.changes);
         }
 
         public static void RemoveChanges(ChangeType type)

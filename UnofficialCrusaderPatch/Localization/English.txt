@@ -1,4 +1,9 @@
-﻿ui_Resource
+﻿ui_StartTroops
+{
+	"StartTroops"
+}
+
+ui_Resource
 {
 	"Resource"
 }

@@ -1,0 +1,45 @@
+{
+  "description": {
+    "English": "My starting troop config"
+  },
+  "1": {
+    "Name": "Rat",
+    "Lord": {
+      "StrengthMultiplier": 0.5,
+      "Type": "Arab",
+      "DotColour": "Blue",
+      "DotCount":  5
+    },
+    "normal": {
+      "Units": [ "Spearman" ],
+      "Counts": [ 13 ]
+    },
+    "crusader": {
+      "Units": [ "Spearman", "EuropArcher" ],
+      "Counts": [ 10, 4 ]
+    },
+    "deathmatch": {
+      "Units": [ "Spearman" ],
+      "Counts": [ 11 ]
+    }
+  },
+  "2": {
+    "Name": "Rat",
+    "Lord": {
+      "StrengthMultiplier": 0.5,
+      "Type": "Europ"
+    },
+    "normal": {
+      "Units": [ "Spearman" ],
+      "Counts": [ 13 ]
+    },
+    "crusader": {
+      "Units": [ "Spearman", "EuropArcher" ],
+      "Counts": [ 10, 4 ]
+    },
+    "deathmatch": {
+      "Units": [ "Spearman" ],
+      "Counts": [ 11 ]
+    }
+  }
+}

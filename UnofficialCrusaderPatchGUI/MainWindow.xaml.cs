@@ -34,7 +34,6 @@ namespace UCP
         public MainWindow()
         {
             Configuration.Load(false);
-            Version.AddExternalChanges();
 
             // choose language
             if (!LanguageWindow.ShowSelection(Configuration.Language))
@@ -265,6 +264,11 @@ namespace UCP
                 else if (type == ChangeType.AIC)
                 {
                     new AICView().InitUI(grid, View_SelectedItemChanged);
+                    continue;
+                }
+                else if (type == ChangeType.StartTroops)
+                {
+                    new StartTroopView().InitUI(grid, View_SelectedItemChanged);
                     continue;
                 }
 

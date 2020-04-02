@@ -85,6 +85,7 @@ namespace UCP
             List<string> aicConfigurationList = null;
             List<string> aivConfigurationList = null;
             List<string> resourceConfigurationList = null;
+            List<string> startTroopConfigurationList = null;
             if (File.Exists(ConfigFile))
             {
                 using (StreamReader sr = new StreamReader(ConfigFile))
@@ -101,7 +102,7 @@ namespace UCP
                             aicConfigurationList.Add(line);
                             continue;
                         }
-                        else if(Regex.Replace(@"\s+", "", line).Contains("aiv_"))
+                        else if(Regex.Replace(@"\s+", "", line).StartsWith("aiv_"))
                         {
                             if (aivConfigurationList == null)
                             {
@@ -110,13 +111,22 @@ namespace UCP
                             aivConfigurationList.Add(line);
                             continue;
                         }
-                        else if (Regex.Replace(@"\s+", "", line).Contains("res_"))
+                        else if (Regex.Replace(@"\s+", "", line).StartsWith("res_"))
                         {
                             if (resourceConfigurationList == null)
                             {
                                 resourceConfigurationList = new List<string>();
                             }
                             resourceConfigurationList.Add(line);
+                            continue;
+                        }
+                        else if (Regex.Replace(@"\s+", "", line).StartsWith("s_"))
+                        {
+                            if (startTroopConfigurationList == null)
+                            {
+                                startTroopConfigurationList = new List<string>();
+                            }
+                            startTroopConfigurationList.Add(line);
                             continue;
                         }
 
@@ -163,6 +173,7 @@ namespace UCP
             AICChange.LoadConfiguration(aicConfigurationList);
             AIVChange.LoadConfiguration(aivConfigurationList);
             ResourceChange.LoadConfiguration(resourceConfigurationList);
+            StartTroopChange.LoadConfiguration(startTroopConfigurationList);
         }
     }
 }

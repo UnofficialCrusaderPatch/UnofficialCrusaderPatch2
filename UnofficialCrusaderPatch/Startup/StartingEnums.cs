@@ -2,21 +2,21 @@
 {
     enum StartingResource
     {
-        wood,
+        wood = 0,
         hop,
         stone,
-        ignore1,
-        iron,
+
+        iron = 4,
         pitch,
-        ignore2,
-        wheat,
+
+        wheat = 7,
         bread,
         cheese,
         meat,
         fruit,
         beer,
-        ignore3,
-        flour,
+
+        flour = 14,
         bows,
         crossbows,
         spears,
@@ -24,6 +24,27 @@
         maces,
         swords,
         leatherarmor,
-        metalarmor,
+        metalarmor
+    }
+
+    enum StartingTroops
+    {
+        EuropArcher = 1,
+        Crossbowman,
+        Spearman,
+        Pikeman,
+        Maceman,
+        Swordsman,
+        Knight,
+
+        Engineer = 9,
+        Monk,
+        ArabArcher,
+        Slave,
+        Slinger,
+        Assassin,
+        HorseArcher,
+        ArabSwordsman,
+        FireThrower
     }
 }
