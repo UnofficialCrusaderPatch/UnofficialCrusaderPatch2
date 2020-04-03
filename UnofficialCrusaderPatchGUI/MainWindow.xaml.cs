@@ -46,7 +46,10 @@ namespace UCP
             {
                 Configuration.Language = Localization.LanguageIndex;
             }
+            StartTroopChange.Load();
+            ResourceChange.Load();
             Version.AddExternalChanges();
+
             // init main window
             InitializeComponent();
 

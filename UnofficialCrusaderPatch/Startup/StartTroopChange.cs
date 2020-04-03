@@ -13,7 +13,7 @@ using UCP.Patching;
 
 namespace UCP.Startup
 {
-    class StartTroopChange : Change
+    public class StartTroopChange : Change
     {
         enum LordType
         {
@@ -80,8 +80,10 @@ namespace UCP.Startup
             base.TitleBox_Checked(sender, e);
 
             if (activeChange != null)
+            {
                 activeChange.IsChecked = false;
-
+            }
+            selectedChange = this.TitleIdent;
             activeChange = this;
         }
 
@@ -90,7 +92,10 @@ namespace UCP.Startup
             base.TitleBox_Unchecked(sender, e);
 
             if (activeChange == this)
+            {
+                selectedChange = String.Empty;
                 activeChange = null;
+            }
         }
 
         public static void Refresh(object sender, RoutedEventArgs args)
@@ -152,6 +157,28 @@ namespace UCP.Startup
             change.description = message;
             change.IsValid = false;
             changes.Add(change);
+        }
+
+        internal static void DoChange(ChangeArgs args)
+        {
+            Change change = activeChange;
+            if (!selectedChange.Equals(String.Empty))
+            {
+                if (activeChange == null)
+                {
+                    change = changes.Where(x => x.TitleIdent.Equals(selectedChange)).First();
+                    foreach (var header in change)
+                    {
+                        header.Activate(args);
+                    }
+                    return;
+                }
+                foreach (var header in change)
+                {
+                    header.Activate(args);
+                }
+                return;
+            }
         }
 
         public static void Load()
@@ -333,13 +360,13 @@ namespace UCP.Startup
 
                 try
                 {
-                    lordMultiplier = Convert.ToInt32(lordConfig["Strength"]) * lordStrengthBase;
+                    lordMultiplier = Convert.ToInt32((double)lordConfig["StrengthMultiplier"] * lordStrengthBase);
                     resultConfig["Strength"] = new BinInt32(lordMultiplier);
                 }
                 catch (KeyNotFoundException) { }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    exceptions.Add("lord strength");
+                    exceptions.Add("lord strength" + e.Message);
                 }
 
                 try

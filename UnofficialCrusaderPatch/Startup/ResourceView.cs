@@ -10,7 +10,6 @@ namespace UCP.Startup
     {
         public void InitUI(Grid grid, RoutedPropertyChangedEventHandler<object> SelectionDisabler)
         {
-            ResourceChange.Load();
             TreeView view = new TreeView()
             {
                 Background = null,
