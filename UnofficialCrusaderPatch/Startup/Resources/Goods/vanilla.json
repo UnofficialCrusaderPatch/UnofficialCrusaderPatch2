@@ -1,7 +1,7 @@
 ﻿{
   "description": {
-    "German": "Dies ist die Konfiguration von Vanilla Crusader.",
-    "English": "This is the configuration from vanilla Crusader.",
+    "German": "Diese ist die Vanilla Startkonfiguration der Truppen.",
+    "English": "This is the vanilla start troops configuration.",
     "Polish": "To jest konfiguracja waniliowego krzyżowca.",
     "Russian": "Это конфигурация от vanilla Crusader."
   },

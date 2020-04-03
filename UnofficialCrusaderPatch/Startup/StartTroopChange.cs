@@ -52,11 +52,6 @@ namespace UCP.Startup
             this.NoLocalization = true;
         }
 
-        static StartTroopChange()
-        {
-            Load();
-        }
-
         public override void InitUI()
         {
             Localization.Add(this.TitleIdent + "_descr", this.description);
@@ -138,7 +133,7 @@ namespace UCP.Startup
         {
             StartTroopChange change = new StartTroopChange(Path.GetFileNameWithoutExtension(file).Replace(" ", ""), false)
                         {
-                            new DefaultHeader(file, true)
+                            new DefaultHeader("s_" + file, false)
                             {
                                 new BinaryEdit(troopBlockFile)
                                 {
@@ -159,11 +154,11 @@ namespace UCP.Startup
             changes.Add(change);
         }
 
-        private static void Load()
+        public static void Load()
 
         {
             // load all premade Starttroop configurations that come with the UCP
-            Load("UCP.Startup.Resources.vanilla.json");
+            Load("UCP.Startup.Resources.Goods.vanilla.json");
 
             if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "troops")))
             {
@@ -191,7 +186,7 @@ namespace UCP.Startup
             string starttroopsText = reader.ReadToEnd();
             reader.Close();
 
-            string startTroopConfigName = Path.GetFileName(fileName).Replace("UCP.Startup.Resources.", "");
+            string startTroopConfigName = Path.GetFileName(fileName).Replace("UCP.Startup.Resources.Goods.", "");
             JavaScriptSerializer serializer = new JavaScriptSerializer();
 
             Dictionary<String, Dictionary<String, Object>> startTroopConfig;

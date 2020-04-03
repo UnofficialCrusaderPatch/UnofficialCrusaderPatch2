@@ -104,8 +104,6 @@ namespace UCP.Startup
             // read code block file
             using (Stream stream = asm.GetManifestResourceStream(file))
                 goldBlock = new CodeBlox.CodeBlock(stream).Elements.ToArray().Select(x => x.Value).ToArray();
-
-            Load();
         }
 
         public static void LoadConfiguration(List<string> configuration = null)
