@@ -1,9 +1,14 @@
-﻿ui_Resource
+﻿ui_StartTroops
 {
-	"Resource"
+	"StartTroops"
 }
 
-﻿ui_aicconflict
+ui_Resource
+{
+	"StartGoods"
+}
+
+ui_aicconflict
 {
 	"conflict and will be ignored"
 }

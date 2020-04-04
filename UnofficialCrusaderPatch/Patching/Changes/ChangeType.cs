@@ -9,5 +9,6 @@
         AIV,
         AIC,
         Resource,
+        StartTroops
     }
 }

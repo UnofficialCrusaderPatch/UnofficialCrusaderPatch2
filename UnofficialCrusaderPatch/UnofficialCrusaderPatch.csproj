@@ -126,9 +126,11 @@
     <Compile Include="Patching\Section\PEHeader.cs" />
     <Compile Include="Patching\Section\SectionEditor.cs" />
     <Compile Include="Patching\Section\SectionHeader.cs" />
+    <Compile Include="Startup\StartTroopView.cs" />
     <Compile Include="Startup\ResourceView.cs" />
     <Compile Include="Startup\StartingEnums.cs" />
     <Compile Include="Startup\ResourceChange.cs" />
+    <Compile Include="Startup\StartTroopChange.cs" />
     <Compile Include="Version.cs" />
     <Compile Include="_Crusader\Building.cs" />
     <Compile Include="_Crusader\UI_Button.cs" />
@@ -1492,10 +1494,14 @@
     <EmbeddedResource Include="CodeBlocks\o_shfy_resourcequantity.block" />
     <EmbeddedResource Include="CodeBlocks\o_shfy_peasantspawnrate.block" />
     <EmbeddedResource Include="CodeBlocks\s_gold.block" />
+    <EmbeddedResource Include="CodeBlocks\s_troops.block" />
+    <EmbeddedResource Include="CodeBlocks\s_lordstrength.block" />
+    <EmbeddedResource Include="CodeBlocks\s_lordtype.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <EmbeddedResource Include="Startup\Resources\Goods\vanilla.json" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -27,6 +27,14 @@ namespace UCP.Patching
         public IEnumerator<BinElement> GetEnumerator() => elements.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
+        public void AddRange(IEnumerable<BinElement> values)
+        {
+            foreach (BinElement edit in values)
+            {
+                Add(edit);
+            }
+        }
+
         public void Add(BinElement e)
         {
             this.Insert(elements.Count, e);

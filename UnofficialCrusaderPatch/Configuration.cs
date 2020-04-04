@@ -67,13 +67,18 @@ namespace UCP
                 // edits
                 foreach (Change change in Version.Changes)
                 {
-                    if (change.Type != ChangeType.AIC)
+                    if (change.Type != ChangeType.AIC && change.Type != ChangeType.AIV)
                     {
                         sw.WriteLine(change.ToString());
                     }
                 }
-                
-                foreach(string line in AICChange.GetConfiguration())
+
+                foreach (string line in AIVChange.GetConfiguration())
+                {
+                    sw.WriteLine(line);
+                }
+
+                foreach (string line in AICChange.GetConfiguration())
                 {
                     sw.WriteLine(line);
                 }
@@ -85,6 +90,7 @@ namespace UCP
             List<string> aicConfigurationList = null;
             List<string> aivConfigurationList = null;
             List<string> resourceConfigurationList = null;
+            List<string> startTroopConfigurationList = null;
             if (File.Exists(ConfigFile))
             {
                 using (StreamReader sr = new StreamReader(ConfigFile))
@@ -92,7 +98,7 @@ namespace UCP
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        if (Regex.Replace(@"\s+","", line).Contains("aic=") || Regex.Replace(@"\s+", "", line).Contains("aic.json="))
+                        if (Regex.Replace(@"\s+","", line).Contains("aic_"))
                         {
                             if (aicConfigurationList == null)
                             {
@@ -101,7 +107,7 @@ namespace UCP
                             aicConfigurationList.Add(line);
                             continue;
                         }
-                        else if(Regex.Replace(@"\s+", "", line).Contains("aiv_"))
+                        else if(Regex.Replace(@"\s+", "", line).StartsWith("aiv_"))
                         {
                             if (aivConfigurationList == null)
                             {
@@ -110,13 +116,22 @@ namespace UCP
                             aivConfigurationList.Add(line);
                             continue;
                         }
-                        else if (Regex.Replace(@"\s+", "", line).Contains("res_"))
+                        else if (Regex.Replace(@"\s+", "", line).StartsWith("res_"))
                         {
                             if (resourceConfigurationList == null)
                             {
                                 resourceConfigurationList = new List<string>();
                             }
                             resourceConfigurationList.Add(line);
+                            continue;
+                        }
+                        else if (Regex.Replace(@"\s+", "", line).StartsWith("s_"))
+                        {
+                            if (startTroopConfigurationList == null)
+                            {
+                                startTroopConfigurationList = new List<string>();
+                            }
+                            startTroopConfigurationList.Add(line);
                             continue;
                         }
 
@@ -163,6 +178,7 @@ namespace UCP
             AICChange.LoadConfiguration(aicConfigurationList);
             AIVChange.LoadConfiguration(aivConfigurationList);
             ResourceChange.LoadConfiguration(resourceConfigurationList);
+            StartTroopChange.LoadConfiguration(startTroopConfigurationList);
         }
     }
 }

@@ -72,6 +72,7 @@ namespace UCP.Startup
             if (activeChange != null)
                 activeChange.IsChecked = false;
 
+            selectedChange = this.TitleIdent;
             activeChange = this;
         }
 
@@ -80,7 +81,10 @@ namespace UCP.Startup
             base.TitleBox_Unchecked(sender, e);
 
             if (activeChange == this)
+            {
                 activeChange = null;
+                selectedChange = String.Empty;
+            }
         }
 
         static ResourceChange()
@@ -104,8 +108,6 @@ namespace UCP.Startup
             // read code block file
             using (Stream stream = asm.GetManifestResourceStream(file))
                 goldBlock = new CodeBlox.CodeBlock(stream).Elements.ToArray().Select(x => x.Value).ToArray();
-
-            Load();
         }
 
         public static void LoadConfiguration(List<string> configuration = null)
@@ -440,6 +442,28 @@ namespace UCP.Startup
 
 
         #region Binary Edit
+
+        internal static void DoChange(ChangeArgs args)
+        {
+            Change change = activeChange;
+            if (!selectedChange.Equals(String.Empty))
+            {
+                if (activeChange == null)
+                {
+                    change = changes.Where(x => x.TitleIdent.Equals(selectedChange)).First();
+                    foreach (var header in change)
+                    {
+                        header.Activate(args);
+                    }
+                    return;
+                }
+                foreach (var header in change)
+                {
+                    header.Activate(args);
+                }
+                return;
+            }
+        }
 
         static DefaultHeader CreateResourceHeader(String file, Dictionary<String, Dictionary<String, Object>> resourceConfig)
         {

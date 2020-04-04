@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using UCP.Patching;
+using UCP.Startup;
 
 namespace UCP
 {
@@ -9,6 +10,8 @@ namespace UCP
         static void Main(string[] args)
         {
             Configuration.Load();
+            StartTroopChange.Load();
+            ResourceChange.Load();
             Version.AddExternalChanges();
             ResolvePath();
             ResolveArgs(args);

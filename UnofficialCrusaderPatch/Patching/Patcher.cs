@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using UCP.AIC;
 using UCP.AIV;
+using UCP.Startup;
 
 namespace UCP.Patching
 {
@@ -98,7 +99,7 @@ namespace UCP.Patching
             SectionEditor.Reset();
 
             // only take binary changes
-            var changes = Version.Changes.Where(c => c.IsChecked && c is Change);
+            var changes = Version.Changes.Where(c => c.IsChecked && c is Change && !(c is ResourceChange) && !(c is StartTroopChange));
             List<Change> todoList = new List<Change>(changes);
 
             int todoIndex = 0;
@@ -132,6 +133,8 @@ namespace UCP.Patching
                 perc.Set(++todoIndex / todoCount);
             }
             AICChange.DoChange(args);
+            StartTroopChange.DoChange(args);
+            ResourceChange.DoChange(args);
 
             todoIndex += 2;
             perc.Set(todoIndex / todoCount);

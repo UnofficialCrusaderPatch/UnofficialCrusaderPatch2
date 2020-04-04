@@ -1,6 +1,11 @@
-﻿ui_Resource
+﻿ui_StartTroops
 {
-	"Resource"
+	"StartTroops"
+}
+
+ui_Resource
+{
+	"StartGoods"
 }
 
 ﻿ui_aicconflict

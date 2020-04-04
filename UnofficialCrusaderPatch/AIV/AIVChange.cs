@@ -46,14 +46,14 @@ namespace UCP.AIV
         }
 
         public AIVChange(string titleIdent, bool enabledDefault = false)
-            : base("aiv_" + titleIdent, ChangeType.AIV, enabledDefault, true)
+            : base("aiv_" + titleIdent, ChangeType.AIV, true, true)
         {
             this.resFolder = "UCP.AIV." + titleIdent;
             this.isInternal = true;
         }
 
         public AIVChange(string titleIdent, bool enabledDefault = false, bool isInternal = false)
-            : base("aiv_" + titleIdent, ChangeType.AIV, enabledDefault, true)
+            : base("aiv_" + titleIdent, ChangeType.AIV, true, true)
         {
             this.resFolder = titleIdent;
             this.isInternal = isInternal;
@@ -69,12 +69,13 @@ namespace UCP.AIV
             }
             base.InitUI();
             this.titleBox.Background = this.resFolder.StartsWith("UCP.AIV") ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque);
-            this.titleBox.IsChecked = selectedChange.Equals(this.TitleIdent);
 
             if (!this.resFolder.StartsWith("UCP.AIV"))
             {
                 ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(4);
             }
+            this.IsChecked = selectedChange.Equals(this.TitleIdent);
+            this.titleBox.IsChecked = selectedChange.Equals(this.TitleIdent);
             if (this.IsChecked)
                 activeChange = this;
         }
@@ -120,6 +121,21 @@ namespace UCP.AIV
                 selectedChange = String.Empty;
             }
         }
+        public static IEnumerable<string> GetConfiguration()
+        {
+            List<string> config = new List<string>();
+            if (selectedChange != String.Empty)
+            {
+                config.Add(selectedChange + "= { " + selectedChange + "={True} }");
+            }
+            foreach (AIVChange change in changes)
+            {
+                if (selectedChange != null && !(change.TitleIdent.Equals(selectedChange))){
+                    config.Add(change.TitleIdent + "= { " + change.TitleIdent + "={False} }");
+                }
+            }
+            return config;
+        }
 
         public static void LoadConfiguration(List<string> configuration = null)
         {
@@ -143,6 +159,7 @@ namespace UCP.AIV
                 if (selected == true)
                 {
                     selectedChange = changeKey;
+                    activeChange = changes.Where(x => x.TitleIdent.Equals(changeKey)).First();
                 }
             }
         }
