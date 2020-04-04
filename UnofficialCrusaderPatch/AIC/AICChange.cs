@@ -68,7 +68,7 @@ namespace UCP.AIC
         {
             string descr = GetLocalizedDescription(this.collection);
             descr = descr == String.Empty ? this.TitleIdent : descr;
-            Localization.Add(this.TitleIdent + "_descr", descr);
+            Localization.Add(this.TitleIdent.Substring(4) + "_descr", descr);
             this.titleBox = new CheckBox()
             {
                 Content = new TextBlock()
@@ -379,7 +379,7 @@ namespace UCP.AIC
             for (int i = 0; i < changes.Count; i++)
             {
                 ((TreeView)((Grid)((Button)sender).Parent).Children[0]).Items.Remove(changes.ElementAt(i).UIElement);
-                Localization.Remove(changes.ElementAt(i).TitleIdent + "_descr");
+                Localization.Remove(changes.ElementAt(i).TitleIdent.Substring(4) + "_descr");
             }
             changes.Clear();
             LoadConfiguration();
