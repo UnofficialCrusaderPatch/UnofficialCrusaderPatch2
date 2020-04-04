@@ -67,13 +67,18 @@ namespace UCP
                 // edits
                 foreach (Change change in Version.Changes)
                 {
-                    if (change.Type != ChangeType.AIC)
+                    if (change.Type != ChangeType.AIC && change.Type != ChangeType.AIV)
                     {
                         sw.WriteLine(change.ToString());
                     }
                 }
-                
-                foreach(string line in AICChange.GetConfiguration())
+
+                foreach (string line in AIVChange.GetConfiguration())
+                {
+                    sw.WriteLine(line);
+                }
+
+                foreach (string line in AICChange.GetConfiguration())
                 {
                     sw.WriteLine(line);
                 }
