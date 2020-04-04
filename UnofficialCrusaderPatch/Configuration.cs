@@ -93,7 +93,7 @@ namespace UCP
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        if (Regex.Replace(@"\s+","", line).Contains("aic=") || Regex.Replace(@"\s+", "", line).Contains("aic.json="))
+                        if (Regex.Replace(@"\s+","", line).Contains("aic_"))
                         {
                             if (aicConfigurationList == null)
                             {

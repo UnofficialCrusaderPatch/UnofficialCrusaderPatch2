@@ -59,7 +59,7 @@ namespace UCP.AIC
         }
 
         public AICChange(string titleIdent, bool enabledDefault = false)
-            : base(titleIdent, ChangeType.AIC, enabledDefault, true)
+            : base("aic_" + titleIdent, ChangeType.AIC, enabledDefault, true)
         {
             this.NoLocalization = true;
         }
@@ -73,7 +73,7 @@ namespace UCP.AIC
             {
                 Content = new TextBlock()
                 {
-                    Text = this.GetTitle(),
+                    Text = this.GetTitle().Substring(4),
                     TextDecorations = this.GetTitle().EndsWith(".aic") ? TextDecorations.Strikethrough : null,
                     TextWrapping = TextWrapping.Wrap,
                     Margin = new Thickness(0, -1, 0, 0),
@@ -82,7 +82,7 @@ namespace UCP.AIC
                 },
                 IsChecked = currentSelection.ContainsValue(this.TitleIdent),
                 IsEnabled = !this.GetTitle().EndsWith(".aic"),
-                Background = internalAIC.Contains(this.TitleIdent) ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque)
+                Background = internalAIC.Contains(this.TitleIdent.Substring(4)) ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque)
             };
 
             TreeViewItem tvi = new TreeViewItem()
@@ -355,8 +355,16 @@ namespace UCP.AIC
         public static List<string> GetConfiguration()
         {
             List<string> configuration = new List<string>();
+            foreach (AICChange aicChange in selectedChanges.Reverse())
+            {
+                configuration.Add(aicChange.TitleIdent + "= { " + aicChange.TitleIdent + IsInternal(aicChange.TitleIdent).ToString() + "={" + (currentSelection.ContainsValue(aicChange.TitleIdent)).ToString() + "} }");
+            }
             foreach (AICChange aicChange in changes)
             {
+                if (selectedChanges.Contains(aicChange))
+                {
+                    continue;
+                }
                 configuration.Add(aicChange.TitleIdent + "= { " + aicChange.TitleIdent + IsInternal(aicChange.TitleIdent).ToString() + "={" + (currentSelection.ContainsValue(aicChange.TitleIdent)).ToString() + "} }");
             }
             return configuration;
