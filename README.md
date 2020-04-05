@@ -39,7 +39,7 @@ Furthermore you can join our [Discord Server](https://discord.gg/vmy7CBR) for qu
 ### Translators
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (polish)  
 [Lolasik011](https://github.com/Lolasik011) (russian)  
-[Skysouls](mailto:theskysoul@vip.qq.com) (chinese)  
+[Skysouls (eMail)](mailto:theskysoul@vip.qq.com) (chinese)  
 
 ### Content Creators   
 [Evrey](https://github.com/Evrey) (aiv)  
@@ -48,6 +48,5 @@ Furthermore you can join our [Discord Server](https://discord.gg/vmy7CBR) for qu
 [Xander10alpha](https://github.com/Xander10alpha) (aic)  
 
 ### Special thanks of course go to  
-[Firefly Studios](https://fireflyworlds.com/) for the creation of the Stronghold series
-
-And many more
+[Firefly Studios](https://fireflyworlds.com/) for the creation of the Stronghold series  
+and many more
