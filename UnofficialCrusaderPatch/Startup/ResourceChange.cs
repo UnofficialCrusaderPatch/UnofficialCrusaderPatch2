@@ -50,7 +50,7 @@ namespace UCP.Startup
             {
                 activeChange = this;
             }
-            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(4);
+            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(4).Replace("UCP.Startup.Resources.Goods.", "");
 
             if (this.IsValid == false)
             {
@@ -63,6 +63,7 @@ namespace UCP.Startup
             {
                 this.titleBox.IsChecked = selectedChange.Equals(this.TitleIdent);
             }
+            this.titleBox.Background = this.TitleIdent.Substring(4).StartsWith("UCP.Startup.Resources.Goods.") ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque);
         }
 
         protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
@@ -139,6 +140,22 @@ namespace UCP.Startup
         public static void Load()
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+            StreamReader vanilla = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("UCP.Startup.Resources.Goods.vanilla.json"), Encoding.UTF8);
+            string vanillaText = vanilla.ReadToEnd();
+            vanilla.Close();
+            Dictionary<String, Dictionary<String, Object>> vanillaConfig = serializer.Deserialize<Dictionary<String, Dictionary<String, Object>>>(vanillaText);
+            if (vanillaConfig != null)
+            {
+                string description = GetLocalizedDescription("UCP.Startup.Resources.Goods.vanilla.json", vanillaConfig);
+                ResourceChange change = new ResourceChange("UCP.Startup.Resources.Goods.vanilla.json", false)
+                        {
+                            CreateResourceHeader("UCP.Startup.Resources.Goods.vanilla.json", vanillaConfig),
+                        };
+                change.description = description;
+                changes.Add(change);
+            }
+
 
             if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "goods"))) {
                 return;

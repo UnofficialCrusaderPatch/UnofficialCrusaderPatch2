@@ -60,7 +60,7 @@ namespace UCP.Startup
             {
                 activeChange = this;
             }
-            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(2);
+            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(2).Replace("UCP.Startup.Resources.Troops.", "");
 
             if (this.IsValid == false)
             {
@@ -73,6 +73,7 @@ namespace UCP.Startup
             {
                 this.titleBox.IsChecked = selectedChange.Equals(this.TitleIdent);
             }
+            this.titleBox.Background = this.TitleIdent.Substring(2).StartsWith("UCP.Startup.Resources.Troops.") ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque);
         }
 
         protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
@@ -185,7 +186,7 @@ namespace UCP.Startup
 
         {
             // load all premade Starttroop configurations that come with the UCP
-            Load("UCP.Startup.Resources.Goods.vanilla.json");
+            Load("UCP.Startup.Resources.Troops.vanilla.json");
 
             if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "troops")))
             {
@@ -213,7 +214,7 @@ namespace UCP.Startup
             string starttroopsText = reader.ReadToEnd();
             reader.Close();
 
-            string startTroopConfigName = Path.GetFileName(fileName).Replace("UCP.Startup.Resources.Goods.", "");
+            string startTroopConfigName = Path.GetFileName(fileName);
             JavaScriptSerializer serializer = new JavaScriptSerializer();
 
             Dictionary<String, Dictionary<String, Object>> startTroopConfig;

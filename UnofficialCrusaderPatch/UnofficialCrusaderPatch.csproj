@@ -1501,6 +1501,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <EmbeddedResource Include="Startup\Resources\Troops\vanilla.json" />
     <EmbeddedResource Include="Startup\Resources\Goods\vanilla.json" />
   </ItemGroup>
   <ItemGroup />
