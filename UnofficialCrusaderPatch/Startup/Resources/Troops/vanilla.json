@@ -373,7 +373,7 @@
     },
     "crusader": {
       "Units": [ "ArabSwordsman", "ArabArcher" ],
-      "Counts": [ 108, 50 ]
+      "Counts": [ 10, 50 ]
     },
     "deathmatch": {
       "Units": [ "Slave", "ArabArcher" ],
