@@ -29,9 +29,9 @@ namespace UCP.AIC
 
         static List<string> internalAIC = new List<string>()
         {
-            "vanilla.json", "UCP-Bugfix.json", "Kimberly-Balance-v1.0.json",
-            "Krarilotus-aggressiveAI-v1.0.json", "Tatha 0.5.1.json",
-            "Xander10alpha-v1.0.json"
+            "UCP.vanilla", "UCP.UCP-Bugfix", "UCP.Kimberly-Balance-v1.0",
+            "UCP.Krarilotus-aggressiveAI-v1.0", "UCP.Tatha 0.5.1",
+            "UCP.Xander10alpha-v1.0"
         };
 
         static LinkedList<AICChange> selectedChanges = new LinkedList<AICChange>();
@@ -68,12 +68,12 @@ namespace UCP.AIC
         {
             string descr = GetLocalizedDescription(this.collection);
             descr = descr == String.Empty ? this.TitleIdent : descr;
-            Localization.Add(this.TitleIdent.Substring(4) + "_descr", descr);
+            Localization.Add(this.TitleIdent + "_descr", descr);
             this.titleBox = new CheckBox()
             {
                 Content = new TextBlock()
                 {
-                    Text = this.GetTitle().Substring(4),
+                    Text = internalAIC.Contains(this.TitleIdent.Substring(4)) ? this.TitleIdent.Substring(4).Replace("UCP.", "") : this.TitleIdent.Substring(4),
                     TextDecorations = this.GetTitle().EndsWith(".aic") ? TextDecorations.Strikethrough : null,
                     TextWrapping = TextWrapping.Wrap,
                     Margin = new Thickness(0, -1, 0, 0),
@@ -484,7 +484,7 @@ namespace UCP.AIC
             string text = reader.ReadToEnd();
             reader.Close();
 
-            string aicName = Path.GetFileName(fileName).Replace("UCP.AIC.Resources.", "");
+            string aicName = Path.GetFileNameWithoutExtension(fileName).Replace("UCP.AIC.Resources.", "UCP.");
             try
             {
                 if (availableSelection.ContainsKey(aicName))
@@ -495,7 +495,7 @@ namespace UCP.AIC
                 AICollection ch = serializer.Deserialize<AICollection>(text);;
                 AICChange change = new AICChange(aicName, true)
                 {
-                    new DefaultHeader(aicName, true)
+                    new DefaultHeader("aic_" + aicName, true)
                     {
                     }
                 };

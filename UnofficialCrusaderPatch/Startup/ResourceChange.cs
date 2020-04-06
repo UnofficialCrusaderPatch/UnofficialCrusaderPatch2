@@ -20,7 +20,7 @@ namespace UCP.Startup
         const int deathmatchOffset = 0xc8;
 
         const int goldArrayLength = 0x28;
-        const int aiGoldOffset = 0x10; 
+        const int aiGoldOffset = 0x10;
         const int fairnessLevels = 5;
         string description;
         bool IsValid = true;
@@ -44,13 +44,13 @@ namespace UCP.Startup
 
         public override void InitUI()
         {
-            Localization.Add(this.TitleIdent.Substring(4) + "_descr", this.description);
+            Localization.Add(this.TitleIdent + "_descr", this.description);
             base.InitUI();
             if (this.IsChecked)
             {
                 activeChange = this;
             }
-            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(4).Replace("UCP.Startup.Resources.Goods.", "");
+            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(4).StartsWith("UCP.") ? this.TitleIdent.Substring(4).Replace("UCP.", "") : this.TitleIdent.Substring(4);
 
             if (this.IsValid == false)
             {
@@ -63,7 +63,7 @@ namespace UCP.Startup
             {
                 this.titleBox.IsChecked = selectedChange.Equals(this.TitleIdent);
             }
-            this.titleBox.Background = this.TitleIdent.Substring(4).StartsWith("UCP.Startup.Resources.Goods.") ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque);
+            this.titleBox.Background = this.TitleIdent.Substring(4).StartsWith("UCP.") ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque);
         }
 
         protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
@@ -147,17 +147,18 @@ namespace UCP.Startup
             Dictionary<String, Dictionary<String, Object>> vanillaConfig = serializer.Deserialize<Dictionary<String, Dictionary<String, Object>>>(vanillaText);
             if (vanillaConfig != null)
             {
-                string description = GetLocalizedDescription("UCP.Startup.Resources.Goods.vanilla.json", vanillaConfig);
-                ResourceChange change = new ResourceChange("UCP.Startup.Resources.Goods.vanilla.json", false)
+                string description = GetLocalizedDescription("UCP.vanilla", vanillaConfig);
+                ResourceChange change = new ResourceChange("UCP.vanilla", false)
                         {
-                            CreateResourceHeader("UCP.Startup.Resources.Goods.vanilla.json", vanillaConfig),
+                            CreateResourceHeader("res_UCP.vanilla", vanillaConfig),
                         };
                 change.description = description;
                 changes.Add(change);
             }
 
 
-            if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "goods"))) {
+            if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "goods")))
+            {
                 return;
             }
 
@@ -174,23 +175,23 @@ namespace UCP.Startup
                 }
                 catch (Exception)
                 {
-                    CreateNullChange(Path.GetFileNameWithoutExtension(file).Replace(" ", ""), "Invalid JSON detected");
+                    CreateNullChange(Path.GetFileNameWithoutExtension(file), "Invalid JSON detected");
                     continue;
                 }
 
                 try
                 {
                     string description = GetLocalizedDescription(file, resourceConfig);
-                    ResourceChange change = new ResourceChange(Path.GetFileNameWithoutExtension(file).Replace(" ", ""), false)
+                    ResourceChange change = new ResourceChange(Path.GetFileNameWithoutExtension(file), false)
                         {
-                            CreateResourceHeader(Path.GetFileNameWithoutExtension(file).Replace(" ", ""), resourceConfig),
+                            CreateResourceHeader("res_" + Path.GetFileNameWithoutExtension(file), resourceConfig),
                         };
                     change.description = description;
                     changes.Add(change);
                 }
                 catch (Exception e)
                 {
-                    CreateNullChange(Path.GetFileNameWithoutExtension(file).Replace(" ", ""), e.Message);
+                    CreateNullChange(Path.GetFileNameWithoutExtension(file), e.Message);
                 }
             }
         }
@@ -216,7 +217,8 @@ namespace UCP.Startup
                 {
                     AssignResourceBytes(normalOffset, field, resourceConfig["normal"], config);
                 }
-                catch (KeyNotFoundException) { 
+                catch (KeyNotFoundException)
+                {
                     for (int i = 0; i < crusaderOffset; i++)
                     {
                         config[i] = resourceBlock[i];
@@ -231,7 +233,8 @@ namespace UCP.Startup
                 {
                     AssignResourceBytes(crusaderOffset, field, resourceConfig["crusader"], config);
                 }
-                catch (KeyNotFoundException) {
+                catch (KeyNotFoundException)
+                {
                     for (int i = crusaderOffset; i < deathmatchOffset; i++)
                     {
                         config[i] = resourceBlock[i];
@@ -246,7 +249,8 @@ namespace UCP.Startup
                 {
                     AssignResourceBytes(deathmatchOffset, field, resourceConfig["deathmatch"], config);
                 }
-                catch (KeyNotFoundException) {
+                catch (KeyNotFoundException)
+                {
                     for (int i = deathmatchOffset; i < resourceBlock.Length; i++)
                     {
                         config[i] = resourceBlock[i];
@@ -276,7 +280,8 @@ namespace UCP.Startup
                 dynamic normalGold = resourceConfig["normal"]["gold"];
                 AssignGoldBytes("normal", normalGold, 0, config);
             }
-            catch (KeyNotFoundException) {
+            catch (KeyNotFoundException)
+            {
                 for (int lvl = 0; lvl < fairnessLevels; lvl++)
                 {
                     for (var i = 0; i < 4; i++)
@@ -297,7 +302,8 @@ namespace UCP.Startup
                 dynamic crusaderGold = resourceConfig["crusader"]["gold"];
                 AssignGoldBytes("crusader", crusaderGold, goldArrayLength, config);
             }
-            catch (KeyNotFoundException) {
+            catch (KeyNotFoundException)
+            {
                 for (int lvl = 0; lvl < fairnessLevels; lvl++)
                 {
                     for (var i = 0; i < 4; i++)
@@ -318,7 +324,8 @@ namespace UCP.Startup
                 dynamic deathGold = resourceConfig["deathmatch"]["gold"];
                 AssignGoldBytes("deathmatch", deathGold, goldArrayLength * 2, config);
             }
-            catch (KeyNotFoundException) {
+            catch (KeyNotFoundException)
+            {
                 for (int lvl = 0; lvl < fairnessLevels; lvl++)
                 {
                     for (var i = 0; i < 4; i++)
