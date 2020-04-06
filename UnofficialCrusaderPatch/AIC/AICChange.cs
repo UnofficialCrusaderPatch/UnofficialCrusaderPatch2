@@ -29,8 +29,8 @@ namespace UCP.AIC
 
         static List<string> internalAIC = new List<string>()
         {
-            "vanilla.json", "UCP-Bugfix.json", "Kimberly-Balance-v1.0.json",
-            "Krarilotus-aggressiveAI-v1.0.json", "Tatha 0.5.1.json",
+            "vanilla.json", "UCP-AI-Patch.json", "Kimberly-Balance-v1.2.json",
+            "Krarilotus-aggressiveAI-v1.2.json", "Tatha 0.5.1.json",
             "Xander10alpha-v1.0.json"
         };
 
@@ -68,7 +68,7 @@ namespace UCP.AIC
         {
             string descr = GetLocalizedDescription(this.collection);
             descr = descr == String.Empty ? this.TitleIdent : descr;
-            Localization.Add(this.TitleIdent.Substring(4) + "_descr", descr);
+            Localization.Add(this.TitleIdent + "_descr", descr);
             this.titleBox = new CheckBox()
             {
                 Content = new TextBlock()
@@ -422,10 +422,10 @@ namespace UCP.AIC
 
         private static void Load()
         {
-            LoadAIC("UCP.AIC.Resources.UCP-Bugfix.json");
+            LoadAIC("UCP.AIC.Resources.UCP-AI-Patch.json");
             LoadAIC("UCP.AIC.Resources.vanilla.json");
-            LoadAIC("UCP.AIC.Resources.Kimberly-Balance-v1.0.json");
-            LoadAIC("UCP.AIC.Resources.Krarilotus-aggressiveAI-v1.0.json");
+            LoadAIC("UCP.AIC.Resources.Kimberly-Balance-v1.2.json");
+            LoadAIC("UCP.AIC.Resources.Krarilotus-aggressiveAI-v1.2.json");
             LoadAIC("UCP.AIC.Resources.Tatha 0.5.1.json");
             LoadAIC("UCP.AIC.Resources.Xander10alpha-v1.0.json");
 

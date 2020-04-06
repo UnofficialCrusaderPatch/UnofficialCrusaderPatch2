@@ -187,6 +187,7 @@ namespace UCP.Startup
         {
             // load all premade Starttroop configurations that come with the UCP
             Load("UCP.Startup.Resources.Troops.vanilla.json");
+            Load("UCP.Startup.Resources.Troops.UCP-StartingTroops-Patch.json");
 
             if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "troops")))
             {
