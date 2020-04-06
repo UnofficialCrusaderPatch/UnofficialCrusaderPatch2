@@ -223,15 +223,18 @@ namespace UCP.AIV
             {
                 File.Delete(file);
             }
-
-            DirectoryInfo bupDir = new DirectoryInfo(Path.Combine(aivPath)).GetDirectories().OrderByDescending(d => d.LastWriteTimeUtc).First();
-            if (bupDir.Exists)
+            try
             {
-                foreach (FileInfo fi in bupDir.EnumerateFiles("*.aiv"))
-                    fi.CopyTo(Path.Combine(aivPath, fi.Name), true);
+                DirectoryInfo bupDir = new DirectoryInfo(Path.Combine(aivPath)).GetDirectories().OrderByDescending(d => d.LastWriteTimeUtc).First();
+                if (bupDir.Exists)
+                {
+                    foreach (FileInfo fi in bupDir.EnumerateFiles("*.aiv"))
+                        fi.CopyTo(Path.Combine(aivPath, fi.Name), true);
 
-                bupDir.Delete(true);
+                    bupDir.Delete(true);
+                }
             }
+            catch (InvalidOperationException) { }
         }
 
         public static void DoChange(string folderPath)

@@ -60,7 +60,7 @@ namespace UCP.Startup
             {
                 activeChange = this;
             }
-            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(2).Replace("UCP.Startup.Resources.Troops.", "");
+            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(2).Replace("UCP.", "");
 
             if (this.IsValid == false)
             {
@@ -73,7 +73,7 @@ namespace UCP.Startup
             {
                 this.titleBox.IsChecked = selectedChange.Equals(this.TitleIdent);
             }
-            this.titleBox.Background = this.TitleIdent.Substring(2).StartsWith("UCP.Startup.Resources.Troops.") ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque);
+            this.titleBox.Background = this.TitleIdent.Substring(2).StartsWith("UCP.") ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque);
         }
 
         protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
@@ -137,7 +137,7 @@ namespace UCP.Startup
 
         static void CreateNullChange(string file, string message)
         {
-            StartTroopChange change = new StartTroopChange(Path.GetFileNameWithoutExtension(file).Replace(" ", ""), false)
+            StartTroopChange change = new StartTroopChange(Path.GetFileNameWithoutExtension(file).Replace("UCP.Startup.Resources.Troops.", "UCP."), false)
                         {
                             new DefaultHeader("s_" + file, false)
                             {
@@ -215,7 +215,7 @@ namespace UCP.Startup
             string starttroopsText = reader.ReadToEnd();
             reader.Close();
 
-            string startTroopConfigName = Path.GetFileName(fileName);
+            string startTroopConfigName = Path.GetFileNameWithoutExtension(fileName);
             JavaScriptSerializer serializer = new JavaScriptSerializer();
 
             Dictionary<String, Dictionary<String, Object>> startTroopConfig;
@@ -225,16 +225,16 @@ namespace UCP.Startup
             }
             catch (Exception)
             {
-                CreateNullChange(Path.GetFileNameWithoutExtension(startTroopConfigName).Replace(" ", ""), "Invalid JSON detected");
+                CreateNullChange(Path.GetFileNameWithoutExtension(startTroopConfigName), "Invalid JSON detected");
                 return;
             }
 
             try 
             { 
                 string description = GetLocalizedDescription(startTroopConfigName, startTroopConfig);
-                StartTroopChange change = new StartTroopChange(startTroopConfigName, false)
+                StartTroopChange change = new StartTroopChange(startTroopConfigName.Replace("UCP.Startup.Resources.Troops.", "UCP."), false)
                 {
-                    CreateStartTroopHeader(startTroopConfigName, startTroopConfig),
+                    CreateStartTroopHeader(startTroopConfigName.Replace("UCP.Startup.Resources.Troops.", "UCP."), startTroopConfig),
                 };
                 change.description = description;
                 changes.Add(change);
