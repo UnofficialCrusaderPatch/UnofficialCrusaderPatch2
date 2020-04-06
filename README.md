@@ -35,9 +35,9 @@ Furthermore you can join our [Discord Server](https://discord.gg/vmy7CBR) for qu
 [np123](https://github.com/patel-nikhil)  
 
 ### Translators
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (polish)  
-[Lolasik011](https://github.com/Lolasik011) (russian)  
-[Skysouls (eMail)](mailto:theskysoul@vip.qq.com) (chinese)  
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polish)  
+[Lolasik011](https://github.com/Lolasik011) (Russian)  
+[Skysouls (eMail)](mailto:theskysoul@vip.qq.com) (Chinese)  
 
 ### Content Creators   
 [Evrey](https://github.com/Evrey) (aiv)  
