@@ -29,8 +29,8 @@ namespace UCP.AIC
 
         static List<string> internalAIC = new List<string>()
         {
-            "UCP.vanilla", "UCP.UCP-Bugfix", "UCP.Kimberly-Balance-v1.0",
-            "UCP.Krarilotus-aggressiveAI-v1.0", "UCP.Tatha 0.5.1",
+            "UCP.vanilla", "UCP.UCP-AI-Patch", "UCP.Kimberly-Balance-v1.2",
+            "UCP.Krarilotus-aggressiveAI-v1.2", "UCP.Tatha 0.5.1",
             "UCP.Xander10alpha-v1.0"
         };
 
@@ -422,10 +422,10 @@ namespace UCP.AIC
 
         private static void Load()
         {
-            LoadAIC("UCP.AIC.Resources.UCP-Bugfix.json");
+            LoadAIC("UCP.AIC.Resources.UCP-AI-Patch.json");
             LoadAIC("UCP.AIC.Resources.vanilla.json");
-            LoadAIC("UCP.AIC.Resources.Kimberly-Balance-v1.0.json");
-            LoadAIC("UCP.AIC.Resources.Krarilotus-aggressiveAI-v1.0.json");
+            LoadAIC("UCP.AIC.Resources.Kimberly-Balance-v1.2.json");
+            LoadAIC("UCP.AIC.Resources.Krarilotus-aggressiveAI-v1.2.json");
             LoadAIC("UCP.AIC.Resources.Tatha 0.5.1.json");
             LoadAIC("UCP.AIC.Resources.Xander10alpha-v1.0.json");
 
