@@ -1,0 +1,166 @@
+<table class="table table-hover table-striped table-dark text-center">
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">Value</th>
+        <th scope="col">Type</th>
+        <th scope="col">Range of Acceptable Values</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>MinimumGoodsRequiredAfterTrade</td>
+            <td><input id="MinimumGoodsRequiredAfterTrade" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>The AI will only send ally a good if they have this at least amount to spare</td>
+        </tr>
+        <tr>
+            <td>MaxWood</td>
+            <td><input id="MaxWood" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>Maximum amount of wood to store on the stockpile before selling</td>
+        </tr>
+        <tr>
+            <td>MaxStone</td>
+            <td><input id="MaxStone" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>Maximum amount of stone to store on the stockpile +
+                 amount of stone needed for the biggest unbuilt stone building (ie. tower) that hasn't been reached in the build order of the AIV
+            </td>
+        </tr>
+        <tr>
+            <td>MaxResourceOther</td>
+            <td><input id="MaxResourceOther" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>Maximum amount of hops, iron, pitch and flour to store in the stockpile</td>
+        </tr>
+        <tr>
+            <td>MaxResourceVariance</td>
+            <td><input id="MaxResourceVariance" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>Allowed tolerance for all goods before AI sells down to the max allowed stock</td>
+        </tr>
+        <tr>
+            <td>SellResource</td>
+            <td>
+                <table>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <select id="SellResource01">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                        <td>2</td>
+                        <td>
+                            <select id="SellResource02">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <select id="SellResource03">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                        <td>4</td>
+                        <td>
+                            <select id="SellResource04">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            <select id="SellResource05">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                        <td>6</td>
+                        <td>
+                            <select id="SellResource06">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>
+                            <select id="SellResource07">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                        <td>8</td>
+                        <td>
+                            <select id="SellResource08">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>
+                            <select id="SellResource09">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                        <td>10</td>
+                        <td>
+                            <select id="SellResource10">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>
+                            <select id="SellResource11">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                        <td>12</td>
+                        <td>
+                            <select id="SellResource12">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>
+                            <select id="SellResource13">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                        <td>14</td>
+                        <td>
+                            <select id="SellResource14">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>
+                            <select id="SellResource15">
+                                <option class="opt-resource">Resource</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>Resource</td>
+            <td><a href="field-values.html#Resource" target="_blank">Resource</a></td>
+            <td>Resource type that AI will completely sell off</td>
+        </tr>
+    </tbody>
+</table>

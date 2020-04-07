@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unofficial Crusader Patch</title>
+    <link rel="icon" type="image/ico" href="assets/img/icon6.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid page">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html"><img src="assets/img/icon6.ico" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="getting-started.html">Getting Started</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Features
+                      </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Overview</a>
+                            <a class="dropdown-item" href="#bugfixes">Bugfixes</a>
+                            <a class="dropdown-item" href="#ailords">AI Lord Behaviour</a>
+                            <a class="dropdown-item" href="#units">Unit Modifications</a>
+                            <a class="dropdown-item" href="#misc">Misc. Changes</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        AI Character Introduction
+                      </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="aic/overview.html">Overview</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="aic/detailed.html">AI Personality Values</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          AI Castle Introduction
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="aiv/overview.html">Overview</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="aiv/detailed.html">AIV Editor</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contributing.html">Contributing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq.html">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="header">
+            <h4 class="text-center">Unofficial Crusader Patch Latest Version: UCP 2.13 
+                    <a href="https://github.com/Sh0wdown/UnofficialCrusaderPatch"><i class="fab fa-github"></i></a>
+                    <a class="latest-release" href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/tag/v2.13">changelog</a> 
+                    <a class="latest-release" href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/download/v2.13/UnofficialCrusaderPatch_v2.13.exe">download</a>
+                </h4>
+        </div>
+        <hr class="header-divider">
+        <div id="feature-header">
+            <h4 class="text-center">Description of UCP Selectable Features</h4>
+            <h6 class="text-center"><b><i>Note all changes listed below are optional</i></b></h6>
+        </div>
+
+        <div id="feature-content" class="">
+
+            <div id="feature-header">
+                <h4 class="text-center" id="bugfixes">Bugfixes</h4>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Fire ballistas shoot monks and tunnelers</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Fire ballistas automatically shoot at monks and tunnelers.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>No demolishing of inaccessible buildings</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Prevents the AI from demolishing buildings without access. This should 
+                    stop the AI from continuously demolishing and rebuilding buildings where no 
+                    access is available.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Fix reinforcement of defense troops</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Fixes a bug which stopped the AI from reinforcing missing troops 
+                    on walls and towers, as long as defensive patrols were still around. 
+                    Moreover, the probability for AIs to recruit defensive troops was generally 
+                    increased, as this value was vor some AIs zero.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Disable ox tether spam</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Usually, the AI builds for each new stone quarry a new ox tether, 
+                    independent of how many tether already exist. This can be disabled here, since 
+                    it leads to ox tether spam if the AIs' quarries get destroyed repeatedly.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Buy enough wood</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    To prevent thievish fletchers from stealing wood which the AI just bought for
+                    buildings, 2 extra wood will now be bought for each building.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>No limit for siege engines on towers</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Usually the AI only builds up to three mangonels and ballistae each on its towers.
+                    This limit can be lifted here.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>No AI target change during sieges</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    AI lords which attack the mightiest oder weakest enemy sometimes 
+                    switch their target in the middle of an ongoing assault and send their 
+                    troops to a different castle. This is prevented with this setting, as soon 
+                    as the assault has started, i.e. during the troop gathering phase in front of 
+                    a castle a change can still happen.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Improved AI repairs</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    The AI will repair tower ruins, slightly damaged walls, as well as 
+                    destroyed engineer's and tunneler's guilds and oil smelters, of which the gathering place 
+                    still exists. Furthermore, the AI can now build over the collection platform 
+                    of quarries.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Fix AI not using laddermen if they are enclosed</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    AI (notably Snake) no longer stops using Laddermen with their sieging units if their keep is enclosed.
+                </div>
+            </div>
+
+
+            <div id="feature-header">
+                <h4 class="text-center" id="ailords">AI Lord Behaviour Changes</h4>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Increase of the attacking troops limit of the AIs</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    The number of additional units which are added after the first attack is 
+                    limited to 200 in Vanilla. Here you can change this limit.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Improved attack waves</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    The AI in an attack in vanilla only sends as many troops at once as 
+                    there are wall parts reachable. This causes units to drop in in small waves 
+                    when the target castle has a lot of buildings directly at its walls.
+                    This option makes units also attack civil and fortification buildings, as 
+                    well as wall parts which are already being attacked by one unit. Moreover,
+                    the AI sends more troops to the enemy lord as soon as it detects a breach.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Set AI attack target</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    With this setting, all AI lords will chose their next attack target in
+                    the same way. This prevents troops switching targets during a castle assault
+                    as well as sending them past other enemies' castles to gather.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Disable sleeping mode for lack of resources</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    The AI usually puts its processing buildings to sleep, as soon 
+                    as the needed resource is missing. This is done without the regard for 
+                    losing products which are just on the way f.e. to the weapon chamber.
+                    This feature can be completely disabled here.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Deactivate demolishing for money of the AI lords</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    If the AI feels pressured, it likes to demolishes its economy or 
+                    fortification buildings to get quick money for troops. This feature sometimes 
+                    seems to be triggered without any visible reason and thus can be disabled here.
+                    <br>
+                    Can be applied to:
+                    <ul>
+                        <li>fortification buildings</li>
+                        <li>economy buildings</li>
+                        <li>walls</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Increase of the rate of additional attack troops</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    In Vanilla the attack troop number is increased after each attack by 5
+                    units on average. This value is the same for all AI lords and can be changed.
+                    <br><br>
+                    Alternatively, the additional troop count can be made dependent on the 
+                    troop count of the first attack. Since this value is different for each AI, 
+                    the following attacks will also scale, instead of increasing by the same value 
+                    for each AI lord.<br><br>
+                    For example: Scale factor = 0.5<br>
+                    Sultan's attack troops = 10, 15, 20, 25, ...<br>
+                    Saladin's attack troops = 50, 75, 100, 125, ...
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Increased recruitment speed</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Sets the recruitment interval of all AIs to the lowest value (Rat/Richard niveau)
+                </div>
+            </div>
+
+
+            <div id="feature-header">
+                <h4 class="text-center" id="units">Unit Modifications</h4>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Increased armor of laddermen against ranged units</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Changes that can be applied include:
+                    <ul>
+                        <li>Laddermen die after 12 arrow hits instead of 5</li>
+                        <li>Laddermen die after 5 crossbow or slinger hits instead of 2</li>
+                        <li>Laddermen cost 20 gold instead of 4</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Increased armor of Arabic Swordsmen against crossbows</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Arabic Swordsmen only die after 6 crossbow hits intead of 3
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Arabic Swordsmen destroy walls faster</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    In Vanilla, arabic swordsmen destroy walls slower than any other melee unit. 
+                    With this option, the tear down speed against walls is about doubled for them, 
+                    putting them slightly above Spearmen.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Increased armor of spearmen against ranged units</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    <ul>
+                        <li>Spearmen only die after 5 arrow hits instead of 3</li>
+                        <li>Spearmen barely survive one crossbow hit, instead of getting one-shot</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="feature-header">
+                <h4 class="text-center" id="misc">Miscellaneous</h4>
+            </div>
+
+
+            <div class="card feature-title">
+                <h5>Extend fireproof duration of extinguished buildings</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    The duration in which extinguished buildings cannot catch fire again can be extended here.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Remove the magic bar in Extreme</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Removes the magic bar in Crusader Extreme.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Change the color of player 1</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Allows change of the color of player 1 to one of the other colors
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>WASD-Keys and quicksaves</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    The WASD-keys can be used to move around with this setting as well as 
+                    CTRL-S and CTRL-L to quicksave and load respectively.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Override the Set-up Identity menu adding new features</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Adds Ranged and Melee unit selection to Set-up Identity menu. ONLY FOR NORMAL GAME MODE!
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Healer heals casualties</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    The healer of the apothecary building now actively seeks out injured soldiers, 
+                    civilists and animals to heal them. The nearest targets are treated first. With each 
+                    healing animation ca. 1/3 of a spearman's health is recovered. The strolling through 
+                    gardens and investigation of plague clouds is not replaced! Only the strolling through 
+                    the castle is skipped until no more wounded targets are in the area.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Free trader post</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Since the AI sometimes plays itself, when they're out of wood and their trader post
+                    is destroyed. With this setting, the trader post will become free of cost to prevent this.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>No siege tent deselection</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    With this setting, the game will not deselect your chosen siege equipment 
+                    after placing one tent anymore. This way you can create several tents after another 
+                    without having to reselect the same siege equipment every time.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Always show planned moat</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Your own placed but not digged out moat will always be shown with this 
+                    setting, even if you deselect the moat placing.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Extended game speed limits</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    The game speed can now be changed as follows:
+                    <ul>
+                        <li>From 10 to 90 in intervals of 5</li>
+                        <li>From 90 to 200 in intervals of 10</li>
+                        <li>From 200 to 1000 in intervals of 100</li>
+                    </ul>
+                    The new values are only available ingame via the +- keys, the slider in the 
+                    game menu remains unchanged.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Quicker responsiveness of gates towards enemies</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Gates close themselves later if enemies get into range and open faster 
+                    when the danger is gone. The distance of an enemy for which the gates close 
+                    will be reduced from 200 to 140. The time after which the gates open, after  
+                    all enemies left will be reduced from 1200 to 100.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Activate Spectator-mode <i>[bug possible]</i></h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Removes player 1 so that you can only spectate and makes 8 AIs in one 
+                    round possible. Savegames now load properly in this mode. Sometimes a bug 
+                    appears in which random objects spawn all over the map. This is just visually 
+                    and can be removed by saving the game, ending the mission and reloading the 
+                    save file.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Fix armory/marketplace weapon orders to match</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Reorders Weapon icons in Armory and Marketplace to have the same order. 
+                    Also moves Leather Armor between Mace and Crossbow, and moves Metal Armor between Polearm and Sword for easier access while in Marketplace scrolling through items.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Set default multiplayer speed.</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    Allows you to set default multiplayer speed.
+                </div>
+            </div>
+
+            <div class="card feature-title">
+                <h5>Strongholdify</h5>
+                <hr class="feature-divider">
+                <div class="card-body feature-body">
+                    <ul>
+                        <li>Peasant spawn rate</li>
+                        <li>Popularity bonus from beer</li>
+                        <li>Quantity of delivered resources</li>
+                        <li>Popularity bonus from cathedral and church</li>
+                        <li>Adapts listed aspects to match Stronghold 1. Attention: Every change influences the AI lords, in the worst case renders them useless!</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<link rel="stylesheet" href="assets/css/index.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="assets/js/index.js"></script>
+
+</html>

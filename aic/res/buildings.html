@@ -1,0 +1,69 @@
+<table class="table table-hover table-striped table-dark text-center">
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">Value</th>
+        <th scope="col">Type</th>
+        <th scope="col">Range of Acceptable Values</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>PopulationPerWoodcutter</td>
+            <td><input id="PopulationPerWoodcutter" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 (disabled) to 2<sup>31</sup> - 1</td>
+            <td>Triggers building of woodcutters for every <i>X</i> amount of current available workers<br><i>Set to 0 to disable building</i></td>
+        </tr>
+        <tr>
+            <td>MaxWoodcutters</td>
+            <td><input id="MaxWoodcutters" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 (ignored) to 2<sup>31</sup> - 1</td>
+            <td>Maximum number of woodcutters built.<br><i>Disabling is done via PopulationPerWoodcutter</i></td>
+        </tr>
+        <tr>
+            <td>PopulationPerQuarry</td>
+            <td><input id="PopulationPerQuarry" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 (disabled) to 2<sup>31</sup> - 1</td>
+            <td>Triggers building of quarries for every <i>X</i> amount of current available workers<br><i>Set to 0 to disable building</i></td>
+        </tr>
+        <tr>
+            <td>MaxQuarries</td>
+            <td><input id="MaxQuarries" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 (ignored) to 2<sup>31</sup> - 1</td>
+            <td>Maximum number of quarries built.<br><i>Disabling is done via PopulationPerQuarry</i></td>
+        </tr>
+        <tr>
+            <td>PopulationPerIronmine</td>
+            <td><input id="PopulationPerIronmine" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 (disabled) to 2<sup>31</sup> - 1</td>
+            <td>Triggers building of iron mines for every <i>X</i> amount of current available workers<br><i>Set to 0 to disable building</i></td>
+        </tr>
+        <tr>
+            <td>MaxIronmines</td>
+            <td><input id="MaxIronmines" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 (ignored) to 2<sup>31</sup> - 1</td>
+            <td>Maximum number of iron mines built.<br><i>Disabling is done via PopulationPerIronmine</i></td>
+        </tr>
+        <tr>
+            <td>PopulationPerPitchrig</td>
+            <td><input id="PopulationPerPitchrig" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 (disabled) to 2<sup>31</sup> - 1</td>
+            <td>Triggers building of pitch rigs for every <i>X</i> amount of current available workers<br><i>Set to 0 to disable building</i></td>
+        </tr>
+        <tr>
+            <td>MaxPitchrigs</td>
+            <td><input id="MaxPitchrigs" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 (ignored) to 2<sup>31</sup> - 1</td>
+            <td>Maximum number of pitch rigs built.<br><i>Disabling is done via PopulationPerPitchrig</i></td>
+        </tr>
+    </tbody>
+</table>

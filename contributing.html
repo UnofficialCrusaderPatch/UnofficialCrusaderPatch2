@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unofficial Crusader Patch</title>
+    <link rel="icon" type="image/ico" href="assets/img/icon6.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid page">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html"><img src="assets/img/icon6.ico" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="getting-started.html">Getting Started</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Features
+                      </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="features.html">Overview</a>
+                            <a class="dropdown-item" href="features.html#bugfixes">Bugfixes</a>
+                            <a class="dropdown-item" href="features.html#ailords">AI Lord Behaviour</a>
+                            <a class="dropdown-item" href="features.html#units">Unit Modifications</a>
+                            <a class="dropdown-item" href="features.html#misc">Misc. Changes</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        AI Character Introduction
+                      </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="aic/overview.html">Overview</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="aic/detailed.html">AI Personality Values</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          AI Castle Introduction
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="aiv/overview.html">Overview</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="aiv/detailed.html">AIV Editor</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contributing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq.html">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="header">
+          <h4 class="text-center">Unofficial Crusader Patch Latest Version: UCP 2.13 
+                  <a href="https://github.com/Sh0wdown/UnofficialCrusaderPatch"><i class="fab fa-github"></i></a>
+                  <a class="latest-release" href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/tag/v2.13">changelog</a> 
+                  <a class="latest-release" href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/download/v2.13/UnofficialCrusaderPatch_v2.13.exe">download</a>
+              </h4>
+      </div>
+        <hr class="header-divider">
+        <div id="contributing-header">
+            <h4 class="text-center">Learning the Code: A Contributor's Tutorial</h4>
+            <br>
+            <h5 class="text-center">An adaptation of <a href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/wiki/Contributor-Tutorial:-Learn-the-code">this tutorial</a> made by @LordHansCapon</h5>
+        </div>
+
+        <div id="contributing-content" class="">
+
+            <h5 class="text-center"><i>Note: This tutorial assumes you are familiar with how to setup an environment, GIT, and other fundamentals</i></h5>
+            <br>
+            <br>
+
+            <div class="card contributing-step">
+                <h5>Prerequisites</h5>
+                <hr class="contributing-step-divider">
+                <div class="card-body contributing-step-body">
+                    Environment setup is the first step. Below are three suggested development environments but feel free to use whatever suits your preferences.
+                    <ul>
+                        <li>JetBrains Rider</li>
+                        <li>Visual Studio Code</li>
+                        <li>Visual Studio</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card contributing-step">
+                <h5>First Steps</h5>
+                <hr class="contributing-step-divider">
+                <div class="card-body contributing-step-body">
+                    <ul>
+                        <li>Download the repository by cloning, directly downloading or forking it.</li>
+                        <li>Open the project, there are 4 projects in the solution, select the UnofficialCrusaderPatch one.</li>
+                        <li>Setup your Run/Debug Configurations. In JetBrains, double tap Shift, then type in Edit Configurations. It will automatically create a Default .NET project run/debug configuration, you can press Apply & OK, the default should be fine. If it is not, then be sure the target framework is .NET v4.0.</li>
+                        <li>To compile, you will need Evrey's AIV files, so head to this link: https://github.com/Evrey/SHC_AIV Download Evrey's SHC_AIV project as a ZIP, extract firefly_fixed, history, skirmish into the UnofficialCrusaderPatch/SHC_AIV folder. Yes, you have to create the SHC_AIV folder first.</li>
+                    </ul>
+
+                    If everything is done correctly, you can compile and run the software. Now this is where the fun begins.
+                </div>
+            </div>
+
+            <div class="card contributing-step">
+                <h5>Getting to know the code</h5>
+                <hr class="contributing-step-divider">
+                <div class="card-body contributing-step-body">
+                    The patcher operates with CodeBlocks. Every CodeBlock is an array of byte which will be scanned in the exe. These CodeBlocks are use to identify (ident) the correct part of the exe. To simplify it, you are not saying you want to override 4 bytes on address 0x6B90E8, you say search for these bytes then we are saying write some bytes then skip X bytes then write some bytes again. You can see every change applied in the patcher in the changes list in Version.cs. These changes will be rendered as Options in the patcher in their correspondig tab set by their ChangeType.
+                </div>
+            </div>
+
+            <div class="card contributing-step">
+                <h5>Making a change</h5>
+                <hr class="contributing-step-divider">
+                <div class="card-body contributing-step-body">
+                    Let's look at one of the simplest changes in this patcher, search for 0x004CBCD5 in Version.cs. This is the Disable sleeping mode for lack of resources option under AI lords tab. Let's take a look at its structure. We create a new Change instance, set its titleIdent to ai_nosleep, now this titleIdent will be the change's title, you can edit this in the Localization/English.txt or german/polish/russian etc. If you open the localization and search for ai_nosleep, you can find the title and its description which will be used when generating the option. The second parameter of the Change constructor is the type of the change, this determines the tab this option gets on, then we have enabledDefault and exclusive. Inside the Change, we have a DefaultHeader instantiated, which is used to create the header of the option. This also gets a descrIdent which will be our description when the option is expanded. If you want to create an option where it has suboptions such as the AI Attack target change one, you can take a look on how to do that at if you search for ai_attacktarget in Version.cs. Any binary command you add under the header will be applied when the option is selected and the patcher starts installing.
+                </div>
+            </div>
+
+            <div class="card contributing-step">
+                <h5>Adding code: Part 1</h5>
+                <hr class="contributing-step-divider">
+                <div class="card-body contributing-step-body">
+                    We have discussed a lot of stuff but we haven't written a single line of code, nor did I explain how to edit any data really. So this section will be a quick look on how to add a simple change. Create a new .block file in CodeBlocks, name it o_mychange1.block (o_ prefix means other, and I added 1 because later you wouldn't see the difference between localization string and the block string.). Add your byte array which you want to edit. Let's say I want to change my Marketplace Weapon item order, so I add:
+                    <br>
+                    <br>
+                    <code class="aob">13 00 00 00 11 00 00 00 15 00 00 00 12 00 00 00 14 00 00 00 16 00 00 00 17 00 00 00 18 00 00 00</code>
+                    <br>
+
+                    <b>This will 100% match the address I am searching for. This is at address 6B90E8. This is important, so keep that in mind.</b>
+                </div>
+            </div>
+
+            <div class="card contributing-step">
+                <h5>Adding code: Part 2</h5>
+                <hr class="contributing-step-divider">
+                <div class="card-body contributing-step-body">
+                    Open up Localization/English.txt, add this template and of course, change the name and description to match your change.
+
+                    <pre class="prettyprint lang-cs">
+    o_mychange
+    {
+      "My change name"
+    }
+
+    o_mychange_descr
+    {
+      "My change long description which elaborates on how much it changes!"
+    }
+                  </div>
+              </div>
+
+              <div class="card contributing-step">
+                <h5>Adding code: Part 3</h5>
+                <hr class="contributing-step-divider">
+                <div class="card-body contributing-step-body">
+                  Now open Version.cs and add to the changes list, create a new change and set it up as a single option change for now.
+
+                  <pre class="prettyprint lang-cs">
+    // Marketplace weapon order change
+    new Change("o_mychange", ChangeType.Other)
+    {
+        new DefaultHeader("o_mychange")
+        {
+        }
+    },
+                  </pre> Here we used our localization via accessing o_mychange and set our change into the Other tab. Now we can add some basic changes. Currently we want to change the whole array of bytes to a new one, so let's go ahead and create a BinaryEdit and tell it to identify the code part we store in our o_mychange1.block:
+
+                    <pre class="prettyprint lang-cs">
+    // Marketplace weapon order change
+    new Change("o_mychange", ChangeType.Other)
+    {
+        new DefaultHeader("o_mychange")
+        {
+            new BinaryEdit("o_mychange1") // 6B90E8
+            {
+            },
+        }
+    },
+                  </pre> If we know what to replace the array of byte with, we can go ahead and create a new BinBytes instance which will store the data which will be written on our current position:
+
+                    <pre class="prettyprint lang-cs">
+    // Marketplace weapon order change
+    new Change("o_mychange", ChangeType.Other)
+    {
+        new DefaultHeader("o_mychange")
+        {
+
+            new BinaryEdit("o_mychange1") // 6B90E8
+            {
+                // Marketplace item order
+                new BinBytes(0x11, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00)
+            },
+
+        }
+    },
+                  </pre> Great, now we overriden the whole array of bytes. You can now compile it and run it. But what if we need to override X bytes every Y bytes? To do that, you can use BinSkip which will skip X amount of bytes. Like so:
+
+                    <pre class="prettyprint lang-cs">
+    new BinaryEdit("o_mychange1") // 6B90E8
+    {
+        new BinBytes(0x11, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00), // Write 8 bytes
+        new BinSkip(4), // Skip 4 bytes
+        new BinBytes(0x11, 0x00, 0x00, 0x00) // Write 4 more bytes
+    },
+                  </pre> What if I want to jump between addresses? Well, you can create multiple BinaryEdit instances inside the DefaultHeader, so that's it. Create a new .block file to set the base address, then just write your bytes there! Example from my armory/marketplace weapon order fix:
+
+                    <pre class="prettyprint lang-cs">
+    new BinaryEdit("o_armory_marketplace_weapon_order_fix1") // 217F50
+    {
+        // Armory item ID order
+        new BinBytes(0x11, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00),
+        // Armory item image ID
+        new BinBytes(0x4C, 0x00, 0x00, 0x00, 0x50, 0x00, 0x00, 0x00, 0x54, 0x00, 0x00, 0x00, 0x58, 0x00, 0x00, 0x00, 0x4E, 0x00, 0x00, 0x00, 0x52, 0x00, 0x00, 0x00, 0x5A, 0x00, 0x00, 0x00, 0x56, 0x00, 0x00, 0x00),
+        // Armory item image offset
+        new BinBytes(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFE, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFC, 0xFF, 0xFF, 0xFF, 0x04, 0x00, 0x00, 0x00, 0xFE, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xFC, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xFE, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00)
+    },
+    new BinaryEdit("o_armory_marketplace_weapon_order_fix2") // 6B90E8
+    {
+        // Marketplace item order
+        new BinBytes(0x11, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00)
+    },
+                  </pre>
+                </div>
+            </div>
+
+            <div class="card contributing-step">
+                <h5>Summary</h5>
+                <hr class="contributing-step-divider">
+                <div class="card-body contributing-step-body">
+                    You can create custom assembly codes and inject them aswell, just take a look at the Healer change (o_healer), it allocates new data, uses labels, references, variables etc. Once you master the tools provided by Sh0wdown in this repo, you can translate any change and write it into an option. This tutorial was not meant to teach you everything there is to know about this repository and how to contribute to it, it is more a getting started, first steps guide. Thank you for reading, we are hoping to have a full, official guide for this repository because it deserves it!
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<link rel="stylesheet" href="assets/css/index.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="assets/js/index.js"></script>
+
+</html>
