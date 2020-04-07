@@ -1,0 +1,59 @@
+<table class="table table-hover table-striped table-dark text-center">
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">Value</th>
+        <th scope="col">Type</th>
+        <th scope="col">Range of Acceptable Values</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>MaxEquipment</td>
+            <td><input id="MaxEquipment" type="number" min=0 max=11 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>Maximum amount of weapons or armour stored in the armoury</td>
+        </tr>
+        <tr>
+            <td>BlacksmithSetting</td>
+            <td>
+                <select id="BlacksmithSetting">
+                    <option class="opt-weapons">Maces</option>
+                    <option class="opt-weapons">Swords</option>
+                </select
+            ></td>
+            <td>BlacksmithSetting</td>
+            <td>Maces, Swords</td>
+            <td>The setting for the AIs blacksmith workshops</td>
+        </tr>
+        <tr>
+            <td>FletcherSetting</td>
+            <td>
+                <select id="FletcherSetting">
+                    <option class="opt-weapons">Bows</option>
+                    <option class="opt-weapons">Crossbows</option>
+                </select
+            ></td>
+            <td>The setting for the AIs fletcher workshops</td>
+        </tr>
+        <tr>
+            <td>PoleturnerSetting</td>
+            <td>
+                <select id="PoleturnerSetting">
+                    <option class="opt-weapons">Pikes</option>
+                    <option class="opt-weapons">Spears</option>
+                </select
+            ></td>
+            <td>The setting for the AIs poleturner workshops</td>
+        </tr>
+        <tr>
+            <td>TradeAmountEquipment</td>
+            <td><input id="TradeAmountEquipment" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>The amount of equipment for the armoury bought at once. Only one of these trades is made per gametick</td>
+        </tr>
+    </tbody>
+</table>

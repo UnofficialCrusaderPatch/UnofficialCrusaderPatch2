@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unofficial Crusader Patch</title>
+    <link rel="icon" type="image/ico" href="assets/img/icon6.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid page">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html"><img src="assets/img/icon6.ico" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Getting Started</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Features
+                      </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="features.html">Overview</a>
+                            <a class="dropdown-item" href="features.html#bugfixes">Bugfixes</a>
+                            <a class="dropdown-item" href="features.html#ailords">AI Lord Behaviour</a>
+                            <a class="dropdown-item" href="features.html#units">Unit Modifications</a>
+                            <a class="dropdown-item" href="features.html#misc">Misc. Changes</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        AI Character Introduction
+                      </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="aic/overview.html">Overview</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="aic/detailed.html">AI Personality Values</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          AI Castle Introduction
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="aiv/overview.html">Overview</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="aiv/detailed.html">AIV Editor</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contributing.html">Contributing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq.html">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="header">
+          <h4 class="text-center">Unofficial Crusader Patch Latest Version: UCP 2.13 
+                  <a href="https://github.com/Sh0wdown/UnofficialCrusaderPatch"><i class="fab fa-github"></i></a>
+                  <a class="latest-release" href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/tag/v2.13">changelog</a> 
+                  <a class="latest-release" href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/download/v2.13/UnofficialCrusaderPatch_v2.13.exe">download</a>
+              </h4>
+      </div>
+        <hr class="header-divider">
+        <div id="content" class="row">
+            <div class="col-lg-6 feature-highlights">
+                <h3>Installation</h3>
+                <div id="accordion-instructions">
+                    <div class="card instruction">
+                        <div class="card-header" id="instruction-one" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link">
+                              <i class="fas fa-download"></i>  Download the Unofficial Crusader Patch (UCP)
+                            </button>
+                          </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="instruction-one" data-parent="#accordion-instructions">
+                            <div class="card-body install-step">
+                                <a href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/download/v2.13/UnofficialCrusaderPatch_v2.13.exe">Latest Stable Release</a>
+                                <br>
+                                <a href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/tree/master"> View source on GitHub <i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card instruction">
+                        <div class="card-header" id="instruction-two" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link collapsed">
+                              <i class="fas fa-copy"></i>  Copy UCP to installation directory and extract
+                            </button>
+                          </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="instruction-two" data-parent="#accordion-instructions">
+                            <div class="card-body install-step">
+                                Copying the UCP to the installation directory is necessary as the patcher needs to know where Stronghold Crusader is installed. 
+                                If the location is under C:\\Program Files you may need to complete the remaining instructions by running as administrator.
+                                Common default installation paths are:
+                                <ul>
+                                    <li>C:\Program Files (x86)\Firefly Studios\Stronghold Crusader</li>
+                                    <li>C:\Program Files (x86)\Steam\steamapps\common\Stronghold Crusader Extreme</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card instruction">
+                        <div class="card-header" id="instruction-three" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link collapsed">
+                              <i class="fas fa-copy"></i>  Copy ucp.cfg (configuration file) to folder
+                            </button>
+                          </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="instruction-three" data-parent="#accordion-instructions">
+                            <div class="card-body install-step">
+                                If you plan to play multiplayer or wish to use someone else's configuration then sharing the ucp.cfg file is the best way to do this.
+                                <br> For multiplayer, the UCP settings must be identical or else desync is almost certain to happen.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card instruction">
+                        <div class="card-header" id="instruction-four" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link collapsed">
+                              <i class="fas fa-mouse-pointer"></i>  Interactive installation steps
+                            </button>
+                          </h5>
+                        </div>
+                        <div id="collapseFour" class="collapse" aria-labelledby="instruction-four" data-parent="#accordion-instructions">
+                            <div class="card-body install-step">
+                                <ul>
+                                    <li>Open extracted folder and double-click UnofficialCrusaderPatchGUI.exe</li>
+                                    <li>Browse and locate path to Stronghold Crusader if not already shown on the interface</li>
+                                    <li>Click continue to choose your options <a href="features.html">(see overview of options)</a></li>
+                                    <li>When you are ready click install</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card instruction">
+                        <div class="card-header" id="instruction-five" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            <h5 class="mb-0">
+                              <button class="btn btn-link collapsed">
+                                <i class="fas fa-arrow-circle-right"></i>  Silent installation steps
+                              </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFive" class="collapse" aria-labelledby="instruction-five" data-parent="#accordion-instructions">
+                            <div class="card-body install-step">
+                                <ul>
+                                    <li>Open extracted folder and double-click to run UnofficialCrusaderPatchCLI.exe</li>
+                                </ul>
+                                <i>You may need to run this as administrator if your install is located within a system-protected folder/</i>
+                                <br>
+                                <i>A black (console) window will temporarily open while the patcher is installing. This is normal behaviour.</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card instruction">
+                        <div class="card-header" id="instruction-six" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            <h5 class="mb-0">
+                              <button class="btn btn-link collapsed">
+                                <i class="fas fa-arrow-circle-right"></i>  Advanced (custom) installation steps
+                              </button>
+                            </h5>
+                        </div>
+                        <div id="collapseSix" class="collapse" aria-labelledby="instruction-six" data-parent="#accordion-instructions">
+                            <div class="card-body install-step">
+                                The UnofficialCrusaderPatchCLI.exe executable accepts a number of command-line arguments that allow you to customize the installation.
+                                <br> Command-line arguments are as follows:
+                                <ul>
+                                    <li><code>--aic[-overwrite]=&lt;relative path to source aiv folder&gt;</code></li>
+                                    <li><code>--aiv[-overwrite]=&lt;relative path to source aiv folder&gt;</code></li>
+                                    <li><code>--maps[-overwrite]=&lt;relative path to source maps folder&gt;</code></li>
+                                    <li><code>--mapsExtreme[-overwrite]=&lt;relative path to source mapsExtreme folder&gt;</code></li>
+                                    <li><code>--no-output</code></li>
+                                </ul>
+                                <i>Enclosure in square brackets indicate optional presence. Source folder refers to the folder where you have kept your aiv/aic/maps files.</i>
+                                <br> Default mode is copy. Behaviour is described as follows. aiv files will be used as an example.
+                                <br> Program Output:
+                                <ul>
+                                    <li>When the CLI tool is passed an argument it will by default display where files, if any, are saved to. It will also display what files (ie. aic) are copied, and to where (see below for details). This feature can be disabled by running the CLI tool with the argument <code>--no-output</code></li>
+                                </ul>
+                                <br> With argument <code>--aiv=&lt;aiv path&gt;</code> the following happens:
+                                <ul>
+                                    <li>Files in "aic" folder of installation are copied to folder bak-YYYY-MM-DDTHHMMSS</li>
+                                    <li>Files from <code>&lt;aic path&gt;</code> folder are copied to aic folder of installation</li>
+                                    <li>Installation proceeds. For aic files, the copied files from can be used in the silent install if they are specified in the ucp.cfg</li>
+                                </ul>
+                                <br> With argument <code>--aiv-overwrite=&lt;aiv path&gt;</code> the following happens:
+                                <ul>
+                                    <li>Suppose file with filename 1.aiv exists in "aiv" folder of installation.. </li>
+                                    <li>File 1.aiv is deleted from installation folder</li>
+                                    <li>The new 1.aiv is copied from <code>&lt;aic path&gt;</code> to "aiv" folder of installation</li>
+                                    <li>Installation proceeds. For aic files, the copied files from can be used in the silent install if they are specified in the ucp.cfg</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h3>Visual Overview of Features</h3>
+                <h5><i>See <a href="features.html">features</a> for a full description of each feature</i></h5>
+                <br>
+                <h4>Step 1: Language Selection</h4>
+                <img class="img-installation" id="language-select" src="assets/img/language-select.png">
+
+                <h4>Step 2: Installation Path Selection</h4>
+                <img class="img-installation" src="assets/img/window.png">
+
+                <h4>Step 3: Select Your Features</h4>
+                <h5><i>See <a href="features.html">features</a> for a description of each feature</i></h5>
+                <br>
+                <h4>Bugfixes</h4>
+                <h5><i>These include fixes to various gameplay bugs. Most users will want to select all options.</i></h5>
+                <img class="img-installation" src="assets/img/bugfixes.png">
+
+                <h4>AIV</h4>
+                <h5><i>Selecting a castle set here will change the way the AI characters build their castles in-game.</i></h5>
+                <h5><i>See <a href="aiv/overview.html">AI Castle Introduction</a> for more about castle editing</i></h5>
+                <img class="img-installation" src="assets/img/aiv.png">
+
+                <h4>AIC</h4>
+                <h5><i>Selecting an file here will change the in-game behaviour of an AI.
+                      The boxes that are coloured beige indicate user-provided aic files. 
+                      <br>
+                      vanilla.aic is the AI behaviour as it is defined in Stronghold Crusader (without UCP).
+                      <br>
+                      You may hold Ctrl and click to select/deselect multiple aic files. 
+                      Note that if an AI Character is defined multiple times the one from the first file (alphabetically) will be used</i></h5>
+                <h5><i>See <a href="aic/overview.html">AI Character Introduction</a> for more about editing AI behaviour</i></h5>
+                <img class="img-installation" src="assets/img/aic.png">
+
+                <h4>AI Lords</h4>
+                <h5><i>These include changes to how the AI characters behave.</i></h5>
+                <img class="img-installation" src="assets/img/ai-lords.png">
+
+                <h4>Units</h4>
+                <h5><i>These include changes to the characteristics of certain troops.</i></h5>
+                <img class="img-installation" src="assets/img/units.png">
+
+                <h4>Other</h4>
+                <h5><i>These include various quality of life and convenience changes.</i></h5>
+                <img class="img-installation" src="assets/img/other.png">
+            </div>
+        </div>
+    </div>
+</body>
+
+<link rel="stylesheet" href="assets/css/index.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="assets/js/index.js"></script>
+
+</html>

@@ -1,0 +1,27 @@
+<table class="table table-hover table-striped table-dark text-center">
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">Value</th>
+        <th scope="col">Type</th>
+        <th scope="col">Range of Acceptable Values</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>TaxesMin</td>
+            <td><input id="TaxesMin" type="number" min=0 max=11 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 11</td>
+            <td>Minimum taxes allowed. 0 (min) to 11 (max) are the steps from +7 popularity to -24 popularity by taxes in the keep.</td>
+        </tr>
+        <tr>
+            <td>TaxesMax</td>
+            <td><input id="TaxesMax" type="number" min=0 max=11 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 10000</td>
+            <td>Maximum of Taxes allowed. 0 (min) to 11 (max) are the steps from +7 popularity to -24 popularity by taxes in the keep.</td>
+        </tr>
+    </tbody>
+</table>

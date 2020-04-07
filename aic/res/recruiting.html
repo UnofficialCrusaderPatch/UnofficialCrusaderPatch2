@@ -1,0 +1,124 @@
+<table class="table table-hover table-striped table-dark text-center">
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">Value</th>
+        <th scope="col">Type</th>
+        <th scope="col">Range of Acceptable Values</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>RecruitInterval</td>
+            <td><input id="RecruitInterval" type="number" min=0 max=100 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>Default interval at which the AI recruits troops</td>
+        </tr>
+        <tr>
+            <td>RecruitIntervalWeak</td>
+            <td><input id="RecruitIntervalWeak" type="number" min=0 max=100 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>Recruiting interval for 'weak' state which sets in if (ie. AI has troops &lt;= 8)</td>
+        </tr>
+        <tr>
+            <td>RecruitIntervalStrong</td>
+            <td><input id="RecruitIntervalStrong" type="number" min=0 max=100 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>Recruiting interval for 'strong' state which sets in if (ie. AI has troops &gt;= 40)</td>
+        </tr>
+        <tr>
+            <td>RecruitProbDefensive</td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Default</td>
+                        <td>
+                            <input id="RecruitProbDefDefault" style="width: 100%" type="number" min=0 max=100 placeholder="Enter value">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Strong</td>
+                        <td>
+                            <input id="RecruitProbDefStrong" style="width: 100%" type="number" min=0 max=100 placeholder="Enter value">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Weak</td>
+                        <td>
+                            <input id="RecruitProbDefWeak"style="width: 100%" type="number" min=0 max=100 placeholder="Enter value">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>Integer</td>
+            <td>0 to 100</td>
+            <td>Probability that the AI changes its recruitment type to defensive troops in each state.
+                Note: These values must sum to 100. Sortie units are always recruited first.
+                The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
+        </tr>
+        <tr>
+            <td>RecruitProbRaid</td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Default</td>
+                        <td>
+                            <input id="RecruitProbRaidDefault" style="width: 100%" type="number" min=0 max=100 placeholder="Enter value">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Strong</td>
+                        <td>
+                            <input id="RecruitProbRaidStrong" style="width: 100%" type="number" min=0 max=100 placeholder="Enter value">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Weak</td>
+                        <td>
+                            <input id="RecruitProbRaidWeak" style="width: 100%" type="number" min=0 max=100 placeholder="Enter value">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>Integer</td>
+            <td>0 to 100</td>
+            <td>Probability that the AI changes its recruitment type to raiding troops in each state
+                Note: These values must sum to 100. Sortie units are always recruited first.
+                The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
+        </tr>
+        <tr>
+            <td>RecruitProbAttacking</td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Default</td>
+                        <td>
+                            <input id="RecruitProbAttackDefault" style="width: 100%" type="number" min=0 max=100 placeholder="Enter value">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Strong</td>
+                        <td>
+                            <input id="RecruitProbAttackStrong" style="width: 100%" type="number" min=0 max=100 placeholder="Enter value">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Weak</td>
+                        <td>
+                            <input id="RecruitProbAttackWeak" style="width: 100%" type="number" min=0 max=100 placeholder="Enter value">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>Integer</td>
+            <td>0 to 100</td>
+            <td>Probability that the AI changes its recruitment type to attacking troops in each state
+                Note: The three values must sum to 100. Sortie units are always recruited first.
+                The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
+        </tr>
+    </tbody>
+</table>

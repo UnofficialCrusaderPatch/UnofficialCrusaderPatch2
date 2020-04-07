@@ -1,0 +1,204 @@
+<table class="table table-hover table-striped table-dark text-center">
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">Value</th>
+        <th scope="col">Type</th>
+        <th scope="col">Range of Acceptable Values</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DefTotal</td>
+            <td><input id="DefTotal" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>The total count of all defensive units (wall defense + patrols) if the AI is in its 'strong' state</td>
+        </tr>
+        <tr>
+            <td>DefWalls</td>
+            <td><input id="DefWalls" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>Total number of troops for wall defense</td>
+        </tr>
+        <tr>
+            <td>DefWallPatrolRallyTime</td>
+            <td><input id="DefWallPatrolRallyTime" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>The amount of time for castle patrols set up in the AIV to move from one rally point to the next. 
+                <i>(Note: Currently only spearmen, horse archers and macemen will patrol)</i>
+            </td>
+        </tr>
+        <tr>
+            <td>DefWallPatrolGroups</td>
+            <td><input id="DefWallPatrolGroups" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>The amount of concurrent existing patrol groups in the AIV setup defined as castle patrols per unit type</td>
+        </tr>
+        <tr>
+            <td>OuterPatrolGroupsCount</td>
+            <td><input id="OuterPatrolGroupsCount" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>The number of splits for outer defensive patrols.
+            </td>
+        </tr>
+        <tr>
+            <td>OuterPatrolGroupsMove</td>
+            <td><input id="OuterPatrolGroupsMove" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Bool</td>
+            <td>"True" or "False"</td>
+            <td>Controls whether the patrols stay at one place (quarry) or move around.
+            </td>
+        </tr>
+        <tr>
+            <td>OuterPatrolRallyDelay</td>
+            <td><input id="OuterPatrolRallyDelay" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>The delay after which the AI sends out patrols to defend the outer economy. 4 is approximately one month</td>
+        </tr>
+        <tr>
+            <td>SortieUnits</td>
+            <td colspan="4">
+                <table >
+                    <tr>
+                        <td class="col-1">Ranged</td>
+                        <td class="col-2">
+                            <select id="SortieUnitRanged">
+                                <option class="opt-unit">Unit</option>
+                            </select>
+                        </td>
+                        <td class="col-2">Unit</td>
+                        <td class="col-2">
+                            <a href="field-values.html#Unit" target="_blank">Unit</a>
+                        </td>
+                        <td class="col-4">Type of ranged units that go to the last attacked farm or building</td>
+                    </tr>
+                    <tr>
+                        <td class="col-1">RangedMin</td>
+                        <td class="col-2"><input id="SortieUnitRangedMin" style="width:100%" type="number" min=0 max=2147483647 placeholder="Enter"></td>
+                        <td class="col-2">Integer</td>
+                        <td class="col-2">0 to 2<sup>31</sup> - 1</td>
+                        <td class="col-4">These units are only sent out if at least this number of them have already been recruited.
+                            More than the set amount can be recruited if the AI loses resource building workers frequently.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-1">Melee</td>
+                        <td class="col-2">
+                            <select id="SortieUnitMelee">
+                                <option class="opt-unit">Unit</option>
+                            </select>
+                        </td>
+                        <td class="col-2">Unit</td>
+                        <td class="col-2">
+                            <a href="field-values.html#Unit" target="_blank">Unit</a>
+                        </td>
+                        <td class="col-4">Type of melee units recruited to attack enemy units shooting at the AI's buildings or workers.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-1">MeleeMin</td>
+                        <td class="col-2"><input id="SortieUnitMeleeMin" style="width:100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+                        <td class="col-2">Integer</td>
+                        <td class="col-2">0 to 2<sup>31</sup> - 1</td>
+                        <td class="col-4">Sortie units are only sent out if this amount of them has already been recruited.
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>DefDiggingUnitMax</td>
+            <td><input id="DefDiggingUnitMax" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>Number of units recruited to dig AIs own moat.
+            </td>
+        </tr>
+        <tr>
+            <td>DefDiggingUnit</td>
+            <td><select id="DefDiggingUnit">
+                <option class="opt-diggingunit">Unit</option>
+            </select></td>
+            <td>DiggingUnit</td>
+            <td><a href="field-values.html#DiggingUnit" target="_blank">DiggingUnit</a></td>
+            <td>Type of unit used to dig the AIs own moat.
+            </td>
+        </tr>
+        <tr>
+            <td>Defensive Units</td>
+            <td>
+                <table>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <select id="DefUnit1">
+                                <option class="opt-unit">Unit</option>
+                            </select>
+                        </td>
+                        <td>2</td>
+                        <td>
+                            <select id="DefUnit2">
+                                <option class="opt-unit">Unit</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <select id="DefUnit3">
+                                <option class="opt-unit">Unit</option>
+                            </select>
+                        </td>
+                        <td>4</td>
+                        <td>
+                            <select id="DefUnit4">
+                                <option class="opt-unit">Unit</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            <select id="DefUnit5">
+                                <option class="opt-unit">Unit</option>
+                            </select>
+                        </td>
+                        <td>6</td>
+                        <td>
+                            <select id="DefUnit6">
+                                <option class="opt-unit">Unit</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>
+                            <select id="DefUnit7">
+                                <option class="opt-unit">Unit</option>
+                            </select>
+                        </td>
+                        <td>8</td>
+                        <td>
+                            <select id="DefUnit8">
+                                <option class="opt-unit">Unit</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>Unit</td>
+            <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
+            <td>Defensive unit to recruit. 
+                If the AI does not have enough gold to recruit the Unit listed at the top then it will opt to try
+                and recruit the next (and so on) Unit if it is cheaper
+            </td>
+        </tr>
+    </tbody>
+</table>

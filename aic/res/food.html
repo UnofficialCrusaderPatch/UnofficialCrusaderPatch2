@@ -1,0 +1,79 @@
+<table class="table table-hover table-striped table-dark text-center">
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">Value</th>
+        <th scope="col">Type</th>
+        <th scope="col">Range of Acceptable Values</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>MaxFood</td>
+            <td><input id="MaxFood" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 10000</td>
+            <td>Maximum amount of each different type of food the AI will keep in stock. This also includes wheat</td>
+        </tr>
+        <tr>
+            <td>MinimumApples</td>
+            <td><input id="MinimumApples" type="number" min=-1 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 11</td>
+            <td>This amount of apples are 'saved' and only consumed if current popularity &lt; LowestPopularity. 
+                If the AI has less than this amount it will prioritize buying the missing food</td>
+        </tr>
+        <tr>
+            <td>MinimumCheese</td>
+            <td><input id="MinimumCheese" type="number" min=-1 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 10000</td>
+            <td>This amount of cheese is 'saved' and only consumed if current popularity &lt; LowestPopularity. 
+                If the AI has less than this amount it will prioritize buying the missing food</td>
+        </tr>
+        <tr>
+            <td>MinimumBread</td>
+            <td><input id="MinimumBread" type="number" min=-1 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 10000</td>
+            <td>This amount of bread is 'saved' and only consumed if current popularity &lt; LowestPopularity. 
+                If the AI has less than this amount it will prioritize buying the missing food</td>
+        </tr>
+        <tr>
+            <td>MinimumWheat</td>
+            <td><input id="MinimumWheat" type="number" min=-1 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 10000</td>
+            <td>Below this amount the AI will prioritize buying wheat until it reaches this amount</td>
+        </tr>
+        <tr>
+            <td>MinimumHop</td>
+            <td><input id="MinimumHop" type="number" min=-1 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 10000</td>
+            <td>Below this amount the AI will prioritize buying hops until it reaches this amount</td>
+        </tr>
+        <tr>
+            <td>TradeAmountFood</td>
+            <td><input id="TradeAmountFood" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 10000</td>
+            <td>The amount of food, wheat or hops bought at once. Only one of these trades is made per gametick</td>
+        </tr>
+        <tr>
+            <td>DoubleRationsFoodThreshold</td>
+            <td><input id="DoubleRationsFoodThreshold" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>The AI will give double rations if it has at least this much food</td>
+        </tr>
+        <tr>
+            <td>MaxBeer</td>
+            <td><input id="MaxBeer" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+            <td>0 to 2<sup>31</sup> - 1</td>
+            <td>Max amount of beer to store on stockpile</td>
+        </tr>
+    </tbody>
+</table>
