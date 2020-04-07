@@ -74,6 +74,22 @@ namespace UCP.Startup
                 this.titleBox.IsChecked = selectedChange.Equals(this.TitleIdent);
             }
             this.titleBox.Background = this.TitleIdent.Substring(2).StartsWith("UCP.") ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque);
+
+            if (this.TitleIdent.Substring(2).StartsWith("UCP."))
+            {
+                Button exportButton = new Button()
+                {
+                    //Width = 40,
+                    Height = 20,
+                    Content = Localization.Get("ui_aicexport"),
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Bottom,
+                    Margin = new Thickness(0, 0, 5, 5),
+                };
+                exportButton.Click += (s, e) => this.ExportFile();
+                grid.Height += 15;
+                this.grid.Children.Add(exportButton);
+            }
         }
 
         protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
@@ -97,6 +113,29 @@ namespace UCP.Startup
                 selectedChange = String.Empty;
                 activeChange = null;
             }
+        }
+
+        private void ExportFile()
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "troops", "exports", this.TitleIdent.Substring(2).Replace("UCP.", "")) + ".json";
+            string backupFileName = fileName;
+            while (File.Exists(backupFileName))
+            {
+                backupFileName = backupFileName + ".bak";
+            }
+            if (File.Exists(fileName))
+            {
+                File.Move(fileName, backupFileName);
+            }
+            Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "resources", "troops", "exports"));
+
+            using (StreamReader reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(this.TitleIdent.Substring(2).Replace("UCP.", "UCP.Startup.Resources.Troops.") + ".json"), Encoding.UTF8))
+            {
+                File.WriteAllText(fileName, reader.ReadToEnd(), Encoding.UTF8);
+            }
+
+            Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent.Substring(2).Replace("UCP.", "") + ".json");
         }
 
         public static void Refresh(object sender, RoutedEventArgs args)

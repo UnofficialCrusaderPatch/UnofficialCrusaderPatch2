@@ -164,7 +164,7 @@ namespace UCP.AIC
 
 
 
-            if (internalAIC.Contains(this.TitleIdent))
+            if (internalAIC.Contains(this.TitleIdent.Substring(4)))
             {
                 Button exportButton = new Button()
                 {
@@ -177,7 +177,7 @@ namespace UCP.AIC
                     ToolTip = Localization.Get("ui_aichint"),
                 };
                 exportButton.Click += (s, e) => this.ExportFile();
-
+                grid.Height += 15;
                 this.grid.Children.Add(exportButton);
             }
             this.uiElement = panel;
@@ -293,7 +293,7 @@ namespace UCP.AIC
         private void ExportFile()
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports", this.TitleIdent);
+            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports", this.TitleIdent.Substring(4).Replace("UCP.", "")) + ".json";
             string backupFileName = fileName;
             while (File.Exists(backupFileName))
             {
@@ -304,9 +304,9 @@ namespace UCP.AIC
                 File.Move(fileName, backupFileName);
             }
             Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports"));
-            File.WriteAllText(fileName, Format(serializer.Serialize(collection)));
+            File.WriteAllText(fileName + ".json", Format(serializer.Serialize(collection)));
 
-            Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent);
+            Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent.Substring(4).Replace("UCP.", "") + ".json");
         }
 
         private String Format(String aicJson)
