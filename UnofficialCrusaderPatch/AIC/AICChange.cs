@@ -304,7 +304,7 @@ namespace UCP.AIC
                 File.Move(fileName, backupFileName);
             }
             Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports"));
-            File.WriteAllText(fileName + ".json", Format(serializer.Serialize(collection)));
+            File.WriteAllText(fileName, Format(serializer.Serialize(collection)));
 
             Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent.Substring(4).Replace("UCP.", "") + ".json");
         }
