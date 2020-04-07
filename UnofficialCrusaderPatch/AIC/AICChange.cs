@@ -379,7 +379,7 @@ namespace UCP.AIC
             for (int i = 0; i < changes.Count; i++)
             {
                 ((TreeView)((Grid)((Button)sender).Parent).Children[0]).Items.Remove(changes.ElementAt(i).UIElement);
-                Localization.Remove(changes.ElementAt(i).TitleIdent.Substring(4) + "_descr");
+                Localization.Remove(changes.ElementAt(i) + "_descr");
             }
             changes.Clear();
             LoadConfiguration();

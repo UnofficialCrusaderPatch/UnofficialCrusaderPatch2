@@ -49,7 +49,14 @@ namespace UCP
 
         public static void Add(string identifier, string text)
         {
-            localStrs.Add(identifier, text);
+            if (localStrs.ContainsKey(identifier))
+            {
+                localStrs[identifier] = text;
+            } 
+            else
+            {
+                localStrs.Add(identifier, text);
+            }
         }
 
         public static void Remove(string identifier)
