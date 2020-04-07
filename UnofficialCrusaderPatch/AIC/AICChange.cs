@@ -311,7 +311,7 @@ namespace UCP.AIC
 
         private String Format(String aicJson)
         {
-            return aicJson.Replace(",\"", ",\n\t\"").Replace("{", "{\n\t").Replace("}", "\n}");
+            return Regex.Unescape(aicJson.Replace(",\"", ",\n\t\"").Replace("{", "{\n\t").Replace("}", "\n}").Replace("\\r\\n", "\r\n"));
         }
 
         public static void LoadConfiguration(List<string> configuration = null)
