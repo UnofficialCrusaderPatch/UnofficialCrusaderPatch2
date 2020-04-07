@@ -164,7 +164,7 @@ namespace UCP.AIC
 
 
 
-            if (internalAIC.Contains(this.TitleIdent))
+            if (internalAIC.Contains(this.TitleIdent.Substring(4)))
             {
                 Button exportButton = new Button()
                 {
@@ -177,7 +177,7 @@ namespace UCP.AIC
                     ToolTip = Localization.Get("ui_aichint"),
                 };
                 exportButton.Click += (s, e) => this.ExportFile();
-
+                grid.Height += 15;
                 this.grid.Children.Add(exportButton);
             }
             this.uiElement = panel;
@@ -293,7 +293,7 @@ namespace UCP.AIC
         private void ExportFile()
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports", this.TitleIdent);
+            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports", this.TitleIdent.Substring(4).Replace("UCP.", "")) + ".json";
             string backupFileName = fileName;
             while (File.Exists(backupFileName))
             {
@@ -306,12 +306,12 @@ namespace UCP.AIC
             Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports"));
             File.WriteAllText(fileName, Format(serializer.Serialize(collection)));
 
-            Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent);
+            Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent.Substring(4).Replace("UCP.", "") + ".json");
         }
 
         private String Format(String aicJson)
         {
-            return aicJson.Replace(",\"", ",\n\t\"").Replace("{", "{\n\t").Replace("}", "\n}");
+            return Regex.Unescape(aicJson.Replace(",\"", ",\n\t\"").Replace("{", "{\n\t").Replace("}", "\n}").Replace("\\r\\n", "\r\n"));
         }
 
         public static void LoadConfiguration(List<string> configuration = null)
@@ -379,7 +379,7 @@ namespace UCP.AIC
             for (int i = 0; i < changes.Count; i++)
             {
                 ((TreeView)((Grid)((Button)sender).Parent).Children[0]).Items.Remove(changes.ElementAt(i).UIElement);
-                Localization.Remove(changes.ElementAt(i).TitleIdent.Substring(4) + "_descr");
+                Localization.Remove(changes.ElementAt(i) + "_descr");
             }
             changes.Clear();
             LoadConfiguration();
