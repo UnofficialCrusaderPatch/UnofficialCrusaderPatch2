@@ -1,0 +1,815 @@
+﻿// ======================
+//         2.13
+// ======================
+
+aiv_EvreyHistory
+{
+	"Evrey történelmi MI várak"
+}
+
+aiv_EvreyHistory_descr
+{
+	"Minden MI Lordnak ad egy új várat, ami a Lordhoz illő, &
+valós történelmi várról, városról lett mintázva. &
+[Készítette: Evrey](https://github.com/Evrey/SHC_AIV/)"
+}
+
+
+// ======================
+//         2.12
+// ======================
+
+ui_AIC
+{
+	"AIC"
+}
+
+ui_aicExport
+{
+	"Exportálás"
+}
+
+ui_aicExport_success
+{
+	"Exportálás sikeresen befejezve."
+}
+
+ui_aicHint
+{
+	"Exportálja a .aic fájlokat a telepítőből a Crusader mappába."
+}
+
+ui_welcometext
+{
+"Ez egy nem hivatalos patch a Stronghold Crusader játékhoz.
+A Projekt nyílt forráskódú, ami megtalálható a [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch) weboldalon.
+
+Elméletben minden Crusader verzió támogatott, viszont a változtatások &
+eredetileg a 1.41 Steames verzióhoz lettek készítve. Azonban ha a játék verziód &
+nem kompatibilis, a telepítő hibaüzenetet fog megjeleníteni. A telepített patch-&
+verzió a főmenü bal alsó sarkában fog megjelenni. Minden változtatás előtt &
+Backup fájl készül, ami visszaállítható a 'Eltávolítás' gombra kattintva &
+vagy manuálisan visszahelyezhető.
+
+Ezúton is szeretném megköszönni a Stronghold közösségnek, akik &
+rendkívüli lelkesedéssel támogattak a Projekt során.
+
+Külön köszönet nekik:
+[FireFly Studios](https://fireflyworlds.com/) a Stronghold szériáért
+[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), amiért emlékeztetett a Stronghold játékra
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) a lengyel fordításért
+[Lolasik011](https://github.com/Lolasik011) az orosz fordításért
+[Liegav](https://www.youtube.com/user/Liegav) a magyar fordításért
+[Evrey](https://github.com/Evrey) az MI váraiért
+[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) az MI váraiért
+[PitchNeeded](https://github.com/PitchNeeded) az MI váraiért
+[ByBurton](https://github.com/ByBurton) az AICE programért és a segítségét az AIC paramétereknél"
+}
+
+
+
+
+// ======================
+//         1.00
+// ======================
+
+Name
+{
+	"Unofficial Crusader Patcher"
+}
+
+u_ArabXBow
+{
+	"Megnövelt páncélzat az Arab szablyás egységnek a számszeríj nyílvessző ellen"
+}
+
+u_arabxbow_descr
+{
+	" - Az Arab szablyások 3 helyett 6 számszeríj nyílvessző találat után halnak meg"
+}
+
+u_ArabWall
+{
+	"Az Arab szablyások gyorsabban rombolják le a várfalat"
+}
+
+u_ArabWall_descr
+{
+	"Az eredeti játékban az Arab szablyások rombolják le a várfalat &
+a leglassabban a közelharci egységek közül. A lerombolás sebessége ezentúl kb. &
+megkétszereződik, így épphogy jobbak lesznek a lándzsás egységeknél."
+}
+
+u_spearmen
+{
+	"Megnövelt páncélzat a lándzsás egységnek a távolsági egységek ellen"
+}
+
+u_spearmen_descr
+{
+	" - A lándzsás egységek 3 helyett 5 nyíl találat után halnak meg
+ - A lándzsás egységek épphogy túlélnek egy számszeríj nyílvessző találatot"
+}
+
+ai_buy
+{
+	"Javított piac elhelyezés az MI Lordoknak"
+}
+
+ai_buy_descr
+{
+	"Az eredeti játékban egyes új MI Lordok nem helyezik jól el a piacot.&
+Az alábbi javítások lesznek ezentúl érvényesek:
+ - Frigyes és a Tábornok ezentúl vásárolnak fegyvert és páncélt
+ - Az Apát és az Emír ezentúl vásárolnak íjat
+ - Wazir ezentúl vásárol almát, mint Nizar és Emír"
+}
+
+ui_error
+{
+	"Hiba"
+}
+
+ui_SearchPath
+{
+	" Kérjük adja meg a telepítési útvonalat:"
+}
+
+ui_search
+{
+	"Keresés"
+}
+
+ui_continue
+{
+	"Tovább"
+}
+
+ui_wrongpath
+{
+	"Stronghold Crusader nem található a megadott elérési útvonalon!"
+}
+
+ui_back
+{
+	"Vissza"
+}
+
+ui_install
+{
+	"Telepítés"
+}
+
+ui_finished
+{
+	"Kész"
+}
+
+ui_chooseLangTitle
+{
+	"Telepítő Nyelve"
+}
+
+ui_chooseLang
+{
+	"Kérjük válasszon ki egy nyelvet a telepítéshez a lent &
+megjelenített listából."
+}
+
+ui_accept
+{
+	"OK"
+}
+
+ui_cancel
+{
+	"Mégsem"
+}
+
+ui_uninstall
+{
+	"Eltávolítás"
+}
+
+ui_uninstalldone
+{
+	"Eltávolítás befejezve."
+}
+
+ai_recruitinterval
+{
+	"Megnövelt toborzási sebesség"
+}
+
+ai_recruitinterval_descr
+{
+	"Átállítja minden MI Lordnak a toborzási intervallumát a legkisebb értékre. &
+(Patkány/Richárd szint)"
+}
+
+ai_recruitsleep
+{
+	"Deaktiválja minden MI Lordnak a toborzási szünetét"
+}
+
+ai_attacklimit
+{
+	"Megnövelt támadó egység limit az MI Lordoknak"
+}
+
+ai_attacklimit_descr
+{
+	"Az eredeti játékban a további egységek limitje, akik az első támadás &
+után csatlakoznak 200-ra van korlátozva. Itt tudod megváltoztatni ezt a korlátozást."
+}
+
+o_gamespeed
+{
+	"Bővített játéksebesség limit"
+}
+
+o_gamespeed_descr
+{
+	"A játéksebességet mostantól a következőképpen lehet megváltoztatni:
+ - 10-től 90-ig 5 lépésben
+ - 90-től 200-ig 10 lépésben
+ - 200-tól 1000-ig 100 lépésben
+Az új értékek elérhetők a játékban a +- billentyűk segítségével, a csúszka &
+a játékmenüben változatlanul maradt."
+}
+
+ui_bugfix
+{
+	"Hibajavítások"
+}
+
+ui_ailords
+{
+	"MI Lordok"
+}
+
+ui_troops
+{
+	"Egységek"
+}
+
+ui_other
+{
+	"Egyéb"
+}
+
+o_responsivegates
+{
+	"A várkapuk gyorsabban reagálnak az ellenséges egységekre"
+}
+
+o_responsivegates_descr
+{
+	"A várkapuk mostantól később záródnak be ha ellenség van a közelben és &
+automatikusan gyorsabban kinyílnak, ha már nincs közelben ellenség. A távolság &
+ami szükséges az ellenségnek, hogy a várkapu automatikusan bezáródjon, 200-ról &
+140-re lett csökkentve. Az idő amikor a várkapu ismét kinyílik, mihelyst nincs &
+ellenfél a közelben, 1200-ról 100-ra lett csökkentve."
+}
+
+ai_addattack
+{
+	"Megnövelt további támadó egységek mértéke"
+}
+
+ai_addattack_descr
+{
+	"Az eredeti játékban minden egyes támadás után az egységek száma a &
+következő támadáskor átlagosan 5 egységgel lesz megnövelve. Ez az érték &
+minden MI Lordnak ugyanannyi és itt tudod megváltoztatni."
+}
+
+ai_addattack_alt_descr
+{
+	"Alternatív megoldásként, a további csatlakozó egységek számát az első &
+támadás erősségétől függetlenné lehet tenni. De mivel minden MI Lord különböző &
+számú egységet használ az első támadásnál, ezzel együtt a következő támadások &
+is skálázódnak ahelyett, hogy minden MI Lordnak ugyanaz az értéke lenne.
+Például: Skálázási faktor = 0,5
+Szultán támadásainak száma = 10, 15, 20, 25, ...
+Szaladin támadásainak száma = 50, 75, 100, 125, ..."
+}
+
+u_laddermen
+{
+	"Megnövelt páncélzat Létrás egységnek a távolsági egységek ellen"
+}
+
+u_laddermen_descr
+{
+	" - A Létrás egységek 5 helyett 12 nyíl találat után halnak meg
+ - A Létrás egységek 2 helyett 5 számszeríj nyílvessző találat vagy parittya találat után halnak meg
+ - A Létrás egység 4 helyett 20 aranyba kerül"
+}
+
+o_playercolor
+{
+	"Játékos 1 színcsere"
+}
+
+o_playercolor_descr
+{
+	" "
+}
+
+o_trooplimit
+{
+	"Megnövelt egység limit"
+}
+
+o_trooplimit_descr
+{
+	"Az eredeti játékban az egységek száma egy játékosnak 
+2400/Játékosszám. Itt tudod megváltoztatni ezt a számot."
+}
+
+ai_demolish
+{
+	"Deaktiválja azt, hogy az MI Lord leromboljon mindent hogy pénzhez jusson"
+}
+
+ai_demolish_walls
+{
+	"Várépületek"
+}
+
+ai_demolish_eco
+{
+	"Ipari épületek"
+}
+
+ai_demolish_walls_descr
+{
+	" "
+}
+
+ai_demolish_eco_descr
+{
+	"Ha az MI Lord sarokba szorítva érzi magát és gyorsan pénzt akar szerezni &
+az egységekhez, előszeretettel rombolja le a teljes iparát vagy várépületeit &
+Néha ez az esemény láthatólag minden indok nélkül megtörténik és emiatt itt
+ki tudod kapcsolni."
+}
+
+ai_tethers
+{
+	"Ökör karám spam deaktiválása"
+}
+
+ai_tethers_descr
+{
+	"Az MI általában minden új Kőfejtő építésekor épít egy új Ökör karámot is &
+attól függetlenül, hogy mennyi van neki. Ezt itt tudod deaktiválni, mert különben &
+spammelni fogja az Ökör karámokat, ha az MI Kőfejtőjét mindig lerombolják."
+}
+
+
+
+
+
+
+
+
+// =======================
+//          2.06
+// =======================
+
+
+
+ai_nosleep
+{
+	"Ha nincs elég erőforrás, szünetel a munka deaktiválása"
+}
+
+ai_nosleep_descr
+{
+	"Általában az MI szünetelteti a munkát az ipari épületeinél, &
+ha a szükséges erőforrás már nem áll rendelkezésére a raktárban. &
+Eközben a termék kárba veszik amit pl. éppen a fegyverraktárba visznek. &
+Ezt a funkciót itt teljesen ki lehet kapcsolni."
+}
+
+
+ai_overclock
+{
+	"MI Parancsidőtartam rövidítése [Teszt]"
+}
+
+ai_overclock_descr
+{
+	"Itt lehet megvátoztatni az MI parancs időtartamát mint &
+pl. mikor támadási parancsot ad az egységeknek. Ezáltal az &
+egységek nem állnak egy helyen olyan sokáig, miután a célpontot &
+megsemmisítették/legyőzték.
+
+Az azonban még nem ismert, hogy az időtartam megváltoztatása &
+befolyásol e valamit, ezért előfordulhat hiba."
+}
+
+
+
+
+
+
+
+// 5.12.2018
+
+o_onlyai
+{
+	"Nézői mód aktiválása [hiba előfordulhat]"
+}
+
+o_onlyai_descr
+{
+	"Eltávolítja az 1.játékost a nézői módhoz és így 8 MI harcolhat egymással &
+az Egyedi játék módban. Az elmentett játék most már rendesen működik ebben a &
+módban is. Néha előfordulhat olyan hiba, hogy az egész térképen véletlenszerűen &
+feltűnhetnek tárgyak. De ezek csak vizuálisan jelennek meg és egyszerűen megoldható &
+a Játék mentése -> Küldetés befejezése -> Játék betöltésével."
+}
+
+o_moatvisibility
+{
+	"Mindig mutassa a tervezett várárkot"
+}
+
+o_moatvisibility_descr
+{
+	"Ezzel a beállítással a lehelyezett, de a még nem felásott &
+várárok mindig látható, még akkor is ha nincs kiválasztva a várárokásás."
+}
+
+
+o_engineertent
+{
+	"Ostromgépek kijelölve maradnak"
+}
+
+o_engineertent_descr
+{
+	"Ezzel a beállítással az utoljára építésre kiválasztott ostromgép marad kijelölve &
+ha több mérnököt kiválasztottál, így több Ostromsátrat is lehet egymás után építeni."
+}
+
+
+
+
+
+
+
+// ================================
+//              2.07
+// ================================
+
+
+ai_demolish_trapped
+{
+	"Ha bezárva"
+}
+
+ai_demolish_trapped_descr
+{
+	" Ha az MI be van zárva és nem jutnak ki az egységei, lerombol mindent. Ezt itt tudod kikapcsolni. &
+(pl. a játékos lerak egy épületet a várkapuja elé és nincs másik bejárata a várnak)"
+}
+
+
+o_freetrader
+{
+	"Ingyen piac"
+}
+
+o_freetrader_descr
+{
+	"Mivel néha az MI magának add sakk-mattot, ha nincs elég fája és a piacát &
+lerombolták, itt tudod beállítani hogy a piac építése ingyenes legyen."
+}
+
+ai_towerengines
+{
+	"Ne legyen korlátozás a tornyokon lévő szerkezeteknek"
+}
+
+ai_towerengines_descr
+{
+	"Általában az MI maximálisan 3 Hajítógépet és Kővetőgépet épít minden tornyára. &
+Ezen beállítással ez a korlátozás megszűnik."
+}
+
+ai_buywood
+{
+	"Elegendő fa vásárlása"
+}
+
+ai_buywood_descr
+{
+	"Ahhoz hogy az íjkészítők stb. ne vigyék el mindig a megvásárolt fát, &
+az MI ezzel a beállítással mindig 2 fával többet vesz, mint ami szükséges az épületek építéséhez."
+}
+
+o_keys
+{
+	"WASD billentyűk és Gyorsmentés"
+}
+
+o_keys_descr
+{
+	"Ezzel a beállítással aktiválva lesznek a WASD billentyűk a kamerához.
+Ezenkívül a CTRL-S és a CTRL-L billentyűkkel lehet gyorsmentést létrehozni és betölteni."
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===========
+//    2.07a
+// ===========
+
+
+
+ai_attacktarget
+{
+	"MI támadási-célpont beállítása"
+}
+
+ai_attacktarget_nearest
+{
+	"A legközelebbi ellenség"
+}
+
+ai_attacktarget_nearest_descr
+{
+	" "
+}
+
+ai_attacktarget_richest
+{
+	"A leggazdagabb ellenség"
+}
+
+ai_attacktarget_richest_descr
+{
+	" "
+}
+
+ai_attacktarget_weakest
+{
+	"A leggyengébb ellenség"
+}
+
+ai_attacktarget_weakest_descr
+{
+	"Ezzel a beállítással az MI Lordok a saját módjukon keresik meg a célpontot &
+a következő támadásukhoz. Ez megakadályozza azt, hogy az egységek támadás &
+közben célpontot változtassanak vagy az MI ne a másik ellenséges várhoz küldje &
+gyülekezni a seregét."
+}
+
+
+
+
+
+
+
+
+
+
+
+// ================
+//      2.08
+// ================
+
+
+ai_assaultswitch
+{
+	"Ostrom közben ne változtasson az MI támadási-célpontot"
+}
+
+ai_assaultswitch_descr
+{
+	"Azok az MI Lordok akik a legerősebbet vagy a leggyengébbet támadják meg, &
+néha hajlamosak voltak a támadás közepén célpontot változtatni, &
+és az egységeiket elküldeni a másik várhoz. Ezzel a beállítással, &
+ez már nem fordul elő, mihelyst a támadást megkezdte, viszont a vár &
+előtti egységek gyülekezésekor még előfordulhat, hogy célpontot vált."
+}
+
+
+
+ai_rebuild
+{
+	"Javított MI javítások"
+}
+
+ai_rebuild_descr
+{
+	"Ezzel a beállítással az MI Lordok megjavítják a toronyromokat is, enyhén &
+megrongált várfalakat, továbbá mérnökök-, alagútásók céhet és olajfőző kunyhót &
+ha a gyülekezőhelyük megmaradt. Továbbá az MI most már képes építeni a Kőfejtők &
+gyűjtési helye felett is."
+}
+
+
+
+
+
+
+// ====================
+//        2.09
+// ====================
+
+o_healer
+{
+	"A gyógyító ellátja a sérülteket"
+}
+
+o_healer_descr
+{
+	"A gyógyszertár gyógyítója mostantól megkeresi a sérült harcosokat, civileket, &
+állatokat és meggyógyítja őket. A hozzá legközelebb lévő célpontokat gyógyítja elöszőr. &
+Minden gyógyító animációval kb. egy lándzsás  1/3 életerejét állítja helyre. A kertekben &
+való mászkálás és a pestisfelhő felkeresése ez által nem lesz lecserélve! Csak a várban &
+való mászkálása lesz kihagyva, ha nincs a hatótávolságán belül beteg."
+}
+
+
+
+
+
+
+
+// ====================
+//        2.10
+// ====================
+
+
+
+o_xtreme
+{
+	"Varázserő-sáv eltávolítása az Extreme kiegészítőből."
+}
+
+o_xtreme_descr
+{
+	"Eltávolítja a Varázserő-sávot a Crusader Extreme kiegészítőben."
+}
+
+
+
+
+
+
+
+// ======================
+//         2.11
+// ======================
+
+
+ui_AIV
+{
+	"AIV"
+}
+
+ai_defense
+{
+	"Erősítés a várvédésben javítása"
+}
+
+ai_defense_descr
+{
+	"Kijavítja azt a hibát, ami megakadályozza az MI-t abban, hogy a &
+hiányzó egységekkel megerősítse a várfalat és a tornyot, ameddig &
+rendelkezik még védekező-járőröző egységekkel. Egyébként általánosságban &
+növelve lett az erősítés toborzása, mert egyes MI-nél ez nullára volt állítva."
+}
+
+ai_access
+{
+	"Az elérhetetlen épületek ne kerüljenek lerombolásra"
+}
+
+ai_access_descr
+{
+	"Megakadályozza azt, hogy az MI ne rombolja le azt az épületet amihez &
+nem lehet hozzáférni. Ezáltal kijavítható az a hiba, hogy az MI ne építse meg &
+és rombolja le újra és újra mindig azt az épületet amihez nem tudnak eljutni."
+}
+
+ai_moredef
+{
+	"Még több védekező egység Richárd, Patkány és Fülöp hercegnek"
+}
+
+ai_moredef_descr
+{
+	"Az eredeti játékban Richárd, Patkány de leginkább Fülöpnek nagyon kevés &
+védekező egysége volt a várfalakon, tornyokon. Ezzel a beállítással a távolsági &
+harcosok száma a következőképpen változik meg:
+
+Patkány: 20 -> 40
+Richárd: 20 -> 40
+Fülöp: 4 -> 32
+
+Viszont figyelembe kell venni, hogy ezáltal a legelső támadásuk egy kicsivel később következik be."
+}
+
+aiv_tatha
+{
+	"Tatha feljavított MI várak"
+}
+
+aiv_tatha_descr
+{
+	"Az eredeti játékhoz képest jelentősen erősebb várak. A különböző &
+MI vártípusai ugyanannyira erősek. &
+[Bemutató-Lejátszási lista](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
+}
+
+
+
+
+// some edits:
+
+ai_attackwave
+{
+	"Támadási hullámok feljavítása"
+}
+
+ai_attackwave_descr
+{
+	"Az eredeti játékban az MI mindig csak annyi egységet küld el egyszerre &
+amennyi elérhető várfal van. Azok a várak amik épületekkel vannak &
+körülépítve, azokat az egységek csak elvétve támadják meg. Ezzel a &
+beállítással az egységek az épületeket és az ostromsátrakat is &
+megtámadják illetve azt a várfalat is amit már egy másik támadó &
+egység rombol. Továbbá az MI mostantól több egységet küld az ellenség &
+Erődítményére, amint észrevesz egy oda vezető utat."
+}
+
+aiv_pitchsiege
+{
+	"PitchNeeded Evrey Edit (Kővetőgépek és Hajítógépek)"
+}
+
+aiv_pitchsiege_descr
+{
+	"Kibővíti a 'Evrey feljavított eredeti várak' módosítást azáltal &
+hogy a Wazir, Disznó, Nizar és Emír tornyaira Kővetőgépet és Hajítógépet rak. &
+Átszerkesztette: [PitchNeeded](https://github.com/PitchNeeded)."
+}
+
+aiv_pitchwells
+{
+	"PitchNeeded Evrey Edit (Kutak & Gyógyszertárak)"
+}
+
+aiv_pitchwells_descr
+{
+	"Kibővített 'Evrey feljavított eredeti várak' módosítás melyben egyes &
+MI várak Kutakat és Gyógyszertárakat kapnak. Átszerkesztette: [PitchNeeded](https://github.com/PitchNeeded)."
+}
+
+aiv_evreyfixed
+{
+	"Evrey feljavított eredeti várak"
+}
+
+aiv_evreyfixed_descr
+{
+	"Kijavítja az eredeti MI várak hibáit, mint pl. hiányzó házak és céhek &
+vagy blokkolt kijáratok. [Készítette: Evrey](https://github.com/Evrey/SHC_AIV/)"
+}
+
+aiv_evreyimproved
+{
+	"Evrey feljavított MI várak"
+}
+
+aiv_evreyimproved_descr
+{
+	"Új feljavított várakat ad a MI Lordoknak, az eredeti várstílusok alapján. &
+[Készítette: Evrey](https://github.com/Evrey/SHC_AIV/)"
+}
+
+
+
+
+
+
+
+
+
