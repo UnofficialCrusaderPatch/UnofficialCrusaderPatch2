@@ -653,7 +653,6 @@
     <EmbeddedResource Include="AIC\Resources\errors.json" />
     <EmbeddedResource Include="AIC\Resources\vanilla.json" />
     <EmbeddedResource Include="AIC\Resources\Tatha 0.5.1.json" />
-    <EmbeddedResource Include="AIC\Resources\Xander10alpha-v1.0.json" />
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot1.aiv">
       <Link>AIV\EvreyFixed\Abbot1.aiv</Link>
     </EmbeddedResource>
@@ -1473,6 +1472,7 @@
     <EmbeddedResource Include="AIC\Resources\Kimberly-Balance-v1.2.json" />
     <EmbeddedResource Include="AIC\Resources\Krarilotus-aggressiveAI-v1.2.json" />
     <EmbeddedResource Include="AIC\Resources\UCP-AI-Patch.json" />
+    <EmbeddedResource Include="AIC\Resources\Xander10alpha-Release-v1.3.json" />
     <None Include="App.config" />
     <EmbeddedResource Include="CodeBlocks\s_resource.block" />
     <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed_reset.block" />
