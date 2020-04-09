@@ -1,6 +1,209 @@
-﻿// ======================
+// ======================
+//         2.14
+// ======================
+
+ui_welcometext
+{
+"Ez egy nem hivatalos patch a Stronghold Crusader játékhoz.
+A Projekt nyílt forráskódú, ami megtalálható a [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch) weboldalon.
+
+Elméletben minden Crusader verzió támogatott, viszont a változtatások eredetileg a 1.41 Steames verzióhoz lettek készítve.
+Azonban ha a játék verziód nem kompatibilis, a telepítő hibaüzenetet fog megjeleníteni. A telepített patch-verzió a főmenü bal alsó sarkában fog megjelenni.
+Minden változtatás előtt Backup fájl készül, ami visszaállítható a 'Eltávolítás' gombra kattintva vagy manuálisan visszahelyezhető.
+
+Az Unofficial Crusader Patch csapat
+
+UCP program alkotója
+[Sh0wdown](https://github.com/Sh0wdown)
+
+Projektvezetők
+[Kimberly](https://github.com/ByBurton/)  
+[Krarilotus (Youtube)](https://www.youtube.com/channel/UCMXHqa2vmclSoSkuCu_q5rw)
+
+Fejlesztők
+[LordHansCapon](https://github.com/LordHansCapon)  
+[np123](https://github.com/patel-nikhil)  
+[J-T-de](https://github.com/J-T-de)  
+[Chaf1812](https://github.com/Chaf1812)  
+
+Fordítók
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Lengyel)  
+[Lolasik011](https://github.com/Lolasik011) (Orosz)  
+[Skysoul (e-mail)](mailto:theskysoul@vip.qq.com) (Kínai)  
+
+Tartalom készítők
+[Evrey](https://github.com/Evrey) (aiv)  
+[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) (aiv,aic)  
+[PitchNeeded](https://github.com/PitchNeeded) (aiv)  
+[Xander10alpha (YouTube)](https://www.youtube.com/channel/UCYlyixfoKPcz-Ixi6Nc383Q) (aic)
+
+Külön köszönet nekik:
+[Firefly Studios](https://fireflyworlds.com/)  
+a Stronghold széria létrehozásáért
+
+Továbbá külön köszönet:
+
+[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP)  
+[PodeCaradox](https://github.com/PodeCaradox)  
+[GRhin](https://www.twitch.tv/grhin)"
+}
+
+ui_StartTroops
+{
+	"KezdőEgységek"
+}
+
+ui_Resource
+{
+	"KezdőKészlet"
+}
+
+﻿ui_aicconflict
+{
+	"A konfliktusok figyelmen kívül lesznek hagyva"
+}
+
+o_shfy
+{
+	"Strongholdify"
+}
+
+o_shfy_beer
+{
+	"Sör általi népszerűségi bónusz"
+}
+
+o_shfy_beer_descr
+{
+	" "
+}
+
+o_shfy_religion
+{
+	"Templom és Katedrális általi népszerűségi bónusz"
+}
+
+o_shfy_religion_descr
+{
+	" "
+}
+
+o_shfy_peasantspawnrate
+{
+	"Parasztok érkezésének sebessége"
+}
+
+o_shfy_peasantspawnrate_descr
+{
+	" "
+}
+
+o_shfy_resourcequantity
+{
+	"Leszállított erőforrások mennyisége"
+}
+
+o_shfy_resourcequantity_descr
+{
+	"A felsorolt szempontokat a Stronghold 1-hez igazítja. Vigyázat: Minden változtatás hatással van az MI Lordokra, a legrosszabb esetben haszontalanná teszi őket!"
+}
+
+o_armory_marketplace_weapon_order_fix
+{
+	"Egységesített fegyverelhelyezés"
+}
+
+o_armory_marketplace_weapon_order_fix_descr
+{
+	"Egységesíti a fegyver ikonok elhelyezkedését a fegyverraktárban és a piacban. A bőrpáncél a buzogány és számszeríj között lesz, míg a vaspáncél a dárda és kard között, hogy könnyebben megtalálható legyen a piacban való kereséskor."
+}
+
+ai_fix_laddermen_with_enclosed_keep
+{
+    "Javított létrahasználat"
+}
+
+ai_fix_laddermen_with_enclosed_keep_descr
+{
+    "Ezzel a hibajavítással azok az MI-k, akiknek a Vártornyuk körül van zárva, ostromegységeik továbbra is tudják használni a Létrahordozók létráit (az eredeti játékban csak a Kígyót érinti)."
+}
+
+o_override_identity_menu
+{
+    "Új beállítások hozzáadása a 'Identitás beállítások' menühöz"
+}
+
+o_override_identity_menu_descr
+{
+    "Távolsági és közelharci egység kiválasztási lehetőségét adja hozzá a 'Identitás beállítások' menüponthoz. CSAK NORMÁL JÁTÉK MÓDHOZ!"
+}
+
+o_default_multiplayer_speed
+{
+    "Többjátékos mód alapsebességének beállítása"
+}
+
+o_default_multiplayer_speed_descr
+{
+    " "
+}
+
+u_fireballistafix
+{
+    "A Tűzhajítógépek lőnek a szerzetesekre és az alagútásókra"
+}
+
+u_fireballistafix_descr
+{
+    "A Tűzhajítógépek most már ellenségként észlelik a szerzeteseket és az alagútásókat, mostantól lőnek rájuk."
+}
+
+ui_browsepath
+{
+	"Kérjük adja meg az ön Stronghold Crusader telepítési könyvtárát."
+}
+
+ui_aicoldversion
+{
+	"Régi verzió észlelve. Kattintson a konvertáláshoz"
+}
+
+ui_aicofferconvert
+{
+	"AIC fájlok konvertálása az új verzióhoz?"
+}
+
+ui_aicconvertprompt
+{
+	"AIC konvertálás"
+}
+
+ui_aicselect
+{
+	"Kérjük először szüntesse meg a többi AIC fájl(ok) kiválasztását. Az alábbi aic karakterek vannak kijelölve: "
+}
+
+
+// ======================
 //         2.13
 // ======================
+
+o_firecooldown
+{
+	"Eloltott épületek tűzálló időtartamának megnövelése"
+}
+o_firecooldown_descr
+{
+	"Itt meghosszabbítható az az időtartam, amely alatt az eloltott épületek nem tudnak újra kigyulladni."
+}
+u_ballistamonk
+{
+	"A Tűzhajítógépek lőnek a szerzetesekre"
+}
+u_ballistamonk_descr
+{
+	"A Tűzhajítógépek automatikusan lőnek a szerzetesekre is."
+}
 
 aiv_EvreyHistory
 {
@@ -38,36 +241,6 @@ ui_aicHint
 {
 	"Exportálja a .aic fájlokat a telepítőből a Crusader mappába."
 }
-
-ui_welcometext
-{
-"Ez egy nem hivatalos patch a Stronghold Crusader játékhoz.
-A Projekt nyílt forráskódú, ami megtalálható a [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch) weboldalon.
-
-Elméletben minden Crusader verzió támogatott, viszont a változtatások &
-eredetileg a 1.41 Steames verzióhoz lettek készítve. Azonban ha a játék verziód &
-nem kompatibilis, a telepítő hibaüzenetet fog megjeleníteni. A telepített patch-&
-verzió a főmenü bal alsó sarkában fog megjelenni. Minden változtatás előtt &
-Backup fájl készül, ami visszaállítható a 'Eltávolítás' gombra kattintva &
-vagy manuálisan visszahelyezhető.
-
-Ezúton is szeretném megköszönni a Stronghold közösségnek, akik &
-rendkívüli lelkesedéssel támogattak a Projekt során.
-
-Külön köszönet nekik:
-[FireFly Studios](https://fireflyworlds.com/) a Stronghold szériáért
-[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), amiért emlékeztetett a Stronghold játékra
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) a lengyel fordításért
-[Lolasik011](https://github.com/Lolasik011) az orosz fordításért
-[Liegav](https://www.youtube.com/user/Liegav) a magyar fordításért
-[Evrey](https://github.com/Evrey) az MI váraiért
-[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) az MI váraiért
-[PitchNeeded](https://github.com/PitchNeeded) az MI váraiért
-[ByBurton](https://github.com/ByBurton) az AICE programért és a segítségét az AIC paramétereknél"
-}
-
-
-
 
 // ======================
 //         1.00
@@ -804,12 +977,3 @@ aiv_evreyimproved_descr
 	"Új feljavított várakat ad a MI Lordoknak, az eredeti várstílusok alapján. &
 [Készítette: Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
-
-
-
-
-
-
-
-
-
