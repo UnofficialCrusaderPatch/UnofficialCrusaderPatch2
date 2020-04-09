@@ -1,4 +1,8 @@
-﻿ui_welcometext
+﻿// ======================
+//         2.14
+// ======================
+
+ui_welcometext
 {
 "Dies ist ein inoffizieller Patch für Stronghold Crusader.
 Das Projekt ist Open-Source auf [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch) zu finden.

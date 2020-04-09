@@ -1,4 +1,8 @@
-﻿ui_welcometext
+﻿// ======================
+//         2.14
+// ======================
+
+ui_welcometext
 {
 "Jest to nieoficjalna łatka do Twierdzy Krzyżowiec.
 Projekt jest dostępny jako otwarte oprogramowanie przez [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
