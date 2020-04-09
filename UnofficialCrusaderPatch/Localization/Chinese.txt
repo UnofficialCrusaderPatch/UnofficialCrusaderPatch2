@@ -1,11 +1,63 @@
-﻿ui_StartTroops
+﻿ui_welcometext
 {
-	"StartTroops"
+"这是要塞十字军东征的非官方补丁编辑器。
+该项目在github上开源:
+[GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
+
+通常来说，这个编辑器支持所有游戏版本。但是该编辑器是基于steam上1.41版本制作的，使用更低版本可能会出错。
+安装补丁时若出现问题，会弹出错误信息。
+安装补丁时的UCP版本会显示在游戏主菜单界面的左下角，游戏版本号的右边。
+在安装补丁之前，编辑器会自动备份原始文件。你可以通过'复原'按钮来取消更改，也可以手动更改备份文件的后缀名来复原。
+
+UCP制作团队
+
+作者
+[Sh0wdown](https://github.com/Sh0wdown)  
+
+项目负责
+[Kimberly](https://github.com/ByBurton/)  
+[Krarilotus (Youtube)](https://www.youtube.com/channel/UCMXHqa2vmclSoSkuCu_q5rw)
+
+协力制作
+[LordHansCapon](https://github.com/LordHansCapon)  
+[np123](https://github.com/patel-nikhil)  
+[J-T-de](https://github.com/J-T-de)  
+[Chaf1812](https://github.com/Chaf1812)  
+
+翻译提供者
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (波兰语)  
+[Lolasik011](https://github.com/Lolasik011) (俄语)  
+[Skysoul (e-mail)](mailto:theskysoul@vip.qq.com) (中文)  
+
+内容创建者
+[Evrey](https://github.com/Evrey) (aiv)  
+[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) (aiv,aic)  
+[PitchNeeded](https://github.com/PitchNeeded) (aiv)  
+[Xander10alpha](https://github.com/Xander10alpha) (aic)  
+
+特别鸣谢  
+[Firefly Studios](https://fireflyworlds.com/)  
+for the creation of the Stronghold series
+
+其他
+[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP)  
+[PodeCaradox](https://github.com/PodeCaradox)  
+[GRhin](https://www.twitch.tv/grhin)"
+}
+
+ui_StartTroops
+{
+	"起始部队"
 }
 
 ui_Resource
 {
-	"StartGoods"
+	"起始资金"
+}
+
+﻿ui_aicconflict
+{
+	"AIC存在ai冲突，第二个AIC的冲突ai会被忽略"
 }
 
 o_shfy
@@ -81,7 +133,6 @@ o_override_identity_menu
 o_override_identity_menu_descr
 {
     "增加了玩家初始兵种的选择的功能，只在普通模式下生效。"
-
 }
 
 o_default_multiplayer_speed
@@ -102,6 +153,32 @@ u_fireballistafix
 u_fireballistafix_descr
 {
     "巨火弩将会自动攻击敌人的僧侣和隧道工。"
+}
+
+
+ui_browsepath
+{
+	"请选择你的要塞十字军东征安装路径"
+}
+
+ui_aicoldversion
+{
+	"检测到旧版本AIC文件，点击转化为新版本。"
+}
+
+ui_aicofferconvert
+{
+	"确定将AIC文件转化为新版本吗？"
+}
+
+ui_aicconvertprompt
+{
+	"AIC转化完成"
+}
+
+ui_aicselect
+{
+	"请先选择AIC文件，以下aic文件可供选择: "
 }
 
 // ======================
@@ -164,30 +241,6 @@ ui_aicHint
 {
 	"将.aic文件从安装程序导出到crusader文件夹中。"
 }
-
-
-ui_welcometext
-{
-"这是一个非官方的要塞十字军东征补丁软件。
-这个项目在github上开源。(https://github.com/Sh0wdown/UnofficialCrusaderPatch)
-可能支持任何Crusader版本，但由于更改了从1.41 Steam版本衍生而来&
-的一些功能，使用以前版本可能会出现不兼容的情况。 添加补丁时，如果出&
-现错误，将会显示错误信息。安装补丁时的本程序版本显示在游戏主菜单的&
-左下角。在进行任何更改之前，将会备份原文件。 所有改动可以通过“复原”按&
-钮恢复或手动将备份文件的.backup后缀删除来恢复。
-
-
-特别鸣谢:
-[FireFly Studios](https://fireflyworlds.com/) 感谢他们创造了要塞系列
-[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP)因为他让我想起了要塞
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05)提供波兰语翻译
-[Lolasik011](https://github.com/Lolasik011)提供俄语翻译
-[Evrey](https://github.com/Evrey) 提供ai城堡
-[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) 提供ai城堡
-[PitchNeeded](https://github.com/PitchNeeded) 提供ai城堡
-[ByBurton](https://github.com/ByBurton) 提供aic以及对于aic的探索"
-}
-
 
 
 // ======================
@@ -357,7 +410,7 @@ o_gamespeed_descr
 
 ui_bugfix
 {
-	"bu修复"
+	"bug修复"
 }
 
 ui_ailords
@@ -610,7 +663,7 @@ ai_buywood_descr
 
 o_keys
 {
-	"WASD键移动以及Ctrl+SL键保存读取"
+	"WASD键移动以及Ctrl+S/L键保存读取"
 }
 
 o_keys_descr

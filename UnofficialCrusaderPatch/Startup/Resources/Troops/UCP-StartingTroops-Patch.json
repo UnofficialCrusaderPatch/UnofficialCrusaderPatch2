@@ -6,10 +6,10 @@
 - Emir startet mit Bogenschützen statt berittenen Bogenschützen.
 - Der Abt startet mit deutlich weniger Mönchen und einigen Bogenschützen im Kreuzritterspiel.",
     "English": "The UCP start troops configuration fixes unused defense troops, overflow of defense limits and missing defense types in crusader game mode by replacing some of the vanilla troops as follows:
-- Caliph now also starts with fire throwers and arabian swordsmen in crusader gamemode
-- Sultan now also starts with fire throwers in crusader gamemode
-- Emir starts with archers instead of horsearchers
-- Abbot now starts with less monks and some archers in crusader gamemode",
+- Caliph now also starts with fire throwers and Arabian swordsmen in crusader game mode
+- Sultan now also starts with fire throwers in crusader game mode
+- Emir starts with archers instead of horse archers
+- Abbot now starts with less monks and some archers in crusader game mode",
     "Polish": "Opcja wpływająca na początkowe jednostki naprawia nieużywane jednostki obronne, nadmiar limitów defensywnych i brakujące rodzaje obrony w trybie Krucjaty zamieniając poszczególne jednostki:
 - Kalif zaczyna dodatkowo z kilkoma miotaczami bomb ogniowych i zbrojnymi arabskimi w trybie Krucjaty 
 - Sułtan zaczyna dodatkowo z kilkoma miotaczami bomb ogniowych w trybie Krucjaty
