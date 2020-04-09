@@ -21,48 +21,33 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../getting-started.html">Getting Started</a>
+                        <a class="nav-link" href="getting-started.html">Getting Started</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Features
-                      </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../features.html">Overview</a>
-                            <a class="dropdown-item" href="../features.html#bugfixes">Bugfixes</a>
-                            <a class="dropdown-item" href="../features.html#ailords">AI Lord Behaviour</a>
-                            <a class="dropdown-item" href="../features.html#units">Unit Modifications</a>
-                            <a class="dropdown-item" href="../features.html#misc">Misc. Changes</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="features.html">Features</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         AI Character Introduction
                       </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../aic/overview.html">Overview</a>
+                            <a class="dropdown-item" href="aic/overview.html">Overview</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="../aic/detailed.html">AI Personality Values</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          AI Castle Introduction
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Overview</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="detailed.html">AIV Editor</a>
+                            <a class="dropdown-item" href="aic/detailed.html">AI Personality Values</a>
+                            <a class="dropdown-item" href="aic/field-values.html">AIC Field Values</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../contributing.html">Contributing</a>
+                        <a class="nav-link" href="#">AI Castle Introduction <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../faq.html">FAQ</a>
+                        <a class="nav-link" href="contributing.html">Contributing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq.html">FAQ</a>
                     </li>
                 </ul>
             </div>
@@ -96,6 +81,29 @@
                     The castle in a format known as aiv files, and these are stored in the <i>aiv</i> subfolder of your installation.
                     They are named <i>&lt;aicharacter&gt;X.aiv</i> where <i>aicharacter</i> is the name of the character, and X is a number from 1 to 8 (ie snake1.aiv). 
                     When a match starts, the AI decides randomly (and also based on map size and terrain) which castle to build.
+                </div>
+            </div>
+
+            <div class="card contributing-step">
+                <h5>Customizing the AI's castles</h5>
+                <hr class="contributing-step-divider">
+                <div class="card-body contributing-step-body">
+                    By using the AIV Editor Tool it is possible to create your own customized castles for your favourite AI characters.
+                    A few considerations to keep in mind:
+                    <ul>
+                        <li>Try and keep the number of build steps low to make it harder for players to rush the AI</li>
+                        <li>Place more vital and more expensive buildings early in case the AI uses up the necessary resources and 
+                            is therefore handicapped. An example of this is the cathedral - the AI should build this early when it has lots of gold
+                            else it may begin recruiting troops, never reach the required gold, and never finish building its castle.
+                        </li>
+                        <li>Having multiple entrances to a castle can increase efficiency of resource production
+                            <ul>
+                                <li>Workers have to travel less to reach stockpile</li>
+                                <li>Resource production can continue while under siege if it has an entrance on the opposite side</li>
+                            </ul>
+                        </li>
+                        <li>Be sure to include the necessary buildings for the AI's production chains (ie. breweries and inns for ale production)</li>
+                    </ul>
                 </div>
             </div>
 
