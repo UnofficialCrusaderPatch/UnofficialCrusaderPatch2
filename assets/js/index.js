@@ -1,18 +1,18 @@
-$('.collapse').on('show.bs.collapse', function(e) {
-  var $card = $(this).closest('.card');
-  var $open = $($(this).data('parent')).find('.collapse.show');
+// $('.collapse').on('show.bs.collapse', function(e) {
+//   var $card = $(this).closest('.card');
+//   var $open = $($(this).data('parent')).find('.collapse.show');
 
-  if (e.target.id == "navbarSupportedContent") return;
+//   if (e.target.id == "navbarSupportedContent") return;
 
-  var additionalOffset = 0;
-  if($card.prevAll().filter($open.closest('.card')).length !== 0)
-  {
-        additionalOffset =  $open.height();
-  }
-  $('html,body').animate({
-    scrollTop: $card.offset().top - additionalOffset
-  }, 500);
-});
+//   var additionalOffset = 0;
+//   if($card.prevAll().filter($open.closest('.card')).length !== 0)
+//   {
+//         additionalOffset =  $open.height();
+//   }
+//   $('html,body').animate({
+//     scrollTop: $card.offset().top - additionalOffset
+//   }, 500);
+// });
 
 $(".list-group-item").on("click", function() {
   $(".list-group-item").removeClass("active");

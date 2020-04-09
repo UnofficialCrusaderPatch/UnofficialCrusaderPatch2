@@ -36,6 +36,10 @@ hr.header-divider {
     margin-bottom: 30px;
 }
 
+h5.mb-0 a#features-link:hover {
+    color: blue;
+}
+
 .card.instruction, .card.feature, .card.aic-gen {
     cursor: pointer;
 }
@@ -105,9 +109,17 @@ hr.header-divider {
 }
 
 .contributing-step, 
-.faq-question,
-.feature-title {
+.faq-question {
     padding: 15px;
+}
+
+.card.feature-title {
+    padding: 15px;
+    height: 100%;
+}
+
+#feature-content .row {
+    margin-bottom: 15px;
 }
 
 .contributing-step-divider, 
