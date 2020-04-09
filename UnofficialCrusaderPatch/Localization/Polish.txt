@@ -1,71 +1,48 @@
 ﻿ui_welcometext
 {
-"This is an unofficial patch for Stronghold Crusader.
-The project ist available as open-source on [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
+"Jest to nieoficjalna łatka do Twierdzy Krzyżowiec.
+Projekt jest dostępny jako otwarte oprogramowanie przez [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
 
-Any Crusader version is potentially supported, but since the changes were derived from the 1.41 Steam-Version, incompatibilities may appear.
-The setup will then show error messages. The installed patch version is shown in the bottom left corner of the main menu of the game. 
-Before any changes, backup files will be created. These can be restored via the 'Uninstall'-button or manually.
+Każda wersja Krzyżowca jest potencjalnie obsługiwana, ale wprowadzone zmiany pochodzą z wersji 1.41 Steam, dlatego mogą pojawić się problemy.
+Instalator wyświetli wtedy komunikat o błędzie. Wersja tej łatki jest pokazana w lewym dolnym rogu głównego menu gry. 
+Przed zmianami zostaną utworzone pliki. kopii zapasowej. Można je przywrócić za pomocą przycisku 'Odinstaluj' lub ręcznie.
 
-The team behind the UCP
+Zespół odpowiedzialny za UCP
 
-Creator of the UCP
+Oryginalny twórca UCP
 [Sh0wdown](https://github.com/Sh0wdown)  
 
-Project Management
+Zarządzanie projektem
 [Kimberly](https://github.com/ByBurton/)  
 [Krarilotus (Youtube)](https://www.youtube.com/channel/UCMXHqa2vmclSoSkuCu_q5rw)
 
-Developers
+Twórcy
 [LordHansCapon](https://github.com/LordHansCapon)  
 [np123](https://github.com/patel-nikhil)  
 [J-T-de](https://github.com/J-T-de)  
 [Chaf1812](https://github.com/Chaf1812)  
 
-Translators
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polish)  
-[Lolasik011](https://github.com/Lolasik011) (Russian)  
-[Skysoul (e-mail)](mailto:theskysoul@vip.qq.com) (Chinese)  
+Tłumacze
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polski)  
+[Lolasik011](https://github.com/Lolasik011) (Rosyjski)  
+[Skysoul (e-mail)](mailto:theskysoul@vip.qq.com) (Chiński)  
 
-Content Creators   
+Twórcy dodatkowych funkcji   
 [Evrey](https://github.com/Evrey) (aiv)  
 [Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) (aiv,aic)  
 [PitchNeeded](https://github.com/PitchNeeded) (aiv)  
-[Xander10alpha](https://github.com/Xander10alpha) (aic)  
+[Xander10alpha (YouTube)](https://www.youtube.com/channel/UCYlyixfoKPcz-Ixi6Nc383Q) (aic)
 
-Special thanks of course go to  
+Specjalne podziękowania dla  
 [Firefly Studios](https://fireflyworlds.com/)  
-for the creation of the Stronghold series
+za stworzenie serii Twierdza.
 
-And many more
+Oraz dla
 
 [Udwin (YouTube)](https://www.youtube.com/user/UdwinLP)  
 [PodeCaradox](https://github.com/PodeCaradox)  
 [GRhin](https://www.twitch.tv/grhin)"
 }
-
-//the old description:
-//"Jest to nieoficjalna łatka do Twierdzy Krzyżowiec.
-//Projekt jest dostępny jako otwarte oprogramowanie przez [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
-//
-//Każda wersja Krzyżowca jest potencjalnie obsługiwana, ale wprowadzone zmiany &
-//pochodzą z wersji 1.41 Steam, dlatego mogą pojawić się problemy. &
-//Instalator wyświetli wtedy komunikat o błędzie. Wersja tej łatki jest pokazana &
-//w lewym dolnym rogu głównego menu gry. Przed zmianami zostaną utworzone pliki &
-//kopii zapasowej. Można je przywrócić za pomocą przycisku 'Odinstaluj' lub ręcznie.
-//
-//W tym miejscu chciałbym podziękować społeczności Twierdzy za tak &
-//entuzjastyczne wsparcie.
-//
-//Specjalne podziękowania dla:
-//[FireFly Studios](https://fireflyworlds.com/) za stworzenie serii Twierdza
-//[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), bo przypomniał mi o Twierdzy
-//[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) za polskie tłumaczenie
-//[Lolasik011](https://github.com/Lolasik011) za rosyjskie tłumaczenie
-//[Evrey](https://github.com/Evrey) za jego zamki SI
-//[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) za jego zamki SI
-//[PitchNeeded](https://github.com/PitchNeeded) za jego zamki SI
-//[ByBurton](https://github.com/ByBurton) za AICE i pomoc w ustawieniach AIC."
 
 ui_StartTroops
 {
