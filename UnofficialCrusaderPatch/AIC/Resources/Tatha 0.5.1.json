@@ -39,37 +39,286 @@
 -> 提升了声望。
 -> 更改了食物配给。
 -> 菲利普会使用骑士进行攻击。
--> 院长会使用欧洲剑士进行攻击。"
+-> 院长会使用欧洲剑士进行攻击。",
+	"Hungarian": "Ez a karakter konfiguráció a következőket változtatja meg az MI-k nál:
+-> Kisebb gazdasági javítások.
+-> Néhány változtatás a védelemben.
+-> Az MI zavaró egységeket vet be.
+-> Népszerűség feljavítva.
+-> Fejadagok megváltoztatva.
+-> Fülöp lovagokat használ a támadásnál.
+-> Az Apát kardforgatókat használ támadáskor."
 },
 "AICLongDescription": {
 	
-  "German": "Das Ziel meiner AICs ist eine natürliche Verbesserung des KI Verhaltens. Bis auf die Schwertkämpfer beim Abt hat sich nichts groß geändert. Die KIs bleiben sich treu sind aber jetzt durch bessere Wirtschaft, Verteidigung und Angriffe stärker. Die AIC zielt explizit darauf ab, das man Sie auch ohne irgendwelche AIVs benutzen kann.    Diese .aic stammt von Tatha und behebt die folgenden Fehler und Macken der KIs:    Was ist neu:    -Abt: setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein    -Richard: es wurde ein Fehler behoben das er keine Störangriffe geschickt hat, wenn es ihm besonders gut ging    -Allgemein:    -Alle KIs lassen ihre Beliebtheit nicht mehr so niedrig fallen -> erhöhte Spawnrate für Bauern    -Alle KIs nutzen Ihre Fernkämpfer jetzt auch aktiv im Angriff und zur Verteidigung ihrer Belagerungsgeräte    -Alle KIs schicken deutlich mehr Truppen um einen Feindlich Burggraben zu zuschütten    -Alle KIs können jetzt selber Burggräben ausheben
-    -Ratte:    -erster Angriff 20->30,    -setzt jetzt Europäische Bogenschützen in der Verteidigung ein und ersetzt diese auch    -Schlange:    -setzt jetzt Schleuderschützen in der Verteidigung ein und ersetzt diese auch    -setzt bei größeren Angriffen ein zweites Katapult ein    -die maximal Anzahl an Holzfäller wurde geringfügig verringert 
-	-Schwein:    -jetzt auch Apfelfarmen    -Burgverteidigungstruppen 30->40    -erster Angriff 10->45,    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffe ein    -rekrutiert jetzt auch Störtruppen
+  "German": "Das Ziel meiner AICs ist eine natürliche Verbesserung des KI Verhaltens. Bis auf die Schwertkämpfer beim Abt hat sich nichts groß geändert. Die KIs bleiben sich treu sind aber jetzt durch bessere Wirtschaft, Verteidigung und Angriffe stärker. Die AIC zielt explizit darauf ab, das man Sie auch ohne irgendwelche AIVs benutzen kann.
+    Diese .aic stammt von Tatha und behebt die folgenden Fehler und Macken der KIs:
+    Was ist neu:
+    -Abt: setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein
+    -Richard: es wurde ein Fehler behoben das er keine Störangriffe geschickt hat, wenn es ihm besonders gut ging
+    -Allgemein:
+    -Alle KIs lassen ihre Beliebtheit nicht mehr so niedrig fallen -> erhöhte Spawnrate für Bauern
+    -Alle KIs nutzen Ihre Fernkämpfer jetzt auch aktiv im Angriff und zur Verteidigung ihrer Belagerungsgeräte
+    -Alle KIs schicken deutlich mehr Truppen um einen Feindlich Burggraben zu zuschütten
+    -Alle KIs können jetzt selber Burggräben ausheben
 
-    -Wolf:    -plus 2 Eisenminen    -minus 1 Steinbruch,    -setzt jetzt Arabische Bogenschützen in der Verteidigung ein und ersetzt diese auch    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein    -setzt jetzt mehr Truppen ein den eigenen Burggraben ausheben    -setzt auch Pikiniere zum Stören ein    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -Ratte:
+    -erster Angriff 20->30,
+    -setzt jetzt Europäische Bogenschützen in der Verteidigung ein und ersetzt diese auch
+    -Schlange:
+    -setzt jetzt Schleuderschützen in der Verteidigung ein und ersetzt diese auch
+    -setzt bei größeren Angriffen ein zweites Katapult ein
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+ 
+	-Schwein:
+    -jetzt auch Apfelfarmen
+    -Burgverteidigungstruppen 30->40
+    -erster Angriff 10->45,
+    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffe ein
+    -rekrutiert jetzt auch Störtruppen
 
-	-Saladin:    -Burgverteidigungstruppen 50->60,    -setzt jetzt mehr Truppen ein den eigenen Burggraben ausheben    -setzt keine Feuerwerfer mehr im Angriff ein    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein    -die Anzahl an kletternden Meuchelmördern wurde erhöht    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
-    -Kalif:    -erster Angriff 15->30,    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein    -die Anzahl an kletternden Meuchelmördern wurde erhöht    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
-    -Sultan:    -setzt jetzt Feuerwerfer und Arabische Bogenschützen in der Verteidigung ein und ersetzt diese auch    -seine Ausfalleinheiten wurden angepasst    -setzt auch Arabische Schwertkämpfer zum Stören ein    -plus 2 Obst- und 1 Käsefarm    -erster Angriff 10->15,    -Holzfäller 16->10    -kauft jetzt auch Käse & Brot    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
-    -Richard:    -erster Angriff 20->40    -Burgverteidigungstruppen 20->30    -rekrutiert jetzt auch Störtruppen    -setzt auch Pikiniere zum Stören ein    -es wurde ein Fehler behoben das er keine Störangriffe geschickt hat, wenn es ihm besonders gut ging
-    -Friedrich:    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen    -erster Angriff 30->40    -kauft jetzt auch Waffen    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
-    -Phillip:    -plus 1 Steinbruch    -minus 2 Apfelfarmen    -seine Ausfalleinheiten wurden angepasst    -das Ersetzt seiner Verteidigungsrittern wurde gefixt    -erster Angriff 10->30    -setzt jetzt bis zu 2 Sturmböcke im Angriff ein    -setzt im Angriff jetzt auch Ritter und Bogenschützen mit ein    -Burgverteidigungstruppen 4->30    -setzt jetzt Europäische Bogenschützen in der Verteidigung ein und ersetzt diese auch    -kauft Nahrung in 10er statt 20er Fuhren    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
-    -Wazir:    -seine Ausfalleinheiten wurden angepasst    -setzt auch Arabische Schwertkämpfer zum Stören ein    -Burgverteidigungstruppen 40->60    -setzt keine Feuerwerfer mehr im Angriff ein    -kauft in der Not auch Brot    -strebt immer mindestens 5 statt 2 Getreide im Lager an    -kauft Nahrung & Getreide in 10er statt 20er Fuhren
-    -Emir:
-    -Burgverteidigungstruppen 50->70    -setzt jetzt auch Feuerbalisten und Europäische Bogenschützen im Angriff ein    -kauft jetzt auch Waffen    -kauft Nahrung & Getreide in 10er statt 20er Fuhren
-    -Nizar:
-    -plus 1 Steinbruch,    -Farmen 16->12    -die Anzahl an kletternden Meuchelmördern wurde deutlich erhöht    -setzt jetzt bis zu 2 Katapulte und 2 Balagerungstürme im Angriff ein    -setzt jetzt auch Arabische und Berittene Bogenschützen im Angriff ein    -seine Ausfalleinheiten wurden angepasst    -setzt auch Arabische Meuchelmörder zum Stören ein    -verfügt jetzt auch über Patrouillien    -kauft Brot statt Äpfel    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
-    -Sheriff:
-    -die Anzahl an kletternden Meuchelmördern wurde erhöht    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen    -Burgverteidigungstruppen 40->55    -setzt jetzt Streitkolbenkämpfet statt Sklaven zum zuschütten von Gräben ein    -die maximal Anzahl an Holzfäller wurde geringfügig verringert    -der Sheriff hat jetzt eine höhere Priorität für Verteidigungstruppen
-    -Marschall:
-    -baut jetzt auch Apfelfarmen    -erster Angriff 10->25    -kauft jetzt auch Waffen    -kauft Nahrung in 10er statt 20er Fuhren
-    -Abt:
-    -baut jetzt auch Apfelfarmen    -verkauft keine Schwerter und Schwere Rüstungen mehr    -Burgverteidigungstruppen 30->60    -setzt jetzt auch Sturmböcke ein    -greift jetzt auch mit Schwertkämpfern an (Waffen werden gekauft)    -kauft jetzt auch Waffen    -die maximal Anzahl an Holzfäller wurde geringfügig verringert    -setzt seine Schwertkämpfer im Angriff jetzt als Backupeinheit (wird erst genutzt wenn die Burg offen ist) ein    -setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein",
+    -Wolf:
+    -plus 2 Eisenminen
+    -minus 1 Steinbruch,
+    -setzt jetzt Arabische Bogenschützen in der Verteidigung ein und ersetzt diese auch
+    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
+    -setzt jetzt mehr Truppen ein den eigenen Burggraben ausheben
+    -setzt auch Pikiniere zum Stören ein
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+
+	-Saladin:
+    -Burgverteidigungstruppen 50->60,
+    -setzt jetzt mehr Truppen ein den eigenen Burggraben ausheben
+    -setzt keine Feuerwerfer mehr im Angriff ein
+    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
+    -die Anzahl an kletternden Meuchelmördern wurde erhöht
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+
+    -Kalif:
+    -erster Angriff 15->30,
+    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
+    -die Anzahl an kletternden Meuchelmördern wurde erhöht
+    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
+
+    -Sultan:
+    -setzt jetzt Feuerwerfer und Arabische Bogenschützen in der Verteidigung ein und ersetzt diese auch
+    -seine Ausfalleinheiten wurden angepasst
+    -setzt auch Arabische Schwertkämpfer zum Stören ein
+    -plus 2 Obst- und 1 Käsefarm
+    -erster Angriff 10->15,
+    -Holzfäller 16->10
+    -kauft jetzt auch Käse & Brot
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+
+    -Richard:
+    -erster Angriff 20->40
+    -Burgverteidigungstruppen 20->30
+    -rekrutiert jetzt auch Störtruppen
+    -setzt auch Pikiniere zum Stören ein
+    -es wurde ein Fehler behoben das er keine Störangriffe geschickt hat, wenn es ihm besonders gut ging
+
+    -Friedrich:
+    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
+    -erster Angriff 30->40
+    -kauft jetzt auch Waffen
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+
+    -Phillip:
+    -plus 1 Steinbruch
+    -minus 2 Apfelfarmen
+    -seine Ausfalleinheiten wurden angepasst
+    -das Ersetzt seiner Verteidigungsrittern wurde gefixt
+    -erster Angriff 10->30
+    -setzt jetzt bis zu 2 Sturmböcke im Angriff ein
+    -setzt im Angriff jetzt auch Ritter und Bogenschützen mit ein
+    -Burgverteidigungstruppen 4->30
+    -setzt jetzt Europäische Bogenschützen in der Verteidigung ein und ersetzt diese auch
+    -kauft Nahrung in 10er statt 20er Fuhren
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+
+    -Wazir:
+    -seine Ausfalleinheiten wurden angepasst
+    -setzt auch Arabische Schwertkämpfer zum Stören ein
+    -Burgverteidigungstruppen 40->60
+    -setzt keine Feuerwerfer mehr im Angriff ein
+    -kauft in der Not auch Brot
+    -strebt immer mindestens 5 statt 2 Getreide im Lager an
+    -kauft Nahrung & Getreide in 10er statt 20er Fuhren
+
+    -Emir:
+
+    -Burgverteidigungstruppen 50->70
+    -setzt jetzt auch Feuerbalisten und Europäische Bogenschützen im Angriff ein
+    -kauft jetzt auch Waffen
+    -kauft Nahrung & Getreide in 10er statt 20er Fuhren
+
+    -Nizar:
+
+    -plus 1 Steinbruch,
+    -Farmen 16->12
+    -die Anzahl an kletternden Meuchelmördern wurde deutlich erhöht
+    -setzt jetzt bis zu 2 Katapulte und 2 Balagerungstürme im Angriff ein
+    -setzt jetzt auch Arabische und Berittene Bogenschützen im Angriff ein
+    -seine Ausfalleinheiten wurden angepasst
+    -setzt auch Arabische Meuchelmörder zum Stören ein
+    -verfügt jetzt auch über Patrouillien
+    -kauft Brot statt Äpfel
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+
+    -Sheriff:
+
+    -die Anzahl an kletternden Meuchelmördern wurde erhöht
+    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
+    -Burgverteidigungstruppen 40->55
+    -setzt jetzt Streitkolbenkämpfet statt Sklaven zum zuschütten von Gräben ein
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -der Sheriff hat jetzt eine höhere Priorität für Verteidigungstruppen
+
+    -Marschall:
+
+    -baut jetzt auch Apfelfarmen
+    -erster Angriff 10->25
+    -kauft jetzt auch Waffen
+    -kauft Nahrung in 10er statt 20er Fuhren
+
+    -Abt:
+
+    -baut jetzt auch Apfelfarmen
+    -verkauft keine Schwerter und Schwere Rüstungen mehr
+    -Burgverteidigungstruppen 30->60
+    -setzt jetzt auch Sturmböcke ein
+    -greift jetzt auch mit Schwertkämpfern an (Waffen werden gekauft)
+    -kauft jetzt auch Waffen
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -setzt seine Schwertkämpfer im Angriff jetzt als Backupeinheit (wird erst genutzt wenn die Burg offen ist) ein
+    -setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein",
     "English": "",
     "Polish": "",
     "Russian": "",
-	"Chinese": ""
+    "Chinese": "",
+    "Hungarian": "Az AIC változtatásaim célja, hogy az MI viselkedése természetesebb legyen. Azonkívül hogy az Apát kardforgatókat használ, nem sok minden változott. Az MI-k ugyanúgy viselkednek, de most már jobb a gazdaságuk, védekezésük és a támadásaik is erőteljesebbek. Az AIC kifejezetten arra törekszik, hogy ezeket bármiféle AIV nélkül is lehessen használni.
+    Ez a .aic Tatha-tól származik és a következő MI hibákat javítja ki:
+    Újdonságok:
+    -Apát: Most már kiegészítő egységként kardforgatókat is bevet a támadáskor mint: Attackunit5 (a váron kívüli csapatok támadására használatos)
+    -Richárd: Nem használt zavaró egységeket, amikor elég jól ment neki, ez a hiba javításra került
+    -Általános:
+    -Most már nem hagyja egyik MI se hogy alacsonyra essen le a népszerűsége -> megnövelt paraszt érkezés
+    -Most már az összes MI aktívan használja a távolsági egységeket hogy megtámadják illetve megvédjék a Ostromgépeket
+    -Most már az összes MI jelentősen több egységet küld az ellenséges várárokhoz, hogy betemessék
+    -Most már az összes MI kitudja ásni a várárkot
+    -Patkány:
+    -első támadás 20->30,
+    -Most már európai íjászokat vet be a védelemben és le is cseréli őket
+    
+    -Kígyó:
+    -Most már Parittyásokat vet be a védelemben és le is cseréli őket
+    -Nagyobb támadásoknál már egy második katapultot is bevet
+    -A favágók maximális száma egy kissé le lett csökkentve
+ 
+    -Disznó:
+    -Mostantól almáskertet is épít
+    -Várvédő egységek 30->40
+    -Első támadás 10->45,
+    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffe ein
+    -Most már toboroz zavaró egységeket
+    -Farkas:
+    -plusz 2 Vasbánya
+    -minusz 1 Kőfejtő,
+    -setzt jetzt Arabische Bogenschützen in der Verteidigung ein und ersetzt diese auch
+    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
+    -setzt jetzt mehr Truppen ein den eigenen Burggraben ausheben
+    -setzt auch Pikiniere zum Stören ein
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -Szaladin:
+    -Burgverteidigungstruppen 50->60,
+    -setzt jetzt mehr Truppen ein den eigenen Burggraben ausheben
+    -setzt keine Feuerwerfer mehr im Angriff ein
+    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
+    -die Anzahl an kletternden Meuchelmördern wurde erhöht
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -Kalifa:
+    -erster Angriff 15->30,
+    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
+    -die Anzahl an kletternden Meuchelmördern wurde erhöht
+    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
+    -Szultán:
+    -setzt jetzt Feuerwerfer und Arabische Bogenschützen in der Verteidigung ein und ersetzt diese auch
+    -seine Ausfalleinheiten wurden angepasst
+    -setzt auch Arabische Schwertkämpfer zum Stören ein
+    -plus 2 Obst- und 1 Käsefarm
+    -erster Angriff 10->15,
+    -Holzfäller 16->10
+    -kauft jetzt auch Käse & Brot
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -Richárd:
+    -erster Angriff 20->40
+    -Burgverteidigungstruppen 20->30
+    -rekrutiert jetzt auch Störtruppen
+    -setzt auch Pikiniere zum Stören ein
+    -es wurde ein Fehler behoben das er keine Störangriffe geschickt hat, wenn es ihm besonders gut ging
+    -Frigyes:
+    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
+    -erster Angriff 30->40
+    -kauft jetzt auch Waffen
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -Fülöp:
+    -plus 1 Steinbruch
+    -minus 2 Apfelfarmen
+    -seine Ausfalleinheiten wurden angepasst
+    -das Ersetzt seiner Verteidigungsrittern wurde gefixt
+    -erster Angriff 10->30
+    -setzt jetzt bis zu 2 Sturmböcke im Angriff ein
+    -setzt im Angriff jetzt auch Ritter und Bogenschützen mit ein
+    -Burgverteidigungstruppen 4->30
+    -setzt jetzt Europäische Bogenschützen in der Verteidigung ein und ersetzt diese auch
+    -kauft Nahrung in 10er statt 20er Fuhren
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -Wazir:
+    -seine Ausfalleinheiten wurden angepasst
+    -setzt auch Arabische Schwertkämpfer zum Stören ein
+    -Burgverteidigungstruppen 40->60
+    -setzt keine Feuerwerfer mehr im Angriff ein
+    -kauft in der Not auch Brot
+    -strebt immer mindestens 5 statt 2 Getreide im Lager an
+    -kauft Nahrung & Getreide in 10er statt 20er Fuhren
+    -Emír:
+    -Burgverteidigungstruppen 50->70
+    -setzt jetzt auch Feuerbalisten und Europäische Bogenschützen im Angriff ein
+    -kauft jetzt auch Waffen
+    -kauft Nahrung & Getreide in 10er statt 20er Fuhren
+    -Nizar:
+    -plus 1 Steinbruch,
+    -Farmen 16->12
+    -die Anzahl an kletternden Meuchelmördern wurde deutlich erhöht
+    -setzt jetzt bis zu 2 Katapulte und 2 Balagerungstürme im Angriff ein
+    -setzt jetzt auch Arabische und Berittene Bogenschützen im Angriff ein
+    -seine Ausfalleinheiten wurden angepasst
+    -setzt auch Arabische Meuchelmörder zum Stören ein
+    -verfügt jetzt auch über Patrouillien
+    -kauft Brot statt Äpfel
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -Főispán:
+    -die Anzahl an kletternden Meuchelmördern wurde erhöht
+    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
+    -Burgverteidigungstruppen 40->55
+    -setzt jetzt Streitkolbenkämpfet statt Sklaven zum zuschütten von Gräben ein
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -der Sheriff hat jetzt eine höhere Priorität für Verteidigungstruppen
+    -Tábornok:
+    -baut jetzt auch Apfelfarmen
+    -erster Angriff 10->25
+    -kauft jetzt auch Waffen
+    -kauft Nahrung in 10er statt 20er Fuhren
+    -Apát:
+    -baut jetzt auch Apfelfarmen
+    -verkauft keine Schwerter und Schwere Rüstungen mehr
+    -Burgverteidigungstruppen 30->60
+    -setzt jetzt auch Sturmböcke ein
+    -greift jetzt auch mit Schwertkämpfern an (Waffen werden gekauft)
+    -kauft jetzt auch Waffen
+    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -setzt seine Schwertkämpfer im Angriff jetzt als Backupeinheit (wird erst genutzt wenn die Burg offen ist) ein
+    -setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein"
 },
 
 	"AICharacters": [
