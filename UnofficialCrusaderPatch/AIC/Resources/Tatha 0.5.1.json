@@ -40,7 +40,7 @@
 -> 更改了食物配给。
 -> 菲利普会使用骑士进行攻击。
 -> 院长会使用欧洲剑士进行攻击。",
-	"Hungarian": "Ez a karakter konfiguráció a következőket változtatja meg az MI-k nál:
+	"Hungarian": "Ez a karakter konfiguráció az MI alábbi részeit változtatja meg:
 -> Kisebb gazdasági javítások.
 -> Néhány változtatás a védelemben.
 -> Az MI zavaró egységeket vet be.
@@ -202,16 +202,16 @@
     -Apát: Most már kiegészítő egységként kardforgatókat is bevet a támadáskor mint: Attackunit5 (a váron kívüli csapatok támadására használatos)
     -Richárd: Nem használt zavaró egységeket, amikor elég jól ment neki, ez a hiba javításra került
     -Általános:
-    -Most már nem hagyja egyik MI se hogy alacsonyra essen le a népszerűsége -> megnövelt paraszt érkezés
-    -Most már az összes MI aktívan használja a távolsági egységeket hogy megtámadják illetve megvédjék a Ostromgépeket
+    -Most már egyik MI se hagyja hogy alacsonyra essen le a népszerűsége -> megnövelt paraszt érkezés
+    -Most már az összes MI aktívan használja a távolsági egységeket hogy megtámadják illetve megvédjék az ostromgépeket
     -Most már az összes MI jelentősen több egységet küld az ellenséges várárokhoz, hogy betemessék
     -Most már az összes MI kitudja ásni a várárkot
     -Patkány:
-    -első támadás 20->30,
+    -Első támadás 20->30,
     -Most már európai íjászokat vet be a védelemben és le is cseréli őket
     
     -Kígyó:
-    -Most már Parittyásokat vet be a védelemben és le is cseréli őket
+    -Most már parittyásokat vet be a védelemben és le is cseréli őket
     -Nagyobb támadásoknál már egy második katapultot is bevet
     -A favágók maximális száma egy kissé le lett csökkentve
  
@@ -219,84 +219,84 @@
     -Mostantól almáskertet is épít
     -Várvédő egységek 30->40
     -Első támadás 10->45,
-    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffe ein
+    -Mostantól nagyobb támadásoknál több ostromgépet vet be
     -Most már toboroz zavaró egységeket
     -Farkas:
-    -plusz 2 Vasbánya
-    -minusz 1 Kőfejtő,
-    -setzt jetzt Arabische Bogenschützen in der Verteidigung ein und ersetzt diese auch
-    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
-    -setzt jetzt mehr Truppen ein den eigenen Burggraben ausheben
-    -setzt auch Pikiniere zum Stören ein
-    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -Plusz 2 vasbánya
+    -Mínusz 1 kőfejtő,
+    -Most már Arab íjászokat vet be a védelemben és le is cseréli őket
+    -Mostantól nagyobb támadásoknál több ostromgépet vet be
+    -Mostantól több egységet használ a saját várárka kiásásához
+    -Lándzsásokat is használ zavaró egységként
+    -A favágók maximális száma egy kissé le lett csökkentve
     -Szaladin:
-    -Burgverteidigungstruppen 50->60,
-    -setzt jetzt mehr Truppen ein den eigenen Burggraben ausheben
-    -setzt keine Feuerwerfer mehr im Angriff ein
-    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
-    -die Anzahl an kletternden Meuchelmördern wurde erhöht
-    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -Várvédő egységek 50->60,
+    -Mostantól több egységet használ a saját várárka kiásásához
+    -Nem használ tűzvetőgépet támadáskor
+    -Mostantól nagyobb támadásoknál több ostromgépet vet be
+    -Orgyilkosok száma megnövelve
+    -A favágók maximális száma egy kissé le lett csökkentve
     -Kalifa:
-    -erster Angriff 15->30,
-    -setzt jetzt mehr Belagerungsgeräte bei größeren Angriffen ein
-    -die Anzahl an kletternden Meuchelmördern wurde erhöht
-    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
+    -Első támadás 15->30,
+    -Mostantól nagyobb támadásoknál több ostromgépet vet be
+    -Orgyilkosok száma megnövelve
+    -Most már komlótermelés jobb arányban van a élelemtermeléssel
     -Szultán:
-    -setzt jetzt Feuerwerfer und Arabische Bogenschützen in der Verteidigung ein und ersetzt diese auch
-    -seine Ausfalleinheiten wurden angepasst
-    -setzt auch Arabische Schwertkämpfer zum Stören ein
-    -plus 2 Obst- und 1 Käsefarm
-    -erster Angriff 10->15,
-    -Holzfäller 16->10
-    -kauft jetzt auch Käse & Brot
-    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -Most már tűzvetőgépeket és arab íjászokat is használ a védelemben és le is cseréli őket
+    -A kitörő egységei javítva
+    -Arab szablyásokat is bevet zavaró egységként
+    -Plusz 2 almáskert- és 1 tehenészet
+    -Első támadás 10->15,
+    -Favágó 16->10
+    -Most már sajtot és kenyeret is vásárol
+    -A favágók maximális száma egy kissé le lett csökkentve
     -Richárd:
-    -erster Angriff 20->40
-    -Burgverteidigungstruppen 20->30
-    -rekrutiert jetzt auch Störtruppen
-    -setzt auch Pikiniere zum Stören ein
-    -es wurde ein Fehler behoben das er keine Störangriffe geschickt hat, wenn es ihm besonders gut ging
+    -Első támadás 20->40
+    -Várvédő egységek 20->30
+    -Mostantól zavaró egységeket is toboroz
+    -Lándzsásokat is használ zavaró egységként
+    -Nem használt zavaró egységeket, amikor elég jól ment neki, ez a hiba javításra került
     -Frigyes:
-    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
-    -erster Angriff 30->40
-    -kauft jetzt auch Waffen
-    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -Most már komlótermelés jobb arányban van a élelemtermeléssel
+    -Első támadás 30->40
+    -Ezentúl fegyvereket is vásárol
+    -A favágók maximális száma egy kissé le lett csökkentve
     -Fülöp:
-    -plus 1 Steinbruch
-    -minus 2 Apfelfarmen
-    -seine Ausfalleinheiten wurden angepasst
-    -das Ersetzt seiner Verteidigungsrittern wurde gefixt
-    -erster Angriff 10->30
-    -setzt jetzt bis zu 2 Sturmböcke im Angriff ein
-    -setzt im Angriff jetzt auch Ritter und Bogenschützen mit ein
-    -Burgverteidigungstruppen 4->30
-    -setzt jetzt Europäische Bogenschützen in der Verteidigung ein und ersetzt diese auch
-    -kauft Nahrung in 10er statt 20er Fuhren
-    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -Plusz 1 kőfejtő
+    -Mínusz 2 almáskert
+    -A kitörő egységei javítva
+    -A védekező lovagjainak lecserélése kijavítva
+    -Első támadás 10->30
+    -Mostantól támadáskor 2 faltörő kost vet be
+    -Támadáskor most már lovagokat és íjászokat is használ
+    -Várvédő egységek 4->30
+    -Most már európai íjászokat vet be a védelemben és le is cseréli őket
+    -Ezentúl 10esével vásárol élelmet 20 helyett
+    -A favágók maximális száma egy kissé le lett csökkentve
     -Wazir:
-    -seine Ausfalleinheiten wurden angepasst
-    -setzt auch Arabische Schwertkämpfer zum Stören ein
-    -Burgverteidigungstruppen 40->60
-    -setzt keine Feuerwerfer mehr im Angriff ein
-    -kauft in der Not auch Brot
-    -strebt immer mindestens 5 statt 2 Getreide im Lager an
-    -kauft Nahrung & Getreide in 10er statt 20er Fuhren
+    -A kitörő egységei javítva
+    -Arab szablyásokat is bevet zavaró egységként
+    -Várvédő egységek 40->60
+    -Nem vet be tűzhajítógépet támadáskor
+    -Szükség esetén vásárol kenyeret is
+    -Arra törekszik, hogy mindig legyen legalább 5 búza raktáron, 2 helyett
+    -10esével vásárol élelmet és búzát 20 helyett
     -Emír:
-    -Burgverteidigungstruppen 50->70
-    -setzt jetzt auch Feuerbalisten und Europäische Bogenschützen im Angriff ein
-    -kauft jetzt auch Waffen
-    -kauft Nahrung & Getreide in 10er statt 20er Fuhren
+    -Várvédő egységek 50->70
+    -Most már tűzhajítógépet és európai íjászokat is használ támadáskor
+    -Ezentúl fegyvereket is vásárol
+    -10esével vásárol élelmet és búzát 20 helyett
     -Nizar:
-    -plus 1 Steinbruch,
-    -Farmen 16->12
-    -die Anzahl an kletternden Meuchelmördern wurde deutlich erhöht
-    -setzt jetzt bis zu 2 Katapulte und 2 Balagerungstürme im Angriff ein
-    -setzt jetzt auch Arabische und Berittene Bogenschützen im Angriff ein
-    -seine Ausfalleinheiten wurden angepasst
-    -setzt auch Arabische Meuchelmörder zum Stören ein
-    -verfügt jetzt auch über Patrouillien
-    -kauft Brot statt Äpfel
-    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
+    -Plusz 1 kőfejtő,
+    -Mezőgazdasági épületek 16->12
+    -Orgyilkosok száma megnövelve
+    -Mostantól támadáskor 2 katapultot és 2 ostromtornyot vet be
+    -Támadáskor már használ arab íjászt és lovasíjászt
+    -A kitörő egységei javítva
+    -Orgyilkosokat is használ zavaró egységként
+    -Most már járőröző egységei is vannak
+    -Kenyeret vásárol alma helyett
+    -A favágók maximális száma egy kissé le lett csökkentve
     -Főispán:
     -die Anzahl an kletternden Meuchelmördern wurde erhöht
     -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
