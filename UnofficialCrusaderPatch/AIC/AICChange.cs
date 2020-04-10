@@ -266,8 +266,9 @@ namespace UCP.AIC
 
         private void ConvertAIC()
         {
-            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "aic", this.TitleIdent);
-            string newFileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(this.TitleIdent) + ".json");
+            string workaroundFilename =  this.TitleIdent.Substring(4);
+            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "aic", workaroundFilename);
+            string newFileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(workaroundFilename) + ".json");
 
             string backupFileName = fileName;
             while (File.Exists(backupFileName))
