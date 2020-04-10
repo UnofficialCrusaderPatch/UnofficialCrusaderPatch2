@@ -240,7 +240,7 @@
     -Első támadás 15->30,
     -Mostantól nagyobb támadásoknál több ostromgépet vet be
     -Orgyilkosok száma megnövelve
-    -Most már komlótermelés jobb arányban van a élelemtermeléssel
+    -Most már a komlótermelés jobb arányban van az élelemtermeléssel
     -Szultán:
     -Most már tűzvetőgépeket és arab íjászokat is használ a védelemben és le is cseréli őket
     -A kitörő egységei javítva
@@ -257,7 +257,7 @@
     -Lándzsásokat is használ zavaró egységként
     -Nem használt zavaró egységeket, amikor elég jól ment neki, ez a hiba javításra került
     -Frigyes:
-    -Most már komlótermelés jobb arányban van a élelemtermeléssel
+    -Most már a komlótermelés jobb arányban van az élelemtermeléssel
     -Első támadás 30->40
     -Ezentúl fegyvereket is vásárol
     -A favágók maximális száma egy kissé le lett csökkentve
@@ -298,12 +298,12 @@
     -Kenyeret vásárol alma helyett
     -A favágók maximális száma egy kissé le lett csökkentve
     -Főispán:
-    -die Anzahl an kletternden Meuchelmördern wurde erhöht
-    -hat jetzt ein bessere Verhältnis von Hopfen zu Nahrungsfarmen
-    -Burgverteidigungstruppen 40->55
-    -setzt jetzt Streitkolbenkämpfet statt Sklaven zum zuschütten von Gräben ein
-    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
-    -der Sheriff hat jetzt eine höhere Priorität für Verteidigungstruppen
+    -Orgyilkosok száma megnövelve
+    -Most már a komlótermelés jobb arányban van az élelemtermeléssel
+    -Várvédő egységek 40->55
+    -Mostantól a várárok betemetését buzogányosokkal végzi el, rabszolgák helyett
+    -A favágók maximális száma egy kissé le lett csökkentve
+    -A Főispán mostantól nagyobb prioritást helyez a várvédő egységekre
     -Tábornok:
     -Mostantól almáskertet is épít
     -Első támadás 10->25
