@@ -305,20 +305,20 @@
     -die maximal Anzahl an Holzfäller wurde geringfügig verringert
     -der Sheriff hat jetzt eine höhere Priorität für Verteidigungstruppen
     -Tábornok:
-    -baut jetzt auch Apfelfarmen
-    -erster Angriff 10->25
-    -kauft jetzt auch Waffen
-    -kauft Nahrung in 10er statt 20er Fuhren
+    -Mostantól almáskertet is épít
+    -Első támadás 10->25
+    -Mostantól fegyvereket is vásárol
+    -10esével vásárol élelmet 20 helyett
     -Apát:
-    -baut jetzt auch Apfelfarmen
-    -verkauft keine Schwerter und Schwere Rüstungen mehr
-    -Burgverteidigungstruppen 30->60
-    -setzt jetzt auch Sturmböcke ein
-    -greift jetzt auch mit Schwertkämpfern an (Waffen werden gekauft)
-    -kauft jetzt auch Waffen
-    -die maximal Anzahl an Holzfäller wurde geringfügig verringert
-    -setzt seine Schwertkämpfer im Angriff jetzt als Backupeinheit (wird erst genutzt wenn die Burg offen ist) ein
-    -setzt seine Schwertkämpfer im Angriff jetzt zusätzlich als Attackunit5 (wird genutztum Truppen außerhalb der Burg anzugreifen) ein"
+    -Mostantól almáskertet is épít
+    -Már nem ad el kardot és vaspáncélt
+    -Várvédő egységek 30->60
+    -Zavaró egységeket vet be
+    -Most már kardforgatókkal is támad (A fegyvereket megveszi)
+    -Ezentúl fegyvereket is vásárol
+    -A favágók maximális száma egy kissé le lett csökkentve
+    -Most már kardforgatókat tartalék csapatként is beveti támadáskor (csak akkor használja őket ha van rés a vár falán)
+    -Most már kiegészítő egységként kardforgatókat is bevet a támadáskor mint: Attackunit5 (a váron kívüli csapatok támadására használatos)"
 },
 
 	"AICharacters": [
