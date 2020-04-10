@@ -80,21 +80,7 @@ namespace UCPAIConversion
 
                         foreach (KeyValuePair<string, object> definition in (Dictionary<string, object>)character)
                         {
-                            if (definition.Key != "Personality")
-                            {
-                                try
-                                {
-                                    SetProperty(AICharacterType, currentCharacter, definition.Key, definition.Value);
-                                }
-                                catch (Exception e)
-                                {
-                                    if (e is TargetInvocationException || e is ArgumentException)
-                                    {
-                                        SerializationErrors.Errors.Add(GetErrorMessage(definition.Key, currentCharacter._Name.ToString()));
-                                    }
-                                }
-
-                            } else if (definition.Key == "Personality")
+                            if (definition.Key == "Personality")
                             {
                                 currentPersonality = new AIPersonality();
                                 foreach (KeyValuePair<string, object> personalityValue in (Dictionary<string, object>)definition.Value)
@@ -122,6 +108,36 @@ namespace UCPAIConversion
                                     }
                                 }
                                 currentCharacter.Personality = currentPersonality;
+                            }
+                            else if (definition.Key == "Name")
+                            {
+                                try
+                                {
+                                    SetProperty(AICharacterType, currentCharacter, definition.Key, definition.Value);
+                                    Enum.TryParse(definition.Value.ToString(), out AICharacterName nameEnum);
+                                    SetProperty(AICharacterType, currentCharacter, "Index", nameEnum + 1);
+                                }
+                                catch (Exception e)
+                                {
+                                    if (e is TargetInvocationException || e is ArgumentException)
+                                    {
+                                        SerializationErrors.Errors.Add(GetErrorMessage(definition.Key, currentCharacter._Name.ToString()));
+                                    }
+                                }
+                            }
+                            else if (definition.Key != "Index")
+                            {
+                                try
+                                {
+                                    SetProperty(AICharacterType, currentCharacter, definition.Key, definition.Value);
+                                }
+                                catch (Exception e)
+                                {
+                                    if (e is TargetInvocationException || e is ArgumentException)
+                                    {
+                                        SerializationErrors.Errors.Add(GetErrorMessage(definition.Key, currentCharacter._Name.ToString()));
+                                    }
+                                }
                             }
                         }
                         AICharacters.Add(currentCharacter);

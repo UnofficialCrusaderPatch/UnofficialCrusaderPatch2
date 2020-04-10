@@ -19,7 +19,7 @@ namespace UCPAIConversion
         Richard,
 
         Frederick,
-        Philipp,
+        Phillip,
         Wazir,
         Emir,
         Nizar,
