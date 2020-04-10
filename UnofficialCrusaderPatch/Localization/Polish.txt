@@ -1,51 +1,146 @@
-﻿ui_StartTroops
+﻿// ======================
+//         2.14
+// ======================
+
+ui_welcometext
 {
-	"StartTroops"
+"Jest to nieoficjalna łatka do Twierdzy Krzyżowiec.
+Projekt jest dostępny jako otwarte oprogramowanie przez [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
+
+Każda wersja Krzyżowca jest potencjalnie obsługiwana, ale wprowadzone zmiany pochodzą z wersji 1.41 Steam, dlatego mogą pojawić się problemy.
+Instalator wyświetli wtedy komunikat o błędzie. Wersja tej łatki jest pokazana w lewym dolnym rogu głównego menu gry. 
+Przed zmianami zostaną utworzone pliki. kopii zapasowej. Można je przywrócić za pomocą przycisku 'Odinstaluj' lub ręcznie.
+
+Zespół odpowiedzialny za UCP
+
+Oryginalny twórca UCP
+[Sh0wdown](https://github.com/Sh0wdown)  
+
+Zarządzanie projektem
+[Kimberly](https://github.com/ByBurton/)  
+[Krarilotus (Youtube)](https://www.youtube.com/channel/UCMXHqa2vmclSoSkuCu_q5rw)
+
+Twórcy
+[LordHansCapon](https://github.com/LordHansCapon)  
+[np123](https://github.com/patel-nikhil)  
+[J-T-de](https://github.com/J-T-de)  
+[Chaf1812](https://github.com/Chaf1812)  
+
+Tłumacze
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polski)  
+[Lolasik011](https://github.com/Lolasik011) (Rosyjski)  
+[Skysoul (e-mail)](mailto:theskysoul@vip.qq.com) (Chiński)  
+
+Twórcy dodatkowych funkcji   
+[Evrey](https://github.com/Evrey) (aiv)  
+[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) (aiv,aic)  
+[PitchNeeded](https://github.com/PitchNeeded) (aiv)  
+[Xander10alpha (YouTube)](https://www.youtube.com/channel/UCYlyixfoKPcz-Ixi6Nc383Q) (aic)
+
+Specjalne podziękowania dla  
+[Firefly Studios](https://fireflyworlds.com/)  
+za stworzenie serii Twierdza.
+
+Oraz dla
+
+[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP)  
+[PodeCaradox](https://github.com/PodeCaradox)  
+[GRhin](https://www.twitch.tv/grhin)"
+}
+
+ui_StartTroops
+{
+	"JednostkiPoczątkowe"
 }
 
 ui_Resource
 {
-	"StartGoods"
+	"ZasobyPoczątkowe"
 }
 
 ﻿ui_aicconflict
 {
-	"konflikt i zostaną zignorowane"
+	"Konflikty zostaną zignorowane"
+}
+
+o_shfy
+{
+	"Strongholdify"
+}
+
+o_shfy_beer
+{
+	"Bonus do popularności za piwo"
+}
+
+o_shfy_beer_descr
+{
+	" "
+}
+
+o_shfy_religion
+{
+	"Bonus do popularności za katedrę i kościół"
+}
+
+o_shfy_religion_descr
+{
+	" "
+}
+
+o_shfy_peasantspawnrate
+{
+	"Szybkość pojawiania się wieśniaków"
+}
+
+o_shfy_peasantspawnrate_descr
+{
+	" "
+}
+
+o_shfy_resourcequantity
+{
+	"Ilośc otrzymywanych surowców"
+}
+
+o_shfy_resourcequantity_descr
+{
+	"Podane aspekty są zbliżone do tych z pierwszej Twierdzy. Uwaga: Każda zmiana wpływa na przeciwników komputerowych. W najgorszym wypadku mogą stać się bezużyteczni!"
 }
 
 o_armory_marketplace_weapon_order_fix
 {
-	"Fix armory/marketplace weapon orders to match"
+	"Ustaw broń na targowisku i w zbrojowni w tej samej kolejności"
 }
 
 o_armory_marketplace_weapon_order_fix_descr
 {
-	"Reorders Weapon icons in Armory and Marketplace to have the same order. Also moves Leather Armor between Mace and Crossbow, and moves Metal Armor between Polearm and Sword for easier access while in Marketplace scrolling through items."
+	"Ustawia broń na targowisku i w zbrojowni w tej samej kolejności. Zbroja skórzana na targowisku zostaje przesunięta między wekiery i kusze, natomiast zbroja metalowa między piki i miecze."
 }
 
 ai_fix_laddermen_with_enclosed_keep
 {
-    "Fix AI not using laddermen if they are enclosed"
+    "Napraw błąd, który powoduje, że komputer nie korzysta z drabiniarzy, gdy ma otoczoną siedzibę"
 }
 
 ai_fix_laddermen_with_enclosed_keep_descr
 {
-    "AI (notably Snake) no longer stops using Laddermen with their sieging units if their keep is enclosed."
+    "Komputer (głównie Wąż) będzie od teraz korzystał z drabiniarzy, gdy jego siedziba zostanie otoczona."
 }
 
 o_override_identity_menu
 {
-    "Override the Set-up Identity menu adding new features"
+    "Dodaje nowe funkcje do opcji ustawień tożsamości"
 }
 
 o_override_identity_menu_descr
 {
-    "Adds Ranged and Melee unit selection to Set-up Identity menu. ONLY FOR NORMAL GAME MODE!"
+    "Dodaje jednostki do własnego ustawienia w opcji dostosowania tożsamości. TYLKO W NORMALNYM TRYBIE GRY!"
 }
 
 o_default_multiplayer_speed
 {
-    "Set default multiplayer speed."
+    "Ustaw domyślną prędkość gry multiplayer."
 }
 
 o_default_multiplayer_speed_descr
@@ -55,12 +150,12 @@ o_default_multiplayer_speed_descr
 
 u_fireballistafix
 {
-    "Fire ballistas shoot monks and tunnelers"
+    "Balista ogniowa strzela do mnichów i kopaczy"
 }
 
 u_fireballistafix_descr
 {
-    "Fire ballistas automatically shoot at monks and tunnelers."
+    "Balista ogniowa automatycznie strzela w mnichów i kopaczy."
 }
 
 ui_browsepath
@@ -145,33 +240,6 @@ ui_aicHint
 {
 	"Eksportuje plik .aic z instalatora do folderu z grą."
 }
-
-
-ui_welcometext
-{
-"Jest to nieoficjalna łatka do Twierdzy Krzyżowiec.
-Projekt jest dostępny jako otwarte oprogramowanie przez [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
-
-Każda wersja Krzyżowca jest potencjalnie obsługiwana, ale wprowadzone zmiany &
-pochodzą z wersji 1.41 Steam, dlatego mogą pojawić się problemy. &
-Instalator wyświetli wtedy komunikat o błędzie. Wersja tej łatki jest pokazana &
-w lewym dolnym rogu głównego menu gry. Przed zmianami zostaną utworzone pliki &
-kopii zapasowej. Można je przywrócić za pomocą przycisku 'Odinstaluj' lub ręcznie.
-
-W tym miejscu chciałbym podziękować społeczności Twierdzy za tak &
-entuzjastyczne wsparcie.
-
-Specjalne podziękowania dla:
-[FireFly Studios](https://fireflyworlds.com/) za stworzenie serii Twierdza
-[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), bo przypomniał mi o Twierdzy
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) za polskie tłumaczenie
-[Lolasik011](https://github.com/Lolasik011) za rosyjskie tłumaczenie
-[Evrey](https://github.com/Evrey) za jego zamki SI
-[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) za jego zamki SI
-[PitchNeeded](https://github.com/PitchNeeded) za jego zamki SI
-[ByBurton](https://github.com/ByBurton) za AICE i pomoc w ustawieniach AIC."
-}
-
 
 // ======================
 //         1.00

@@ -109,6 +109,8 @@ namespace UCPAIConversion
                     {
                         try
                         {
+                            if (idFields[0].Trim() == "Philipp")
+                                idFields[0] = "Phillip";
                             personalityIDs.Add('"' + idFields[0].Trim() + "\": " + int.Parse(idFields[1]).ToString());
                         }
                         catch (FormatException)

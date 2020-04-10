@@ -24,7 +24,7 @@ namespace UCP.AICharacters
         Richard,
 
         Frederick,
-        Philipp,
+        Phillip,
         Wazir,
         Emir,
         Nizar,

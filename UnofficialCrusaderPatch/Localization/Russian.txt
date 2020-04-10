@@ -1,51 +1,146 @@
-﻿ui_StartTroops
+﻿// ======================
+//         2.14
+// ======================
+
+ui_welcometext
 {
-	"StartTroops"
+"Это не оффициальный патч для Stronghold Crusader.
+Проект доступен в виде открытого исходного кода по адресу [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
+
+Любая версия Crusader потенциально поддерживается, но так как изменения были получены из версии 1.41 Steam-Version, могут появиться несовместимости.
+После этого в настройках появятся сообщения об ошибках. Установленная версия патча отображается в левом нижнем углу главного меню игры. 
+Перед любыми изменениями будут созданы резервные файлы. Их можно восстановить с помощью кнопки 'Удалить' или вручную.
+
+Команда, стоящая за UCP
+
+Создатель UCP
+[Sh0wdown](https://github.com/Sh0wdown)  
+
+Управление проектами
+[Kimberly](https://github.com/ByBurton/)  
+[Krarilotus (Youtube)](https://www.youtube.com/channel/UCMXHqa2vmclSoSkuCu_q5rw)
+
+Разработчики
+[LordHansCapon](https://github.com/LordHansCapon)  
+[np123](https://github.com/patel-nikhil)  
+[J-T-de](https://github.com/J-T-de)  
+[Chaf1812](https://github.com/Chaf1812)  
+
+Переводчики
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polish)  
+[Lolasik011](https://github.com/Lolasik011),(Steam - YouMoMCallME) (Russian)  
+[Skysoul (e-mail)](mailto:theskysoul@vip.qq.com) (Chinese)  
+
+Создатели контента   
+[Evrey](https://github.com/Evrey) (aiv)  
+[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) (aiv,aic)  
+[PitchNeeded](https://github.com/PitchNeeded) (aiv)  
+[Xander10alpha (YouTube)](https://www.youtube.com/channel/UCYlyixfoKPcz-Ixi6Nc383Q) (aic)
+
+Особая благодарность, конечно же, выражается 
+[Firefly Studios](https://fireflyworlds.com/)  
+за создания серии игр Stronghold 
+
+И многие другие
+
+[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP)  
+[PodeCaradox](https://github.com/PodeCaradox)  
+[GRhin](https://www.twitch.tv/grhin)"
+}
+
+ui_StartTroops
+{
+	"Стартовые войска"
 }
 
 ui_Resource
 {
-	"StartGoods"
+	"Стартовые товары"
 }
 
 ﻿ui_aicconflict
 {
-	"конфликт и будет игнорироваться"
+	"конфликт AI будет игнорироваться"
+}
+
+o_shfy
+{
+	"Strongholdify"
+}
+
+o_shfy_beer
+{
+	"Бонус за популярность от пива"
+}
+
+o_shfy_beer_descr
+{
+	" "
+}
+
+o_shfy_religion
+{
+	"Бонус за популярность от собора и церкви"
+}
+
+o_shfy_religion_descr
+{
+	" "
+}
+
+o_shfy_peasantspawnrate
+{
+	"Скорость появления крестьян (спавн)"
+}
+
+o_shfy_peasantspawnrate_descr
+{
+	" "
+}
+
+o_shfy_resourcequantity
+{
+	"Количество предоставленных ресурсов"
+}
+
+o_shfy_resourcequantity_descr
+{
+	"Адаптирует перечисленные аспекты в соответствии с Stronghold 1. Внимание: Каждое изменение влияет на повелителей AI, в худшем случае делает их бесполезными!"
 }
 
 o_armory_marketplace_weapon_order_fix
 {
-	"Fix armory/marketplace weapon orders to match"
+	"Исправить оружейный склад/рыночное оружие, чтобы соответствовать"
 }
 
 o_armory_marketplace_weapon_order_fix_descr
 {
-	"Reorders Weapon icons in Armory and Marketplace to have the same order. Also moves Leather Armor between Mace and Crossbow, and moves Metal Armor between Polearm and Sword for easier access while in Marketplace scrolling through items."
+	"Заказывает иконки оружия в Оружейной и на Рынке, чтобы иметь тот же самый заказ. Также перемещает кожаную броню между булавой и арбалетом, а металлическую броню - между пиками и мечом для более легкого доступа во время прокрутки предметов на Рынке."
 }
 
 ai_fix_laddermen_with_enclosed_keep
 {
-    "Fix AI not using laddermen if they are enclosed"
+    "Исправить AI, не использующий лестниц, если они прилагаются."
 }
 
 ai_fix_laddermen_with_enclosed_keep_descr
 {
-    "AI (notably Snake) no longer stops using Laddermen with their sieging units if their keep is enclosed."
+    "AI (в частности, Змея) больше не прекращает использование ледоколов с их блоками осады, если их содержание находится в замкнутом пространстве."
 }
 
 o_override_identity_menu
 {
-    "Override the Set-up Identity menu adding new features"
+    "Переопределить меню "Настройка идентификации", добавляя новые функции."
 }
 
 o_override_identity_menu_descr
 {
-    "Adds Ranged and Melee unit selection to Set-up Identity menu. ONLY FOR NORMAL GAME MODE!"
+    "В меню "Настройка идентификации" добавляется "Диапазон" и "Выбор единиц измерения". ТОЛЬКО ДЛЯ ОБЫЧНОГО ИГРОВОГО РЕЖИМА!"
 }
 
 o_default_multiplayer_speed
 {
-    "Set default multiplayer speed."
+    "Установить скорость мультиплеера по умолчанию."
 }
 
 o_default_multiplayer_speed_descr
@@ -55,12 +150,12 @@ o_default_multiplayer_speed_descr
 
 u_fireballistafix
 {
-    "Fire ballistas shoot monks and tunnelers"
+    "Огненные баллисты стреляют в монахов и тунелекопателей"
 }
 
 u_fireballistafix_descr
 {
-    "Fire ballistas automatically shoot at monks and tunnelers."
+    "Огненные баллисты автоматически стреляют в монахов и тунелекопателей."
 }
 
 ui_browsepath
@@ -87,7 +182,6 @@ ui_aicselect
 {
 	"Сначала отмените выбор других файлов AIC. Следующие символы aic уже выбраны: "
 }
-
 
 // ======================
 //         2.13
@@ -149,35 +243,6 @@ ui_aicHint
 {
 	"Экспортирует .aic-файл из установщика в папку Stronghold Crusader."
 }
-
-
-ui_welcometext
-{
-"Это неофициальный патч для Stronghold Crusader.
-Проект доступен с открытым исходным кодом через [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
-
-Любая версия Crusader потенциально поддерживается, но поскольку изменения, &
-выведенный со Steam версией 1.41, могут возникнуть несовместимости. Настройка &
-затем отобразит сообщения об ошибках. Установленная версия исправления показана в &
-нижнем левом углу главного меню.Перед любыми изменениями будут созданы резервные файлы. &
-Они могут быть восстановлены через кнопку «Удалить» или вручную.
-
-На этом этапе я хотел бы поблагодарить сообщество Stronghold за поддержку &
-меня так восторженно.
-
-Особая благодарность:
-[FireFly Studios](https://fireflyworlds.com/) за создания серии Stronghold
-[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP), потому что он напомнил мне про Stronghold
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) за Польский перевод
-[Lolasik011](https://github.com/Lolasik011) за Русский перевод
-[Evrey](https://github.com/Evrey) за свои замки AI
-[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) за свои замки AI
-[PitchNeeded](https://github.com/PitchNeeded) за свои замки AI
-[ByBurton](https://github.com/ByBurton) for the AICE and help with the AIC parameters."
-}
-
-
-
 
 // ======================
 //         1.00
