@@ -125,17 +125,17 @@ ai_fix_laddermen_with_enclosed_keep
 
 ai_fix_laddermen_with_enclosed_keep_descr
 {
-    "Ezzel a hibajavítással azok az MI-k, akiknek a Vártornyuk körül van zárva, ostromegységeik továbbra is tudják használni a Létrahordozók létráit (az eredeti játékban csak a Kígyót érinti)."
+    "Ezzel a hibajavítással azok az MI-k, akiknek a Vártornyuk körül van zárva, továbbra is tudják az ostromegységeik használni a Létrahordozók létráit (az eredeti játékban csak a Kígyót érinti)."
 }
 
 o_override_identity_menu
 {
-    "Új beállítások hozzáadása a 'Identitás beállítások' menühöz"
+    "Új beállítások hozzáadása a 'Személyiség beállítások' menühöz"
 }
 
 o_override_identity_menu_descr
 {
-    "Távolsági és közelharci egység kiválasztási lehetőségét adja hozzá a 'Identitás beállítások' menüponthoz. CSAK NORMÁL JÁTÉK MÓDHOZ!"
+    "Távolsági és közelharci egység kiválasztási lehetőségét adja hozzá a 'Személyiség beállítások' menüponthoz. CSAK NORMÁL JÁTÉK MÓDHOZ!"
 }
 
 o_default_multiplayer_speed
@@ -160,7 +160,7 @@ u_fireballistafix_descr
 
 ui_browsepath
 {
-	"Kérjük adja meg az ön Stronghold Crusader telepítési könyvtárát."
+	"Kérjük adja meg a Stronghold Crusader telepítési könyvtárát."
 }
 
 ui_aicoldversion
