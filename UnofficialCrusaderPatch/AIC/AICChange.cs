@@ -293,7 +293,6 @@ namespace UCP.AIC
         private void ExportFile()
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            serializer.Formatting = Formatting.Indented;
             string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports", this.TitleIdent.Substring(4).Replace("UCP.", "")) + ".json";
             string backupFileName = fileName;
             while (File.Exists(backupFileName))
