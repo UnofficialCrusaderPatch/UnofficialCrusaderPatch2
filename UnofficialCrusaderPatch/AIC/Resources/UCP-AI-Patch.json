@@ -39,8 +39,8 @@ Opat, Kalif",
 - Hibák a védekező egységek elhelyezkedéseiben kijavítva:
 Patkány, Fülöp
 - Élelem és fegyvervásárlási problémák kiigazításra kerültek:
-Friggyes, Tábornok, Emír, Apát, Wazir, Nizar, Szultán, Farkas
-- Épületek építéskor fellépő hibák kijavítva:
+Frigyes, Tábornok, Emír, Apát, Wazir, Nizar, Szultán, Farkas
+- Épületek építésekor fellépő hibák kijavítva:
 Apát, Kalifa"
   },
 "AICLongDescription": {
@@ -132,9 +132,9 @@ Apát, Kalifa"
   - A Farkas dupla fejadagot ad ha van 80 darab élelem a magtárban
   - A Farkas fegyvereket ad el, hogy olyan várakkal is működjön amiben csak egy fegyverraktár van.
   - A Farkas úgy szervezi a raktárát, hogy olyan várakkal is működjön amiben 2 raktárhely van.
-  - Kalifa 10 vasat rak félre az Olajfőzőre
+  - Kalifa 10 vasat rak félre az olajfőzőre
   - Kalifa erőforrás eladása megváltoztatva, hogy legyen 10 helye a vasnak.
-  - Az Apát mostantól 1000 aranyat rak félre a Katedrálisához
+  - Az Apát mostantól 1000 aranyat rak félre a katedrálisához
   - Wazir és Nizar RecruitGoldThreshold megváltoztatva 200-ra
   - Wazir és Nizar minimum búza 15-re állítva"
 },
