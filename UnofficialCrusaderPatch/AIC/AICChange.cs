@@ -201,7 +201,7 @@ namespace UCP.AIC
             else
             {
                 List<String> conflicts = new List<String>();
-                int count = 0;
+                int count = -1;
                 foreach (AICharacterName character in this.characters)
                 {
                     count++;
@@ -248,7 +248,7 @@ namespace UCP.AIC
             {
                 change.conflict.Visibility = Visibility.Hidden;
                 List<String> conflicts = new List<String>();
-                int count = 0;
+                int count = -1;
                 foreach (AICharacterName character in change.characters)
                 {
                     count++;
