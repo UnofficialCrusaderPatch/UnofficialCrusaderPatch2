@@ -26,17 +26,8 @@ namespace UCPAIConversion
             }
         }
 
-        [ScriptIgnore]
-        public AICharacterName _Name { get; set; }
+        public String Name { get; set; }
 
-        public string Name
-        {
-            get => Enum.GetName(typeof(AICharacterName), _Name);
-            set
-            {
-                _Name = (AICharacterName)Enum.Parse(typeof(AICharacterName), value);
-            }
-        }
         public AIPersonality Personality { get; set; }
     }
 }

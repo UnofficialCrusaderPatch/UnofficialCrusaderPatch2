@@ -8,23 +8,24 @@ namespace UCPAIConversion
 {
     enum AICharacterName
     {
-        Rat,
-        Snake,
-        Pig,
-        Wolf,
+        Rat = 1,
+        Snake = 2,
+        Pig = 3,
+        Wolf = 4,
 
-        Saladin,
-        Caliph,
-        Sultan,
-        Richard,
+        Saladin = 5,
+        Caliph = 6,
+        Sultan = 7,
+        Richard = 8,
 
-        Frederick,
-        Phillip,
-        Wazir,
-        Emir,
-        Nizar,
-        Sheriff,
-        Marshal,
-        Abbot
+        Frederick = 9,
+        Philip = 10,
+        Wazir = 11,
+        Emir = 12,
+        Nizar = 13,
+        Sheriff = 14,
+        Marshal = 15,
+        Abbot = 16
+
     }
 }

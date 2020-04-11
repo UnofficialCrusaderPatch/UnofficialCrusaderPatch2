@@ -13,6 +13,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Rat",
+			"Index": 1,
 			"Personality": {
 
 
@@ -193,6 +194,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Snake",
+			"Index": 2,
 			"Personality": {
 
 
@@ -373,6 +375,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Pig",
+			"Index": 3,
 			"Personality": {
 
 
@@ -553,6 +556,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Wolf",
+			"Index": 4,
 			"Personality": {
 
 
@@ -733,6 +737,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Saladin",
+			"Index": 5,
 			"Personality": {
 
 
@@ -913,6 +918,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Caliph",
+			"Index": 6,
 			"Personality": {
 
 
@@ -1093,6 +1099,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Sultan",
+			"Index": 7,
 			"Personality": {
 
 
@@ -1273,6 +1280,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Richard",
+			"Index": 8,
 			"Personality": {
 
 
@@ -1453,6 +1461,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Frederick",
+			"Index": 9,
 			"Personality": {
 
 
@@ -1633,6 +1642,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Phillip",
+			"Index": 10,
 			"Personality": {
 
 
@@ -1813,6 +1823,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Wazir",
+			"Index": 11,
 			"Personality": {
 
 
@@ -1993,6 +2004,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Emir",
+			"Index": 12,
 			"Personality": {
 
 
@@ -2173,6 +2185,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Nizar",
+			"Index": 13,
 			"Personality": {
 
 
@@ -2353,6 +2366,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Sheriff",
+			"Index": 14,
 			"Personality": {
 
 
@@ -2533,6 +2547,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Marshal",
+			"Index": 15,
 			"Personality": {
 
 
@@ -2713,6 +2728,7 @@
 
 			"Description": "AICharacter",
 			"Name": "Abbot",
+			"Index": 16,
 			"Personality": {
 
 

@@ -13,7 +13,17 @@ namespace UCPAIConversion
 
         public List<AICharacterName> GetCharacters()
         {
-            return AICharacters.Select(character => character._Name).ToList();
+            return AICharacters.Select(character => (AICharacterName)Enum.Parse(typeof(AICharacterName), character.Index.ToString())).ToList();
+        }
+
+        public List<String> GetCustomCharacterNames()
+        {
+            return AICharacters.Select(character => character.Name.Substring(0, Math.Min(character.Name.Length, 20))).ToList();
+        }
+
+        public List<Int32> GetIndices()
+        {
+            return AICharacters.Select(character => character.Index).ToList();
         }
     }
 }

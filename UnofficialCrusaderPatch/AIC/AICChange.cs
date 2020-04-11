@@ -19,6 +19,7 @@ namespace UCP.AIC
     {
         private AICollection collection;
         private List<AICharacterName> characters;
+        private List<String> customCharacterNames;
         private Button conflict;
 
         static Dictionary<String, String> errorMessages;
@@ -200,11 +201,15 @@ namespace UCP.AIC
             else
             {
                 List<String> conflicts = new List<String>();
+                int count = 0;
                 foreach (AICharacterName character in this.characters)
                 {
+                    count++;
                     if (currentSelection.ContainsKey(character))
                     {
-                        conflicts.Add(Enum.GetName(typeof(AICharacterName), character));
+                        String customName = this.customCharacterNames.ElementAt(count);
+                        String name = Enum.GetName(typeof(AICharacterName), this.collection.GetIndices().ElementAt(count));
+                        conflicts.Add(name + ((name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")"));
                     }
                     else
                     {
@@ -243,8 +248,10 @@ namespace UCP.AIC
             {
                 change.conflict.Visibility = Visibility.Hidden;
                 List<String> conflicts = new List<String>();
+                int count = 0;
                 foreach (AICharacterName character in change.characters)
                 {
+                    count++;
                     if (!currentSelection.ContainsKey(character))
                     {
                         currentSelection.Add(character, change.TitleIdent);
@@ -253,7 +260,9 @@ namespace UCP.AIC
                     {
                         if (currentSelection[character] != change.TitleIdent && change.characters.Contains(character))
                         {
-                            conflicts.Add(Enum.GetName(typeof(AICharacterName), character));
+                            String customName = change.customCharacterNames.ElementAt(count);
+                            String name = Enum.GetName(typeof(AICharacterName), change.collection.GetIndices().ElementAt(count));
+                            conflicts.Add(name + ((name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")"));
                             change.conflict.Visibility = Visibility.Visible;
                         }
                     }
@@ -345,7 +354,7 @@ namespace UCP.AIC
                             //aicChange.titleBox.IsChecked = true;
                             foreach (AICharacter character in aicChange.collection.AICharacters)
                             {
-                                currentSelection[character._Name] = aicChange.TitleIdent;
+                                currentSelection[(AICharacterName)Enum.Parse(typeof(AICharacterName), character.Index.ToString())] = aicChange.TitleIdent;
                             }
                         }
                     }
@@ -392,7 +401,7 @@ namespace UCP.AIC
                     {
                         foreach (AICharacter character in aicChange.collection.AICharacters)
                         {
-                            currentSelection[character._Name] = aicChange.TitleIdent;
+                            currentSelection[(AICharacterName)Enum.Parse(typeof(AICharacterName), character.Index.ToString())] = aicChange.TitleIdent;
                         }
                     }
                 }
@@ -502,6 +511,7 @@ namespace UCP.AIC
                 };
                 change.collection = ch;
                 change.characters = ch.GetCharacters();
+                change.customCharacterNames = ch.GetCustomCharacterNames();
                 availableSelection[change.TitleIdent] = ch.GetCharacters();
                 changes.Add(change);
             }
@@ -588,7 +598,7 @@ namespace UCP.AIC
 
                 foreach (AICharacter character in changeSource.collection.AICharacters)
                 {
-                    if (character._Name == name)
+                    if ((AICharacterName)Enum.Parse(typeof(AICharacterName), character.Index.ToString()) == name)
                     {
                         characterChanges.Add(character);
                         break;
