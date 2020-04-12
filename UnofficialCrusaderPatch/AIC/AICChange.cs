@@ -219,7 +219,7 @@ namespace UCP.AIC
                 if (conflicts.Count > 0)
                 {
                     this.conflict.Visibility = Visibility.Visible;
-                    this.conflict.ToolTip = String.Join(",\n", conflicts) + " " + Localization.Get("ui_aicconflict");
+                    this.conflict.ToolTip = String.Join(",\n", conflicts) + "\n" + Localization.Get("ui_aicconflict");
                 }
                 selectedChanges.AddLast(this);
             }
@@ -267,7 +267,7 @@ namespace UCP.AIC
                         }
                     }
                 }
-                change.conflict.ToolTip = String.Join(",\n", conflicts) + " " + Localization.Get("ui_aicconflict");
+                change.conflict.ToolTip = String.Join(",\n", conflicts) + "\n" + Localization.Get("ui_aicconflict");
             }
             Configuration.Save();
             base.TitleBox_Unchecked(sender, e);
@@ -314,7 +314,7 @@ namespace UCP.AIC
                 File.Move(fileName, backupFileName);
             }
             Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports"));
-            File.WriteAllText(fileName, Format(serializer.Serialize(collection)));
+            File.WriteAllText(fileName, new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(this.TitleIdent.Substring(4).Replace("UCP.", "UCP.AIC.Resources.") + ".json"), Encoding.UTF8).ReadToEnd());
 
             Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent.Substring(4).Replace("UCP.", "") + ".json");
         }

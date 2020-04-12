@@ -109,7 +109,7 @@ namespace UCPAIConversion
                     string[] idFields = parsedIdentifier.Split('=');
                     if (idFields[0].Trim() == "Index")
                     {
-                        personalityIDs.Add('"' + "Name" + "\": " + Enum.GetName(typeof(AICharacterName), idFields[1]));
+                        personalityIDs.Add('"' + "Name" + "\": \"" + Enum.GetName(typeof(AICharacterName), int.Parse(idFields[1])) + "\"");
                         currentCharacterName = (AICharacterName)int.Parse(idFields[1]);
                         indexFound = true;
                     }
@@ -133,7 +133,7 @@ namespace UCPAIConversion
                                     string indexName = currentCharacterName.ToString();
                                     if (indexName != idFields[1].Trim())
                                         //custom name is set
-                                        personalityIDs.Add("\"CustomName\": \"" + int.Parse(idFields[1]).ToString().Substring(0, Math.Min(int.Parse(idFields[1]).ToString().Length, 20)) + '"');
+                                        personalityIDs.Add("\"CustomName\": \"" + idFields[1].Trim().Substring(0, Math.Min(idFields[1].Trim().ToString().Length, 20)) + '"');
                                     else
                                         //no custom name set
                                         personalityIDs.Add("\"CustomName\": \"\"");
