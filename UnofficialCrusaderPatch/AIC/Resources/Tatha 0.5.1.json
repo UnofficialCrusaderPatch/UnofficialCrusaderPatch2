@@ -319,12 +319,12 @@
     -A favágók maximális száma egy kissé le lett csökkentve
     -Most már kardforgatókat tartalék csapatként is bevet támadáskor (csak akkor használja őket ha van rés a vár falán)
     -Most már kiegészítő egységként kardforgatókat is bevet a támadáskor mint: Attackunit5 (a váron kívüli csapatok támadására használatos)"
-}
+},
 
 	"AICharacters": [
 		{
-			"Description": "AICharacter",
 			"Name": "Rat",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 12,
@@ -499,8 +499,8 @@
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Snake",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 12,
@@ -675,8 +675,8 @@
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Pig",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 12,
@@ -851,8 +851,8 @@
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Wolf",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -1028,8 +1028,8 @@
 
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Saladin",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 10,
@@ -1204,8 +1204,8 @@
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Caliph",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 10,
@@ -1382,9 +1382,8 @@
 
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Sultan",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -1562,9 +1561,8 @@
 
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Richard",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -1740,8 +1738,8 @@
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Frederick",
+			"CustomName": "",
 			"Personality": {
 				"Unknown000": 13,
 				"Unknown001": 0,
@@ -1917,9 +1915,8 @@
 
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Phillip",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -2097,9 +2094,8 @@
 
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Wazir",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -2277,9 +2273,8 @@
 
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Emir",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -2457,9 +2452,8 @@
 
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Nizar",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -2632,14 +2626,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 4,
 				"TargetChoice": "Closest"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Sheriff",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -2812,14 +2803,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 3,
 				"TargetChoice": "Closest"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Marshal",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -2992,14 +2980,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 2,
 				"TargetChoice": "Balanced"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Abbot",
+			"CustomName": "",
 			"Personality": {
 
 
