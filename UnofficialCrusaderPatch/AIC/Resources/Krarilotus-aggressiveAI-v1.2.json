@@ -53,7 +53,17 @@ Wprowadzone zmiany:
 -> ai在发起一次进攻后将不再休停一段时间。
 -更高效的骚扰部队。
 -减少了巡逻部队到数量。
--ai将不再囤积黄金而是将其投入战争。"
+-ai将不再囤积黄金而是将其投入战争。",
+  "Hungarian": "Ez az MI karakter fájl javítja az MI-k hatékonyságát és még agresszívabbá teszi őket.
+Erre a célra végrehajtott változtatások:
+- Hatékonyabb gazdasághasználat
+- Az MI-k első támadása hamarabb jön.
+- A csapatok sokoldalúbb használata.
+- Az AI folyamatosan támad.
+-> Támadás után az MI egységei ritkábban maradnak egy helyen.
+- Az MI hatékonyabban alkalmazza a rajtaütéseket.
+- Az MI csökkenti a feleslegesen járőröző egységeit.
+- Az MI az arany felhalmozása helyett elköti azt, hogy nagyobb nyomást gyakoroljon ellenségére."
   },
 "AICLongDescription": {
   "German": "This is the changelog in comparison to the vanilla AI:
@@ -199,7 +209,52 @@ Wprowadzone zmiany:
     - Халиф и Вазир хранят железо в запасах по 10 штук для своего чана с нефтю, что дает их экономике огромный толчок, не продавая и не покупая железо каждые 3 секунды.
     - Предоставление Халифу, Вазиру и Аббату более высокий минимальный предел набора золота, и каждому лорду, имеющему цепочку производства хлеба, как минимум 230 минимальных требований к золоту (чтобы он мог купить 10 штук пшеницы для обеспечения своей экономической устойчивости).",
   
-"Chinese": "Not translated"
+"Chinese": "Not translated",
+  "Hungarian": "Ezek a változtatások az eredeti MI-khez képest:
+    - Az alap védelmek újra használatba lesznek véve
+    - A védekező egységek hatékonysága kissé meg lett növelve
+    - Frigyes, Tábornok, Emír és Apát vásárol felszerelést
+    - Wazir, Nizar és Kalifa már nem kerül olyan gyorsan csődbe
+    - Az Apát 1000 aranyat rak félre a katedrálisához
+	
+    Ez az AIC alapvető hibajavításokon kívül az alábbi változtatásokat eszközöli a kiegyensúlyozásban:
+    - Minden MI-nek agresszívabb a támadás- és a védekezési viselkedése
+    -> Ehhez hozzátartozik a furcsán várakozó egységek csökkentése, akik az ostrom után csak egy helyben álldogálnak és megakadályozzák az MI-t abban hogy valami értelmeset is csináljon
+    - Minden MI törekszik arra hogy magasan legyen a népszerűsége a gyorsabb toborzásért
+    - Minden MI hatékonyabban kezeli az élelmet
+    - A Patkány 2 kőfejtőt, 5 favágó kunyhót és 4 mezőgazdasági épületet épít (+1, -1, -2)
+    - A Patkány háromszor több ideig vár, hogy a lerombolt erőforrás épületeit újra felépítse
+    - A Kígyó mostantól 2 vasbányát és 8 almáskertet épít (+2, -2)
+    - A Kígyó kevesebb arab gránátost és orgyilkost használ
+    - A Disznó 3 kőfejtőt, 10 tehenészetet épít, de egy szurokkaparó telepet sem (+1, -1, -2)
+    - A Farkas 1 szurokkaparó telepet és 4 vasbányát továbbá 12 mezőgazdasági épületet épít (-1, +1, +2)
+    - A Farkas kevesebb arab gránátost és orgyilkost használ
+    - Szaladin most már használ orgyilkosokat
+    - A Kalifa 8 mezőgazdasági épületet, 3 kőfejtőt, 3 vasbányát és 5 szurokkaparó telepet épít (-2, +1, +2, -5)
+    - A Kalifa nem adja el azonnal a vasat és így marad elég vas a szurokkaparó telep megépítésére
+    - A Kalifa már csak tűzvetőgépet épít újra, ha már csak 500 aranya maradt
+    - A Kalifa kevesebb orgyilkost használ
+    - A Szultán 3 kőfejtőt, 2 vasbányát és 8 favágó kunyhót épít (+1, +1, -7)
+    - A Szultán már használ rabszolgákat
+    - Richárd 4 kőfejtőt és 12 mezőgazdasági épületet épít (+1, -3)
+    - Frigyes kevesebb buzogányost használ
+    - Fülöp 4 vasbányát, 1 kőfejtőt és 7 mezőgazdasági épületet épít (+1, +1, -1)
+    - Fülöp támadáskor a lovagjait is használja
+    - Fülöp elszórtan számszeríjászokat használ a védelemben
+    - Wazir 11 mezőgazdasági épületet, 12 favágó kunyhót és 2 szurokkaparó telepet épít (+3, +2, -2)
+    - Wazir kevesebb orgyilkost használ
+    - Wazir nem adja el azonnal a vasat és így marad 10 vas a szurokkaparó telep megépítésére
+    - Emír 12 mezőgazdasági épületet és 5 kőfejtőt épít (-4, +1)
+    - Emír buzogányosokat használ támadáskor
+    - Nizar 13 mezőgazdasági épületet, 0 szurokkaparó telepet, 3 vasbányát, 2 kőfejtőt és 11 favágó kunyhót épít (-3, -1, +1, +1, -1)
+    - Nizar kevesebb tűzvetőgépet használ
+    - Nizar használ néhány ostromgépet + lovasíjászt a védelemben
+    - A Főispán 12 mezőgazdasági épületet és 3 szurokkaparó telepet épít (+2, -1)
+    - A Főispán már csak tűzvetőgépet épít újra, ha már csak 350 aranya maradt
+    - A Tábornok már almáskertet is épít
+    - A Tábornok 5 vasbányát épít (+2)
+    - Az Apát 8 mezőgazdasági épületet és 5 kőfejtőt épít (-4, +1)
+    - Az Apát európai kardforgatókat és 10 dárdást használ támadáskor"
 },
 
 	"AICharacters": [
