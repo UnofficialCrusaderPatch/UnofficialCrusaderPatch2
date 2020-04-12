@@ -208,7 +208,7 @@ namespace UCP.AIC
                     if (currentSelection.ContainsKey(character))
                     {
                         String customName = this.customCharacterNames.ElementAt(count);
-                        String name = Enum.GetName(typeof(AICharacterName), this.collection.GetIndices().ElementAt(count));
+                        String name = Enum.GetName(typeof(AICharacterName), this.collection.GetCharacters().ElementAt(count));
                         conflicts.Add(name + ((name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")"));
                     }
                     else
@@ -261,7 +261,7 @@ namespace UCP.AIC
                         if (currentSelection[character] != change.TitleIdent && change.characters.Contains(character))
                         {
                             String customName = change.customCharacterNames.ElementAt(count);
-                            String name = Enum.GetName(typeof(AICharacterName), change.collection.GetIndices().ElementAt(count));
+                            String name = Enum.GetName(typeof(AICharacterName), change.collection.GetCharacters().ElementAt(count));
                             conflicts.Add(name + ((name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")"));
                             change.conflict.Visibility = Visibility.Visible;
                         }
@@ -354,7 +354,7 @@ namespace UCP.AIC
                             //aicChange.titleBox.IsChecked = true;
                             foreach (AICharacter character in aicChange.collection.AICharacters)
                             {
-                                currentSelection[(AICharacterName)Enum.Parse(typeof(AICharacterName), character.Index.ToString())] = aicChange.TitleIdent;
+                                currentSelection[(AICharacterName)Enum.Parse(typeof(AICharacterName), character.Name.ToString())] = aicChange.TitleIdent;
                             }
                         }
                     }
@@ -401,7 +401,7 @@ namespace UCP.AIC
                     {
                         foreach (AICharacter character in aicChange.collection.AICharacters)
                         {
-                            currentSelection[(AICharacterName)Enum.Parse(typeof(AICharacterName), character.Index.ToString())] = aicChange.TitleIdent;
+                            currentSelection[(AICharacterName)Enum.Parse(typeof(AICharacterName), character.Name.ToString())] = aicChange.TitleIdent;
                         }
                     }
                 }
@@ -598,7 +598,7 @@ namespace UCP.AIC
 
                 foreach (AICharacter character in changeSource.collection.AICharacters)
                 {
-                    if ((AICharacterName)Enum.Parse(typeof(AICharacterName), character.Index.ToString()) == name)
+                    if ((AICharacterName)Enum.Parse(typeof(AICharacterName), character.Name.ToString()) == name)
                     {
                         characterChanges.Add(character);
                         break;
@@ -614,7 +614,7 @@ namespace UCP.AIC
                 {
                     // mov eax, index
                     bw.Write((byte)0xB8);
-                    bw.Write((int)aic.Index * 0x2A4);
+                    bw.Write((int)aic.Name * 0x2A4);
 
                     // imul eax, 2A4
                     /*bw.Write((byte)0x69);
