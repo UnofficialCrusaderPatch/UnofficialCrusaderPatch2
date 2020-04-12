@@ -11,9 +11,8 @@
 
 	"AICharacters": [
 		{
-
-			"Description": "AICharacter",
 			"Name": "Rat",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -186,14 +185,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 1,
 				"TargetChoice": "Player"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Snake",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -366,14 +362,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 1,
 				"TargetChoice": "Balanced"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Pig",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -546,14 +539,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 2,
 				"TargetChoice": "Gold"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Wolf",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -726,14 +716,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 3,
 				"TargetChoice": "Closest"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Saladin",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -906,14 +893,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 3,
 				"TargetChoice": "Gold"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Caliph",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -1086,14 +1070,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 5,
 				"TargetChoice": "Balanced"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Sultan",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -1266,14 +1247,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 1,
 				"TargetChoice": "Closest"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Richard",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -1446,14 +1424,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 3,
 				"TargetChoice": "Closest"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Frederick",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -1626,14 +1601,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 4,
 				"TargetChoice": "Gold"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Phillip",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -1806,14 +1778,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 2,
 				"TargetChoice": "Balanced"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Wazir",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -1986,14 +1955,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 2,
 				"TargetChoice": "Balanced"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Emir",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -2166,14 +2132,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 2,
 				"TargetChoice": "Gold"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Nizar",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -2346,14 +2309,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 4,
 				"TargetChoice": "Closest"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Sheriff",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -2526,14 +2486,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 3,
 				"TargetChoice": "Closest"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Marshal",
+			"CustomName": "",
 			"Personality": {
 
 
@@ -2706,14 +2663,11 @@
 				"AttMaxDefault": 200,
 				"AttMainGroupsCount": 2,
 				"TargetChoice": "Balanced"
-
 			}
-
 		},
 		{
-
-			"Description": "AICharacter",
 			"Name": "Abbot",
+			"CustomName": "",
 			"Personality": {
 
 

@@ -5,29 +5,11 @@ namespace UCPAIConversion
 {
     class AICharacter
     {
-
-        private Int32 _index;
-
-        public String Description { get; set; }
-        
-        public Int32 Index
-        {
-            get
-            {
-                return _index;
-            }
-            set
-            {
-                if (value < 1 || value > 16)
-                {
-                    throw new ArgumentException();
-                }
-                _index = value;
-            }
-        }
-
         [ScriptIgnore]
         public AICharacterName _Name { get; set; }
+
+        [ScriptIgnore]
+        public String _CustomName { get; set; }
 
         public string Name
         {
@@ -37,6 +19,16 @@ namespace UCPAIConversion
                 _Name = (AICharacterName)Enum.Parse(typeof(AICharacterName), value);
             }
         }
+
+        public String CustomName
+        {
+            get => _CustomName;
+            set
+            {
+                _CustomName = (value != null ? value.Substring(0, Math.Min(value.Length, 20)) : String.Empty);
+            }
+        }
+
         public AIPersonality Personality { get; set; }
     }
 }

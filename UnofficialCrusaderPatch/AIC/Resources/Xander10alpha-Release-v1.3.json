@@ -584,8 +584,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
   },
 	"AICharacters": [
 		{
-			"Description": "AICharacter",
-			"Index": 1,
+			"CustomName": "",
 			"Name": "Rat",
 			"Personality": {
 
@@ -761,8 +760,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 2,
+			"CustomName": "",
 			"Name": "Snake",
 			"Personality": {
 
@@ -938,8 +936,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 3,
+			"CustomName": "",
 			"Name": "Pig",
 			"Personality": {
 
@@ -1115,8 +1112,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 4,
+			"CustomName": "",
 			"Name": "Wolf",
 			"Personality": {
 
@@ -1292,8 +1288,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 5,
+			"CustomName": "",
 			"Name": "Saladin",
 			"Personality": {
 
@@ -1469,8 +1464,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 6,
+			"CustomName": "",
 			"Name": "Caliph",
 			"Personality": {
 
@@ -1646,8 +1640,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 7,
+			"CustomName": "",
 			"Name": "Sultan",
 			"Personality": {
 
@@ -1823,8 +1816,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 8,
+			"CustomName": "",
 			"Name": "Richard",
 			"Personality": {
 
@@ -2000,8 +1992,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 9,
+			"CustomName": "",
 			"Name": "Frederick",
 			"Personality": {
 
@@ -2177,8 +2168,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 10,
+			"CustomName": "",
 			"Name": "Phillip",
 			"Personality": {
 
@@ -2354,8 +2344,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 11,
+			"CustomName": "",
 			"Name": "Wazir",
 			"Personality": {
 
@@ -2531,8 +2520,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 12,
+			"CustomName": "",
 			"Name": "Emir",
 			"Personality": {
 
@@ -2708,8 +2696,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 13,
+			"CustomName": "",
 			"Name": "Nizar",
 			"Personality": {
 
@@ -2885,8 +2872,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 14,
+			"CustomName": "",
 			"Name": "Sheriff",
 			"Personality": {
 
@@ -3062,8 +3048,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 15,
+			"CustomName": "",
 			"Name": "Marshal",
 			"Personality": {
 
@@ -3239,8 +3224,7 @@ A cél, a már meglévő MI-k megerősítése minden szempontból, a következő
 			}
 		},
 		{
-			"Description": "AICharacter",
-			"Index": 16,
+			"CustomName": "",
 			"Name": "Abbot",
 			"Personality": {
 

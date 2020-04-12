@@ -99,23 +99,54 @@ namespace UCPAIConversion
                 string[] characterID = personality[0].Split('\n');
 
                 List<string> personalityIDs = new List<string>();
-                personalityIDs.Add("\"Description\": \"AICharacter\"");
 
-                foreach(string identifier in characterID)
+                //find the index key
+                AICharacterName currentCharacterName = 0;
+                bool indexFound = false;
+                foreach (string identifier in characterID)
                 {
                     string parsedIdentifier = Regex.Replace(identifier, @"\s+", String.Empty);
-                    string[] idFields = identifier.Split('=');
-                    if (idFields.Length > 1)
+                    string[] idFields = parsedIdentifier.Split('=');
+                    if (idFields[0].Trim() == "Index")
                     {
-                        try
+                        personalityIDs.Add('"' + "Name" + "\": \"" + Enum.GetName(typeof(AICharacterName), int.Parse(idFields[1])) + "\"");
+                        currentCharacterName = (AICharacterName)int.Parse(idFields[1]);
+                        indexFound = true;
+                    }
+                }
+
+                //convert the name key and all other keys
+                if (indexFound)
+                {
+                    foreach (string identifier in characterID)
+                    {
+                        string parsedIdentifier = Regex.Replace(identifier, @"\s+", String.Empty);
+                        string[] idFields = identifier.Split('=');
+                        if (idFields.Length > 1)
                         {
-                            if (idFields[0].Trim() == "Philipp")
-                                idFields[0] = "Phillip";
-                            personalityIDs.Add('"' + idFields[0].Trim() + "\": " + int.Parse(idFields[1]).ToString());
-                        }
-                        catch (FormatException)
-                        {
-                            personalityIDs.Add('"' + idFields[0].Trim() + "\": \"" + idFields[1].Trim() + "\"");
+                            try
+                            {
+                                if (idFields[0].Trim() == "Name")
+                                {
+                                    if (idFields[1].Trim() == "Philipp")
+                                        idFields[1] = "Phillip";
+                                    string indexName = currentCharacterName.ToString();
+                                    if (indexName != idFields[1].Trim())
+                                        //custom name is set
+                                        personalityIDs.Add("\"CustomName\": \"" + idFields[1].Trim().Substring(0, Math.Min(idFields[1].Trim().ToString().Length, 20)) + '"');
+                                    else
+                                        //no custom name set
+                                        personalityIDs.Add("\"CustomName\": \"\"");
+                                }
+                                else
+                                {
+                                    personalityIDs.Add('"' + idFields[0].Trim() + "\": " + int.Parse(idFields[1]).ToString());
+                                }
+                            }
+                            catch (FormatException)
+                            {
+                                personalityIDs.Add('"' + idFields[0].Trim() + "\": \"" + idFields[1].Trim() + "\"");
+                            }
                         }
                     }
                 }

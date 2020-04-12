@@ -80,7 +80,24 @@ namespace UCPAIConversion
 
                         foreach (KeyValuePair<string, object> definition in (Dictionary<string, object>)character)
                         {
-                            if (definition.Key == "Personality")
+                            if (definition.Key != "Personality")
+                            {
+                                try
+                                {
+                                    SetProperty(AICharacterType, currentCharacter, definition.Key, definition.Value);
+                                }
+                                catch (Exception e)
+                                {
+                                    if (e is TargetInvocationException || e is ArgumentException)
+                                    {
+                                        String customName = currentCharacter.CustomName;
+                                        String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
+                                        String errorName = ((name == null || name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
+                                        SerializationErrors.Errors.Add(GetErrorMessage(definition.Key, errorName));
+                                    }
+                                }
+
+                            } else if (definition.Key == "Personality")
                             {
                                 currentPersonality = new AIPersonality();
                                 foreach (KeyValuePair<string, object> personalityValue in (Dictionary<string, object>)definition.Value)
@@ -96,54 +113,42 @@ namespace UCPAIConversion
                                     }
                                     catch (ArgumentException)
                                     {
-                                        SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, currentCharacter._Name.ToString()));
+                                        String customName = currentCharacter.CustomName;
+                                        String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
+                                        String errorName = ((name == null || name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
+                                        SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, errorName));
                                     }
                                     catch (NullReferenceException)
                                     {
-                                        SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, currentCharacter._Name.ToString()));
+                                        String customName = currentCharacter.CustomName;
+                                        String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
+                                        String errorName = ((name == null || name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
+                                        SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, errorName));
                                     }
                                     catch (Exception)
                                     {
-                                        SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, currentCharacter._Name.ToString()));
+                                        String customName = currentCharacter.CustomName;
+                                        String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
+                                        String errorName = ((name == null || name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
+                                        SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, errorName));
                                     }
                                 }
                                 currentCharacter.Personality = currentPersonality;
                             }
-                            else if (definition.Key == "Name")
-                            {
-                                try
-                                {
-                                    SetProperty(AICharacterType, currentCharacter, definition.Key, definition.Value);
-                                    Enum.TryParse(definition.Value.ToString(), out AICharacterName nameEnum);
-                                    SetProperty(AICharacterType, currentCharacter, "Index", nameEnum + 1);
-                                }
-                                catch (Exception e)
-                                {
-                                    if (e is TargetInvocationException || e is ArgumentException)
-                                    {
-                                        SerializationErrors.Errors.Add(GetErrorMessage(definition.Key, currentCharacter._Name.ToString()));
-                                    }
-                                }
-                            }
-                            else if (definition.Key != "Index")
-                            {
-                                try
-                                {
-                                    SetProperty(AICharacterType, currentCharacter, definition.Key, definition.Value);
-                                }
-                                catch (Exception e)
-                                {
-                                    if (e is TargetInvocationException || e is ArgumentException)
-                                    {
-                                        SerializationErrors.Errors.Add(GetErrorMessage(definition.Key, currentCharacter._Name.ToString()));
-                                    }
-                                }
-                            }
                         }
                         AICharacters.Add(currentCharacter);
-                        if (SerializationErrors.Errors.Count > 0)
+                        if (SerializationErrors.Errors.Count > 0 || currentCharacter._Name == 0)
                         {
-                            SerializationErrors.AssociatedAICharacter = currentCharacter._Name.ToString();
+                            String customName = currentCharacter.CustomName;
+                            String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
+                            String errorName = ((name == null || customName.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
+                            SerializationErrors.AssociatedAICharacter = errorName;
+
+                            if (currentCharacter._Name == 0)
+                            {
+                                SerializationErrors.Errors.Add(GetErrorMessage("Index", errorName));
+                            }
+
                             AICSerializationExceptionList.ErrorList.Add(SerializationErrors);
                         }
                     }

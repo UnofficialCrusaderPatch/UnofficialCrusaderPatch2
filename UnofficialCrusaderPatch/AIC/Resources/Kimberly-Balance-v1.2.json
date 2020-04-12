@@ -34,8 +34,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 
 	"AICharacters": [
 		{
-			"Description": "AICharacter",
 			"Name": "Rat",
+			"CustomName": "",
 			"Personality": {
 				"Unknown000": 12,
 				"Unknown001": 0,
@@ -209,8 +209,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Snake",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 12,
@@ -385,8 +385,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Pig",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 12,
@@ -561,8 +561,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Wolf",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -737,8 +737,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Saladin",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 10,
@@ -913,8 +913,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Caliph",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 10,
@@ -1089,8 +1089,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Sultan",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 10,
@@ -1265,8 +1265,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Richard",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -1441,8 +1441,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Frederick",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -1617,8 +1617,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Phillip",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -1793,8 +1793,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Wazir",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 10,
@@ -1969,8 +1969,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Emir",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 10,
@@ -2145,8 +2145,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Nizar",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 10,
@@ -2321,8 +2321,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Sheriff",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -2497,8 +2497,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Marshal",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -2673,8 +2673,8 @@ Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok 
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Abbot",
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
