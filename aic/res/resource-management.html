@@ -3,51 +3,37 @@
       <tr>
         <th scope="col">Field</th>
         <th scope="col">Value</th>
-        <th scope="col">Type</th>
-        <th scope="col">Range of Acceptable Values</th>
-        <th scope="col">Description</th>
+        <th scope="col">Acceptable Values</th>
       </tr>
     </thead>
     <tbody>
         <tr>
-            <td>MinimumGoodsRequiredAfterTrade</td>
+            <td>MinimumGoods<br>Required<br>AfterTrade <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="The AI will only send ally a good if they have this at least amount to spare"></i></td>
             <td><input id="MinimumGoodsRequiredAfterTrade" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>The AI will only send ally a good if they have this at least amount to spare</td>
         </tr>
         <tr>
-            <td>MaxWood</td>
+            <td>MaxWood <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum amount of wood to store on the stockpile before selling"></i></td>
             <td><input id="MaxWood" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Maximum amount of wood to store on the stockpile before selling</td>
         </tr>
         <tr>
-            <td>MaxStone</td>
+            <td>MaxStone <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum amount of stone to store on the stockpile + amount of stone needed for the biggest unbuilt stone building (ie. tower) that hasn't been reached in the build order of the AIV"></i></td>
             <td><input id="MaxStone" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Maximum amount of stone to store on the stockpile +
-                 amount of stone needed for the biggest unbuilt stone building (ie. tower) that hasn't been reached in the build order of the AIV
-            </td>
         </tr>
         <tr>
-            <td>MaxResourceOther</td>
+            <td>MaxResourceOther <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum amount of hops, iron, pitch and flour to store in the stockpile"></i></td>
             <td><input id="MaxResourceOther" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Maximum amount of hops, iron, pitch and flour to store in the stockpile</td>
         </tr>
         <tr>
-            <td>MaxResourceVariance</td>
+            <td>MaxResource<br>Variance <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Allowed tolerance for all goods before AI sells down to the max allowed stock"></i></td>
             <td><input id="MaxResourceVariance" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Allowed tolerance for all goods before AI sells down to the max allowed stock</td>
         </tr>
         <tr>
-            <td>SellResource</td>
+            <td>SellResource <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Resource type that AI will completely sell off"></i></td>
             <td>
                 <table>
                     <tr>
@@ -158,9 +144,7 @@
                     </tr>
                 </table>
             </td>
-            <td>Resource</td>
-            <td><a href="field-values.html#Resource" target="_blank">Resource</a></td>
-            <td>Resource type that AI will completely sell off</td>
+            <td style="width: 150%"><a href="field-values.html#Resource" target="_blank">Resource</a></td>
         </tr>
     </tbody>
 </table>

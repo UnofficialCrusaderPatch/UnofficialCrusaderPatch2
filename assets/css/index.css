@@ -1,5 +1,10 @@
 html, .page {
     background-color: lightgray;
+    font-size: medium;
+}
+
+input {
+    width: 100px;
 }
 
 hr.header-divider {
@@ -26,8 +31,14 @@ hr.header-divider {
 }
 
 .card.aic-gen {
-    width: 90%;
-    margin: 5px;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.card.aic-gen .card-header{
+    height: 100%;
+    margin: 0;
     padding: 0;
 }
 
@@ -169,4 +180,8 @@ button, .btn {
 .ai-selector ul.list-group.list-group-horizontal {
     cursor: pointer;
     flex-direction: row;
+}
+
+#aic-content{
+    margin-left: auto;
 }

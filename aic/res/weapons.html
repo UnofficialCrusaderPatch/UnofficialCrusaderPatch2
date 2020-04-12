@@ -3,57 +3,49 @@
       <tr>
         <th scope="col">Field</th>
         <th scope="col">Value</th>
-        <th scope="col">Type</th>
-        <th scope="col">Range of Acceptable Values</th>
-        <th scope="col">Description</th>
+        <th scope="col">Acceptable Values</th>
       </tr>
     </thead>
     <tbody>
         <tr>
-            <td>MaxEquipment</td>
-            <td><input id="MaxEquipment" type="number" min=0 max=11 placeholder="Enter value"></td>
+            <td>MaxEquipment <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum amount of weapons or armour stored in the armoury"></i></td>
+            <td><input id="MaxEquipment" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Maximum amount of weapons or armour stored in the armoury</td>
         </tr>
         <tr>
-            <td>BlacksmithSetting</td>
+            <td>BlacksmithSetting <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="The setting for the AIs blacksmith workshops"></i></td>
             <td>
                 <select id="BlacksmithSetting">
                     <option class="opt-weapons">Maces</option>
                     <option class="opt-weapons">Swords</option>
-                </select
-            ></td>
-            <td>BlacksmithSetting</td>
-            <td>Maces, Swords</td>
-            <td>The setting for the AIs blacksmith workshops</td>
+                </select>
+            </td>
+            <td>Maces, Swords, Both</td>
         </tr>
         <tr>
-            <td>FletcherSetting</td>
+            <td>FletcherSetting <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="The setting for the AIs fletcher workshops"></i></td>
             <td>
                 <select id="FletcherSetting">
                     <option class="opt-weapons">Bows</option>
                     <option class="opt-weapons">Crossbows</option>
-                </select
-            ></td>
-            <td>The setting for the AIs fletcher workshops</td>
+                </select>
+            </td>
+            <td>Bows, Crossbows, Both</td>
         </tr>
         <tr>
-            <td>PoleturnerSetting</td>
+            <td>PoleturnerSetting <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="The setting for the AIs poleturner workshops"></i></td>
             <td>
                 <select id="PoleturnerSetting">
                     <option class="opt-weapons">Pikes</option>
                     <option class="opt-weapons">Spears</option>
-                </select
-            ></td>
-            <td>The setting for the AIs poleturner workshops</td>
+                </select>
+            </td>
+            <td>Pikes, Spears, Both</td>
         </tr>
         <tr>
-            <td>TradeAmountEquipment</td>
+            <td>TradeAmount Equipment <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="The amount of equipment for the armoury bought at once. Only one of these trades is made per gametick"></i></td>
             <td><input id="TradeAmountEquipment" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>The amount of equipment for the armoury bought at once. Only one of these trades is made per gametick</td>
         </tr>
     </tbody>
 </table>
