@@ -3,28 +3,22 @@
       <tr>
         <th scope="col">Field</th>
         <th scope="col">Value</th>
-        <th scope="col">Type</th>
-        <th scope="col">Range of Acceptable Values</th>
-        <th scope="col">Description</th>
+        <th scope="col">Acceptable Values</th>
       </tr>
     </thead>
     <tbody>
         <tr>
-            <td>MaxFarms</td>
+            <td>MaxFarms <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum number of farms built. Disabling farms is done via PopulationPerFarm"></i></td>
             <td><input id="MaxFarms" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 (ignored) to 2<sup>31</sup> - 1</td>
-            <td>Maximum number of farms built.<br><i>Disabling is done via PopulationPerFarm</i></td>
         </tr>
         <tr>
-            <td>PopulationPerFarm</td>
+            <td>Population<br>PerFarm <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Triggers building of farms for every X amount of current available workers. &#010;Set to 0 to disable building"></i></td>
             <td><input id="PopulationPerFarm" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 (disabled) to 2<sup>31</sup> - 1</td>
-            <td>Triggers building of farms for every <i>X</i> amount of current available workers.<br><i>Set to 0 to disable building</i></td>
         </tr>
         <tr>
-            <td>Farm Buildings</td>
+            <td>Farm Buildings <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="These are the AIs choice of farms to build"></i></td>
             <td>
                 <table>
                     <tr>
@@ -85,9 +79,7 @@
                     </tr>
                 </table>
             </td>
-            <td>Farm</td>
             <td><a href="field-values.html#Farm" target="_blank">Farm</a></td>
-            <td>These are the AIs choice of farms to build</td>
         </tr>
     </tbody>
 </table>

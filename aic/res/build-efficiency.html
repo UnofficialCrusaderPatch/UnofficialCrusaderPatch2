@@ -3,48 +3,35 @@
       <tr>
         <th scope="col">Field</th>
         <th scope="col">Value</th>
-        <th scope="col">Type</th>
-        <th scope="col">Range of Acceptable Values</th>
-        <th scope="col">Description</th>
+        <th scope="col">Acceptable Values</th>
       </tr>
     </thead>
     <tbody>
         <tr>
-            <td>BuildInterval</td>
+            <td>BuildInterval <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Number of gameticks between buildsteps. This is only considered at &lt;=5000 gold"></i></td>
             <td><input id="BuildInterval" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Number of gameticks between buildsteps.<br><i>This is only considered at &lt;=5000 gold</i></td>
         </tr>
         <tr>
-            <td>ResourceRebuildDelay</td>
+            <td>Resource<br>RebuildDelay <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="The delay before the AI rebuilds destroyed resource buildings"></i></td>
             <td><input id="ResourceRebuildDelay" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>The delay before the AI rebuilds destroyed resource buildings
             </td>
         </tr>
         <tr>
-            <td>RecruitGoldThreshold</td>
+            <td>Recruit<br>GoldThreshold <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="If the AI has less gold than this threshold it will not recruit or buy ressources for aiv buildings or economy. &#010;Sortie units, resource buildings and defensive siege engines are excluded"></i></td>
             <td><input id="RecruitGoldThreshold" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>If the AI has less gold than this threshold it will not recruit or buy ressources for aiv buildings or economy.
-                Sortie units, resource buildings and defensive siege engines are excluded</td>
         </tr>
         <tr>
-            <td>DefSiegeEngineGoldThreshold</td>
+            <td>DefSiegeEngine<br>GoldThreshold <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Gold for spending on AIV-defined siege engines: with positive value AI will spend its remaining gold (and cheat if necessary and gold &gt; 0) compared to negative value which serves as a minimum gold"></i></td>
             <td><input id="DefSiegeEngineGoldThreshold" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Gold for spending on AIV-defined siege engines: with positive value AI will spend its remaining gold (and cheat if necessary and gold &gt; 0) compared to negative value which serves as a minimum gold</td>
         </tr>
         <tr>
-            <td>DefSiegeEngineBuildDelay</td>
+            <td>DefSiegeEngine<br>BuildDelay <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="The delay before the AI builds/rebuilds in the AIV placed siege engines"></i></td>
             <td><input id="DefSiegeEngineBuildDelay" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>The delay before the AI builds/rebuilds in the AIV placed siege engines</td>
         </tr>
     </tbody>
 </table>
