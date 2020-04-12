@@ -1505,7 +1505,9 @@
     <EmbeddedResource Include="Startup\Resources\Goods\vanilla.json" />
     <EmbeddedResource Include="Startup\Resources\Troops\UCP-StartingTroops-Patch.json" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Hungarian.txt" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Localization\English.txt" />
   </ItemGroup>
