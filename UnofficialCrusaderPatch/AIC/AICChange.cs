@@ -207,9 +207,9 @@ namespace UCP.AIC
                     count++;
                     if (currentSelection.ContainsKey(character))
                     {
-                        String customName = this.customCharacterNames.ElementAt(count);
+                        String customName = this.customCharacterNames.ElementAt(count) ;
                         String name = Enum.GetName(typeof(AICharacterName), this.collection.GetCharacters().ElementAt(count));
-                        conflicts.Add(name + ((name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")"));
+                        conflicts.Add(name + ((customName.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")"));
                     }
                     else
                     {
@@ -262,7 +262,7 @@ namespace UCP.AIC
                         {
                             String customName = change.customCharacterNames.ElementAt(count);
                             String name = Enum.GetName(typeof(AICharacterName), change.collection.GetCharacters().ElementAt(count));
-                            conflicts.Add(name + ((name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")"));
+                            conflicts.Add(name + ((customName.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")"));
                             change.conflict.Visibility = Visibility.Visible;
                         }
                     }
@@ -614,7 +614,7 @@ namespace UCP.AIC
                 {
                     // mov eax, index
                     bw.Write((byte)0xB8);
-                    bw.Write((int)aic.Name * 0x2A4);
+                    bw.Write((int)aic._Name * 0x2A4);
 
                     // imul eax, 2A4
                     /*bw.Write((byte)0x69);

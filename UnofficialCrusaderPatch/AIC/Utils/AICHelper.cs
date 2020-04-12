@@ -133,7 +133,7 @@ namespace UCPAIConversion
                                     string indexName = currentCharacterName.ToString();
                                     if (indexName != idFields[1].Trim())
                                         //custom name is set
-                                        personalityIDs.Add("\"CustomName\": \"" + int.Parse(idFields[1]).ToString() + '"');
+                                        personalityIDs.Add("\"CustomName\": \"" + int.Parse(idFields[1]).ToString().Substring(0, Math.Min(int.Parse(idFields[1]).ToString().Length, 20)) + '"');
                                     else
                                         //no custom name set
                                         personalityIDs.Add("\"CustomName\": \"\"");

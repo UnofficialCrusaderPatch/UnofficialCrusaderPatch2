@@ -13,7 +13,7 @@ namespace UCPAIConversion
 
         public List<AICharacterName> GetCharacters()
         {
-            return AICharacters.Select(character => character.Name).ToList();
+            return AICharacters.Select(character => character._Name).ToList();
         }
 
         public List<String> GetCustomCharacterNames()

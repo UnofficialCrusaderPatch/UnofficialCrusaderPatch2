@@ -19,7 +19,7 @@ namespace UCPAIConversion
         Richard = 8,
 
         Frederick = 9,
-        Philip = 10,
+        Phillip = 10,
         Wazir = 11,
         Emir = 12,
         Nizar = 13,

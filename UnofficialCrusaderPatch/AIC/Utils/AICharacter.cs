@@ -5,14 +5,29 @@ namespace UCPAIConversion
 {
     class AICharacter
     {
+        [ScriptIgnore]
+        public AICharacterName _Name { get; set; }
 
-        private Int32 _index;
+        [ScriptIgnore]
+        public String _CustomName { get; set; }
 
-        public String Description { get; set; }
+        public string Name
+        {
+            get => Enum.GetName(typeof(AICharacterName), _Name);
+            set
+            {
+                _Name = (AICharacterName)Enum.Parse(typeof(AICharacterName), value);
+            }
+        }
 
-        public AICharacterName Name { get; set; }
-
-        public String CustomName { get; set; }
+        public String CustomName
+        {
+            get => _CustomName;
+            set
+            {
+                _CustomName = (value != null ? value.Substring(0, Math.Min(value.Length, 20)) : String.Empty);
+            }
+        }
 
         public AIPersonality Personality { get; set; }
     }
