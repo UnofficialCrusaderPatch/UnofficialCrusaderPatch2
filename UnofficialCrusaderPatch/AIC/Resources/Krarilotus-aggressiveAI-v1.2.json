@@ -204,9 +204,8 @@ Wprowadzone zmiany:
 
 	"AICharacters": [
 		{
-			"Description": "AICharacter",
 			"Name": "Rat",
-			"Index": 1,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -381,9 +380,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Snake",
-			"Index": 2,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 12,
@@ -558,9 +556,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Pig",
-			"Index": 3,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 12,
@@ -735,9 +732,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Wolf",
-			"Index": 4,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -912,9 +908,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Saladin",
-			"Index": 5,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 10,
@@ -1089,9 +1084,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Caliph",
-			"Index": 6,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 10,
@@ -1266,9 +1260,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Sultan",
-			"Index": 7,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 10,
@@ -1443,9 +1436,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Richard",
-			"Index": 8,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -1620,9 +1612,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Frederick",
-			"Index": 9,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -1797,9 +1788,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Phillip",
-			"Index": 10,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -1974,9 +1964,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Wazir",
-			"Index": 11,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -2151,9 +2140,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Emir",
-			"Index": 12,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -2328,9 +2316,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Nizar",
-			"Index": 13,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -2505,9 +2492,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Sheriff",
-			"Index": 14,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -2682,9 +2668,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Marshal",
-			"Index": 15,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
@@ -2859,9 +2844,8 @@ Wprowadzone zmiany:
 			}
 		},
 		{
-			"Description": "AICharacter",
 			"Name": "Abbot",
-			"Index": 16,
+			"CustomName": "",
 			"Personality": {
 
 				"Unknown000": 13,
