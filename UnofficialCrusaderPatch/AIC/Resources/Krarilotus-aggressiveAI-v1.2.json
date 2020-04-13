@@ -54,12 +54,13 @@ Wprowadzone zmiany:
 -更高效的骚扰部队。
 -减少了巡逻部队到数量。
 -ai将不再囤积黄金而是将其投入战争。",
+
   "Hungarian": "Ez az MI karakter fájl javítja az MI-k hatékonyságát és még agresszívabbá teszi őket.
 Erre a célra végrehajtott változtatások:
 - Hatékonyabb gazdasághasználat
 - Az MI-k első támadása hamarabb jön.
 - A csapatok sokoldalúbb használata.
-- Az AI folyamatosan támad.
+- Az MI folyamatosan támad.
 -> Támadás után az MI egységei ritkábban maradnak egy helyen.
 - Az MI hatékonyabban alkalmazza a rajtaütéseket.
 - Az MI csökkenti a feleslegesen járőröző egységeit.
