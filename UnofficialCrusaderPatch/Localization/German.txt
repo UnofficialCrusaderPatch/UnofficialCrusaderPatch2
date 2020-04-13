@@ -27,9 +27,10 @@ Entwickler
 [Chaf1812](https://github.com/Chaf1812)  
 
 Übersetzer
-[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polish)  
-[Lolasik011](https://github.com/Lolasik011) (Russian)  
-[Skysoul (e-mail)](mailto:theskysoul@vip.qq.com) (Chinese)  
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polnisch)  
+[Lolasik011](https://github.com/Lolasik011) (Rissisch)  
+[Skysoul (e-mail)](mailto:theskysoul@vip.qq.com) (Chinesisch)
+[Liegav (YouTube)](https://www.youtube.com/channel/UCFqQMKfYgGb7iFKJagQl_wA) (Ungarisch)
 
 Inhaltliche Beiträge
 [Evrey](https://github.com/Evrey) (aiv)  
