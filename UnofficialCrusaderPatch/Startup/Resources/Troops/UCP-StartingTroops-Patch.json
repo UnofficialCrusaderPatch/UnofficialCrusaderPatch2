@@ -35,6 +35,8 @@
     "Name": "Rat",
     "Lord": {
       "StrengthMultiplier": 0.5,
+      "DotCount": 5,
+      "DotColour": "Yellow",
       "Type": "Europ"
     },
     "normal": {
@@ -54,6 +56,8 @@
     "Name": "Snake",
     "Lord": {
       "StrengthMultiplier": 0.7,
+      "DotCount": 3,
+      "DotColour": "Yellow",
       "Type": "Europ"
     },
     "normal": {
@@ -73,6 +77,8 @@
     "Name": "Pig",
     "Lord": {
       "StrengthMultiplier": 1,
+      "DotCount": 0,
+      "DotColour": "None",
       "Type": "Europ"
     },
     "normal": {
@@ -92,6 +98,8 @@
     "Name": "Wolf",
     "Lord": {
       "StrengthMultiplier": 1.5,
+      "DotCount": 5,
+      "DotColour": "Blue",
       "Type": "Europ"
     },
     "normal": {
@@ -111,6 +119,8 @@
     "Name": "Saladin",
     "Lord": {
       "StrengthMultiplier": 1.4,
+      "DotCount": 4,
+      "DotColour": "Blue",
       "Type": "Arab"
     },
     "normal": {
@@ -130,6 +140,8 @@
     "Name": "Caliph",
     "Lord": {
       "StrengthMultiplier": 1,
+      "DotCount": 0,
+      "DotColour": "None",
       "Type": "Arab"
     },
     "normal": {
@@ -149,6 +161,8 @@
     "Name": "Sultan",
     "Lord": {
       "StrengthMultiplier": 0.9,
+      "DotCount": 1,
+      "DotColour": "Yellow",
       "Type": "Arab"
     },
     "normal": {
@@ -168,6 +182,8 @@
     "Name": "Richard",
     "Lord": {
       "StrengthMultiplier": 1.4,
+      "DotCount": 4,
+      "DotColour": "Blue",
       "Type": "Europ"
     },
     "normal": {
@@ -187,6 +203,8 @@
     "Name": "Frederick",
     "Lord": {
       "StrengthMultiplier": 1.2,
+      "DotCount": 2,
+      "DotColour": "Blue",
       "Type": "Europ"
     },
     "normal": {
@@ -206,6 +224,8 @@
     "Name": "Phillip",
     "Lord": {
       "StrengthMultiplier": 0.8,
+      "DotCount": 2,
+      "DotColour": "Yellow",
       "Type": "Europ"
     },
     "normal": {
@@ -225,6 +245,8 @@
     "Name": "Wazir",
     "Lord": {
       "StrengthMultiplier": 1.1,
+      "DotCount": 1,
+      "DotColour": "Blue",
       "Type": "Arab"
     },
     "normal": {
@@ -244,6 +266,8 @@
     "Name": "Emir",
     "Lord": {
       "StrengthMultiplier": 1,
+      "DotCount": 0,
+      "DotColour": "None",
       "Type": "Arab"
     },
     "normal": {
@@ -263,6 +287,8 @@
     "Name": "Nizar",
     "Lord": {
       "StrengthMultiplier": 1.3,
+      "DotCount": 3,
+      "DotColour": "Blue",
       "Type": "Arab"
     },
     "normal": {
@@ -282,6 +308,8 @@
     "Name": "Sheriff",
     "Lord": {
       "StrengthMultiplier": 1.1,
+      "DotCount": 1,
+      "DotColour": "Blue",
       "Type": "Europ"
     },
     "normal": {
@@ -301,6 +329,8 @@
     "Name": "Marshal",
     "Lord": {
       "StrengthMultiplier": 1.1,
+      "DotCount": 1,
+      "DotColour": "Blue",
       "Type": "Europ"
     },
     "normal": {
@@ -320,6 +350,8 @@
     "Name": "Abbot",
     "Lord": {
       "StrengthMultiplier": 1.2,
+      "DotCount": 2,
+      "DotColour": "Blue",
       "Type": "Europ"
     },
     "normal": {
@@ -337,10 +369,6 @@
   },
   "17": {
     "Name": "PlayerEurop",
-    "Lord": {
-      "StrengthMultiplier": 1,
-      "Type": "Europ"
-    },
     "normal": {
       "Units": [ "Spearman", "EuropArcher" ],
       "Counts": [ 7, 5 ]
@@ -356,10 +384,6 @@
   },
   "18": {
     "Name": "PlayerArab",
-    "Lord": {
-      "StrengthMultiplier": 1,
-      "Type": "Arab"
-    },
     "normal": {
       "Units": [ "Slave", "ArabArcher" ],
       "Counts": [ 6, 6 ]

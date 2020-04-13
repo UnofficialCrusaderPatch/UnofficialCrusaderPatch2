@@ -345,10 +345,6 @@
   },
   "17": {
     "Name": "PlayerEurop",
-    "Lord": {
-      "StrengthMultiplier": 1,
-      "Type": "Europ"
-    },
     "normal": {
       "Units": [ "Spearman", "EuropArcher" ],
       "Counts": [ 7, 5 ]
@@ -364,10 +360,6 @@
   },
   "18": {
     "Name": "PlayerArab",
-    "Lord": {
-      "StrengthMultiplier": 1,
-      "Type": "Arab"
-    },
     "normal": {
       "Units": [ "Slave", "ArabArcher" ],
       "Counts": [ 6, 6 ]
