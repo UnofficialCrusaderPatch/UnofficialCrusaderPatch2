@@ -16,6 +16,8 @@ using UCP.AIV;
 using UCP.Patching;
 using UCP.Startup;
 using UCP.AIC;
+using System.Diagnostics;
+using System.Windows.Input;
 
 namespace UCP
 {
@@ -24,6 +26,29 @@ namespace UCP
         static MainWindow()
         {
             Application.Current.DispatcherUnhandledException += DispatcherException;
+        }
+
+        void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://sh0wdown.github.io/UnofficialCrusaderPatch/index.html");
+        }
+
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            // Begin dragging the window
+            this.DragMove();
         }
 
         static void DispatcherException(object sender, DispatcherUnhandledExceptionEventArgs e)
