@@ -476,7 +476,7 @@ namespace UCP.Startup
             }
             if (!description.Equals(file))
             {
-                description = description.Substring(0, Math.Min(description.Length, 500));
+                description = description.Substring(0, Math.Min(description.Length, 1000));
             }
 
             return description;
