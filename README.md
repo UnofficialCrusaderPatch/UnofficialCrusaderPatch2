@@ -38,6 +38,7 @@ Furthermore you can join our [Discord Server](https://discord.gg/vmy7CBR) for qu
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polish)  
 [Lolasik011](https://github.com/Lolasik011) (Russian)  
 [Skysouls (eMail)](mailto:theskysoul@vip.qq.com) (Chinese)  
+[Liegav (YouTube)](https://www.youtube.com/channel/UCFqQMKfYgGb7iFKJagQl_wA) (Hungarian)
 
 ### Content Creators   
 [Evrey](https://github.com/Evrey) (aiv)  
