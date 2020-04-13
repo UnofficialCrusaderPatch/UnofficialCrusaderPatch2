@@ -2,6 +2,16 @@
 //         dev
 // ======================
 
+u_ghosteng
+{
+"Fix engineers not dying with siege engines"
+}
+
+u_ghosteng_descr
+{
+"Fix engineers not dying when siege engine they are manning is killed"
+}
+
 o_fix_fletcher_bug
 {
 "Fix fletcher bug"

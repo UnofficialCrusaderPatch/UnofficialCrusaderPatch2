@@ -1505,6 +1505,7 @@
     <EmbeddedResource Include="CodeBlocks\s_troops.block" />
     <EmbeddedResource Include="CodeBlocks\s_lordstrength.block" />
     <EmbeddedResource Include="CodeBlocks\s_lordtype.block" />
+    <EmbeddedResource Include="CodeBlocks\u_ghostengineer.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
