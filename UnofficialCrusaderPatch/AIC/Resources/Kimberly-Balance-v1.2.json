@@ -24,7 +24,12 @@ Zmieniono mocno balans - Szczur, Wąż, Wieprz i Wilk zostali wzmocnieni bardzie
 
 所有领主都得到了调整。现在所有领主都会购买武器装备。大部分领主的经济系统被调整为更高效的状态。
 
-平衡也发生了巨大的变化，因为老鼠、蛇、猪和狼这四个动物领主比其他领主得到了更多的加强。"
+平衡也发生了巨大的变化，因为老鼠、蛇、猪和狼这四个动物领主比其他领主得到了更多的加强。",
+  "Hungarian": "(Verzió 1.2 2020. Március 29)
+
+Minden MI Lord át lett szerkesztve. Az összes keresztes MI mostantól vásárol fegyvert és páncélt. A legtöbb MI Lordnál a gazdaság meg lett változtatva, hogy összességében hatékonyabb legyen. 
+	
+Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok mint Patkány, Kígyó, Disznó és Farkas a többi lordhoz képest erősebbek lettek."
 },
 
 	"AICharacters": [

@@ -57,7 +57,19 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 -> 优化了物资管理。
 - 更加具有侵略性，防御性，骚扰性。
 -> 增强了骚扰部队，支援部队，巡逻部队，尤其是慢推器材的使用。
-- 在一局游戏中更为一致的行为。"
+- 在一局游戏中更为一致的行为。",
+
+  "Hungarian": "Ezzel a karakter fájlal most már kihívás lesz az MI a játékos számára.
+A cél, a már meglévő MI-k megerősítése minden szempontból, a következő változtatásokkal:
+- Az MI építési és toborzási sebességének maximalizálása.
+-> Az MI gyorsabban építkezik fel ha van elég erőforrása.
+- Gazdaság hatékonysága optimalizálva.
+-> Adók és népszerűségi változás javítva.
+-> Felesleges kiadások lecsökkentve.
+-> Erőforrás szervezés optimalizálva.
+- Még aktívabb támadás-, védekezés- és rajtaütés viselkedés.
+-> Zavaró egységek bevetése, különösen az ostromgépeknél javítva.
+- Következetesebb MI viselkedés a játék minden szakaszában."
   },
 "AICLongDescription": {
   "German": "Diese .aic stammt von Xander10alpha und behebt die folgenden Fehler und Macken der KIs:

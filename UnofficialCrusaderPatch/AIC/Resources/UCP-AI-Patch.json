@@ -34,7 +34,14 @@ Opat, Kalif",
 - 修复了购买食物与武器问题的有：
 皇帝，元帅，埃米尔，院长，维奇尔，尼泽尔，苏丹，狼
 - 修复了建筑问题的有：
-院长，哈里发"
+院长，哈里发",
+  "Hungarian": "Ez az MI karakter konfiguráció kijavítja az MI néhány hibáját.
+- Hibák a védekező egységek elhelyezkedéseiben kijavítva:
+Patkány, Fülöp
+- Élelem és fegyvervásárlási problémák kiigazításra kerültek:
+Frigyes, Tábornok, Emír, Apát, Wazir, Nizar, Szultán, Farkas
+- Épületek építésekor fellépő hibák kijavítva:
+Apát, Kalifa"
   },
 "AICLongDescription": {
   "German": "Die folgenden Änderngen wurden an den Vanilla Charakteren vorgenommen:
@@ -113,7 +120,23 @@ Opat, Kalif",
   -哈里发现在会存10格铁，用来建造油锅。
   -院长会存1000金币用来建筑大教堂。
   -维奇尔和尼泽尔的招募门槛调整为200金币。
-  - 维奇尔和尼泽尔的最少小麦数调整为15。"
+  - 维奇尔和尼泽尔的最少小麦数调整为15。",
+  "Hungarian": "A következő változtatások lettek végrehajtva az eredeti karaktereknél:
+  - A Patkány lassan újra megerősíti a védelmét
+  - Fülöp védelmet rak a falra, Patkány színvonal
+  - Frigyes, Tábornok, Emír és Apát vásárol felszerelést
+  - Wazir kenyeret vásárol ha szükséges- Nizar kenyeret vásárol alma helyett
+  - A Szultán sajtot és kenyeret is vásárol
+  - Wazir arra törekszik, hogy mindig legyen legalább 5 búza raktáron, 2 helyett
+  - Wazir, Emír, Tábornok és Fülöp 10esével vásárol élelmet és búzát 20 helyett
+  - A Farkas dupla fejadagot ad ha van 80 darab élelem a magtárban
+  - A Farkas fegyvereket ad el, hogy olyan várakkal is működjön amiben csak egy fegyverraktár van.
+  - A Farkas úgy szervezi a raktárát, hogy olyan várakkal is működjön amiben 2 raktárhely van.
+  - Kalifa 10 vasat rak félre az olajfőzőre
+  - Kalifa erőforrás eladása megváltoztatva, hogy legyen 10 helye a vasnak.
+  - Az Apát mostantól 1000 aranyat rak félre a katedrálisához
+  - Wazir és Nizar RecruitGoldThreshold megváltoztatva 200-ra
+  - Wazir és Nizar minimum búza 15-re állítva"
 },
 
 	"AICharacters": [
