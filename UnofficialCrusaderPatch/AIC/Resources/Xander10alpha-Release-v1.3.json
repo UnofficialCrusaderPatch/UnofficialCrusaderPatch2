@@ -58,10 +58,11 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 - 更加具有侵略性，防御性，骚扰性。
 -> 增强了骚扰部队，支援部队，巡逻部队，尤其是慢推器材的使用。
 - 在一局游戏中更为一致的行为。",
+
   "Hungarian": "Ezzel a karakter fájlal most már kihívás lesz az MI a játékos számára.
 A cél, a már meglévő MI-k megerősítése minden szempontból, a következő változtatásokkal:
 - Az MI építési és toborzási sebességének maximalizálása.
--> Az MI gyorsabban felépítkezik ha van elég erőforrása.
+-> Az MI gyorsabban építkezik fel ha van elég erőforrása.
 - Gazdaság hatékonysága optimalizálva.
 -> Adók és népszerűségi változás javítva.
 -> Felesleges kiadások lecsökkentve.
