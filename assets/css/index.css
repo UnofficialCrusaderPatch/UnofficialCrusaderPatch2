@@ -208,3 +208,11 @@ button, .btn {
     padding: 0;
     width: 10px;
 }
+
+.feature-highlight #changelog {
+    background-color: white;
+}
+
+.feature-highlight #changelog div.card {
+    width: 80%;
+}
