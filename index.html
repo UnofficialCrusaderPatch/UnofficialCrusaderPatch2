@@ -53,10 +53,10 @@
         </nav>
         <div class="header">
             <h2 class="text-center">Welcome to the Unofficial Crusader Patch</h2>
-            <h4 class="text-center">Latest Version: UCP 2.13 
+            <h4 class="text-center">Latest Version: UCP 2.14 
                     <a href="https://github.com/Sh0wdown/UnofficialCrusaderPatch"><i class="fab fa-github"></i></a>
-                    <a class="latest-release" href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/tag/v2.13">changelog</a> 
-                    <a class="latest-release" href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/download/v2.13/UnofficialCrusaderPatch_v2.13.exe">download</a>
+                    <a class="latest-release" href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/tag/v2.14">changelog</a> 
+                    <a class="latest-release" href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/download/v2.14/UnofficialCrusaderPatch_v2.14.zip">download</a>
                     <a href="https://discord.gg/vmy7CBR"><img src="https://discordapp.com/api/guilds/426318193603117057/widget.png?style=shield"></a>
                 </h4>
         </div>
@@ -143,6 +143,29 @@
 
                     <div id="change-accordion">
                         <div class="card feature">
+                            <div class="card-header" id="change-three" data-toggle="collapse" data-target="#changeThree" aria-expanded="true" aria-controls="changeThree">
+                                <h5 class="mb-0">
+                                <button class="btn btn-link"><i class="fas fa-star"></i>
+                                    New Features and Improvements
+                                </button>
+                                </h5>
+                            </div>
+
+                            <div id="changeThree" class="collapse" aria-labelledby="change-three" data-parent="#change-accordion">
+                                <div class="card-body feature-highlight">
+                                    <ul>
+                                        <li>In the new <b>StartTroops</b> tab, you will be able to select a starting unit configuration for all AI Lords as well as your Crusader or European Lord</li>
+                                        <li>In the new <b>StartGoods</b> tab, you will be able to select a starting resource configuration that will apply for yourself and all other human or AI players.</li>
+                                        <li>You are able to now load AIV sets into the patcher by creating a subfolder with the name of your AIV set inside the <code>resources\aiv</code> folder</li>
+                                        <li>If you select multiple AICs that have the same characters defined, the one you select first will be given priority and the other ones will show a warning indicating which AI Character definitions will not be used</li>
+                                        <li>The format of AIC files has changed - the patcher is now using a JSON format with <code>.json</code> file extension</li>
+                                    </ul>
+                                    <a href="assets/doc/changelog.html" target="_blank">View full changelog here</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card feature">
                             <div class="card-header" id="change-one" data-toggle="collapse" data-target="#changeOne" aria-expanded="true" aria-controls="changeOne">
                                 <h5 class="mb-0">
                                 <button class="btn btn-link"><i class="fas fa-random"></i>
@@ -189,30 +212,6 @@
                                         <li>There is now a <b>command line tool</b> that can be used for quicker or custom installation 
                                             (see <a href="(https://sh0wdown.github.io/UnofficialCrusaderPatch/getting-started.html">installation steps</a> for details)</li>
                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="card feature">
-                            <div class="card-header" id="change-three" data-toggle="collapse" data-target="#changeThree" aria-expanded="true" aria-controls="changeThree">
-                                <h5 class="mb-0">
-                                <button class="btn btn-link"><i class="fas fa-star"></i>
-                                    New Features and Improvements
-                                </button>
-                                </h5>
-                            </div>
-
-                            <div id="changeThree" class="collapse" aria-labelledby="change-three" data-parent="#change-accordion">
-                                <div class="card-body feature-highlight">
-                                    <ul>
-                                        <li>In the new <b>StartTroops</b> tab, you will be able to select a starting unit configuration for all AI Lords as well as your Crusader or European Lord</li>
-                                        <li>In the new <b>StartGoods</b> tab, you will be able to select a starting resource configuration that will apply for yourself and all other human or AI players.</li>
-                                        <li>You are able to now load AIV sets into the patcher by creating a subfolder with the name of your AIV set inside the <code>resources\aiv</code> folder</li>
-                                        <li>If you select multiple AICs that have the same characters defined, the one you select first will be given priority and the other ones will show a warning indicating which AI Character definitions will not be used</li>
-                                        <li>The format of AIC files has changed - the patcher is now using a JSON format with <code>.json</code> file extension</li>
-                                    </ul>
-                                    <a href="#">Download full changelog here</a>
                                 </div>
                             </div>
                         </div>
