@@ -48,4 +48,9 @@ Furthermore you can join our [Discord Server](https://discord.gg/vmy7CBR) for qu
 
 ### Special thanks of course go to  
 [Firefly Studios](https://fireflyworlds.com/) for the creation of the Stronghold series  
-and many more
+
+And many more  
+[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP)  
+[PodeCaradox](https://github.com/PodeCaradox)  
+[GRhin](https://www.twitch.tv/grhin)
+
