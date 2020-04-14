@@ -1,5 +1,10 @@
 html, .page {
     background-color: lightgray;
+    font-size: medium;
+}
+
+input {
+    width: 100px;
 }
 
 hr.header-divider {
@@ -25,10 +30,22 @@ hr.header-divider {
     margin: 5px;
 }
 
-.card.aic-gen {
-    width: 90%;
-    margin: 5px;
+.card.aic-gen,
+.card.aic-field {
+    width: 100%;
     padding: 0;
+    margin-bottom: 15px;
+}
+
+.card.aic-gen .card-header,
+.card.aic-field .card-header {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.card.aic-field .card-header .mb-0 .btn.btn-link {
+    text-decoration: none;
 }
 
 #accordion, #accordion-instructions {
@@ -40,12 +57,14 @@ h5.mb-0 a#features-link:hover {
     color: blue;
 }
 
-.card.instruction, .card.feature, .card.aic-gen {
+.card.instruction, .card.feature, 
+.card.aic-gen {
     cursor: pointer;
 }
 
 .card.feature,
-.card.aic-gen {
+.card.aic-gen,
+.card.aic-field {
     background-color: gray;
 }
 
@@ -169,4 +188,23 @@ button, .btn {
 .ai-selector ul.list-group.list-group-horizontal {
     cursor: pointer;
     flex-direction: row;
+}
+
+#aic-content{
+    margin-left: auto;
+}
+
+.feature-filter.dropdown-menu {
+    padding: 0;
+    margin: 0;
+}
+
+.feature-filter.dropdown-menu .dropdown-item {
+    padding: 5px;
+    width: 100%;
+}
+
+.feature-filter.dropdown-menu label.dropdown-item input[type="checkbox"] {
+    padding: 0;
+    width: 10px;
 }

@@ -3,101 +3,71 @@
       <tr>
         <th scope="col">Field</th>
         <th scope="col">Value</th>
-        <th scope="col">Type</th>
-        <th scope="col">Range of Acceptable Values</th>
-        <th scope="col">Description</th>
+        <th scope="col">Acceptable Values</th>
       </tr>
     </thead>
     <tbody>
         <tr>
-            <td>AttDiggingUnit</td>
+            <td>AttDiggingUnit <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Type of unit used to dig the enemy moats."></i></td>
             <td><select id="AttDiggingUnit">
                 <option class="opt-diggingunit">Unit</option>
             </select></td>
-            <td>DiggingUnit</td>
             <td><a href="field-values.html#DiggingUnit" target="_blank">DiggingUnit</a></td>
-            <td>Type of unit used to dig the enemy moats.
-            </td>
         </tr>
         <tr>
-            <td>AttDiggingUnitMax</td>
+            <td>AttDiggingUnitMax <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum number of units recruited to dig enemy moats."></i></td>
             <td><input id="AttDiggingUnitMax" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Maximum number of units recruited to dig enemy moats.
-            </td>
         </tr>
         <tr>
-            <td>AttUnit2</td>
+            <td>AttUnit2 <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Type of unit, that engages the enemy walls and traps before the main army moves in."></i></td>
             <td><select id="AttUnit2">
                 <option class="opt-unit">Unit</option>
             </select></td>
-            <td>DiggingUnit</td>
             <td><a href="field-values.html#Unit" target="_blank">DiggingUnit</a></td>
-            <td>Type of unit, that engages the enemy walls and traps before the main army moves in.
-            </td>
         </tr>
         <tr>
-            <td>AttUnit2</td>
+            <td>AttUnit2 Max<i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum number of AttUnit2 units to recruit."></i></td>
             <td><input id="AttUnit2Max" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Maximum number of AttUnit2 units to recruit.
-            </td>
         </tr>
         <tr>
-            <td>AttMaxLaddermen</td>
+            <td>AttMaxLaddermen  <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum number of laddermen to recruit for an attack"></i></td>
             <td><input id="AttMaxLaddermen" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Maximum number of laddermen to recruit for an attack</td>
         </tr>
         <tr>
-            <td>AttMaxTunnelers</td>
+            <td>AttMaxTunnelers <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum number of tunnelers to recruit for an attack"></i></td>
             <td><input id="AttMaxTunnelers" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Maximum number of tunnelers to recruit for an attack</td>
         </tr>
         <tr>
-            <td>AttMaxEngineers</td>
+            <td>AttMaxEngineers <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum number of Engineers to recruit for an attack"></i></td>
             <td><input id="AttMaxEngineers" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Maximum number of Engineers to recruit for an attack</td>
         </tr>
         <tr>
-            <td>AttUnitSiegeDef Units</td>
-            <td colspan="4">
-                <table>
-                    <tr>
-                        <td>AttUnitSiegeDef</td>
-                        <td>
-                            <select id="AttUnitSiegeDef">
-                                <option value="Unit">Unit</option>
-                            </select>
-                        </td>
-                        <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
-                        <td>These units patrol between siege enginees in order to protect them. 
-                            These get priority in AttackUnit recruitment process</td>
-                    </tr>
-                    <tr>
-                        <td>AttUnitSiegeDefMax</td>
-                        <td><input id="AttUnitSiegeDefMax" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
-                        <td class="col-2">0 to 2<sup>31</sup> - 1</td>
-                        <td>Maximum number of AttUnitSiegeDef troops to recruit</td>
-                    </tr>
-                    <tr>
-                        <td>AttUnitSiegeDef GroupsCount</td>
-                        <td><input id="AttUnitSiegeDefGroupsCount" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
-                        <td class="col-2">0 to 2<sup>31</sup> - 1</td>
-                        <td>This may or may not be the number of groups the AttUnitSiegeDef split into</td>
-                    </tr>
-                </table>
+            <td>AttUnitSiegeDef <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="These units patrol between siege enginees in order to protect them. 
+                These get priority in AttackUnit recruitment process"></i></td>
+            <td>
+                <select id="AttUnitSiegeDef">
+                    <option value="Unit">Unit</option>
+                </select>
             </td>
+            <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
         </tr>
         <tr>
-            <td>Siege Units</td>
+            <td>AttUnitSiegeDefMax <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum number of AttUnitSiegeDef troops to recruit"></i></td>
+            <td><input id="AttUnitSiegeDefMax" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+        </tr>
+        <tr>
+            <td>AttUnitSiegeDef GroupsCount <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="This may or may not be the number of groups the AttUnitSiegeDef split into"></i></td>
+            <td><input id="AttUnitSiegeDefGroupsCount" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+        </tr>
+        <tr>
+            <td>Siege Units <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Siege unit to recruit"></i></td>
             <td>
                 <table>
                     <tr>
@@ -158,17 +128,13 @@
                     </tr>
                 </table>
             </td>
-            <td>Unit</td>
             <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
-            <td>Siege unit to recruit</td>
         </tr>
         <tr>
-            <td>CowThrowInterval</td>
+            <td>CowThrowInterval <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="The amount of stones needed to be thrown until the AI throws a diseased cow instead (catapults & trebuchets). 
+                Value 0 disables cows and -1 makes the AI only throw cows"></i></td>
             <td><input id="CowThrowInterval" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>The amount of stones needed to be thrown until the AI throws a diseased cow instead (catapults & trebuchets). 
-                Value 0 disables cows and -1 makes the AI only throw cows</td>
         </tr>
     </tbody>
 </table>

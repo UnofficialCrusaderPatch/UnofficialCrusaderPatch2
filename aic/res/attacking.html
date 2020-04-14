@@ -3,100 +3,67 @@
       <tr>
         <th scope="col">Field</th>
         <th scope="col">Value</th>
-        <th scope="col">Type</th>
         <th scope="col">Range of Acceptable Values</th>
-        <th scope="col">Description</th>
       </tr>
     </thead>
     <tbody>
         <tr>
-            <td>TargetChoice</td>
+            <td>TargetChoice <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Gold - target enemy with most gold&#010;Balanced - target weakest enemy&#010;Closest - target closest enemy&#010;Player - target player"></i></td>
             <td>
                 <select id="TargetChoice">
                     <option value="Unit">Unit</option>
                 </select>
             </td>
-            <td>TargetingType</td>
             <td><a href="field-values.html#TargetingType" target="_blank">TargetingType</a></td>
-            <td class="text-left">
-                <ul>
-                    <li>Gold - target enemy with most gold</li>
-                    <li>Balanced - target weakest enemy</li>
-                    <li>Closest - target closest enemy</li>
-                    <li>Player - target player</li>
-                </ul>
-            </td>
         </tr>
         <tr>
-            <td>AttMaxDefault</td>
-            <td><input id="AttMaxDefault" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>AttMaxDefault <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="No description available"></i></td>
+            <td><input id="AttMaxDefault" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>No description available</td>
         </tr>
         <tr>
-            <td>AttForceBase</td>
-            <td><input id="AttForceBase" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>AttForceBase <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="The base amount of troops with which this AI attacks"></i></td>
+            <td><input id="AttForceBase" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>The base amount of troops with which this AI attacks</td>
         </tr>
         <tr>
-            <td>AttForceRandom</td>
-            <td><input id="AttForceRandom" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>AttForceRandom <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="The maximum random amount of additional troops in an attack. (this is not the amount by which the troops increase per attack!)"></i></td>
+            <td><input id="AttForceRandom" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>The maximum random amount of additional troops in an attack.
-                <i>this is not the amount by which the troops increase per attack!)</i></td>
         </tr>
         <tr>
-            <td>AttForceSupportAllyThreshold</td>
-            <td><input id="AttForceSupportAllyThreshold" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>AttForce<br>SupportAllyThreshold <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="If the AI has more than this amount of units in the attack force, it will help their allies or siege an enemy if commanded to do so"></i></td>
+            <td><input id="AttForceSupportAllyThreshold" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>If the AI has more than this amount of units in the attack force, it will help their allies or siege an enemy if commanded to do so.</td>
         </tr>
         <tr>
-            <td>AttForceRallyPercentage</td>
-            <td><input id="AttForceRallyPercentage" style="width: 100%" type="number" min=0 max=100 placeholder="Enter value"></td>
-            <td>Integer</td>
+            <td>AttForce<br>RallyPercentage <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="The %-amount of units of the attack force that the AI will rally before attacking"></i></td>
+            <td><input id="AttForceRallyPercentage" type="number" min=0 max=100 placeholder="Enter value"></td>
             <td>0 to 100</td>
-            <td>The %-amount of units of the attack force that the AI will rally before attacking.</td>
         </tr>
         <tr>
-            <td>AttMaxAssassins</td>
-            <td><input id="AttMaxAssassins" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>AttMaxAssassins <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum number of assassins to use in an attack"></i></td>
+            <td><input id="AttMaxAssassins" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Maximum number of assassins to use in an attack</td>
         </tr>
         <tr>
-            <td>AttUnitPatrolRecommandDelay</td>
-            <td><input id="AttUnitPatrolRecommandDelay" style="width: 100%" type="number" min=0 max=100 placeholder="Enter value"></td>
-            <td>Integer</td>
+            <td>AttUnitPatrol<br>RecommandDelay <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Supposedly the gameticks, until the Attackunit patrol get ordered a new command for patroling around the enemy's keep."></i></td>
+            <td><input id="AttUnitPatrolRecommandDelay" type="number" min=0 max=100 placeholder="Enter value"></td>
             <td>0 to 100</td>
-            <td>Supposedly the gameticks, until the Attackunit patrol get ordered a new command for patroling around the enemy's keep.</td>
         </tr>
         <tr>
-            <td>RaidUnitsBase</td>
-            <td><input id="RaidUnitsBase" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>RaidUnitsBase <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]"></i></td>
+            <td><input id="RaidUnitsBase" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]
-            </td>
         </tr>
         <tr>
-            <td>RaidUnitsRandom</td>
-            <td><input id="RaidUnitsRandom" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>RaidUnits Random <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]"></i></td>
+            <td><input id="RaidUnitsRandom" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td>Maximum random addition to raid troops. 
-                Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]
-            </td>
         </tr>
 
         <tr>
-            <td>Raid Units</td>
+            <td>Raid Units <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Raid units to recruit. If the AI does not have enough gold to recruit the Unit listed at the top then it will opt to try and recruit the next (and so on) Unit if it is cheaper"></i></td>
             <td>
                 <table>
                     <tr>
@@ -157,24 +124,16 @@
                     </tr>
                 </table>
             </td>
-            <td>Unit</td>
             <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
-            <td>Raid units to recruit. 
-                If the AI does not have enough gold to recruit the Unit listed at the top then it will opt to try
-                and recruit the next (and so on) Unit if it is cheaper
-            </td>
         </tr>
 
         <tr>
-            <td>HarassingSiegeEnginesMax</td>
-            <td><input id="HarassingSiegeEnginesMax" style="width: 100%" type="number" min=0 max=10 placeholder="Enter value"></td>
-            <td>Integer</td>
+            <td>Harassing<br>SiegeEngines<br>Max <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum number of harassing siege engines an AI builds. Capped at 10"></i></td>
+            <td><input id="HarassingSiegeEnginesMax" type="number" min=0 max=10 placeholder="Enter value"></td>
             <td>0 to 10</td>
-            <td>Maximum number of harassing siege engines an AI builds. Capped at 10.
-            </td>
         </tr>
         <tr>
-            <td>Harassing Siege Units</td>
+            <td>Harassing Siege Units <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Siege unit to recruit"></i></td>
             <td>
                 <table>
                     <tr>
@@ -235,114 +194,72 @@
                     </tr>
                 </table>
             </td>
-            <td>Unit</td>
             <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
-            <td>Siege unit to recruit</td>
         </tr>
         <tr>
-            <td>Patrol Units</td>
-            <td colspan="4">
-                <table>
-                    <tr>
-                        <td>AttUnitPatrol</td>
-                        <td>
-                            <select id="AttUnitPatrol">
-                                <option value="Unit">Unit</option>
-                            </select>
-                        </td>
-                        <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
-                        <td>Ranged attack unit that patrols around the enemy castle / keep. Preferably ranged units should be used here.</td>
-                    </tr>
-                    <tr>
-                        <td>AttUnitPatrolMax</td>
-                        <td><input id="AttUnitPatrolMax" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
-                        <td class="col-2">0 to 2<sup>31</sup> - 1</td>
-                        <td>Maximum number of AttUnitPatrol troops to recruit</td>
-                    </tr>
-                    <tr>
-                        <td>AttUnit PatrolGroupsCount</td>
-                        <td><input id="AttUnitPatrolGroupsCount" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
-                        <td>0 to 2<sup>31</sup> - 1</td>
-                        <td># of groups the AttUnitPatrol split into.<br><b>BUGGY!</b> 
-                            More than 1 group results to only a single group attacking</td>
-                    </tr>
-                </table>
-            </td>
+            <td>AttUnitPatrol <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ranged attack unit that patrols around the enemy castle / keep. Preferably ranged units should be used here"></i></td>
             <td>
-        </tr>
-
-        <tr>
-            <td>AttUnitBackup Units</td>
-            <td colspan="4">
-                <table>
-                    <tr>
-                        <td>AttUnitBackup</td>
-                        <td>
-                            <select id="AttUnitBackup">
-                                <option value="Unit">Unit</option>
-                            </select>
-                        </td>
-                        <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
-                        <td>Attacking unit that holds position and doesn't attack until the walls are breached.</td>
-                    </tr>
-                    <tr>
-                        <td>AttUnitBackupMax</td>
-                        <td><input id="AttUnitBackupMax" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
-                        <td class="col-2">0 to 2<sup>31</sup> - 1</td>
-                        <td>Maximum number of AttUnitBackup troops to recruit</td>
-                    </tr>
-                    <tr>
-                        <td>AttUnitBackup GroupsCount</td>
-                        <td><input id="AttUnitBackupGroupsCount" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
-                        <td>0 to 2<sup>31</sup> - 1</td>
-                        <td>Number of groups the AttUnitBackup units split into. 
-                            If shields are present in the army one will be added to each group if feasible
-                        </td>
-                    </tr>
-                </table>
+                <select id="AttUnitPatrol">
+                    <option value="Unit">Unit</option>
+                </select>
             </td>
-            <td>
+            <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
         </tr>
-
         <tr>
-            <td>AttUnitEngage Units</td>
-            <td colspan="4">
-                <table>
-                    <tr>
-                        <td>AttUnitEngage</td>
-                        <td>
-                            <select id="AttUnitEngage">
-                                <option value="Unit">Unit</option>
-                            </select>
-                        </td>
-                        <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
-                            <td>Units that engage enemy groups of units outside the castle. 
-                                Prioritizes larger groups no matter where they are on the map. 
-                                Otherwise destroys buildings outside the castle.
-                            </td>
-                    </tr>
-                    <tr>
-                        <td>AttUnitEngageMax</td>
-                        <td><input id="AttUnitEngageMax" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
-                        <td class="col-2">0 to 2<sup>31</sup> - 1</td>
-                        <td>Maximum number of AttUnitEngage troops to recruit</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-
-        <tr>
-            <td>AttMainGroupsCount</td>
-            <td><input id="AttMainGroupsCount" style="width: 100%" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>AttUnitPatrolMax <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum number of AttUnitPatrol troops to recruit"></i></td>
+            <td><input id="AttUnitPatrolMax" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
             <td>Integer</td>
-            <td>0 to 2<sup>31</sup> - 1</td>
-            <td># of groups all the AttUnitMain split into. Maximum is 3
-            </td>
+        </tr>
+        <tr>
+            <td>AttUnit<br>PatrolGroupsCount <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="# of groups the AttUnitPatrol split into. (buggy) More than 1 group results to only a single group attacking"></i></td>
+            <td><input id="AttUnitPatrolGroupsCount" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
         </tr>
 
         <tr>
-            <td>AttUnitMain Units</td>
-            <td colspan="2">
+            <td>AttUnitBackup <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Attacking unit that holds position and doesn't attack until the walls are breached"></i></td>
+            <td>
+                <select id="AttUnitBackup">
+                    <option value="Unit">Unit</option>
+                </select>
+            </td>
+            <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
+        </tr>
+        <tr>
+            <td>AttUnitBackupMax <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum number of AttUnitBackup troops to recruit"></i></td>
+            <td><input id="AttUnitBackupMax" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+        </tr>
+        <tr>
+            <td>AttUnitBackup GroupsCount <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Number of groups the AttUnitBackup units split into. If shields are present in the army one will be added to each group if feasible"></i></td>
+            <td><input id="AttUnitBackupGroupsCount" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+        </tr>
+
+        <tr>
+            <td>AttUnitEngage <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Units that engage enemy groups of units outside the castle.&#010; Prioritizes larger groups no matter where they are on the map.&#010;Otherwise destroys buildings outside the castle"</td>
+            <td>
+                <select id="AttUnitEngage">
+                    <option value="Unit">Unit</option>
+                </select>
+            </td>
+            <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
+        </tr>
+        <tr>
+            <td>AttUnitEngageMax <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Maximum number of AttUnitEngage troops to recruit"></i></td>
+            <td><input id="AttUnitEngageMax" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+        </tr>
+
+        <tr>
+            <td>AttMain GroupsCount <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="# of groups all the AttUnitMain split into. Maximum is 3"></i></td>
+            <td><input id="AttMainGroupsCount" type="number" min=0 max=2147483647 placeholder="Enter value"></td>
+            <td>Integer</td>
+        </tr>
+
+        <tr>
+            <td>AttUnitMain Units <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right" title="Main strike force units the AI recruits for sieges. If the AI does not have enough gold to recruit the Unit listed at the top then it will opt to try and recruit the next (and so on) Unit if it is cheaper"></i></td>
+            <td colspan="1">
                 <table>
                     <tr>
                         <td>1</td>
@@ -375,10 +292,6 @@
                 </table>
             </td>
             <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
-            <td>Main strike force units the AI recruits for sieges
-                If the AI does not have enough gold to recruit the Unit listed at the top then it will opt to try
-                and recruit the next (and so on) Unit if it is cheaper
-            </td>
         </tr>
     </tbody>
 </table>
