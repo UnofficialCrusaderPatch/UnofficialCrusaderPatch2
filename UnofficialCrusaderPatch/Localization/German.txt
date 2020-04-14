@@ -28,7 +28,7 @@ Entwickler
 
 Übersetzer
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polnisch)  
-[Lolasik011](https://github.com/Lolasik011) (Rissisch)  
+[Lolasik011](https://github.com/Lolasik011) (Russisch)  
 [Skysoul (e-mail)](mailto:theskysoul@vip.qq.com) (Chinesisch)
 [Liegav (YouTube)](https://www.youtube.com/channel/UCFqQMKfYgGb7iFKJagQl_wA) (Ungarisch)
 
@@ -51,12 +51,12 @@ Und viele mehr
 
 ui_StartTroops
 {
-	"StartTroops"
+	"Starttruppen"
 }
 
 ui_Resource
 {
-	"StartGoods"
+	"Startgüter"
 }
 
 ﻿ui_aicconflict
