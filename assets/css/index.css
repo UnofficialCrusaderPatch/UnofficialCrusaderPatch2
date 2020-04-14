@@ -30,16 +30,22 @@ hr.header-divider {
     margin: 5px;
 }
 
-.card.aic-gen {
+.card.aic-gen,
+.card.aic-field {
     width: 100%;
     padding: 0;
     margin-bottom: 15px;
 }
 
-.card.aic-gen .card-header{
+.card.aic-gen .card-header,
+.card.aic-field .card-header {
     height: 100%;
     margin: 0;
     padding: 0;
+}
+
+.card.aic-field .card-header .mb-0 .btn.btn-link {
+    text-decoration: none;
 }
 
 #accordion, #accordion-instructions {
@@ -51,12 +57,14 @@ h5.mb-0 a#features-link:hover {
     color: blue;
 }
 
-.card.instruction, .card.feature, .card.aic-gen {
+.card.instruction, .card.feature, 
+.card.aic-gen {
     cursor: pointer;
 }
 
 .card.feature,
-.card.aic-gen {
+.card.aic-gen,
+.card.aic-field {
     background-color: gray;
 }
 
