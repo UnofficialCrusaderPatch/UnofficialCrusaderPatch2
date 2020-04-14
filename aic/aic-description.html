@@ -1,1099 +1,935 @@
-<div class="table-responsive">
-    <table class="table table-hover table-striped table-dark text-center">
-        <thead>
-        <tr>
-            <th scope="col">Field</th>
-            <th scope="col">Type</th>
-            <th scope="col">Range of Acceptable Values</th>
-            <th scope="col">Description</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Unknown000</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>Unknown001</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>Unknown002</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>Unknown003</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>Unknown004</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>Unknown005</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>CriticalPopularity</td>
-                <td>Integer</td>
-                <td>0 to 10000</td>
-                <td>If popularity drops below this value the AI sells more stuff than usual to get money. 10000 is 100 popularity</td>
-            </tr>
-            <tr>
-                <td>LowestPopularity</td>
-                <td>Integer</td>
-                <td>0 to 10000</td>
-                <td>If popularity drops below this value the AI sets taxes (in steps) to TaxesMin. 10000 is 100 popularity</td>
-            </tr>
-            <tr>
-                <td>HighestPopularity</td>
-                <td>Integer</td>
-                <td>0 to 10000</td>
-                <td>If popularity is above this value the AI sets taxes back up until a stable 0 to -3 current popularity modifier is reached.
-                    10000 is 100 popularity
-                </td>
-            </tr>
-            <tr>
-                <td>TaxesMin</td>
-                <td>Integer</td>
-                <td>0 to 11</td>
-                <td>Minimum taxes allowed. 0 (min) to 11 (max) are the steps from +7 popularity to -24 popularity by taxes in the keep.
-                </td>
-            </tr>
-            <tr>
-                <td>TaxesMax</td>
-                <td>Integer</td>
-                <td>0 to 11</td>
-                <td>Maximum of Taxes allowed. 0 (min) to 11 (max) are the steps from +7 popularity to -24 popularity by taxes in the keep.
-                </td>
-            </tr>
-            <tr>
-                <td>Unknown011</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>Farm1</td>
-                <td>FarmBuilding</td>
-                <td><a href="field-values.html#FarmBuilding" target="_blank">FarmBuilding</a></td>
-                <td>This is the AIs preferred choice of farm</td>
-            </tr>
-            <tr>
-                <td>Farm2</td>
-                <td>FarmBuilding</td>
-                <td><a href="field-values.html#FarmBuilding" target="_blank">FarmBuilding</a></td>
-                <td>This the AIs second most preferred choice of farm. 
-                    It will split farms built between this and Farm1 if these are the only two included.
-                </td>
-            </tr>
-            <tr>
-                <td>Farm3</td>
-                <td>FarmBuilding</td>
-                <td><a href="field-values.html#FarmBuilding" target="_blank">FarmBuilding</a></td>
-                <td>AIs third choice of farm</td>
-            </tr>
-            <tr>
-                <td>Farm4</td>
-                <td>FarmBuilding</td>
-                <td><a href="field-values.html#FarmBuilding" target="_blank">FarmBuilding</a></td>
-                <td>AIs fourth choice of farm</td>
-            </tr>
-            <tr>
-                <td>Farm5</td>
-                <td>FarmBuilding</td>
-                <td><a href="field-values.html#FarmBuilding" target="_blank">FarmBuilding</a></td>
-                <td>AIs fifth choice of farm</td>
-            </tr>
-            <tr>
-                <td>Farm6</td>
-                <td>FarmBuilding</td>
-                <td><a href="field-values.html#FarmBuilding" target="_blank">FarmBuilding</a></td>
-                <td>AIs sixth choice of farm</td>
-            </tr>
-            <tr>
-                <td>Farm7</td>
-                <td>FarmBuilding</td>
-                <td><a href="field-values.html#FarmBuilding" target="_blank">FarmBuilding</a></td>
-                <td>AIs seventh choice of farm</td>
-            </tr>
-            <tr>
-                <td>Farm8</td>
-                <td>FarmBuilding</td>
-                <td><a href="field-values.html#FarmBuilding" target="_blank">FarmBuilding</a></td>
-                <td>AIs eighth choice of farm</td>
-            </tr>
-            <tr>
-                <td>PopulationPerFarm</td>
-                <td>Integer</td>
-                <td>0 (disabled) to 2<sup>31</sup> - 1</td>
-                <td>Triggers building of farms for every <i>X</i> amount of current available workers.<br><i>Set to 0 to disable building</i></td>
-            </tr>
-            <tr>
-                <td>PopulationPerWoodcutter</td>
-                <td>Integer</td>
-                <td>0 (disabled) to 2<sup>31</sup> - 1</td>
-                <td>Triggers building of woodcutters for every <i>X</i> amount of current available workers<br><i>Set to 0 to disable building</i></td>
-            </tr>
-            <tr>
-                <td>PopulationPerQuarry</td>
-                <td>Integer</td>
-                <td>0 (disabled) to 2<sup>31</sup> - 1</td>
-                <td>Triggers building of quarries for every <i>X</i> amount of current available workers<br><i>Set to 0 to disable building</i></td>
-            </tr>
-            <tr>
-                <td>PopulationPerIronmine</td>
-                <td>Integer</td>
-                <td>0 (disabled) to 2<sup>31</sup> - 1</td>
-                <td>Triggers building of iron mines for every <i>X</i> amount of current available workers<br><i>Set to 0 to disable building</i></td>
-            </tr>
-            <tr>
-                <td>PopulationPerPitchrig</td>
-                <td>Integer</td>
-                <td>0 (disabled) to 2<sup>31</sup> - 1</td>
-                <td>Triggers building of pitch rigs for every <i>X</i> amount of current available workers<br><i>Set to 0 to disable building</i></td>
-            </tr>
-            <tr>
-                <td>MaxQuarries</td>
-                <td>Integer</td>
-                <td>0 (ignored) to 2<sup>31</sup> - 1</td>
-                <td>Maximum number of quarries built.<br><i>Disabling is done via PopulationPerQuarry</i></td>
-            </tr>
-            <tr>
-                <td>MaxIronmines</td>
-                <td>Integer</td>
-                <td>0 (ignored) to 2<sup>31</sup> - 1</td>
-                <td>Maximum number of iron mines built.<br><i>Disabling is done via PopulationPerIronmine</i></td>
-            </tr>
-            <tr>
-                <td>MaxWoodcutters</td>
-                <td>Integer</td>
-                <td>0 (ignored) to 2<sup>31</sup> - 1</td>
-                <td>Maximum number of woodcutters built.<br><i>Disabling is done via PopulationPerWoodcutter</i></td>
-            </tr>
-            <tr>
-                <td>MaxPitchrigs</td>
-                <td>Integer</td>
-                <td>0 (ignored) to 2<sup>31</sup> - 1</td>
-                <td>Maximum number of pitch rigs built.<br><i>Disabling is done via PopulationPerPitchrig</i></td>
-            </tr>
-            <tr>
-                <td>MaxFarms</td>
-                <td>Integer</td>
-                <td>0 (ignored) to 2<sup>31</sup> - 1</td>
-                <td>Maximum number of farms built.<br><i>Disabling is done via PopulationPerFarm</i></td>
-            </tr>
-            <tr>
-                <td>BuildInterval</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Number of gameticks between buildsteps.<br><i>This is only considered at &lt;=5000 gold</i></td>
-            </tr>
-            <tr>
-                <td>ResourceRebuildDelay</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>The delay before the AI rebuilds destroyed resource buildings
-                </td>
-            </tr>
-            <tr>
-                <td>MaxFood</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Maximum amount of each different type of food the AI will keep in stock. This also includes wheat</td>
-            </tr>
-            <tr>
-                <td>MinimumApples</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>This amount of apples are 'saved' and only consumed if current popularity &lt; LowestPopularity. 
-                    If the AI has less than this amount it will prioritize buying the missing food</td>
-            </tr>
-            <tr>
-                <td>MinimumCheese</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>This amount of cheese is 'saved' and only consumed if current popularity &lt; LowestPopularity. 
-                    If the AI has less than this amount it will prioritize buying the missing food</td>
-            </tr>
-            <tr>
-                <td>MinimumBread</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>This amount of bread is 'saved' and only consumed if current popularity &lt; LowestPopularity. 
-                    If the AI has less than this amount it will prioritize buying the missing food</td>
-            </tr>
-            <tr>
-                <td>MinimumWheat</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Below this amount the AI will prioritize buying wheat until it reaches this amount</td>
-            </tr>
-            <tr>
-                <td>MinimumHop</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Below this amount the AI will prioritize buying hops until it reaches this amount</td>
-            </tr>
-            <tr>
-                <td>TradeAmountFood</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>The amount of food, wheat or hops bought at once. Only one of these trades is made per gametick</td>
-            </tr>
-            <tr>
-                <td>TradeAmountEquipment</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>The amount of equipment for the armoury bought at once. Only one of these trades is made per gametick</td>
-            </tr>
-            <tr>
-                <td>Unknown040</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>MinimumGoodsRequiredAfterTrade</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>The AI will only send ally a good if they have this at least amount to spare</td>
-            </tr>
-            <tr>
-                <td>DoubleRationsFoodThreshold</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>The AI will give double rations if it has at least this much food</td>
-            </tr>
-            <tr>
-                <td>MaxWood</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Maximum amount of wood to store on the stockpile before selling</td>
-            </tr>
-            <tr>
-                <td>MaxStone</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Maximum amount of stone to store on the stockpile +
-                    amount of stone needed for the biggest unbuilt stone building (ie. tower) that hasn't been reached in the build order of the AIV
-                </td>
-            </tr>
-            <tr>
-                <td>MaxResourceOther</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Maximum amount of hops, iron, pitch and flour to store in the stockpile</td>
-            </tr>
-            <tr>
-                <td>MaxEquipment</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Maximum amount of weapons or armour stored in the armoury</td>
-            </tr>
-            <tr>
-                <td>MaxBeer</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Max amount of beer to store on stockpile</td>
-            </tr>
-            <tr>
-                <td>MaxResourceVariance</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Allowed tolerance for all goods before AI sells down to the max allowed stock</td>
-            </tr>
-            <tr>
-                <td>RecruitGoldThreshold</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>If the AI has less gold than this threshold it will not recruit or buy ressources for aiv buildings or economy.
-                    Sortie units, resource buildings and defensive siege engines are excluded</td>
-            </tr>
-            <tr>
-                <td>BlacksmithSetting</td>
-                <td>BlacksmithSetting</td>
-                <td>Maces, Swords, Both</td>
-                <td>The setting for the AIs blacksmith workshops</td>
-            </tr>
-            <tr>
-                <td>FletcherSetting</td>
-                <td>FletcherSetting</td>
-                <td>Bows, Crossbows, Both</td>
-                <td>The setting for the AIs fletcher workshops</td>
-            </tr>
-            <tr>
-                <td>PoleturnerSetting</td>
-                <td>PoleturnerSetting</td>
-                <td>Spears, Pikes, Both</td>
-                <td>The setting for the AIs poleturner workshops</td>
-            </tr>
-            <tr>
-                <td>SellResource01</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource type that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>SellResource02</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource (usually Hops) that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>SellResource03</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource (usually Iron) that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>SellResource04</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource (usually Pitch) that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>SellResource05</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource (usually Wheat) that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>SellResource06</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource (usually Beer) that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>SellResource07</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource (usually Flour) that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>SellResource08</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource (usually Bows) that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>SellResource09</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource (usually Crossbows) that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>SellResource10</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource (usually Spears) that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>SellResource11</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource (usually Pikes) that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>SellResource12</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource (usually Maces) that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>SellResource13</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource (usually Swords) that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>SellResource14</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource (usually LeatherArmors) that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>SellResource15</td>
-                <td>Resource</td>
-                <td><a href="field-values.html#Resource" target="_blank">Resource</td>
-                <td>Resource (usually IronArmors) that AI will completely sell off</td>
-            </tr>
-            <tr>
-                <td>DefWallPatrolRallyTime</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>The amount of time for castle patrols set up in the AIV to move from one rally point to the next. 
-                    <i>(Note: Currently only spearmen, horse archers and macemen will patrol)</i>
-                </td>
-            </tr>
-            <tr>
-                <td>DefWallPatrolGroups</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>The amount of concurrent existing patrol groups in the AIV setup defined as castle patrols per unit type</td>
-            </tr>
-            <tr>
-                <td>DefSiegeEngineGoldThreshold</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Gold for spending on AIV-defined siege engines: with positive value AI will spend its remaining gold (and cheat if necessary and gold &gt; 0) compared to negative value which serves as a minimum gold</td>
-            </tr>
-            <tr>
-                <td>DefSiegeEngineBuildDelay</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>The delay before the AI builds/rebuilds in the AIV placed siege engines</td>
-            </tr>
-            <tr>
-                <td>Unknown072</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>Unknown073</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>RecruitProbDefDefault</td>
-                <td>Integer</td>
-                <td>0 to 100</td>
-                <td>Default probability that the AI changes its recruitment type to defensive troops. 
-                    Note: All "RecruitProbDef" values must sum to 100. Sortie units are always recruited first.
-                    The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
-            </tr>
-            <tr>
-                <td>RecruitProbDefWeak</td>
-                <td>Integer</td>
-                <td>0 to 100</td>
-                <td>Probability that the AI changes its recruitment type to defensive troops when it is "weakest".
-                    Note: Sortie units are always recruited first! 
-                    The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
-            </tr>
-            <tr>
-                <td>RecruitProbDefStrong</td>
-                <td>Integer</td>
-                <td>0 to 100</td>
-                <td>Probability that this AI changes its recruitment type to defensive troops when it is "strongest". 
-                    Note: Sortie units are always recruited first! 
-                    The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
-            </tr>
-            <tr>
-                <td>RecruitProbRaidDefault</td>
-                <td>Integer</td>
-                <td>0 to 100</td>
-                <td>Default probability that the AI changes its recruitment type to raiding troops. 
-                    Note: All "RecruitProbDef" values must sum to 100. Sortie units are always recruited first.
-                    The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
-            </tr>
-            <tr>
-                <td>RecruitProbRaidWeak</td>
-                <td>Integer</td>
-                <td>0 to 100</td>
-                <td>Probability that this AI changes its recruitment type to raiding troops when it is "weakest". 
-                    Note: Sortie units are always recruited first! 
-                    The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
-            </tr>
-            <tr>
-                <td>RecruitProbRaidStrong</td>
-                <td>Integer</td>
-                <td>0 to 100</td>
-                <td>Probability that this AI changes its recruitment type to raiding troops when it is "strongest". 
-                    Note: Sortie units are always recruited first! 
-                    The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
-            </tr>
-            <tr>
-                <td>RecruitProbAttackDefault</td>
-                <td>Integer</td>
-                <td>0 to 100</td>
-                <td>Default probability that the AI changes its recruitment type to attack troops. 
-                    Note: All "RecruitProbDef" values must sum to 100. Sortie units are always recruited first.
-                    The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
-            </tr>
-            <tr>
-                <td>RecruitProbAttackWeak</td>
-                <td>Integer</td>
-                <td>0 to 100</td>
-                <td>Probability that this AI changes its recruitment type to attack troops when it is "weakest". 
-                    Note: Sortie units are always recruited first! 
-                    The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
-            </tr>
-            <tr>
-                <td>RecruitProbAttackStrong</td>
-                <td>Integer</td>
-                <td>0 to 100</td>
-                <td>Probability that this AI changes its recruitment type to attack troops when it is "strongest". 
-                    Note: Sortie units are always recruited first! 
-                    The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
-            </tr>
-            <tr>
-                <td>SortieUnitRangedMin</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>These units are only sent out if at least this number of them have already been recruited.
-                    More than the set amount can be recruited if the AI loses resource building workers frequently.
-                </td>
-            </tr>
-            <tr>
-                <td>SortieUnitRanged</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Type of ranged units that go to the last attacked farm or building</td>
-            </tr>
-            <tr>
-                <td>SortieUnitMeleeMin</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Sortie units are only sent out if this amount of them has already been recruited.
-                </td>
-            </tr>
-            <tr>
-                <td>SortieUnitMelee</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Type of melee units recruited to attack enemy units shooting at the AI's buildings or workers.
-                </td>
-            </tr>
-            <tr>
-                <td>DefDiggingUnitMax</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Number of units recruited to dig AIs own moat.
-                </td>
-            </tr>
-            <tr>
-                <td>DefDiggingUnit</td>
-                <td>DiggingUnit</td>
-                <td><a href="field-values.html#DiggingUnit" target="_blank">DiggingUnit</td>
-                <td>Type of unit used to dig the AIs own moat.
-                </td>
-            </tr>
-            <tr>
-                <td>RecruitInterval</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Default interval at which the AI recruits troops</td>
-            </tr>
-            <tr>
-                <td>RecruitIntervalWeak</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Recruiting interval for 'weak' state which sets in if (ie. AI has troops &lt;= 8)</td>
-            </tr>
-            <tr>
-                <td>RecruitIntervalStrong</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Recruiting interval for 'strong' state which sets in if (ie. AI has troops &gt;= 40)</td>
-            </tr>
-            <tr>
-                <td>DefTotal</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>The total count of all defensive units (wall defense + patrols) if the AI is in its 'strong' state</td>
-            </tr>
-            <tr>
-                <td>OuterPatrolGroupsCount</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>The number of splits for outer defensive patrols.
-                </td>
-            </tr>
-            <tr>
-                <td>OuterPatrolGroupsMove</td>
-                <td>Bool</td>
-                <td>"True" or "False"</td>
-                <td>Controls whether the patrols stay at one place (quarry) or move around.
-                </td>
-            </tr>
-            <tr>
-                <td>OuterPatrolRallyDelay</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>The delay after which the AI sends out patrols to defend the outer economy. 4 is approximately one month</td>
-            </tr>
-            <tr>
-                <td>DefWalls</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Total number of troops for wall defense</td>
-            </tr>
-            <tr>
-                <td>DefUnit1</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>First choice of defensive unit</td>
-            </tr>
-            <tr>
-                <td>DefUnit2</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Second choice of defensive unit</td>
-            </tr>
-            <tr>
-                <td>DefUnit3</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Third choice of defensive unit</td>
-            </tr>
-            <tr>
-                <td>DefUnit4</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Fourth choice of defensive unit</td>
-            </tr>
-            <tr>
-                <td>DefUnit5</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Fifth choice of defensive unit</td>
-            </tr>
-            <tr>
-                <td>DefUnit6</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Sixth choice of defensive unit</td>
-            </tr>
-            <tr>
-                <td>DefUnit7</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Seventh choice of defensive unit</td>
-            </tr>
-            <tr>
-                <td>DefUnit8</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Eighth choice of defensive unit</td>
-            </tr>
-            <tr>
-                <td>RaidUnitsBase</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Base amount of raid troops</td>
-            </tr>
-            <tr>
-                <td>RaidUnitsRandom</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td class="text-left">
-                    <ul>
-                        Maximum random addition to raid troops. Special cases:
-                        <li>gold &gt; 5000 &rarr; multiplied by 2</li>
-                        <li>gold &lt; 1000 &rarr;; set to 0</li>
-                        <li>enemy gold &lt; 500 &rarr; divided by -2</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>RaidUnit1</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>First choice of unit for raiding</td>
-            </tr>
-            <tr>
-                <td>RaidUnit2</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Second choice of unit for raiding</td>
-            </tr>
-            <tr>
-                <td>RaidUnit3</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Third choice of unit for raiding</td>
-            </tr>
-            <tr>
-                <td>RaidUnit4</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Fourth choice of unit for raiding</td>
-            </tr>
-            <tr>
-                <td>RaidUnit5</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Fifth choice of unit for raiding</td>
-            </tr>
-            <tr>
-                <td>RaidUnit6</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Sixth choice of unit for raiding</td>
-            </tr>
-            <tr>
-                <td>RaidUnit7</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Seventh choice of unit for raiding</td>
-            </tr>
-            <tr>
-                <td>RaidUnit8</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Eighth choice of unit for raiding</td>
-            </tr>
-            <tr>
-                <td>HarassingSiegeEngine1</td>
-                <td>HarassingSiegeEngine</td>
-                <td><a href="field-values.html#HarassingSiegeEngine" target="_blank">HarassingSiegeEngine</td>
-                <td>First choice of harassing siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>HarassingSiegeEngine2</td>
-                <td>HarassingSiegeEngine</td>
-                <td><a href="field-values.html#HarassingSiegeEngine" target="_blank">HarassingSiegeEngine</td>
-                <td>Second choice of harassing siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>HarassingSiegeEngine3</td>
-                <td>HarassingSiegeEngine</td>
-                <td><a href="field-values.html#HarassingSiegeEngine" target="_blank">HarassingSiegeEngine</td>
-                <td>Third choice of harassing siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>HarassingSiegeEngine4</td>
-                <td>HarassingSiegeEngine</td>
-                <td><a href="field-values.html#HarassingSiegeEngine" target="_blank">HarassingSiegeEngine</td>
-                <td>Fourth choice of harassing siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>HarassingSiegeEngine5</td>
-                <td>HarassingSiegeEngine</td>
-                <td><a href="field-values.html#HarassingSiegeEngine" target="_blank">HarassingSiegeEngine</td>
-                <td>Fifth choice of harassing siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>HarassingSiegeEngine6</td>
-                <td>HarassingSiegeEngine</td>
-                <td><a href="field-values.html#HarassingSiegeEngine" target="_blank">HarassingSiegeEngine</td>
-                <td>Sixth choice of harassing siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>HarassingSiegeEngine7</td>
-                <td>HarassingSiegeEngine</td>
-                <td><a href="field-values.html#HarassingSiegeEngine" target="_blank">HarassingSiegeEngine</td>
-                <td>Seventh choice of harassing siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>HarassingSiegeEngine8</td>
-                <td>HarassingSiegeEngine</td>
-                <td><a href="field-values.html#HarassingSiegeEngine" target="_blank">HarassingSiegeEngine</td>
-                <td>Eighth choice of harassing siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>HarassingSiegeEnginesMax</td>
-                <td>Integer</td>
-                <td>0 to 10</td>
-                <td>The maximum of harassing siege engines an AI builds
-                </td>
-            </tr>
-            <tr>
-                <td>Unknown124</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>AttForceBase</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>The base amount of troops with which this AI attacks
-                </td>
-            </tr>
-            <tr>
-                <td>AttForceRandom</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>The maximum random amount of additional troops in an attack (this is not the amount by which the troops increase per attack!)
-                </td>
-            </tr>
-            <tr>
-                <td>AttForceSupportAllyThreshold</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>If the AI has more than this amount of units in the attack force it will help their allies or siege an enemy if commanded to do so</td>
-            </tr>
-            <tr>
-                <td>AttForceRallyPercentage</td>
-                <td>Integer</td>
-                <td>0 to 100</td>
-                <td>The %-amount of units of the attack force that the AI will rally before attacking
-                </td>
-            </tr>
-            <tr>
-                <td>Unknown129</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>Unknown130</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>Unknown131</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Supposedly the gameticks</td>
-            </tr>
-            <tr>
-                <td>Unknown132</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>SiegeEngine1</td>
-                <td>SiegeEngine</td>
-                <td><a href="field-values.html#SiegeEngine" target="_blank">SiegeEngine</td>
-                <td>First choice of offensive siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>SiegeEngine2</td>
-                <td>SiegeEngine</td>
-                <td><a href="field-values.html#SiegeEngine" target="_blank">SiegeEngine</td>
-                <td>Second choice of offensive siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>SiegeEngine3</td>
-                <td>SiegeEngine</td>
-                <td><a href="field-values.html#SiegeEngine" target="_blank">SiegeEngine</td>
-                <td>Third choice of offensive siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>SiegeEngine4</td>
-                <td>SiegeEngine</td>
-                <td><a href="field-values.html#SiegeEngine" target="_blank">SiegeEngine</td>
-                <td>Fourth choice of offensive siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>SiegeEngine5</td>
-                <td>SiegeEngine</td>
-                <td><a href="field-values.html#SiegeEngine" target="_blank">SiegeEngine</td>
-                <td>Fifth choice of offensive siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>SiegeEngine6</td>
-                <td>SiegeEngine</td>
-                <td><a href="field-values.html#SiegeEngine" target="_blank">SiegeEngine</td>
-                <td>Sixth choice of offensive siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>SiegeEngine7</td>
-                <td>SiegeEngine</td>
-                <td><a href="field-values.html#SiegeEngine" target="_blank">SiegeEngine</td>
-                <td>Seventh choice of offensive siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>SiegeEngine8</td>
-                <td>SiegeEngine</td>
-                <td><a href="field-values.html#SiegeEngine" target="_blank">SiegeEngine</td>
-                <td>Eighth choice of offensive siege engine to recruit</td>
-            </tr>
-            <tr>
-                <td>CowThrowInterval</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>The amount of stones needed to be thrown until the AI throws a diseased cow instead (catapults & trebuchets). 
-                    Value 0 disables cows and -1 makes the AI only throw cows</td>
-            </tr>
-            <tr>
-                <td>Unknown142</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>AttMaxEngineers</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Maximum number of Engineers to recruit for an attack</td>
-            </tr>
-            <tr>
-                <td>AttDiggingUnit</td>
-                <td>DiggingUnit</td>
-                <td><a href="field-values.html#DiggingUnit" target="_blank">DiggingUnit</td>
-                <td>This unit is only recruited if the target enemy has moat and is used preferably to dig enemy moat.
-                </td>
-            </tr>
-            <tr>
-                <td>AttDiggingUnitMax</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Maximum number of AttDiggingUnit to recruit for an attack</td>
-            </tr>
-            <tr>
-                <td>AttUnit2</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Unit that engages the enemy walls and traps before the main army moves in</td>
-            </tr>
-            <tr>
-                <td>AttUnit2Max</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Maximum number of AttUnit2 to recruit for an attack</td>
-            </tr>
-            <tr>
-                <td>AttMaxAssassins</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Maximum number of assassins to recruit for an attack</td>
-            </tr>
-            <tr>
-                <td>AttMaxLaddermen</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Maximum number of laddermen to recruit for an attack</td>
-            </tr>
-            <tr>
-                <td>AttMaxTunnelers</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Maximum number of tunnelers to recruit for an attack</td>
-            </tr>
-            <tr>
-                <td>AttUnitPatrol</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Ranged attack unit that patrols around the enemy castle / keep. Preferably ranged units should be used here.
-                </td>
-            </tr>
-            <tr>
-                <td>AttUnitPatrolMax</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Maximum number of AttUnitPatrol troops to recruit</td>
-            </tr>
-            <tr>
-                <td>AttUnitPatrolGroupsCount</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td># of groups the AttUnitPatrol split into.<br><b>BUGGY!</b> 
-                    More than 1 group results to only a single group attacking</td>
-            </tr>
-            <tr>
-                <td>AttUnitBackup</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Attacking unit that holds position and doesn't attack until the walls are breached.</td>
-            </tr>
-            <tr>
-                <td>AttUnitBackupMax</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Maximum number of AttUnitBackup troops to recruit</td>
-            </tr>
-            <tr>
-                <td>RangedBackupGroupsCount</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>Number of groups the RangedBackupUnits split into. 
-                    If shields are present in the army once will be added to each group if feasible
-                </td>
-            </tr>
-            <tr>
-                <td>AttUnitEngage</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Units that engage enemy groups of units outside the castle. 
-                    Prioritizes larger groups no matter where they are on the map. 
-                    Otherwise destroys buildings outside the castle.
-                </td>
-            </tr>
-            <tr>
-                <td>AttUnitEngageMax</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>AttUnitSiegeDef</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>These units patrol between siege enginees in order to protect them. 
-                    These get priority in AttackUnit recruitment process</td>
-            </tr>
-            <tr>
-                <td>AttUnitSiegeDefMax</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>Unknown161</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>This may or may not be the number of groups the AttUnitSiegeDef split into
-                </td>
-            </tr>
-            <tr>
-                <td>AttUnitMain1</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Highest priority main strike force unit the AI recruits for sieges</td>
-            </tr>
-            <tr>
-                <td>AttUnitMain2</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Second priority main strike force unit the AI recruits for sieges</td>
-            </tr>
-            <tr>
-                <td>AttUnitMain3</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Third priority main strike force unit the AI recruits for sieges</td>
-            </tr>
-            <tr>
-                <td>AttUnitMain4</td>
-                <td>Unit</td>
-                <td><a href="field-values.html#Unit" target="_blank">Unit</td>
-                <td>Fourth priority main strike force unit the AI recruits for sieges</td>
-            </tr>
-            <tr>
-                <td>AttMaxDefault</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td>No description available</td>
-            </tr>
-            <tr>
-                <td>AttMainGroupsCount</td>
-                <td>Integer</td>
-                <td>0 to 2<sup>31</sup> - 1</td>
-                <td># of groups all the AttUnitMain split into. Maximum is 3
-                </td>
-            </tr>
-            <tr>
-                <td>TargetChoice</td>
-                <td>TargetingType</td>
-                <td><a href="field-values.html#TargetingType" target="_blank">TargetingType</td>
-                <td class="text-left">
-                    <ul>
-                        <li>Gold - target enemy with most gold</li>
-                        <li>Balanced - target weakest enemy</li>
-                        <li>Closest - target closest enemy</li>
-                        <li>Player - target player</li>
-                    </ul>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<div class="row">
+    <div class="col-lg-6">
+
+        <div class="card aic-gen">
+            <div class="card-header" id="aic-gen-popularity" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <h5 class="mb-0">
+                <button class="btn btn-link">
+                    Popularity
+                </button>
+                </h5>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="aic-gen-one">
+                <div class="card-body aic-gen-highlight">
+                    <div id="aic-popularity" class="table-responsive">
+                        <table class="table table-hover table-striped table-dark text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Acceptable Values</th>
+                                <th scope="col">Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CriticalPopularity</td>
+                                    <td>0 to 10000<br>(0 to 100)</td>
+                                    <td>If popularity drops below this value the AI sells more stuff than usual to get money. 10000 is 100 popularity</td>
+                                </tr>
+                                <tr>
+                                    <td>LowestPopularity</td>
+                                    <td>0 to 10000<br>(0 to 100)</td>
+                                    <td>If popularity drops below this value the AI sets taxes (in steps) to TaxesMin. 10000 is 100 popularity</td>
+                                </tr>
+                                <tr>
+                                    <td>HighestPopularity</td>
+                                    <td>0 to 10000<br>(0 to 100)</td>
+                                    <td>Above this value the AI sets taxes back up until a stable 0 to -3 current popularity modifier is reached</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card aic-gen">
+            <div class="card-header" id="aic-gen-taxes" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <h5 class="mb-0">
+                <button class="btn btn-link">
+                    Taxes
+                </button>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse show" aria-labelledby="aic-gen-two">
+                <div class="card-body aic-gen-highlight">
+                    <div id="aic-taxes table-responsive">
+                        <table class="table table-hover table-striped table-dark text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Acceptable Values</th>
+                                <th scope="col">Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>TaxesMin</td>
+                                    <td>0 to 11</td>
+                                    <td>Minimum taxes allowed. 0 (min) to 11 (max) are the steps from +7 popularity to -24 popularity by taxes in the keep.</td>
+                                </tr>
+                                <tr>
+                                    <td>TaxesMax</td>
+                                    <td>0 to 11</td>
+                                    <td>Maximum of Taxes allowed. 0 (min) to 11 (max) are the steps from +7 popularity to -24 popularity by taxes in the keep.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card aic-gen">
+            <div class="card-header" id="aic-gen-food" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                <h5 class="mb-0">
+                <button class="btn btn-link">
+                    Food
+                </button>
+                </h5>
+            </div>
+            <div id="collapseThree" class="collapse show" aria-labelledby="aic-gen-three">
+                <div class="card-body aic-gen-highlight">
+                    <div id="aic-food table-responsive">
+                        <table class="table table-hover table-striped table-dark text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Acceptable Values</th>
+                                <th scope="col">Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MaxFood</td>
+                                    <td>Integer</td>
+                                    <td>Maximum amount of each different type of food the AI will keep in stock. This also includes wheat</td>
+                                </tr>
+                                <tr>
+                                    <td>MinimumApples</td>
+                                    <td>Integer</td>
+                                    <td>This amount of apples are 'saved' and only consumed if current popularity &lt; LowestPopularity. 
+                                        If the AI has less than this amount it will prioritize buying the missing food</td>
+                                </tr>
+                                <tr>
+                                    <td>MinimumCheese</td>
+                                    <td>Integer</td>
+                                    <td>This amount of cheese is 'saved' and only consumed if current popularity &lt; LowestPopularity. 
+                                        If the AI has less than this amount it will prioritize buying the missing food</td>
+                                </tr>
+                                <tr>
+                                    <td>MinimumBread</td>
+                                    <td>Integer</td>
+                                    <td>This amount of bread is 'saved' and only consumed if current popularity &lt; LowestPopularity. 
+                                        If the AI has less than this amount it will prioritize buying the missing food</td>
+                                </tr>
+                                <tr>
+                                    <td>MinimumWheat</td>
+                                    <td>Integer</td>
+                                    <td>Below this amount the AI will prioritize buying wheat until it reaches this amount</td>
+                                </tr>
+                                <tr>
+                                    <td>MinimumHop</td>
+                                    <td>Integer</td>
+                                    <td>Below this amount the AI will prioritize buying hops until it reaches this amount</td>
+                                </tr>
+                                <tr>
+                                    <td>TradeAmountFood</td>
+                                    <td>Integer</td>
+                                    <td>The amount of food, wheat or hops bought at once. Only one of these trades is made per gametick</td>
+                                </tr>
+                                <tr>
+                                    <td>DoubleRations<br>FoodThreshold</td>
+                                    <td>Integer</td>
+                                    <td>The AI will give double rations if it has at least this much food</td>
+                                </tr>
+                                <tr>
+                                    <td>MaxBeer</td>
+                                    <td>Integer</td>
+                                    <td>Max amount of beer to store on stockpile</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card aic-gen">
+            <div class="card-header" id="aic-gen-farms" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                <h5 class="mb-0">
+                <button class="btn btn-link">
+                    Farms
+                </button>
+                </h5>
+            </div>
+            <div id="collapseFour" class="collapse show" aria-labelledby="aic-gen-four">
+                <div class="card-body aic-gen-highlight">
+                    <div id="aic-farms table-responsive">
+                        <table class="table table-hover table-striped table-dark text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Acceptable Values</th>
+                                <th scope="col">Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MaxFarms</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of farms built. Disabling farms is done via PopulationPerFarm</td>
+                                </tr>
+                                <tr>
+                                    <td>Population<br>PerFarm</td>
+                                    <td>Integer</td>
+                                    <td>Triggers building of farms for every X amount of current available workers. &#010;Set to 0 to disable building</td>
+                                </tr>
+                                <tr>
+                                    <td>Farm Buildings</td>
+                                    <td><a href="field-values.html#Farm" target="_blank">Farm</a></td>
+                                    <td>These are the AIs choice of farms to build</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card aic-gen">
+            <div class="card-header" id="aic-gen-buildings" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                <h5 class="mb-0">
+                <button class="btn btn-link">
+                    Buildings
+                </button>
+                </h5>
+            </div>
+            <div id="collapseFive" class="collapse show" aria-labelledby="aic-gen-five">
+                <div class="card-body aic-gen-highlight">
+                    <div id="aic-buildings table-responsive">
+                        <table class="table table-hover table-striped table-dark text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Acceptable Values</th>
+                                <th scope="col">Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Population<br>PerWoodcutter</td>
+                                    <td>Integer</td>
+                                    <td>Triggers building of woodcutters for every X amount of current available workers. Set to 0 to disable building</td>
+                                </tr>
+                                <tr>
+                                    <td>MaxWoodcutters</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of woodcutters built. Disabling is done via PopulationPerWoodcutter</td>
+                                </tr>
+                                <tr>
+                                    <td>Population<br>PerQuarry</td>
+                                    <td>Integer</td>
+                                    <td>Triggers building of quarries for every X amount of current available workers. Set to 0 to disable building</td>
+                                </tr>
+                                <tr>
+                                    <td>MaxQuarries</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of quarries built. Disabling is done via PopulationPerQuarry</td>
+                                </tr>
+                                <tr>
+                                    <td>Population<br>PerIronmine</td>
+                                    <td>Integer</td>
+                                    <td>Triggers building of iron mines for every X amount of current available workers. Set to 0 to disable building</td>
+                                </tr>
+                                <tr>
+                                    <td>MaxIronmines</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of iron mines built. Disabling is done via PopulationPerIronmine</td>
+                                </tr>
+                                <tr>
+                                    <td>Population<br>PerPitchrig</td>
+                                    <td>Integer</td>
+                                    <td>Triggers building of pitch rigs for every X amount of current available workers. Set to 0 to disable building</td>
+                                </tr>
+                                <tr>
+                                    <td>MaxPitchrigs</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of pitch rigs to build.Disabling is done via PopulationPerPitchrig</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card aic-gen">
+            <div class="card-header" id="aic-gen-build-efficiency" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                <h5 class="mb-0">
+                <button class="btn btn-link">
+                    Build efficiency
+                </button>
+                </h5>
+            </div>
+            <div id="collapseSix" class="collapse show" aria-labelledby="aic-gen-six">
+                <div class="card-body aic-gen-highlight">
+                    <div id="aic-build-efficiency table-responsive">
+                        <table class="table table-hover table-striped table-dark text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Acceptable Values</th>
+                                <th scope="col">Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>BuildInterval</td>
+                                    <td>Integer</td>
+                                    <td>Number of gameticks between buildsteps. This is only considered at &lt;=5000 gold</td>
+                                </tr>
+                                <tr>
+                                    <td>Resource<br>RebuildDelay</td>
+                                    <td>Integer</td>
+                                    <td>The delay before the AI rebuilds destroyed resource buildings</td>
+                                </tr>
+                                <tr>
+                                    <td>Recruit<br>GoldThreshold</td>
+                                    <td>Integer</td>
+                                    <td>If the AI has less gold than this threshold it will not recruit or buy ressources for aiv buildings or economy. &#010;Sortie units, resource buildings and defensive siege engines are excluded</td>
+                                </tr>
+                                <tr>
+                                    <td>DefSiegeEngine<br>GoldThreshold</td>
+                                    <td>Integer</td>
+                                    <td>Gold for spending on AIV-defined siege engines: with positive value AI will spend its remaining gold (and cheat if necessary and gold &gt; 0) compared to negative value which serves as a minimum gold</td>
+                                </tr>
+                                <tr>
+                                    <td>DefSiegeEngine<br>BuildDelay</td>
+                                    <td>Integer</td>
+                                    <td>The delay before the AI builds/rebuilds in the AIV placed siege engines</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card aic-gen">
+            <div class="card-header" id="aic-gen-resource-management" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                <h5 class="mb-0">
+                <button class="btn btn-link">
+                    Resource Management
+                </button>
+                </h5>
+            </div>
+            <div id="collapseSeven" class="collapse show" aria-labelledby="aic-gen-seven">
+                <div class="card-body aic-gen-highlight">
+                    <div id="aic-resource-management table-responsive">
+                        <table class="table table-hover table-striped table-dark text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Acceptable Values</th>
+                                <th scope="col">Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MinimumGoods<br>Required<br>AfterTrade</td>
+                                    <td>Integer</td>
+                                    <td>The AI will only send ally a good if they have this at least amount to spare</td>
+                                </tr>
+                                <tr>
+                                    <td>MaxWood</td>
+                                    <td>Integer</td>
+                                    <td>Maximum amount of wood to store on the stockpile before selling</td>
+                                </tr>
+                                <tr>
+                                    <td>MaxStone</td>
+                                    <td>Integer</td>
+                                    <td>Maximum amount of stone to store on the stockpile + amount of stone needed for the biggest unbuilt stone building (ie. tower) that hasn't been reached in the build order of the AIV</td>
+                                </tr>
+                                <tr>
+                                    <td>MaxResourceOther</td>
+                                    <td>Integer</td>
+                                    <td>Maximum amount of hops, iron, pitch and flour to store in the stockpile</td>
+                                </tr>
+                                <tr>
+                                    <td>MaxResource<br>Variance</td>
+                                    <td>Integer</td>
+                                    <td>Allowed tolerance for all goods before AI sells down to the max allowed stock</td>
+                                </tr>
+                                <tr>
+                                    <td>SellResource 1-15</td>
+                                    <td><a href="field-values.html#Resource" target="_blank">Resource</a></td>
+                                    <td>List of resource types that the AI will completely sell off</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card aic-gen">
+            <div class="card-header" id="aic-gen-weapons" data-toggle="collapse" data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+                <h5 class="mb-0">
+                <button class="btn btn-link">
+                    Weapons
+                </button>
+                </h5>
+            </div>
+            <div id="collapseEight" class="collapse show" aria-labelledby="aic-gen-eight">
+                <div class="card-body aic-gen-highlight">
+                    <div id="aic-weapons table-responsive">
+                        <table class="table table-hover table-striped table-dark text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Acceptable Values</th>
+                                <th scope="col">Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MaxEquipment</td>
+                                    <td>Integer</td>
+                                    <td>Maximum amount of weapons or armour stored in the armoury</td>
+                                </tr>
+                                <tr>
+                                    <td>BlacksmithSetting</td>
+                                    <td>Maces, Swords, Both</td>
+                                    <td>The setting for the AIs blacksmith workshops</td>
+                                </tr>
+                                <tr>
+                                    <td>FletcherSetting</td>
+                                    <td>Bows, Crossbows, Both</td>
+                                    <td>The setting for the AIs fletcher workshops</td>
+                                </tr>
+                                <tr>
+                                    <td>PoleturnerSetting</td>
+                                    <td>Pikes, Spears, Both</td>
+                                    <td>The setting for the AIs poleturner workshops</td>
+                                </tr>
+                                <tr>
+                                    <td>TradeAmount Equipment</td>
+                                    <td>Integer</td>
+                                    <td>The amount of equipment for the armoury bought at once. Only one of these trades is made per gametick</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card aic-gen">
+            <div class="card-header" id="aic-gen-uncategorized" data-toggle="collapse" data-target="#collapseThirteen" aria-expanded="true" aria-controls="collapseThirteen">
+                <h5 class="mb-0">
+                <button class="btn btn-link">
+                    Uncategorized
+                </button>
+                </h5>
+            </div>
+            <div id="collapseThirteen" class="collapse show" aria-labelledby="aic-gen-thirteen">
+                <div class="card-body aic-gen-highlight">
+                    <div id="aic-uncategorized table-responsive">
+                        <table class="table table-hover table-striped table-dark text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Acceptable Values</th>
+                                <th scope="col">Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Unknown000</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown001</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown002</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown003</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown004</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown005</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown011</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown040</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown072</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown073</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown124</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown129</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown130</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown132</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown142</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>Unknown161</td>
+                                    <td>Integer</td>
+                                    <td>This may or may not be the number of groups the AttUnitSiegeDef split into</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-lg-6">
+
+        <div class="card aic-gen">
+            <div class="card-header" id="aic-gen-recruiting" data-toggle="collapse" data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+                <h5 class="mb-0">
+                <button class="btn btn-link">
+                    Recruiting
+                </button>
+                </h5>
+            </div>
+            <div id="collapseNine" class="collapse show" aria-labelledby="aic-gen-nine">
+                <div class="card-body aic-gen-highlight">
+                    <div id="aic-recruiting table-responsive">
+                        <table class="table table-hover table-striped table-dark text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Acceptable Values</th>
+                                <th scope="col">Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>RecruitInterval</td>
+                                    <td>Integer</td>
+                                    <td>Default interval at which the AI recruits troops</td>
+                                </tr>
+                                <tr>
+                                    <td>RecruitInterval Weak</td>
+                                    <td>Integer</td>
+                                    <td>Recruiting interval for 'weak' state which sets in if (ie. AI has troops &lt;= 8)</td>
+                                </tr>
+                                <tr>
+                                    <td>RecruitInterval Strong</td>
+                                    <td>Integer</td>
+                                    <td>Recruiting interval for 'strong' state which sets in if (ie. AI has troops &gt;= 40)</td>
+                                </tr>
+                                <tr>
+                                    <td>RecruitProbability<br>Defensive (Def)<br><br>Default<br><br>Strong<br><br>Weak</td>
+                                    <td>0 to 100</td>
+                                    <td>Probability that the AI changes its recruitment type to defensive troops in each state. &#010;Note: These values must sum to 100. Sortie units are always recruited first. &#010;The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
+                                </tr>
+                                <tr>
+                                    <td>RecruitProbability<br>Raid<br><br>Default<br><br>Strong<br><br>Weak</td>
+                                    <td>0 to 100</td>
+                                    <td>Probability that the AI changes its recruitment type to raiding troops in each state. &#010;Note: These values must sum to 100. Sortie units are always recruited first. &#010;The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
+                                </tr>
+                                <tr>
+                                    <td>RecruitProbability<br>Attacking<br><br>Default<br><br>Strong<br><br>Weak</td>
+                                    <td>0 to 100</td>
+                                    <td>Probability that the AI changes its recruitment type to attacking troops in each state. &#010;Note: The three values must sum to 100. Sortie units are always recruited first.&#010; The AI always starts the game with defensive recruitment state until the AIV is completely built</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card aic-gen">
+            <div class="card-header" id="aic-gen-attacking" data-toggle="collapse" data-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+                <h5 class="mb-0">
+                <button class="btn btn-link">
+                    Attacking
+                </button>
+                </h5>
+            </div>
+            <div id="collapseTen" class="collapse show" aria-labelledby="aic-gen-ten">
+                <div class="card-body aic-gen-highlight">
+                    <div id="aic-attacking table-responsive">
+                        <table class="table table-hover table-striped table-dark text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Acceptable Values</th>
+                                <th scope="col">Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>TargetChoice</td>
+                                    <td><a href="field-values.html#TargetingType" target="_blank">TargetingType</a></td>
+                                    <td>Gold - target enemy with most gold&#010;Balanced - target weakest enemy&#010;Closest - target closest enemy&#010;Player - target player</td>
+                                </tr>
+                                <tr>
+                                    <td>AttMaxDefault</td>
+                                    <td>Integer</td>
+                                    <td>No description currently available</td>
+                                </tr>
+                                <tr>
+                                    <td>AttForceBase</td>
+                                    <td>Integer</td>
+                                    <td>The base amount of troops with which this AI attacks</td>
+                                </tr>
+                                <tr>
+                                    <td>AttForceRandom</td>
+                                    <td>Integer</td>
+                                    <td>The maximum random amount of additional troops in an attack. (this is not the amount by which the troops increase per attack!)</td>
+                                </tr>
+                                <tr>
+                                    <td>AttForce<br>SupportAllyThreshold</td>
+                                    <td>Integer</td>
+                                    <td>If the AI has more than this amount of units in the attack force, it will help their allies or siege an enemy if commanded to do so</td>
+                                </tr>
+                                <tr>
+                                    <td>AttForce<br>RallyPercentage</td>
+                                    <td>0 to 100</td>
+                                    <td>The %-amount of units of the attack force that the AI will rally before attacking</td>
+                                </tr>
+                                <tr>
+                                    <td>AttMaxAssassins</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of assassins to use in an attack</td>
+                                </tr>
+                                <tr>
+                                    <td>AttUnitPatrol<br>RecommandDelay</td>
+                                    <td>0 to 100</td>
+                                    <td>Supposedly the gameticks, until the Attackunit patrol get ordered a new command for patroling around the enemy's keep</td>
+                                </tr>
+                                <tr>
+                                    <td>RaidUnitsBase</td>
+                                    <td>Integer</td>
+                                    <td>Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]</td>
+                                </tr>
+                                <tr>
+                                    <td>RaidUnits Random</td>
+                                    <td>Integer</td>
+                                    <td>Maximum random addition to raid troops. Special cases: [gold > 5000 => multiplied by 2][gold < 1000 => set to 0][enemy gold < 500 => divided by -2]</td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>Raid Units</td>
+                                    <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
+                                    <td>Raid units to recruit. If the AI does not have enough gold to recruit the Unit listed at the top then it will opt to try and recruit the next (and so on) Unit if it is cheaper</td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>Harassing<br>SiegeEngines<br>Max</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of harassing siege engines an AI builds</td>
+                                </tr>
+                                <tr>
+                                    <td>Harassing Siege Units</td>
+                                    <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
+                                    <td>Siege unit to recruit for harassment when it has spare gold</td>
+                                </tr>
+                                <tr>
+                                    <td>AttUnitPatrol</td>
+                                    <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
+                                    <td>Ranged attack unit that patrols around the enemy castle / keep. Preferably ranged units should be used here</td>
+                                </tr>
+                                <tr>
+                                    <td>AttUnitPatrolMax</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of AttUnitPatrol troops to recruit</td>
+                                </tr>
+                                <tr>
+                                    <td>AttUnit<br>PatrolGroupsCount</td>
+                                    <td>Integer</td>
+                                    <td># of groups the AttUnitPatrol split into. (buggy) More than 1 group results to only a single group attacking</td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>AttUnitBackup</td>
+                                    <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
+                                    <td>Attacking unit that holds position and doesn't attack until the walls are breached</td>
+                                </tr>
+                                <tr>
+                                    <td>AttUnitBackupMax</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of AttUnitBackup troops to recruit</td>
+                                </tr>
+                                <tr>
+                                    <td>AttUnitBackup GroupsCount</td>
+                                    <td>Integer</td>
+                                    <td>Number of groups the AttUnitBackup units split into. If shields are present in the army one will be added to each group if feasible</td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>AttUnitEngage</td>
+                                    <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
+                                    <td>Units that engage enemy groups of units outside the castle.&#010; Prioritizes larger groups no matter where they are on the map.&#010;Otherwise destroys buildings outside the castle</td>
+                                </tr>
+                                <tr>
+                                    <td>AttUnitEngageMax</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of AttUnitEngage troops to recruit</td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>AttMain GroupsCount</td>
+                                    <td>Integer</td>
+                                    <td># of groups all the AttUnitMain split into. Maximum is 3</td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>AttUnitMain Units<br>1-4</td>
+                                    <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
+                                    <td>Main strike force units the AI recruits for sieges. If the AI does not have enough gold to recruit the Unit listed at the top then it will opt to try and recruit the next (and so on) Unit if it is cheaper</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card aic-gen">
+            <div class="card-header" id="aic-gen-attack-siege" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="true" aria-controls="collapseEleven">
+                <h5 class="mb-0">
+                <button class="btn btn-link">
+                    Attacking Siege
+                </button>
+                </h5>
+            </div>
+            <div id="collapseEleven" class="collapse show" aria-labelledby="aic-gen-eleven">
+                <div class="card-body aic-gen-highlight">
+                    <div id="aic-attack-siege table-responsive">
+                        <table class="table table-hover table-striped table-dark text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Acceptable Values</th>
+                                <th scope="col">Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AttDiggingUnit</td>
+                                    <td><a href="field-values.html#DiggingUnit" target="_blank">DiggingUnit</a></td>
+                                    <td>Type of unit used to dig the enemy moats</td>
+                                </tr>
+                                <tr>
+                                    <td>AttDiggingUnitMax</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of units recruited to dig enemy moats</td>
+                                </tr>
+                                <tr>
+                                    <td>AttUnit2</td>
+                                    <td><a href="field-values.html#Unit" target="_blank">DiggingUnit</a></td>
+                                    <td>Type of unit, that engages the enemy walls and traps before the main army moves in</td>
+                                </tr>
+                                <tr>
+                                    <td>AttUnit2 Max</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of AttUnit2 units to recruit</td>
+                                </tr>
+                                <tr>
+                                    <td>AttMaxLaddermen</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of laddermen to recruit for an attack</td>
+                                </tr>
+                                <tr>
+                                    <td>AttMaxTunnelers</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of tunnelers to recruit for an attack</td>
+                                </tr>
+                                <tr>
+                                    <td>AttMaxEngineers</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of Engineers to recruit for an attack</td>
+                                </tr>
+                                <tr>
+                                    <td>AttUnitSiegeDef</td>
+                                    <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
+                                    <td>These units patrol between siege enginees in order to protect them. 
+                                        These get priority in AttackUnit recruitment process</td>
+                                </tr>
+                                <tr>
+                                    <td>AttUnitSiegeDefMax</td>
+                                    <td>Integer</td>
+                                    <td>Maximum number of AttUnitSiegeDef troops to recruit</td>
+                                </tr>
+                                <tr>
+                                    <td>AttUnitSiegeDef GroupsCount</td>
+                                    <td>Integer</td>
+                                    <td>This may or may not be the number of groups the AttUnitSiegeDef split into</td>
+                                </tr>
+                                <tr>
+                                    <td>Siege Units</td>
+                                    <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
+                                    <td>Siege unit for the AI to recruit</td>
+                                </tr>
+                                <tr>
+                                    <td>CowThrowInterval</td>
+                                    <td>Integer</td>
+                                    <td>The amount of stones needed to be thrown until the AI throws a diseased cow instead (catapults & trebuchets). 
+                                        Value 0 disables cows and -1 makes the AI only throw cows</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card aic-gen">
+            <div class="card-header" id="aic-gen-defense" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="true" aria-controls="collapseTwelve">
+                <h5 class="mb-0">
+                <button class="btn btn-link">
+                    Defense
+                </button>
+                </h5>
+            </div>
+            <div id="collapseTwelve" class="collapse show" aria-labelledby="aic-gen-twelve">
+                <div class="card-body aic-gen-highlight">
+                    <div id="aic-defense table-responsive">
+                        <table class="table table-hover table-striped table-dark text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Acceptable Values</th>
+                                <th scope="col">Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>DefTotal</td>
+                                    <td>Integer</td>
+                                    <td>The total count of all defensive units (wall defense + patrols) if the AI is in its 'strong' state</td>
+                                </tr>
+                                <tr>
+                                    <td>DefWalls</td>
+                                    <td>Integer</td>
+                                    <td>Total number of troops for wall defense</td>
+                                </tr>
+                                <tr>
+                                    <td>DefWall PatrolRallyTime</td>
+                                    <td>Integer</td>
+                                    <td>The amount of time for castle patrols set up in the AIV to move from one rally point to the next. &#010;(Note: Currently only spearmen, horse archers and macemen will patrol)</td>
+                                </tr>
+                                <tr>
+                                    <td>DefWall PatrolGroups</td>
+                                    <td>Integer</td>
+                                    <td>The amount of concurrent existing patrol groups in the AIV setup defined as castle patrols per unit type</td>
+                                </tr>
+                                <tr>
+                                    <td>OuterPatrol GroupsCount</td>
+                                    <td>Integer</td>
+                                    <td>The number of splits for outer defensive patrols</td>
+                                </tr>
+                                <tr>
+                                    <td>OuterPatrol GroupsMove</td>
+                                    <td>"True" or "False"</td>
+                                    <td>Controls whether the patrols stay at one place (quarry) or move around</td>
+                                </tr>
+                                <tr>
+                                    <td>OuterPatrol RallyDelay</td>
+                                    <td>Integer</td>
+                                    <td>The delay after which the AI sends out patrols to defend the outer economy. 4 is approximately one month</td>
+                                </tr>
+                                <tr>
+                                    <td>SortieUnit Ranged</td>
+                                    <td>
+                                        <a href="field-values.html#Unit" target="_blank">Unit</a>
+                                    </td>
+                                    <td>Type of ranged units that go to the last attacked farm or building</td>
+                                </tr>
+                                <tr>
+                                    <td>SortieUnit RangedMin</td>
+                                    <td>Integer</td>
+                                    <td>These units are only sent out if at least this number of them have already been recruited. &#010;More than the set amount can be recruited if the AI loses resource building workers frequently</td>
+                                </tr>
+                                <tr>
+                                    <td>SortieUnit Melee</td>
+                                    <td>
+                                        <a href="field-values.html#Unit" target="_blank">Unit</a>
+                                    </td>
+                                    <td>Type of melee units recruited to attack enemy units shooting at the AI's buildings or workers</td>
+                                </tr>
+                                <tr>
+                                    <td>SortieUnit MeleeMin</td>
+                                    <td>Integer</td>
+                                    <td>Sortie units are only sent out if this amount of them has already been recruited</td>
+                                </tr>
+                                <tr>
+                                    <td>DefDigging UnitMax</td>
+                                    <td>Integer</td>
+                                    <td>Number of units recruited to dig AIs own moat</td>
+                                </tr>
+                                <tr>
+                                    <td>DefDiggingUnit</td>
+                                    <td><a href="field-values.html#DiggingUnit" target="_blank">DiggingUnit</a></td>
+                                    <td>Type of unit used to dig the AIs own moat</td>
+                                </tr>
+                                <tr>
+                                    <td>Defensive Units</td>
+                                    <td><a href="field-values.html#Unit" target="_blank">Unit</a></td>
+                                    <td>Defensive unit to recruit. &#010;If the AI does not have enough gold to recruit the Unit listed at the top then it will opt to try and recruit the next (and so on) Unit if it is cheaper</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
