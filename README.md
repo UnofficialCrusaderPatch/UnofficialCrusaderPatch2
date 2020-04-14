@@ -37,7 +37,7 @@ Furthermore you can join our [Discord Server](https://discord.gg/vmy7CBR) for qu
 ### Translators
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polish)  
 [Lolasik011](https://github.com/Lolasik011) (Russian)  
-[Skysouls (eMail)](mailto:theskysoul@vip.qq.com) (Chinese)  
+[Skysouls (e-mail)](mailto:theskysoul@vip.qq.com) (Chinese)  
 [Liegav (YouTube)](https://www.youtube.com/channel/UCFqQMKfYgGb7iFKJagQl_wA) (Hungarian)
 
 ### Content Creators   
@@ -48,4 +48,9 @@ Furthermore you can join our [Discord Server](https://discord.gg/vmy7CBR) for qu
 
 ### Special thanks of course go to  
 [Firefly Studios](https://fireflyworlds.com/) for the creation of the Stronghold series  
-and many more
+
+And many more  
+[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP)  
+[PodeCaradox](https://github.com/PodeCaradox)  
+[GRhin](https://www.twitch.tv/grhin)  
+[Heroesflorian](https://github.com/Heroesflorian)  
