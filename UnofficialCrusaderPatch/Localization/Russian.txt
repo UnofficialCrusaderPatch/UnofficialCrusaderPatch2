@@ -43,10 +43,10 @@ ui_welcometext
 за создания серии игр Stronghold 
 
 И многие другие
-
 [Udwin (YouTube)](https://www.youtube.com/user/UdwinLP)  
 [PodeCaradox](https://github.com/PodeCaradox)  
-[GRhin](https://www.twitch.tv/grhin)"
+[GRhin](https://www.twitch.tv/grhin)  
+[Heroesflorian](https://github.com/Heroesflorian)"
 }
 
 ui_StartTroops

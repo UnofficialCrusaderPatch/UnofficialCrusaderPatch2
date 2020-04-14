@@ -43,10 +43,10 @@ Külön köszönet nekik:
 a Stronghold széria létrehozásáért
 
 Továbbá külön köszönet:
-
 [Udwin (YouTube)](https://www.youtube.com/user/UdwinLP)  
 [PodeCaradox](https://github.com/PodeCaradox)  
-[GRhin](https://www.twitch.tv/grhin)"
+[GRhin](https://www.twitch.tv/grhin)  
+[Heroesflorian](https://github.com/Heroesflorian)"
 }
 
 ui_StartTroops

@@ -43,10 +43,10 @@ Special thanks of course go to
 for the creation of the Stronghold series
 
 And many more
-
 [Udwin (YouTube)](https://www.youtube.com/user/UdwinLP)  
 [PodeCaradox](https://github.com/PodeCaradox)  
-[GRhin](https://www.twitch.tv/grhin)"
+[GRhin](https://www.twitch.tv/grhin)  
+[Heroesflorian](https://github.com/Heroesflorian)"
 }
 
 ui_StartTroops
