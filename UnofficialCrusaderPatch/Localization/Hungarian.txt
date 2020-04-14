@@ -252,33 +252,33 @@ Name
 
 u_ArabXBow
 {
-	"Megnövelt páncélzat az Arab szablyás egységnek a számszeríj nyílvessző ellen"
+	"Megnövelt védelem az arab szablyás egységnek a számszeríj nyílvessző ellen"
 }
 
 u_arabxbow_descr
 {
-	" - Az Arab szablyások 3 helyett 6 számszeríj nyílvessző találat után halnak meg"
+	" - Az arab szablyás 3 helyett 6 számszeríj nyílvessző találat után hal meg"
 }
 
 u_ArabWall
 {
-	"Az Arab szablyások gyorsabban rombolják le a várfalat"
+	"Az arab szablyás gyorsabban rombolja le a várfalat"
 }
 
 u_ArabWall_descr
 {
-	"Az eredeti játékban az Arab szablyások rombolják le a várfalat a leglassabban a közelharci egységek közül. A lerombolás sebessége ezentúl kb. megkétszereződik, így épphogy jobbak lesznek a lándzsás egységeknél."
+	"Az eredeti játékban az arab szablyás rombolja le a várfalat a leglassabban a közelharci egységek közül. A lerombolás sebessége ezentúl kb. megkétszereződik, így épphogy jobb lesz a lándzsás egységnél."
 }
 
 u_spearmen
 {
-	"Megnövelt páncélzat a lándzsás egységnek a távolsági egységek ellen"
+	"Megnövelt védelem a lándzsás egységnek a távolsági egységek ellen"
 }
 
 u_spearmen_descr
 {
-	" - A lándzsás egységek 3 helyett 5 nyíl találat után halnak meg
- - A lándzsás egységek épphogy túlélnek egy számszeríj nyílvessző találatot"
+	" - A lándzsás egység 3 helyett 5 nyíl találat után hal meg
+ - A lándzsás egység épphogy túlél egy számszeríj nyílvessző találatot"
 }
 
 ai_buy
@@ -288,7 +288,7 @@ ai_buy
 
 ai_buy_descr
 {
-	"Az eredeti játékban egyes új MI Lordok nem helyezik jól el a piacot.&
+	"Az eredeti játékban egyes új MI Lordok nem helyezik jól el a piacot.
 Az alábbi javítások lesznek ezentúl érvényesek:
  - Frigyes és a Tábornok ezentúl vásárolnak fegyvert és páncélt
  - Az Apát és az Emír ezentúl vásárolnak íjat
@@ -454,14 +454,14 @@ Szaladin támadásainak száma = 50, 75, 100, 125, ..."
 
 u_laddermen
 {
-	"Megnövelt páncélzat létrás egységnek a távolsági egységek ellen"
+	"Megnövelt védelem a létrás egységnek a távolsági egységek ellen"
 }
 
 u_laddermen_descr
 {
-	" - A Létrás egységek 5 helyett 12 nyíl találat után halnak meg
- - A Létrás egységek 2 helyett 5 számszeríj nyílvessző találat vagy parittya találat után halnak meg
- - A Létrás egység 4 helyett 20 aranyba kerül"
+	" - A létrás egység 5 helyett 12 nyíl találat után hal meg
+ - A létrás egység 2 helyett 5 számszeríj nyílvessző találat vagy parittyakő találat után hal meg
+ - A létrás egység 4 helyett 20 aranyba kerül"
 }
 
 o_playercolor
@@ -507,7 +507,7 @@ ai_demolish_walls_descr
 
 ai_demolish_eco_descr
 {
-	"Ha az MI Lord sarokba szorítva érzi magát és gyorsan pénzt akar szerezni az egységekhez, előszeretettel rombolja le a teljes iparát vagy várépületeit Néha ez az esemény láthatólag minden indok nélkül megtörténik és emiatt itt ki tudod kapcsolni."
+	"Ha az MI Lord sarokba szorítva érzi magát és gyorsan pénzt akar szerezni az egységekhez, előszeretettel rombolja le a teljes iparát vagy várépületeit. Néha ez az esemény láthatólag minden indok nélkül megtörténik és emiatt itt ki tudod kapcsolni."
 }
 
 ai_tethers
@@ -551,13 +551,9 @@ ai_overclock
 
 ai_overclock_descr
 {
-	"Itt lehet megvátoztatni az MI parancs időtartamát mint &
-pl. mikor támadási parancsot ad az egységeknek. Ezáltal az &
-egységek nem állnak egy helyen olyan sokáig, miután a célpontot &
-megsemmisítették/legyőzték.
+	"Itt lehet megvátoztatni az MI parancs időtartamát mint pl. mikor támadási parancsot ad az egységeknek. Ezáltal az egységek nem állnak egy helyen olyan sokáig, miután a célpontot megsemmisítették/legyőzték.
 
-Az azonban még nem ismert, hogy az időtartam megváltoztatása &
-befolyásol e valamit, ezért előfordulhat hiba."
+Az azonban még nem ismert, hogy az időtartam megváltoztatása befolyásol e valamit, ezért előfordulhat hiba."
 }
 
 
@@ -653,7 +649,7 @@ ai_buywood_descr
 
 o_keys
 {
-	"WASD billentyűk és Gyorsmentés"
+	"WASD billentyűk és gyorsmentés"
 }
 
 o_keys_descr
@@ -768,7 +764,7 @@ o_healer
 
 o_healer_descr
 {
-	"A gyógyszertár gyógyítója mostantól megkeresi a sérült harcosokat, civileket, állatokat és meggyógyítja őket. A hozzá legközelebb lévő célpontokat gyógyítja elöszőr. Minden gyógyító animációval kb. egy lándzsás  1/3 életerejét állítja helyre. A kertekben való mászkálás és a pestisfelhő felkeresése ez által nem lesz lecserélve! Csak a várban való mászkálása lesz kihagyva, ha nincs a hatótávolságán belül beteg."
+	"A gyógyszertár gyógyítója mostantól megkeresi a sérült harcosokat, civileket, állatokat és meggyógyítja őket. A hozzá legközelebb lévő célpontokat gyógyítja elöszőr. Minden gyógyító animációval kb. egy lándzsás 1/3 életerejét állítja helyre. A kertekben való mászkálás és a pestisfelhő felkeresése ez által nem lesz lecserélve! Csak a várban való mászkálása lesz kihagyva, ha nincs a hatótávolságán belül beteg."
 }
 
 
@@ -836,9 +832,7 @@ ai_moredef
 
 ai_moredef_descr
 {
-	"Az eredeti játékban Richárd, Patkány de leginkább Fülöpnek nagyon kevés &
-védekező egysége volt a várfalakon, tornyokon. Ezzel a beállítással a távolsági &
-harcosok száma a következőképpen változik meg:
+	"Az eredeti játékban Richárd, Patkány de leginkább Fülöpnek nagyon kevés védekező egysége volt a várfalakon, tornyokon. Ezzel a beállítással a távolsági harcosok száma a következőképpen változik meg:
 
 Patkány: 20 -> 40
 Richárd: 20 -> 40
@@ -870,27 +864,27 @@ ai_attackwave
 
 ai_attackwave_descr
 {
-	"Az eredeti játékban az MI mindig csak annyi egységet küld el egyszerre amennyi elérhető várfal van. Azok a várak amik épületekkel vannak körülépítve, azokat az egységek csak elvétve támadják meg. Ezzel a beállítással az egységek az épületeket és az ostromsátrakat is megtámadják illetve azt a várfalat is amit már egy másik támadó egység rombol. Továbbá az MI mostantól több egységet küld az ellenség erődítményére, amint észrevesz egy oda vezető utat."
+	"Az eredeti játékban az MI mindig csak annyi egységet küld el egyszerre amennyi elérhető várfal van. Azok a várak amik épületekkel vannak körülépítve, azokat az egységek csak elvétve támadják meg. Ezzel a beállítással az egységek az épületeket és az ostromsátrakat is megtámadják illetve azt a várfalat is amit már egy másik támadó egység rombol. Továbbá az MI mostantól több egységet küld az ellenséges vártoronyra, amint észrevesz egy oda vezető utat."
 }
 
 aiv_pitchsiege
 {
-	"PitchNeeded Evrey Edit (Kővetőgépek és Hajítógépek)"
+	"PitchNeeded Evrey Edit (kővetőgépek és hajítógépek)"
 }
 
 aiv_pitchsiege_descr
 {
-	"Kibővíti a 'Evrey feljavított eredeti várak' módosítást azáltal hogy a Wazir, Disznó, Nizar és Emír tornyaira kővetőgépet és hajítógépet rak. Átszerkesztette: [PitchNeeded](https://github.com/PitchNeeded)."
+	"Kibővíti a 'Evrey feljavított eredeti várak' módosítást azáltal hogy Wazir, Disznó, Nizar és Emír tornyaira kővetőgépet és hajítógépet rak. Átszerkesztette: [PitchNeeded](https://github.com/PitchNeeded)."
 }
 
 aiv_pitchwells
 {
-	"PitchNeeded Evrey Edit (Kutak & Gyógyszertárak)"
+	"PitchNeeded Evrey Edit (kutak és gyógyszertárak)"
 }
 
 aiv_pitchwells_descr
 {
-	"Kibővített 'Evrey feljavított eredeti várak' módosítás melyben egyes MI várak Kutakat és Gyógyszertárakat kapnak. Átszerkesztette: [PitchNeeded](https://github.com/PitchNeeded)."
+	"Kibővített 'Evrey feljavított eredeti várak' módosítás melyben egyes MI várak kutakat és gyógyszertárakat kapnak. Átszerkesztette: [PitchNeeded](https://github.com/PitchNeeded)."
 }
 
 aiv_evreyfixed
