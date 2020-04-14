@@ -185,3 +185,18 @@ button, .btn {
 #aic-content{
     margin-left: auto;
 }
+
+.feature-filter.dropdown-menu {
+    padding: 0;
+    margin: 0;
+}
+
+.feature-filter.dropdown-menu .dropdown-item {
+    padding: 5px;
+    width: 100%;
+}
+
+.feature-filter.dropdown-menu label.dropdown-item input[type="checkbox"] {
+    padding: 0;
+    width: 10px;
+}
