@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        Änderungen - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @charset "UTF-8";@import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{display:block;background:#fff;padding:.5em;color:#333;overflow-x:auto}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{color:#55a532;background-color:#eaffea}.hljs-deletion{color:#bd2c00;background-color:#ffecec}.hljs-link{text-decoration:underline}.markdown-body{font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{font-size:16px;padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\00a0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{text-align:center;background-color:inherit;border-radius:0;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p,.markdown-body .alert>ul{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.MJX_Assistive_MathML{display:none}.ui-infobar{position:relative;z-index:2;max-width:760px;margin:25px auto -25px;padding:0 15px;color:#777}.toc .invisable-node{list-style-type:none}.ui-toc{position:fixed;bottom:20px;z-index:998}.ui-toc-label{opacity:.3;background-color:#ccc;border:none;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:23px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child > ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:3px;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:cover}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-published-note{color:#337ab7}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;letter-spacing:.025em}.focus,:focus{outline:none!important}::-moz-focus-inner{border:0!important}body{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><p>Wir hoffen, ihr hattet alle ein Frohes Osterfest. <img class="emoji" alt=":rabbit:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/rabbit.png"><br>
+Als besondere Osterüberraschung gibt es endlich einen neuen <strong>UCP-Release</strong>, erstellt von einem ganzen Team neuer Entwickler und Crusader Fans!</p><p><a href="#%C3%84nderungen">Liste aller Änderungen</a></p><hr><p>We hope you have all had a happy Easter. <img class="emoji" alt=":rabbit:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/rabbit.png"><br>
+As a special festive treat, there is finally a new <strong>UCP release</strong> created by a whole team of new developers and Crusader fans!</p><p><a href="#Changelog">List of all changes</a></p><hr><h1 id="Änderungen"><a class="anchor hidden-xs" href="#Änderungen" title="Änderungen"><span class="octicon octicon-link"></span></a>Änderungen</h1><p>Folgende Änderungen und Verbesserungen wurden mit Version 2.14 des Inoffiziellen Crusader Patches hinzugefügt.</p><h3 id="Wir-haben-jetzt-eine-Website-und-einen-Discord-Server-"><a class="anchor hidden-xs" href="#Wir-haben-jetzt-eine-Website-und-einen-Discord-Server-" title="Wir-haben-jetzt-eine-Website-und-einen-Discord-Server-"><span class="octicon octicon-link"></span></a>Wir haben jetzt eine <a href="https://sh0wdown.github.io/UnofficialCrusaderPatch/getting-started.html" target="_blank" rel="noopener">Website</a> und einen Discord-Server!  <a href="https://discord.gg/vmy7CBR" target="_blank" rel="noopener"><img src="https://discordapp.com/api/guilds/426318193603117057/widget.png?style=shield" alt="UCP_Official"></a></h3><h3 id="Hinweise-für-Mehrspieler"><a class="anchor hidden-xs" href="#Hinweise-für-Mehrspieler" title="Hinweise-für-Mehrspieler"><span class="octicon octicon-link"></span></a>Hinweise für Mehrspieler:</h3><ul>
+<li>Die Optionen zum Ändern der Farbe von Spieler 1 und Aktivieren des Zuschauermodus können nicht im Mehrspieler verwendet werden.</li>
+<li>Alle anderen Einstellungen können im Mehrspieler verwendet werden, sofern alle Mitspieler die selbe Konfiguration verwenden.</li>
+</ul><h2 id="Neue-Funktionen-und-Verbesserungen"><a class="anchor hidden-xs" href="#Neue-Funktionen-und-Verbesserungen" title="Neue-Funktionen-und-Verbesserungen"><span class="octicon octicon-link"></span></a>Neue Funktionen und Verbesserungen:</h2><h3 id="Allgemein"><a class="anchor hidden-xs" href="#Allgemein" title="Allgemein"><span class="octicon octicon-link"></span></a>Allgemein</h3><ul>
+<li>
+<p><strong>Mehrspieler-Standardgeschwindigkeit</strong></p>
+<ul>
+<li>Mit dieser Option kannst du die Mehrspielergeschwindigkeit auf einen anderen Standardwert als 40 festlegen. Auch nach Beenden einer Partie bleibt die Standardgeschwindigkeit auf diesem Wert.</li>
+</ul>
+</li>
+<li>
+<p><strong>Vereinheitlichte Waffenreihenfolge</strong></p>
+<ul>
+<li>Hiermit wird die Reihenfolge vereinheitlicht, in der Waffen im Marktplatz sowie in der Waffenkammer angezeigt werden. Außerdem befinden sich Lederrüstungen nun zwischen Streitkolben und Armbrüsten, sowie Eisenrüstungen zwischen Hellebarden und Schwertern, um die Navigation im Marktplatz zu erleichtern.</li>
+</ul>
+</li>
+<li>
+<p><strong>Fehlerbehebungen für Leiterträger</strong></p>
+<ul>
+<li>Bei der Option für resistentere Leiterträger wurden der angezeigte Preis (vorher 4 Gold) und der tatsächliche Preis (vorher 38 Gold) beide auf den beabsichtigten Wert von 20 Gold gesetzt.</li>
+<li>Die KI nutzt nun Leiterträger in Belagerungen verlässlicher - unabhängig davon, ob ihre eigene Burg geschlossen oder offen ist.<br>
+<img src="https://raw.githubusercontent.com/Sh0wdown/UnofficialCrusaderPatch/gh-pages/assets/img/release/laddermen.png" alt=""></li>
+</ul>
+</li>
+<li>
+<p><strong>Feuerballisten-Bugfix</strong></p>
+<ul>
+<li>Wir hatten Feuerballisten zuvor bereits beigebracht, selbstständig auf Mönche zu schießen. Diese Option wurde nun erweitert, damit sie auch automatisch auf Tunnelgräber schießen.<br>
+<img src="https://raw.githubusercontent.com/Sh0wdown/UnofficialCrusaderPatch/gh-pages/assets/img/release/fireballista_tunnelor.gif" alt=""></li>
+</ul>
+</li>
+<li>
+<p><strong>Spielerfarben-Änderungen</strong></p>
+<ul>
+<li>In einer früheren Version wurde bereits die Möglichkeit hinzugefügt, die Farbe von Spieler 1 zu ändern. Allerdings gab es bisher noch einige UI-Elemente, bei denen die Farbe dabei nicht geändert wurde - damit ist jetzt Schluss.</li>
+</ul>
+</li>
+<li>
+<p><strong>Starttruppen-Auswahl im Identitätsmenü</strong></p>
+<ul>
+<li>Mit Version 2.14 des UCP ist es nun möglich, im “Identität zulegen”-Menü des Spiels die Nah- und Fernkampf-Starteinheiten für den Spieler zu ändern.</li>
+<li><strong>Hinweis:</strong> Aktuell beeinflusst diese Einstellung nur den Spielmodus Normal, aber nicht Kreuzritter oder Deathmatch, und ist nur aktiv bis das Spiel beendet wird.<br>
+<img src="https://raw.githubusercontent.com/Sh0wdown/UnofficialCrusaderPatch/gh-pages/assets/img/release/identity%20menu.gif" alt=""></li>
+</ul>
+</li>
+<li>
+<p><strong>Strongholdify</strong></p>
+<ul>
+<li>Für alle Oldschool-Stronghold-Liebhaber und diejenigen, die die Produktionsketten aus Stronghold 1 gewohnt sind, skaliert diese Option die hochgeschraubte Produktion in Stronghold Crusader auf Stronghold 1 Verhältnisse herunter.</li>
+<li>Das wirkt sich auf die Beliebtheitsboni für Kirchen und Kathedralen sowie Bierausschank aus, ebenso wie auf Bauern-Spawnraten und die Produktionsmengen für Ressourcen (z.B. liefert ein Holzfäller damit 12 statt 18 Holz ab).<br>
+<img src="https://raw.githubusercontent.com/Sh0wdown/UnofficialCrusaderPatch/gh-pages/assets/img/release/strongholdify.png" alt=""></li>
+</ul>
+</li>
+</ul><h3 id="Anpassbare-Starttruppen-und-Burgherrn-Stärke"><a class="anchor hidden-xs" href="#Anpassbare-Starttruppen-und-Burgherrn-Stärke" title="Anpassbare-Starttruppen-und-Burgherrn-Stärke"><span class="octicon octicon-link"></span></a>Anpassbare Starttruppen und Burgherrn-Stärke</h3><p><em><strong>Hinweis für Mehrspieler:</strong> Die hier getroffenen Einstellungen sind kompatibel für den Mehrspielermodus, solange sie bei allen Spielern identisch sind. Ansonsten kann es zu Abstürzen oder zur Desynchronisation kommen.</em></p><ul>
+<li>
+<p><strong>Starttruppen</strong></p>
+<ul>
+<li>Im neuen Reiter <strong>Starttruppen</strong> kann eine Starttruppen-Konfiguration ausgewählt werden, die dann für alle KI-Charaktere sowie europäische und arabische Spieler-Burgherrn verwendet wird.</li>
+<li>Die Vanilla-Konfiguration sowie eine UCP-Patch-Konfiguration für Starttruppen sind im Patcher enthalten und können zur einfachen Bearbeitung exportiert werden.</li>
+<li>Um eigene Konfigurationen zu erstellen, können entweder die mitgelieferten exportiert und bearbeitet werden, oder eigene in ein Unterverzeichnis des Patchers hinzugefügt werden.</li>
+<li>Die exportierten Starttruppen-Konfigurationen befinden sich im Ordner <code>resources\troops\exports</code>. Deine eigene Starttruppen-Konfiguration (im JSON-Format und mit der Dateiendung <code>.json</code>) kann in den Ordner <code>resources\troops</code> gelegt werden und erscheint nach einem Reload im Starttruppen-Tab im Patcher.</li>
+</ul>
+</li>
+<li>
+<p><strong>Burgherrenstärke</strong></p>
+<ul>
+<li>Innerhalb der Starttruppen-Datei können auch Stärke, Typ und angezeigte Stärkepunkte der KI-Charaktere geändert werden. Die Stärke wird als Multiplikator für den Basis-Trefferpunktwert von 150000 (entspricht dem Burgherrn menschlicher Spieler) angegeben. Es können entweder Blaue, Gelbe oder Keine Stärkepunkte angezeigt werden, mit einer Anzahl von 0 bis 5.<br>
+<img src="https://raw.githubusercontent.com/Sh0wdown/UnofficialCrusaderPatch/gh-pages/assets/img/release/startingtroops.gif" alt=""></li>
+</ul>
+</li>
+</ul><h3 id="Anpassbare-Startgüter"><a class="anchor hidden-xs" href="#Anpassbare-Startgüter" title="Anpassbare-Startgüter"><span class="octicon octicon-link"></span></a>Anpassbare Startgüter</h3><p><em><strong>Hinweis für Mehrspieler:</strong> Die hier getroffenen Einstellungen sind kompatibel für den Mehrspielermodus, solange sie bei allen Spielern identisch sind. Ansonsten kann es zu Abstürzen oder zur Desynchronisation kommen.</em></p><ul>
+<li>Im neuen Reiter <strong>Startgüter</strong> kann eine Startgüter-Konfiguration ausgewählt werden, die dann für alle menschlichen Spieler und KIs verwendet wird.</li>
+<li>Die Vanilla-Konfiguration für Startgüter ist im Patcher enthalten und kann zur einfachen Bearbeitung exportiert werden.</li>
+<li>Die exportierten Startgüter-Konfigurationen befinden sich im Ordner <code>resources\goods\exports</code>. Deine eigene Startgüter-Konfiguration (im JSON-Format und mit der Dateiendung <code>.json</code>) kann in den Ordner <code>resources\goods</code> gelegt werden und erscheint nach einem Reload im Startgüter-Tab im Patcher.</li>
+</ul><h3 id="Installation-von-AIVs"><a class="anchor hidden-xs" href="#Installation-von-AIVs" title="Installation-von-AIVs"><span class="octicon octicon-link"></span></a>Installation von AIVs</h3><ul>
+<li>Es wird nun jedes Mal eine Sicherungskopie deiner aktuell installierten Burgen erstellt, wenn durch den Patcher ein Burgenpaket eingefügt wird.</li>
+<li>Um ein eigenes Burgenpaket mit Hilfe des Patchers zu installieren, kannst du einen Unterordner mit dem Namen deines Pakets im Ordner <code>resources\aiv</code> anlegen. Beschreibungen fügst du in diesem Unterordner als <code>&lt;Sprache&gt;.txt</code>-Dateien ein, wobei <code>&lt;Sprache&gt;</code> für die Sprache steht, in der deine Beschreibung geladen wird (z.B. <code>English.txt</code>).</li>
+<li>Immer wenn Burgenpakete installiert werden, wird das bereits vorhandene Burgenpaket als Unterordner mit der aktuellen Zeit als Ordnername abgespeichert. Diese Unterordner verbleiben im <code>aiv</code>-Ordner. Allerdings kann bei der Deinstallation des UCP aufgrund momentaner Einschränkungen nur das zuletzt gesicherte Burgenpaket wiederhergestellt werden. Wenn du mehrmals hintereinander AIVs installiert hast, kannst du die jeweiligen Dateien aus den Unterordnern selbst wiederherstellen.</li>
+</ul><h3 id="AIC-Dateien"><a class="anchor hidden-xs" href="#AIC-Dateien" title="AIC-Dateien"><span class="octicon octicon-link"></span></a>AIC-Dateien</h3><ul>
+<li>
+<p><strong>Auswahl</strong></p>
+<ul>
+<li>In der Version 2.12 des UCP konntest du mehrere AIC-Dateien gleichzeitig zur Installation auswählen. Dies wurde in Version 2.13 entfernt. Die Version 2.14 bringt nun diese beliebte Funktion mit einer Verbesserung zurück: Falls du mehrere AICs auswählst, in denen die selben KI-Charaktere enthalten sind, werden diese Charaktere in der Reihenfolge priorisiert, in der du die AICs ausgewählt hast. Ganz konkret bedeutet dies, dass bei einer Mehrfachauswahl die Charaktere der zuerst gewählten AIC in die Installation übernommen werden, während Charaktere, die ignoriert werden, in einer Warnung neben den betroffenen AICs angezeigt werden.</li>
+</ul>
+</li>
+<li>
+<p><strong>Format</strong></p>
+<ul>
+<li>Das Format der AIC-Dateien wurde geändert. Statt wie bisher in einem benutzerdefinierten Format mit der Dateiendung<code>.aic</code> werden KI-Charaktere nun mit dem JSON-Format mit der Dateiendung <code>.json</code> definiert. Dieses Format ist flexibler, bekannter und einfacher zu warten. Es bereitet den Weg für Erweiterungen in zukünftigen Versionen des UCP.</li>
+<li>Du kannst AIC-Dateien in den Patcher laden, indem du sie in den Ordner <code>resources\aic</code> einfügst.</li>
+<li>Du kannst deine alten, in der Version 2.13 unterstützten <code>.aic</code>-Dateien ebenfalls in den Ordner <code>resources\aic</code> einfügen. Diese werden im Patcher zunächst durchgestrichen und mit einer roten Warnung angezeigt. Durch Anklicken der Warnung wird dir eine Konvertierung der Datei in das neue Format angeboten, welches sich anschließend im Patcher verwenden lässt. Die Dateiendung der originalen Datei wird dabei in <code>.aic.bak</code> geändert.</li>
+<li>Solltest du viele AIC-Dateien besitzen, so kannst du alternativ auch den <strong>AICUpdater</strong> herunterladen und alle AIC-Dateien, die du konvertieren willst, mit diesem in einen Ordner packen. Durch Doppelklick führst du den <strong>AICUpdater</strong> aus, welcher dann diese Dateien im selben Ordner für dich konvertiert.</li>
+<li>Falls beim Konvertieren oder Laden deiner AIC-Dateien Fehler auftreten sollten, ist noch nicht alles verloren. Ein englisches Fehlerprotokoll, welches erklärt, was genau schief gelaufen ist, wird im Ordner mit dem Patcher angelegt. Falls das zum Finden der Fehlerursachen nicht ausreicht, frage doch einfach mal im <code>#help-and-issues</code>-Kanal auf dem <a href="https://discord.gg/vmy7CBR" target="_blank" rel="noopener">offiziellen UCP Discord Server</a> nach.</li>
+</ul>
+</li>
+</ul><h2 id="Änderungen-am-Patcher"><a class="anchor hidden-xs" href="#Änderungen-am-Patcher" title="Änderungen-am-Patcher"><span class="octicon octicon-link"></span></a>Änderungen am Patcher:</h2><ul>
+<li>
+<p><strong>Änderungen an Aufbau und Inhalten</strong></p>
+<ul>
+<li>Diese Version des Inoffiziellen Crusader Patch führt eine neue Ordnerstruktur ein. Alle Content-Dateien (inklusive AIC- und AIV-Dateien), die vom Patcher verwendet/installiert werden, befinden sich jetzt in einem <code>resources\&lt;config type&gt;</code>-Unterordner im Patcher-Verzeichnis. Beispielsweise kommen AIC-Dateien in den <code>resources\aic</code>-Ordner.</li>
+<li>Alle Content-Dateien, welche Einstellungen für Spielinhalte enthalten und als Zusammenfassung dieser Einstellungen im Patcher geladen werden können (z.B. AIC-Dateien), sind nun auf das JSON-Format umgestellt.</li>
+<li>AIC- and AIV-Pakete, die mit dem UCP bereitgestellt werden, wurden auf die jeweils neueste Version aktualisiert.</li>
+</ul>
+</li>
+<li>
+<p><strong>Sprachenunterstützung</strong></p>
+<ul>
+<li>Es wurde ein Problem beim Austausch von Patchereinstellungen mit Hilfe der <code>ucp.cfg</code>-Datei behoben, welches auftrat, falls die gleiche Datei auf Geräten mit unterschiedlichen Systemsprachen genutzt wurde. Beachte bitte, dass alle Dezimalzahlen mit Nachkommastellen nun durch einen Punkt (.) getrennt werden, um korrekt gelesen werden zu können.</li>
+<li>Die Sprachen Chinesisch und Ungarisch wurden dem Sprachenkatalog des Patchers hinzugefügt.</li>
+</ul>
+</li>
+<li>
+<p>Es gibt nun die Möglichkeit, den Patcher per Kommandozeile in bereits bestehende Mods einzubinden oder einfach mit bestehenden Einstellungen zu installieren. Weitere Informationen zur Benutzung des Kommandozeilen-Tools findest du in den <a href="https://sh0wdown.github.io/UnofficialCrusaderPatch/getting-started.html" target="_blank" rel="noopener">Installationsschritten</a>.</p>
+</li>
+<li>
+<p>Wir haben einige interne Prozesse des Patchers überarbeitet, um die Benutzung noch <strong>einfacher und angenehmer</strong> zu gestalten.</p>
+</li>
+<li>
+<p>Wir haben sämtliche Ostereier versteckt.<br>
+<img src="https://raw.githubusercontent.com/Sh0wdown/UnofficialCrusaderPatch/gh-pages/assets/img/release/starttroops.png" alt=""></p>
+</li>
+</ul><hr><h1 id="Changelog"><a class="anchor hidden-xs" href="#Changelog" title="Changelog"><span class="octicon octicon-link"></span></a>Changelog</h1><p>The following changes and improvements have been added with version 2.14 of the Unofficial Crusader Patch.</p><h3 id="We-now-have-a-website-and-a-discord-server-"><a class="anchor hidden-xs" href="#We-now-have-a-website-and-a-discord-server-" title="We-now-have-a-website-and-a-discord-server-"><span class="octicon octicon-link"></span></a>We now have a <a href="https://sh0wdown.github.io/UnofficialCrusaderPatch/getting-started.html" target="_blank" rel="noopener">website</a> and a discord server!  <a href="https://discord.gg/vmy7CBR" target="_blank" rel="noopener"><img src="https://discordapp.com/api/guilds/426318193603117057/widget.png?style=shield" alt="UCP_Official"></a></h3><h3 id="Notes-for-multiplayer"><a class="anchor hidden-xs" href="#Notes-for-multiplayer" title="Notes-for-multiplayer"><span class="octicon octicon-link"></span></a>Notes for multiplayer:</h3><ul>
+<li>The options for changing color of player 1 and activating spectator mode cannot be used in multiplayer.</li>
+<li>All other settings can be used in multiplayer provided all players use the same configuration.</li>
+</ul><h2 id="New-Features-and-Improvements"><a class="anchor hidden-xs" href="#New-Features-and-Improvements" title="New-Features-and-Improvements"><span class="octicon octicon-link"></span></a>New Features and Improvements:</h2><h3 id="General"><a class="anchor hidden-xs" href="#General" title="General"><span class="octicon octicon-link"></span></a>General</h3><ul>
+<li>
+<p><strong>Default multiplayer speed</strong></p>
+<ul>
+<li>This option sets a default speed when you create a multiplayer lobby. This default will also stay after a match ends and when you go to create another game.</li>
+</ul>
+</li>
+<li>
+<p><strong>Armory/marketplace weapon order fix</strong></p>
+<ul>
+<li>The weapons icons in armory and marketplace have been updated to have the same order. This option also moves leather armor between mace and crossbow, and moves metal armor between polearm and sword for easier access while navigating items in the marketplace.</li>
+</ul>
+</li>
+<li>
+<p><strong>Ladderman fixes</strong><br>
+<img src="https://raw.githubusercontent.com/Sh0wdown/UnofficialCrusaderPatch/gh-pages/assets/img/release/laddermen.png" alt=""></p>
+<ul>
+<li>Both actual and displayed recruiting cost of laddermen were fixed to match the intended value of 20 gold (used to show 4 gold and cost 38 gold).</li>
+<li>AI will now properly use laddermen in sieges independent of whether or not their own keep is currently enclosed.</li>
+</ul>
+</li>
+<li>
+<p><strong>Fire ballista fix</strong></p>
+<ul>
+<li>Fire ballistae were previously fixed so that they could auto-target monks. This option has been expanded so that they can auto-target tunnelors as well now.<br>
+<img src="https://raw.githubusercontent.com/Sh0wdown/UnofficialCrusaderPatch/gh-pages/assets/img/release/fireballista_tunnelor.gif" alt=""></li>
+</ul>
+</li>
+<li>
+<p><strong>Player color changes</strong></p>
+<ul>
+<li>The ability to change the color of player 1 was previously introduced. However there were a couple of UI elements that the patcher was not able to change it for. These have now been updated to also reflect the color change.</li>
+</ul>
+</li>
+<li>
+<p><strong>Identity menu starting troop selection</strong></p>
+<ul>
+<li>Version 2.14 of the UCP introduces the ability to override your ranged and melee starting unit selection in-game. This can be accessed from the choose identity menu.</li>
+<li>Please note that this does currently only affect the Normal gamemode, but not Crusader or Deathmatch ones, and is only active until the game is exited.<br>
+<img src="https://raw.githubusercontent.com/Sh0wdown/UnofficialCrusaderPatch/gh-pages/assets/img/release/identity%20menu.gif" alt=""></li>
+</ul>
+</li>
+<li>
+<p><strong>Strongholdify</strong></p>
+<ul>
+<li>For all old-school Stronghold lovers and those used to the production chains of Stronghold 1, this option changes the game to scale back the inflated production of Stronghold Crusader to Stronghold 1 settings.</li>
+<li>This applies to the popularity bonuses from church and cathedral and ale coverage, peasant spawn rates, as well as resource production quantities (e.g. a woodcutter delivers 12 wood instead of 18).<br>
+<img src="https://raw.githubusercontent.com/Sh0wdown/UnofficialCrusaderPatch/gh-pages/assets/img/release/strongholdify.png" alt=""></li>
+</ul>
+</li>
+</ul><h3 id="Customizable-Starting-Troops-and-Lord-Strength"><a class="anchor hidden-xs" href="#Customizable-Starting-Troops-and-Lord-Strength" title="Customizable-Starting-Troops-and-Lord-Strength"><span class="octicon octicon-link"></span></a>Customizable Starting Troops and Lord Strength</h3><p><em><strong>Note for multiplayer:</strong> This option can be used in multiplayer, but all players must have the exact same configuration or you will get desyncs or crashes!</em></p><ul>
+<li>
+<p><strong>Starting Troops</strong></p>
+<ul>
+<li>In the new <strong>StartTroops</strong> tab, you will be able to select a starting unit configuration for all AI Lords as well as your Crusader or Arabic Lord.</li>
+<li>The vanilla configuration as well as a UCP patch configuration for starting troops are provided for your convenience.</li>
+<li>To add your own, you may export and modify these, or add your own into a subfolder of the patcher.</li>
+<li>Exported starting troops files go into the <code>resources\troops\exports</code> folder. Your own start troop configurations (in JSON format and with <code>.json</code> file extension) can be put into <code>resources\troops</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Lord Strength</strong></p>
+<ul>
+<li>Within the starting troops file, you can also modify the strength, type, and also the dot configurations of the AI Lords. The strength is specified as a multiplier against a base health value of 150000 (same as human player Lord). Dots can be either Blue, Yellow, or None and their count can be 0 to 5.<br>
+<img src="https://raw.githubusercontent.com/Sh0wdown/UnofficialCrusaderPatch/gh-pages/assets/img/release/startingtroops.gif" alt=""></li>
+</ul>
+</li>
+</ul><h3 id="Customizable-Starting-Goods"><a class="anchor hidden-xs" href="#Customizable-Starting-Goods" title="Customizable-Starting-Goods"><span class="octicon octicon-link"></span></a>Customizable Starting Goods</h3><p><em><strong>Note for multiplayer:</strong> This option can be used in multiplayer, but all players must have the exact same configuration or you will get desyncs or crashes!</em></p><ul>
+<li>In the new <strong>StartGoods</strong> tab, you will be able to select a starting resource configuration that will apply for yourself and all other human or AI players.</li>
+<li>The vanilla configuration is provided for your convenience. You may export and modify it to create a custom selection.</li>
+<li>Exported starting goods files go into the <code>resources\goods\exports</code> folder. Your own start goods configurations (in JSON format and with <code>.json</code> file extension) can be put into <code>resources\goods</code>.</li>
+</ul><h3 id="AIV-Installation"><a class="anchor hidden-xs" href="#AIV-Installation" title="AIV-Installation"><span class="octicon octicon-link"></span></a>AIV Installation</h3><ul>
+<li>Always backup your vanilla (or custom) AIV files before installing!</li>
+<li>You are able to now load AIV sets into the patcher by creating a subfolder with the name of your AIV set inside the <code>resources\aiv</code> folder. Descriptions for the AIV set go into a <code>&lt;language&gt;.txt</code> file where <code>&lt;language&gt;</code> specifies the language (i.e. <code>English.txt</code>).</li>
+<li>Each time AIVs are installed, the existing set will be backed up to a timestamped folder. These folders will remain in the <code>aiv</code> folder of your Stronghold Crusader installation. However, please note that due to current limitations of the patcher, when uninstalling the UCP, only the most recent backup will be restored. If you have installed AIVs multiple times you will need to restore the files manually.</li>
+</ul><h3 id="AIC-Files"><a class="anchor hidden-xs" href="#AIC-Files" title="AIC-Files"><span class="octicon octicon-link"></span></a>AIC Files</h3><ul>
+<li>
+<p><strong>Selection</strong></p>
+<ul>
+<li>In version 2.12 of the UCP you were able to select multiple AIC files for installation. In version 2.13, this functionality was removed. With version 2.14, we’re now re-introducing that ability, complete with an upgrade: If you select multiple AICs that have the same characters defined, the one you select first will be given priority and the other ones will show a warning indicating which AI Character definitions will not be used.</li>
+</ul>
+</li>
+<li>
+<p><strong>Format</strong></p>
+<ul>
+<li>The format of AIC files has changed. Instead of the old custom format with <code>.aic</code> file extension, the patcher is now using a JSON format with <code>.json</code> file extension to specify AI Character definitions. This format is more flexible, widespread and easier to use going forward.</li>
+<li>You can load AIC files for use by the patcher by placing them into the <code>resources\aic</code> subfolder.</li>
+<li>You can place your (legacy) <code>.aic</code> files into the <code>resources\aic</code> folder. You will then see a warning in the patcher. If you click the warning, it will offer to convert the AIC file to the newer format so you can install it; the original file will be renamed to a <code>.aic.bak</code> file extension.</li>
+<li>If you have many AIC files, you can alternatively download the <strong>AICUpdater</strong> tool and place all AIC files to be converted into a folder with it, and then double-click the AICUpdater to run it.</li>
+<li>If you encounter errors when trying to convert or load AICs, all is not lost! An error log explaining what went wrong will be created beside the patcher. If that’s not enough help, feel free to ask in the <code>#help-and-issues</code> channel on the <a href="https://discord.gg/vmy7CBR" target="_blank" rel="noopener">official UCP discord server</a>.</li>
+</ul>
+</li>
+</ul><h2 id="Changes-to-the-Patcher"><a class="anchor hidden-xs" href="#Changes-to-the-Patcher" title="Changes-to-the-Patcher"><span class="octicon octicon-link"></span></a>Changes to the Patcher:</h2><ul>
+<li>
+<p><strong>Changes regarding structure and content</strong></p>
+<ul>
+<li>In this version, the Unofficial Crusader Patch comes with a new folder structure. All content files (including AIC and AIV files) that are to be used/installed by the patcher go into a <code>resources\&lt;config type&gt;</code> subfolder inside the patcher directory. For example your AIC files will go into the <code>resources\aic</code> folder.</li>
+<li>Any Patcher configuration files like the AIC files are now in JSON format and with <code>.json</code> file extension. Old AIC files can be converted by the patcher.</li>
+<li>AIC and AIV sets bundled with the UCP have been updated to the newest versions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Language support</strong></p>
+<ul>
+<li>An issue where sharing <code>ucp.cfg</code> (config) files between persons with different locales would cause crashes or otherwise not work properly has been resolved. Please note that any decimal values in the ucp.cfg must now use a dot (.) as the decimal separator to be interpreted correctly.</li>
+<li>Translations for Chinese and Hungarian have been added.</li>
+</ul>
+</li>
+<li>
+<p>There is now a <strong>command line tool</strong> that can be used for quicker or custom installation (see <a href="https://sh0wdown.github.io/UnofficialCrusaderPatch/getting-started.html" target="_blank" rel="noopener">installation steps</a> for details).</p>
+</li>
+<li>
+<p>We’ve made changes and improvements to how some parts of the patcher work internally to make the process <strong>more convenient and reliable</strong> for you.</p>
+</li>
+<li>
+<p>We’ve hidden all the easter eggs.<br>
+<img src="https://raw.githubusercontent.com/Sh0wdown/UnofficialCrusaderPatch/gh-pages/assets/img/release/starttroops.png" alt=""></p>
+</li>
+</ul></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class=""><a href="#Änderungen" title="Änderungen">Änderungen</a><ul class="nav">
+<li class="invisable-node"><ul class="nav">
+<li><a href="#Wir-haben-jetzt-eine-Website-und-einen-Discord-Server-" title="Wir haben jetzt eine Website und einen Discord-Server!  ">Wir haben jetzt eine Website und einen Discord-Server!  </a></li>
+<li><a href="#Hinweise-für-Mehrspieler" title="Hinweise für Mehrspieler:">Hinweise für Mehrspieler:</a></li>
+</ul>
+</li>
+<li><a href="#Neue-Funktionen-und-Verbesserungen" title="Neue Funktionen und Verbesserungen:">Neue Funktionen und Verbesserungen:</a><ul class="nav">
+<li><a href="#Allgemein" title="Allgemein">Allgemein</a></li>
+<li><a href="#Anpassbare-Starttruppen-und-Burgherrn-Stärke" title="Anpassbare Starttruppen und Burgherrn-Stärke">Anpassbare Starttruppen und Burgherrn-Stärke</a></li>
+<li><a href="#Anpassbare-Startgüter" title="Anpassbare Startgüter">Anpassbare Startgüter</a></li>
+<li><a href="#Installation-von-AIVs" title="Installation von AIVs">Installation von AIVs</a></li>
+<li><a href="#AIC-Dateien" title="AIC-Dateien">AIC-Dateien</a></li>
+</ul>
+</li>
+<li><a href="#Änderungen-am-Patcher" title="Änderungen am Patcher:">Änderungen am Patcher:</a></li>
+</ul>
+</li>
+<li><a href="#Changelog" title="Changelog">Changelog</a><ul class="nav">
+<li class="invisable-node"><ul class="nav">
+<li><a href="#We-now-have-a-website-and-a-discord-server-" title="We now have a website and a discord server!  ">We now have a website and a discord server!  </a></li>
+<li><a href="#Notes-for-multiplayer" title="Notes for multiplayer:">Notes for multiplayer:</a></li>
+</ul>
+</li>
+<li><a href="#New-Features-and-Improvements" title="New Features and Improvements:">New Features and Improvements:</a><ul class="nav">
+<li><a href="#General" title="General">General</a></li>
+<li><a href="#Customizable-Starting-Troops-and-Lord-Strength" title="Customizable Starting Troops and Lord Strength">Customizable Starting Troops and Lord Strength</a></li>
+<li><a href="#Customizable-Starting-Goods" title="Customizable Starting Goods">Customizable Starting Goods</a></li>
+<li><a href="#AIV-Installation" title="AIV Installation">AIV Installation</a></li>
+<li><a href="#AIC-Files" title="AIC Files">AIC Files</a></li>
+</ul>
+</li>
+<li><a href="#Changes-to-the-Patcher" title="Changes to the Patcher:">Changes to the Patcher:</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li class=""><a href="#Änderungen" title="Änderungen">Änderungen</a><ul class="nav">
+<li class="invisable-node"><ul class="nav">
+<li><a href="#Wir-haben-jetzt-eine-Website-und-einen-Discord-Server-" title="Wir haben jetzt eine Website und einen Discord-Server!  ">Wir haben jetzt eine Website und einen Discord-Server!  </a></li>
+<li><a href="#Hinweise-für-Mehrspieler" title="Hinweise für Mehrspieler:">Hinweise für Mehrspieler:</a></li>
+</ul>
+</li>
+<li><a href="#Neue-Funktionen-und-Verbesserungen" title="Neue Funktionen und Verbesserungen:">Neue Funktionen und Verbesserungen:</a><ul class="nav">
+<li><a href="#Allgemein" title="Allgemein">Allgemein</a></li>
+<li><a href="#Anpassbare-Starttruppen-und-Burgherrn-Stärke" title="Anpassbare Starttruppen und Burgherrn-Stärke">Anpassbare Starttruppen und Burgherrn-Stärke</a></li>
+<li><a href="#Anpassbare-Startgüter" title="Anpassbare Startgüter">Anpassbare Startgüter</a></li>
+<li><a href="#Installation-von-AIVs" title="Installation von AIVs">Installation von AIVs</a></li>
+<li><a href="#AIC-Dateien" title="AIC-Dateien">AIC-Dateien</a></li>
+</ul>
+</li>
+<li><a href="#Änderungen-am-Patcher" title="Änderungen am Patcher:">Änderungen am Patcher:</a></li>
+</ul>
+</li>
+<li><a href="#Changelog" title="Changelog">Changelog</a><ul class="nav">
+<li class="invisable-node"><ul class="nav">
+<li><a href="#We-now-have-a-website-and-a-discord-server-" title="We now have a website and a discord server!  ">We now have a website and a discord server!  </a></li>
+<li><a href="#Notes-for-multiplayer" title="Notes for multiplayer:">Notes for multiplayer:</a></li>
+</ul>
+</li>
+<li><a href="#New-Features-and-Improvements" title="New Features and Improvements:">New Features and Improvements:</a><ul class="nav">
+<li><a href="#General" title="General">General</a></li>
+<li><a href="#Customizable-Starting-Troops-and-Lord-Strength" title="Customizable Starting Troops and Lord Strength">Customizable Starting Troops and Lord Strength</a></li>
+<li><a href="#Customizable-Starting-Goods" title="Customizable Starting Goods">Customizable Starting Goods</a></li>
+<li><a href="#AIV-Installation" title="AIV Installation">AIV Installation</a></li>
+<li><a href="#AIC-Files" title="AIC Files">AIC Files</a></li>
+</ul>
+</li>
+<li><a href="#Changes-to-the-Patcher" title="Changes to the Patcher:">Changes to the Patcher:</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
