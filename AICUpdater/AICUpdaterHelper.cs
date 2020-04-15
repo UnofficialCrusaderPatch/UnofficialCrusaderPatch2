@@ -212,8 +212,7 @@ namespace AICUpdater
                 aicJSON += "\n\t{" + characterJson + ",";
             }
             aicJSON = aicJSON.Substring(0, aicJSON.Length - 2) + "}]\n}";
-            File.WriteAllText(destFile, aicJSON, Encoding.UTF8);
-            return true;
+            return aicJSON;
         }
 
         private static string UpdateFieldName(string fieldName)
