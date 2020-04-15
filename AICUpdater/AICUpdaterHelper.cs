@@ -221,7 +221,7 @@ namespace AICUpdater
             {
                 return "AttUnitPatrolRecommandDelay";
             }
-            else if (fieldName == "RangedBackupUnitGroupsCount")
+            else if (fieldName == "RangedBackupUnitGroupsCount" || fieldName == "RangedBackupGroupsCount")
             {
                 return "AttUnitBackupGroupsCount";
             }
@@ -232,6 +232,10 @@ namespace AICUpdater
             else if (fieldName == "InvestmentGoldThreshold")
             {
                 return "RecruitGoldThreshold";
+            }
+            else if (fieldName == "Unknown161")
+            {
+                return "AttUnitSiegeDefGroupsCount";
             }
             return fieldName;
         }
