@@ -7,7 +7,7 @@ This project is an unofficial patcher for [Firefly Studio's](https://fireflyworl
 
 ## Installation
 
-To install the patch you just have to download the [latest UnofficialCrusaderPatch.exe release](https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases), execute it and choose the correct path of your Stronghold Crusader installation. You can then select several features you wish to install, recommended presettings are selected by default. The patch should work for most Crusader versions, but the latest 1.41 HD version is recommended. If your version is not supported, which can happen if you install it from a CD for example, you should receive errors during the installation. To avoid this you can install Firefly's [Crusader HD patch](http://www.strongholdcrusaderhd.com/patch.html) for free, which should support all of the unofficial changes.
+To install the patch you just have to download the [latest UnofficialCrusaderPatch.exe release](https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases), execute it and choose the correct path of your Stronghold Crusader installation. You can then select several features you wish to install, recommended presettings are selected by default. The patch should work for most crusader versions, but only v1.41 is officially supported.  If you encounter an error using a different version, you can upgrade to 1.41 for free using Firefly’s [Crusader HD Patch](http://www.strongholdcrusaderhd.com/patch.html).
 
 ## Issues and Suggestions
 
