@@ -20,7 +20,16 @@ namespace UCP.Patching
 
         public override void Write(BinArgs data)
         {
-            int labelAddress = data.Labels.GetLabel(this.labelName);
+            int labelAddress = -1;
+            
+            try
+            {
+                labelAddress = data.Labels.GetLabel(this.labelName);
+            }
+            catch (Exception e)
+            {
+                labelAddress = GlobalLabels.GetLabel(this.labelName);
+            }
 
             int refAddress = labelAddress;
             if (relative)

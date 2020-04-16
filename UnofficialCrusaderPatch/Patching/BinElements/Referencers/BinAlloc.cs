@@ -8,16 +8,23 @@ namespace UCP.Patching
         string name;
         public string Name => name;
 
-        public BinAlloc(string name, uint size)
-            : this(name, new byte[size])
+        public BinAlloc(string name, uint size, bool isGlobal = false)
+            : this(name, new byte[size], isGlobal)
         {
         }
 
-        public BinAlloc(string name, byte[] data)
+        public BinAlloc(string name, byte[] data, bool isGlobal = false)
         {
             this.name = name;
 
-            editData.Add(new BinLabel(name));
+            BinLabel newBinLabel = new BinLabel(name);
+
+            if (isGlobal)
+            {
+                GlobalLabels.Add(newBinLabel);
+            }
+
+            editData.Add(newBinLabel);
             if (data != null && data.Length > 0)
                 editData.Add(new BinBytes(data));
             editData.Add(new BinNops(4));

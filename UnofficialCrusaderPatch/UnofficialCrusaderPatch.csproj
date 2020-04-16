@@ -150,6 +150,7 @@
     <Compile Include="Patching\EditTypes\BinaryEditBase.cs" />
     <Compile Include="Patching\EditTypes\ChangeEdit.cs" />
     <Compile Include="Patching\EditTypes\UCPEdit.cs" />
+    <Compile Include="Patching\GlobalLabels.cs" />
     <Compile Include="Patching\Headers\ChangeHeader.cs" />
     <Compile Include="Patching\Headers\DefaultHeader.cs" />
     <Compile Include="Patching\Headers\ColorHeader.cs" />
