@@ -7,6 +7,9 @@ using System.Text.RegularExpressions;
 
 namespace UCPAIConversion
 {
+    /// <summary>
+    /// Performs conversion of older .aic AIC files to the newer JSON format
+    /// </summary>
     class AICHelper
     {
         public static bool Convert(string srcFile, string destFile)
@@ -22,14 +25,20 @@ namespace UCPAIConversion
             int headerTitleEnd = header.Index + header.Length;
             int end = aicSrcFile.IndexOf("AICharacter", start);
 
+
+            // Variables for parsing and storing descriptions
             List<string> descriptions = new List<string>();
             string[] headerLines = aicSrcFile.Substring(headerTitleEnd, end).Split(new string[] { "Descr" }, StringSplitOptions.None);
 
             List<string> descrLines = new List<string>();
+
+            // Parse AIFileHeader and store decriptions based on the defined language
             String language = "";
             for (int i = 0; i < headerLines.Length; i++)
             {
                 string line = headerLines[i];
+
+                // Ignore empty lines
                 if (Regex.Replace(line.Trim(), @"[\n\r\t]+", String.Empty).Equals(String.Empty))
                 {
                     continue;
@@ -57,6 +66,7 @@ namespace UCPAIConversion
                     line = line.Substring(0, line.LastIndexOf("AICharacter")).Trim("\r\n\t =}".ToCharArray());
                 }
 
+                // Remove leading and ending punctuation and whitespace
                 string description = line;
                 if (!Regex.Replace(line.Trim(), @"[\n\r\t]+", String.Empty).Equals(String.Empty))
                 {
@@ -73,6 +83,7 @@ namespace UCPAIConversion
                 }
                 description = description.Replace("\"", "\\\"");
 
+                // Remove leading and ending punctuation and whitespace
                 if (description.EndsWith("{") || description.EndsWith("}") || description.EndsWith("="))
                 {
                     description = description.Substring(0, description.Length - 1).Trim("\n\r\t ".ToCharArray());
@@ -86,10 +97,12 @@ namespace UCPAIConversion
             headerJson = headerJson + String.Join(",\n  ", descriptions);
             headerJson = headerJson + "\n  }";
 
-
+            // Remove all comments from the file
             aicSrcFile = Regex.Replace(aicSrcFile, "/[*]([^*]|([*][^/]))*[*]+/", "");
             string[] characterSearch = aicSrcFile.Split(new string[] { "AICharacter" }, StringSplitOptions.None);
             string[] characters = new string[characterSearch.Length-1];
+
+            // Copy file text starting from the first AICharacter definition to be parsed
             Array.Copy(characterSearch, 1, characters, 0, characters.Length);
 
             string aicJSON = "{\n" + headerJson + ",\n\n" + "\"AICharacters\": [";
@@ -100,7 +113,7 @@ namespace UCPAIConversion
 
                 List<string> personalityIDs = new List<string>();
 
-                //find the index key
+                // Find the index key
                 AICharacterName currentCharacterName = 0;
                 bool indexFound = false;
                 foreach (string identifier in characterID)
@@ -115,7 +128,7 @@ namespace UCPAIConversion
                     }
                 }
 
-                //convert the name key and all other keys
+                // Convert the name key and all other keys
                 if (indexFound)
                 {
                     foreach (string identifier in characterID)
@@ -131,19 +144,20 @@ namespace UCPAIConversion
                                     if (idFields[1].Trim() == "Philipp")
                                         idFields[1] = "Phillip";
                                     string indexName = currentCharacterName.ToString();
+
+                                    // Save CustomName if set else output blank CustomName
                                     if (indexName != idFields[1].Trim())
-                                        //custom name is set
                                         personalityIDs.Add("\"CustomName\": \"" + idFields[1].Trim().Substring(0, Math.Min(idFields[1].Trim().ToString().Length, 20)) + '"');
                                     else
-                                        //no custom name set
                                         personalityIDs.Add("\"CustomName\": \"\"");
                                 }
                                 else
                                 {
+                                    // Attempt to save value of field as a numeric type
                                     personalityIDs.Add('"' + idFields[0].Trim() + "\": " + int.Parse(idFields[1]).ToString());
                                 }
                             }
-                            catch (FormatException)
+                            catch (FormatException) // Store value of field as string
                             {
                                 personalityIDs.Add('"' + idFields[0].Trim() + "\": \"" + idFields[1].Trim() + "\"");
                             }
@@ -151,6 +165,7 @@ namespace UCPAIConversion
                     }
                 }
 
+                // Split the Personality definition by newlines and ignore lines without '=' as comments or invalid
                 string[] characterData = personality[1].Split('\n');
                 List<string> fields = new List<string>();
                 foreach(string field in characterData)
@@ -164,6 +179,8 @@ namespace UCPAIConversion
                 List<string> personalityFields = new List<string>();
                 const int numPersonalityFields = 169;
 
+                // If number of found fields is equal to the defined number of personality fields 
+                // assume fields are in order
                 if (fields.Count == numPersonalityFields)
                 {
                     for (int index = 0; index < numPersonalityFields; index++)
@@ -186,6 +203,7 @@ namespace UCPAIConversion
                 }
                 else
                 {
+                    // Iterate fields and store based on field name defined in file
                     foreach (string field in fields)
                     {
                         string parsedField = Regex.Replace(field, @"\s+", String.Empty);
@@ -215,6 +233,11 @@ namespace UCPAIConversion
             return true;
         }
 
+        /// <summary>
+        /// Replaces outdated fieldnames with their updated counterpart to serve as key in JSON file
+        /// </summary>
+        /// <param name="fieldName"></param>
+        /// <returns></returns>
         private static string UpdateFieldName(string fieldName)
         {
             if (fieldName == "Unknown131")

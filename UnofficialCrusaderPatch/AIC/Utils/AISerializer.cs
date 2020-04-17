@@ -9,19 +9,37 @@ using System.Web.Script.Serialization;
 
 namespace UCPAIConversion
 {
+    /// <summary>
+    /// Custom serializer implementation for handling JSON-formatted AIC definitions with descriptive error messages.
+    /// </summary>
     class AISerializer : JavaScriptConverter
     {
         private readonly Dictionary<string, string> errorMessages;
         private readonly Dictionary<string, string> errorHints;
 
+        /// <summary>
+        ///  List of errors encountered when deserializing input file
+        /// </summary>
         private AICSerializationException AICSerializationExceptionList = new AICSerializationException();
 
+
+        /// <summary>
+        /// Create an AISerializer instance using custom hints and error message
+        /// </summary>
+        /// <param name="errorMessages"></param> Dictionary of error messages to be logged if an error is encountered (key = property, value = error message)
+        /// <param name="errorHints"></param> Dictionary of hints to be logged if an error is encountered (key = property, value = hint)
         public AISerializer (Dictionary<String, String> errorMessages, Dictionary<String, String> errorHints)
         {
             this.errorMessages = errorMessages;
             this.errorHints = errorHints;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="character"></param>
+        /// <returns>Error message containing optional hint and reason text for the serializer's dictionaries</returns>
         private String GetErrorMessage(String field, String character)
         {
             String msg = "Error parsing field " + field + ".";
@@ -41,6 +59,13 @@ namespace UCPAIConversion
             get { return new ReadOnlyCollection<Type>(new List<Type>(new Type[] { typeof(AICollection) })); }
         }
 
+        /// <summary>
+        /// Deserializes dictionary object to AICollection object
+        /// </summary>
+        /// <param name="dictionary"></param>
+        /// <param name="type"></param>
+        /// <param name="serializer"></param>
+        /// <returns>AICollection</returns>
         public override object Deserialize(IDictionary<string, object> dictionary, Type type, JavaScriptSerializer serializer)
         {
             Dictionary<string, string> header = new Dictionary<string, string>();
@@ -80,6 +105,7 @@ namespace UCPAIConversion
 
                         foreach (KeyValuePair<string, object> definition in (Dictionary<string, object>)character)
                         {
+                            // Parse simply-typed fields defined within AICharacter scope
                             if (definition.Key != "Personality")
                             {
                                 try
@@ -97,11 +123,12 @@ namespace UCPAIConversion
                                     }
                                 }
 
-                            } else if (definition.Key == "Personality")
+                            } else if (definition.Key == "Personality") // Parse the Personality definition within the AICharacter
                             {
                                 currentPersonality = new AIPersonality();
                                 foreach (KeyValuePair<string, object> personalityValue in (Dictionary<string, object>)definition.Value)
                                 {
+                                    // Ignore metadata fields and set currentPersonality properties to values defined in input dictionary
                                     if (personalityValue.Key.ToLowerInvariant().Contains("description") ||
                                         personalityValue.Key.ToLowerInvariant().Contains("comment"))
                                     {
@@ -137,6 +164,8 @@ namespace UCPAIConversion
                             }
                         }
                         AICharacters.Add(currentCharacter);
+
+                        // If errors found in current character add character-specific error message to the set of encountered serialization errors
                         if (SerializationErrors.Errors.Count > 0 || currentCharacter._Name == 0)
                         {
                             String customName = currentCharacter.CustomName;
@@ -168,6 +197,7 @@ namespace UCPAIConversion
             throw new NotImplementedException();
         }
 
+        /// <summary>Sets the AIPersonality field based on field type and value defined in the input dictionary</summary>
         private void SetProperty(Type targetType, object target, String expectedFieldName, object expectedFieldValue)
         {
             if (expectedFieldName == "Unknown131")

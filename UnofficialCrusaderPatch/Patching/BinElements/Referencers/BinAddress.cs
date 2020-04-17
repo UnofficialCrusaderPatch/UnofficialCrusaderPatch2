@@ -2,6 +2,9 @@
 
 namespace UCP.Patching
 {
+    /// <summary>
+    /// Definition of an address specified by its label, offset, and whether it is relative to code position or fixed.
+    /// </summary>
     class BinAddress : BinLabel
     {
         int offset;

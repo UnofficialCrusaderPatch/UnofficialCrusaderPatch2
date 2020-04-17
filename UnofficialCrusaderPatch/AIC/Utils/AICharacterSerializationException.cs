@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace UCPAIConversion
 {
+    /// <summary>
+    /// Exception class for containing list of all exceptions found when parsing a single character
+    /// </summary>
     class AICharacterSerializationException : FormatException
     {
         public String AssociatedAICharacter { get; set; }

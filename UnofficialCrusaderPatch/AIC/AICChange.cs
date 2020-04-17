@@ -41,6 +41,10 @@ namespace UCP.AIC
 
         public static List<AICChange> changes { get { return _changes; } }
 
+
+        /// <summary>
+        /// Read and store UCP-defined errors messages and field description hints
+        /// </summary>
         static AICChange () {
             currentSelection = new Dictionary<AICharacterName, string>();
             availableSelection = new Dictionary<string, List<AICharacterName>>();
@@ -65,6 +69,11 @@ namespace UCP.AIC
             this.NoLocalization = true;
         }
 
+        /// <summary>
+        /// Initialize the UI of the Change including titleBox (checkbox), titleBox.Content (AIC title), saving localized description.
+        /// The titleBox object for built-in AICs is coloured white (unlike beige for user-loaded)
+        /// Built-in AICs have an export option available
+        /// </summary>
         public override void InitUI()
         {
             string descr = GetLocalizedDescription(this.collection);
@@ -72,7 +81,7 @@ namespace UCP.AIC
             Localization.Add(this.TitleIdent + "_descr", descr);
             this.titleBox = new CheckBox()
             {
-                Content = new TextBlock()
+                Content = new TextBlock() // Define title of AIC
                 {
                     Text = internalAIC.Contains(this.TitleIdent.Substring(4)) ? this.TitleIdent.Substring(4).Replace("UCP.", "") : this.TitleIdent.Substring(4),
                     TextDecorations = this.GetTitle().EndsWith(".aic") ? TextDecorations.Strikethrough : null,
@@ -94,6 +103,7 @@ namespace UCP.AIC
                 MinHeight = 22,
             };
 
+            // Add custom handlers for tracking selected AIC files and AI Character definitions to use
             titleBox.Checked += TitleBox_Checked;
             titleBox.Unchecked += TitleBox_Unchecked;
 
@@ -113,6 +123,7 @@ namespace UCP.AIC
             panel.Children.Add(tvi);
             panel.Margin = new Thickness(-20, 0, 0, 0);
 
+            // Render warning with option to convert outdated .aic files to the newer JSON format
             if (this.GetTitle().EndsWith(".aic"))
             {
                 Button infoButton = new Button()
@@ -145,6 +156,7 @@ namespace UCP.AIC
             }
             else
             {
+                // Create warning button for indicating AIC conflicts - only visible when conflicts are present
                 this.conflict = new Button()
                 {
                     ToolTip = Localization.Get("ui_aicconflict"),
@@ -164,7 +176,7 @@ namespace UCP.AIC
 
 
 
-
+            // Add export button for built-in AICs
             if (internalAIC.Contains(this.TitleIdent.Substring(4)))
             {
                 Button exportButton = new Button()
@@ -184,6 +196,11 @@ namespace UCP.AIC
             this.uiElement = panel;
         }
 
+        /// <summary>
+        /// If the user presses Ctrl+Click then append to the current selection otherwise exclusively select the checked AIC
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
         {
             if (!(System.Windows.Input.Keyboard.Modifiers == System.Windows.Input.ModifierKeys.Control))
@@ -200,6 +217,7 @@ namespace UCP.AIC
             }
             else
             {
+                // Update list of conflicts based on additional user selection
                 List<String> conflicts = new List<String>();
                 int count = -1;
                 foreach (AICharacterName character in this.characters)
@@ -244,6 +262,7 @@ namespace UCP.AIC
             }
             selectedChanges.Remove(this);
 
+            // Update list of conflicts on user deselection of a change
             foreach (AICChange change in selectedChanges)
             {
                 change.conflict.Visibility = Visibility.Hidden;
@@ -273,6 +292,9 @@ namespace UCP.AIC
             base.TitleBox_Unchecked(sender, e);
         }
 
+        /// <summary>
+        /// Converts the associated .aic file to the newer JSON format
+        /// </summary>
         private void ConvertAIC()
         {
             string workaroundFilename =  this.TitleIdent.Substring(4);
@@ -300,6 +322,9 @@ namespace UCP.AIC
             }
         }
 
+        /// <summary>
+        /// Exports the current AIC definition to the resources\aic\exports folder
+        /// </summary>
         private void ExportFile()
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -319,11 +344,22 @@ namespace UCP.AIC
             Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent.Substring(4).Replace("UCP.", "") + ".json");
         }
 
+        /// <summary>
+        /// Convenience method for exporting custom AICs
+        /// </summary>
+        /// <param name="aicJson"></param>
+        /// <returns></returns>
         private String Format(String aicJson)
         {
             return Regex.Unescape(aicJson.Replace(",\"", ",\n\t\"").Replace("{", "{\n\t").Replace("}", "\n}").Replace("\\r\\n", "\r\n"));
         }
 
+        /// <summary>
+        /// Loads configuration of saved selections of AIC changes.
+        /// In the event of conflicts the first listed AIC is given priority.
+        /// The first listed AIC is the AIC that was selected first during the user's last session.
+        /// </summary>
+        /// <param name="configuration"></param>
         public static void LoadConfiguration(List<string> configuration = null)
         {
             Load();
@@ -362,6 +398,11 @@ namespace UCP.AIC
             }
         }
 
+        /// <summary>
+        /// Returns AIC selection to store in configuration file.
+        /// Only AIC files with AI Characters that will be used are set to selected.
+        /// </summary>
+        /// <returns></returns>
         public static List<string> GetConfiguration()
         {
             List<string> configuration = new List<string>();
@@ -380,6 +421,12 @@ namespace UCP.AIC
             return configuration;
         }
 
+        /// <summary>
+        /// Clears and reloads the set of AIC definitions.
+        /// Reapplies selections if the specified AIC is still present.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public static void Refresh(object sender, RoutedEventArgs args)
         {
             String[] prevSelection = new String[currentSelection.Values.Count];
@@ -527,6 +574,12 @@ namespace UCP.AIC
             }
         }
 
+        /// <summary>
+        /// Retrieve localized description based on selected language preference.
+        /// If a description is not found then return first non-empty description.
+        /// </summary>
+        /// <param name="ch"></param>
+        /// <returns></returns>
         private static string GetLocalizedDescription(AICollection ch)
         {
             string currentLang = Localization.Translations.ToArray()[Localization.LanguageIndex].Ident;

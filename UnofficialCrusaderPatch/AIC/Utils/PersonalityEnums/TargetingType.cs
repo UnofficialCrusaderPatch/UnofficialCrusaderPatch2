@@ -10,7 +10,7 @@ namespace UCPAIConversion
     {
         /// <summary> Goes for the enemy with the highest gold. </summary>
         Gold,
-        /// <summary> Goes for an average of weakest & closest enemy. </summary>
+        /// <summary> Goes for an average of weakest / closest enemy. </summary>
         Balanced,
         /// <summary> Goes for the closest enemy. </summary>
         Closest,

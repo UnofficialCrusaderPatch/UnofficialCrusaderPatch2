@@ -1,5 +1,8 @@
 ﻿namespace UCP.Patching
 {
+    /// <summary>
+    /// Represents a shift of the provided number of bytes.
+    /// </summary>
     class BinSkip : BinElement
     {
         int count;

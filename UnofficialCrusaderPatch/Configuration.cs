@@ -98,6 +98,9 @@ namespace UCP
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
+
+                        /* Separate configuration for change configurations that are handled within the respective submodule then
+                         proceed to load generic change configurations */
                         if (Regex.Replace(@"\s+","", line).Contains("aic_"))
                         {
                             if (aicConfigurationList == null)
@@ -175,6 +178,8 @@ namespace UCP
                     }
                 }
             }
+
+            // Calls change modules to set their selections based on the provided configuration list
             AICChange.LoadConfiguration(aicConfigurationList);
             AIVChange.LoadConfiguration(aivConfigurationList);
             ResourceChange.LoadConfiguration(resourceConfigurationList);

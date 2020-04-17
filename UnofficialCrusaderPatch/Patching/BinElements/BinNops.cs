@@ -1,5 +1,8 @@
 ﻿namespace UCP.Patching
 {
+    /// <summary>
+    /// Represents nops (no-operation instructions) with count of the provided number of bytes.
+    /// </summary>
     public class BinNops : BinElement
     {
         int count;

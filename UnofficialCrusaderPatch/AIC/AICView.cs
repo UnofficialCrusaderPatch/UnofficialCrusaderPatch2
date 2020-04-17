@@ -42,6 +42,12 @@ namespace UCP.AIC
             button.Click += (s, e) => Refresh(s, e, view);
         }
 
+        /// <summary>
+        /// Clears and reloads the set of AIC changes
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="e"></param>
+        /// <param name="view"></param>
         private void Refresh(object s, RoutedEventArgs e, TreeView view)
         {
             AICChange.Refresh(s, e);

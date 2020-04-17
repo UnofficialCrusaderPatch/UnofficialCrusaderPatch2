@@ -2,8 +2,16 @@
 
 namespace UCP.Patching
 {
+
+    /// <summary>
+    /// Defines the replacement of an existing instruction with an assembly jmp instruction
+    /// </summary>
     class BinHook : BinRedirect
     {
+        /// <summary>
+        /// Creates an assembly jmp instruction of length 5 bytes and fills remaining byte length with nops
+        /// </summary>
+        /// <param name="hookLen">Size in bytes of instruction(s) to be replaced with jmp instruction</param>
         public BinHook(int hookLen)
             : this(hookLen, null, 0xE9)
         {
