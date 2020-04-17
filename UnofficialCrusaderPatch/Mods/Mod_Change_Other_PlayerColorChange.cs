@@ -589,29 +589,38 @@ namespace UCP.Patching
                         new BinRefTo("var", false),
 
                         new BinBytes(0x3C, 0x01), // cmp al, 1
-                        new BinBytes(0x75, 0x04), // jne to next cmp
-                        new BinBytes(0xB0), // mov al, value
-                        new BinByteValue(),
-                        new BinBytes(0xEB, 0x06), // jmp to end
-                        new BinBytes(0x3C), // cmp al, value
-                        new BinByteValue(),
+                        new BinBytes(0x75, 0x07), // jne to next cmp
+                        new BinBytes(0xA0), // mov al, value
+                        new BinRefTo("PlayerColorChosen", false),
+                        new BinBytes(0xEB, 0x0A), // jmp to end
+                        new BinBytes(0x3A, 0x05), // cmp al, value
+                        new BinRefTo("PlayerColorChosen", false),
                         new BinBytes(0x75, 0x02), // jne to end
                         new BinBytes(0xB0, 0x01), // mov al, 1
                         // end
-
-                        new BinBytes(0x3C, 0x01), // cmp al, 1
-                        new BinBytes(0x75, 0x04), // jne to next cmp
-                        new BinBytes(0xB0, 0x04), // mov al, 4
-                        new BinBytes(0xEB, 0x06), // jmp to end
-                        new BinBytes(0x3C, 0x04), // cmp al, 4
-                        new BinBytes(0x75, 0x02), // jne to end
-                        new BinBytes(0xB0, 0x01), // mov al, 1
+                        
+                        new BinHook("endlabel", 0xE9)                // jmp hook
+                        {
+                            new BinBytes(0x3C, 0x01), // cmp al, 1
+                            new BinBytes(0x75, 0x04), // jne to next cmp
+                            new BinBytes(0xB0, 0x04), // mov al, 4
+                            new BinBytes(0xEB, 0x0E), // jmp to end
+                            new BinBytes(0x3C, 0x04), // cmp al, 4
+                            new BinBytes(0x75, 0x04), // jne 4
+                            new BinBytes(0xB0, 0x01), // mov al, 1
+                            new BinBytes(0xEB, 0x06), // jmp to end
+                            
+                            new BinBytes(0x3C, 0x02), // cmp al, 2
+                            new BinBytes(0x75, 0x02), // jne 2
+                            new BinBytes(0x3C, 0x03), // cmp al, 3
+                        },
                         // end
 
+                        new BinLabel("endlabel"),
                         new BinBytes(0xA3), // mov [var], eax
                         new BinRefTo("var", false),
 
-                        new BinNops(2),
+                        new BinNops(11),
                     },
 
                     // 00451E03
@@ -620,12 +629,12 @@ namespace UCP.Patching
                         new BinRefTo("var", false),
 
                         new BinBytes(0x3C, 0x01), // cmp al, 1
-                        new BinBytes(0x75, 0x04), // jne to next cmp
-                        new BinBytes(0xB0), // mov al, value
-                        new BinByteValue(),
-                        new BinBytes(0xEB, 0x06), // jmp to end
-                        new BinBytes(0x3C), // cmp al, value
-                        new BinByteValue(),
+                        new BinBytes(0x75, 0x07), // jne to next cmp
+                        new BinBytes(0xA0), // mov al, value
+                        new BinRefTo("PlayerColorChosen", false),
+                        new BinBytes(0xEB, 0x0A), // jmp to end
+                        new BinBytes(0x3A, 0x05), // cmp al, value
+                        new BinRefTo("PlayerColorChosen", false),
                         new BinBytes(0x75, 0x02), // jne to end
                         new BinBytes(0xB0, 0x01) // mov al, 1
                         // end
@@ -639,12 +648,12 @@ namespace UCP.Patching
                         new BinRefTo("var", false),
 
                         new BinBytes(0x3C, 0x01), // cmp al, 1
-                        new BinBytes(0x75, 0x04), // jne to next cmp
-                        new BinBytes(0xB0), // mov al, value
-                        new BinByteValue(),
-                        new BinBytes(0xEB, 0x06), // jmp to end
-                        new BinBytes(0x3C), // cmp al, value
-                        new BinByteValue(),
+                        new BinBytes(0x75, 0x07), // jne to next cmp
+                        new BinBytes(0xA0), // mov al, value
+                        new BinRefTo("PlayerColorChosen", false),
+                        new BinBytes(0xEB, 0x0A), // jmp to end
+                        new BinBytes(0x3A, 0x05), // cmp al, value
+                        new BinRefTo("PlayerColorChosen", false),
                         new BinBytes(0x75, 0x02), // jne to end
                         new BinBytes(0xB0, 0x01), // mov al, 1
                         // end
