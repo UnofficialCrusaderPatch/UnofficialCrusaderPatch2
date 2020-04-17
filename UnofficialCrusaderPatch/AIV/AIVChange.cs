@@ -35,6 +35,9 @@ namespace UCP.AIV
 
         public static List<AIVChange> changes { get { return _changes; } }
 
+        /// <summary>
+        /// Loads AIV sets from subfolders present in resources\aiv path using foldername as change title
+        /// </summary>
         static AIVChange() {
             if (Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "aiv")))
             {
@@ -164,6 +167,10 @@ namespace UCP.AIV
             }
         }
 
+        /// <summary>
+        /// Copies AIV sets to aivDir (aiv subdirectory of SHC installation)
+        /// </summary>
+        /// <param name="aivDir"></param>
         public void CopyAIVs(DirectoryInfo aivDir)
         {
             if (this.resFolder.StartsWith("UCP.AIV"))
@@ -216,6 +223,10 @@ namespace UCP.AIV
             Version.Changes.AddRange(changes);
         }
 
+        /// <summary>
+        /// Restores the most recently backed-up AIV set found in the aiv subfolder of SHC installation
+        /// </summary>
+        /// <param name="dir"></param>
         public static void Restore(string dir)
         {
             string aivPath = Path.Combine(dir, "aiv");
@@ -237,6 +248,10 @@ namespace UCP.AIV
             catch (InvalidOperationException) { }
         }
 
+        /// <summary>
+        /// Creates timestamped backup of existing AIV sets and copies selected AIV set to aivDir (aiv subdirectory of SHC installation)
+        /// </summary>
+        /// <param name="folderPath"></param>
         public static void DoChange(string folderPath)
         {
             DirectoryInfo aivDir = new DirectoryInfo(Path.Combine(folderPath, "aiv"));

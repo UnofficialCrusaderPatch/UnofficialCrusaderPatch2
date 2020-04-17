@@ -2,6 +2,9 @@
 
 namespace UCP.Patching
 {
+    /// <summary>
+    /// Convenience class for defining a 16-bit integer to be written to target CodeBlock
+    /// </summary>
     public class BinShort : BinBytes
     {
         public BinShort(short input)

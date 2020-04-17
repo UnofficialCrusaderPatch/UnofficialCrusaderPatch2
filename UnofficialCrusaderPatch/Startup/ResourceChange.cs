@@ -105,6 +105,9 @@ namespace UCP.Startup
             }
         }
 
+        /// <summary>
+        /// Exports vanilla starting goods JSON file to resources\goods\vanilla.json
+        /// </summary>
         private void ExportFile()
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -128,6 +131,9 @@ namespace UCP.Startup
             Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent.Substring(4).Replace("UCP.", "") + ".json");
         }
 
+        /// <summary>
+        /// Read and store CodeBlocks defining the original starting resources.
+        /// </summary>
         static ResourceChange()
         {
             Assembly asm = Assembly.GetExecutingAssembly();
@@ -177,6 +183,9 @@ namespace UCP.Startup
             }
         }
 
+        /// <summary>
+        /// Load built-in vanilla starting resource file and user-provided JSON starting gooods files located in resources\goods subfolder
+        /// </summary>
         public static void Load()
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();

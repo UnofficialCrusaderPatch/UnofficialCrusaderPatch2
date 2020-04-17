@@ -23,7 +23,8 @@ namespace UCP.Startup
 
         string headerKey;
         const int lordStrengthBase = 0x64;
-        //game offsets for codeblocks
+
+        // Game offsets for codeblocks
         const int normalOffset = 0;
         const int crusaderOffset = 0x64;
         const int deathmatchOffset = 0xc8;
@@ -115,6 +116,9 @@ namespace UCP.Startup
             }
         }
 
+        /// <summary>
+        /// Exports vanilla starting troops JSON file to resources\trrops\vanilla.json
+        /// </summary>
         private void ExportFile()
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -221,10 +225,12 @@ namespace UCP.Startup
             }
         }
 
+        /// <summary>
+        /// Load built-in starting troops files and user-provided JSON starting troops files located in resources\troops subfolder
+        /// </summary>
         public static void Load()
 
         {
-            // load all premade Starttroop configurations that come with the UCP
             Load("UCP.Startup.Resources.Troops.vanilla.json");
             Load("UCP.Startup.Resources.Troops.UCP-StartingTroops-Patch.json");
 
@@ -295,7 +301,11 @@ namespace UCP.Startup
             }
         }
 
-        //normal, crusader, deathmatch
+        /// <summary>
+        /// Parse the starting troop definition of the configuration
+        /// </summary>
+        /// <param name="gamemodeConfig"></param>
+        /// <returns></returns>
         static byte[] ParseTroops(Dictionary<String, dynamic> gamemodeConfig)
         {
             byte[] gamemodeBytes = new byte[0x50];
@@ -335,7 +345,11 @@ namespace UCP.Startup
         }
 
 
-        //AI's with Index from 1 to 16 , 17 = europ lord , 18 = arab lord
+        /// <summary>
+        /// Parse the player starting troop configurations
+        /// </summary>
+        /// <param name="gamemodeConfig"></param>
+        /// <returns></returns>
         static List<BinElement> ParsePlayer(Dictionary<String, Object> playerConfig)
         {
             List<BinElement> playerTroopChanges = new List<BinElement>();
@@ -372,6 +386,11 @@ namespace UCP.Startup
             return playerTroopChanges;
         }
 
+        /// <summary>
+        /// Parse the player lord strength and dot configurations
+        /// </summary>
+        /// <param name="gamemodeConfig"></param>
+        /// <returns></returns>
         static Dictionary<String, BinElement> ParseLordType(Dictionary<String, Object> gamemodeConfig)
         {
             Int32 lordMultiplier;
@@ -467,6 +486,7 @@ namespace UCP.Startup
             List<BinElement> lordTypeChanges = new List<BinElement>();
 
             //look for each individual AI from Rat to Abbot
+            //AI's with Index from 1 to 16 , 17 = europ lord , 18 = arab lord
             for (int playerIndex = 1; playerIndex <= 18; playerIndex++)
             {
                 string indexKey = playerIndex.ToString();
@@ -475,6 +495,7 @@ namespace UCP.Startup
                 {
                     startTroopChanges.AddRange(ParsePlayer(Player));
 
+                    // Only attempt to parse lord strength and dot configurations for AI characters
                     if (playerIndex < 17)
                     {
                         Dictionary<String, BinElement> lords;

@@ -2,6 +2,9 @@
 
 namespace UCP.Patching
 {
+    /// <summary>
+    /// Represents a single value
+    /// </summary>
     abstract class BinValue : BinElement
     {
         double factor;

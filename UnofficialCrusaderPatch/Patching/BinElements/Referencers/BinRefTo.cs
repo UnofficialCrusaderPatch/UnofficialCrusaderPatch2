@@ -2,6 +2,9 @@
 
 namespace UCP.Patching
 {
+    /// <summary>
+    /// Defines a reference to the address of an existing BinLabel element
+    /// </summary>
     public class BinRefTo : BinElement
     {
         public override int Length => 4;

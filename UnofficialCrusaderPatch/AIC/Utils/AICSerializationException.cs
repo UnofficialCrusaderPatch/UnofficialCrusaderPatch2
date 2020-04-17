@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace UCPAIConversion
 {
+    /// <summary>
+    /// Exception class for containing list of all exceptions found when parsing an AIC
+    /// Comprises of a list of AICharacterSerializationException instances
+    /// </summary>
     class AICSerializationException : FormatException
     {
         public List<AICharacterSerializationException> ErrorList { get; set; }

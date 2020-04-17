@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 namespace UCPAIConversion
 {
+	/// <summary>
+	/// List of AIC parameter fields
+	/// </summary>
     enum AIPersonalityFieldsEnum
     {
         Unknown000,

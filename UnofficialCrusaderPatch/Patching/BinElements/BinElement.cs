@@ -1,6 +1,8 @@
 ﻿namespace UCP.Patching
 {
-
+    /// <summary>
+    /// Definition a single binary element using target address and byte[] value definition
+    /// </summary>
     public abstract class BinElement
     {
         public virtual int Length => 0;

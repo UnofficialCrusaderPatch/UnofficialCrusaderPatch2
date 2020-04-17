@@ -1,5 +1,8 @@
 ﻿namespace UCP.Patching
 {
+    /// <summary>
+    /// Convenience class for defining an array of bytes to be written to target CodeBlock
+    /// </summary>
     public class BinBytes : BinElement
     {
         protected byte[] byteBuf;

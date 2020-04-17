@@ -3,6 +3,9 @@ using System.Web.Script.Serialization;
 
 namespace UCPAIConversion
 {
+    /// <summary>
+    /// Representation of an AI character through its defining attributes
+    /// </summary>
     class AICharacter
     {
         [ScriptIgnore]
@@ -11,6 +14,9 @@ namespace UCPAIConversion
         [ScriptIgnore]
         public String _CustomName { get; set; }
 
+        /// <summary>
+        /// Name of the AI Character as defined in SHC
+        /// </summary>
         public string Name
         {
             get => Enum.GetName(typeof(AICharacterName), _Name);
@@ -20,6 +26,9 @@ namespace UCPAIConversion
             }
         }
 
+        /// <summary>
+        /// Creator-assigned name of the AI Character as defined in the AIC
+        /// </summary>
         public String CustomName
         {
             get => _CustomName;
@@ -29,6 +38,9 @@ namespace UCPAIConversion
             }
         }
 
+        /// <summary>
+        /// List of parameters that define an AIs behaviour
+        /// </summary>
         public AIPersonality Personality { get; set; }
     }
 }

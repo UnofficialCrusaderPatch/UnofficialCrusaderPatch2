@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace UCPAIConversion
 {
+    /// <summary>
+    /// Name and associated index (for calculating offsets when installing) for each AI
+    /// </summary>
     enum AICharacterName
     {
         Rat = 1,

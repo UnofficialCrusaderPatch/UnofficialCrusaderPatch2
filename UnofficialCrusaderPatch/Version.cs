@@ -2678,6 +2678,9 @@ namespace UCP
             #endregion
         };
 
+        /// <summary>
+        /// Load changes stored in submodules
+        /// </summary>
         public static void AddExternalChanges()
         {
             Version.changes.AddRange(ResourceChange.changes);
@@ -2685,6 +2688,10 @@ namespace UCP
             Version.changes.AddRange(StartTroopChange.changes);
         }
 
+        /// <summary>
+        /// Remove all changes of a specified type
+        /// </summary>
+        /// <param name="type"></param>
         public static void RemoveChanges(ChangeType type)
         {
             changes.RemoveAll(x => x.Type == type);

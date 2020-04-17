@@ -17,6 +17,11 @@ namespace UCP.Patching
         const string CrusaderExe = "Stronghold Crusader.exe";
         const string XtremeExe = "Stronghold_Crusader_Extreme.exe";
 
+        /// <summary>
+        /// Test existence of SHC of SHC Extreme executables inside specified directory
+        /// </summary>
+        /// <param name="folderPath"></param>
+        /// <returns></returns>
         public static bool CrusaderExists(string folderPath)
         {
             if (!Directory.Exists(folderPath))
@@ -49,6 +54,7 @@ namespace UCP.Patching
             AIVChange.Restore(dir);
         }
 
+        // Retrieve path to the original SHC or SHC Extreme binary
         static string GetOriginalBinary(string folderPath, string exe)
         {
             if (Directory.Exists(folderPath))
@@ -98,14 +104,14 @@ namespace UCP.Patching
             fails.Clear();
             SectionEditor.Reset();
 
-            // only take binary changes
+            // Retrieve set of selected binary changes
             var changes = Version.Changes.Where(c => c.IsChecked && c is Change && !(c is ResourceChange) && !(c is StartTroopChange));
             List<Change> todoList = new List<Change>(changes);
 
             int todoIndex = 0;
             double todoCount = 9 + todoList.Count; // +2 for AIprops +3 for read, +1 for version edit, +3 for writing data
 
-            // read original data & section preparation
+            // Read original data & perform section preparation adding .ucp section to binary
             byte[] oriData = File.ReadAllBytes(filePath);
             byte[] data = (byte[])oriData.Clone();
             SectionEditor.Init(data);
@@ -115,7 +121,7 @@ namespace UCP.Patching
 
             ChangeArgs args = new ChangeArgs(data, oriData);
 
-            // change version display in main menu
+            // Change version display in main menu
             try
             {
                 (xtreme ? Version.MenuChange_XT : Version.MenuChange).Activate(args);
@@ -126,12 +132,14 @@ namespace UCP.Patching
             }
             perc.Set(++todoIndex / todoCount);
 
-            // change stuff
+            // Apply each selected binary change
             foreach (Change change in todoList)
             {
                 change.Activate(args);
                 perc.Set(++todoIndex / todoCount);
             }
+
+            // Apply changes handled in their respective submodules
             AICChange.DoChange(args);
             StartTroopChange.DoChange(args);
             ResourceChange.DoChange(args);
@@ -159,6 +167,11 @@ namespace UCP.Patching
             ShowFailures(filePath);
         }
 
+        /// <summary>
+        /// Rename the backed-up version of SHC and/or SHC Extreme executable
+        /// </summary>
+        /// <param name="dir"></param>
+        /// <param name="exe"></param>
         static void RestoreBinary(string dir, string exe)
         {
             string oriPath = Path.Combine(dir, exe);
