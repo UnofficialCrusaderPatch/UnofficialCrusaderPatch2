@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_Units_ArabianArcher : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             // Armbrustschaden gegen Arab. Schwertkämpfer, original: 8000
             // 0xB4EE4C = 0x4B*4 + 0xB4ED20

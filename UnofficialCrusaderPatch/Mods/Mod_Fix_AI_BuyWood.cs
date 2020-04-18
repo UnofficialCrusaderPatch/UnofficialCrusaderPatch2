@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Fix_AI_BuyWood : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             // 00457DF4
             return new Change("ai_buywood", ChangeType.Bugfix, true)

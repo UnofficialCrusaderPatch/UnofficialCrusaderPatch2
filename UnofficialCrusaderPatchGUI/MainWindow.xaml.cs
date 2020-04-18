@@ -190,7 +190,7 @@ namespace UCP
             if (!viewLoaded)
             {
                 // fill setup options list
-                FillTreeView(Version.Changes);
+                FillTreeView(Version.GetChangeList());
                 viewLoaded = true;
             }
             pathGrid.Visibility = Visibility.Hidden;
@@ -224,7 +224,7 @@ namespace UCP
             iButtonInstall.IsEnabled = false;
             pButtonSearch.IsEnabled = false;
             pTextBoxPath.IsReadOnly = true;
-            Version.Changes.ForEach(c => c.SetUIEnabled(false));
+            Version.GetChangeList().ForEach(c => c.SetUIEnabled(false));
             pbLabel.Content = "";
             changeHint.Text = "";
 
@@ -245,7 +245,7 @@ namespace UCP
                     iButtonInstall.IsEnabled = true;
                     pButtonSearch.IsEnabled = true;
                     pTextBoxPath.IsReadOnly = false;
-                    Version.Changes.ForEach(c => c.SetUIEnabled(true));
+                    Version.GetChangeList().ForEach(c => c.SetUIEnabled(true));
                     pbSetup.Value = 0;
                     pbLabel.Content = Localization.Get("ui_finished");
                 }));

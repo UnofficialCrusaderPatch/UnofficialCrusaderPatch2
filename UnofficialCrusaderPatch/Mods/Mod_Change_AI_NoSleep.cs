@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_AI_NoSleep : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             // 004CBCD5
             return new Change("ai_nosleep", ChangeType.AILords, false)

@@ -7,7 +7,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_Other_NewKeybindings : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             return new Change("o_keys", ChangeType.Other, false)
             {

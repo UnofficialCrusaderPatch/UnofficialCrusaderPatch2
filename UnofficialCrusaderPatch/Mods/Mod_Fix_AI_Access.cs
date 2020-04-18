@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Fix_AI_Access : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             // 004242C3
             return BinBytes.Change("ai_access", ChangeType.Bugfix, true, 0xEB);

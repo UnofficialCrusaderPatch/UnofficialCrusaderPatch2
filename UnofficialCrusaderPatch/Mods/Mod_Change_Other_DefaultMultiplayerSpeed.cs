@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_Other_DefaultMultiplayerSpeed : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             return new Change("o_default_multiplayer_speed", ChangeType.Other)
             {

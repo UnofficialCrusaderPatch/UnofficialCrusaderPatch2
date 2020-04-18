@@ -64,8 +64,10 @@ namespace UCP
                 sw.Write("Language=");
                 sw.WriteLine(Language);
 
+                List<Change> changeList = Version.GetChangeList();
+
                 // edits
-                foreach (Change change in Version.Changes)
+                foreach (Change change in changeList)
                 {
                     if (change.Type != ChangeType.AIC && change.Type != ChangeType.AIV)
                     {
@@ -160,7 +162,10 @@ namespace UCP
                         {
                             continue;
                         }
-                        Change change = Version.Changes.Find(c => c.TitleIdent == changeKey);
+                        
+                        List<Change> changeList = Version.GetChangeList();
+                        
+                        Change change = changeList.Find(c => c.TitleIdent == changeKey);
                         if (change == null) continue;
 
                         int numChanges = changeSetting.Count(ch => ch == '=');

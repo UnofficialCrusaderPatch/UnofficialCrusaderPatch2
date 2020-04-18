@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_Other_FireCooldown : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             // 0x00410A30 + 8 ushort default = 2000
             return new Change("o_firecooldown", ChangeType.Other)

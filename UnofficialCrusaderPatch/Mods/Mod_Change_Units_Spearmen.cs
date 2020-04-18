@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_Units_Spearmen : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             // Lanzenträger hp: 10000
             return new Change("u_spearmen", ChangeType.Troops)

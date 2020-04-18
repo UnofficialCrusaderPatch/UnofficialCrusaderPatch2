@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_Other_Healer : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             return new Change("o_healer", ChangeType.Other)
             {

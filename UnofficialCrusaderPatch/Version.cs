@@ -46,78 +46,99 @@ namespace UCP
             BinRedirect.CreateEdit("menuversion", false, Encoding.ASCII.GetBytes("V1.%d-E UCP" + PatcherVersion + '\0'))
         };
 
+        /**
+         * Get current change list. Only HD changes.
+         */
+        public static List<Change> GetChangeList()
+        {
+            List<Change> changeList = new List<Change>();
 
-        public static List<Change> Changes { get { return changes; } }
-        static List<Change> changes = new List<Change>()
+            // Get shallow copy of modifications.
+            List<Mod> mods = Version.Modifications.GetRange(0, Version.Modifications.Count);
+
+            // Go through modifications.
+            foreach (Mod mod in mods)
+            {
+                changeList.Add(mod.Change);
+            }
+
+            return changeList;
+        }
+
+        public static List<Change> AdditionalExternalChanges { get { return additionalExternalChanges; } }
+        private static List<Change> additionalExternalChanges = new List<Change>();
+
+        public static List<Mod> Modifications { get { return modifications; } }
+        static List<Mod> modifications = new List<Mod>()
         {
             #region BUG FIXES
 
-            new Mod_Fix_FireBallista().getChange(),
-            new Mod_Fix_AI_Access().getChange(),
-            new Mod_Fix_AI_Defense().getChange(),
-            new Mod_Fix_AI_Tethers().getChange(),
-            //new Mod_Fix_AI_Buy().getChange(),
-            new Mod_Fix_AI_BuyWood().getChange(),
-            new Mod_Fix_AI_TowerEngines().getChange(),
-            new Mod_Fix_AI_AssaultSwitch().getChange(),
-            new Mod_Fix_AI_Rebuild().getChange(),
-            new Mod_Fix_AI_LaddermenUsage().getChange(),
+            new Mod_Fix_FireBallista(),
+            new Mod_Fix_AI_Access(),
+            new Mod_Fix_AI_Defense(),
+            new Mod_Fix_AI_Tethers(),
+            //new Mod_Fix_AI_Buy(),
+            new Mod_Fix_AI_BuyWood(),
+            new Mod_Fix_AI_TowerEngines(),
+            new Mod_Fix_AI_AssaultSwitch(),
+            new Mod_Fix_AI_Rebuild(),
+            new Mod_Fix_AI_LaddermenUsage(),
             
             #endregion
 
             #region AI CHANGES
             
-            new Mod_Change_AI_AttackLimit().getChange(),
-            new Mod_Change_AI_AttackWave().getChange(),
-            new Mod_Change_AI_AttackTarget().getChange(),
-            new Mod_Change_AI_NoSleep().getChange(),
-            //new Mod_Change_AI_Overclock().getChange(),
-            new Mod_Change_AI_Demolish().getChange(),
-            new Mod_Change_AI_AddAttack().getChange(),
-            new Mod_Change_AI_RecruitInterval().getChange(),
+            new Mod_Change_AI_AttackLimit(),
+            new Mod_Change_AI_AttackWave(),
+            new Mod_Change_AI_AttackTarget(),
+            new Mod_Change_AI_NoSleep(),
+            //new Mod_Change_AI_Overclock(),
+            new Mod_Change_AI_Demolish(),
+            new Mod_Change_AI_AddAttack(),
+            new Mod_Change_AI_RecruitInterval(),
 
             #endregion
 
             #region UNITS
             
-            new Mod_Change_Units_Laddermen().getChange(),         
-            new Mod_Change_Units_ArabianArcher().getChange(),
-            new Mod_Change_Units_ArabianSwordsmen().getChange(),
-            new Mod_Change_Units_Spearmen().getChange(),
+            new Mod_Change_Units_Laddermen(),         
+            new Mod_Change_Units_ArabianArcher(),
+            new Mod_Change_Units_ArabianSwordsmen(),
+            new Mod_Change_Units_Spearmen(),
             
             #endregion
 
             #region OTHER
 
-            new Mod_Change_Other_FireCooldown().getChange(),
-            new Mod_Change_Other_RemoveExtremeBar().getChange(),
-            new Mod_Change_Other_PlayerColorChange().getChange(),
-            new Mod_Change_Other_NewKeybindings().getChange(),
-            new Mod_Change_Other_OverrideIdentityMenu().getChange(),
-            new Mod_Change_Other_Healer().getChange(),
-            new Mod_Change_Other_FreeTradePost().getChange(),
-            new Mod_Change_Other_NoSiegeTentDeselection().getChange(),
-            new Mod_Change_Other_AlwaysShowPlannedMoat().getChange(),
-            new Mod_Change_Other_ExtendedGameSpeed().getChange(),
-            new Mod_Change_Other_ResponsiveGates().getChange(),
-            new Mod_Change_Other_OnlyAI().getChange(),
-            new Mod_Change_Other_ArmoryMarketplaceWeaponOrderFix().getChange(),
-            new Mod_Change_Other_DefaultMultiplayerSpeed().getChange(),
-            new Mod_Change_Other_Strongholdify().getChange(),
+            new Mod_Change_Other_FireCooldown(),
+            new Mod_Change_Other_RemoveExtremeBar(),
+            new Mod_Change_Other_PlayerColorChange(),
+            new Mod_Change_Other_NewKeybindings(),
+            new Mod_Change_Other_OverrideIdentityMenu(),
+            new Mod_Change_Other_Healer(),
+            new Mod_Change_Other_FreeTradePost(),
+            new Mod_Change_Other_NoSiegeTentDeselection(),
+            new Mod_Change_Other_AlwaysShowPlannedMoat(),
+            new Mod_Change_Other_ExtendedGameSpeed(),
+            new Mod_Change_Other_ResponsiveGates(),
+            new Mod_Change_Other_OnlyAI(),
+            new Mod_Change_Other_ArmoryMarketplaceWeaponOrderFix(),
+            new Mod_Change_Other_DefaultMultiplayerSpeed(),
+            new Mod_Change_Other_Strongholdify(),
 
             #endregion
         };
 
         public static void AddExternalChanges()
         {
-            Version.changes.AddRange(ResourceChange.changes);
-            Version.changes.AddRange(AIVChange.changes);
-            Version.changes.AddRange(StartTroopChange.changes);
+            Version.additionalExternalChanges.AddRange(ResourceChange.changes);
+            Version.additionalExternalChanges.AddRange(AIVChange.changes);
+            Version.additionalExternalChanges.AddRange(StartTroopChange.changes);
         }
 
-        public static void RemoveChanges(ChangeType type)
+        public static void RemoveExternalChanges(ChangeType type)
         {
-            changes.RemoveAll(x => x.Type == type);
+            additionalExternalChanges.RemoveAll(x => x.Type == type);
         }
     }
 }

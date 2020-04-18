@@ -212,8 +212,8 @@ namespace UCP.AIV
             }
 
 
-            Version.RemoveChanges(ChangeType.AIV);
-            Version.Changes.AddRange(changes);
+            Version.RemoveExternalChanges(ChangeType.AIV);
+            Version.AdditionalExternalChanges.AddRange(changes);
         }
 
         public static void Restore(string dir)

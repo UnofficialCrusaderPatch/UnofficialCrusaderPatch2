@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_Other_FreeTradePost : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             // trader post: runtime 01124EFC
             // 005C23D8

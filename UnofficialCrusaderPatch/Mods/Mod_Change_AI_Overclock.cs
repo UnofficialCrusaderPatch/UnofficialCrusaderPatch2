@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_AI_Overclock : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             return new Change("ai_overclock", ChangeType.AILords, false)
             {
