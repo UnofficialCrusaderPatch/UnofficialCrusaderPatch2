@@ -173,6 +173,7 @@
     <Compile Include="Version.cs" />
     <Compile Include="_Crusader\Building.cs" />
     <Compile Include="_Crusader\UI_Button.cs" />
+    <Compile Include="_Crusader\UI_Text.cs" />
     <Compile Include="_Crusader\Unit.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +193,7 @@
     <EmbeddedResource Include="CodeBlocks\ai_fix_laddermen_with_enclosed_keep.block" />
     <EmbeddedResource Include="CodeBlocks\o_override_identity_menu.block" />
     <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed.block" />
+    <EmbeddedResource Include="CodeBlocks\o_override_identity_menu_text_renderer.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_ally_name.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_attack_emblem.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_emblem.block" />
