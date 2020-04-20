@@ -5,11 +5,17 @@ namespace UCP.Patching
      */
     public class Mod_Change_AI_AttackLimit : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             // 115EEE0 + (AI1 = 73E8) = stay home troops?
             // +8 attack troops
-            
+
             // absolute limit at 0x4CDEF8 + 1 = 200
             return new Change("ai_attacklimit", ChangeType.AILords)
             {

@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Fix_AI_Buy : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             // Wazir runtime buytable 023FE5F4 +84, apples, cheese, bread, wheat
             // Emir 023FE898

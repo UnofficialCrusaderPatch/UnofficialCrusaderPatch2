@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_Other_ArmoryMarketplaceWeaponOrderFix : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             return new Change("o_armory_marketplace_weapon_order_fix", ChangeType.Other, false)
             {

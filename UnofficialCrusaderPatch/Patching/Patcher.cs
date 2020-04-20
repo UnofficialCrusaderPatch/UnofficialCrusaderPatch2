@@ -87,6 +87,11 @@ namespace UCP.Patching
 
             if (ePath != null)
             {
+                // We need to clear global labels, because if we use the same Change for Extreme
+                // or we name two labels the same in both Changes, then it will throw an entry
+                // duplication exception for the GlobalLabels collection.
+                GlobalLabels.Clear();
+                
                 perc.NextLimit = 1;
                 DoBinaryChanges(ePath, true, perc);
             }
@@ -97,15 +102,33 @@ namespace UCP.Patching
         {
             fails.Clear();
             SectionEditor.Reset();
+            
+            List<Change> changes = new List<Change>();
 
-            // only take binary changes
-            var changes = Version.Changes.Where(c => c.IsChecked && c is Change && !(c is ResourceChange) && !(c is StartTroopChange));
-            List<Change> todoList = new List<Change>(changes);
+            // Get shallow copy of modifications.
+            List<Mod> mods = Version.Modifications.GetRange(0, Version.Modifications.Count);
+
+            // Go through modifications.
+            foreach (Mod mod in mods)
+            {
+                // Get extreme version of mod.
+                if (xtreme)
+                {
+                    // Init extreme change of mod.
+                    mod.InitExtremeChange();
+                    changes.Add(mod.ExtremeChange);
+                }
+                // Get normal version of mod.
+                else
+                {
+                    changes.Add(mod.Change);
+                }
+            }
 
             int todoIndex = 0;
-            double todoCount = 9 + todoList.Count; // +2 for AIprops +3 for read, +1 for version edit, +3 for writing data
+            double todoCount = 9 + changes.Count; // +2 for AIprops +3 for read, +1 for version edit, +3 for writing data
 
-            // read original data & section preparation
+            // Read original data & section preparation.
             byte[] oriData = File.ReadAllBytes(filePath);
             byte[] data = (byte[])oriData.Clone();
             SectionEditor.Init(data);
@@ -115,7 +138,7 @@ namespace UCP.Patching
 
             ChangeArgs args = new ChangeArgs(data, oriData);
 
-            // change version display in main menu
+            // Change version display in MainMenu.
             try
             {
                 (xtreme ? Version.MenuChange_XT : Version.MenuChange).Activate(args);
@@ -124,16 +147,23 @@ namespace UCP.Patching
             {
                 Debug.Error(e);
             }
+            
             perc.Set(++todoIndex / todoCount);
 
-            // change stuff
-            foreach (Change change in todoList)
+            // Execute changes.
+            foreach (Change change in changes)
             {
                 change.Activate(args);
                 perc.Set(++todoIndex / todoCount);
             }
+            
+            // Execute AIC changes.
             AICChange.DoChange(args);
+            
+            // Execute StartTroop changes.
             StartTroopChange.DoChange(args);
+            
+            // Execute Resource changes.
             ResourceChange.DoChange(args);
 
             todoIndex += 2;
@@ -141,7 +171,7 @@ namespace UCP.Patching
 
 
 
-            // Write everything to file
+            // Write everything to file.
             data = SectionEditor.AttachSection(data);
 
             if (filePath.EndsWith(BackupFileEnding))
@@ -152,6 +182,7 @@ namespace UCP.Patching
             {
                 File.WriteAllBytes(filePath + BackupFileEnding, oriData); // create backup
             }
+            
             File.WriteAllBytes(filePath, data);
 
             perc.Set(1);

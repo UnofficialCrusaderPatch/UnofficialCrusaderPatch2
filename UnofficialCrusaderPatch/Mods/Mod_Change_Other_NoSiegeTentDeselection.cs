@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_Other_NoSiegeTentDeselection : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             // 0044612B
             // nop out: mov [selection], ebp = 0

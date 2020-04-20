@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_AI_AttackWave : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             return new Change("ai_attackwave", ChangeType.AILords)
             {

@@ -241,8 +241,8 @@ namespace UCP.Startup
             changes.Clear();
             Load();
 
-            Version.RemoveChanges(ChangeType.AIV);
-            Version.Changes.AddRange(changes);
+            Version.RemoveExternalChanges(ChangeType.AIV);
+            Version.AdditionalExternalChanges.AddRange(changes);
         }
 
         static byte[] ParseResources(Dictionary<String, Dictionary<String, Object>> resourceConfig)

@@ -143,8 +143,8 @@ namespace UCP.Startup
             changes.Clear();
             Load();
 
-            Version.RemoveChanges(ChangeType.Troops);
-            Version.Changes.AddRange(changes);
+            Version.RemoveExternalChanges(ChangeType.Troops);
+            Version.AdditionalExternalChanges.AddRange(changes);
         }
 
         public static void LoadConfiguration(List<string> configuration = null)

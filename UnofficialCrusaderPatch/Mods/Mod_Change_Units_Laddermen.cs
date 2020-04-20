@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_Units_Laddermen : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             //BinInt32.Change("laddermadness", ChangeType.Troops, 1),
 

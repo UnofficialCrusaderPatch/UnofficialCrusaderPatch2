@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_AI_RecruitInterval : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             // AI_OFFSET = AI_INDEX * 169
 

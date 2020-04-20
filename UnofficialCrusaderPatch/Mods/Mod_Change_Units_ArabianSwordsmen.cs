@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_Units_ArabianSwordsmen : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             // Arab. Schwertkämpfer Angriffsanimation, ca. halbiert
             // 0xB59CD0

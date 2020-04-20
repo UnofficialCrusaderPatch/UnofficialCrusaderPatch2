@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Fix_AI_Defense : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             return new Change("ai_defense", ChangeType.Bugfix)
             {

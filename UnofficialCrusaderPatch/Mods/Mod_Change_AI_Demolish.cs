@@ -5,7 +5,13 @@ namespace UCP.Patching
      */
     public class Mod_Change_AI_Demolish : Mod
     {
-        override public Change getChange()
+
+        override protected Change CreateExtremeChange()
+        {
+            return change;
+        }
+        
+        override protected Change CreateChange()
         {
             // 004D0280
             return new Change("ai_demolish", ChangeType.AILords, false, false)
