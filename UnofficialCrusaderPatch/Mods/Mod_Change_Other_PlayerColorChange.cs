@@ -8,7 +8,7 @@ namespace UCP.Patching
 
         override protected Change CreateExtremeChange()
         {
-            return change;
+            return Change;
         }
         
         override protected Change CreateChange()
@@ -589,50 +589,54 @@ namespace UCP.Patching
                     // 0044FC15
                     new BinaryEdit("o_playercolor_ingame")
                     {
-                        new BinAddress("var", 2), // [ED3158]
-
-                        new BinBytes(0xA1), // mov eax, [var]
-                        new BinRefTo("var", false),
-
-                        new BinBytes(0x3C, 0x01), // cmp al, 1
-                        new BinBytes(0x75, 0x07), // jne to next cmp
-                        new BinBytes(0xA0), // mov al, value
-                        new BinRefTo("PlayerColorChosen", false),
-                        new BinBytes(0xEB, 0x0A), // jmp to end
-                        new BinBytes(0x3A, 0x05), // cmp al, value
-                        new BinRefTo("PlayerColorChosen", false),
-                        new BinBytes(0x75, 0x02), // jne to end
-                        new BinBytes(0xB0, 0x01), // mov al, 1
-                        // end
-                        
-                        new BinHook("endlabel", 0xE9)                // jmp hook
+                        new BinAddress("CurrentPlayerIDAddress", 2), // [ED3158]
+                        new BinSkip(40),
+                        new BinHook(7)
                         {
-                            new BinBytes(0x3C, 0x01), // cmp al, 1
-                            new BinBytes(0x75, 0x04), // jne to next cmp
-                            new BinBytes(0xB0, 0x04), // mov al, 4
-                            new BinBytes(0xEB, 0x0E), // jmp to end
-                            new BinBytes(0x3C, 0x04), // cmp al, 4
-                            new BinBytes(0x75, 0x04), // jne 4
-                            new BinBytes(0xB0, 0x01), // mov al, 1
-                            new BinBytes(0xEB, 0x06), // jmp to end
+                            0x53, // push ebx
+                            0x51, // push ecx
+                            0x52, // push edx
+                            0x8B, 0x1D, new BinRefTo("CurrentPlayerIDAddress", false), // mov ebx,[CurrentPlayerIDAddress]
                             
-                            new BinBytes(0x3C, 0x02), // cmp al, 2
-                            new BinBytes(0x75, 0x02), // jne 2
-                            new BinBytes(0x3C, 0x03), // cmp al, 3
+                            
+                            0x83, 0xFB, 0x04, // cmp ebx,04
+                            0x75, 0x08, // jne short 8
+                            0x8B, 0x1D, new BinRefTo("PlayerColorChosen", false), // mov ebx,[PlayerColorChosen]
+                            0xEB, 0x0D, // jmp short D
+                            
+                            0x3B, 0x1D, new BinRefTo("PlayerColorChosen", false), // cmp ebx,[PlayerColorChosen]
+                            0x75, 0x05, // jne short 5
+                            0xBB, 0x04, 0x00, 0x00, 0x00, // mov ebx,04
+                            
+                            0x8B, 0x15, new BinRefTo("PlayerColorChosen", false), // mov edx,[PlayerColorChosen]
+                            0x83, 0xFA, 0x01, // cmp edx,01
+                            0x74, 0x07, // je short 07
+                            0x83, 0xFA, 0x04, // cmp edx,04
+                            0x74, 0x02, // je short 02
+                            0xEB, 0x10, // jmp short 10
+                            
+                            0x80, 0xFB, 0x01, // cmp bl,01
+                            0x75, 0x04, // jne short 4
+                            0xB3, 0x04, // mov bl,04
+                            0xEB, 0x07, // jmp short 7
+                            0x80, 0xFB, 0x04, // cmp bl,04
+                            0x75, 0x02, // jne short 2
+                            0xB3, 0x01, // mov bl,01
+                            
+                            0x89, 0x1D, new BinRefTo("CurrentPlayerIDAddress", false), // mov [CurrentPlayerIDAddress],ebx
+                            0x5A, // pop edx
+                            0x59, // pop ecx
+                            0x5B, // pop ebx
+                            
+                            0x8B, 0x45, 0xD8, // mov eax,[ebp-28]
+                            0x83, 0x78, 0x10, 0x00, // cmp dword ptr [eax+10],00
                         },
-                        // end
-
-                        new BinLabel("endlabel"),
-                        new BinBytes(0xA3), // mov [var], eax
-                        new BinRefTo("var", false),
-
-                        new BinNops(11),
                     },
 
                     // 00451E03
                     BinHook.CreateEdit("o_playercolor_fade", 5,
                         new BinBytes(0xA1), // mov eax, [var]
-                        new BinRefTo("var", false),
+                        new BinRefTo("CurrentPlayerIDAddress", false),
 
                         new BinBytes(0x3C, 0x01), // cmp al, 1
                         new BinBytes(0x75, 0x07), // jne to next cmp
@@ -651,7 +655,7 @@ namespace UCP.Patching
                         new BinBytes(0x50), // ori code: push eax
 
                         new BinBytes(0xA1), // mov eax, [var]
-                        new BinRefTo("var", false),
+                        new BinRefTo("CurrentPlayerIDAddress", false),
 
                         new BinBytes(0x3C, 0x01), // cmp al, 1
                         new BinBytes(0x75, 0x07), // jne to next cmp
@@ -665,7 +669,7 @@ namespace UCP.Patching
                         // end
 
                         new BinBytes(0xA3), // mov [var], eax
-                        new BinRefTo("var", false),
+                        new BinRefTo("CurrentPlayerIDAddress", false),
 
                         // ori code
                         new BinBytes(0x8B, 0x44, 0x24, 0x14) // mov eax, [esp+14]

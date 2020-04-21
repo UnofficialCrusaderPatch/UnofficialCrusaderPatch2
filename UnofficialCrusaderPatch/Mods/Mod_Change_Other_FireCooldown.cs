@@ -8,7 +8,7 @@ namespace UCP.Patching
 
         override protected Change CreateExtremeChange()
         {
-            return change;
+            return Change;
         }
         
         override protected Change CreateChange()
