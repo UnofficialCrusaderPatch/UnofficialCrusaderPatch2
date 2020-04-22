@@ -271,49 +271,158 @@
                 </div>
             </div>
             <div class="col-lg-6">
+                <h3>Visual Overview of Installation</h3>
+                <br>
+                <div id="carouselInstallation" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselInstallation" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselInstallation" data-slide-to="1"></li>
+                      <li data-target="#carouselInstallation" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <div class="d-md-block text-center">
+                            <h4>Step 1: Language Selection</h4>
+                        </div>
+                        <img class="d-block" style="height: 350px; margin: auto;" src="assets/img/language-select.png" alt="First slide">
+                      </div>
+                      <div class="carousel-item">
+                        <div class="d-md-block text-center">
+                            <h4>Step 2: Installation Path Selection</h4>
+                        </div>
+                        <img class="d-block" style="height: 350px; margin: auto;" src="assets/img/window.png" alt="Second slide">
+                      </div>
+                      <div class="carousel-item">
+                        <div class="d-md-block text-center">
+                            <h4>Step 3: Select Your <a href="features.html">Features</a></h4>
+                        </div>
+                        <img class="d-block" style="height: 350px; margin: auto;" src="assets/img/bugfixes.png" alt="Third slide">
+                      </div>
+                    </div>
+                    <br><br>
+                    <a class="carousel-control-prev" href="#carouselInstallation" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselInstallation" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+
                 <h3>Visual Overview of Features</h3>
-                <h5><i>See <a href="features.html">features</a> for a full description of each feature</i></h5>
+                <h5><i>See the <a href="features.html">Features</a> page for a full description of each feature</i></h5>
                 <br>
-                <h4>Step 1: Language Selection</h4>
-                <img class="img-installation" id="language-select" src="assets/img/language-select.png">
 
-                <h4>Step 2: Installation Path Selection</h4>
-                <img class="img-installation" src="assets/img/window.png">
+                <div id="carouselFeatures" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <div class="d-md-block text-center">
+                            <h4>Bugfixes</h4>
+                        </div>
+                        <img class="d-block" style="height: 400px; margin: auto;" src="assets/img/bugfixes.png" alt="See Features page for description">
+                        <div class="d-md-block text-center">
+                            <h5><i>These include fixes to various gameplay bugs. Most users will want to select all options.</i></h5>
+                        </div>
+                      </div>
 
-                <h4>Step 3: Select Your Features</h4>
-                <h5><i>See <a href="features.html">features</a> for a description of each feature</i></h5>
-                <br>
-                <h4>Bugfixes</h4>
-                <h5><i>These include fixes to various gameplay bugs. Most users will want to select all options.</i></h5>
-                <img class="img-installation" src="assets/img/bugfixes.png">
+                      <div class="carousel-item">
+                        <div class="d-md-block text-center">
+                            <h4>AIV</h4>
+                        </div>
+                        <img class="d-block" style="height: 400px; margin: auto;" src="assets/img/aiv.png" alt="See AI Castle Introduction page for description">
+                        <div class="d-md-block text-center">
+                            <h5><i>Selecting a castle set here will change the way the AI characters build their castles in-game.</i></h5>
+                            <h5><i>See <a href="aiv/overview.html">AI Castle Introduction</a> for more about castle editing</i></h5>
+                        </div>
+                      </div>
 
-                <h4>AIV</h4>
-                <h5><i>Selecting a castle set here will change the way the AI characters build their castles in-game.</i></h5>
-                <h5><i>See <a href="aiv/overview.html">AI Castle Introduction</a> for more about castle editing</i></h5>
-                <img class="img-installation" src="assets/img/aiv.png">
+                      <div class="carousel-item">
+                        <div class="d-md-block text-center">
+                            <h4>AIC</h4>
+                        </div>
+                        <img class="d-block" style="height: 400px; margin: auto;" src="assets/img/aic.png" alt="See AI Character Introduction page for description">
+                        <div class="d-md-block text-center">
+                            <h5><i>Selecting an file here will change the in-game behaviour of the AI.
+                                The boxes that are coloured beige indicate user-provided aic files. 
+                                <br>
+                                vanilla is the AI behaviour as it is defined in Stronghold Crusader (without UCP).
+                                <br>
+                                You may hold Ctrl and click to select/deselect multiple aic files. 
+                                Note that if an AI Character is defined multiple times they are used in order of selection</i></h5>
+                          <h5><i>See <a href="aic/overview.html">AI Character Introduction</a> for more about editing AI behaviour</i></h5>
+                        </div>
+                      </div>
 
-                <h4>AIC</h4>
-                <h5><i>Selecting an file here will change the in-game behaviour of an AI.
-                      The boxes that are coloured beige indicate user-provided aic files. 
-                      <br>
-                      vanilla.aic is the AI behaviour as it is defined in Stronghold Crusader (without UCP).
-                      <br>
-                      You may hold Ctrl and click to select/deselect multiple aic files. 
-                      Note that if an AI Character is defined multiple times the one from the first file (alphabetically) will be used</i></h5>
-                <h5><i>See <a href="aic/overview.html">AI Character Introduction</a> for more about editing AI behaviour</i></h5>
-                <img class="img-installation" src="assets/img/aic.png">
+                      <div class="carousel-item">
+                        <div class="d-md-block text-center">
+                            <h4>AI Lords</h4>
+                        </div>
+                        <img class="d-block" style="height: 400px; margin: auto;" src="assets/img/ai-lords.png" alt="See Features page for description">
+                        <div class="d-md-block text-center">
+                            <h5><i>These include changes to how the AI characters behave.</i></h5>
+                            <br>
+                        </div>
+                      </div>
 
-                <h4>AI Lords</h4>
-                <h5><i>These include changes to how the AI characters behave.</i></h5>
-                <img class="img-installation" src="assets/img/ai-lords.png">
+                      <div class="carousel-item">
+                        <div class="d-md-block text-center">
+                            <h4>Units</h4>
+                        </div>
+                        <img class="d-block" style="height: 400px; margin: auto;" src="assets/img/units.png" alt="See Features page for description">
+                        <div class="d-md-block text-center">
+                            <h5><i>These include changes to the characteristics of certain troops.</i></h5>
+                            <br>
+                        </div>
+                      </div>
 
-                <h4>Units</h4>
-                <h5><i>These include changes to the characteristics of certain troops.</i></h5>
-                <img class="img-installation" src="assets/img/units.png">
+                      <div class="carousel-item">
+                        <div class="d-md-block text-center">
+                            <h4>Other</h4>
+                        </div>
+                        <img class="d-block" style="height: 400px; margin: auto;" src="assets/img/other.png" alt="See Features page for description">
+                        <div class="d-md-block text-center">
+                            <h5><i>These include various quality of life and convenience changes.</i></h5>
+                            <br>
+                        </div>
+                      </div>
 
-                <h4>Other</h4>
-                <h5><i>These include various quality of life and convenience changes.</i></h5>
-                <img class="img-installation" src="assets/img/other.png">
+                      <div class="carousel-item">
+                        <div class="d-md-block text-center">
+                            <h4>StartTroops</h4>
+                        </div>
+                        <img class="d-block" style="height: 400px; margin: auto;" src="assets/img/starttroops.png" alt="">
+                        <div class="d-md-block text-center">
+                            <h5><i>Here you can select a starting unit configuration for AI Lords as well as your Crusader or Arabic Lord.
+                                The vanilla configuration and a UCP patch configuration are provided for your convenience.</i></h5>
+                            <br>
+                        </div>
+                      </div>
+
+                      <div class="carousel-item">
+                        <div class="d-md-block text-center">
+                            <h4>StartGoods</h4>
+                        </div>
+                        <img class="d-block" style="height: 400px; margin: auto;" src="assets/img/startgoods.png" alt="">
+                        <div class="d-md-block text-center">
+                            <h5><i>Here you can select a starting resource configuration that will apply for all human and AI players in the game.
+                                The vanilla configuration is provided for your convenience.
+                            </i></h5>
+                            <br>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <a class="carousel-control-prev" href="#carouselFeatures" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselFeatures" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -326,5 +435,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="assets/js/index.js"></script>
+<script src="assets/js/carousel.js"></script>
 
 </html>
