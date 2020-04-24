@@ -91,9 +91,11 @@
     <Compile Include="Localization\TextReferencer.cs" />
     <Compile Include="Patching\BinElements\BinCode.cs" />
     <Compile Include="Patching\BinElements\BinCollection.cs" />
+    <Compile Include="Patching\BinElements\OpCodes.cs" />
     <Compile Include="Patching\BinElements\Referencers\BinAddress.cs" />
     <Compile Include="Patching\BinElements\Referencers\BinAlloc.cs" />
     <Compile Include="AIV\AIVChange.cs" />
+    <Compile Include="Patching\BinElements\Register.cs" />
     <Compile Include="Patching\EditTypes\BinArgs.cs" />
     <Compile Include="Patching\BinElements\StructTypes\BinBytes.cs" />
     <Compile Include="Patching\BinElements\BinElement.cs" />
