@@ -160,7 +160,7 @@ namespace UCP.Patching
             {
                 File.WriteAllBytes(filePath + BackupFileEnding, oriData); // create backup
             }
-            File.WriteAllBytes(filePath + ".txt", data);
+            File.WriteAllBytes(filePath, data);
 
             perc.Set(1);
 
