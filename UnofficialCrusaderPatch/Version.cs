@@ -4,34 +4,12 @@ using System.Linq;
 using UCP.AIV;
 using UCP.Patching;
 using UCP.Startup;
+using static UCP.Patching.BinElements.Register;
+using static UCP.Patching.BinElements.OpCodes;
+using static UCP.Patching.BinElements.OpCodes.Condition.Values;
 
 namespace UCP
 {
-    // friedenszeit etc
-
-    // farben:
-    // message shield
-    // tribok farbe bei AI 4
-
-
-
-
-
-    // meuchelmörder direkt auf bergfried
-
-    // ai spielen
-    // rekrutierungsintervalle
-    // bauerngrenze
-    // KI Handeln untereinander
-    // mehr truppen für burggraben ausheben
-
-    // Störkatapult positionierung
-    // Schwein Nahrung verkaufen & Friedrich Waffen ?
-    // kalif eisen?
-    // Scroll-Tempo in 1.41 reduzieren
-
-    // europäische Bogenschützen mit leicht erhöhter Reichweite.
-
     public class Version
     {
         public static string PatcherVersion = "2.14";
@@ -65,13 +43,13 @@ namespace UCP
                         new BinSkip(13),
                         new BinHook(6)
                         {
-                            0x83, 0xF8, 0x05, //  cmp eax,05
-                            0x66, 0x9C, //  pushf
-                            0x83, 0xC0, 0xEA, //  add eax,-16
-                            0x66, 0x9D, //  popf
-                            0x75, 0x05, //  jne short 5
-                            0xB8, 0x05, 0x00, 0x00, 0x00, //  mov eax,05
-                            0x83, 0xF8, 0x37, //  cmp eax,37
+                            CMP(EAX, 5), //  cmp eax,05
+                            PUSH(FLAGS), //  pushf
+                            ADD(EAX, -0x16), //  add eax,-0x16
+                            POP(FLAGS), //  popf
+                            JMP(NOTEQUALS, 0x05), //  jne short 5
+                            MOV(EAX, 5), //  mov eax,05
+                            CMP(EAX, 0x37), //  cmp eax,37
                         },
                     },
                     new BinaryEdit("u_fireballistamonk")
@@ -118,11 +96,11 @@ namespace UCP
                         new BinAlloc("defNum", 9*4),
                         new BinHook(5)
                         {
-                            0x31, 0xC0,  // xor eax,eax
+                            XOR(EAX, EAX),  // xor eax,eax
 
                             0x89, 0x14, 0x85, new BinRefTo("defNum", false),  // mov [eax*4 + defNum],edx
                             0x40, //inc eax
-                            0x83, 0xF8, 0x08, //cmp eax,08
+                            CMP(EAX, 8), //cmp eax,08
                             0x7E, 0xF3,  // jle beneath xor
                             
                             // ori code
@@ -136,13 +114,13 @@ namespace UCP
                         new BinHook(6)
                         {
                             // get unit's group index
-                            0x8B, 0xCD,                             // mov ecx,ebp
+                            MOV(ECX, EBP),                             // mov ecx,ebp
                             0x69, 0xC9, 0x90, 0x04, 0x00, 0x00,     // imul ecx,ecx, 490 
                             0x0F, 0xB6, 0x89, new BinRefTo("groupVar", false),              // movzx ecx,byte ptr [ecx+01388976]
 
                             // check if it's a wall defense unit
-                            0x83, 0xF9, 0x01,                       // cmp ecx,01 
-                            0x75, 0x09,                             // jne to ori code
+                            CMP(ECX, 1),                       // cmp ecx,01 
+                            JMP(NOTEQUALS, 0x09),                             // jne to ori code
 
                             // increase wall defense count for this AI
                             0x8D, 0x0C, 0xBD, new BinRefTo("defNum", false), // lea ecx,[edi*4 + ai_defNum]
@@ -175,7 +153,7 @@ namespace UCP
                             0x8B, 0xAC, 0x87, 0x28, 0x01, 0x00, 0x00, // mov ebp,[edi+eax*4+00000128]
 
                             // add a constant value of 20; snake's default f.e. is 30
-                            0x83, 0xC5, 0x14 // add ebp, 14h
+                            ADD(EBP, 0x14) // add ebp, 14h
                         }
                     }
                 }
@@ -188,35 +166,6 @@ namespace UCP
              
             // 004EFF9A => jne to jmp
             BinBytes.Change("ai_tethers", ChangeType.Bugfix, true, 0x90, 0xE9),
-            
-            /*
-             * AI BUY FOOD
-             */
-
-            // Wazir runtime buytable 023FE5F4 +84, apples, cheese, bread, wheat
-            // Emir 023FE898
-            // Nizar 023FEB3C
-            
-
-            /*
-            * WEAPON & ARMOR AI BUYING - found from routine at 0x4CD62C
-            */
-
-            // ai1_buytable 0x01165C78
-            /*new Change("ai_buy", ChangeType.Bugfix)
-            {
-                new DefaultHeader("ai_buy")
-                {
-                    // mov [EAX+84], EDI = 10
-                    BinBytes.CreateEdit("ai_foodbuy_wazir", 0x89, 0xB8), // 004C951C
-                
-                    // mov [EAX+9C], 2
-                    BinHook.CreateEdit("ai_wepbuy_marshal", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4CA5AE, runtime: 0x23FF084 + 0x9C
-                    BinHook.CreateEdit("ai_wepbuy_frederick", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4C8DEA, runtime: 0x23FE0AC + 0x9C
-                    BinHook.CreateEdit("ai_wepbuy_emir", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4C99AB, runtime: 023FE898 + 0x9C
-                    BinHook.CreateEdit("ai_wepbuy_abbot", 6, 0xC7, 0x80, 0x9C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00), // 0x4CA95B, runtime: 023FF328 + 0x9C
-                }
-            },*/
 
             /*
              *  IMPROVE WOOD BUYING
@@ -232,7 +181,7 @@ namespace UCP
                         new BinAddress("offset", 2),
                         new BinHook(6)
                         {
-                            0x83, 0xC3, 0x02, // add ebx, 2
+                            ADD(EBX, 0x02), // add ebx, 2
                             0x3B, 0x9E, new BinRefTo("offset", false), // ori code, cmp ebx, [esi+offset]
                         }
                     }
@@ -388,25 +337,25 @@ namespace UCP
                             0x8B, 0x1D, // mov ebx,[var]
                             new BinRefTo("var_type", false),
 
-                            0x83, 0xFB, 0x04,      // cmp ebx,04
-                            0x7D, 0x07,            // jge to next cmp
+                            CMP(EBX, 4),      // cmp ebx,04
+                            JMP(GREATERTHANEQUALS, 0x07),            // jge to next cmp
                             0xE8,                  // call find wall
                             new BinRefTo("walls"),
                             0xEB, 0x11,            // jmp to inc
 
-                            0x83, 0xFB, 0x06,      // cmp ebx,06
-                            0x7D, 0x07,            // jge to last call
+                            CMP(EBX, 0x06),      // cmp ebx,06
+                            JMP(GREATERTHANEQUALS, 0x07),            // jge to last call
                             0xE8,                  // call find fortifications
                             new BinRefTo("towers"),
-                            0xEB, 0x05,            // jmp to inc
+                            JMP(UNCONDITIONAL, 0x05),            // jmp to inc
                             
                             0xE8,                  // call find building
                             new BinRefTo("buildings"),
 
                             0x43,                  // inc ebx
-                            0x83, 0xFB, 0x07,      // cmp ebx,7
-                            0x7C, 0x02,            // jge to mov
-                            0x31, 0xDB,            // xor ebx,ebx
+                            CMP(EBX, 0x07),      // cmp ebx,7
+                            JMP(LESS, 0x02),            // jl to mov
+                            XOR(EBX, EBX),            // xor ebx,ebx
 
                             0x89, 0x1D, // mov [var], ebx
                             new BinRefTo("var_type", false)
@@ -491,23 +440,6 @@ namespace UCP
             },
 
             /*
-             *  AI OVERCLOCK
-             */
-
-            /*new Change("ai_overclock", ChangeType.AILords, false)
-            {
-                new SliderHeader("ai_overclock", true, 0.5, 1, 0.05, 1, 0.75)
-                {
-                    // 0045CC20+6
-                    new BinaryEdit("ai_overclock")
-                    {
-                        new BinInt32Value(200) // default: 200
-                    }
-                }
-            },*/
-
-
-            /*
              *  ECONOMY DEMOLISHING
              */
              
@@ -549,12 +481,12 @@ namespace UCP
                     new BinaryEdit("ai_addattack")
                     {
                         // if (ai gold < 10000)
-                        new BinBytes(0x7E, 07),      // jle to 8
+                        JMP(LESSTHANEQUALS, 7),      // jle to 8
 
                         new BinBytes(0xB9),     // mov ecx, value * 7/5 (vanilla = 7)
                         new BinInt32Value(7.0/5.0),
 
-                        new BinBytes(0xEB, 0x05), // jmp
+                        JMP(UNCONDITIONAL, 0x05), // jmp
                     
                         new BinBytes(0xB9),     // mov ecx, value (vanilla = 5)
                         new BinInt32Value(1),
@@ -579,7 +511,7 @@ namespace UCP
                         new BinAddress("attacknum", 0x2F), // [0115F71C]
                         new BinAddress("addtroops", 0x55), // [0115F698]
 
-                        new BinBytes(0x83, 0xE8, 0x01),                 // sub eax,01   => ai_index
+                        SUB(EAX, 1),                 // sub eax,01   => ai_index
                         new BinBytes(0x69, 0xC0, 0xA4, 0x02, 0x00, 0x00), // imul eax, 2A4 { 676 }  => ai_offset
                         new BinBytes(0x8B, 0x84, 0x28, 0xF4, 0x01, 0x00, 0x00), // mov eax,[eax+ebp+1F4]   => initial attack troops
 
@@ -594,7 +526,7 @@ namespace UCP
                         new BinBytes(0xB9, 0x0A, 0x00, 0x00, 0x00), // mov ecx, 0A { 10 }
                         new BinBytes(0xF7, 0xF9), // idiv ecx
                     
-                        new BinBytes(0x83, 0xC0, 0x05), // add eax, 5   => because in vanilla, attackNum was already 1 for first attack
+                        ADD(EAX, 5), // add eax, 5   => because in vanilla, attackNum was already 1 for first attack
 
                         new BinBytes(0x89, 0x86), // mov [esi+0115F698],eax   =>  addtroops = result
                         new BinRefTo("addtroops", false),
@@ -602,7 +534,7 @@ namespace UCP
                         new BinBytes(0xFF, 0x86),  // inc [esi+0115F71C]  => attack number++
                         new BinRefTo("attacknum", false),
 
-                        new BinBytes(0xEB, 0x46), // jmp over nops
+                        JMP(UNCONDITIONAL, 0x46), // jmp over nops
                         new BinNops(0x46),
                     },
                 },
@@ -1438,7 +1370,7 @@ namespace UCP
                         new BinHook(9)
                         {
                             0x80, 0x3D, new BinRefTo("namebool", false), 0x00, // cmp byte ptr [namebool], 0
-                            0x74, 0x06, // je to ori code
+                            JMP(EQUALS, 0x06), // je to ori code
                             0xB8, new BinRefTo("name", false), // mov eax, quicksave
                             0xC3, // ret
                             // ori code:
@@ -1456,14 +1388,14 @@ namespace UCP
 
                         0xC6, 0x05, new BinRefTo("namebool", false), 0x01,
 
-                        0x6A, 0x20, // push 0x20
+                        PUSH(0x20), // push 0x20
                         0xE8, new BinRefTo("DoSave"), // call save func
                         
 
                         0xC6, 0x05, new BinRefTo("namebool", false), 0x00,
 
-                        0x58, // pop eax
-                        0xEB, 0x53 // jmp to default/end 4B3BD3
+                        POP(EAX), // pop eax
+                        JMP(UNCONDITIONAL, 0x53) // jmp to default/end 4B3BD3
                     },
 
                        
@@ -1475,7 +1407,7 @@ namespace UCP
                         new BinHook(9)
                         {
                             0x80, 0x3D, new BinRefTo("namebool", false), 0x00, // cmp byte ptr [namebool], 0
-                            0x74, 0x08, // je to ori code
+                            JMP(EQUALS, 0x08), // je to ori code
                             0xB8, new BinRefTo("name", false), // mov eax, quicksave
                             0xC2, 0x04, 0x00, // ret
 
@@ -1492,16 +1424,16 @@ namespace UCP
                         new BinHook(6)
                         {
                             0x39, 0x1D, new BinRefTo("ctrl", false),  // cmp [ctrlpressed], ebx = 0
-                            0x74, 0x1B, // je to ori code
+                            JMP(EQUALS, 0x1B), // je to ori code
 
                             0xC6, 0x05, new BinRefTo("namebool", false), 0x01,
 
-                            0x6A, 0x1F, // push 0x1F
+                            PUSH(0x1F), // push 0x1F
                             0xE8, new BinRefTo("DoSave"), // call save func
                             
                             0xC6, 0x05, new BinRefTo("namebool", false), 0x00,
 
-                            0x58, // pop eax
+                            POP(EAX), // pop eax
 
                             0xE9, new BinRefTo("default"), // jump awayy
                             
@@ -1538,27 +1470,27 @@ namespace UCP
                             // 1F right => 2
                             // 2E down => 3
 
-                            0x83, 0xF8, 0x1C, // cmp eax, 1C
-                            0x75, 0x04,       // jne to next
-                            0x31, 0xC0,       // xor eax, eax
-                            0xEB, 0x1C,       // jmp to end
+                            CMP(EAX, 0x1C), // cmp eax, 1C
+                            JMP(NOTEQUALS, 0x04),       // jne to next
+                            XOR(EAX, EAX),       // xor eax, eax
+                            JMP(UNCONDITIONAL, 0x1C),       // jmp to end
                             
-                            0x83, 0xF8, 0x32, // cmp eax, 32
-                            0x75, 0x05,       // jne to next
+                            CMP(EAX, 0x32), // cmp eax, 32
+                            JMP(NOTEQUALS, 0x05),       // jne to next
                             0x8D, 0x40, 0xCF, // lea eax, [eax-31]
-                            0xEB, 0x12,       // jmp to end
+                            JMP(UNCONDITIONAL, 0x12),       // jmp to end
                             
-                            0x83, 0xF8, 0x1F, // cmp eax, 1F
-                            0x75, 0x05,       // jne to next
+                            CMP(EAX, 0x1F), // cmp eax, 1F
+                            JMP(NOTEQUALS, 0x05),       // jne to next
                             0x8D, 0x40, 0xE3, // lea eax, [eax-1D]
-                            0xEB, 0x08,       // jmp to end
+                            JMP(UNCONDITIONAL, 0x8),       // jmp to end
 
-                            0x83, 0xF8, 0x2E, // cmp eax, 2E
-                            0x75, 0x03,       // jne to end 
+                            CMP(EAX, 0x2E), // cmp eax, 2E
+                            JMP(NOTEQUALS, 0x03),       // jne to end 
                             0x8D, 0x40, 0xD5, // lea eax, [eax-2B]
 
                             // end
-                            0x83, 0xF8, 0x03 // cmp eax, 3
+                            CMP(EAX, 0x3), // cmp eax, 3
                         }
                     },
 
@@ -1571,7 +1503,7 @@ namespace UCP
                         new BinHook(5)
                         {
                             0x83, 0xFE, 0x44,
-                            0x74, 0x05,
+                            JMP(EQUALS, 0x05),
                             0xE8, new BinRefTo("callright")
                         },
 
@@ -1579,7 +1511,7 @@ namespace UCP
                         new BinHook(5)
                         {
                             0x83, 0xFE, 0x41,
-                            0x74, 0x05,
+                            JMP(EQUALS, 0x05),
                             0xE8, new BinRefTo("callleft")
                         }
                     }
@@ -1626,17 +1558,17 @@ namespace UCP
 
                         new BinAlloc("SetSelectedRangedUnit", null)
                         {
-                            0x66, 0x9C, //  pushf
-                            0x50, //  push eax
-                            0x51, //  push ecx
-                            0x52, //  push edx
+                            PUSH(FLAGS), //  pushf
+                            PUSH(EAX), //  push eax
+                            PUSH(ECX), //  push ecx
+                            PUSH(EDX), //  push edx
                             0xBA, 0x00, 0x00, 0x00, 0x00, //  mov edx,00
                             
                             0xA1, new BinRefTo("NormalCrusaderUnitListAddress", false), //  mov eax,NormalCrusaderUnitListAddress
-                            0x50, //  push eax
+                            PUSH(EAX), //  push eax
                             0xB8, new BinRefTo("IsExtremeBool", false), //  mov eax,IsExtremeBool
                             0x83, 0x38, 0x01, //  cmp [eax],01
-                            0x58, //  pop eax
+                            POP(EAX), //  pop eax
                             0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  jne short 5
                             0xA1, new BinRefTo("ExtremeNormalCrusaderUnitListAddress", false), //  mov eax,ExtremeNormalCrusaderUnitListAddress
                             
@@ -1696,51 +1628,51 @@ namespace UCP
                             0xC7, 0x46, 0x08, 0xB9, 0x00, 0x00, 0x00, //  mov [esi+08],000000B9
                             0xC7, 0x46, 0x04, 0xC1, 0x00, 0x00, 0x00, //  mov [esi+08],000000C1
                             
-                            0x83, 0xFA, 0x01, //  cmp edx,01
+                            CMP(EDX, 0x01), //  cmp edx,01
                             0x0F, 0x84, 0x20, 0x00, 0x00, 0x00, //  je short 20
                             0x42, //  inc edx
                             
-                            0x50, //  push eax
+                            PUSH(EAX), //  push eax
                             0xB8, new BinRefTo("IsExtremeBool", false), //  mov eax,IsExtremeBool
                             0x83, 0x38, 0x01, //  cmp [eax],01
-                            0x58, //  pop eax
+                            POP(EAX), //  pop eax
                             
                             0xA1, new BinRefTo("NormalArabUnitListAddress", false), //  mov eax,NormalArabUnitListAddress
                             0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  jne short 5
                             0xA1, new BinRefTo("ExtremeNormalArabUnitListAddress", false), //  mov eax,ExtremeNormalArabUnitListAddress
                             0xE9, new BinRefTo("ResetRangedUnitsInList"), //  jmp ResetMeleeUnitsInList
                             
-                            0x5A,  // pop edx
-                            0x59,  // pop ecx
-                            0x58, //  pop eax
-                            0x66, 0x9D, //  popf
+                            POP(EDX),  // pop edx
+                            POP(ECX),  // pop ecx
+                            POP(EAX), //  pop eax
+                            POP(FLAGS), //  popf
                             0xC3 //  ret
                         },
                         new BinAlloc("RangedUnitButtonClick", null)
                         {
-                            0x66, 0x9C, //  pushf
+                            PUSH(FLAGS), //  pushf
                             0xFF, 0x05, new BinRefTo("CurrentlySelectedRangedUnit", false), //  inc [CurrentlySelectedRangedUnit]
                             0x83, 0x3D, new BinRefTo("CurrentlySelectedRangedUnit", false), 0x06, //  cmp [CurrentlySelectedRangedUnit],06
                             0xF, 0x8C, 0x0A, 0x00, 0x00, 0x00, //  jl short A
                             0xC7, 0x05, new BinRefTo("CurrentlySelectedRangedUnit", false), 0x00, 0x00, 0x00, 0x00, //  mov [CurrentlySelectedRangedUnit],00
                             0xE8, new BinRefTo("SetSelectedRangedUnit"),
-                            0x66, 0x9D, //  popf
+                            POP(FLAGS), //  popf
                             0xC3 //  ret
                         },
 
                         new BinAlloc("SetSelectedMeleeUnit", null)
                         {
-                            0x66, 0x9C, //  pushf
-                            0x50, //  push eax
-                            0x51, //  push ecx
-                            0x52, //  push edx
+                            PUSH(FLAGS), //  pushf
+                            PUSH(EAX), //  push eax
+                            PUSH(ECX), //  push ecx
+                            PUSH(EDX), //  push edx
                             0xBA, 0x00, 0x00, 0x00, 0x00, //  mov edx,00
                             
                             0xA1, new BinRefTo("NormalCrusaderUnitListAddress", false), //  mov eax,NormalCrusaderUnitListAddress
-                            0x50, //  push eax
+                            PUSH(EAX), //  push eax
                             0xB8, new BinRefTo("IsExtremeBool", false), //  mov eax,IsExtremeBool
                             0x83, 0x38, 0x01, //  cmp [eax],01
-                            0x58, //  pop eax
+                            POP(EAX), //  pop eax
                             0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  jne short 5
                             0xA1, new BinRefTo("ExtremeNormalCrusaderUnitListAddress", false), //  mov eax,ExtremeNormalCrusaderUnitListAddress
                             
@@ -1836,35 +1768,35 @@ namespace UCP
                             0xC7, 0x46, 0x08, 0xB0, 0x00, 0x00, 0x00, //  mov [esi+08],000000B0
                             0xC7, 0x46, 0x04, 0xFB, 0x00, 0x00, 0x00, //  mov [esi+08],000000FB
                             
-                            0x83, 0xFA, 0x01, //  cmp edx,01
+                            CMP(EDX, 0x01), //  cmp edx,01
                             0x0F, 0x84, 0x20, 0x00, 0x00, 0x00, //  je short 20
                             0x42, //  inc edx
                             
-                            0x50, //  push eax
+                            PUSH(EAX), //  push eax
                             0xB8, new BinRefTo("IsExtremeBool", false), //  mov eax,IsExtremeBool
                             0x83, 0x38, 0x01, //  cmp [eax],01
-                            0x58, //  pop eax
+                            POP(EAX), //  pop eax
                             
                             0xA1, new BinRefTo("NormalArabUnitListAddress", false), //  mov eax,NormalArabUnitListAddress
                             0x0F, 0x85, 0x05, 0x00, 0x00, 0x00, //  jne short 5
                             0xA1, new BinRefTo("ExtremeNormalArabUnitListAddress", false), //  mov eax,ExtremeNormalArabUnitListAddress
                             0xE9, new BinRefTo("ResetMeleeUnitsInList"), //  jmp ResetMeleeUnitsInList
                             
-                            0x5A,  // pop edx
-                            0x59,  // pop ecx
-                            0x58, //  pop eax
-                            0x66, 0x9D, //  popf
+                            POP(EDX),  // pop edx
+                            POP(ECX),  // pop ecx
+                            POP(EAX), //  pop eax
+                            POP(FLAGS), //  popf
                             0xC3 //  ret
                         },
                         new BinAlloc("MeleeUnitButtonClick", null)
                         {
-                            0x66, 0x9C, //  pushf
+                            PUSH(FLAGS), //  pushf
                             0xFF, 0x05, new BinRefTo("CurrentlySelectedMeleeUnit", false), //  inc [CurrentlySelectedMeleeUnit]
                             0x83, 0x3D, new BinRefTo("CurrentlySelectedMeleeUnit", false), 0x0A, //  cmp [CurrentlySelectedMeleeUnit],0A
                             0xF, 0x8C, 0x0A, 0x00, 0x00, 0x00, //  jl short A
                             0xC7, 0x05, new BinRefTo("CurrentlySelectedMeleeUnit", false), 0x00, 0x00, 0x00, 0x00, //  mov [CurrentlySelectedMeleeUnit],00
                             0xE8, new BinRefTo("SetSelectedMeleeUnit"),
-                            0x66, 0x9D, //  popf
+                            POP(FLAGS), //  popf
                             0xC3 //  ret
                         },
 
@@ -1904,42 +1836,42 @@ namespace UCP
 
                         new BinAlloc("OverrideIdentityMenuRender", null)
                         {
-                            0x66, 0x9C, //  pushf
+                            PUSH(FLAGS), //  pushf
                             0xE8, new BinRefTo("IsExtremeToBool"), // call IsExtremeToBool
-                            0x50, //  push eax
+                            PUSH(EAX), //  push eax
                             0xB8, new BinRefTo("IsExtremeBool", false), //  mov eax,IsExtremeBool
                             0x83, 0x38, 0x01, //  cmp [eax],01
-                            0x58, //  pop eax
-                            0x53, //  push ebx
-                            0x75, 0x0D, //  jne D
+                            POP(EAX), //  pop eax
+                            PUSH(EBX), //  push ebx
+                            JMP(NOTEQUALS, 0x0D), //  jne D
                             
                             0x81, 0xFE, 0xA8, 0x13, 0x60, 0x00, //  cmp esi,"Stronghold_Crusader_Extreme.exe"+2013A8
                             0xBB, new BinRefTo("IdentityMenuButtonArrayExtreme", false), //  mov ebx,IdentityMenuButtonArrayExtreme
-                            0xEB, 0x0B, //  jmp B
+                            JMP(UNCONDITIONAL, 0x0B), //  jmp B
                             0x81, 0xFE, 0x98, 0x14, 0x60, 0x00, //  cmp esi,"Stronghold Crusader.exe"+201498
                             0xBB, new BinRefTo("IdentityMenuButtonArray", false), //  mov ebx,IdentityMenuButtonArray
                             0x0F, 0x85, 0x02, 0x00, 0x00, 0x00, //  jne short 2
                             
-                            0x8B, 0xF3, //  mov esi,ebx
+                            MOV(ESI, EBX), //  mov esi,ebx
                             
-                            0x5B, //  pop ebx
-                            0x66, 0x9D, //  popf
+                            POP(EBX), //  pop ebx
+                            POP(FLAGS), //  popf
                             0xC7, 0x43, 0x14, 0x00, 0x00, 0x00, 0x00, //  mov [ebx+14],00
                             0xC3, //  ret
                         },
 
                         new BinAlloc("IsExtremeToBool", null)
                         {
-                            0x50, //  push eax
+                            PUSH(EAX), //  push eax
                             0xB8, 0x20, 0x01, 0x40, 0x00, //  mov eax,00000120
                             0x81, 0x38, 0xBD, 0x93, 0xAF, 0x5A, //  cmp [eax],5AAF93BD
                             0xB8, new BinRefTo("IsExtremeBool", false), //  mov eax,IsExtremeBool
-                            0x75, 0x08, //  jne 8
+                            JMP(NOTEQUALS, 0x08), //  jne 8
                             0xC7, 0x00, 0x00, 0x00, 0x00, 0x00, //  mov [eax],00
-                            0x58, //  pop eax
+                            POP(EAX), //  pop eax
                             0xC3, //  ret
                             0xC7, 0x00, 0x01, 0x00, 0x00, 0x00, //  mov [eax],01
-                            0x58, //  pop eax
+                            POP(EAX), //  pop eax
                             0xC3, //  ret
                         },
 
@@ -2381,43 +2313,43 @@ namespace UCP
                     // 4B4748
                     new BinaryEdit("o_gamespeed_up")
                     {
-                        new BinBytes(0x3D, 0xE8, 0x03, 0x00, 0x00),      // cmp eax, 1000
+                        CMP(EAX, 1000),      // cmp eax, 1000
 
-                        new BinBytes(0x7D, 0x19), // jge to end
+                        JMP(GREATERTHANEQUALS, 0x19), // jge to end
 
-                        new BinBytes(0x8B, 0xF8),              // mov edi, eax
+                        MOV(EDI, EAX),              // mov edi, eax
 
-                        new BinBytes(0x3D, 0xC8, 0x00, 0x00, 0x00),     // cmp eax, 200
+                        CMP(EAX, 200),     // cmp eax, 200
                         new BinHook("label1", 0x0F, 0x8C)                // jl hook
                         {
-                            0x83, 0xF8, 0x5A, // cmp eax, 90
-                            0x7C, 0x03,       // jl to end
-                            0x83, 0xC7, 0x05, // add edi, 5
+                            CMP(EAX, 90), // cmp eax, 90
+                            JMP(LESS, 0x03),       // jl to end
+                            ADD(EDI, 5), // add edi, 5
                         },
-                        new BinBytes(0x83, 0xC7, 0x5F),        // add edi, 95
+                        ADD(EDI, 0x5F),        // add edi, 95
                         new BinLabel("label1"),
-                        new BinBytes(0x83, 0xC7, 0x05),        // add edi, 5
-                        new BinBytes(0xEB, 0x75),              // jmp to gamespeed_down set value
+                        ADD(EDI, 5),       // add edi, 5
+                        JMP(UNCONDITIONAL, 0x75),              // jmp to gamespeed_down set value
                         new BinBytes(0x90, 0x90, 0x90, 0x90),
                     },
 
                     // 004B47C2
                     new BinaryEdit("o_gamespeed_down")
                     {
-                        new BinBytes(0x7E, 0x1B), // jle to end
+                        JMP(LESSTHANEQUALS, 0x1B), // jle to end
 
-                        new BinBytes(0x8B, 0xF8),              // mov edi, eax
+                        MOV(EDI, EAX),              // mov edi, eax
 
-                        new BinBytes(0x3D, 0xC8, 0x00, 0x00, 0x00),     // cmp eax, 200
+                        CMP(EAX, 200),     // cmp eax, 200
                         new BinHook("label2", 0x0F, 0x8E)                // jle hook
                         {
-                            0x83, 0xF8, 0x5A, // cmp eax, 90
-                            0x7E, 0x03,       // jle to end
-                            0x83, 0xEF, 0x05, // sub edi, 5
+                            CMP(EAX, 0x5A), // cmp eax, 90
+                            JMP(LESSTHANEQUALS, 0x03),       // jle to end
+                            SUB(EDI, 0x05), // sub edi, 5
                         },
-                        new BinBytes(0x83, 0xEF, 0x5F),        // sub edi, 95
+                        SUB(EDI, 0x5F),        // sub edi, 95
                         new BinLabel("label2"),
-                        new BinBytes(0x83, 0xEF, 0x05),        // sub edi, 5
+                        SUB(EDI, 5),        // sub edi, 5
                         new BinBytes(0x90, 0x90),
                     }
                 }
@@ -2446,25 +2378,6 @@ namespace UCP
 
 
             /*
-             * TOTAL TROOP LIMIT
-             */
-
-            // useless, as crusader uses static arrays or smth
-            /*new Change("o_trooplimit", ChangeType.Other)
-            {
-                // 00459E10 + 1
-                new SliderHeader("o_trooplimit", false, 1000, 10000, 100, 2400, 5000)
-                {
-                    new BinaryEdit("o_trooplimit")
-                    {
-                        new BinInt32Value()
-                    }
-                }
-            },*/
-
-
-
-            /*
              * ONLY AI / SPECTATOR MODE
              */
 
@@ -2481,10 +2394,10 @@ namespace UCP
 
                         new BinHook(12)
                         {
-                            0x31, 0xC0, // xor eax, eax
+                            XOR(EAX, EAX), // xor eax, eax
                             0xA3, new BinRefTo("selfindex", false),
 
-                            0x83, 0xE8, 0x01, // sub eax, 1
+                            SUB(EAX, 1), // sub eax, 1
                             0xA3, new BinRefTo("selfai", false),
                         }
                     },
@@ -2645,7 +2558,7 @@ namespace UCP
 
                     new BinaryEdit("o_shfy_religiontab")
                     {
-                        new BinBytes(0xEB, 0x6D),
+                        JMP(UNCONDITIONAL, 0x6D),
                         new BinSkip(132),
                         new BinBytes(0xB9, 0x00, 0x00, 0x00, 0x00),
                         new BinSkip(9),
