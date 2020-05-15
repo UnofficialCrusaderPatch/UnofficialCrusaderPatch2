@@ -657,126 +657,167 @@
     <EmbeddedResource Include="AIC\Resources\Tatha 0.5.1.json" />
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot1.aiv">
       <Link>AIV\EvreyFixed\Abbot1.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot2.aiv">
       <Link>AIV\EvreyFixed\Abbot2.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot3.aiv">
       <Link>AIV\EvreyFixed\Abbot3.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot4.aiv">
       <Link>AIV\EvreyFixed\Abbot4.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot5.aiv">
       <Link>AIV\EvreyFixed\Abbot5.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot6.aiv">
       <Link>AIV\EvreyFixed\Abbot6.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot7.aiv">
       <Link>AIV\EvreyFixed\Abbot7.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Abbot8.aiv">
       <Link>AIV\EvreyFixed\Abbot8.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph1.aiv">
       <Link>AIV\EvreyFixed\caliph1.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph2.aiv">
       <Link>AIV\EvreyFixed\caliph2.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph3.aiv">
       <Link>AIV\EvreyFixed\caliph3.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph4.aiv">
       <Link>AIV\EvreyFixed\caliph4.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph5.aiv">
       <Link>AIV\EvreyFixed\caliph5.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph6.aiv">
       <Link>AIV\EvreyFixed\caliph6.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph7.aiv">
       <Link>AIV\EvreyFixed\caliph7.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\caliph8.aiv">
       <Link>AIV\EvreyFixed\caliph8.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir1.aiv">
       <Link>AIV\EvreyFixed\Emir1.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir2.aiv">
       <Link>AIV\EvreyFixed\Emir2.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir3.aiv">
       <Link>AIV\EvreyFixed\Emir3.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir4.aiv">
       <Link>AIV\EvreyFixed\Emir4.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir5.aiv">
       <Link>AIV\EvreyFixed\Emir5.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir6.aiv">
       <Link>AIV\EvreyFixed\Emir6.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir7.aiv">
       <Link>AIV\EvreyFixed\Emir7.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Emir8.aiv">
       <Link>AIV\EvreyFixed\Emir8.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick1.aiv">
       <Link>AIV\EvreyFixed\frederick1.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick2.aiv">
       <Link>AIV\EvreyFixed\frederick2.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick3.aiv">
       <Link>AIV\EvreyFixed\frederick3.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick4.aiv">
       <Link>AIV\EvreyFixed\frederick4.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick5.aiv">
       <Link>AIV\EvreyFixed\frederick5.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick6.aiv">
       <Link>AIV\EvreyFixed\frederick6.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick7.aiv">
       <Link>AIV\EvreyFixed\frederick7.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\frederick8.aiv">
       <Link>AIV\EvreyFixed\frederick8.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal1.aiv">
       <Link>AIV\EvreyFixed\marshal1.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal2.aiv">
       <Link>AIV\EvreyFixed\marshal2.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal3.aiv">
       <Link>AIV\EvreyFixed\marshal3.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal4.aiv">
       <Link>AIV\EvreyFixed\marshal4.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal5.aiv">
       <Link>AIV\EvreyFixed\marshal5.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal6.aiv">
       <Link>AIV\EvreyFixed\marshal6.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal7.aiv">
       <Link>AIV\EvreyFixed\marshal7.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\marshal8.aiv">
       <Link>AIV\EvreyFixed\marshal8.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Nizar1.aiv">
       <Link>AIV\EvreyFixed\Nizar1.aiv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="..\SHC_AIV\firefly_fixed\Nizar2.aiv">
       <Link>AIV\EvreyFixed\Nizar2.aiv</Link>

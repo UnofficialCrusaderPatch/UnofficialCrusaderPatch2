@@ -1,0 +1,67 @@
+﻿<Window x:Class="UCP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UCP"
+        mc:Ignorable="d"
+        xmlns:myControls="clr-namespace:UCP.Views.TabViews"
+        Height="400" Width="500">
+    <Window.Background>
+        <ImageBrush ImageSource="../Graphics/background.jpg"
+        Viewport="0,0,200,200"
+        ViewportUnits="Absolute"
+        TileMode="Tile"
+        Stretch="None"/>
+    </Window.Background>
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="0"  Source="../Graphics/frame.jpg" Stretch="Fill" HorizontalAlignment="Center" />
+        <Image Grid.Row="2"  Source="../Graphics/frame.jpg" Stretch="Fill" HorizontalAlignment="Center" >
+            <Image.LayoutTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="180"/>
+                </TransformGroup>
+            </Image.LayoutTransform>
+        </Image>
+        <Menu Width="Auto" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <MenuItem Header="File" Height="20">
+                <MenuItem Header="Load Config" Click="LoadConfig_Click"/>
+                <MenuItem Header="Save Config" Click="SaveConfig_Click"/>
+            </MenuItem>
+            <MenuItem Header="Options" Height="20">
+                <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" ItemsSource="{Binding LanguagesComboBox}" Text="{Binding ActualLanguage}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding StrongholdPath}"/>
+            </MenuItem>
+        </Menu>
+        <TabControl x:Name="MainTabControl" Grid.Row="1" Background="#CCFFFFFF" HorizontalAlignment="Stretch">
+            <TabItem Header="{DynamicResource ui_Bugfix}">
+                <myControls:Bugfixes />
+            </TabItem>
+            <TabItem Header="{DynamicResource ui_Ailords}">
+                <myControls:Ailords />
+            </TabItem>
+            <TabItem Header="{DynamicResource ui_Troops}">
+                <myControls:Troops />
+            </TabItem>
+            <TabItem Header="{DynamicResource ui_Other}">
+                <myControls:Other />
+            </TabItem>
+            <TabItem Header="{DynamicResource ui_AIV}">
+                <myControls:AIV />
+            </TabItem>
+            <TabItem Header="{DynamicResource ui_AIC}">
+                <myControls:AIC />
+            </TabItem>
+           
+        </TabControl>
+      
+    </Grid>
+</Window>

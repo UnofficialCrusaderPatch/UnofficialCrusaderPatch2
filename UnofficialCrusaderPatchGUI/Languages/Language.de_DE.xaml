@@ -1,0 +1,222 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib" >
+
+    <!-- General -->
+    <system:String x:Key="Deutsch">German loaded</system:String>
+    <system:String x:Key="Name">Inoffizieller Crusader Patcher</system:String>
+
+    <!-- Language UI -->
+    <system:String x:Key="ui_chooseLangTitle">Setup-Sprache</system:String>
+    <system:String x:Key="ui_chooseLang">Bitte wählen Sie eine Sprache für die Installation aus der unten aufgeführten Liste.</system:String>
+
+    <!-- Todo Path GUI-->
+    <system:String x:Key="ui_pathselection">Path Selection</system:String>
+
+    <system:String x:Key="ui_SearchPath">Bitte wähle dein Installationverzeichnis:</system:String>
+    <system:String x:Key="ui_search">Suchen</system:String>
+
+    <!-- Tabs -->
+    <system:String x:Key="ui_Bugfix">Bugfixes</system:String>
+    <system:String x:Key="ui_Ailords">KI-Lords</system:String>
+    <system:String x:Key="ui_Troops">Einheiten</system:String>
+    <system:String x:Key="ui_Other">Sonstiges</system:String>
+    <system:String x:Key="ui_AIV">AIV</system:String>
+    <system:String x:Key="ui_AIC">AIC</system:String>
+
+    <!-- Tabs Todo-->
+    <system:String x:Key="ui_Config">Konfiguration</system:String>
+
+    <!-- Bugfixes -->
+    <system:String x:Key="u_fireballistafix">Feuerballisten schießen auf Mönche und Tunnelgräber</system:String>
+    <system:String x:Key="u_fireballistafix_descr">Feuerballisten erkennen nun Mönche und Tunnelgräber als Feinde und schießen auf diese.</system:String>
+    <system:String x:Key="ai_access">Kein Abreißen von unzugänglichen Gebäuden</system:String>
+    <system:String x:Key="ai_access_descr">
+        Verhindert, dass die KI Gebäude abreißt zu denen es keinen Zuweg gibt.
+        Damit soll der Bug verhindert werden, bei dem manche KIs in ihren Burgen
+        andauernd Gebäude abreißen und wieder aufbauen zu denen es keinen Weg gibt.
+    </system:String>
+    <system:String x:Key="ai_defense">Verstärkung der Burgverteidigung fixen</system:String>
+    <system:String x:Key="ai_defense_descr">
+        Fixt einen Bug, der die KI davon abhielt fehlende Truppen auf
+        Wällen und Türmen zu verstärken, solange noch Defensivpatrouillen
+        vorhanden waren. Außerdem wurde generell die Wahrscheinlichkeit erhöht
+        Verstärkung zu rekrutieren, da diese bei einigen KIs auf null gesetzt war.
+    </system:String>
+    <system:String x:Key="ai_tethers">Ochsenjoch-Spam deaktivieren</system:String>
+    <system:String x:Key="ai_tethers_descr">
+        Die KI baut normalerweise mit jedem neuen Steinbruch auch ein neues 
+        Ochsenjoch, unabhängig davon wie viele sie schon hat. Dies kann hier 
+        deaktiviert werden, da es zu Ochsenjoch-Spam führt, wenn die Steinbrüche 
+        der AI immer wieder zerstört werden.
+    </system:String>
+    <system:String x:Key="ai_buywood">Genügend Holz kaufen</system:String>
+    <system:String x:Key="ai_buywood_descr">
+        Damit Bogenmacher etc. nicht ständig gekauftes Bauholz wegschnappen, 
+        kauft die KI mit dieser Einstellung immer 2 Holz mehr als nötig für Gebäude.
+    </system:String>
+    <system:String x:Key="ai_towerengines">Keine Grenze für Geräte auf Türmen</system:String>
+    <system:String x:Key="ai_towerengines_descr">
+        Normalerweise baut die KI maximal je drei Ballisten und Mangen.
+        Dieses Limit wird hiermit aufgehoben.
+    </system:String>
+    <system:String x:Key="ai_assaultswitch">Kein KI-Angriffszielwechsel während Belagerung</system:String>
+    <system:String x:Key="ai_assaultswitch_descr">
+        KI-Lords die den mächtigsten oder schwächsten Gegner angreifen, 
+        hatten manchmal die Tendenz mitten in einem Angriff das Ziel zu wechseln, 
+        und ihre Truppen zu einer anderen Burg schicken. Mit dieser Einstellung, 
+        passiert das nicht mehr, sobald der Angriff begonnen hat, d.h. während 
+        des Sammelns vor der Burg kann ein Wechsel noch passieren.
+    </system:String>
+    <system:String x:Key="ai_rebuild">Verbessertes KI-Reparieren</system:String>
+    <system:String x:Key="ai_rebuild_descr">
+        Mit dieser Einstellung reparieren KI-Lords auch Turmruinen, leicht
+        angeschlagene Mauern, sowie Baumeister-, Tunnelgilden und Ölkessel bei denen
+        der Sammelplatz übergeblieben ist. Weiterhin kann die KI nun auch die Sammelstelle
+        von Steinbrüchen überbauen.
+    </system:String>
+
+    <!-- AI lords -->
+    <system:String x:Key="ai_attacklimit">Erhöhung des Angriffstruppenlimits der KIs</system:String>
+    <system:String x:Key="ai_attacklimit_descr">
+        In Vanilla is das Limit der zusätzlichen Truppen, die nach dem ersten
+        Angriff dazukommen auf 200 begrenzt. Hier kann diese Grenze verändert werden.
+    </system:String>
+    <system:String x:Key="ai_attackwave">Angriffswellen verbessern</system:String>
+    <system:String x:Key="ai_attackwave_descr">
+        In Vanilla schickt die KI bei einem Angriff immer nur 
+        so viele Einheiten auf einmal los wie Mauernstücke erreichbar 
+        sind. Bei Burgen die mit Gebäuden umbaut sind greifen die Einheiten 
+        dadurch nur tröpfchenweise an.
+        Durch die Aktivierung dieser Option greifen Einheiten auch Gebäude und 
+        Befestigungsanlagen an, sowie Mauerstücke die bereits von einem Angreifer 
+        besetzt sind. Außerdem schickt die KI jetzt auch mehr Truppen auf den 
+        gegnerischen Bergfried, sobald sie eine Bresche erkennt.
+    </system:String>
+    <system:String x:Key="ai_attacktarget">AI-Angriffsziel einstellen</system:String>
+    <system:String x:Key="ai_attacktarget_nearest">Nahegelegenster Gegner</system:String>
+    <system:String x:Key="ai_attacktarget_richest">Reichster Gegner</system:String>
+    <system:String x:Key="ai_attacktarget_weakest">Schwächster Gegner</system:String>
+    <system:String x:Key="ai_attacktarget_weakest_descr">
+        Mit dieser Einstellung suchen sich die KI-Lords alle auf die selbe Weise,
+        das Ziel für ihren nächsten Angriff. Dies verhindert, dass die Truppen mittem 
+        im laufenden Angriff umschwenken oder an Gegnerburgen vorbeigeschickt werden 
+        zum Sammeln.
+    </system:String>
+    <system:String x:Key="ai_nosleep">Schlafenlegen bei Rohstoffmangel deaktivieren</system:String>
+    <system:String x:Key="ai_nosleep_descr">
+        Normalerweise legt die KI ihre Verarbeitungsgebäude schlafen, 
+        sobald der nötige Rohstoff nicht mehr im Lager vorhanden ist. Dabei 
+        wird keine Rücksicht genommen ob Produkte verloren gehen die 
+        z.B. gerade zur Waffenkammer gebracht werden. Diese Funktion kann hier 
+        komplett deaktiviert werden.
+    </system:String>
+    <system:String x:Key="ai_demolish">Einreißen für Geld der KI-Lords deaktivieren</system:String>
+    <system:String x:Key="ai_demolish_walls">Befestigungsanlagen</system:String>
+    <system:String x:Key="ai_demolish_eco">Wirtschaftsgebäude</system:String>
+    <system:String x:Key="ai_demolish_trapped">Falls eingeschlossen</system:String>
+    <system:String x:Key="ai_demolish_eco_descr">
+        Wenn die KI sich bedrängt fühlt und schnell an Geld für Truppen kommen 
+        will, reißt sie gerne mal ihre komplette Wirtschaft oder Befestigungsanlagen 
+        ein. Manchmal wird dieses Feature aber auch völlig ohne scheinbaren Grund 
+        ausgelöst und kann darum hier ausgestellt werden.
+    </system:String>
+    <system:String x:Key="ai_addattack">Erhöhung der Rate von zusätzlichen Angriffstruppen</system:String>
+    <system:String x:Key="ai_addattack_descr">
+        In Vanilla wird nach jedem Angriff die Truppenzahl für den nächsten 
+        Angriff durchschnittlich um 5 Einheiten erhöht. Dieser Wert ist für alle 
+        KI-Lords gleich und kann hier geändert werden.
+    </system:String>
+    <system:String x:Key="ai_addattack_alt_descr" xml:space="preserve">Alternativ kann hier die hinzukommende Truppenanzahl von der Truppenstärke des ersten Angriffs abhängig gemacht werden. 
+Da jede KI unterschiedliche Anzahlen für den Erstangriff hat, werden somit auch folgende Angriffe skalieren, anstatt für jede KI gleich anzusteigen.
+Beispiel: Skalierungsfaktor = 0,5
+Sultans Angriffszahlen = 10, 15, 20, 25, ...
+Saladins Angriffszahlen = 50, 75, 100, 125, ...</system:String>
+    <system:String x:Key="ai_recruitinterval">Erhöhtes Rekrutierungstempo</system:String>
+    <system:String x:Key="ai_recruitinterval_descr">
+        Setzt das Rekrutierungsintervall aller KIs auf den niedrigsten Wert. (Ratte/Richard-Niveau)
+    </system:String>
+
+    <!-- Units -->
+    <system:String x:Key="u_laddermen">Erhöhter Schutz für Leiterträger gegen Fernkämpfer</system:String>
+    <system:String x:Key="u_laddermen_descr" xml:space="preserve">- Leiterträger sterben erst nach 12 Pfeiltreffern statt 5
+- Leiterträger sterben erst nach 5 Armbrust- oder Schleudertreffern statt 2
+- Leiterträger kosten 20 Gold statt 4</system:String>
+    <system:String x:Key="u_ArabXBow">Erhöhter Schutz von Arab. Schwertkämpfer vor Armbrüsten</system:String>
+    <system:String x:Key="u_arabxbow_descr">
+        - Arabische Schwertkämpfer sterben erst nach 6 Armbrusttreffern statt 3
+    </system:String>
+    <system:String x:Key="u_ArabWall">Arab. Schwertkämpfer reißen Mauern schneller ein</system:String>
+    <system:String x:Key="u_ArabWall_descr">
+        In Vanilla reißen Arabische Schwertkämpfer Mauern am langsamsten ein unter 
+        den Nahkämpfern. Die Einreißgeschwindigkeit wird hiermit für sie ca. 
+        verdoppelt, sodass sie dabei knapp über Lanzenträgern sind.
+    </system:String>
+    <system:String x:Key="u_spearmen">Erhöhter Schutz von Lanzenträger gegen Fernkämpfer</system:String>
+    <system:String x:Key="u_spearmen_descr" xml:space="preserve">- Lanzenträger sterben erst nach 5 Pfeiltreffern statt 3
+- Lanzenträger überleben knapp einen Armbrusttreffer</system:String>
+
+    <!-- Other -->
+    <system:String x:Key="o_firecooldown">Feuerfeste Zeit gelöschter Gebäude verlängern</system:String>
+    <system:String x:Key="o_firecooldown_descr">
+        Der Zeitraum in dem gelöschte Häuser nicht wieder brennen können kann hier verlängert werden.
+    </system:String>
+    <system:String x:Key="o_xtreme">Magie-Leiste in Extreme entfernen.</system:String>
+    <system:String x:Key="o_xtreme_descr">Entfernt die Magie-Leiste in Crusader Extreme.</system:String>
+    <system:String x:Key="o_playercolor">Farbe von Spieler 1 wechseln</system:String>
+    <system:String x:Key="o_keys">WASD-Tasten und Quicksaves</system:String>
+    <system:String x:Key="o_keys_descr">
+        Mit dieser Einstellung werden die WASD-Tasten für die Kamera aktiviert.
+        Außerdem kann mit STRG-S und STRG-L ein Quicksave erstellt und geladen werden.
+    </system:String>
+    <system:String x:Key="o_healer">Heiler verarztet Verwundete</system:String>
+    <system:String x:Key="o_healer_descr">
+        Der Heiler des Apothekengebäudes sucht nun verletzte Soldaten, Zivilisten 
+        und Tiere auf und heilt diese. Nahe Ziele werden dabei bevorzugt. Mit jeder Heilungs-Animation 
+        wird ca. 1/3 des Lebens eines Lanzenträgers geheilt. Das Schlendern durch die Gärten und 
+        Aufsuchen von Pestwolken wird dadurch nicht ersetzt! Nur das Schlendern durch die Burg 
+        wird ausgelassen, bis keine Verwundeten mehr in Reichweite sind.
+    </system:String>
+    <system:String x:Key="o_freetrader">Kostenloser Marktplatz</system:String>
+    <system:String x:Key="o_freetrader_descr">
+        Da die KI sich manchmal selbst Schachmatt setzt, wenn sie kein Holz hat und der 
+        Marktplatz zerstört wurde, kann hier der Bau des Marktplatzes kostenlos gemacht werden
+    </system:String>
+    <system:String x:Key="o_engineertent">Belagerungsgeräte nicht automatisch abwählen</system:String>
+    <system:String x:Key="o_engineertent_descr">
+        Mit dieser Einstellung wird das zuletzt zum Bau ausgewählte Belagerungsgerät 
+        bei Baumeistern nicht abgewählt, sodass man mehrere Zelte nacheinander bauen kann, 
+        ohne jedes mal neu wählen zu müssen.
+    </system:String>
+    <system:String x:Key="o_moatvisibility">Geplanten Burggraben immer zeigen</system:String>
+    <system:String x:Key="o_moatvisibility_descr">
+        Mit dieser Einstellung wird der gesetzte, aber noch nicht ausgehobene
+        Burggraben immer angezeigt, auch wenn man die Burggrabenplatzierung abwählt.
+    </system:String>
+
+    <system:String x:Key="o_gamespeed">Erweiterte Spielgeschwindigkeitsgrenzen</system:String>
+    <system:String x:Key="o_gamespeed_descr" xml:space="preserve">Die Spielgeschwindigkeit kann nun wie folgt geändert werden:
+- Von 10 bis 90 in 5er Schritten
+- Von 90 bis 200 in 10er Schritten
+- Von 200 bis 1000 in 100er Schritten
+Die neuen Werte sind nur im Spiel über die +- Tasten erreichbar, der Regler im Spielmenü bleibt ungeändert</system:String>
+    <system:String x:Key="o_responsivegates">Torhäuser schneller auf Gegner reagieren lassen</system:String>
+    <system:String x:Key="o_responsivegates_descr">
+        Torhäuser schließen sich jetzt später bei Gegnernähe und öffnen wieder 
+        schneller automatisch, sobald die Gefahr vorüber ist. Die Distanz die ein 
+        Gegner haben muss, damit sich das Tor automatisch schließt, wird von 200 auf 
+        140 gesenkt. Die Zeit nach der sich das Tor wieder öffnet, sofern kein Gegner 
+        mehr in der Nähe ist, wird von 1200 auf 100 reduziert.
+    </system:String>
+    <system:String x:Key="o_onlyai">Zuschauer-Modus aktivieren [bug möglich]</system:String>
+    <system:String x:Key="o_onlyai_descr">
+        Entfernt Spieler 1 sodass man nur noch zugucken kann und 8 KIs in einem 
+        Kreuzzug möglich sind. Gespeicherte Spiele laden jetzt auch ordnungsgemäß in 
+        diesem Modus. Ab und zu tritt ein Bug auf, bei dem überall auf der Karte zufällige 
+        Objekte auftauchen. Diese sind jedoch nur visuell und können durch einfaches 
+        Spiel speichern -> Mission beenden -> Spiel laden behoben werden.
+    </system:String>
+    <!-- Aiv -->
+
+    <!-- Aic -->
+</ResourceDictionary>
