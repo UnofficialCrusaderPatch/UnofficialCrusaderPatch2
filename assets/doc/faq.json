@@ -1,0 +1,38 @@
+[
+    {
+        "question":"Does this work in multiplayer?",
+        "answer":"Yes, multiplayer works fine with the UCP installed as long as everyone playing has the same options selected.<br>However, certain features such as changing Player 1's color or Activate Spectator Mode will cause crash or desync in multiplayer!"
+    },
+    {
+        "question":"Can you change the map size?",
+        "answer":"No we are not able to change it. Firefly isn`t able to change it either, without a big amount of work."
+    },
+    {
+        "question":"Can you include <i>&lt;insert feature name&gt;</i> feature?",
+        "answer":"Search in the issue section, and if it hasn't been asked, ask away. If a developer likes the idea they may look into it, no promises though."
+    },
+    {
+        "question":"I'm a programmer how can I get involved?",
+        "answer":"Look through the issues and find ideas you want to fix or implement. Follow this <a href=\"contributing.html\">link</a> to a getting started article for our codebase."
+    },
+    {
+        "question":"I'm not a programmer, is there any other way I can help?",
+        "answer":"Testers are always welcome. Let us know in discord if you want to test. If you follow this github repository you will get an alert when someone submits new code to be used. See what the code is supposed to do, ask for an installer, and test the changes in game to ensure it works as intended."
+    },
+    {
+        "question":"Am I allowed to modify this for personal use?",
+        "answer":"Of course!"
+    },
+    {
+        "question":"Where can I get community-developed AIs?",
+        "answer":"There are a few bundled with the installer, or you can check out the content creation channel on our discord"
+    },
+    {
+        "question":"Is there a tutorial on how to make my own AIs?",
+        "answer":"There are a few, check out the <a href=\"aic/overview.html\">AI Character Introduction</a> for an overview on how to make your own AIs. For a video quickstart feel free to watch this tutorial made by Krarilotus<br><br>English:<br><b>SHC AI character design basics with UCP (ft wolfkiller rat)</b><br><iframe width=\"900\" height=\"500\" src=\"https://www.youtube.com/embed/8WgSMmWNzvQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+    },
+    {
+        "question":"Is there a tutorial on how to make my own castles?",
+        "answer":"There are many tutorials available on Youtube, and you can check out the <a href=\"aiv/overview.html\">AI Castle Introduction</a> for a brief overview on how the game uses AI castles. For a video quickstart feel free to watch this tutorial made by Krarilotus.<br><br>English:<br><b>SHC AIV Editor setup, tips & tricks</b><br><iframe width=\"900\" height=\"500\" src=\"https://www.youtube.com/embed/xKEmaIit8vE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+    }
+]
