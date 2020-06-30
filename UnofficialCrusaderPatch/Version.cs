@@ -291,6 +291,34 @@ namespace UCP
 
                 }
             },
+            
+            // Fix assassin
+            new Change("u_assassinfix", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("u_assassinfix")
+                {
+                    new BinaryEdit("u_assassinfix_descension") // 49732E
+                    {
+                        new BinBytes(0xEB, 0x24),
+                    },
+                    new BinaryEdit("u_assassinfix_forgetfullness") // 53D89C
+                    {
+                        new BinSkip(7),
+                        new BinBytes(0x02),
+                    },
+                    new BinaryEdit("u_assassinfix_forgetfullness_wall_climb") // 53D694
+                    {
+                        new BinHook(10)
+                        {
+                            0x66, 0x3D, 0x00, 0x00, // cmp ax,0000
+                            0x0F, 0x85, 0x04, 0x00, 0x00, 0x00, // jne short 4
+                            0x66, 0xB8, 0x06, 0x00, // mov ax,0006
+                            0x66, 0x39, 0xD8, // cmp ax,bx
+                            0x66, 0x89, 0x86, 0xBC, 0x8, 0x00, 0x00 // mov [esi+8BC],ax
+                        }
+                    },
+                }
+            },
             #endregion
 
             #region AI LORDS

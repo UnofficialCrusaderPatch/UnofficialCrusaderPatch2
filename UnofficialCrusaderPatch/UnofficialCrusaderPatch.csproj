@@ -152,6 +152,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="CodeBlocks\u_assassinfix_descension.block" />
     <EmbeddedResource Include="CodeBlocks\ai_fix_laddermen_with_enclosed_keep.block" />
     <EmbeddedResource Include="CodeBlocks\o_override_identity_menu.block" />
     <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed.block" />
@@ -169,6 +170,8 @@
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix3.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix4.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix5.block" />
+    <EmbeddedResource Include="CodeBlocks\u_assassinfix_forgetfullness.block" />
+    <EmbeddedResource Include="CodeBlocks\u_assassinfix_forgetfullness_wall_climb.block" />
     <EmbeddedResource Include="CodeBlocks\u_fireballistatunneler.block" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

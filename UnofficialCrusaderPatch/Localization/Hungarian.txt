@@ -1,4 +1,18 @@
 // ======================
+//         dev
+// ======================
+u_assassinfix
+{
+"Fix assassin unit pathing and behaviour"
+}
+
+u_assassinfix_descr
+{
+"- Assassins will no longer stop and forget their destination in the middle of the map after encountering an enemy on the way
+- Assassins will no longer attack units on atop the keep after descending the wall into a 1 tile gap path between the wall and the keep"
+}
+
+// ======================
 //         2.14
 // ======================
 
