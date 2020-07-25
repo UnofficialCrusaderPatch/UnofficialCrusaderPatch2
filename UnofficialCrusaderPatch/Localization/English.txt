@@ -1,4 +1,18 @@
-﻿// ======================
+﻿﻿﻿﻿// ======================
+//         dev
+// ======================
+
+ai_fix_crusader_archers_pitch
+{
+"Fix AI crusader archers not lighting pitch"
+}
+
+ai_fix_crusader_archers_pitch_descr
+{
+"Fixes the AI crusader archers not lighting pitch like arabian archers do when enemy units get onto it."
+}
+
+// ======================
 //         2.14
 // ======================
 

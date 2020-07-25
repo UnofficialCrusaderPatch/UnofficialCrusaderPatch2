@@ -291,6 +291,41 @@ namespace UCP
 
                 }
             },
+            
+            // Fix AI crusader archers not lighting pitch
+            new Change("ai_fix_crusader_archers_pitch", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("ai_fix_crusader_archers_pitch")
+                {
+
+                    new BinaryEdit("ai_fix_crusader_archers_pitch_fn")
+                    {
+                        new BinLabel("CheckFunction")
+                    },
+
+                    new BinaryEdit("ai_fix_crusader_archers_pitch_attr")
+                    {
+                        new BinAddress("UnitAttributeOffset",43)
+                    },
+                    
+                    new BinaryEdit("ai_fix_crusader_archers_pitch")
+                    {
+                        new BinAddress("CurrentTargetIndex",2),
+                        new BinSkip(23),
+                        new BinHook(7)
+                        {
+                            0x55, // push ebp
+                            0x51, // push ecx
+                            0xBE, 0x5B, 0x00, 0x00, 0x00, // mov esi,5B
+                            0xE8, new BinRefTo("CheckFunction"),
+                            0xA1, new BinRefTo("CurrentTargetIndex", false),
+                            0x69, 0xC0, 0x90, 0x04, 0x00, 0x00, // imul eax,eax,490
+                            0x0F, 0xB7, 0x80, new BinRefTo("UnitAttributeOffset", false),
+                        }
+                    }
+
+                }
+            },
             #endregion
 
             #region AI LORDS
