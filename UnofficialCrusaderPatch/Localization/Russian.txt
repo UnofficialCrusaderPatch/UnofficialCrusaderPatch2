@@ -1,4 +1,18 @@
-﻿// ======================
+﻿﻿﻿﻿﻿// ======================
+//         dev
+// ======================
+
+o_allow_overbuilding
+{
+"Allow overbuilding workers and units"
+}
+
+o_allow_overbuilding_descr
+{
+"Allows the player to overbuild workers with buildings, while allowing to overbuild units with walls and towers making them pop at the top."
+}
+
+// ======================
 //         2.14
 // ======================
 

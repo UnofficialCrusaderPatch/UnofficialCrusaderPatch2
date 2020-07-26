@@ -153,6 +153,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="CodeBlocks\ai_fix_laddermen_with_enclosed_keep.block" />
+    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_building.block" />
+    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding.block" />
+    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_build_function_exit.block" />
+    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_currently_selected_building.block" />
     <EmbeddedResource Include="CodeBlocks\o_override_identity_menu.block" />
     <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_ally_name.block" />
