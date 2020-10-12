@@ -1,3 +1,17 @@
+﻿﻿// ======================
+//         dev
+// ======================
+
+o_fix_fletcher_bug
+{
+"Fix fletcher bug"
+}
+
+o_fix_fletcher_bug_descr
+{
+"Fixes the behaviour where the fletcher goes back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile."
+}
+
 // ======================
 //         2.14
 // ======================
