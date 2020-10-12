@@ -1,6 +1,15 @@
-﻿﻿﻿// ======================
+// ======================
 //         dev
 // ======================
+
+o_fix_baker_disappear
+{
+"Fix baker disappear bug"
+}
+
+o_fix_baker_disappear_descr
+{
+"Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile."
 
 o_fix_moat_digging_unit_disappearing
 {

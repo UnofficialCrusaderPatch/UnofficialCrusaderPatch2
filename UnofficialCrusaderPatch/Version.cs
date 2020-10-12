@@ -292,6 +292,21 @@ namespace UCP
                 }
             },
             
+            // Fix baker disappear bug
+            new Change("o_fix_baker_disappear", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_baker_disappear")
+                {
+                    new BinaryEdit("o_fix_baker_disappear") // 5774A
+                    {
+                        new BinSkip(19),
+                        new BinNops(9)
+                          
+                    }
+
+                }
+            },
+          
             // Fix moat digging unit disappearing
             new Change("o_fix_moat_digging_unit_disappearing", ChangeType.Bugfix, true)
             {
