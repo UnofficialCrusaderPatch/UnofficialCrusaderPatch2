@@ -354,6 +354,23 @@ namespace UCP
                             0x53, // push ebx
                             0x8B, 0x5C, 0x24, 0x08, // mov ebx,[esp+08]
                         }
+                    },
+                    
+                    new BinaryEdit("o_fix_ladderclimb_4")
+                    {
+                        new BinHook(14)
+                        {
+                            0x57, // push edi
+                            0x8B, 0x7C, 0x24, 0x18, // mov edi,[esp+18]
+                            0x4F, // dec edi
+                            0x6B, 0xFF, 0x0C, // imul edi,edi,0C
+                            0x8B, 0x87, new BinRefTo("savedUnitDestinationForClimbing", false), // mov eax,[edi+savedUnitDestinationForClimbing]
+                            0x83, 0xC7, 0x04, // add edi,04
+                            0x8B, 0x97, new BinRefTo("savedUnitDestinationForClimbing", false), // mov edx,[edi+savedUnitDestinationForClimbing]
+                            0x89, 0x86, 0x00, 0x07, 0x00, 0x00, // mov [esi+00000700],eax
+                            0x89, 0x96, 0x02, 0x07, 0x00, 0x00, // mov [esi+00000702],edx
+                            0x5F, // pop edi
+                        }
                     }
                 }
             },
