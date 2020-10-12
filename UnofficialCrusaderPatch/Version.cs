@@ -291,6 +291,26 @@ namespace UCP
 
                 }
             },
+            
+            // Fix moat digging unit disappearing
+            new Change("o_fix_moat_digging_unit_disappearing", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_moat_digging_unit_disappearing")
+                {
+
+                    new BinaryEdit("o_fix_moat_digging_unit_disappearing")
+                    {
+                        new BinAddress("skip", 11),
+                        new BinHook(9)
+                        {
+                            0x83, 0xBC, 0x30, 0xD4, 0x08, 0x00, 0x00, 0x7D, // cmp dword ptr [eax+esi+8D4],7D
+                            0x74, 0x09, // je short 9
+                            0x66, 0x83, 0xBC, 0x30, 0xA8, 0x06, 0x00, 0x00, 0x01
+                        }
+                    }
+
+                }
+            },
             #endregion
 
             #region AI LORDS
