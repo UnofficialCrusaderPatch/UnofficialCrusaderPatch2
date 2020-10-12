@@ -291,6 +291,72 @@ namespace UCP
 
                 }
             },
+            
+            // Fix ladder climbing behaviour
+            new Change("o_fix_ladderclimb", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_ladderclimb")
+                {
+                    new BinaryEdit("o_fix_ladderclimb")
+                    {
+                        // need 120k bytes, because we need 3*4 bytes per unit, and the SHC-E max is 10k units
+                        new BinAlloc("savedUnitDestinationForClimbing", 120000),
+                        
+                        new BinSkip(12), // skip 12 bytes
+                        
+                        new BinHook(10)
+                        {
+                            0x50, // push eax
+                            0x8B, 0x44, 0x24, 0x10, // mov eax,[esp+10]
+                            0x48, // dec eax
+                            0x6B, 0xC0, 0x0C, // imul eax,eax,0C
+                            0x89, 0xA8, new BinRefTo("savedUnitDestinationForClimbing", false), // mov [eax+savedUnitDestinationForClimbing],ebp
+                            0x83, 0xC0, 0x04, // add eax,04
+                            0x89, 0xB8, new BinRefTo("savedUnitDestinationForClimbing", false), // mov [eax+savedUnitDestinationForClimbing],edi
+                            0x83, 0xC0, 0x04, // add eax,04
+                            0xC7, 0x80, new BinRefTo("savedUnitDestinationForClimbing", false), 0x01, 0x00, 0x00, 0x00, // mov [eax+savedUnitDestinationForClimbing],01
+                            0x58, // pop eax
+                            0x66, 0x39, 0xD8, // cmp ax,bx
+                            0x66, 0x89, 0x86, 0xBC, 0x08, 0x00, 0x00, // mov [esi+8BC],ax
+                        }
+                    },
+                    
+                    new BinaryEdit("o_fix_ladderclimb_2")
+                    {
+                        new BinHook(16)
+                        {
+                            0x50, // push eax
+                            0x8B, 0xC3, // mov eax,ebx
+                            0x48, // dec eax
+                            0x6B, 0xC0, 0x0C, // imul eax,eax,04
+                            0x83, 0xC0, 0x08, // add eax,08
+                            0x83, 0xB8, new BinRefTo("savedUnitDestinationForClimbing", false), 0x00, // cmp dword ptr [eax+savedUnitDestinationForClimbing],00
+                            0x75, 0x12, // jne short 0x12
+                            0x66, 0x89, 0x8C, 0x3E, 0x00, 0x07, 0x00, 0x00, // mov [esi+edi+00000700],cx
+                            0x66, 0x89, 0x94, 0x3E, 0x02, 0x07, 0x00, 0x00, // mov [esi+edi+00000702],dx
+                            0xEB, 0x0A, // jmp short A
+                            0xC7, 0x80, new BinRefTo("savedUnitDestinationForClimbing", false), 0x00, 0x00, 0x00, 0x00, // mov [eax+savedUnitDestinationForClimbing],00000000
+                            0x58 // pop eax
+                        }
+                    },
+                    
+                    new BinaryEdit("o_fix_ladderclimb_3")
+                    {
+                        new BinHook(5)
+                        {
+                            0x50, // push eax
+                            0x8B, 0xC3, // mov eax,ebx
+                            0x48, // dec eax
+                            0x6B, 0xC0, 0x0C, // imul eax,eax,04
+                            0x83, 0xC0, 0x08, // add eax,08,
+                            0xC7, 0x80, new BinRefTo("savedUnitDestinationForClimbing", false), 0x01, 0x00, 0x00, 0x00, // mov [eax+savedUnitDestinationForClimbing],00000000
+                            0x58, // pop eax
+                            0x53, // push ebx
+                            0x8B, 0x5C, 0x24, 0x08, // mov ebx,[esp+08]
+                        }
+                    }
+                }
+            },
             #endregion
 
             #region AI LORDS
