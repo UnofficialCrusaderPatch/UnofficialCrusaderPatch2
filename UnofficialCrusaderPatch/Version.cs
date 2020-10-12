@@ -292,6 +292,23 @@ namespace UCP
                 }
             },
             
+          
+            /*
+             * Fletcher bugfix 
+             */
+            new Change("o_fix_fletcher_bug", ChangeType.Bugfix)
+            {
+                new DefaultHeader("o_fix_fletcher_bug")
+                {
+                    new BinaryEdit("o_fix_fletcher_bug")
+                    {
+                        new BinSkip(0x1E), // skip 30 bytes
+                        new BinBytes(0x01) // set state to 1 instead of 3
+
+                    }
+                }
+            },
+          
             // Fix AI crusader archers not lighting pitch
             new Change("ai_fix_crusader_archers_pitch", ChangeType.Bugfix, true)
             {
