@@ -2,6 +2,16 @@
 //         dev
 // ======================
 
+ai_fix_crusader_archers_pitch
+{
+"Fix AI crusader archers not lighting pitch"
+}
+
+ai_fix_crusader_archers_pitch_descr
+{
+"Fixes the AI crusader archers not lighting pitch like arabian archers do when enemy units get onto it."
+}
+
 o_fix_baker_disappear
 {
 "Fix baker disappear bug"
@@ -10,6 +20,7 @@ o_fix_baker_disappear
 o_fix_baker_disappear_descr
 {
 "Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile."
+}
 
 o_fix_moat_digging_unit_disappearing
 {

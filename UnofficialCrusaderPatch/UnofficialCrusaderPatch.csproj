@@ -152,6 +152,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_attr.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_fn.block" />
     <EmbeddedResource Include="CodeBlocks\ai_fix_laddermen_with_enclosed_keep.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_baker_disappear.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_moat_digging_unit_disappearing.block" />
