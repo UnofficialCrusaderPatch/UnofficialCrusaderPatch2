@@ -292,7 +292,7 @@ namespace UCP
                 }
             },
             
-
+          
             /*
              * Fletcher bugfix 
              */
@@ -304,6 +304,73 @@ namespace UCP
                     {
                         new BinSkip(0x1E), // skip 30 bytes
                         new BinBytes(0x01) // set state to 1 instead of 3
+
+                    }
+                }
+            },
+          
+            // Fix AI crusader archers not lighting pitch
+            new Change("ai_fix_crusader_archers_pitch", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("ai_fix_crusader_archers_pitch")
+                {
+
+                    new BinaryEdit("ai_fix_crusader_archers_pitch_fn")
+                    {
+                        new BinLabel("CheckFunction")
+                    },
+
+                    new BinaryEdit("ai_fix_crusader_archers_pitch_attr")
+                    {
+                        new BinAddress("UnitAttributeOffset",43)
+                    },
+                    
+                    new BinaryEdit("ai_fix_crusader_archers_pitch")
+                    {
+                        new BinAddress("CurrentTargetIndex",2),
+                        new BinSkip(23),
+                        new BinHook(7)
+                        {
+                            0x55, // push ebp
+                            0x51, // push ecx
+                            0xBE, 0x5B, 0x00, 0x00, 0x00, // mov esi,5B
+                            0xE8, new BinRefTo("CheckFunction"),
+                            0xA1, new BinRefTo("CurrentTargetIndex", false),
+                            0x69, 0xC0, 0x90, 0x04, 0x00, 0x00, // imul eax,eax,490
+                            0x0F, 0xB7, 0x80, new BinRefTo("UnitAttributeOffset", false),
+                        }
+                    }
+                }
+            },
+          
+            // Fix baker disappear bug
+            new Change("o_fix_baker_disappear", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_baker_disappear")
+                {
+                    new BinaryEdit("o_fix_baker_disappear") // 5774A
+                    {
+                        new BinSkip(19),
+                        new BinNops(9)
+                    }
+                }
+            },
+          
+            // Fix moat digging unit disappearing
+            new Change("o_fix_moat_digging_unit_disappearing", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_moat_digging_unit_disappearing")
+                {
+
+                    new BinaryEdit("o_fix_moat_digging_unit_disappearing")
+                    {
+                        new BinAddress("skip", 11),
+                        new BinHook(9)
+                        {
+                            0x83, 0xBC, 0x30, 0xD4, 0x08, 0x00, 0x00, 0x7D, // cmp dword ptr [eax+esi+8D4],7D
+                            0x74, 0x09, // je short 9
+                            0x66, 0x83, 0xBC, 0x30, 0xA8, 0x06, 0x00, 0x00, 0x01
+                        }
                     }
                 }
             },

@@ -1,4 +1,4 @@
-﻿﻿// ======================
+// ======================
 //         dev
 // ======================
 
@@ -10,6 +10,36 @@ o_fix_fletcher_bug
 o_fix_fletcher_bug_descr
 {
 "Fixes the behaviour where the fletcher goes back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile."
+}
+
+ai_fix_crusader_archers_pitch
+{
+"Fix AI crusader archers not lighting pitch"
+}
+
+ai_fix_crusader_archers_pitch_descr
+{
+"Fixes the AI crusader archers not lighting pitch like arabian archers do when enemy units get onto it."
+}
+
+o_fix_baker_disappear
+{
+"Fix baker disappear bug"
+}
+
+o_fix_baker_disappear_descr
+{
+"Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile."
+}
+
+o_fix_moat_digging_unit_disappearing
+{
+"Fix moat digging units disappear bug"
+}
+
+o_fix_moat_digging_unit_disappearing_descr
+{
+"Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!"
 }
 
 // ======================
