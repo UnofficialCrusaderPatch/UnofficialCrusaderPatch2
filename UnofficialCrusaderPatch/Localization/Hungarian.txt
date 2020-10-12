@@ -13,6 +13,29 @@ ai_fix_crusader_archers_pitch_descr
 }
 
 // ======================
+//         dev
+// ======================
+
+o_fix_baker_disappear
+{
+"Fix baker disappear bug"
+}
+
+o_fix_baker_disappear_descr
+{
+"Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile."
+
+o_fix_moat_digging_unit_disappearing
+{
+"Fix moat digging units disappear bug"
+}
+
+o_fix_moat_digging_unit_disappearing_descr
+{
+"Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!"
+}
+
+// ======================
 //         2.14
 // ======================
 
