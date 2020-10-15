@@ -157,6 +157,7 @@
     <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb_2.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb_3.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb_4.block" />
+    <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb_pre.block" />
     <EmbeddedResource Include="CodeBlocks\o_override_identity_menu.block" />
     <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_ally_name.block" />
