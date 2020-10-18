@@ -1,4 +1,17 @@
 // ======================
+//         dev
+// ======================
+fix_apple_orchard_build_size
+{
+"Fix apple orchard's build size"
+}
+
+fix_apple_orchard_build_size_descr
+{
+"Fixes the apple orchard's build size which was larger before than after building."
+}
+
+// ======================
 //         2.14
 // ======================
 
