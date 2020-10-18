@@ -654,6 +654,20 @@ namespace UCP
             },
 
             // ladderman: 0xB55AF4 = soldier bool
+            
+
+            // 531CFF
+            new Change("u_laddermen_increase_arrow_damage_resistance", ChangeType.Troops, false)
+            {
+                new DefaultHeader("u_laddermen_increase_arrow_damage_resistance")
+                {
+                    new BinaryEdit("u_laddermen_increase_arrow_damage_resistance")
+                    {
+                        new BinSkip(19),
+                        0x03
+                    }
+                }
+            },
 
             #endregion
 

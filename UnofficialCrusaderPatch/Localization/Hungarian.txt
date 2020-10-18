@@ -1,4 +1,17 @@
 // ======================
+//         dev
+// ======================
+u_laddermen_increase_arrow_damage_resistance
+{
+"Laddermen arrow damage mitigation"
+}
+
+u_laddermen_increase_arrow_damage_resistance_descr
+{
+"Increase arrow damage resistance of the laddermen while they are using their ladder under a wall."
+}
+
+// ======================
 //         2.14
 // ======================
 
