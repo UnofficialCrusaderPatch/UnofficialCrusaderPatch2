@@ -170,6 +170,7 @@
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix4.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix5.block" />
     <EmbeddedResource Include="CodeBlocks\u_fireballistatunneler.block" />
+    <EmbeddedResource Include="CodeBlocks\u_tanner_fix.block" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -1,4 +1,17 @@
 ﻿// ======================
+//         dev
+// ======================
+u_tanner_fix
+{
+"Fix tanner returning without cow"
+}
+
+u_tanner_fix_descr
+{
+"Tanners will no longer return without a cow when another tanner took their target cow. They will now instead stand around a bit and then get another one."
+}
+
+// ======================
 //         2.14
 // ======================
 
