@@ -1,4 +1,17 @@
 // ======================
+//         dev
+// ======================
+u_spearmen_run
+{
+"Spearmen run by default instead of walking"
+}
+
+u_spearmen_run_descr
+{
+"Makes spearmen run by default instead of the slow walking."
+}
+
+// ======================
 //         2.14
 // ======================
 
