@@ -291,6 +291,44 @@ namespace UCP
 
                 }
             },
+            
+            new Change("o_fix_small_wall_placement_count", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_small_wall_placement_count")
+                {
+
+                    new BinaryEdit("o_fix_small_wall_placement_count_pre") // 437FB1
+                    {
+                        new BinAddress("CurrentlyControlledPlayer", 2),
+                        new BinAddress("CurrentlySelectedWallID", 42),
+                    },
+
+                    new BinaryEdit("o_fix_small_wall_placement_count") // 457EB2
+                    {
+                        new BinSkip(24), // skip 24 bytes
+                        new BinHook(9)
+                        {
+                            0x01, 0xC0, // add eax,eax
+                            0x53, // push ebx
+                            0x8B, 0x1D, new BinRefTo("CurrentlyControlledPlayer", false), // mov ebx,[CurrentlyControlledPlayer]
+                            
+                            0x3B, 0x5C, 0x24, 0x08, // cmp ebx,[esp+08]
+                            0x75, 0x11, // jne skip
+                            
+                            0x0F, 0xB7, 0x1D, new BinRefTo("CurrentlySelectedWallID", false), // movzx ebx,word ptr [CurrentlySelectedWallID]
+                            0x81, 0xFB, 0x2E, 0x00, 0x00, 0x00, // cmp ebx,0000002E
+                            0x75, 0x02, // jne skip
+                            
+                            0x01, 0xC0, // add eax,eax
+                            
+                            // skip
+                            0x5B, // pop ebx
+                            0x83, 0xB9, 0x90, 0x2E, 0x03, 0x00, 0x00,// cmp dword ptr [ecx+00032E90],00
+                        }
+                    }
+
+                }
+            },
             #endregion
 
             #region AI LORDS

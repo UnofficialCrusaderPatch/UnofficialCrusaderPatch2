@@ -1,4 +1,17 @@
 // ======================
+//         dev
+// ======================
+o_fix_small_wall_placement_count
+{
+"Fix small wall placement count preview"
+}
+
+o_fix_small_wall_placement_count_descr
+{
+"Fixes the bug where the small wall placement preview only allowed the player to use half of their stone."
+}
+
+// ======================
 //         2.14
 // ======================
 
