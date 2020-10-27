@@ -1,6 +1,15 @@
 // ======================
 //         dev
 // ======================
+u_tanner_fix
+{
+"Fix tanners getting all the same cow"
+}
+
+u_tanner_fix_descr
+{
+"Tanners will no longer return without a cow when another tanner took their target cow. They will now instead stand around a bit and then get another one."
+}
 
 o_fix_fletcher_bug
 {
@@ -41,7 +50,6 @@ o_fix_moat_digging_unit_disappearing_descr
 {
 "Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!"
 }
-
 // ======================
 //         2.14
 // ======================

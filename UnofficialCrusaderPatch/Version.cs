@@ -292,6 +292,34 @@ namespace UCP
                 }
             },
             
+            // Fix tanner going back to her hut without cow
+            // Block starts: 559C49
+            new Change("u_tanner_fix", ChangeType.Bugfix, true)
+            {
+                // 559C7A
+                new DefaultHeader("u_tanner_fix")
+                {
+
+                    new BinaryEdit("u_tanner_fix")
+                    {
+                        new BinSkip(49),
+                        new BinAddress("unitBaseAddress", 3, false),
+                        new BinHook(8)
+                        {
+                            0x66, 0x83, 0xBD, new BinRefTo("unitBaseAddress", false), 0x00, // cmp word ptr [ebp+0138880C],00
+                            0x74, 0x19, // je short 0x19
+                            0x66, 0x81, 0xBE, new BinRefTo("unitBaseAddress", false), 0x02, 0x00, // cmp word ptr [esi+0138880C],0002
+                            0x75, 0x0E, // jne short 0x0E
+                            0x66, 0xC7, 0x86, new BinRefTo("unitBaseAddress", false), 0x01, 0x00, // mov word ptr [esi+0138880C],0001
+                            0x5F, // pop edi
+                            0x5E, // pop esi
+                            0x5D, // pop ebp
+                            0x5B, // pop ebx
+                            0xC3, // ret
+                        }
+                    }
+                }
+            },
           
             /*
              * Fletcher bugfix 
