@@ -631,6 +631,19 @@ namespace UCP
                     }
                 }
             },         
+
+            // 531CFF
+            new Change("u_laddermen_increase_arrow_damage_resistance", ChangeType.Troops, false)
+            {
+                new DefaultHeader("u_laddermen_increase_arrow_damage_resistance")
+                {
+                    new BinaryEdit("u_laddermen_increase_arrow_damage_resistance")
+                    {
+                        new BinSkip(19),
+                        0x03
+                    }
+                }
+            },
             
             // Armbrustschaden gegen Arab. Schwertkämpfer, original: 8000
             // 0xB4EE4C = 0x4B*4 + 0xB4ED20
@@ -654,21 +667,6 @@ namespace UCP
             },
 
             // ladderman: 0xB55AF4 = soldier bool
-            
-
-            // 531CFF
-            new Change("u_laddermen_increase_arrow_damage_resistance", ChangeType.Troops, false)
-            {
-                new DefaultHeader("u_laddermen_increase_arrow_damage_resistance")
-                {
-                    new BinaryEdit("u_laddermen_increase_arrow_damage_resistance")
-                    {
-                        new BinSkip(19),
-                        0x03
-                    }
-                }
-            },
-
             #endregion
 
             #region OTHER

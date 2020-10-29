@@ -3,12 +3,12 @@
 // ======================
 u_laddermen_increase_arrow_damage_resistance
 {
-"Laddermen arrow damage mitigation"
+"Increase laddermen arrow damage resistance"
 }
 
 u_laddermen_increase_arrow_damage_resistance_descr
 {
-"Increase arrow damage resistance of the laddermen while they are using their ladder under a wall."
+"Increase arrow damage resistance of the laddermen while they are using their ladder under a wall. Damage reduction increased from 50% to 87.5%."
 }
 
 // ======================
