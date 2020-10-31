@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using UCP.AIV;
@@ -325,6 +325,7 @@ namespace UCP
                             0x66, 0x81, 0xBE, new BinRefTo("unitBaseAddress", false), 0x02, 0x00, // cmp word ptr [esi+unitBaseAddress],0002
                             0x75, 0x0E, // jne short 0x0E
                             0x66, 0xC7, 0x86, new BinRefTo("unitBaseAddress", false), 0x01, 0x00, // mov word ptr [esi+unitBaseAddress],0001
+
                             0x5F, // pop edi
                             0x5E, // pop esi
                             0x5D, // pop ebp
