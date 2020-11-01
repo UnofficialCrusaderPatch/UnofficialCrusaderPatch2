@@ -305,6 +305,7 @@ namespace UCP
 
                     new BinaryEdit("o_fix_small_wall_placement_count") // 457EB2
                     {
+                        new BinAddress("SomeWallRelatedOffset", 28),
                         new BinSkip(24), // skip 24 bytes
                         new BinHook(9)
                         {
@@ -323,7 +324,7 @@ namespace UCP
                             
                             // skip
                             0x5B, // pop ebx
-                            0x83, 0xB9, 0x90, 0x2E, 0x03, 0x00, 0x00,// cmp dword ptr [ecx+00032E90],00
+                            0x83, 0xB9, new BinRefTo("SomeWallRelatedOffset", false), 0x00,// cmp dword ptr [ecx+SomeWallRelatedOffset],00
                         }
                     }
 
