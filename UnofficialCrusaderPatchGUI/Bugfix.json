@@ -1,0 +1,22 @@
+﻿[
+    {
+      "Identifier": "ai_addattack1",
+        "Changes":[
+                {
+                  "Identifier": "ai_addattack2",
+                    "Control": {
+                        "Type": "Slider",
+                        "Minimum": 0.0,
+                        "Maximum": 100.0,
+                      "Interval": 5                    }
+                },
+                {
+                    "Identifier": "ai_addattack3",
+                    "Control": {
+                      "Type": "Color",
+                      "ColorList": [ "#FFFFFF", "#FF0000", "#FFFF00" ]
+                    }
+                }
+        ]
+    }
+]

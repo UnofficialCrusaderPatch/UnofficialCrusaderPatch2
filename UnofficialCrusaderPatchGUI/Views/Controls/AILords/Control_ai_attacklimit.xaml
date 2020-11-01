@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="UCP.Views.Controls.AILords.Control_ai_attacklimit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UCP.Views.Controls.AILords"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Expander x:Name="expander" IsExpanded="false">
+        <Expander.Header>
+            <CheckBox Content="{DynamicResource ai_attacklimit}" x:Name="ai_attacklimit" Click="OnClicked"/>
+        </Expander.Header>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Slider x:Name="ai_attacklimit_slider" Maximum="3000" Minimum="0" HorizontalAlignment="Left" VerticalAlignment="Stretch" MinWidth="400"     
+                IsSnapToTickEnabled="True" Value="200" ValueChanged="OnSliderChanged"
+                TickFrequency="50"/>
+                <TextBlock x:Name="ai_attacklimit_textbox" HorizontalAlignment="Left" Text="{Binding ElementName=ai_attacklimit_slider, Path=Value}"/>
+            </StackPanel>
+            
+            <TextBlock Text="{DynamicResource ai_attacklimit_descr}" TextWrapping="WrapWithOverflow" />
+        </StackPanel>
+    </Expander>
+</UserControl>

@@ -1,0 +1,129 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$id": "http://example.com/example.json",
+  "type": "array",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": [],
+  "items": {
+    "$id": "#items",
+    "allOf": [
+      {
+        "$id": "#items/allOf/0",
+        "type": "object",
+        "required": [
+          "Identifier"
+        ],
+        "properties": {
+          "Identifier": {
+            "$id": "#/items/allOf/0/properties/Identifier",
+            "type": "string",
+            "title": "The Identifier schema",
+            "description": "Unique identifier for the Mod"
+          },
+          "Changes": {
+            "$id": "#/items/allOf/0/properties/Changes",
+            "type": "array",
+            "title": "The Changes schema",
+            "description": "List of Changes within the Mod",
+
+            "items": {
+              "$id": "#/items/allOf/0/properties/Changes/items",
+              "allOf": [
+                {
+                  "$id": "#/items/allOf/0/properties/Changes/items/allOf/0",
+                  "type": "object",
+                  "title": "The first allOf schema",
+                  "description": "Schema for the Changes",
+                  "required": [
+                    "Identifier",
+                    "Control"
+                  ],
+                  "properties": {
+                    "Identifier": {
+                      "$id": "#/items/allOf/0/properties/Changes/items/allOf/0/properties/Identifier",
+                      "type": "string",
+                      "title": "The Identifier schema",
+                      "description": "Unique identifier for the Change"
+                    },
+                    "Control": {
+                      "$id": "#/items/allOf/0/properties/Changes/items/allOf/0/properties/Control",
+                      "type": "object",
+                      "title": "The Control schema",
+                      "description": "UI control definition for the Change",
+                      "additionalProperties": false,
+                      "required": [
+                        "Type"
+                      ],
+                      "anyOf": [
+                          {
+                            "properties": {
+                              "Type": { "const": "CheckBox" }
+                            },
+                            "not": { "required": [ "Minimum", "Maximum", "Interval", "ColorList" ] }
+                          },
+                        {
+                          "properties": {
+                            "Type": { "const": "Slider" }
+                          },
+                          "required": [ "Minimum", "Maximum", "Interval" ],
+                          "not": { "required": [ "ColorList" ] }
+                        },
+                        {
+                          "properties": {
+                            "Type": { "const": "Color" }
+                          },
+                          "not": { "required": [ "Minimum", "Maximum", "Interval" ] },
+                          "required": [ "ColorList" ]
+                        }
+                      ],
+                      "properties": {
+                        "Type": {
+                          "$id": "#/items/allOf/0/properties/Changes/items/allOf/0/properties/Control/properties/Type",
+                          "type": "string",
+                          "enum": [ "CheckBox", "Slider", "Color" ],
+                          "title": "The Type schema",
+                          "description": "UI Control type for the Change"
+                        },
+                        "Minimum": {
+                          "$id": "#/items/allOf/0/properties/Changes/items/allOf/0/properties/Control/properties/Min",
+                          "type": "number",
+                          "title": "The Min schema",
+                          "description": "Minimum value for the slider"
+                        },
+                        "Maximum": {
+                          "$id": "#/items/allOf/0/properties/Changes/items/allOf/0/properties/Control/properties/Max",
+                          "type": "number",
+                          "title": "The Max schema",
+                          "description": "Maximum value for the slider"
+                        },
+                        "Interval": {
+                          "$id": "#/items/allOf/0/properties/Changes/items/allOf/0/properties/Control/properties/Delta",
+                          "type": "integer",
+                          "title": "The Interval schema",
+                          "description": "Interval value for the slider"
+                        },
+                        "ColorList": {
+                          "$id": "#/items/allOf/0/properties/Changes/items/allOf/0/properties/Control/properties/ColorList",
+                          "type": "array",
+                          "title": "The ColorList schema",
+                          "description": "Options for color selection",
+                          "items": {
+                            "type": "string",
+                            "format": "color",
+                            "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

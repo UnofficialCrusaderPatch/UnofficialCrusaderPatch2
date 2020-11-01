@@ -1,0 +1,244 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"                    
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!-- General -->
+    <system:String x:Key="English">English</system:String>
+    <system:String x:Key="Name">Unofficial Crusader Patcher</system:String>
+    <system:String x:Key="ui_keep">Keep Original</system:String>
+    <system:String x:Key="ui_overwrite">Overwrite</system:String>
+    <system:String x:Key="ui_save">Save As</system:String>
+    <system:String x:Key="aiv_prompt">Custom modified AIVs detected. Click 'Yes' to overwrite original backup, 'No' to delete modified files, 'Cancel' to cancel.</system:String>
+    <system:String x:Key="aiv_cli_prompt">Custom modified AIVs detected. Enter 'delete' to erase or enter folder name to copy files to.</system:String>
+
+    <!-- Language UI -->
+    <system:String x:Key="ui_chooseLangTitle">Setup language</system:String>
+    <system:String x:Key="ui_chooseLang">Please choose your preferred language below.</system:String>
+    <system:String x:Key="ui_choosePreferences">Please select your preferences below</system:String>
+    <system:String x:Key="ui_choosePath">Select your path</system:String>
+
+    <!-- Todo Path GUI-->
+    <system:String x:Key="ui_pathselection">Path Selection</system:String>
+
+    <system:String x:Key="ui_SearchPath">Please select your installation folder:</system:String>
+    <system:String x:Key="ui_search">Browse</system:String>
+    <system:String x:Key="ui_uninstall">Uninstall</system:String>
+    <system:String x:Key="ui_install">Install</system:String>
+    <system:String x:Key="ui_cancel">Cancel</system:String>
+
+    <!-- Tabs -->
+    <system:String x:Key="ui_Bugfix">Bugfixes</system:String>
+    <system:String x:Key="ui_Ailords">AI lords</system:String>
+    <system:String x:Key="ui_Troops">Units</system:String>
+    <system:String x:Key="ui_Other">Other</system:String>
+    <system:String x:Key="ui_AIV">AIV</system:String>
+    <system:String x:Key="ui_AIC">AIC</system:String>
+
+    <!-- Tabs Todo-->
+    <system:String x:Key="ui_Config">Config</system:String>
+
+    <!-- Bugfixes -->
+    <system:String x:Key="u_fireballistafix">Fire ballistas shoot monks and tunnelers</system:String>
+    <system:String x:Key="u_fireballistafix_descr">Fire ballistas automatically shoot at monks and tunnelers.</system:String>
+    <system:String x:Key="ai_access">No demolishing of inaccessible buildings</system:String>
+    <system:String x:Key="ai_access_descr">
+        Prevents the AI from demolishing buildings without access. This should 
+        stop the AI from continuously demolishing and rebuilding buildings where no 
+        access is available.
+    </system:String>
+    <system:String x:Key="ai_defense">Fix reinforcement of defense troops</system:String>
+    <system:String x:Key="ai_defense_descr">
+        Fixes a bug which stopped the AI from reinforcing missing troops 
+        on walls and towers, as long as defensive patrols were still around. 
+        Moreover, the probability for AIs to recruit defensive troops was generally 
+        increased, as this value was vor some AIs zero.
+    </system:String>
+    <system:String x:Key="ai_tethers">Disable ox tether spam</system:String>
+    <system:String x:Key="ai_tethers_descr">
+        Usually, the AI builds for each new stone quarry a new ox tether, 
+        independent of how many tether already exist. This can be disabled here, since 
+        it leads to ox tether spam if the AIs' quarries get destroyed repeatedly.
+    </system:String>
+    <system:String x:Key="ai_buywood">Buy enough wood</system:String>
+    <system:String x:Key="ai_buywood_descr">
+        To prevent thievish fletchers from stealing wood which the AI just bought for
+        buildings, 2 extra wood will now be bought for each building.
+    </system:String>
+    <system:String x:Key="ai_towerengines">No limit for siege engines on towers</system:String>
+    <system:String x:Key="ai_towerengines_descr">
+        Usually the AI only builds up to three mangonels and ballistae each on its towers. 
+        This limit can be lifted here.
+    </system:String>
+    <system:String x:Key="ai_assaultswitch">No AI target change during sieges</system:String>
+    <system:String x:Key="ai_assaultswitch_descr">
+        AI lords which attack the mightiest oder weakest enemy sometimes 
+        switch their target in the middle of an ongoing assault and send their 
+        troops to a different castle. This is prevented with this setting, as soon 
+        as the assault has started, i.e. during the troop gathering phase in front of 
+        a castle a change can still happen.
+    </system:String>
+    <system:String x:Key="ai_rebuild">Improved AI repairs</system:String>
+    <system:String x:Key="ai_rebuild_descr">
+        The AI will repair tower ruins, slightly damaged walls, as well as 
+        destroyed engineer's and tunneler's guilds and oil smelters, of which the gathering place 
+        still exists. Furthermore, the AI can now build over the collection platform 
+        of quarries.
+    </system:String>
+
+    <!-- AI lords -->
+    <system:String x:Key="ai_attacklimit">Increase of the attacking troops limit of the AIs</system:String>
+    <system:String x:Key="ai_attacklimit_descr">
+        The number of additional units which are added after the first attack is
+        limited to 200 in Vanilla. Here you can change this limit.
+    </system:String>
+    <system:String x:Key="ai_attackwave">Improve attack waves</system:String>
+    <system:String x:Key="ai_attackwave_descr">
+        The AI in an attack in vanilla only sends as many troops at once as 
+        there are wall parts reachable. This causes units to drop in in small waves 
+        when the target castle has a lot of buildings directly at its walls.
+        This option makes units also attack civil and fortification buildings, as 
+        well as wall parts which are already being attacked by one unit. Moreover,
+        the AI sends more troops to the enemy lord as soon as it detects a breach.
+    </system:String>
+    <system:String x:Key="ai_attacktarget">Set AI attack target</system:String>
+    <system:String x:Key="ai_attacktarget_nearest">Nearest enemy</system:String>
+    <system:String x:Key="ai_attacktarget_richest">Richest Enemy</system:String>
+    <system:String x:Key="ai_attacktarget_weakest">Weakest Enemy</system:String>
+    <system:String x:Key="ai_attacktarget_weakest_descr">
+        With this setting, all AI lords will chose their next attack target in 
+        the same way. This prevents troops switching targets during a castle assault 
+        as well as sending them past other enemies' castles to gather.
+    </system:String>
+    <system:String x:Key="ai_nosleep">Disable sleeping mode for lack of resources</system:String>
+    <system:String x:Key="ai_nosleep_descr">
+        The AI usually puts its processing buildings to sleep, as soon 
+        as the needed resource is missing. This is done without the regard for 
+        losing products which are just on the way f.e. to the weapon chamber.
+        This feature can be completely disabled here.
+    </system:String>
+    <system:String x:Key="ai_demolish">Deactivate demolishing for money of the AI lords</system:String>
+    <system:String x:Key="ai_demolish_walls">fortification buildings</system:String>
+    <system:String x:Key="ai_demolish_eco">econonmy buildings</system:String>
+    <system:String x:Key="ai_demolish_trapped">If enclosed</system:String>
+    <system:String x:Key="ai_demolish_eco_descr">
+        If the AI feels pressured, it likes to demolishes its economy or 
+        fortification buildings to get quick money for troops. This feature sometimes 
+        seems to be triggered without any visible reason and thus can be disabled here.
+    </system:String>
+    <system:String x:Key="ai_addattack">Increase of the rate of additional attack troops</system:String>
+    <system:String x:Key="ai_addattack_descr">
+        In Vanilla the attack troop number is increased after each attack by 5 
+        units on average. This value is the same for all AI lords and can be changed 
+        here.
+    </system:String>
+    <system:String x:Key="ai_addattack_alt_descr" xml:space="preserve">Alternatively, the additional troop count can be made dependent on the troop count of the first attack. Since this value is different for each AI, the following attacks will also scale, instead of increasing by the same value  for each AI lord.
+Example: Scale factor = 0.5
+Sultan's attack troops = 10, 15, 20, 25, ...
+Saladin's attack troops = 50, 75, 100, 125, ...</system:String>
+    <system:String x:Key="ai_recruitinterval">Increased recruitment speed</system:String>
+    <system:String x:Key="ai_recruitinterval_descr">
+        Sets the recruitment interval of all AIs to the lowest value (Rat/Richard niveau)
+    </system:String>
+
+    <!-- Units -->
+    <system:String x:Key="u_laddermen">Increased armor of laddermen against ranged units</system:String>
+    <system:String x:Key="u_laddermen_descr" xml:space="preserve">- Laddermen die after 12 arrow hits instead of 5
+- Laddermen die after 5 crossbow or slinger hits instead of 2
+- Laddermen cost 20 gold instead of 4</system:String>
+    <system:String x:Key="u_ArabXBow">Increased armor of Arabic Swordsmen against crossbows</system:String>
+    <system:String x:Key="u_arabxbow_descr">
+        - Arabic Swordsmen only die after 6 crossbow hits intead of 3
+    </system:String>
+    <system:String x:Key="u_ArabWall">Arabic Swordsmen destroy walls faster</system:String>
+    <system:String x:Key="u_ArabWall_descr">
+        In Vanilla, arabic swordsmen destroy walls slower than any other melee unit. 
+        With this option, the tear down speed against walls is about doubled for them, 
+        putting them slightly above Spearmen.
+    </system:String>
+    <system:String x:Key="u_spearmen">Increased armor of spearmen against ranged units</system:String>
+    <system:String x:Key="u_spearmen_descr" xml:space="preserve">- Spearmen only die after 5 arrow hits instead of 3
+- Spearmen barely survive one crossbow hit, instead of getting one-shot</system:String>
+
+    <!-- Other -->
+    <system:String x:Key="o_firecooldown">Extend fireproof duration of extinguished buildings</system:String>
+    <system:String x:Key="o_firecooldown_descr">
+        The duration in which extinguished buildings cannot catch fire again can be extended here.
+    </system:String>
+    <system:String x:Key="o_xtreme">Remove the magic bar in Extreme</system:String>
+    <system:String x:Key="o_xtreme_descr">Removes the magic bar in Crusader Extreme.</system:String>
+    <system:String x:Key="o_playercolor">Change the color of player 1</system:String>
+    <system:String x:Key="o_override_identity_menu">Override the Set-up Identity menu adding new features
+    </system:String>
+    <system:String x:Key="o_override_identity_menu_descr">Adds Ranged and Melee unit selection to Set-up Identity menu. ONLY FOR NORMAL GAME MODE!
+    </system:String>
+    <system:String x:Key="o_keys">WASD-Keys and quicksaves</system:String>
+    <system:String x:Key="o_keys_descr">
+        The WASD-keys can be used to move around with this setting as well as
+        CTRL-S and CTRL-L to quicksave and load respectively.
+    </system:String>
+    <system:String x:Key="o_healer">Healer heals casualties</system:String>
+    <system:String x:Key="o_healer_descr">
+        The healer of the apothecary building now actively seeks out injured soldiers, 
+        civilists and animals to heal them. The nearest targets are treated first. With each 
+        healing animation ca. 1/3 of a spearman's health is recovered. The strolling through 
+        gardens and investigation of plague clouds is not replaced! Only the strolling through 
+        the castle is skipped until no more wounded targets are in the area.
+    </system:String>
+    <system:String x:Key="o_freetrader">Free trader post</system:String>
+    <system:String x:Key="o_freetrader_descr">
+        Since the AI sometimes plays itself, when they're out of wood and their trader post
+        is destroyed. With this setting, the trader post will become free of cost to prevent this.
+    </system:String>
+    <system:String x:Key="o_engineertent">No siege tent deselection</system:String>
+    <system:String x:Key="o_engineertent_descr">
+        With this setting, the game will not deselect your chosen siege equipment 
+        after placing one tent anymore. This way you can create several tents after another 
+        without having to reselect the same siege equipment every time.
+    </system:String>
+    <system:String x:Key="o_moatvisibility">Always show planned moat</system:String>
+    <system:String x:Key="o_moatvisibility_descr">
+        Your own placed but not digged out moat will always be shown with this 
+        setting, even if you deselect the moat placing.
+    </system:String>
+
+    <system:String x:Key="o_gamespeed">Extended game speed limits</system:String>
+    <system:String x:Key="o_gamespeed_descr" xml:space="preserve">The game speed can now be changed as follows:
+- From 10 to 90 in intervals of 5
+- From 90 to 200 in intervals of 10
+- From 200 to 1000 in intervals of 100
+The new values are only available ingame via the +- keys, the slider in the game menu remains unchanged.</system:String>
+    <system:String x:Key="o_responsivegates">Quicker responsiveness of gates towards enemies</system:String>
+    <system:String x:Key="o_responsivegates_descr">
+        Gates close themselves later if enemies get into range and open faster 
+        when the danger is gone. The distance of an enemy for which the gates close 
+        will be reduced from 200 to 140. The time after which the gates open, after 
+        all enemies left will be reduced from 1200 to 100.
+    </system:String>
+    <system:String x:Key="o_onlyai">Activate Spectator-mode [bug possible]</system:String>
+    <system:String x:Key="o_onlyai_descr">
+        Removes player 1 so that you can only spectate and makes 8 AIs in one 
+        round possible. Savegames now load properly in this mode. Sometimes a bug 
+        appears in which random objects spawn all over the map. This is just visually 
+        and can be removed by saving the game, ending the mission and reloading the 
+        save file.
+    </system:String>
+    <system:String x:Key="o_armory_marketplace_weapon_order_fix">Fix armory/marketplace weapon orders to match</system:String>
+    <system:String x:Key="o_armory_marketplace_weapon_order_fix_descr">
+        Reorders Weapon icons in Armory and Marketplace to have the same order. Also moves Leather Armor between Mace and Crossbow, and moves Metal Armor between Polearm and Sword for easier access while in Marketplace scrolling through items.
+    </system:String>
+    <system:String x:Key="o_default_multiplayer_speed">Set default multiplayer speed.</system:String>
+    <!--<system:String x:Key="o_default_multiplayer_speed_descr">
+    </system:String>-->
+    <system:String x:Key="o_shfy">Strongholdify</system:String>
+    <system:String x:Key="o_shfy_beer">Popularity bonus from beer</system:String>
+    <!--<system:String x:Key="o_shfy_beer_descr">Strongholdify</system:String>-->
+    <system:String x:Key="o_shfy_religion">Popularity bonus from cathedral and church</system:String>
+    <!--<system:String x:Key="o_shfy_religion_descr">Strongholdify</system:String>-->
+    <system:String x:Key="o_shfy_peasantspawnrate">Spawnrate peasants</system:String>
+    <!--<system:String x:Key="o_shfy_peasantspawnrate_descr">Strongholdify</system:String>-->
+    <system:String x:Key="o_shfy_resourcequantity">Quantity of delivered resources</system:String>
+    <system:String x:Key="o_shfy_resourcequantity_descr">Adapts listed aspects to match Stronghold 1. Attention: Every change influences the AI lords, in the worst case renders them useless!</system:String>
+    <!-- Aiv -->
+
+    <!-- Aic -->
+</ResourceDictionary>

@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="UCP.Views.Controls.Other.Control_o_default_multiplayer_speed"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UCP.Views.Controls.Other"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Expander x:Name="expander" IsExpanded="false">
+        <Expander.Header>
+            <CheckBox Content="{DynamicResource o_default_multiplayer_speed}" x:Name="o_default_multiplayer_speed" Click="OnClicked"/>
+        </Expander.Header>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Slider x:Name="o_default_multiplayer_speed_slider" Minimum="20" Maximum="90" HorizontalAlignment="Left" VerticalAlignment="Stretch" MinWidth="400"     
+                        IsSnapToTickEnabled="True" Value="40" ValueChanged="OnSliderChanged"
+                        TickFrequency="1"/>
+                <TextBlock x:Name="o_default_multiplayer_speed_textbox" HorizontalAlignment="Left" Text="{Binding ElementName=o_default_multiplayer_speed_slider, Path=Value}"/>
+            </StackPanel>
+            <TextBlock Text="{DynamicResource o_default_multiplayer_speed_desc}" TextWrapping="WrapWithOverflow" />
+        </StackPanel>
+    </Expander>
+</UserControl>

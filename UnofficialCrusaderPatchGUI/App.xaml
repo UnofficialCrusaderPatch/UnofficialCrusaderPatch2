@@ -1,9 +1,16 @@
 ﻿<Application x:Class="UCP.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:UCP"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:UCP.Views"
+             StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source='/UnofficialCrusaderPatchGUI;component/Languages/Language.pl_PL.xaml'/>
+                <ResourceDictionary Source='/UnofficialCrusaderPatchGUI;component/Languages/Language.ru_RU.xaml'/>
+                <ResourceDictionary Source='/UnofficialCrusaderPatchGUI;component/Languages/Language.de_DE.xaml'/>
+                <ResourceDictionary Source='/UnofficialCrusaderPatchGUI;component/Languages/Language.en_EN.xaml'/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

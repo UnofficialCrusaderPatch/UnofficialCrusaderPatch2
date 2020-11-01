@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="UCP.Views.TabViews.Troops"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UCP.Views.TabViews" xmlns:troops="clr-namespace:UCP.Views.Controls.Troops"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <ScrollViewer>
+        <StackPanel x:Name="TroopsStackpanel">
+            <troops:Control_u_laddermen/>
+            <troops:Control_u_arabxbow/>
+            <troops:Control_u_arabwall/>
+            <troops:Control_u_spearmen/>
+            <!--Background="#CCFFFFFF"-->
+            <!--<Expander IsExpanded="false">
+                <Expander.Header>
+                    <CheckBox Content="{DynamicResource u_laddermen}" x:Name="u_laddermen"/>
+                </Expander.Header>
+                <TextBlock Text="{DynamicResource u_laddermen_descr}" TextWrapping="WrapWithOverflow"/>
+            </Expander>
+            <Expander IsExpanded="false">
+                <Expander.Header>
+                    <CheckBox Content="{DynamicResource u_ArabXBow}" x:Name="u_ArabXBow"/>
+                </Expander.Header>
+                <TextBlock Text="{DynamicResource u_arabxbow_descr}" TextWrapping="WrapWithOverflow" />
+            </Expander>
+            <Expander IsExpanded="false">
+                <Expander.Header>
+                    <CheckBox Content="{DynamicResource u_ArabWall}" x:Name="u_ArabWall"/>
+                </Expander.Header>
+                <TextBlock Text="{DynamicResource u_ArabWall_descr}" TextWrapping="WrapWithOverflow" />
+            </Expander>
+            <Expander IsExpanded="false">
+                <Expander.Header>
+                    <CheckBox Content="{DynamicResource u_spearmen}" x:Name="u_spearmen"/>
+                </Expander.Header>
+                <TextBlock Text="{DynamicResource u_spearmen_descr}" TextWrapping="WrapWithOverflow" />
+            </Expander>-->
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

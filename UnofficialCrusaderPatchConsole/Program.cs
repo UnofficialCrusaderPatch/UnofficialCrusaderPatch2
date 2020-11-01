@@ -1,87 +1,136 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.IO;
-using UCP.Patching;
-using UCP.Startup;
+using System.Linq;
+using System.Web.Script.Serialization;
+using UCP.API;
+using UCP.Model;
 
 namespace UCP
 {
-    class Program
+    static class Program
     {
+        public static readonly JsonSerializer Writer = new JsonSerializer()
+        {
+            Formatting = Formatting.Indented
+        };
+        static readonly List<string> VALID_ARGS = new List<string>() { "--aiv", "--aiv-overwrite", "--no-output", "--cfg", "--path" };
         static void Main(string[] args)
         {
-            Configuration.Load();
-            StartTroopChange.Load();
-            ResourceChange.Load();
-            Version.AddExternalChanges();
-            ResolvePath();
-            ResolveArgs(args);
-            SilentInstall();
-        }
+            Dictionary<string, object> preferences = Resolver.GetExistingOrWriteEmptyPreference();
+            Dictionary<string, string> resolvedArgsDictionary = ResolveArgs(args.ToList());
+            UCPConfig ucpConfig = null;
 
-        static void ResolveArgs(String[] args)
-        {
-
-            Func<String, String, bool, bool, bool> fileTransfer = (src, dest, overwrite, log) =>
+            if (resolvedArgsDictionary.TryGetValue("cfg", out string cfgPath))
             {
-                return FileUtils.Transfer(src, dest, overwrite, log);
-            };
-
-            bool silent = false;
-            foreach (String arg in args)
-            {
-                if (arg == "--no-output")
+                using (StreamReader file = File.OpenText(cfgPath))
                 {
-                    silent = true;
+                    ucpConfig = (UCPConfig)Writer.Deserialize(file, typeof(UCPConfig));
+                }
+            }
+            else if (File.Exists("ucp.json"))
+            {
+                using (StreamReader file = File.OpenText("ucp.json"))
+                {
+                    ucpConfig = (UCPConfig)Writer.Deserialize(file, typeof(UCPConfig));
+                }
+            }
+            else
+            {
+                try
+                {
+                    ucpConfig = Resolver.GetUCPConfigFromUncovertedCfg("ucp.cfg");
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Failed to install");
                 }
             }
 
-            foreach (String arg in args)
+            if (ucpConfig == null)
             {
-                if (arg == "--no-output")
-                {
-                    continue;
-                } else if (!arg.StartsWith("--") || !arg.Contains("="))
-                {
-                    Console.WriteLine("Install failed. Invalid arguments provided.");
-                    return;
-                } else if (arg.Contains("aic"))
-                {
-                    continue;
-                }
-                String srcPath = arg.Split('=')[1];
-                String rawOpt = arg.Split('=')[0].Substring(2);
-                bool overwrite = false;
-                if (rawOpt.Split('-').Length > 1 && rawOpt.Split('-')[1].ToLower().Contains("overwrite"))
-                {
-                    overwrite = true;
-                }
-                String opt = rawOpt.Split('-')[0];
+                Console.WriteLine("Configuration file not found");
+                return;
+            }
 
-                fileTransfer(Path.Combine(Environment.CurrentDirectory, srcPath), Path.GetFullPath(Path.Combine(Configuration.Path, PathUtils.Get(opt))), overwrite, !silent);   
+            string resolvedPath = null;
+            if (resolvedArgsDictionary.ContainsKey("path"))
+            {
+                resolvedPath = resolvedArgsDictionary["path"];
+            }
+            else if (preferences.ContainsKey("preferPathInConfig") && bool.Parse(preferences["preferPathInConfig"].ToString()) && ucpConfig.Path != null && Resolver.VerifyHash(ucpConfig.hash) && Resolver.isValidSHCPath((ucpConfig.Path)))
+            {
+                resolvedPath = ucpConfig.Path;
+            }
+            else if ((!preferences.ContainsKey("preferPathInConfig") || preferences.ContainsKey("preferPathInConfig") && !bool.Parse(preferences["preferPathInConfig"].ToString())))
+            {
+                if (preferences.ContainsKey("path") && preferences["path"] != null)
+                {
+                    resolvedPath = preferences["path"].ToString();
+                }
+            }
+
+            if (resolvedPath != null)
+            {
+                ModAPIContract.Install(ucpConfig.withPath(resolvedPath), resolvedArgsDictionary.ContainsKey("aivOverridePath") && bool.Parse(resolvedArgsDictionary["aivOverridePath"]));
             }
         }
 
-        static void ResolvePath()
+        static Dictionary<string, string> ResolveArgs(List<string> args)
         {
-            if (!Patcher.CrusaderExists(Configuration.Path))
+            Dictionary<string, string> resolvedArgsDictionary = new Dictionary<string, string>();
+            if (args.Exists(arg => !VALID_ARGS.Contains(arg.Split('=')[0]) || arg.Count(c => c == '=') > 1))
             {
-                if (Patcher.CrusaderExists(Environment.CurrentDirectory))
+                Console.WriteLine("Install failed. Invalid arguments provided:");
+                Console.WriteLine(String.Join(",", args.Where(arg => !VALID_ARGS.Contains(arg.Split('=')[0]) || arg.Count(c => c == '=') > 1).Select(x => x.Split('=')[0])));
+            }
+
+            bool silent = args.Contains("--no-output");
+            bool overwrite = args.Contains("--aiv-overwrite");
+
+            string path = null;
+            string pathArg = args.SingleOrDefault(x => x.StartsWith("--path") && x.Count(c => c == '=') == 1);
+            if (pathArg != null)
+            {
+                path = pathArg.Split('=')[1];
+                resolvedArgsDictionary.Add("path", path);
+                if (!silent)
                 {
-                    Configuration.Path = Environment.CurrentDirectory;
-                }
-                else if (Patcher.CrusaderExists(Path.Combine(Environment.CurrentDirectory, "..\\")))
-                {
-                    Configuration.Path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "..\\"));
+                    Console.WriteLine(pathArg.Substring(2));
                 }
             }
-        }
 
-        static void SilentInstall()
-        {
-            Version.Changes.Contains(null);
-            Patcher.Install(Configuration.Path, null);
-            Console.WriteLine("UCP successfully installed");
-            Console.WriteLine("Path to Stronghold Crusader is:" + Configuration.Path);
+            string cfgArg = args.SingleOrDefault(x => x.StartsWith("--cfg") && x.Count(c => c == '=') == 1);
+            if (cfgArg != null)
+            {
+                string cfgPath = cfgArg.Split('=')[1];
+                resolvedArgsDictionary.Add("cfgPath", cfgPath);
+                if (!silent)
+                {
+                    Console.WriteLine(cfgArg.Substring(2));
+                }
+            }
+
+            string aivArg = args.SingleOrDefault(x => x.StartsWith("--aiv") && x.Count(c => c == '=') == 1);
+            if (aivArg != null && path != null)
+            {
+                string aivPath = aivArg.Split('=')[1];
+                if (overwrite)
+                {
+                    resolvedArgsDictionary.Add("aivOverwritePath", aivPath);
+                }
+                else
+                {
+                    resolvedArgsDictionary.Add("aivPath", aivPath);
+                }
+                if (!silent)
+                {
+                    Console.WriteLine(aivArg.Substring(2));
+                }
+            }
+
+            return resolvedArgsDictionary;
         }
     }
 }

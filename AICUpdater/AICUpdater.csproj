@@ -43,49 +43,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AICharacter.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\AICharacter.cs">
       <Link>AICharacters\AICharacter.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AICharacterName.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\AICharacterName.cs">
       <Link>AICharacters\AICharacterName.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AICharacterSerializationException.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\AICharacterSerializationException.cs">
       <Link>AICharacters\AICharacterSerializationException.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AICollection.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\AICollection.cs">
       <Link>AICharacters\AICollection.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AICSerializationException.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\AICSerializationException.cs">
       <Link>AICharacters\AICSerializationException.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AIPersonality.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\AIPersonality.cs">
       <Link>AICharacters\AIPersonality.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AIPersonalityFieldsEnum.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\AIPersonalityFieldsEnum.cs">
       <Link>AICharacters\AIPersonalityFieldsEnum.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AISerializer.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\AISerializer.cs">
       <Link>AICharacters\AISerializer.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\PersonalityEnums\Buildings.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\PersonalityEnums\Buildings.cs">
       <Link>AICharacters\PersonalityEnums\Buildings.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\PersonalityEnums\Resources.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\PersonalityEnums\Resources.cs">
       <Link>AICharacters\PersonalityEnums\Resources.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\PersonalityEnums\SiegeEngines.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\PersonalityEnums\SiegeEngines.cs">
       <Link>AICharacters\PersonalityEnums\SiegeEngines.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\PersonalityEnums\TargetingType.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\PersonalityEnums\TargetingType.cs">
       <Link>AICharacters\PersonalityEnums\TargetingType.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\PersonalityEnums\Units.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\PersonalityEnums\Units.cs">
       <Link>AICharacters\PersonalityEnums\Units.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\PersonalityEnums\WorkshopSettings.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\PersonalityEnums\WorkshopSettings.cs">
       <Link>AICharacters\PersonalityEnums\WorkshopSettings.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\RWAttributes.cs">
+    <Compile Include="..\UnofficialCrusaderPatch\Util\Readers\Utils\RWAttributes.cs">
       <Link>AICharacters\RWAttributes.cs</Link>
     </Compile>
     <Compile Include="AICUpdaterHelper.cs" />
@@ -95,5 +95,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

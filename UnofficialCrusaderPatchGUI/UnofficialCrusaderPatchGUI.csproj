@@ -56,8 +56,12 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -76,12 +80,19 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LanguageWindow.xaml.cs">
-      <DependentUpon>LanguageWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Data\LanguageHelper.cs" />
+    <Compile Include="Data\MainViewModel.cs" />
+    <Compile Include="Data\ViewModelBase.cs" />
+    <Compile Include="Debug.cs" />
+    <Compile Include="Util\Constants.cs" />
+    <Compile Include="Util\Resolver.cs" />
+    <Compile Include="Views\Controls\AIVControl.cs" />
+    <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AICControlConfig.cs" />
+    <Compile Include="Model\ControlConfig.cs" />
+    <Compile Include="Model\SubControlConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,11 +106,149 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Views\Controls\AILords\Control_ai_addattack.xaml.cs">
+      <DependentUpon>Control_ai_addattack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\AILords\Control_ai_attacklimit.xaml.cs">
+      <DependentUpon>Control_ai_attacklimit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\AILords\Control_ai_attacktarget.xaml.cs">
+      <DependentUpon>Control_ai_attacktarget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\AILords\Control_ai_attackwave.xaml.cs">
+      <DependentUpon>Control_ai_attackwave.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\AILords\Control_ai_demolish.xaml.cs">
+      <DependentUpon>Control_ai_demolish.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\AILords\Control_ai_nosleep.xaml.cs">
+      <DependentUpon>Control_ai_nosleep.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\AILords\Control_ai_overclock.xaml.cs">
+      <DependentUpon>Control_ai_overclock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\AILords\Control_ai_recruitinterval.xaml.cs">
+      <DependentUpon>Control_ai_recruitinterval.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Bugfixes\Control_ai_assaultswitch.xaml.cs">
+      <DependentUpon>Control_ai_assaultswitch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Bugfixes\Control_ai_laddermenusage.xaml.cs">
+      <DependentUpon>Control_ai_laddermenusage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Bugfixes\Control_ai_rebuild.xaml.cs">
+      <DependentUpon>Control_ai_rebuild.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Bugfixes\Control_ai_access.xaml.cs">
+      <DependentUpon>Control_ai_access.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Bugfixes\Control_ai_buywood.xaml.cs">
+      <DependentUpon>Control_ai_buywood.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Bugfixes\Control_ai_defense.xaml.cs">
+      <DependentUpon>Control_ai_defense.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Bugfixes\Control_ai_tethers.xaml.cs">
+      <DependentUpon>Control_ai_tethers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Bugfixes\Control_ai_towerengines.xaml.cs">
+      <DependentUpon>Control_ai_towerengines.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_armory_marketplace_weapon_order_fix.xaml.cs">
+      <DependentUpon>Control_o_armory_marketplace_weapon_order_fix.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_default_multiplayer_speed.xaml.cs">
+      <DependentUpon>Control_o_default_multiplayer_speed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_engineertent.xaml.cs">
+      <DependentUpon>Control_o_engineertent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_firecooldown.xaml.cs">
+      <DependentUpon>Control_o_firecooldown.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_freetrader.xaml.cs">
+      <DependentUpon>Control_o_freetrader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_gamespeed.xaml.cs">
+      <DependentUpon>Control_o_gamespeed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_healer.xaml.cs">
+      <DependentUpon>Control_o_healer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_keys.xaml.cs">
+      <DependentUpon>Control_o_keys.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_moatvisibility.xaml.cs">
+      <DependentUpon>Control_o_moatvisibility.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_onlyai.xaml.cs">
+      <DependentUpon>Control_o_onlyai.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_override_identity_menu.xaml.cs">
+      <DependentUpon>Control_o_override_identity_menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_playercolor.xaml.cs">
+      <DependentUpon>Control_o_playercolor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_responsivegates.xaml.cs">
+      <DependentUpon>Control_o_responsivegates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_shfy.xaml.cs">
+      <DependentUpon>Control_o_shfy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Other\Control_o_xtreme.xaml.cs">
+      <DependentUpon>Control_o_xtreme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Troops\Control_u_arabwall.xaml.cs">
+      <DependentUpon>Control_u_arabwall.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Troops\Control_u_arabxbow.xaml.cs">
+      <DependentUpon>Control_u_arabxbow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Troops\Control_u_laddermen.xaml.cs">
+      <DependentUpon>Control_u_laddermen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Troops\Control_u_spearmen.xaml.cs">
+      <DependentUpon>Control_u_spearmen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\UCPControls.cs" />
+    <Compile Include="Views\TabViews\AIC.xaml.cs">
+      <DependentUpon>AIC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabViews\AIlords.xaml.cs">
+      <DependentUpon>AIlords.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabViews\AIV.xaml.cs">
+      <DependentUpon>AIV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabViews\Bugfixes.xaml.cs">
+      <DependentUpon>Bugfixes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Bugfixes\Control_fireballistafix.xaml.cs">
+      <DependentUpon>Control_fireballistafix.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabViews\Other.xaml.cs">
+      <DependentUpon>Other.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabViews\StartResource.xaml.cs">
+      <DependentUpon>StartResource.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabViews\StartTroop.xaml.cs">
+      <DependentUpon>StartTroop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabViews\Troops.xaml.cs">
+      <DependentUpon>Troops.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Utils\Utility.cs" />
+    <Compile Include="Views\Windows\Startup.xaml.cs">
+      <DependentUpon>Startup.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -110,11 +259,203 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="LanguageWindow.xaml">
+    <Page Include="Languages\Language.de_DE.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Languages\Language.en_EN.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Languages\Language.pl_PL.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Languages\Language.ru_RU.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\AILords\Control_ai_addattack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\AILords\Control_ai_attacklimit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\AILords\Control_ai_attacktarget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\AILords\Control_ai_attackwave.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\AILords\Control_ai_demolish.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\AILords\Control_ai_nosleep.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\AILords\Control_ai_overclock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\AILords\Control_ai_recruitinterval.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Bugfixes\Control_ai_assaultswitch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Bugfixes\Control_ai_laddermenusage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Bugfixes\Control_ai_rebuild.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Bugfixes\Control_ai_access.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Bugfixes\Control_ai_buywood.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Bugfixes\Control_ai_defense.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\Bugfixes\Control_ai_tethers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Bugfixes\Control_ai_towerengines.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_armory_marketplace_weapon_order_fix.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_default_multiplayer_speed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_engineertent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_firecooldown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_freetrader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_gamespeed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_healer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_keys.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_moatvisibility.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_onlyai.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_override_identity_menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_playercolor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_responsivegates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_shfy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Other\Control_o_xtreme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Troops\Control_u_arabwall.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Troops\Control_u_arabxbow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Troops\Control_u_laddermen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Troops\Control_u_spearmen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TabViews\AIC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TabViews\AIlords.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TabViews\AIV.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TabViews\Bugfixes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\Bugfixes\Control_fireballistafix.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TabViews\Other.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TabViews\StartResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TabViews\StartTroop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TabViews\Troops.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\Startup.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -155,5 +496,13 @@
   <ItemGroup>
     <Resource Include="Graphics\shield.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Controls\Other\shield.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties model_4bugfix_1json__JsonSchema="GenericModSchema.json" model_4genericmodschema_1json__JsonSchema="https://json-schema.org/draft-04/schema" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

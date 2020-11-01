@@ -1,0 +1,41 @@
+﻿using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+using UCP.Data;
+using UCP.Model;
+using UCP.Views.Utils;
+
+namespace UCP.Views.Controls.Bugfixes
+{
+    /// <summary>
+    /// Interaction logic for Control_ai_buywood.xaml
+    /// </summary>
+    public partial class Control_ai_buywood : UserControl
+    {
+        private string Identifier = "ai_buywood";
+        public Control_ai_buywood()
+        {
+            InitializeComponent();
+            this.DataContextChanged += DataContextChangedEvent;
+
+            UCPControls.Controls.Add(
+                new ControlConfig()
+                    .withIdentifier(this.Identifier)
+                    .withEnabled(() => ai_buywood.IsChecked == true)
+                    .withSubControlConfig(new List<SubControlConfig>(){
+                        new SubControlConfig()
+                            .withIdentifier(this.Identifier)
+                            .withSetEnabled((bool value) => ai_buywood.IsChecked = value)
+                            .withEnabled(() => ai_buywood.IsChecked == true)
+                            .withValue(() => null)
+                    })
+                );
+        }
+
+        void DataContextChangedEvent(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var vm = e.NewValue as MainViewModel;
+            Utility.SetAutoSaveCallback(this.expander, vm);
+        }
+    }
+}
