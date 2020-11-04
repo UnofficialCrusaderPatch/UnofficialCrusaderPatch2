@@ -1,4 +1,17 @@
 ﻿// ======================
+//         dev
+// ======================
+u_fix_lord_animation_stuck_movement
+{
+"Fix Lord animation freeze"
+}
+
+u_fix_lord_animation_stuck_movement_descr
+{
+"Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
+}
+
+// ======================
 //         2.14
 // ======================
 
