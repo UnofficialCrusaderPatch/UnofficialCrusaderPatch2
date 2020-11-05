@@ -291,6 +291,25 @@ namespace UCP
 
                 }
             },
+            
+            new Change("u_fix_applefarm_blocking", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("u_fix_applefarm_blocking")
+                {
+
+                    new BinaryEdit("u_fix_applefarm_blocking") // 4F36B2
+                    {
+                        new BinSkip(11),
+                        new BinHook(5)
+                        {
+                            0x81, 0x47, 0x14, 0x02, 0x00, 0x00, 0x00, // add [edi+14],00000002
+                            0x81, 0x47, 0x18, 0x02, 0x00, 0x00, 0x00, // add [edi+18],00000002
+                            0x5F, // pop edi
+                        }
+                    }
+
+                }
+            },
             #endregion
 
             #region AI LORDS
