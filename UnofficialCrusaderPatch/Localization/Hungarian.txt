@@ -1,4 +1,19 @@
 // ======================
+//         dev
+// ======================
+o_restore_arabian_engineer_speech
+{
+"Restore engineer arabian speech"
+}
+
+o_restore_arabian_engineer_speech_descr
+{
+"Allows engineers to speak the originally recorded arabian voicelines when the player uses the Arabian lord.
+
+There is not much variation of these voicelines, so it can get annoying after a while."
+}
+
+// ======================
 //         2.14
 // ======================
 
