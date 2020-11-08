@@ -1,4 +1,19 @@
 ﻿// ======================
+//         dev
+// ======================
+o_restore_ai_siege_messages
+{
+"Restore AI siege messages"
+}
+
+o_restore_ai_siege_messages_descr
+{
+"AIs have recorded Siege messages which they send to their allies when they are about to attack an enemy. This feature was cut from the game, but the assets remained.
+
+This option restores this feature."
+}
+
+// ======================
 //         2.14
 // ======================
 
