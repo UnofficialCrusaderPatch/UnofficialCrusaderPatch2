@@ -41,7 +41,7 @@
                 <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" ItemsSource="{Binding LanguagesComboBox}" Text="{Binding ActualLanguage}" SelectionChanged="LanguageChanged" />
                 <StackPanel Orientation="Horizontal">
                     <ComboBox x:Name="pathComboBox" HorizontalAlignment="Center" Height="25" Width="200" ItemsSource="{Binding StrongholdPaths}" Text="{Binding StrongholdPath}" IsEditable="True" TextBoxBase.TextChanged="OnPathTextEdit"/>
-                    <Button x:Name="browseButton" Content="Browse" HorizontalAlignment="Center" Height="25" Width="70"/>
+                    <Button x:Name="browseButton" Content="Browse" HorizontalAlignment="Center" Height="25" Width="70" Click="BrowseButton_Click"/>
                 </StackPanel>
             </MenuItem>
         </Menu>

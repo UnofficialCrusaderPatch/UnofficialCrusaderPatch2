@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using UCP.Model;
 using static UCP.Util.Constants;
 
@@ -77,7 +78,7 @@ namespace UCP.Util
                     {HASH, Resolver.GenerateHash()},
                     {PATH, null},
                     {MOST_RECENT_CONFIG, null},
-                    {KNOWN_PATHS, new string[0]},
+                    {KNOWN_PATHS, new JArray[0]},
                     {PREFER_PATH, false},
                     {LANGUAGE, ENGLISH},
                     {AUTOSAVE, true}

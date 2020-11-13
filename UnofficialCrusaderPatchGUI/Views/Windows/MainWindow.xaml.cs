@@ -180,6 +180,26 @@ namespace UCP.Views
             // Begin dragging the window
             this.DragMove();
         }
+
+        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        {
+            //var vm = (this.DataContext as MainViewModel);
+            using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
+            {
+                System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+
+                if (result.Equals(System.Windows.Forms.DialogResult.OK) && !string.IsNullOrWhiteSpace(dialog.SelectedPath))
+                {
+                    pathComboBox.Text = dialog.SelectedPath;
+                    bool validStrongholdPath = Resolver.isValidSHCPath(dialog.SelectedPath);
+                    if (validStrongholdPath)
+                    {
+                        _vm.Preferences["knownPaths"] = _vm.StrongholdPaths;
+                        Resolver.WritePreferences(_vm.Preferences);
+                    }
+                }
+            }
+        }
         #endregion
 
         #region StartupConfig
