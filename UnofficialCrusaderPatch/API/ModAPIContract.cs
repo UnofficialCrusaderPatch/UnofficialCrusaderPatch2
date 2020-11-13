@@ -174,10 +174,13 @@ namespace UCP.API
                     mod.Install(Installer.crusaderArgs.Value);
                 }
             }
+            string errorMsg = Installer.WriteFinalize();
 
+            Installer.InitializeExtreme(config.Path);
             if (Installer.extremeArgs.HasValue)
             {
-                AICEnumerator.CreateEdit().Activate(Installer.extremeArgs.Value);
+                SubChange header = AICEnumerator.CreateEdit();
+                header?.Activate(Installer.extremeArgs.Value);
                 StartResourceEnumerator.DoChange(Installer.extremeArgs.Value);
                 StartTroopEnumerator.DoChange(Installer.extremeArgs.Value);
                 foreach (Mod mod in Mod.Items)
@@ -186,13 +189,14 @@ namespace UCP.API
                     mod.InstallExtreme(Installer.extremeArgs.Value);
                 }
             }
-            string errorMsg = Installer.WriteFinalize();
+            errorMsg += Installer.WriteFinalizeExtreme();
             return true;
         }
 
-        public static bool Uninstall()
+        public static bool Uninstall(UCPConfig config, bool overwrite = false, bool graphical = false)
         {
             //AIVEnumerator.Restore(SHCPATH);
+            Installer.RestoreOriginals(config.Path);
             return true;
         }
 

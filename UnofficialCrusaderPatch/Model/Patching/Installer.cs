@@ -67,6 +67,25 @@ namespace UCP.Model.Patching
             }
         }
 
+        public static void InitializeExtreme(string shcPath)
+        {
+            extremeFilePath = extremePath(shcPath);
+            extremefails.Clear();
+            SectionEditor.Reset();
+
+            // Read original data & perform section preparation adding .ucp section to binary
+            if (extremeFilePath != null)
+            {
+                extremeOriData = File.ReadAllBytes(extremeFilePath);
+                extremeData = (byte[])extremeOriData.Clone();
+                SectionEditor.Init(extremeData);
+                extremeArgs = new ChangeArgs(extremeData, extremeOriData);
+
+                // Change version display in main menu
+                MenuChange_XT.Activate(extremeArgs.Value);
+            }
+        }
+
         internal static string WriteFinalize()
         {
             if (crusaderArgs != null)
@@ -81,10 +100,31 @@ namespace UCP.Model.Patching
                 {
                     File.WriteAllBytes(crusaderFilePath + BackupFileEnding, crusaderOriData); // create backup
                 }
-                File.WriteAllBytes(crusaderFilePath + "test" + ".exe", crusaderData);
+                File.WriteAllBytes(crusaderFilePath, crusaderData);
             }
             string crusaderFailures = ListFailures(crusaderFilePath);
             return crusaderFailures;
+        }
+
+
+        internal static string WriteFinalizeExtreme()
+        {
+            if (extremeArgs != null)
+            {
+                // Write everything to file
+                extremeData = SectionEditor.AttachSection(extremeData);
+                if (extremeFilePath.EndsWith(BackupFileEnding))
+                {
+                    extremeFilePath = extremeFilePath.Remove(extremeFilePath.Length - BackupFileEnding.Length);
+                }
+                else
+                {
+                    File.WriteAllBytes(extremeFilePath + BackupFileEnding, extremeOriData); // create backup
+                }
+                File.WriteAllBytes(extremeFilePath, extremeData);
+            }
+            string extremeFailures = ListFailures(extremeFilePath);
+            return extremeFailures;
         }
 
 

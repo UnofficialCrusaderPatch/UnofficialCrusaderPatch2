@@ -329,7 +329,24 @@ namespace UCP.Views
             {
                 MessageBox.Show(exception.Message);
             }
-            
+        }
+
+        void OnUninstall(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ModAPIContract.Uninstall(new UCPConfig()
+                    .withAIV(GenerateAIVConfiguration())
+                    .withStartResource(GenerateStartResourceConfiguration())
+                    .withStartTroop(GenerateStartTroopConfiguration())
+                    .withAIC(GenerateAICConfiguration())
+                    .withGenericMods(GenerateModConfiguration())
+                    .withPath(_vm.StrongholdPath), false, true);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
         #endregion
 
