@@ -780,6 +780,30 @@ namespace UCP
             },
 
             // ladderman: 0xB55AF4 = soldier bool
+            
+            // 55DA88
+            new Change("u_spearmen_run", ChangeType.Troops, false)
+            {
+                new DefaultHeader("u_spearmen_run")
+                {
+                    new BinaryEdit("u_spearmen_run")
+                    {
+                        new BinSkip(5),
+                        
+                        new BinAddress("IsSelectableAddress", 3),
+                    
+                        new BinHook(7)
+                        {
+                            0x53, // push ebx
+                            0xBB, new BinRefTo("IsSelectableAddress", false), // mov ebx,IsSelectableAddress
+                            0x81, 0xC3, 0xA2, 0x00, 0x00, 0x00, // add ebx,A2
+                            0x66, 0xC7, 0x04, 0x18, 0x02, 0x00, // mov word ptr [eax+ebx],0002
+                            0x5B, // pop ebx
+                            0x66, 0x89, 0x90, new BinRefTo("IsSelectableAddress", false), //mov [eax+IsSelectableAddress],dx 
+                        }
+                    }
+                }
+            },
 
             #endregion
 
