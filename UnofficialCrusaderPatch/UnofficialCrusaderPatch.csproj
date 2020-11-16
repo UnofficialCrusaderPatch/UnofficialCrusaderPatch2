@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -152,7 +152,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_attr.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_fn.block" />
     <EmbeddedResource Include="CodeBlocks\ai_fix_laddermen_with_enclosed_keep.block" />
+    <EmbeddedResource Include="CodeBlocks\o_fix_fletcher_bug.block" />
+    <EmbeddedResource Include="CodeBlocks\o_fix_baker_disappear.block" />
+    <EmbeddedResource Include="CodeBlocks\o_fix_moat_digging_unit_disappearing.block" />
     <EmbeddedResource Include="CodeBlocks\o_override_identity_menu.block" />
     <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_ally_name.block" />
@@ -171,6 +177,7 @@
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix5.block" />
     <EmbeddedResource Include="CodeBlocks\u_fireballistatunneler.block" />
     <EmbeddedResource Include="CodeBlocks\u_spearmen_run.block" />
+    <EmbeddedResource Include="CodeBlocks\u_tanner_fix.block" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -1528,6 +1535,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Localization\Chinese.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CodeBlocks\o_fix_fletcher_bug.block" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using UCP.AIV;
@@ -289,6 +289,132 @@ namespace UCP
                         new BinBytes(0x6A, 0x01),
                     }
 
+                }
+            },
+            
+            // Fix tanner going back to her hut without cow
+            // Block starts: 559C49
+            new Change("u_tanner_fix", ChangeType.Bugfix, true)
+            {
+                // 559C7A
+                new DefaultHeader("u_tanner_fix")
+                {
+
+                    new BinaryEdit("u_tanner_fix")
+                    {
+                        new BinAddress("unitBaseAddress", 52, false),
+                        new BinSkip(37), // 49
+                        new BinAddress("someCowData", 2, false),
+                        new BinHook(6)
+                        {
+                            0x81, 0xBD, new BinRefTo("someCowData", false), 0x00, 0x00, 0x00, 0x00, // cmp [ebp+someCowData],00000000
+                            0x75, 0x0E, // jne 0x0E
+                            0x66, 0xC7, 0x86, new BinRefTo("unitBaseAddress", false), 0x01, 0x00, // mov word ptr [esi+unitBaseAddress],0001
+                            0x5F, // pop edi
+                            0x5E, // pop esi
+                            0x5D, // pop ebp
+                            0x5B, // pop ebx
+                            0xC3, // ret
+                            0x3B, 0x8D, new BinRefTo("someCowData", false) // cmp ecx,[ebp+someCowData]
+                        },
+                        new BinSkip(6),
+                        new BinHook(8)
+                        {
+                            0x66, 0x83, 0xBD, new BinRefTo("unitBaseAddress", false), 0x00, // cmp word ptr [ebp+unitBaseAddress],00
+                            0x74, 0x19, // je short 0x19
+                            0x66, 0x81, 0xBE, new BinRefTo("unitBaseAddress", false), 0x02, 0x00, // cmp word ptr [esi+unitBaseAddress],0002
+                            0x75, 0x0E, // jne short 0x0E
+                            0x66, 0xC7, 0x86, new BinRefTo("unitBaseAddress", false), 0x01, 0x00, // mov word ptr [esi+unitBaseAddress],0001
+
+                            0x5F, // pop edi
+                            0x5E, // pop esi
+                            0x5D, // pop ebp
+                            0x5B, // pop ebx
+                            0xC3, // ret
+                        }
+                    }
+                }
+            },
+          
+            /*
+             * Fletcher bugfix 
+             */
+            new Change("o_fix_fletcher_bug", ChangeType.Bugfix)
+            {
+                new DefaultHeader("o_fix_fletcher_bug")
+                {
+                    new BinaryEdit("o_fix_fletcher_bug")
+                    {
+                        new BinSkip(0x1E), // skip 30 bytes
+                        new BinBytes(0x01) // set state to 1 instead of 3
+
+                    }
+                }
+            },
+          
+            // Fix AI crusader archers not lighting pitch
+            new Change("ai_fix_crusader_archers_pitch", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("ai_fix_crusader_archers_pitch")
+                {
+
+                    new BinaryEdit("ai_fix_crusader_archers_pitch_fn")
+                    {
+                        new BinLabel("CheckFunction")
+                    },
+
+                    new BinaryEdit("ai_fix_crusader_archers_pitch_attr")
+                    {
+                        new BinAddress("UnitAttributeOffset",43)
+                    },
+                    
+                    new BinaryEdit("ai_fix_crusader_archers_pitch")
+                    {
+                        new BinAddress("CurrentTargetIndex",2),
+                        new BinSkip(23),
+                        new BinHook(7)
+                        {
+                            0x55, // push ebp
+                            0x51, // push ecx
+                            0xBE, 0x5B, 0x00, 0x00, 0x00, // mov esi,5B
+                            0xE8, new BinRefTo("CheckFunction"),
+                            0xA1, new BinRefTo("CurrentTargetIndex", false),
+                            0x69, 0xC0, 0x90, 0x04, 0x00, 0x00, // imul eax,eax,490
+                            0x0F, 0xB7, 0x80, new BinRefTo("UnitAttributeOffset", false),
+                        }
+                    }
+                }
+            },
+          
+            // Fix baker disappear bug
+            new Change("o_fix_baker_disappear", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_baker_disappear")
+                {
+                    new BinaryEdit("o_fix_baker_disappear") // 5774A
+                    {
+                        new BinSkip(19),
+                        new BinNops(9)
+                    }
+                }
+            },
+          
+            // Fix moat digging unit disappearing
+            new Change("o_fix_moat_digging_unit_disappearing", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_moat_digging_unit_disappearing")
+                {
+
+                    new BinaryEdit("o_fix_moat_digging_unit_disappearing")
+                    {
+                        new BinAddress("skip", 11),
+                        new BinHook(9)
+                        {
+                            0x83, 0xBC, 0x30, 0xD4, 0x08, 0x00, 0x00, 0x7D, // cmp dword ptr [eax+esi+8D4],7D
+                            0x74, 0x09, // je short 9
+                            0x66, 0x83, 0xBC, 0x30, 0xA8, 0x06, 0x00, 0x00, 0x01
+                        }
+                    }
                 }
             },
             #endregion
