@@ -21,88 +21,73 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link string" href="index.html">ucp-home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="getting-started.html">Getting Started</a>
+                        <a class="nav-link string" href="getting-started.html">ucp-getting-started</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="features.html">Features</a>
+                        <a class="nav-link string" href="features.html">ucp-features</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        AI Character Introduction
-                      </a>
+                        <a class="nav-link dropdown-toggle string" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ucp-ai-intro</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="aic/overview.html">Overview</a>
+                            <a class="dropdown-item string" href="aic/overview.html">ucp-aic-overview</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="aic/detailed.html">AI Personality Values</a>
-                            <a class="dropdown-item" href="aic/field-values.html">AIC Field Values</a>
+                            <a class="dropdown-item string" href="aic/detailed.html">ucp-aic-personality</a>
+                            <a class="dropdown-item string" href="aic/field-values.html">ucp-aic-fields</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">AI Castle Introduction <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#"><span class="string">ucp-aiv-intro</span><span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contributing.html">Contributing</a>
+                        <a class="nav-link string" href="contributing.html">ucp-contributing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
+                        <a class="nav-link string" href="faq.html">ucp-faq</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <div class="header">
-            <h4 class="text-center">Unofficial Crusader Patch Latest Version: UCP 2.14 
+            <h4 class="text-center"><span class="string">ucp-latest-version</span>
                     <a href="https://github.com/Sh0wdown/UnofficialCrusaderPatch"><i class="fab fa-github"></i></a>
-                    <a class="latest-release" href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/tag/v2.14">changelog</a> 
-                    <a class="latest-release" href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/download/v2.14/UnofficialCrusaderPatch_v2.14.zip">download</a>
+                    <a class="latest-release string" href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/tag/v2.14">ucp-changelog</a> 
+                    <a class="latest-release string" href="https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases/download/v2.14/UnofficialCrusaderPatch_v2.14.zip">ucp-download</a>
                 </h4>
         </div>
         <hr class="header-divider">
         <div id="feature-header">
-            <h4 class="text-center">An Introduction to AI Character Castles</h4>
+            <h4 class="text-center string">ucp-aiv-title</h4>
             <h6 class="text-center"><br>
-                <i class="fas fa-download"></i>  Download
-                <a href="http://stronghold.heavengames.com/downloads/getfile.php?id=7534&dd=1&s=0d0177bca23f6e96037b2db2b895c38f">
-                    AIV Editor Tool
-                </a> from <i>Stronghold Heaven</i>
+                <i class="fas fa-download"></i>  <span class="string">ucp-aiv-download-editor</span>
             </h6>
         </div>
 
         <div id="feature-content" class="">
 
             <div class="card contributing-step">
-                <h5>AI Castles at a Glance</h5>
+                <h5 class="string">ucp-aiv-overview-title</h5>
                 <hr class="contributing-step-divider">
-                <div class="card-body contributing-step-body">
-                    Each AI character in Stronghold Crusader comes with a preinstalled set of 8 different castles. 
-                    These provided castles apply to both Stronghold Crusader and Stronghold Crusader Extreme.
-                    The castle in a format known as aiv files, and these are stored in the <i>aiv</i> subfolder of your installation.
-                    They are named <i>&lt;aicharacter&gt;X.aiv</i> where <i>aicharacter</i> is the name of the character, and X is a number from 1 to 8 (ie snake1.aiv). 
-                    When a match starts, the AI decides randomly (and also based on map size and terrain) which castle to build.
-                </div>
+                <div class="card-body contributing-step-body string">ucp-aiv-overview-body</div>
             </div>
 
             <div class="card contributing-step">
-                <h5>Customizing the AI's castles</h5>
+                <h5 class="string">ucp-aiv-customize-title</h5>
                 <hr class="contributing-step-divider">
                 <div class="card-body contributing-step-body">
-                    By using the AIV Editor Tool it is possible to create your own customized castles for your favourite AI characters.
-                    A few considerations to keep in mind:
+                    <span class="string">ucp-customize-body-lead</span>
                     <ul>
-                        <li>Try and keep the number of build steps low to make it harder for players to rush the AI</li>
-                        <li>Place more vital and more expensive buildings early in case the AI uses up the necessary resources and 
-                            is therefore handicapped. An example of this is the cathedral - the AI should build this early when it has lots of gold
-                            else it may begin recruiting troops, never reach the required gold, and never finish building its castle.
-                        </li>
-                        <li>Having multiple entrances to a castle can increase efficiency of resource production
+                        <li class="string">ucp-aiv-customize-body-item-1</li>
+                        <li class="string">ucp-aiv-customize-body-item-2</li>
+                        <li><span class="string">ucp-aiv-customize-body-item-3</span>
                             <ul>
-                                <li>Workers have to travel less to reach stockpile</li>
-                                <li>Resource production can continue while under siege if it has an entrance on the opposite side</li>
+                                <li class="string">ucp-aiv-customize-body-item-3-subitem-1</li>
+                                <li class="string">ucp-aiv-customize-body-item-3-subitem-2</li>
                             </ul>
                         </li>
-                        <li>Be sure to include the necessary buildings for the AI's production chains (ie. breweries and inns for ale production)</li>
+                        <li class="string">ucp-aiv-customize-body-item-4</li>
                     </ul>
                 </div>
             </div>
@@ -117,5 +102,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="assets/js/strings.js"></script>
 
 </html>

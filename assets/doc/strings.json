@@ -1,0 +1,114 @@
+{
+    "ucp-home": "Home",
+    "ucp-getting-started": "Getting Started",
+    "ucp-features": "Features",
+    "ucp-ai-intro": "AI Character Introduction",
+    "ucp-aic-overview": "Overview",
+    "ucp-aic-personality": "AI Personality Values",
+    "ucp-aic-fields": "AIC Field Values",
+    "ucp-aiv-intro": "AI Castle Introduction",
+    "ucp-contributing": "Contributing",
+    "ucp-faq": "FAQ",
+    "ucp-welcome": "Welcome to the Unofficial Crusader Patch",
+    "ucp-version": "Latest Version: UCP 2.14 ",
+    "ucp-changelog": "changelog",
+    "ucp-download": "download",
+    "ucp-highlights": "Feature Highlights",
+    "ucp-latest-version": "Unofficial Crusader Patch Latest Version: UCP 2.14 ",
+
+
+
+    "ucp-highlight-title-1": "Improve attack waves",
+    "ucp-highlight-body-1": "Lets AI attack units target civil and fortification buildings, as well as wall parts which are already being attacked by one unit. Also lets AI send more troops to attack enemy lord once a breach is detected.",
+    "ucp-highlight-title-2": "No AI demolishing of inaccessible buildings",
+    "ucp-highlight-body-2": "Prevents the AI from demolishing buildings when it has no access. This stops AI from continuously demolishing and rebuilding buildings where it has no access point.",
+    "ucp-highlight-title-3": "Fix reinforcement of defense troops",
+    "ucp-highlight-body-3": "Fixes bug where AI fails to reinforce missing troops on walls and/or towers when defensive patrols are still active. Probability for AIs to recruit defensive troops is increased (from zero for some AIs).",
+    "ucp-highlight-title-4": "Quicker gate responsiveness",
+    "ucp-highlight-body-4": "Gates close later when enemies in range, and open faster when danger is gone. Enemy distance for gate to close is reduced from 200 to 140. Delay for opening gate when enemy is no longer present is reduced from 1200 to 100.",
+    "ucp-highlight-more": "View full descriptions of all features",
+
+
+
+
+    "ucp-changelog-title": "Changelog",
+    "ucp-changelog-body": "We've made changes and improvements to how some parts of the patcher work internally to make the process <b>more convenient and reliable</b> for you. We hope this will make it a more enjoyable experience. Feel free to contribute or suggest ideas on <a href=\"https://github.com/Sh0wdown/UnofficialCrusaderPatch\"></i>GitHub</a> or join the <a href=\"https://discord.gg/vmy7CBR\">official UCP discord server</a>",
+
+    "ucp-new-features-title": "New Features and Improvements",
+    "ucp-new-features-body-1": "In the new <b>StartTroops</b> tab, you will be able to select a starting unit configuration for all AI Lords as well as your Crusader or European Lord",
+    "ucp-new-features-body-2": "In the new <b>StartGoods</b> tab, you will be able to select a starting resource configuration that will apply for yourself and all other human or AI players.",
+    "ucp-new-features-body-3": "You are able to now load AIV sets into the patcher by creating a subfolder with the name of your AIV set inside the <code>resources\\aiv</code> folder",
+    "ucp-new-features-body-4": "If you select multiple AICs that have the same characters defined, the one you select first will be given priority and the other ones will show a warning indicating which AI Character definitions will not be used",
+    "ucp-new-features-body-5": "The format of AIC files has changed - the patcher is now using a JSON format with <code>.json</code> file extension",
+    "ucp-new-changelog-full": "View full changelog here",
+    "ucp-new-changes-title": "Changes to the Patcher",
+    "ucp-new-changes-body-1": "AIC files no longer go into an <code>aic</code> subfolder inside your Stronghold Crusader installation directory",
+    "ucp-new-changes-body-2": "In this version, the Unofficial Crusader Patch comes with a new folder structure. All content files (including AIC and AIV files) that are to be used/installed by the patcher go into a <code>resources\\&lt;config type&gt;</code> subfolder inside the patcher directory. For example your AIC files will go into the <code>resources\\aic</code> folder",
+    "ucp-new-changes-body-3": "AIC files are now in JSON format and with <code>.json</code> file extension. Old AIC files can be converted by the patcher",
+    "ucp-new-changes-body-4": "AIC and AIV sets bundled with the UCP have been updated to the newest versions",
+    "ucp-new-changes-body-5": "It is now again possible to select multiple AICs for installation at once",
+    "ucp-new-using-title": "Using the Patcher",
+    "ucp-new-using-language-title": "Language support",
+    "ucp-new-using-language-body-1": "An issue where sharing <code>ucp.cfg</code> (config) files between persons with different locales would cause crashes or otherwise not work properly has been resolved. Please note that any decimal values in the ucp.cfg must now use a dot (.) as the decimal separator to be interpreted correctly",
+    "ucp-new-using-language-body-2": "Translations for Chinese and Hungarian have been added",
+    "ucp-new-using-install-title": "Installation",
+    "ucp-new-using-install-body": "There is now a <b>command line tool</b> that can be used for quicker or custom installation (see <a href=\"(https://sh0wdown.github.io/UnofficialCrusaderPatch/getting-started.html\">installation steps</a> for details)",
+
+
+
+
+    "ucp-about-title": "About the Unofficial Crusader Patch (UCP)",
+    "ucp-about-body": "This project is an unofficial patcher for FireFly Studio's game Stronghold Crusader 1. It features bug-fixes, balancing and quality-of-life changes, as well as several AIV castles. To apply this patch you need to have Stronghold Crusader installed. The setup does not include any files created by FireFly Studios, but instead edits them or adds community-made files.",
+
+    "ucp-quick-start-title": "Quick Start",
+    "ucp-quick-start-body": "To install the patch download the latest Unofficial Crusader Patch release, copy to your Stronghold Crusader installation, and install. Detailed instructions are available <a href=\"getting-started\">here</a>. The patcher selects commonly used settings by default but you may select/deselect features to install as you desire.",
+
+    "ucp-multiplayer-title": "Multiplayer",
+    "ucp-multiplayer-body": "Multiplayer works fine with the UCP installed as long as everyone playing has the same options selected. However, having different features enabled, or specific features such as changing Player 1's color or Activate Spectator Mode will cause crash or desync in multiplayer!",
+
+    "ucp-compatibility-title": "Compatibility",
+    "ucp-compatibility-body": "The UnofficialCrusaderPatch should work for most Crusader versions, but the latest <a href=\"http://www.strongholdcrusaderhd.com/game.html\">1.41 HD version</a> is recommended. If your version is not supported, which can happen if you install it from a CD for example, you should receive errors during the installation. To avoid this you can install FireFly's Crusader HD patch for free, which should support all of the unofficial changes.",
+
+
+    "ucp-contributions-title": "Suggestions and Contributing",
+    "ucp-contributions-body": "If you have suggestions, you are welcome to post new ideas or discuss already existing ones in the issues section on <a href=\"https://github.com/Sh0wdown/UnofficialCrusaderPatch/issues\">GitHub</a>. The following guidelines apply:",
+    "ucp-contributions-body-item-1": "First check if your suggestion already has a topic and join that discussion instead of creating a new one",
+    "ucp-contributions-body-item-2": "Please post one idea per issue to keep it clear and easier to address",
+    "ucp-contributions-body-item-3": "Keep the tone nice and civil",
+
+
+
+    "ucp-aiv-title": "An Introduction to AI Character Castles",
+    "ucp-aiv-download-editor": "Download <a href=\"http://stronghold.heavengames.com/downloads/getfile.php?id=7534&dd=1&s=0d0177bca23f6e96037b2db2b895c38f\">AIV Editor Tool</a> from <i>Stronghold Heaven</i>",
+    "ucp-aiv-overview-title": "AI Castles at a Glance",
+    "ucp-aiv-overview-body": "Each AI character in Stronghold Crusader comes with a preinstalled set of 8 different castles. These provided castles apply to both Stronghold Crusader and Stronghold Crusader Extreme. The castle in a format known as aiv files, and these are stored in the <i>aiv</i> subfolder of your installation. They are named <i>&lt;aicharacter&gt;X.aiv</i> where <i>aicharacter</i> is the name of the character, and X is a number from 1 to 8 (ie snake1.aiv). When a match starts, the AI decides randomly (and also based on map size and terrain) which castle to build.",
+    "ucp-aiv-customize-title": "Customizing the AI's castles",
+    "ucp-aiv-customize-body-lead": "By using the AIV Editor Tool it is possible to create your own customized castles for your favourite AI characters.<br>A few considerations to keep in mind:",
+    "ucp-aiv-customize-body-item-1": "Try and keep the number of build steps low to make it harder for players to rush the AI",
+    "ucp-aiv-customize-body-item-2": "Place more vital and more expensive buildings early in case the AI uses up the necessary resources and is therefore handicapped. An example of this is the cathedral - the AI should build this early when it has lots of gold else it may begin recruiting troops, never reach the required gold, and never finish building its castle.",
+    "ucp-aiv-customize-body-item-3": "Having multiple entrances to a castle can increase efficiency of resource production",
+    "ucp-aiv-customize-body-item-3-subitem-1": "Workers have to travel less to reach stockpile",
+    "ucp-aiv-customize-body-item-3-subitem-2": "Resource production can continue while under siege if it has an entrance on the opposite side",
+    "ucp-aiv-customize-body-item-4": "Be sure to include the necessary buildings for the AI's production chains (ie. breweries and inns for ale production)",
+
+
+
+
+    "ucp-contributing-title": "Learning the Code: A Contributor's Tutorial",
+    "ucp-contributing-credit": "An adaptation of <a href=\"https://github.com/Sh0wdown/UnofficialCrusaderPatch/wiki/Contributor-Tutorial:-Learn-the-code\">this tutorial</a> made by @LordHansCapon",
+    "ucp-contributing-prereq-note": "<i>Note: This tutorial assumes you are familiar with how to setup an environment, GIT, and other fundamentals</i>",
+    "ucp-contributing-prereq-title": "Prerequisites",
+    "ucp-contributing-prereq-body": "Environment setup is the first step. Below are three suggested development environments but feel free to use whatever suits your preferences.<ul><li>JetBrains Rider</li><li>Visual Studio Code</li><li>Visual Studio</li></ul>",
+    "ucp-contributing-first-steps-title": "First Steps",
+    "ucp-contributing-first-steps-body-step-1": "Download the repository by cloning, directly downloading or forking it.",
+    "ucp-contributing-first-steps-body-step-2": "Open the project, there are 4 projects in the solution, select the UnofficialCrusaderPatch one.",
+    "ucp-contributing-first-steps-body-step-3": "Setup your Run/Debug Configurations. In JetBrains, double tap Shift, then type in Edit Configurations. It will automatically create a Default .NET project run/debug configuration, you can press Apply & OK, the default should be fine. If it is not, then be sure the target framework is .NET v4.0.",
+    "ucp-contributing-first-steps-body-step-4": "To compile, you will need Evrey's AIV files, so head to this link: https://github.com/Evrey/SHC_AIV Download Evrey's SHC_AIV project as a ZIP, extract firefly_fixed, history, skirmish into the UnofficialCrusaderPatch/SHC_AIV folder. Yes, you have to create the SHC_AIV folder first.",
+    "ucp-contributing-first-steps-body-complete": "If everything is done correctly, you can compile and run the software. Now this is where the fun begins.",
+
+
+
+    "ucp-faq-title": "Frequently Asked Questions",
+    "ucp-faq-any-questions": "Have any questions?",
+    "ucp-faq-visit-discord": "Visit the Unofficial Crusader Patch discord <a href=\"https://discord.gg/vmy7CBR\"><img src=\"https://discordapp.com/api/guilds/426318193603117057/widget.png?style=shield\"></a> and ask away!"
+}
