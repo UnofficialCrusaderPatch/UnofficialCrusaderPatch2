@@ -117,5 +117,14 @@ jobs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: BinariesRelease
-        path: OutputRelease
+        name: UCP-latest-release
+        path: |
+          OutputRelease/*.dll
+          OutputRelease/*.exe
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: UCP-latest-debug
+        path: |
+          OutputDebug
