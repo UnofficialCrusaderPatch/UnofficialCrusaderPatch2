@@ -1,3 +1,5 @@
+# gynt: I disabled all certificate related stuff.
+
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -36,7 +38,7 @@
 # For a complete CI/CD sample to get started with GitHub Action workflows for Desktop Applications,
 # refer to https://github.com/microsoft/github-actions-for-desktop-apps
 
-name: .NET Core Desktop
+name: UCP Build
 
 on:
   push:
@@ -110,9 +112,6 @@ jobs:
     # Remove the pfx
     # - name: Remove the pfx
     #   run: Remove-Item -path $env:Wap_Project_Directory\$env:Signing_Certificate
-
-    - name: list contents
-      run: dir
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v2
