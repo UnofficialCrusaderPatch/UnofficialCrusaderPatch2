@@ -195,14 +195,8 @@ namespace UCP.AIV
 
                         foreach (string aivFile in destinationDir.GetFiles().ToList().Where(x => x.Name.EndsWith(".aiv")).Select(x => x.Name))
                         {
-                            using (Stream dstStream =
-                                new FileInfo(Path.Combine(backupDir.FullName, aivFile)).OpenWrite())
-                            {
-                                using (Stream srcStream = new FileInfo(Path.Combine(destinationDir.FullName, aivFile)).OpenRead())
-                                {
-                                    srcStream.CopyTo(dstStream);
-                                }
-                            }
+                            FileInfo srcFile = new FileInfo(Path.Combine(destinationDir.FullName, aivFile));
+                            srcFile.MoveTo(Path.Combine(backupDir.FullName, aivFile));
                         }
                     }
                     else if (result == MessageBoxResult.No) // Clear destination aiv folder of aiv files.
