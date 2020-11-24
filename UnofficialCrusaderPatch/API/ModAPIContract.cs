@@ -193,9 +193,9 @@ namespace UCP.API
             return true;
         }
 
-        public static bool Uninstall(UCPConfig config, bool overwrite = false, bool graphical = false)
+        public static bool Uninstall(UCPConfig config)
         {
-            //AIVEnumerator.Restore(SHCPATH);
+            AIVEnumerator.Uninstall(config.Path);
             Installer.RestoreOriginals(config.Path);
             return true;
         }

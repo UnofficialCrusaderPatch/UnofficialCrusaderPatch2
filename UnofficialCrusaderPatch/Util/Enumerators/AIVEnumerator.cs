@@ -75,9 +75,29 @@ namespace UCP.AIV
             change.CopyAIVs(new DirectoryInfo(Path.Combine(path, "aiv")), overwrite, graphical);
         }
 
-        internal static void Uninstall()
+        internal static void Uninstall(string path)
         {
+            DirectoryInfo destinationDir = new DirectoryInfo(Path.Combine(path, "aiv"));
+            DirectoryInfo backupDir = new DirectoryInfo(Path.Combine(destinationDir.FullName, "original"));
+            if (!backupDir.Exists)
+            {
+                return;
+            } else
+            {
+                foreach (FileInfo file in destinationDir.GetFiles())
+                {
+                    if (file.Extension.Equals(".aiv"))
+                    {
+                        file.Delete();
+                    }
+                }
 
+                foreach (FileInfo file in backupDir.GetFiles())
+                {
+                    file.MoveTo(Path.Combine(destinationDir.FullName, Path.GetFileName(file.Name)));
+                }
+                backupDir.Delete();
+            }
         }
 
         private static AIVChange CreateDefault(string identifier, bool enabledDefault = false)
