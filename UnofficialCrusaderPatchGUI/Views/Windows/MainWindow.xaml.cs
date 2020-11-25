@@ -341,7 +341,7 @@ namespace UCP.Views
                     .withStartTroop(GenerateStartTroopConfiguration())
                     .withAIC(GenerateAICConfiguration())
                     .withGenericMods(GenerateModConfiguration())
-                    .withPath(_vm.StrongholdPath), false, true);
+                    .withPath(_vm.StrongholdPath));
             }
             catch (Exception exception)
             {

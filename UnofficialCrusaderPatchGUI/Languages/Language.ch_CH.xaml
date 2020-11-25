@@ -1,0 +1,170 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib" >
+
+    <system:String x:Key="中文">中文</system:String>
+    <system:String x:Key="o_fix_fletcher_bug">Fix fletcher bug</system:String>
+    <system:String x:Key="o_fix_fletcher_bug_descr">Fixes the behaviour where the fletcher goes back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile.</system:String>
+    <system:String x:Key="ai_fix_crusader_archers_pitch">Fix AI crusader archers not lighting pitch</system:String>
+    <system:String x:Key="ai_fix_crusader_archers_pitch_descr">Fixes the AI crusader archers not lighting pitch like arabian archers do when enemy units get onto it.</system:String>
+    <system:String x:Key="o_fix_baker_disappear">Fix baker disappear bug</system:String>
+    <system:String x:Key="o_fix_baker_disappear_descr">Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile.</system:String>
+    <system:String x:Key="o_fix_moat_digging_unit_disappearing">Fix moat digging units disappear bug</system:String>
+    <system:String x:Key="o_fix_moat_digging_unit_disappearing_descr">Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!</system:String>
+    <system:String x:Key="ui_welcometext">Ez egy nem hivatalos patch a Stronghold Crusader játékhoz.A Projekt nyílt forráskódú, ami megtalálható a [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch) weboldalon.Elméletben minden Crusader verzió támogatott, viszont a változtatások eredetileg a 1.41 Steames verzióhoz lettek készítve.Azonban ha a játék verziód nem kompatibilis, a telepítő hibaüzenetet fog megjeleníteni. A telepített patch-verzió a főmenü bal alsó sarkában fog megjelenni.Minden változtatás előtt Backup fájl készül, ami visszaállítható a 'Eltávolítás' gombra kattintva vagy manuálisan visszahelyezhető.Az Unofficial Crusader Patch csapatUCP program alkotójaProjektvezetőkFejlesztőkFordítókTartalom készítőkKülön köszönet nekik:a Stronghold széria létrehozásáértTovábbá külön köszönet:</system:String>
+    <system:String x:Key="ui_StartTroops">Kezdőegységek</system:String>
+    <system:String x:Key="ui_Resource">Kezdőkészlet</system:String>
+    <system:String x:Key="A konfliktusok figyelmen kívül lesznek hagyva"></system:String>
+    <system:String x:Key="o_shfy">Strongholdify</system:String>
+    <system:String x:Key="o_shfy_beer">Sör általi népszerűségi bónusz</system:String>
+    <system:String x:Key="o_shfy_beer_descr"></system:String>
+    <system:String x:Key="o_shfy_religion">Templom és Katedrális általi népszerűségi bónusz</system:String>
+    <system:String x:Key="o_shfy_religion_descr"></system:String>
+    <system:String x:Key="o_shfy_peasantspawnrate">Parasztok érkezésének sebessége</system:String>
+    <system:String x:Key="o_shfy_peasantspawnrate_descr"></system:String>
+    <system:String x:Key="o_shfy_resourcequantity">Leszállított erőforrások mennyisége</system:String>
+    <system:String x:Key="o_shfy_resourcequantity_descr">A felsorolt szempontokat a Stronghold 1-hez igazítja. Vigyázat: Minden változtatás hatással van az MI Lordokra, a legrosszabb esetben haszontalanná teszi őket!</system:String>
+    <system:String x:Key="o_armory_marketplace_weapon_order_fix">Egységesített fegyverelhelyezés</system:String>
+    <system:String x:Key="o_armory_marketplace_weapon_order_fix_descr">Egységesíti a fegyver ikonok elhelyezkedését a fegyverraktárban és a piacban. A bőrpáncél a buzogány és számszeríj között lesz, míg a vaspáncél a dárda és kard között, hogy könnyebben megtalálható legyen a piacban való kereséskor.</system:String>
+    <system:String x:Key="ai_fix_laddermen_with_enclosed_keep"></system:String>
+    <system:String x:Key="ai_fix_laddermen_with_enclosed_keep_descr"></system:String>
+    <system:String x:Key="o_override_identity_menu">Override the Set-up Identity menu adding new features
+    </system:String>
+    <system:String x:Key="o_override_identity_menu_descr">Adds Ranged and Melee unit selection to Set-up Identity menu. ONLY FOR NORMAL GAME MODE!
+    </system:String>
+    <system:String x:Key="o_default_multiplayer_speed">Set default multiplayer speed.</system:String>
+    <system:String x:Key="o_default_multiplayer_speed_descr"></system:String>
+    <system:String x:Key="u_fireballistafix">Fire ballistas shoot monks and tunnelers</system:String>
+    <system:String x:Key="u_fireballistafix_descr">Fire ballistas automatically shoot at monks and tunnelers.</system:String>
+    <system:String x:Key="ui_browsepath">Kérjük adja meg a Stronghold Crusader telepítési könyvtárát.</system:String>
+    <system:String x:Key="ui_aicoldversion">Régi verzió észlelve. Kattintson a konvertáláshoz</system:String>
+    <system:String x:Key="ui_aicofferconvert">AIC fájlok konvertálása az új verzióhoz?</system:String>
+    <system:String x:Key="ui_aicconvertprompt">AIC konvertálás</system:String>
+    <system:String x:Key="ui_aicselect">Kérjük először szüntesse meg a többi AIC fájl(ok) kiválasztását. Az alábbi aic karakterek vannak kijelölve:</system:String>
+    <system:String x:Key="o_firecooldown">Eloltott épületek tűzálló időtartamának megnövelése</system:String>
+    <system:String x:Key="o_firecooldown_descr">Itt meghosszabbítható az az időtartam, amely alatt az eloltott épületek nem tudnak újra kigyulladni.</system:String>
+    <system:String x:Key="u_ballistamonk">A tűzhajítógépek lőnek a szerzetesekre</system:String>
+    <system:String x:Key="u_ballistamonk_descr">A tűzhajítógépek automatikusan lőnek a szerzetesekre is.</system:String>
+    <system:String x:Key="aiv_EvreyHistory">Evrey történelmi MI várak</system:String>
+    <system:String x:Key="aiv_EvreyHistory_descr">Minden MI Lordnak ad egy új várat, ami a Lordhoz illő, valós történelmi várról, városról lett mintázva. [Készítette: Evrey](https://github.com/Evrey/SHC_AIV/)</system:String>
+    <system:String x:Key="ui_AIC">AIC</system:String>
+    <system:String x:Key="ui_aicExport">Exportálás</system:String>
+    <system:String x:Key="ui_aicExport_success">Exportálás sikeresen befejezve.</system:String>
+    <system:String x:Key="ui_aicHint">Exportálja a .aic fájlokat a telepítőből a Crusader mappába.</system:String>
+    <system:String x:Key="Name">Unofficial Crusader Patcher</system:String>
+    <system:String x:Key="u_ArabXBow">Megnövelt védelem az arab szablyás egységnek a számszeríj nyílvessző ellen</system:String>
+    <system:String x:Key="u_arabxbow_descr">
+        - Arabic Swordsmen only die after 6 crossbow hits intead of 3
+    </system:String>
+    <system:String x:Key="u_ArabWall">Az arab szablyás gyorsabban rombolja le a várfalat</system:String>
+    <system:String x:Key="u_ArabWall_descr">Az eredeti játékban az arab szablyás rombolja le a várfalat a leglassabban a közelharci egységek közül. A lerombolás sebessége ezentúl kb. megkétszereződik, így épphogy jobb lesz a lándzsás egységnél.</system:String>
+    <system:String x:Key="u_spearmen">Megnövelt védelem a lándzsás egységnek a távolsági egységek ellen</system:String>
+    <system:String x:Key="u_spearmen_descr" xml:space="preserve">- Spearmen only die after 5 arrow hits instead of 3
+- Spearmen barely survive one crossbow hit, instead of getting one-shot</system:String>
+    <system:String x:Key="ai_buy">Javított piac elhelyezés az MI Lordoknak</system:String>
+    <system:String x:Key="ai_buy_descr">Az eredeti játékban egyes új MI Lordok nem helyezik jól el a piacot.Az alábbi javítások lesznek ezentúl érvényesek:</system:String>
+    <system:String x:Key="ui_error">Hiba</system:String>
+    <system:String x:Key="ui_SearchPath"></system:String>
+    <system:String x:Key="ui_search">Keresés</system:String>
+    <system:String x:Key="ui_continue">Tovább</system:String>
+    <system:String x:Key="ui_wrongpath">A Stronghold Crusader nem található a megadott elérési útvonalon!</system:String>
+    <system:String x:Key="ui_back">Vissza</system:String>
+    <system:String x:Key="ui_install">Telepítés</system:String>
+    <system:String x:Key="ui_finished">Kész</system:String>
+    <system:String x:Key="ui_chooseLangTitle">Telepítő Nyelve</system:String>
+    <system:String x:Key="ui_chooseLang">Kérjük válasszon ki egy nyelvet a telepítéshez a lent megjelenített listából.</system:String>
+    <system:String x:Key="ui_accept">OK</system:String>
+    <system:String x:Key="ui_cancel">Mégsem</system:String>
+    <system:String x:Key="ui_uninstall">Eltávolítás</system:String>
+    <system:String x:Key="ui_uninstalldone">Eltávolítás befejezve.</system:String>
+    <system:String x:Key="ai_recruitinterval">Megnövelt toborzási sebesség</system:String>
+    <system:String x:Key="ai_recruitinterval_descr">Átállítja minden MI Lordnak a toborzási intervallumát a legkisebb értékre. (Patkány/Richárd szint)</system:String>
+    <system:String x:Key="ai_recruitsleep">Deaktiválja minden MI Lordnak a toborzási szünetét</system:String>
+    <system:String x:Key="ai_attacklimit">Megnövelt támadó egység limit az MI Lordoknak</system:String>
+    <system:String x:Key="ai_attacklimit_descr">Az eredeti játékban a további egységek limitje, akik az első támadás után csatlakoznak 200-ra van korlátozva. Itt tudod megváltoztatni ezt a korlátozást.</system:String>
+    <system:String x:Key="o_gamespeed">Bővített játéksebesség limit</system:String>
+    <system:String x:Key="o_gamespeed_descr">A játéksebességet mostantól a következőképpen lehet megváltoztatni:Az új értékek elérhetők a játékban a +- billentyűk segítségével, a csúszka a játékmenüben változatlanul maradt.</system:String>
+    <system:String x:Key="ui_bugfix">Hibajavítások</system:String>
+    <system:String x:Key="ui_ailords">MI Lordok</system:String>
+    <system:String x:Key="ui_troops">Egységek</system:String>
+    <system:String x:Key="ui_other">Egyéb</system:String>
+    <system:String x:Key="o_responsivegates">A várkapuk gyorsabban reagálnak az ellenséges egységekre</system:String>
+    <system:String x:Key="o_responsivegates_descr">A várkapuk mostantól később záródnak be ha ellenség van a közelben és automatikusan gyorsabban kinyílnak, ha már nincs közelben ellenség. A távolság ami szükséges az ellenségnek, hogy a várkapu automatikusan bezáródjon, 200-ról 140-re lett csökkentve. Az idő amikor a várkapu ismét kinyílik, mihelyst nincs ellenség a közelben, 1200-ról 100-ra lett csökkentve.</system:String>
+    <system:String x:Key="ai_addattack">Megnövelt további támadó egységek mértéke</system:String>
+    <system:String x:Key="ai_addattack_descr">Az eredeti játékban minden egyes támadás után az egységek száma a következő támadáskor átlagosan 5 egységgel lesz megnövelve. Ez az érték minden MI Lordnak ugyanannyi és itt tudod megváltoztatni.</system:String>
+    <system:String x:Key="ai_addattack_alt_descr">Alternatív megoldásként, a további csatlakozó egységek számát az első támadás erősségétől függetlenné lehet tenni. De mivel minden MI Lord különböző számú egységet használ az első támadásnál, ezzel együtt a következő támadások is skálázódnak ahelyett, hogy minden MI Lordnak ugyanaz az értéke lenne.Például: Skálázási faktor = 0,5Szultán támadásainak száma = 10, 15, 20, 25, ...Szaladin támadásainak száma = 50, 75, 100, 125, ...</system:String>
+    <system:String x:Key="u_laddermen">Megnövelt védelem a létrás egységnek a távolsági egységek ellen</system:String>
+    <system:String x:Key="u_laddermen_descr" xml:space="preserve">- Laddermen die after 12 arrow hits instead of 5
+- Laddermen die after 5 crossbow or slinger hits instead of 2
+- Laddermen cost 20 gold instead of 4</system:String>
+    <system:String x:Key="o_playercolor">Játékos 1 színcsere</system:String>
+    <system:String x:Key="o_playercolor_descr"></system:String>
+    <system:String x:Key="o_trooplimit">Megnövelt egység limit</system:String>
+    <system:String x:Key="o_trooplimit_descr">Az eredeti játékban az egységek száma egy játékosnak</system:String>
+    <system:String x:Key="ai_demolish">Az MI Lord lerombol mindent hogy pénzhez jusson deaktiválása</system:String>
+    <system:String x:Key="ai_demolish_walls">Várépületek</system:String>
+    <system:String x:Key="ai_demolish_eco">Ipari épületek</system:String>
+    <system:String x:Key="ai_demolish_walls_descr"></system:String>
+    <system:String x:Key="ai_demolish_eco_descr">Ha az MI Lord sarokba szorítva érzi magát és gyorsan pénzt akar szerezni az egységekhez, előszeretettel rombolja le a teljes iparát vagy várépületeit. Néha ez az esemény láthatólag minden indok nélkül megtörténik és emiatt itt ki tudod kapcsolni.</system:String>
+    <system:String x:Key="ai_tethers">Ökör karám spam deaktiválása</system:String>
+    <system:String x:Key="ai_tethers_descr">Az MI általában minden új kőfejtő építésekor épít egy új ökör karámot is attól függetlenül, hogy mennyi van neki. Ezt itt tudod deaktiválni, mert különben spammelni fogja az ökör karámokat, ha az MI kőfejtőjét mindig lerombolják.</system:String>
+    <system:String x:Key="ai_nosleep">Ha nincs elég erőforrás, szünetel a munka deaktiválása</system:String>
+    <system:String x:Key="ai_nosleep_descr">Általában az MI szünetelteti a munkát az ipari épületeinél, ha a szükséges erőforrás már nem áll rendelkezésére a raktárban. Eközben a termék kárba veszik amit pl. éppen a fegyverraktárba visznek. Ezt a funkciót itt teljesen ki lehet kapcsolni.</system:String>
+    <system:String x:Key="ai_overclock">MI Parancsidőtartam rövidítése [Teszt]</system:String>
+    <system:String x:Key="ai_overclock_descr">Itt lehet megvátoztatni az MI parancs időtartamát mint pl. mikor támadási parancsot ad az egységeknek. Ezáltal az egységek nem állnak egy helyen olyan sokáig, miután a célpontot megsemmisítették/legyőzték.Az azonban még nem ismert, hogy az időtartam megváltoztatása befolyásol e valamit, ezért előfordulhat hiba.</system:String>
+    <system:String x:Key="o_onlyai">Nézői mód aktiválása [hiba előfordulhat]</system:String>
+    <system:String x:Key="o_onlyai_descr">Eltávolítja az 1.játékost a nézői módhoz és így 8 MI harcolhat egymással az Egyedi játék módban. Az elmentett játék most már rendesen működik ebben a módban is. Néha előfordulhat olyan hiba, hogy az egész térképen véletlenszerűen feltűnhetnek tárgyak. De ezek csak vizuálisan jelennek meg és egyszerűen megoldható a Játék mentése -> Küldetés befejezése -> Játék betöltésével.</system:String>
+    <system:String x:Key="o_moatvisibility">Mindig mutassa a tervezett várárkot</system:String>
+    <system:String x:Key="o_moatvisibility_descr">Ezzel a beállítással a lehelyezett, de a még nem felásott várárok mindig látható, még akkor is ha nincs kiválasztva a várárokásás.</system:String>
+    <system:String x:Key="o_engineertent">Ostromgépek kijelölve maradnak</system:String>
+    <system:String x:Key="o_engineertent_descr">Ezzel a beállítással az utoljára építésre kiválasztott ostromgép marad kijelölve ha több mérnököt kiválasztottál, így több ostromsátrat is lehet egymás után építeni.</system:String>
+    <system:String x:Key="ai_demolish_trapped">Ha bezárva</system:String>
+    <system:String x:Key="ai_demolish_trapped_descr"></system:String>
+    <system:String x:Key="o_freetrader">Ingyen piac</system:String>
+    <system:String x:Key="o_freetrader_descr">Mivel néha az MI magának add sakk-mattot, ha nincs elég fája és a piacát lerombolták. Itt tudod beállítani hogy a piac építése ingyenes legyen.</system:String>
+    <system:String x:Key="ai_towerengines">Ne legyen korlátozás a tornyokon lévő szerkezeteknek</system:String>
+    <system:String x:Key="ai_towerengines_descr">Általában az MI maximálisan 3 hajítógépet és kővetőgépet épít minden tornyára. Ezen beállítással ez a korlátozás megszűnik.</system:String>
+    <system:String x:Key="ai_buywood">Elegendő fa vásárlása</system:String>
+    <system:String x:Key="ai_buywood_descr">Ahhoz hogy az íjkészítők stb. ne vigyék el mindig a megvásárolt fát. Az MI ezzel a beállítással mindig 2 fával többet vesz, mint ami szükséges az épületek építéséhez.</system:String>
+    <system:String x:Key="o_keys">WASD billentyűk és gyorsmentés</system:String>
+    <system:String x:Key="o_keys_descr">Ezzel a beállítással aktiválva lesznek a WASD billentyűk a kamerához.Ezenkívül a CTRL-S és a CTRL-L billentyűkkel lehet gyorsmentést létrehozni és betölteni.</system:String>
+    <system:String x:Key="ai_attacktarget">MI támadási-célpont beállítása</system:String>
+    <system:String x:Key="ai_attacktarget_nearest">A legközelebbi ellenség</system:String>
+    <system:String x:Key="ai_attacktarget_nearest_descr"></system:String>
+    <system:String x:Key="ai_attacktarget_richest">A leggazdagabb ellenség</system:String>
+    <system:String x:Key="ai_attacktarget_richest_descr"></system:String>
+    <system:String x:Key="ai_attacktarget_weakest">A leggyengébb ellenség</system:String>
+    <system:String x:Key="ai_attacktarget_weakest_descr">Ezzel a beállítással az MI Lordok a saját módjukon keresik meg a célpontot a következő támadásukhoz. Ez megakadályozza azt, hogy az egységek támadás közben célpontot változtassanak vagy az MI ne a másik ellenséges várhoz küldje gyülekezni a seregét.</system:String>
+    <system:String x:Key="ai_assaultswitch">Ostrom közben ne változtasson az MI támadási-célpontot</system:String>
+    <system:String x:Key="ai_assaultswitch_descr">Azok az MI Lordok akik a legerősebbet vagy a leggyengébbet támadják meg, néha hajlamosak voltak a támadás közepén célpontot változtatni, és az egységeiket elküldeni a másik várhoz. Ezzel a beállítással, ez már nem fordul elő, mihelyst a támadást megkezdte, viszont a vár előtti egységek gyülekezésekor még előfordulhat, hogy célpontot vált.</system:String>
+    <system:String x:Key="ai_rebuild">Kijavított MI javítások</system:String>
+    <system:String x:Key="ai_rebuild_descr">Ezzel a beállítással az MI Lordok megjavítják a toronyromokat is, enyhén megrongált várfalakat, továbbá mérnökök-, alagútásók céhet és olajfőző kunyhót ha a helyük megmaradt. Továbbá az MI most már képes építeni a kőfejtők helye felett is.</system:String>
+    <system:String x:Key="o_healer">A gyógyító ellátja a sérülteket</system:String>
+    <system:String x:Key="o_healer_descr">A gyógyszertár gyógyítója mostantól megkeresi a sérült harcosokat, civileket, állatokat és meggyógyítja őket. A hozzá legközelebb lévő célpontokat gyógyítja elöszőr. Minden gyógyító animációval kb. egy lándzsás 1/3 életerejét állítja helyre. A kertekben való mászkálás és a pestisfelhő felkeresése ez által nem lesz lecserélve! Csak a várban való mászkálása lesz kihagyva, ha nincs a hatótávolságán belül beteg.</system:String>
+    <system:String x:Key="o_xtreme">Varázserő-sáv eltávolítása az Extreme kiegészítőből.</system:String>
+    <system:String x:Key="o_xtreme_descr">Eltávolítja a Varázserő-sávot a Crusader Extreme kiegészítőben.</system:String>
+    <system:String x:Key="ui_AIV">AIV</system:String>
+    <system:String x:Key="ai_defense">Erősítés a várvédésben javítása</system:String>
+    <system:String x:Key="ai_defense_descr">Kijavítja azt a hibát, ami megakadályozza az MI-t abban, hogy a hiányzó egységekkel megerősítse a várfalat és a tornyot, ameddig rendelkezik még védekező-járőröző egységekkel. Egyébként általánosságban növelve lett az erősítés toborzása, mert egyes MI-nél ez nullára volt állítva.</system:String>
+    <system:String x:Key="ai_access">Az elérhetetlen épületek ne kerüljenek lerombolásra</system:String>
+    <system:String x:Key="ai_access_descr">Megakadályozza azt, hogy az MI ne rombolja le azt az épületet amihez nem lehet hozzáférni. Ezáltal kijavítható az a hiba, hogy az MI ne építse meg és rombolja le újra és újra mindig azt az épületet amihez nem tudnak eljutni.</system:String>
+    <system:String x:Key="ai_moredef">Még több védekező egység Richárd, Patkány és Fülöp hercegnek</system:String>
+    <system:String x:Key="ai_moredef_descr">Az eredeti játékban Richárd, Patkány de leginkább Fülöpnek nagyon kevés védekező egysége volt a várfalakon, tornyokon. Ezzel a beállítással a távolsági harcosok száma a következőképpen változik meg:Patkány: 20 -> 40Richárd: 20 -> 40Fülöp: 4 -> 32Viszont figyelembe kell venni, hogy ezáltal a legelső támadásuk egy kicsivel később következik be.</system:String>
+    <system:String x:Key="aiv_tatha">Tatha feljavított MI várak</system:String>
+    <system:String x:Key="aiv_tatha_descr">Az eredeti játékhoz képest jelentősen erősebb várak. A különböző MI vártípusai ugyanannyira erősek.</system:String>
+    <system:String x:Key="ai_attackwave">Támadási hullámok feljavítása</system:String>
+    <system:String x:Key="ai_attackwave_descr">Az eredeti játékban az MI mindig csak annyi egységet küld el egyszerre amennyi elérhető várfal van. Azok a várak amik épületekkel vannak körülépítve, azokat az egységek csak elvétve támadják meg. Ezzel a beállítással az egységek az épületeket és az ostromsátrakat is megtámadják illetve azt a várfalat is amit már egy másik támadó egység rombol. Továbbá az MI mostantól több egységet küld az ellenséges vártoronyra, amint észrevesz egy oda vezető utat.</system:String>
+    <system:String x:Key="aiv_pitchsiege">PitchNeeded Evrey Edit (kővetőgépek és hajítógépek)</system:String>
+    <system:String x:Key="aiv_pitchsiege_descr">Kibővíti a 'Evrey feljavított eredeti várak' módosítást azáltal hogy Wazir, Disznó, Nizar és Emír tornyaira kővetőgépet és hajítógépet rak. Átszerkesztette: [PitchNeeded](https://github.com/PitchNeeded).</system:String>
+    <system:String x:Key="aiv_pitchwells">PitchNeeded Evrey Edit (kutak és gyógyszertárak)</system:String>
+    <system:String x:Key="aiv_pitchwells_descr">Kibővített 'Evrey feljavított eredeti várak' módosítás melyben egyes MI várak kutakat és gyógyszertárakat kapnak. Átszerkesztette: [PitchNeeded](https://github.com/PitchNeeded).</system:String>
+    <system:String x:Key="aiv_evreyfixed">Evrey feljavított eredeti várak</system:String>
+    <system:String x:Key="aiv_evreyfixed_descr">Kijavítja az eredeti MI várak hibáit, mint pl. hiányzó házak és céhek vagy blokkolt kijáratok.</system:String>
+    <system:String x:Key="aiv_evreyimproved">Evrey feljavított MI várak</system:String>
+    <system:String x:Key="aiv_evreyimproved_descr">Új feljavított várakat ad a MI Lordoknak, az eredeti várstílusok alapján.</system:String>
+
+
+    <!-- Aiv -->
+
+    <!-- Aic -->
+</ResourceDictionary>

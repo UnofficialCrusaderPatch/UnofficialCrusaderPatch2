@@ -259,6 +259,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Languages\Language.hu_HU.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Languages\Language.ch_CH.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Languages\Language.de_DE.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -502,7 +510,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties model_4bugfix_1json__JsonSchema="GenericModSchema.json" model_4genericmodschema_1json__JsonSchema="https://json-schema.org/draft-04/schema" />
+      <UserProperties model_4genericmodschema_1json__JsonSchema="https://json-schema.org/draft-04/schema" model_4bugfix_1json__JsonSchema="GenericModSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

@@ -7,7 +7,7 @@ namespace UCP.Data
 {
     public class LanguageHelper
     {
-        public enum Languages { Deutsch, English, Polski, Русский };
+        public enum Languages { Deutsch, English, Polski, Русский, 中文, Magyar };
         public static void SelectCulture(Languages language)
         {
             var dictionaryList = Application.Current.Resources.MergedDictionaries;

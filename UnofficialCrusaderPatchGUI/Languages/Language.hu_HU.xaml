@@ -1,0 +1,169 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib" >
+
+    <system:String x:Key="Magyar">Magyar</system:String>
+    <system:String x:Key="o_fix_fletcher_bug">Fix fletcher bug</system:String>
+    <system:String x:Key="o_fix_fletcher_bug_descr">Fixes the behaviour where the fletcher goes back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile.</system:String>
+    <system:String x:Key="ai_fix_crusader_archers_pitch">Fix AI crusader archers not lighting pitch</system:String>
+    <system:String x:Key="ai_fix_crusader_archers_pitch_descr">Fixes the AI crusader archers not lighting pitch like arabian archers do when enemy units get onto it.</system:String>
+    <system:String x:Key="o_fix_baker_disappear">Fix baker disappear bug</system:String>
+    <system:String x:Key="o_fix_baker_disappear_descr">Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile.</system:String>
+    <system:String x:Key="o_fix_moat_digging_unit_disappearing">Fix moat digging units disappear bug</system:String>
+    <system:String x:Key="o_fix_moat_digging_unit_disappearing_descr">Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!</system:String>
+    <system:String x:Key="ui_welcometext">这是要塞十字军东征的非官方补丁编辑器。该项目在github上开源:通常来说，这个编辑器支持所有游戏版本。但是该编辑器是基于steam上1.41版本制作的，使用更低版本可能会出错。安装补丁时若出现问题，会弹出错误信息。安装补丁时的UCP版本会显示在游戏主菜单界面的左下角，游戏版本号的右边。在安装补丁之前，编辑器会自动备份原始文件。你可以通过'复原'按钮来取消更改，也可以手动更改备份文件的后缀名来复原。UCP制作团队作者项目负责协力制作翻译提供者内容创建者特别鸣谢  for the creation of the Stronghold series其他</system:String>
+    <system:String x:Key="ui_StartTroops">起始部队</system:String>
+    <system:String x:Key="ui_Resource">起始资金</system:String>
+    <system:String x:Key="AIC存在ai冲突，第二个AIC的冲突ai会被忽略"></system:String>
+    <system:String x:Key="o_shfy">要塞十字军东征修改</system:String>
+    <system:String x:Key="o_shfy_beer">从啤酒中获取的声望</system:String>
+    <system:String x:Key="o_shfy_beer_descr"></system:String>
+    <system:String x:Key="o_shfy_religion">从宗教中获取的声望</system:String>
+    <system:String x:Key="o_shfy_religion_descr"></system:String>
+    <system:String x:Key="o_shfy_peasantspawnrate">农民产生速度</system:String>
+    <system:String x:Key="o_shfy_peasantspawnrate_descr"></system:String>
+    <system:String x:Key="o_shfy_resourcequantity">交付资源数量</system:String>
+    <system:String x:Key="o_shfy_resourcequantity_descr">调整一些方面来匹配游戏，注意:任何改变都会影响ai领主，最坏的情况是失效!</system:String>
+    <system:String x:Key="o_armory_marketplace_weapon_order_fix">调整武器库和市场中武器的顺序</system:String>
+    <system:String x:Key="o_armory_marketplace_weapon_order_fix_descr">调整了武器在武器库和市场中的排序，同时将皮甲移至链锤和弩之间，将铁甲移至戟和剑之间，使得在浏览时更方便。</system:String>
+    <system:String x:Key="ai_fix_laddermen_with_enclosed_keep"></system:String>
+    <system:String x:Key="ai_fix_laddermen_with_enclosed_keep_descr"></system:String>
+    <system:String x:Key="o_override_identity_menu">Override the Set-up Identity menu adding new features
+    </system:String>
+    <system:String x:Key="o_override_identity_menu_descr">Adds Ranged and Melee unit selection to Set-up Identity menu. ONLY FOR NORMAL GAME MODE!
+    </system:String>
+    <system:String x:Key="o_default_multiplayer_speed">Set default multiplayer speed.</system:String>
+    <system:String x:Key="o_default_multiplayer_speed_descr"></system:String>
+    <system:String x:Key="u_fireballistafix">Fire ballistas shoot monks and tunnelers</system:String>
+    <system:String x:Key="u_fireballistafix_descr">Fire ballistas automatically shoot at monks and tunnelers.</system:String>
+    <system:String x:Key="ui_browsepath">请选择你的要塞十字军东征安装路径</system:String>
+    <system:String x:Key="ui_aicoldversion">检测到旧版本AIC文件，点击转化为新版本。</system:String>
+    <system:String x:Key="ui_aicofferconvert">确定将AIC文件转化为新版本吗？</system:String>
+    <system:String x:Key="ui_aicconvertprompt">AIC转化完成</system:String>
+    <system:String x:Key="ui_aicselect">请先选择AIC文件，以下aic文件可供选择:</system:String>
+    <system:String x:Key="o_firecooldown">调整刚灭火建筑的免疫火灾时间</system:String>
+    <system:String x:Key="o_firecooldown_descr">着火的建筑在火被扑灭后，会有一段免疫着火的时间，此处可修改时间长短。</system:String>
+    <system:String x:Key="u_ballistamonk">巨火弩攻击僧侣</system:String>
+    <system:String x:Key="u_ballistamonk_descr">打开后，巨火弩将会自动攻击僧侣。</system:String>
+    <system:String x:Key="aiv_EvreyHistory">Evrey的历史ai城堡</system:String>
+    <system:String x:Key="aiv_EvreyHistory_descr">给每个ai领主增加一个历史上存在的城堡或城市的aiv 。</system:String>
+    <system:String x:Key="ui_AIC">AIC</system:String>
+    <system:String x:Key="ui_aicExport">导出</system:String>
+    <system:String x:Key="ui_aicExport_success">导出成功。</system:String>
+    <system:String x:Key="ui_aicHint">将.aic文件从安装程序导出到crusader文件夹中。</system:String>
+    <system:String x:Key="Name">非官方要塞十字军东征补丁</system:String>
+    <system:String x:Key="u_ArabXBow">增强了阿拉伯剑士抵抗弩箭的能力</system:String>
+    <system:String x:Key="u_arabxbow_descr">
+        - Arabic Swordsmen only die after 6 crossbow hits intead of 3
+    </system:String>
+    <system:String x:Key="u_ArabWall">阿拉伯剑士破坏城墙速度加快</system:String>
+    <system:String x:Key="u_ArabWall_descr">在原版，阿拉伯剑士破坏城墙的速度比其他任何单位都要更慢，打开这个选项后，破坏速度将会提升为原来的两倍，稍快于长矛手。</system:String>
+    <system:String x:Key="u_spearmen">增强长矛手抵抗箭矢的能力</system:String>
+    <system:String x:Key="u_spearmen_descr" xml:space="preserve">- Spearmen only die after 5 arrow hits instead of 3
+- Spearmen barely survive one crossbow hit, instead of getting one-shot</system:String>
+    <system:String x:Key="ai_buy">提升ai的市场使用</system:String>
+    <system:String x:Key="ai_buy_descr">在原版，部分ai不会正确使用市场，下列改动包含在此项中:</system:String>
+    <system:String x:Key="ui_error">错误</system:String>
+    <system:String x:Key="ui_SearchPath"></system:String>
+    <system:String x:Key="ui_search">浏览</system:String>
+    <system:String x:Key="ui_continue">继续</system:String>
+    <system:String x:Key="ui_wrongpath">该路径中未发现要塞十字军东征游戏程序!</system:String>
+    <system:String x:Key="ui_back">返回</system:String>
+    <system:String x:Key="ui_install">安装</system:String>
+    <system:String x:Key="ui_finished">完成</system:String>
+    <system:String x:Key="ui_chooseLangTitle">选择语言</system:String>
+    <system:String x:Key="ui_chooseLang">请在下列选项中选择一门语言</system:String>
+    <system:String x:Key="ui_accept">确定</system:String>
+    <system:String x:Key="ui_cancel">取消</system:String>
+    <system:String x:Key="ui_uninstall">复原</system:String>
+    <system:String x:Key="ui_uninstalldone">所有改动已复原。</system:String>
+    <system:String x:Key="ai_recruitinterval">加快所有ai的训练士兵速度</system:String>
+    <system:String x:Key="ai_recruitinterval_descr">将所有ai的训练时间间隔降低至最低(老鼠和狮心王的程度)</system:String>
+    <system:String x:Key="ai_recruitsleep">取消ai的训练暂停</system:String>
+    <system:String x:Key="ai_attacklimit">调整ai的进攻部队数量限制</system:String>
+    <system:String x:Key="ai_attacklimit_descr">ai的进攻部队的数量会随时间而增加，额外增加的部队数量上限在原版是200。你可以在此处修改这个值。</system:String>
+    <system:String x:Key="o_gamespeed">拓宽游戏速度限制</system:String>
+    <system:String x:Key="o_gamespeed_descr">游戏速度的限制更改为如下所示:新的游戏速度范围仅可通过键盘上的+ -号来改变，菜单中的游戏速度调整不到新的范围。</system:String>
+    <system:String x:Key="ui_bugfix">bug修复</system:String>
+    <system:String x:Key="ui_ailords">AI领主</system:String>
+    <system:String x:Key="ui_troops">单位</system:String>
+    <system:String x:Key="ui_other">其他</system:String>
+    <system:String x:Key="o_responsivegates">城门快速反应</system:String>
+    <system:String x:Key="o_responsivegates_descr">敌人在靠近城门一定距离时城门将会关闭，该距离由200调整至140。敌人在远离城门一定距离时城门将会打开，该距离由1200调整至100。</system:String>
+    <system:String x:Key="ai_addattack">调整ai每波进攻额外增加的兵力</system:String>
+    <system:String x:Key="ai_addattack_descr">在原版，ai每波进攻都会额外增加5的兵力，这个同时生效于所有ai的数值可以在此处改变。</system:String>
+    <system:String x:Key="ai_addattack_alt_descr">或者，每波额外增加的兵力可以和ai初次进攻的兵力有关，对于不同ai来说，初次进攻兵力可以是不同的，因此这个选项可以使不同ai的进攻士兵增速不同。举例: 倍率 = 0.5苏丹从第一波开始的进攻士兵数量 = 10, 15, 20, 25, ...萨拉丁从第一波开始的进攻士兵数量 = 50, 75, 100, 125, ...</system:String>
+    <system:String x:Key="u_laddermen">增强云梯兵对于箭矢的抗性</system:String>
+    <system:String x:Key="u_laddermen_descr" xml:space="preserve">- Laddermen die after 12 arrow hits instead of 5
+- Laddermen die after 5 crossbow or slinger hits instead of 2
+- Laddermen cost 20 gold instead of 4</system:String>
+    <system:String x:Key="o_playercolor">改变玩家1号的颜色</system:String>
+    <system:String x:Key="o_playercolor_descr"></system:String>
+    <system:String x:Key="o_trooplimit">调整部队数量上限</system:String>
+    <system:String x:Key="o_trooplimit_descr">在原版，每位玩家最多可有2400名士兵，这个值可在此处改变</system:String>
+    <system:String x:Key="ai_demolish">停用ai拆毁以下类型建筑来获取资金</system:String>
+    <system:String x:Key="ai_demolish_walls">城堡建筑</system:String>
+    <system:String x:Key="ai_demolish_eco">经济建筑</system:String>
+    <system:String x:Key="ai_demolish_walls_descr"></system:String>
+    <system:String x:Key="ai_demolish_eco_descr">如果ai感受到了压力，他会通过拆毁城堡建筑或者经济建筑的方式来快速获取资金这在有时是没有必要的，可以在此处取消这个行为。.</system:String>
+    <system:String x:Key="ai_tethers">防止ai牛栏堆积</system:String>
+    <system:String x:Key="ai_tethers_descr">通常，ai会为每个新的采石场建筑一个新的牛栏，而不管已经存在多少牛栏。当采石场被反复摧毁时，会导致牛栏数量很多。打开此选项可以避免这种现象。</system:String>
+    <system:String x:Key="ai_nosleep">资源不足时ai不再休眠建筑</system:String>
+    <system:String x:Key="ai_nosleep_descr">ai通常会将正在生产中的建筑休眠，因为部分建筑缺乏原料，哪怕原料正在路上，打开此选项可以取消该行为。</system:String>
+    <system:String x:Key="ai_overclock">减少ai指挥单位的时间间隔 [测试中]</system:String>
+    <system:String x:Key="ai_overclock_descr">ai的单位在执行完一个命令后，可能并不会立即收到下一个命令，这会导致单位无所事事一段时间，打开此选项可以减少ai的指挥时间间隔。暂时不知道这个间隔是否还会影响其他方面，因此有可能导致bug。</system:String>
+    <system:String x:Key="o_onlyai">打开观察者模式 [可能存在bug]</system:String>
+    <system:String x:Key="o_onlyai_descr">移除了玩家1使得玩家只能以观察的视角观看游戏，这使得8个ai同时出场成为了可能。该模式下保存的游戏可以被正常读取。偶尔可能会出现物体随机遍布在整个地图的bug，这只是视觉上的bug并不影响游戏本身，保存游戏，退出游戏，再读取游戏可以清除该bug。</system:String>
+    <system:String x:Key="o_moatvisibility">一直显示规划中的护城河</system:String>
+    <system:String x:Key="o_moatvisibility_descr">你将可以一直看到规划中的护城河，而不需要点选单位。</system:String>
+    <system:String x:Key="o_engineertent">无需重复选择工程师帐篷类型</system:String>
+    <system:String x:Key="o_engineertent_descr">打开这个选择之后，选择一次工程师帐篷类型后即可一直放置该类型的工程师帐篷，而不需要每次都再选择一次。</system:String>
+    <system:String x:Key="ai_demolish_trapped">城堡与外界隔绝</system:String>
+    <system:String x:Key="ai_demolish_trapped_descr"></system:String>
+    <system:String x:Key="o_freetrader">免费市场</system:String>
+    <system:String x:Key="o_freetrader_descr">有时ai的市场被拆除且没有木头时，ai将会彻底瘫痪。使市场免费可以避免此问题。</system:String>
+    <system:String x:Key="ai_towerengines">解除ai的器械数量限制</system:String>
+    <system:String x:Key="ai_towerengines_descr">在原版，ai每种器械虽多只能放置3个，打开此选项可以解除此限制。</system:String>
+    <system:String x:Key="ai_buywood">购买足够木头</system:String>
+    <system:String x:Key="ai_buywood_descr">ai购买木头用于建筑时，将会购买2根额外的木头，防止刚购买的木头被工人拿走使得木头不足以建造目标建筑。</system:String>
+    <system:String x:Key="o_keys">WASD键移动以及Ctrl+S/L键保存读取</system:String>
+    <system:String x:Key="o_keys_descr">打开此选项后，可以使用WASD键移动屏幕，以及Ctrl+S键打开保存界面，Ctrl+L键打开读取界面。</system:String>
+    <system:String x:Key="ai_attacktarget">设置ai的目标敌人</system:String>
+    <system:String x:Key="ai_attacktarget_nearest">最近的敌人</system:String>
+    <system:String x:Key="ai_attacktarget_nearest_descr"></system:String>
+    <system:String x:Key="ai_attacktarget_richest">最富有的敌人</system:String>
+    <system:String x:Key="ai_attacktarget_richest_descr"></system:String>
+    <system:String x:Key="ai_attacktarget_weakest">最弱的敌人</system:String>
+    <system:String x:Key="ai_attacktarget_weakest_descr">该选项可以给所有ai设置相同的目标选择。</system:String>
+    <system:String x:Key="ai_assaultswitch">进攻时不改变目标</system:String>
+    <system:String x:Key="ai_assaultswitch_descr">当ai进攻时，如果目标发生改变，将会改变已派出部队的目标，比如ai目标若是最弱的敌人，当ai已派出进攻部队时，如果最弱的敌人改变了，将会改变进攻部队的路径转而攻击新目标。打开这个选项可以防止这种现象的发生。已派出的部队不会中途改变目标。</system:String>
+    <system:String x:Key="ai_rebuild">增强ai修复和建筑能力</system:String>
+    <system:String x:Key="ai_rebuild_descr">打开后，ai将会在废墟中重建塔楼，修复微小损坏的城墙。工程师协会，隧道工协会，油锅被摧毁后，如果后半截仍然存在，打开后ai将可以正确重建。采石场被摧毁后，如果存放石头点仍然存在，打开后ai可以无视存放石头点放置建筑。</system:String>
+    <system:String x:Key="o_healer">医生会治愈伤员</system:String>
+    <system:String x:Key="o_healer_descr">药房的医生现在会积极寻找兵治疗受伤的士兵，平民或者动物。 优先治疗最近的目标。每次治疗动画中，可恢复长矛兵血量的1/3。 游览＆花园和治疗瘟疫的功能依旧存在！ 只有游览城堡的行为会被跳过，直到该地区不再有受伤的目标.</system:String>
+    <system:String x:Key="o_xtreme">移除增强版的技能条</system:String>
+    <system:String x:Key="o_xtreme_descr">移除要塞十字军东征增强版中的技能条。</system:String>
+    <system:String x:Key="ui_AIV">AIV</system:String>
+    <system:String x:Key="ai_defense">修复ai不会补充防守兵种</system:String>
+    <system:String x:Key="ai_defense_descr">当ai城墙防守部队出现减员时，如果城外防守部队仍然存在，那么ai将不会补充城墙防守部队。打开此选项后ai将会正确补充减员。这也会加快ai训练防守部队的速度。</system:String>
+    <system:String x:Key="ai_access">不拆除无通路建筑</system:String>
+    <system:String x:Key="ai_access_descr">ai会反复建造又拆除无通路但需要通路的建筑，打开此选项可以避免此问题。</system:String>
+    <system:String x:Key="ai_moredef">老鼠，菲利普，狮心王将会有更多的防守部队</system:String>
+    <system:String x:Key="ai_moredef_descr">在原版，这三个ai只有很少的防守部队，打开此选项后可以增多他们的防守部队数量，如下:老鼠: 20 -> 40狮心王: 20 -> 40菲利普: 4 -> 32需要注意的是，打开此选项后，会导致这三个ai的初次进攻时间延后。</system:String>
+    <system:String x:Key="aiv_tatha">Tatha的ai提升城堡</system:String>
+    <system:String x:Key="aiv_tatha_descr">ai将会拥有比原版更加强大的城堡，每个ai不同样式的城堡拥有同等的强度</system:String>
+    <system:String x:Key="ai_attackwave">提升ai的进攻</system:String>
+    <system:String x:Key="ai_attackwave_descr">在原版中，ai在进攻时，只会派出能够得着城墙的数量的士兵，比如说一圈城堡有50格城墙，那么只有50个人可以在不重叠的情况下砍城墙，此时哪怕有100名士兵集结在敌人城堡附近，也只会派出50人前去攻击城堡，打开此选项后将可以避免此现象。并且，打开此选项后，ai的士兵将会主动攻击城堡建筑和经济建筑。此外，ai将会派出更多的士兵去攻击敌人的领主。</system:String>
+    <system:String x:Key="aiv_pitchsiege">PitchNeeded的加强ai城堡 (射石机和巨弩)</system:String>
+    <system:String x:Key="aiv_pitchsiege_descr">为猪，维奇尔，埃米尔，尼泽尔添加了更多的射石机和巨弩。创作者</system:String>
+    <system:String x:Key="aiv_PitchWells">PitchNeeded的加强ai城堡 (水井和水缸)</system:String>
+    <system:String x:Key="aiv_PitchWells_descr">为原版ai城堡添加了一些水井和水缸。创作者</system:String>
+    <system:String x:Key="aiv_evreyimproved">Evrey的加强ai城堡</system:String>
+    <system:String x:Key="aiv_evreyimproved_descr">为ai添加了原版风格但更强劲的城堡</system:String>
+    <system:String x:Key="aiv_evreyfixed">Evrey的原版修复城堡</system:String>
+    <system:String x:Key="aiv_evreyfixed_descr">修复了原版ai城堡的一些问题，诸如茅房不足，建筑无通路等</system:String>
+
+    <!-- Aiv -->
+
+    <!-- Aic -->
+</ResourceDictionary>

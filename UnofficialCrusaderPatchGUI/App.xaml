@@ -6,6 +6,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source='/UnofficialCrusaderPatchGUI;component/Languages/Language.ch_CH.xaml'/>
+                <ResourceDictionary Source='/UnofficialCrusaderPatchGUI;component/Languages/Language.hu_HU.xaml'/>
                 <ResourceDictionary Source='/UnofficialCrusaderPatchGUI;component/Languages/Language.pl_PL.xaml'/>
                 <ResourceDictionary Source='/UnofficialCrusaderPatchGUI;component/Languages/Language.ru_RU.xaml'/>
                 <ResourceDictionary Source='/UnofficialCrusaderPatchGUI;component/Languages/Language.de_DE.xaml'/>
