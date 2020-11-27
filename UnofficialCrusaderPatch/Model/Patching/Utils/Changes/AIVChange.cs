@@ -85,7 +85,6 @@ namespace UCP.AIV
             // If overwrite, delete aiv contents of aiv directory and write new AIV files
             if (overwrite)
             {
-                MessageBoxResult msg = MessageBox.Show("overwrite", "", MessageBoxButton.YesNoCancel);
                 foreach(FileInfo file in destinationDir.GetFiles())
                 {
                     if (file.Extension.Equals(".aiv"))
@@ -120,7 +119,6 @@ namespace UCP.AIV
             DirectoryInfo backupDir = new DirectoryInfo(Path.Combine(destinationDir.FullName, "original"));
             if (!Directory.Exists(Path.Combine(destinationDir.FullName, "original")))
             {
-                MessageBoxResult msg = MessageBox.Show("first backup", "", MessageBoxButton.YesNoCancel);
                 backupDir.Create();
                 foreach (string aivFile in destinationDir.GetFiles().ToList().Select(x => x.Name))
                 {
@@ -217,7 +215,7 @@ namespace UCP.AIV
                 else if (!backupIdentical)
                 {
                     string input = "";
-                    while (!input.ToLower().Equals("delete") && (input.IndexOfAny(Path.GetInvalidPathChars()) != -1 || (input.Equals("") || Directory.Exists(input)))) {
+                    while (!input.ToLower().Equals("delete") && (input.IndexOfAny(Path.GetInvalidPathChars()) != -1 || (input.Equals("") || Directory.Exists(Path.Combine(destinationDir.FullName, input))))) {
                         Console.WriteLine("Custom modified AIVs detected.Enter 'delete' to erase or enter folder name to copy files to.");
                         input = Console.ReadLine().Replace("\n","");
                     };

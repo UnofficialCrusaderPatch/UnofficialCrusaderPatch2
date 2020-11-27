@@ -22,18 +22,45 @@ namespace UCP
             Dictionary<string, string> resolvedArgsDictionary = ResolveArgs(args.ToList());
             UCPConfig ucpConfig = null;
 
-            if (resolvedArgsDictionary.TryGetValue("cfg", out string cfgPath))
+            if (resolvedArgsDictionary.TryGetValue("cfgPath", out string cfgPath))
             {
                 using (StreamReader file = File.OpenText(cfgPath))
                 {
-                    ucpConfig = (UCPConfig)Writer.Deserialize(file, typeof(UCPConfig));
+                    if (cfgPath.EndsWith(".json"))
+                    {
+                        try
+                        {
+                            ucpConfig = (UCPConfig)Writer.Deserialize(file, typeof(UCPConfig));
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Failed to parse JSON");
+                        }
+                    }
+                    else if (cfgPath.EndsWith(".cfg"))
+                    {
+                        try
+                        {
+                            ucpConfig = Resolver.GetUCPConfigFromUncovertedCfg(cfgPath);
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Failed to parse " + cfgPath);
+                        }
+                    }
                 }
             }
             else if (File.Exists("ucp.json"))
             {
                 using (StreamReader file = File.OpenText("ucp.json"))
                 {
-                    ucpConfig = (UCPConfig)Writer.Deserialize(file, typeof(UCPConfig));
+                    try
+                    {
+                        ucpConfig = (UCPConfig)Writer.Deserialize(file, typeof(UCPConfig));
+                    } catch (Exception)
+                    {
+                        Console.WriteLine("Failed to parse JSON");
+                    }
                 }
             }
             else
@@ -50,7 +77,7 @@ namespace UCP
 
             if (ucpConfig == null)
             {
-                Console.WriteLine("Configuration file not found");
+                Console.WriteLine("Failed to read configuration file");
                 return;
             }
 
