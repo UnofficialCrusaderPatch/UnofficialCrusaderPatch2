@@ -29,6 +29,114 @@ namespace UCP
         static List<Change> changes = new List<Change>()
         {
             #region BUG FIXES
+            
+            // Fix ladder climbing behaviour
+            new Change("o_fix_ladderclimb", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_ladderclimb")
+                {
+                    
+                    // 53D3D9
+                    new BinaryEdit("o_fix_ladderclimb_pre")
+                    {
+                        // cache current unti moved
+                        new BinAlloc("currentUnitMoved", 4),
+                        
+                        new BinSkip(9),
+                        
+                        new BinHook(6)
+                        {
+                            0x89, 0x15, new BinRefTo("currentUnitMoved", false), // mov [currentUnitMoved],edx
+                            0x69, 0xD2, 0x90, 0x04, 0x00, 0x00, // imul edx,edx,00000490
+                        }
+                    },
+                    
+                    // 53D694
+                    new BinaryEdit("o_fix_ladderclimb")
+                    {
+                        // need 120k bytes, because we need 3*4 bytes per unit, and the SHC-E max is 10k units
+                        new BinAlloc("savedUnitDestinationForClimbing", 120000),
+                        
+                        new BinSkip(12), // skip 12 bytes
+                        
+                        new BinHook(10)
+                        {
+                            0x50, // push eax
+                            0xA1, new BinRefTo("currentUnitMoved", false), // mov eax,[currentUnitMoved]
+                            0x48, // dec eax
+                            0x6B, 0xC0, 0x0C, // imul eax,eax,0C
+                            0x89, 0xA8, new BinRefTo("savedUnitDestinationForClimbing", false), // mov [eax+savedUnitDestinationForClimbing],ebp
+                            0x83, 0xC0, 0x04, // add eax,04
+                            0x89, 0xB8, new BinRefTo("savedUnitDestinationForClimbing", false), // mov [eax+savedUnitDestinationForClimbing],edi
+                            0x83, 0xC0, 0x04, // add eax,04
+                            0xC7, 0x80, new BinRefTo("savedUnitDestinationForClimbing", false), 0x01, 0x00, 0x00, 0x00, // mov [eax+savedUnitDestinationForClimbing],01
+                            0x58, // pop eax
+                            0x66, 0x39, 0xD8, // cmp ax,bx
+                            0x66, 0x89, 0x86, 0xBC, 0x08, 0x00, 0x00, // mov [esi+8BC],ax
+                        }
+                    },
+                    
+                    // 5790CB
+                    new BinaryEdit("o_fix_ladderclimb_2")
+                    {
+                        new BinHook(16)
+                        {
+                            0x50, // push eax
+                            0x8B, 0xC3, // mov eax,ebx
+                            0x48, // dec eax
+                            0x6B, 0xC0, 0x0C, // imul eax,eax,0C
+                            0x83, 0xC0, 0x08, // add eax,08
+                            0x83, 0xB8, new BinRefTo("savedUnitDestinationForClimbing", false), 0x00, // cmp dword ptr [eax+savedUnitDestinationForClimbing],00
+                            0x75, 0x16, // jne short 0x16
+                            0x58, // pop eax
+                            0x66, 0x89, 0x8C, 0x3E, 0x00, 0x07, 0x00, 0x00, // mov [esi+edi+00000700],cx
+                            0x66, 0x89, 0x94, 0x3E, 0x02, 0x07, 0x00, 0x00, // mov [esi+edi+00000702],dx
+                            0xE9, new BinRefTo("exit"), // jmp exit
+                            0xC7, 0x80, new BinRefTo("savedUnitDestinationForClimbing", false), 0x00, 0x00, 0x00, 0x00, // mov [eax+savedUnitDestinationForClimbing],00000000
+                            0x58// pop eax
+                        },
+                        new BinLabel("exit")
+                    },
+                    
+                    // 53D900
+                    new BinaryEdit("o_fix_ladderclimb_3")
+                    {
+                        new BinHook(5)
+                        {
+                            0x50, // push eax
+                            0x8B, 0xC3, // mov eax,ebx
+                            0x48, // dec eax
+                            0x6B, 0xC0, 0x0C, // imul eax,eax,0C
+                            0x83, 0xC0, 0x08, // add eax,08,
+                            0xC7, 0x80, new BinRefTo("savedUnitDestinationForClimbing", false), 0x01, 0x00, 0x00, 0x00, // mov [eax+savedUnitDestinationForClimbing],00000000
+                            0x58, // pop eax
+                            0x53, // push ebx
+                            0x8B, 0x5C, 0x24, 0x08, // mov ebx,[esp+08]
+                        }
+                    },
+                    
+                    // 54C3E5
+                    new BinaryEdit("o_fix_ladderclimb_4")
+                    {
+                        new BinHook(14)
+                        {
+                            0x57, // push edi
+                            0x31, 0xFF, // xor edi,edi
+                            0x66, 0x8B, 0x7C, 0x24, 0x18, // mov di,[esp+18]
+                            0x4F, // dec edi
+                            0x6B, 0xFF, 0x0C, // imul edi,edi,0C
+                            0x8B, 0x87, new BinRefTo("savedUnitDestinationForClimbing", false), // mov eax,[edi+savedUnitDestinationForClimbing]
+                            0x83, 0xC7, 0x04, // add edi,04
+                            0x8B, 0x97, new BinRefTo("savedUnitDestinationForClimbing", false), // mov edx,[edi+savedUnitDestinationForClimbing]
+                            0x89, 0x86, 0x00, 0x07, 0x00, 0x00, // mov [esi+00000700],eax
+                            0x89, 0x96, 0x02, 0x07, 0x00, 0x00, // mov [esi+00000702],edx
+                            0x0F, 0xBF, 0x96, 0x02, 0x07, 0x00, 0x00, // movsx edx,word ptr [esi+00000702]
+                            0x0F, 0xBF, 0x86, 0x00, 0x07, 0x00, 0x00, // movsx edx,word ptr [esi+00000702]
+                            0x5F, // pop edi
+                        }
+                    }
+                }
+            },
 
             /*
              * FIRE BALLISTAS ATTACK MONKS AND TUNNELERS

@@ -1,3 +1,17 @@
+﻿﻿﻿﻿// ======================
+//         dev
+// ======================
+
+o_fix_ladderclimb
+{
+"Fix ladder climb bug"
+}
+
+o_fix_ladderclimb_descr
+{
+"Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
+}
+
 // ======================
 //         dev
 // ======================

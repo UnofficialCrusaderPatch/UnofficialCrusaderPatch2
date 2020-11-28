@@ -156,6 +156,11 @@
     <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_attr.block" />
     <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_fn.block" />
     <EmbeddedResource Include="CodeBlocks\ai_fix_laddermen_with_enclosed_keep.block" />
+    <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb.block" />
+    <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb_2.block" />
+    <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb_3.block" />
+    <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb_4.block" />
+    <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb_pre.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_fletcher_bug.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_baker_disappear.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_moat_digging_unit_disappearing.block" />
