@@ -1,3 +1,7 @@
+html {
+    display: none;
+}
+
 html, .page {
     background-color: lightgray;
     font-size: medium;
