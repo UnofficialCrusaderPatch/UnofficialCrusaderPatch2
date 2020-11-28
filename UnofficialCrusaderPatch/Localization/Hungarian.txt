@@ -13,6 +13,69 @@ o_fix_ladderclimb_descr
 }
 
 // ======================
+//         dev
+// ======================
+u_spearmen_run
+{
+"Spearmen run by default instead of walking"
+}
+
+u_spearmen_run_descr
+{
+"Makes spearmen run by default instead of the slow walking."
+}
+
+u_tanner_fix
+{
+"Fix tanners getting all the same cow"
+}
+
+u_tanner_fix_descr
+{
+"Tanners will no longer return without a cow when another tanner took their target cow. They will now instead stand around a bit and then get another one."
+}
+
+o_fix_fletcher_bug
+{
+"Fix fletcher bug"
+}
+
+o_fix_fletcher_bug_descr
+{
+"Fixes the behaviour where the fletcher goes back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile."
+}
+
+ai_fix_crusader_archers_pitch
+{
+"Fix AI crusader archers not lighting pitch"
+}
+
+ai_fix_crusader_archers_pitch_descr
+{
+"Fixes the AI crusader archers not lighting pitch like arabian archers do when enemy units get onto it."
+}
+
+o_fix_baker_disappear
+{
+"Fix baker disappear bug"
+}
+
+o_fix_baker_disappear_descr
+{
+"Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile."
+}
+
+o_fix_moat_digging_unit_disappearing
+{
+"Fix moat digging units disappear bug"
+}
+
+o_fix_moat_digging_unit_disappearing_descr
+{
+"Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!"
+}
+
+// ======================
 //         2.14
 // ======================
 
