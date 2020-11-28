@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -100,7 +101,7 @@ namespace UCP
                     {"hash", Resolver.GenerateHash()},
                     {"path", null},
                     {"mostRecentConfiguration", null},
-                    {"knownPaths", new string[0]},
+                    {"knownPaths", new JArray()},
                     {"preferPathInConfig", false},
                     {"language", "ENGLISH"},
                     {"autosave", true }

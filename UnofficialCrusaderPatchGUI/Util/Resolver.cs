@@ -78,7 +78,7 @@ namespace UCP.Util
                     {HASH, Resolver.GenerateHash()},
                     {PATH, null},
                     {MOST_RECENT_CONFIG, null},
-                    {KNOWN_PATHS, new JArray[0]},
+                    {KNOWN_PATHS, new JArray()},
                     {PREFER_PATH, false},
                     {LANGUAGE, ENGLISH},
                     {AUTOSAVE, true}
