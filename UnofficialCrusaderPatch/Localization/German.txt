@@ -1,4 +1,4 @@
-﻿// ======================
+// ======================
 //         dev
 // ======================
 o_restore_arabian_engineer_speech
@@ -11,6 +11,138 @@ o_restore_arabian_engineer_speech_descr
 "Allows engineers to speak the originally recorded arabian voicelines when the player uses the Arabian lord.
 
 There is not much variation of these voicelines, so it can get annoying after a while."
+}
+
+u_fix_lord_animation_stuck_movement
+{
+"Fix Lord animation freeze"
+}
+
+u_fix_lord_animation_stuck_movement_descr
+{
+"Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
+}
+
+o_fix_small_wall_placement_count
+{
+"Fix small wall placement count preview"
+}
+
+o_fix_small_wall_placement_count_descr
+{
+"Fixes the bug where the small wall placement preview only allowed the player to use half of their stone."
+}
+
+fix_apple_orchard_build_size
+{
+"Shrink apple orchard's build size"
+}
+
+fix_apple_orchard_build_size_descr
+{
+"Changes the apple orchard's build size to the size it occupies after the farm is placed down. This saves some space when building the farms and increases the rate with which the AI is able to put these farms down."
+}
+
+u_fix_applefarm_blocking
+{
+"Fix apple farm blocking"
+}
+
+u_fix_applefarm_blocking_descr
+{
+"Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
+}
+
+o_allow_overbuilding
+{
+"Allow overbuilding workers and units"
+}
+
+o_allow_overbuilding_descr
+{
+"Allows the player to overbuild workers with buildings, while allowing to overbuild units with walls and towers making them pop at the top."
+}
+
+o_increase_path_update_tick_rate
+{
+"Increase the tick rate of path update by 4 times."
+}
+
+o_increase_path_update_tick_rate_descr
+{
+"In vanilla, it took 200 game ticks to update pathing which resulted in units not being able to move into the castle after destroying a gate or tower.
+
+This change increases this tick rate by 4 times by lowering this required tick value to 50, allowing the units to 'realize' more quickly that a new path is available."
+}
+
+o_fix_ladderclimb
+{
+"Fix ladder climb bug"
+}
+
+o_fix_ladderclimb_descr
+{
+"Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
+}
+
+u_spearmen_run
+{
+"Spearmen run by default instead of walking"
+}
+
+u_spearmen_run_descr
+{
+"Makes spearmen run by default instead of the slow walking."
+}
+
+u_tanner_fix
+{
+"Fix tanners getting all the same cow"
+}
+
+u_tanner_fix_descr
+{
+"Tanners will no longer return without a cow when another tanner took their target cow. They will now instead stand around a bit and then get another one."
+}
+
+o_fix_fletcher_bug
+{
+"Fix fletcher bug"
+}
+
+o_fix_fletcher_bug_descr
+{
+"Fixes the behaviour where the fletcher goes back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile."
+}
+
+ai_fix_crusader_archers_pitch
+{
+"Fix AI crusader archers not lighting pitch"
+}
+
+ai_fix_crusader_archers_pitch_descr
+{
+"Fixes the AI crusader archers not lighting pitch like arabian archers do when enemy units get onto it."
+}
+
+o_fix_baker_disappear
+{
+"Fix baker disappear bug"
+}
+
+o_fix_baker_disappear_descr
+{
+"Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile."
+}
+
+o_fix_moat_digging_unit_disappearing
+{
+"Fix moat digging units disappear bug"
+}
+
+o_fix_moat_digging_unit_disappearing_descr
+{
+"Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!"
 }
 
 // ======================
