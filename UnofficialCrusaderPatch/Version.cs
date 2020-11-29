@@ -25,7 +25,6 @@ namespace UCP
         };
 
 
-        public static List<Change> Changes { get { return changes; } }
         static List<Change> changes = new List<Change>()
         {
             #region BUG FIXES
@@ -400,6 +399,54 @@ namespace UCP
                 }
             },
             
+            new Change("u_fix_lord_animation_stuck_movement", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("u_fix_lord_animation_stuck_movement")
+                {
+
+                    new BinaryEdit("u_fix_lord_animation_stuck_movement") // 56E139
+                    {
+                        new BinAddress("originalCompareAddress", 11),
+                        new BinAddress("unitHandle", 18),
+                        new BinSkip(9),
+                        new BinHook(17)
+                        {
+                            0x53, // push ebx
+                            0xBB, new BinRefTo("unitHandle", false), // mov ebx,unitHandle
+                            0xC7, 0x04, 0x33, 0x00, 0x00, 0x00, 0x00, // mov [ebx+esi],00000000
+                            0x81, 0xC3, 0x04, 0x00, 0x00, 0x00, // add ebx,00000004
+                            0x0F, 0xB7, 0x0C, 0x33, // movzx ecx,word ptr [ebx+esi]
+                            
+                            0x81, 0xEB, 0xA8, 0x02, 0x00, 0x00, // sub ebx,000002A8
+                            0x81, 0xC1, 0x29, 0x00, 0x00, 0x00, // add ecx,00000029
+                            0x81, 0x3C, 0x33, 0xCD, 0x00, 0x00, 0x00, // cmp [ebx+esi],000000CD
+                            0x74, 0x06, // je short 0x06
+                            0x81, 0xC1, 0x80, 0x00, 0x00, 0x00, // add ecx,00000080
+                            
+                            0x81, 0xC3, 0x24, 0x00, 0x00, 0x00, // add ebx,00000024
+                            
+                            0xC7, 0x04, 0x33, 0x00, 0x00, 0x00, 0x00, // mov [ebx+esi],00000000
+                            0x81, 0xEB, 0x2C, 0x00, 0x00, 0x00, // sub ebx,0000002C
+                            0x89, 0x0C, 0x33, // mov [ebx+esi],ecx
+                            0x5B, // pop ebx
+                            
+                            // original compare
+                            0x83, 0x3D, new BinRefTo("originalCompareAddress", false), 0x00, // cmp dword ptr [0191DD80],00
+                        }
+                    },
+
+                    new BinaryEdit("u_fix_lord_animation_stuck_building_attack") // 56D856
+                    {
+                        new BinAddress("unitVar", 24),
+                        new BinSkip(21),
+                        new BinHook(7)
+                        {
+                            0xC7, 0x80, new BinRefTo("unitVar", false), 0x65, 0x00, 0x00, 0x00, // mov [eax+unitVar],00000065
+                        }
+                    }
+                }
+            },
+          
             new Change("o_fix_small_wall_placement_count", ChangeType.Bugfix, true)
             {
                 new DefaultHeader("o_fix_small_wall_placement_count")
@@ -1046,30 +1093,30 @@ namespace UCP
 
                     // 004AF15A
                     BinHook.CreateEdit("o_playercolor_table1", 7,
-                            0x89, 0xF0, // mov eax, esi
-                            0x3C, 0x01, //  CMP AL,1
-                            0x75, 0x04, //  JNE SHORT
-                            0xB0, new BinByteValue(), //  MOV AL, value
-                            0xEB, 0x06, //  JMP SHORT
-                            0x3C, new BinByteValue(), //  CMP AL, value
-                            0x75, 0x02, //  JNE SHORT
-                            0xB0, 0x01, //  MOV AL,1
-                            0x8B, 0x14, 0x85, // mov edx, [eax*4 + namecolors]
-                            new BinRefTo("namecolors", false)
+                        0x89, 0xF0, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x01, //  MOV AL,1
+                        0x8B, 0x14, 0x85, // mov edx, [eax*4 + namecolors]
+                        new BinRefTo("namecolors", false)
                     ),
 
                     // 004AF1A9
                     BinHook.CreateEdit("o_playercolor_table2", 7,
-                            0x89, 0xF0, // mov eax, esi
-                            0x3C, 0x01, //  CMP AL,1
-                            0x75, 0x04, //  JNE SHORT
-                            0xB0, new BinByteValue(), //  MOV AL, value
-                            0xEB, 0x06, //  JMP SHORT
-                            0x3C, new BinByteValue(), //  CMP AL, value
-                            0x75, 0x02, //  JNE SHORT
-                            0xB0, 0x01, //  MOV AL,1
-                            0x8B, 0x04, 0x85, // mov eax, [eax*4 + namecolors]
-                            new BinRefTo("namecolors", false)
+                        0x89, 0xF0, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x01, //  MOV AL,1
+                        0x8B, 0x04, 0x85, // mov eax, [eax*4 + namecolors]
+                        new BinRefTo("namecolors", false)
                     ),
 
                     #endregion
@@ -1078,16 +1125,16 @@ namespace UCP
 
                     // 004D60B1 end results scoreboard
                     BinHook.CreateEdit("o_playercolor_endscore", 7,
-                            0x89, 0xF0, // mov eax, esi
-                            0x3C, 0x01, //  CMP AL,1
-                            0x75, 0x04, //  JNE SHORT 
-                            0xB0, new BinByteValue(), //  MOV AL, value
-                            0xEB, 0x06, //  JMP SHORT
-                            0x3C, new BinByteValue(), //  CMP AL, value
-                            0x75, 0x02, //  JNE SHORT
-                            0xB0, 0x01, //  MOV AL,1
-                            0x8B, 0x04, 0x85, // mov eax, [eax*4 + namecolors]
-                            new BinRefTo("namecolors", false)
+                        0x89, 0xF0, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT 
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x01, //  MOV AL,1
+                        0x8B, 0x04, 0x85, // mov eax, [eax*4 + namecolors]
+                        new BinRefTo("namecolors", false)
                     ),
 
 
@@ -1169,16 +1216,16 @@ namespace UCP
                 
                     // 004AE562 mightiest lord
                     BinHook.CreateEdit("o_playercolor_scorename", 7,
-                            0x89, 0xF0, // mov eax, esi
-                            0x3C, 0x01, //  CMP AL,1
-                            0x75, 0x04, //  JNE SHORT 
-                            0xB0, new BinByteValue(), //  MOV AL, value
-                            0xEB, 0x06, //  JMP SHORT
-                            0x3C, new BinByteValue(), //  CMP AL, value
-                            0x75, 0x02, //  JNE SHORT
-                            0xB0, 0x01, //  MOV AL,1
-                            0x8B, 0x04, 0x85, // mov eax, [eax*4 + varscore]
-                            new BinRefTo("namecolors", false)
+                        0x89, 0xF0, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT 
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x01, //  MOV AL,1
+                        0x8B, 0x04, 0x85, // mov eax, [eax*4 + varscore]
+                        new BinRefTo("namecolors", false)
                     ),
 
                     #endregion
@@ -2831,88 +2878,88 @@ namespace UCP
             new Change("o_shfy", ChangeType.Other, false, false)
             {
                 new DefaultHeader("o_shfy_beer", false)
-                // fixes beer popularity bonus
-                {
-                    new BinaryEdit("o_shfy_beerpopularity")
+                    // fixes beer popularity bonus
                     {
-                        new BinSkip(21),
-                        new BinBytes(0xB8, 0x19, 0x00, 0x00, 0x00),
-                        new BinSkip(7),
-                        new BinBytes(0xB8, 0x32, 0x00, 0x00, 0x00),
-                        new BinSkip(13),
-                        new BinBytes(0x83, 0xE2, 0x9C, 0x83, 0xC2, 0x64, 0x90, 0x90, 0x90)
-                    },
+                        new BinaryEdit("o_shfy_beerpopularity")
+                        {
+                            new BinSkip(21),
+                            new BinBytes(0xB8, 0x19, 0x00, 0x00, 0x00),
+                            new BinSkip(7),
+                            new BinBytes(0xB8, 0x32, 0x00, 0x00, 0x00),
+                            new BinSkip(13),
+                            new BinBytes(0x83, 0xE2, 0x9C, 0x83, 0xC2, 0x64, 0x90, 0x90, 0x90)
+                        },
 
-                    new BinaryEdit("o_shfy_beerpopularitytab")
-                    {
-                        new BinSkip(14),
-                        new BinBytes(0xBE, 0x19, 0x00, 0x00, 0x00),
-                        new BinSkip(7),
-                        new BinBytes(0xBE, 0x32, 0x00, 0x00, 0x00),
-                        new BinSkip(13),
-                        new BinBytes(0x83, 0xE1, 0xE7, 0x83, 0xC1, 0x64, 0x90, 0x90, 0x90)
-                    },
+                        new BinaryEdit("o_shfy_beerpopularitytab")
+                        {
+                            new BinSkip(14),
+                            new BinBytes(0xBE, 0x19, 0x00, 0x00, 0x00),
+                            new BinSkip(7),
+                            new BinBytes(0xBE, 0x32, 0x00, 0x00, 0x00),
+                            new BinSkip(13),
+                            new BinBytes(0x83, 0xE1, 0xE7, 0x83, 0xC1, 0x64, 0x90, 0x90, 0x90)
+                        },
 
-                    new BinaryEdit("o_shfy_beertab")
-                    {
-                        new BinSkip(14),
-                        new BinBytes(0xB8, 0x19, 0x00, 0x00, 0x00),
-                        new BinSkip(7),
-                        new BinBytes(0xB8, 0x32, 0x00, 0x00, 0x00),
-                        new BinSkip(13),
-                        new BinBytes(0x83, 0xE0, 0xE7, 0x83, 0xC0, 0x64, 0x90, 0x90)
-                    }
-                },
+                        new BinaryEdit("o_shfy_beertab")
+                        {
+                            new BinSkip(14),
+                            new BinBytes(0xB8, 0x19, 0x00, 0x00, 0x00),
+                            new BinSkip(7),
+                            new BinBytes(0xB8, 0x32, 0x00, 0x00, 0x00),
+                            new BinSkip(13),
+                            new BinBytes(0x83, 0xE0, 0xE7, 0x83, 0xC0, 0x64, 0x90, 0x90)
+                        }
+                    },
 
                 new DefaultHeader("o_shfy_religion", false)
-                // fixes religion popularity bonus
-                {
-                    new BinaryEdit("o_shfy_religionpopularity")
+                    // fixes religion popularity bonus
                     {
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC1, 0x00),
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC1, 0x00),
-                    },
+                        new BinaryEdit("o_shfy_religionpopularity")
+                        {
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC1, 0x00),
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC1, 0x00),
+                        },
 
-                    new BinaryEdit("o_shfy_religionpopularitytab")
-                    {
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC6, 0x00),
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC6, 0x00),
-                    },
+                        new BinaryEdit("o_shfy_religionpopularitytab")
+                        {
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC6, 0x00),
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC6, 0x00),
+                        },
 
-                    new BinaryEdit("o_shfy_religiontab")
-                    {
-                        JMP(UNCONDITIONAL, 0x6D),
-                        new BinSkip(132),
-                        new BinBytes(0xB9, 0x00, 0x00, 0x00, 0x00),
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC1, 0x00)
-                    }
-                },
+                        new BinaryEdit("o_shfy_religiontab")
+                        {
+                            JMP(UNCONDITIONAL, 0x6D),
+                            new BinSkip(132),
+                            new BinBytes(0xB9, 0x00, 0x00, 0x00, 0x00),
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC1, 0x00)
+                        }
+                    },
 
                 new DefaultHeader("o_shfy_peasantspawnrate", false)
-                // fixes peasant spawnrate
-                {
-                    new BinaryEdit("o_shfy_peasantspawnrate")
+                    // fixes peasant spawnrate
                     {
-                        new BinSkip(8),
-                        new BinBytes(0x83, 0xFB, 0x00, 0x90, 0x90, 0x90),
-                        new BinSkip(8),
-                        new BinBytes(0x83, 0xFB, 0x00, 0x90, 0x90, 0x90)
-                    }
-                },
+                        new BinaryEdit("o_shfy_peasantspawnrate")
+                        {
+                            new BinSkip(8),
+                            new BinBytes(0x83, 0xFB, 0x00, 0x90, 0x90, 0x90),
+                            new BinSkip(8),
+                            new BinBytes(0x83, 0xFB, 0x00, 0x90, 0x90, 0x90)
+                        }
+                    },
 
                 new DefaultHeader("o_shfy_resourcequantity", false)
-                // fixes resource quantity
-                {
-                    new BinaryEdit("o_shfy_resourcequantity")
+                    // fixes resource quantity
                     {
-                        new BinBytes(0x83, 0xC0, 0x00)
-                    },
-                }
+                        new BinaryEdit("o_shfy_resourcequantity")
+                        {
+                            new BinBytes(0x83, 0xC0, 0x00)
+                        },
+                    }
             },
             
             // 4FA620
@@ -3126,6 +3173,8 @@ namespace UCP
 
             #endregion
         };
+
+        public static List<Change> Changes { get { return changes; } }
 
         /// <summary>
         /// Load changes stored in submodules

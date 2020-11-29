@@ -1,6 +1,16 @@
 // ======================
 //         dev
 // ======================
+u_fix_lord_animation_stuck_movement
+{
+"Fix Lord animation freeze"
+}
+
+u_fix_lord_animation_stuck_movement_descr
+{
+"Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
+}
+
 o_fix_small_wall_placement_count
 {
 "Fix small wall placement count preview"
