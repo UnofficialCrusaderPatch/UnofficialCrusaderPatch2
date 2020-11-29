@@ -182,6 +182,10 @@
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield_enemy_taunt.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield_pre.block" />
+    <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech.block" />
+    <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_engine.block" />
+    <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_lord_type.block" />
+    <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_purchase.block" />
     <EmbeddedResource Include="CodeBlocks\ui_fix_laddermen_cost_display_in_engineers_guild.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix1.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix2.block" />
