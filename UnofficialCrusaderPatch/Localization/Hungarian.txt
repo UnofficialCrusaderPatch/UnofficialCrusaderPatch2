@@ -76,6 +76,21 @@ o_fix_moat_digging_unit_disappearing_descr
 }
 
 // ======================
+//         dev
+// ======================
+o_increase_path_update_tick_rate
+{
+"Increase the tick rate of path update by 4 times."
+}
+
+o_increase_path_update_tick_rate_descr
+{
+"In vanilla, it took 200 game ticks to update pathing which resulted in units not being able to move into the castle after destroying a gate or tower.
+
+This change increases this tick rate by 4 times by lowering this required tick value to 50, allowing the units to 'realize' more quickly that a new path is available."
+}
+
+// ======================
 //         2.14
 // ======================
 

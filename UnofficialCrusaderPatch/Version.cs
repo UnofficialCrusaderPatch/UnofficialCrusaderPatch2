@@ -2741,6 +2741,19 @@ namespace UCP
                 }
             },
 
+            new Change("o_increase_path_update_tick_rate", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_increase_path_update_tick_rate")
+                {
+                    // 499605
+                    new BinaryEdit("o_increase_path_update_tick_rate")
+                    {
+                        new BinSkip(25),
+                        new BinBytes(0x32)
+                    },
+                },
+            },
+
             new Change("o_default_multiplayer_speed", ChangeType.Other)
             {
                 new SliderHeader("o_default_multiplayer_speed", false, 20, 90, 1, 40, 40)
