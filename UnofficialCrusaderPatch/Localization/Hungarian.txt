@@ -1,6 +1,28 @@
-﻿﻿﻿﻿// ======================
+// ======================
 //         dev
 // ======================
+
+o_allow_overbuilding
+{
+"Allow overbuilding workers and units"
+}
+
+o_allow_overbuilding_descr
+{
+"Allows the player to overbuild workers with buildings, while allowing to overbuild units with walls and towers making them pop at the top."
+}
+
+o_increase_path_update_tick_rate
+{
+"Increase the tick rate of path update by 4 times."
+}
+
+o_increase_path_update_tick_rate_descr
+{
+"In vanilla, it took 200 game ticks to update pathing which resulted in units not being able to move into the castle after destroying a gate or tower.
+
+This change increases this tick rate by 4 times by lowering this required tick value to 50, allowing the units to 'realize' more quickly that a new path is available."
+}
 
 o_fix_ladderclimb
 {
@@ -12,9 +34,6 @@ o_fix_ladderclimb_descr
 "Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
 }
 
-// ======================
-//         dev
-// ======================
 u_spearmen_run
 {
 "Spearmen run by default instead of walking"
@@ -73,21 +92,6 @@ o_fix_moat_digging_unit_disappearing
 o_fix_moat_digging_unit_disappearing_descr
 {
 "Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!"
-}
-
-// ======================
-//         dev
-// ======================
-o_increase_path_update_tick_rate
-{
-"Increase the tick rate of path update by 4 times."
-}
-
-o_increase_path_update_tick_rate_descr
-{
-"In vanilla, it took 200 game ticks to update pathing which resulted in units not being able to move into the castle after destroying a gate or tower.
-
-This change increases this tick rate by 4 times by lowering this required tick value to 50, allowing the units to 'realize' more quickly that a new path is available."
 }
 
 // ======================
