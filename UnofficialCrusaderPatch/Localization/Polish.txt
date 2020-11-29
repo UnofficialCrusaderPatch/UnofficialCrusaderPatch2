@@ -2,6 +2,16 @@
 //         dev
 // ======================
 
+u_fix_applefarm_blocking
+{
+"Fix apple farm blocking"
+}
+
+u_fix_applefarm_blocking_descr
+{
+"Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
+}
+
 o_allow_overbuilding
 {
 "Allow overbuilding workers and units"
