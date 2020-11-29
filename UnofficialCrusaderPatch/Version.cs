@@ -292,19 +292,6 @@ namespace UCP
                 }
             },
             
-            // 4FA620
-            new Change("fix_apple_orchard_build_size", ChangeType.Bugfix)
-            {
-                new DefaultHeader("fix_apple_orchard_build_size")
-                {
-                    new BinaryEdit("fix_apple_orchard_build_size")
-                    {
-                        new BinSkip(16),
-                        0x0A // this is not the size, it is the ID in the switch case!
-                    }
-                }
-            },
-            
             #endregion
 
             #region AI LORDS
@@ -2599,6 +2586,19 @@ namespace UCP
                     {
                         new BinBytes(0x83, 0xC0, 0x00)
                     },
+                }
+            },
+            
+            // 4FA620
+            new Change("fix_apple_orchard_build_size", ChangeType.Other)
+            {
+                new DefaultHeader("fix_apple_orchard_build_size")
+                {
+                    new BinaryEdit("fix_apple_orchard_build_size")
+                    {
+                        new BinSkip(16),
+                        0x0A // this is not the size, it is the ID in the switch case!
+                    }
                 }
             },
 
