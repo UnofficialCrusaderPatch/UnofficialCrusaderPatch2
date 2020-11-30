@@ -3226,6 +3226,85 @@ namespace UCP
                     },
                 },
             },
+            
+            new Change("o_change_siege_engine_spawn_position_catapult", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_change_siege_engine_spawn_position_catapult")
+                {
+                    // 41F4A2
+                    new BinaryEdit("o_change_siege_engine_spawn_position_catapult")
+                    {
+                        new BinAddress("yPositionAddress", 43),
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 41F8AF
+                    new BinaryEdit("o_change_siege_engine_spawn_position_trebutchet")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 41FD7F
+                    new BinaryEdit("o_change_siege_engine_spawn_position_tower")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 42020F
+                    new BinaryEdit("o_change_siege_engine_spawn_position_ram")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 42069F
+                    new BinaryEdit("o_change_siege_engine_spawn_position_shield")
+                    {
+                        new BinSkip(37),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 41E332
+                    new BinaryEdit("o_change_siege_engine_spawn_position_fireballista")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                }
+            }
 
             #endregion
         };

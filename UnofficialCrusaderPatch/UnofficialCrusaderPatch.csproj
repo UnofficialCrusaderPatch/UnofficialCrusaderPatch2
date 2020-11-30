@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -156,6 +156,12 @@
     <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_attr.block" />
     <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_fn.block" />
     <EmbeddedResource Include="CodeBlocks\ai_fix_laddermen_with_enclosed_keep.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_catapult.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_fireballista.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_ram.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_shield.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_tower.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_trebutchet.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_small_wall_placement_count.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_small_wall_placement_count_pre.block" />
     <EmbeddedResource Include="CodeBlocks\fix_apple_orchard_build_size.block" />
