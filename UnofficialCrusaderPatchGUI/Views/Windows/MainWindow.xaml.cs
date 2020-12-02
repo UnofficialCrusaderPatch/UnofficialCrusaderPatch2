@@ -163,6 +163,11 @@ namespace UCP.Views
             Application.Current.Shutdown();
         }
 
+        void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
         void MinimizeButton_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
