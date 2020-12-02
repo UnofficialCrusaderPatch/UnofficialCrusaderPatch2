@@ -96,7 +96,16 @@ namespace UCP.Views
             bool? result = dialog.ShowDialog();
             if (result.HasValue && result.Value)
             {
-                UCPConfig loadedConfig = new JavaScriptSerializer().Deserialize<UCPConfig>(File.ReadAllText(dialog.FileName));
+                UCPConfig loadedConfig;
+                try
+                {
+                    loadedConfig = new JavaScriptSerializer().Deserialize<UCPConfig>(File.ReadAllText(dialog.FileName));
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Failed to load configuration");
+                    return;
+                }
 
                 if (preferences.ContainsKey(PREFER_PATH) && preferences[PREFER_PATH] != null &&
                     bool.Parse(preferences[PREFER_PATH].ToString()))
@@ -215,7 +224,20 @@ namespace UCP.Views
             ENABLE_AUTOSAVE = preferences.ContainsKey(AUTOSAVE) && preferences.TryGetValue(AUTOSAVE, out object autosave) && 
                 bool.TryParse(autosave.ToString(), out bool enableAutosave) && enableAutosave;
             SetKnownPaths(preferences);
-            UCPConfig config = GetStartingConfig(preferences);
+            UCPConfig config = null;
+            try
+            {
+               config = GetStartingConfig(preferences);
+            } catch (Exception)
+            {
+                MessageBox.Show("Invalid configuration detected. Creating new ucp.json");
+                config = new UCPConfig();
+                _vm.Preferences[MOST_RECENT_CONFIG] = UCP_JSON_PATH;
+                using (StreamWriter file = File.CreateText(UCP_JSON_PATH))
+                {
+                    Resolver.Writer.Serialize(file, config);
+                }
+            }
             SetInstallationPath(preferences, config);
             startupConfig = config;
             _vm.CurrentConfig = config;
