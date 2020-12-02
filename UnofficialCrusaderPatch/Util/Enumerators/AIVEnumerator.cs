@@ -65,6 +65,11 @@ namespace UCP.AIV
             activeChange = _changes.Where(x => x.Identifier.Equals(aivName)).ToList().First();
         }
 
+        internal static void ResetAIVConfiguration()
+        {
+            activeChange = null;
+        }
+
         internal static void Install(string path, bool overwrite, bool graphical)
         {
             if (activeChange == null)

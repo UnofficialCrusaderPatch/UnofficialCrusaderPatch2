@@ -41,6 +41,11 @@ namespace UCP.Startup
             activeChange = _changes.Where(x => x.Identifier.Equals(configName)).ToList().First();
         }
 
+        internal static void ResetStartResourceConfiguration()
+        {
+            activeChange = null;
+        }
+
         static StartResourceEnumerator()
         {
             startResourceConfig = new Dictionary<string, StartResourceConfiguration>();

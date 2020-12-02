@@ -176,6 +176,11 @@ namespace UCP.AIC
             }
         }
 
+        internal static void ResetAICConfiguration()
+        {
+            activeSelection.Clear();
+        }
+
         internal static SubChange CreateEdit()
         {
             if (activeSelection.Count == 0)

@@ -190,6 +190,17 @@ namespace UCP.API
                 }
             }
             errorMsg += Installer.WriteFinalizeExtreme();
+
+            /* Clear configuration until install called again */
+            foreach (Mod currentMod in Mod.Items)
+            {
+                currentMod.Disable();
+            }
+            AICEnumerator.ResetAICConfiguration();
+            AIVEnumerator.ResetAIVConfiguration();
+            StartResourceEnumerator.ResetStartResourceConfiguration();
+            StartTroopEnumerator.ResetStartTroopConfiguration();
+
             return true;
         }
 
