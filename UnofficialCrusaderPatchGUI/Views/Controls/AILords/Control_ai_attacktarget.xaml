@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Expander x:Name="expander" IsExpanded="false">
         <Expander.Header>
-            <CheckBox Content="{DynamicResource ai_attacktarget}" x:Name="ai_attacktarget" IsEnabled="True" Checked="OnCheckBoxChecked" Unchecked="OnCheckBoxChecked"/>
+            <CheckBox Content="{DynamicResource ai_attacktarget}" x:Name="ai_attacktarget" IsEnabled="True" Click="OnCheckBoxClicked"/>
         </Expander.Header>
         <StackPanel>
             <RadioButton GroupName="AttackTarget" Content="{DynamicResource ai_attacktarget_nearest}" x:Name="ai_attacktarget_nearest" IsChecked="False" Checked="OnSelected"/>

@@ -28,15 +28,18 @@ namespace UCP.Views.Controls.AILords
                             new SubControlConfig()
                                 .withIdentifier("ai_demolish_walls")
                                 .withSetEnabled((bool value) => ai_demolish_walls.IsChecked = value)
-                                .withEnabled(() => ai_demolish_walls.IsChecked == true),
+                                .withEnabled(() => ai_demolish_walls.IsChecked == true)
+                                .withValue(() => null),
                             new SubControlConfig()
                                 .withIdentifier("ai_demolish_eco")
                                 .withSetEnabled((bool value) => ai_demolish_eco.IsChecked = value)
-                                .withEnabled(() => ai_demolish_eco.IsChecked == true),
+                                .withEnabled(() => ai_demolish_eco.IsChecked == true)
+                                .withValue(() => null),
                             new SubControlConfig()
                                 .withIdentifier("ai_demolish_trapped")
                                 .withSetEnabled((bool value) => ai_demolish_trapped.IsChecked = value)
                                 .withEnabled(() => ai_demolish_trapped.IsChecked == true)
+                                .withValue(() => null)
                         })
                 );
         }
@@ -51,8 +54,6 @@ namespace UCP.Views.Controls.AILords
             } else
             {
                 ai_demolish_walls.IsChecked = true;
-                ai_demolish_trapped.IsChecked = true;
-                ai_demolish_eco.IsChecked = true;
             }
         }
 

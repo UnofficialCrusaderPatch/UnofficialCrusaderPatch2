@@ -252,6 +252,11 @@ namespace UCP.Views
                 config = Resolver.GetUCPConfigFromUncovertedCfg(UCP_CFG_PATH);
             }
             Resolver.WritePreferences(_vm.Preferences);
+            if (config == null)
+            {
+                config = new UCPConfig();
+                _vm.Preferences[MOST_RECENT_CONFIG] = UCP_JSON_PATH;
+            }
             return config;
         }
 

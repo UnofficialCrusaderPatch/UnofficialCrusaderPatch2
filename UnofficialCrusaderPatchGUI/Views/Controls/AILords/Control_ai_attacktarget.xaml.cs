@@ -28,26 +28,33 @@ namespace UCP.Views.Controls.AILords
                             new SubControlConfig()
                                 .withIdentifier("ai_attacktarget_nearest")
                                 .withSetEnabled((bool value) => ai_attacktarget_nearest.IsChecked = value)
-                                .withEnabled(() => ai_attacktarget_nearest.IsChecked == true),
+                                .withEnabled(() => ai_attacktarget_nearest.IsChecked == true)
+                                .withValue(() => null),
                             new SubControlConfig()
                                 .withIdentifier("ai_attacktarget_richest")
                                 .withSetEnabled((bool value) => ai_attacktarget_richest.IsChecked = value)
-                                .withEnabled(() => ai_attacktarget_richest.IsChecked == true),
+                                .withEnabled(() => ai_attacktarget_richest.IsChecked == true)
+                                .withValue(() => null),
                             new SubControlConfig()
                                 .withIdentifier("ai_attacktarget_weakest")
                                 .withSetEnabled((bool value) => ai_attacktarget_weakest.IsChecked = value)
                                 .withEnabled(() => ai_attacktarget_weakest.IsChecked == true)
+                                .withValue(() => null)
                         })
                 );
         }
 
-        void OnCheckBoxChecked(object sender, RoutedEventArgs e)
+        void OnCheckBoxClicked(object sender, RoutedEventArgs e)
         {
             if ((sender as CheckBox).IsChecked == false)
             {
                 ai_attacktarget_nearest.IsChecked = false;
                 ai_attacktarget_richest.IsChecked = false;
                 ai_attacktarget_weakest.IsChecked = false;
+            }
+            else
+            {
+                ai_attacktarget_nearest.IsChecked = true;
             }
         }
 

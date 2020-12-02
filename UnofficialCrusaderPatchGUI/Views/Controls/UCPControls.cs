@@ -56,6 +56,11 @@ namespace UCP.Views.Controls
 
         private static void ConfigureControlConfig(List<ChangeConfiguration> changeConfigs, ControlConfig cfg)
         {
+            if (changeConfigs == null || cfg == null)
+            {
+                return;
+            }
+
             if (!changeConfigs.Exists(x => x.Identifier.Equals(cfg.Identifier)))
             {
                 foreach (SubControlConfig subCfg in cfg.SubControlConfigList)
