@@ -129,8 +129,8 @@ namespace UCP.Views
         void SaveConfig_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.SaveFileDialog dialog = new Microsoft.Win32.SaveFileDialog();
-            bool? result = dialog.ShowDialog();
             dialog.Filter = JSON_FILTER;
+            bool? result = dialog.ShowDialog();
             if (result.HasValue && result.Value)
             {
                 UCPConfig config = new UCPConfig()
