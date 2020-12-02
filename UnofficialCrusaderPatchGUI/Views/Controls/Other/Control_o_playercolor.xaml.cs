@@ -58,6 +58,11 @@ namespace UCP.Views.Controls.Other
             }
         }
 
+        public void OnClick(object sender, RoutedEventArgs e)
+        {
+            SetConfigValue(config, 1);
+        }
+
         void DataContextChangedEvent(object sender, DependencyPropertyChangedEventArgs e)
         {
             var vm = e.NewValue as MainViewModel;

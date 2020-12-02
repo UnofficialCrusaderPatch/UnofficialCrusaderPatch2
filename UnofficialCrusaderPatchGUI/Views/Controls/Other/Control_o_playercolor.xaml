@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Expander x:Name="expander" IsExpanded="false">
         <Expander.Header>
-            <CheckBox Content="{DynamicResource o_playercolor}" x:Name="o_playercolor"/>
+            <CheckBox Content="{DynamicResource o_playercolor}" x:Name="o_playercolor" Click="OnClick"/>
         </Expander.Header>
         <Grid x:Name="PickColorGrid">
             <Grid.ColumnDefinitions>
