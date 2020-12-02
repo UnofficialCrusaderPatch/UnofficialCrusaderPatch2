@@ -357,24 +357,9 @@ namespace UCP.Views
             {
                 MessageBox.Show(exception.Message);
             }
+            MessageBox.Show("Uninstall completed");
         }
         #endregion
-
-        /// <summary>
-        /// Convenience method for exporting custom AICs
-        /// </summary>
-        /// <param name="json">Serialized JSON string</param>
-        /// <returns></returns>
-        private static String Format(String json)
-        {
-            return Regex.Unescape(
-                json.Replace(",\"", ",\n\t\"")
-                    .Replace("{", "{\n\t")
-                    .Replace("}", "\n}")
-                    .Replace("\\r\\n", "\r\n")
-                    .Replace("[", "\n\t[")
-            );
-        }
 
         private void LanguageChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
