@@ -49,6 +49,7 @@ namespace UCP.Views.Controls.AILords
             {
                 ai_addattack.IsChecked = true;
                 ai_addattack_checkbox.IsChecked = true;
+                ai_addattack_checkbox1.IsChecked = false;
             }
             else
             {
@@ -66,6 +67,7 @@ namespace UCP.Views.Controls.AILords
             {
                 ai_addattack.IsChecked = true;
                 ai_addattack_checkbox1.IsChecked = true;
+                ai_addattack_checkbox.IsChecked = false;
             }
             else
             {
@@ -88,6 +90,7 @@ namespace UCP.Views.Controls.AILords
             {
                 ai_addattack_slider.Value = 12;
                 ai_addattack_slider1.Value = 0.3;
+                ai_addattack_checkbox.IsChecked = false;
             }
         }
 
@@ -96,6 +99,7 @@ namespace UCP.Views.Controls.AILords
             if ((sender as CheckBox).IsChecked == true)
             {
                 ai_addattack_slider.Value = 12;
+                ai_addattack_checkbox1.IsChecked = false;
             }
             else
             {
@@ -108,6 +112,7 @@ namespace UCP.Views.Controls.AILords
             if ((sender as CheckBox).IsChecked == true)
             {
                 ai_addattack_slider1.Value = 0.3;
+                ai_addattack_checkbox.IsChecked = false;
             }
             else
             {
