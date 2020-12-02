@@ -28,19 +28,23 @@ namespace UCP.Views.Controls.Other
                             new SubControlConfig()
                                 .withIdentifier("o_shfy_beer")
                                 .withSetEnabled((bool value) => o_shfy_beer.IsChecked = value)
-                                .withEnabled(() => o_shfy_beer.IsChecked == true),
+                                .withEnabled(() => o_shfy_beer.IsChecked == true)
+                                .withValue(() => null),
                             new SubControlConfig()
                                 .withIdentifier("o_shfy_religion")
                                 .withSetEnabled((bool value) => o_shfy_religion.IsChecked = value)
-                                .withEnabled(() => o_shfy_religion.IsChecked == true),
+                                .withEnabled(() => o_shfy_religion.IsChecked == true)
+                                .withValue(() => null),
                             new SubControlConfig()
                                 .withIdentifier("o_shfy_peasantspawnrate")
                                 .withSetEnabled((bool value) => o_shfy_peasantspawnrate.IsChecked = value)
-                                .withEnabled(() => o_shfy_peasantspawnrate.IsChecked == true),
+                                .withEnabled(() => o_shfy_peasantspawnrate.IsChecked == true)
+                                .withValue(() => null),
                             new SubControlConfig()
                                 .withIdentifier("o_shfy_resourcequantity")
                                 .withSetEnabled((bool value) => o_shfy_peasantspawnrate.IsChecked = value)
                                 .withEnabled(() => o_shfy_peasantspawnrate.IsChecked == true)
+                                .withValue(() => null)
                         })
                 );
         }
@@ -57,7 +61,6 @@ namespace UCP.Views.Controls.Other
             else
             {
                 o_shfy_beer.IsChecked = true;
-                o_shfy_peasantspawnrate.IsChecked = true;
                 o_shfy_religion.IsChecked = true;
                 o_shfy_resourcequantity.IsChecked = true;
             }
