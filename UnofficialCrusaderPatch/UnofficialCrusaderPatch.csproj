@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -76,6 +76,7 @@
     <Compile Include="AIC\Utils\AIPersonality.cs" />
     <Compile Include="AIC\Utils\AISerializer.cs" />
     <Compile Include="AIC\Utils\AIPersonalityFieldsEnum.cs" />
+    <Compile Include="AIC\Utils\AIStartResourceCollection.cs" />
     <Compile Include="AIC\Utils\PersonalityEnums\Buildings.cs" />
     <Compile Include="AIC\Utils\PersonalityEnums\Resources.cs" />
     <Compile Include="AIC\Utils\PersonalityEnums\SiegeEngines.cs" />
@@ -1506,6 +1507,8 @@
     <None Include="App.config" />
     <EmbeddedResource Include="CodeBlocks\s_resource.block" />
     <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed_reset.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_startresource.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_startresource_shc.block" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />

@@ -140,7 +140,7 @@ namespace UCP.Patching
             }
 
             // Apply changes handled in their respective submodules
-            AICChange.DoChange(args);
+            AICChange.DoChange(args, xtreme);
             StartTroopChange.DoChange(args);
             ResourceChange.DoChange(args);
 

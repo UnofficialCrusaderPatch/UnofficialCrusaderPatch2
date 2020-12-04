@@ -67,6 +67,9 @@
     <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AISerializer.cs">
       <Link>AICharacters\AISerializer.cs</Link>
     </Compile>
+    <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\AIStartResourceCollection.cs">
+      <Link>AICharacters\AIStartResourceCollection.cs</Link>
+    </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\PersonalityEnums\Buildings.cs">
       <Link>AICharacters\PersonalityEnums\Buildings.cs</Link>
     </Compile>
@@ -87,6 +90,9 @@
     </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\AIC\Utils\RWAttributes.cs">
       <Link>AICharacters\RWAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\UnofficialCrusaderPatch\Startup\StartingEnums.cs">
+      <Link>AICharacters\StartingEnums.cs</Link>
     </Compile>
     <Compile Include="AICUpdaterHelper.cs" />
     <Compile Include="Program.cs" />

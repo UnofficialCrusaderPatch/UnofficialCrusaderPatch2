@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using UCP.AIC.Utils;
+using UCP.Startup;
 
 namespace UCPAIConversion
 {
@@ -106,7 +108,7 @@ namespace UCPAIConversion
                         foreach (KeyValuePair<string, object> definition in (Dictionary<string, object>)character)
                         {
                             // Parse simply-typed fields defined within AICharacter scope
-                            if (definition.Key != "Personality")
+                            if (definition.Key != "Personality" && definition.Key != "StartResources")
                             {
                                 try
                                 {
@@ -123,7 +125,8 @@ namespace UCPAIConversion
                                     }
                                 }
 
-                            } else if (definition.Key == "Personality") // Parse the Personality definition within the AICharacter
+                            }
+                            else if (definition.Key == "Personality") // Parse the Personality definition within the AICharacter
                             {
                                 currentPersonality = new AIPersonality();
                                 foreach (KeyValuePair<string, object> personalityValue in (Dictionary<string, object>)definition.Value)
@@ -162,6 +165,36 @@ namespace UCPAIConversion
                                 }
                                 currentCharacter.Personality = currentPersonality;
                             }
+                            else if (definition.Key == "StartResources")
+                            {
+                                try
+                                {
+                                    AIStartResourceCollection resourceCollection = new AIStartResourceCollection();
+                                    foreach (KeyValuePair<string, object> resourceValue in (Dictionary<string, object>)definition.Value)
+                                    {
+                                        if (resourceValue.Key == "normal")
+                                        {
+                                            resourceCollection.normal = GetResourceConfiguration((Dictionary<string, object>)resourceValue.Value);
+                                        }
+                                        else if (resourceValue.Key == "crusader")
+                                        {
+                                            resourceCollection.crusader = GetResourceConfiguration((Dictionary<string, object>)resourceValue.Value);
+                                        }
+                                        else if (resourceValue.Key == "deathmatch")
+                                        {
+                                            resourceCollection.deathmatch = GetResourceConfiguration((Dictionary<string, object>)resourceValue.Value);
+                                        }
+                                    }
+                                    currentCharacter.StartResources = resourceCollection;
+                                }
+                                catch (Exception)
+                                {
+                                    String customName = currentCharacter.CustomName;
+                                    String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
+                                    String errorName = ((name == null || name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
+                                    SerializationErrors.Errors.Add(GetErrorMessage(definition.Key, errorName));
+                                }
+                            }
                         }
                         AICharacters.Add(currentCharacter);
 
@@ -190,6 +223,22 @@ namespace UCPAIConversion
             collection.AICShortDescription = header;
             collection.AICharacters = AICharacters;
             return collection;
+        }
+
+        private Dictionary<StartingResource, int> GetResourceConfiguration(Dictionary<string, object> resourceConfig)
+        {
+            Dictionary<StartingResource, int> resourceDictionary = new Dictionary<StartingResource, int>();
+            foreach (KeyValuePair<string, object> resource in resourceConfig)
+            {
+                StartingResource resourceName = (StartingResource)Enum.Parse(typeof(StartingResource), resource.Key);
+                int resourceCount = Int32.Parse(resource.Value.ToString());
+                if (resourceCount < 0)
+                {
+                    throw new Exception();
+                }
+                resourceDictionary.Add(resourceName, resourceCount);
+            }
+            return resourceDictionary;
         }
 
         public override IDictionary<string, object> Serialize(object obj, JavaScriptSerializer serializer)

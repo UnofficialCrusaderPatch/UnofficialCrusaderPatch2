@@ -1,7 +1,7 @@
 {
 	"Description": "A description of the AI character",
 	"Name": "The name of the AI character",
-
+	"StartResources": "The starting resources for the AI",
 	"Unknown000": "Values: 0 to 2^31 -1",
 	"Unknown001": "Values: 0 to 2^31 -1",
 	"Unknown002": "Values: 0 to 2^31 -1",

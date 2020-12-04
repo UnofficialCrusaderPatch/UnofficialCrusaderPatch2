@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Script.Serialization;
+using UCP.AIC.Utils;
 
 namespace UCPAIConversion
 {
@@ -42,5 +43,7 @@ namespace UCPAIConversion
         /// List of parameters that define an AIs behaviour
         /// </summary>
         public AIPersonality Personality { get; set; }
+
+        public AIStartResourceCollection StartResources { get; set; }
     }
 }
