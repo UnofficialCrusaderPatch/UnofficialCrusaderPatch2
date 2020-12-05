@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using UCP.Data;
 using UCP.Model;
 using UCP.Views.Utils;
@@ -246,6 +247,9 @@ namespace UCP.Views.TabViews
                         description[language] : description.ContainsKey("English") ? 
                                 description["English"] : description.FirstOrDefault().Value;
             };
+            textBlock.Margin= new Thickness(20, 10, 20, 10);
+            textBlock.Padding = new Thickness(5, 5, 5, 5);
+            textBlock.Background = new SolidColorBrush(Color.FromArgb(150, 200, 200, 200));
             return textBlock;
         }
 

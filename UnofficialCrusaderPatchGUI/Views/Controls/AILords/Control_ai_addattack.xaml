@@ -10,7 +10,7 @@
         <Expander.Header>
             <CheckBox Content="{DynamicResource ai_addattack}" x:Name="ai_addattack" IsEnabled="True" Click="OnMainClicked"/>
         </Expander.Header>
-        <StackPanel>
+        <StackPanel Margin="20 10 10 0" Background="#7FC8C8C8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox x:Name="ai_addattack_checkbox" Click="OnCheckBoxClicked"/>
                 <Slider x:Name="ai_addattack_slider" Maximum="60" Minimum="0" HorizontalAlignment="Left" VerticalAlignment="Stretch" MinWidth="400"     
@@ -18,7 +18,7 @@
                 TickFrequency="1"/>
                 <TextBlock x:Name="ai_addattack_textbox" HorizontalAlignment="Left" Text="{Binding ElementName=ai_addattack_slider, Path=Value}"/>
             </StackPanel>
-            <TextBlock Text="{DynamicResource ai_addattack_descr}" TextWrapping="WrapWithOverflow" />
+            <TextBlock Text="{DynamicResource ai_addattack_descr}" TextWrapping="WrapWithOverflow"/>
             <StackPanel Orientation="Horizontal">
                 <CheckBox x:Name="ai_addattack_checkbox1" Click="OnCheckBox1Clicked"/>
                 <Slider x:Name="ai_addattack_slider1" Maximum="3" Minimum="0" HorizontalAlignment="Left" VerticalAlignment="Stretch" MinWidth="400"     
@@ -26,7 +26,7 @@
                 TickFrequency="0.1"/>
                 <TextBlock x:Name="ai_addattack_textbox1" HorizontalAlignment="Left" Text="{Binding ElementName=ai_addattack_slider1, Path=Value}"/>
             </StackPanel>
-            <TextBlock Text="{DynamicResource ai_addattack_alt_descr}" TextWrapping="WrapWithOverflow" />
+            <TextBlock Text="{DynamicResource ai_addattack_alt_descr}" TextWrapping="WrapWithOverflow"/>
         </StackPanel>
     </Expander>
 </UserControl>

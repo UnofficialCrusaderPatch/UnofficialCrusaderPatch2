@@ -10,14 +10,14 @@
         <Expander.Header>
             <CheckBox Content="{DynamicResource o_firecooldown}" x:Name="o_firecooldown" Click="OnClicked"/>
         </Expander.Header>
-        <StackPanel>
+        <StackPanel Margin="20 10 10 0" Background="#7FC8C8C8">
             <StackPanel Orientation="Horizontal">
                 <Slider x:Name="o_firecooldown_slider" Maximum="20000" Minimum="0" HorizontalAlignment="Left" VerticalAlignment="Stretch" MinWidth="400"     
                         IsSnapToTickEnabled="True" Value="2000" ValueChanged="OnSliderChanged"
                         TickFrequency="500"/>
                 <TextBlock x:Name="o_firecooldown_textbox" HorizontalAlignment="Left" Text="{Binding ElementName=o_firecooldown_slider, Path=Value}"/>
             </StackPanel>
-            <TextBlock Text="{DynamicResource o_firecooldown_descr}" TextWrapping="WrapWithOverflow" />
+            <TextBlock Text="{DynamicResource o_firecooldown_descr}" TextWrapping="WrapWithOverflow"/>
         </StackPanel>
     </Expander>
 </UserControl>

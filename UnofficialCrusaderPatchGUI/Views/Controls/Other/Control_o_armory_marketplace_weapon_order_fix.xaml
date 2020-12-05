@@ -10,6 +10,6 @@
     <Expander.Header>
         <CheckBox Content="{DynamicResource o_armory_marketplace_weapon_order_fix}" x:Name="o_armory_marketplace_weapon_order_fix"/>
     </Expander.Header>
-    <TextBlock Text="{DynamicResource o_armory_marketplace_weapon_order_fix_descr}" TextWrapping="WrapWithOverflow" />
+    <TextBlock Text="{DynamicResource o_armory_marketplace_weapon_order_fix_descr}" TextWrapping="WrapWithOverflow" Margin="20 10 10 0" Background="#7FC8C8C8"/>
     </Expander>
 </UserControl>

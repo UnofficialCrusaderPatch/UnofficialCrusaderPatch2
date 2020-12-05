@@ -10,6 +10,6 @@
         <Expander.Header>
             <CheckBox Content="{DynamicResource o_moatvisibility}" x:Name="o_moatvisibility"/>
         </Expander.Header>
-        <TextBlock Text="{DynamicResource o_moatvisibility_descr}" TextWrapping="WrapWithOverflow" />
+        <TextBlock Text="{DynamicResource o_moatvisibility_descr}" TextWrapping="WrapWithOverflow" Margin="20 10 10 0" Background="#7FC8C8C8"/>
     </Expander>
 </UserControl>

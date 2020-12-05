@@ -10,11 +10,11 @@
         <Expander.Header>
             <CheckBox Content="{DynamicResource ai_demolish}" x:Name="ai_demolish" IsEnabled="True" Click="OnMainCheckBoxClicked"/>
         </Expander.Header>
-        <StackPanel>
+        <StackPanel Margin="20 10 10 0" Background="#7FC8C8C8">
             <CheckBox Content="{DynamicResource ai_demolish_walls}" x:Name="ai_demolish_walls" IsChecked="False" Checked="OnAIDemolishWallsChecked" Unchecked="OnAIDemolishWallsChecked"/>
             <CheckBox Content="{DynamicResource ai_demolish_trapped}" x:Name="ai_demolish_trapped" IsChecked="False" Checked="OnAIDemolishTrappedChecked" Unchecked="OnAIDemolishTrappedChecked"/>
             <CheckBox Content="{DynamicResource ai_demolish_eco}" x:Name="ai_demolish_eco" IsChecked="False" Checked="OnAIDemolishEcoChecked" Unchecked="OnAIDemolishEcoChecked"/>
-            <TextBlock Text="{DynamicResource ai_demolish_eco_descr}" TextWrapping="WrapWithOverflow" />
+            <TextBlock Text="{DynamicResource ai_demolish_eco_descr}" TextWrapping="WrapWithOverflow"/>
         </StackPanel>
     </Expander>
 </UserControl>

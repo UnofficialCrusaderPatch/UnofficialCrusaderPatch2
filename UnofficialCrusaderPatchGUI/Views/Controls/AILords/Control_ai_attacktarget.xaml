@@ -10,11 +10,11 @@
         <Expander.Header>
             <CheckBox Content="{DynamicResource ai_attacktarget}" x:Name="ai_attacktarget" IsEnabled="True" Click="OnCheckBoxClicked"/>
         </Expander.Header>
-        <StackPanel>
+        <StackPanel Margin="20 10 10 0" Background="#7FC8C8C8">
             <RadioButton GroupName="AttackTarget" Content="{DynamicResource ai_attacktarget_nearest}" x:Name="ai_attacktarget_nearest" IsChecked="False" Checked="OnSelected"/>
             <RadioButton GroupName="AttackTarget" Content="{DynamicResource ai_attacktarget_richest}" x:Name="ai_attacktarget_richest" IsChecked="False" Checked="OnSelected"/>
             <RadioButton GroupName="AttackTarget" Content="{DynamicResource ai_attacktarget_weakest}" x:Name="ai_attacktarget_weakest" IsChecked="False" Checked="OnSelected"/>
-            <TextBlock Text="{DynamicResource ai_attacktarget_weakest_descr}" TextWrapping="WrapWithOverflow" />
+            <TextBlock Text="{DynamicResource ai_attacktarget_weakest_descr}" TextWrapping="WrapWithOverflow"/>
         </StackPanel>
     </Expander>
 </UserControl>

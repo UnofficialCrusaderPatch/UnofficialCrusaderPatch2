@@ -10,6 +10,6 @@
         <Expander.Header>
             <CheckBox Content="{DynamicResource ai_tethers}" x:Name="ai_tethers"/>
         </Expander.Header>
-        <TextBlock Text="{DynamicResource ai_tethers_descr}" TextWrapping="WrapWithOverflow" />
+        <TextBlock Text="{DynamicResource ai_tethers_descr}" TextWrapping="WrapWithOverflow" Margin="20 10 10 0" Background="#7FC8C8C8"/>
     </Expander>
 </UserControl>

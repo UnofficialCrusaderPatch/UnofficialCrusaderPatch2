@@ -10,6 +10,6 @@
         <Expander.Header>
             <CheckBox Content="{DynamicResource ai_recruitinterval}" x:Name="ai_recruitinterval"/>
         </Expander.Header>
-        <TextBlock Text="{DynamicResource ai_recruitinterval_descr}" TextWrapping="WrapWithOverflow" />
+        <TextBlock Text="{DynamicResource ai_recruitinterval_descr}" TextWrapping="WrapWithOverflow" Margin="20 10 10 0" Background="#7FC8C8C8"/>
     </Expander>
 </UserControl>

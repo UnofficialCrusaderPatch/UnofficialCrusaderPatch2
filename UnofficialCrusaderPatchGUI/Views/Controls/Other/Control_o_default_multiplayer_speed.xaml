@@ -10,7 +10,7 @@
         <Expander.Header>
             <CheckBox Content="{DynamicResource o_default_multiplayer_speed}" x:Name="o_default_multiplayer_speed" Click="OnClicked"/>
         </Expander.Header>
-        <StackPanel>
+        <StackPanel Margin="20 10 10 0" Background="#7FC8C8C8">
             <StackPanel Orientation="Horizontal">
                 <Slider x:Name="o_default_multiplayer_speed_slider" Minimum="20" Maximum="90" HorizontalAlignment="Left" VerticalAlignment="Stretch" MinWidth="400"     
                         IsSnapToTickEnabled="True" Value="40" ValueChanged="OnSliderChanged"

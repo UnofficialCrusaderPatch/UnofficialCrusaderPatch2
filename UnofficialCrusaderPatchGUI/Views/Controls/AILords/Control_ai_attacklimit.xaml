@@ -10,7 +10,7 @@
         <Expander.Header>
             <CheckBox Content="{DynamicResource ai_attacklimit}" x:Name="ai_attacklimit" Click="OnClicked"/>
         </Expander.Header>
-        <StackPanel>
+        <StackPanel Margin="20 10 10 0" Background="#7FC8C8C8">
             <StackPanel Orientation="Horizontal">
                 <Slider x:Name="ai_attacklimit_slider" Maximum="3000" Minimum="0" HorizontalAlignment="Left" VerticalAlignment="Stretch" MinWidth="400"     
                 IsSnapToTickEnabled="True" Value="200" ValueChanged="OnSliderChanged"
@@ -18,7 +18,7 @@
                 <TextBlock x:Name="ai_attacklimit_textbox" HorizontalAlignment="Left" Text="{Binding ElementName=ai_attacklimit_slider, Path=Value}"/>
             </StackPanel>
             
-            <TextBlock Text="{DynamicResource ai_attacklimit_descr}" TextWrapping="WrapWithOverflow" />
+            <TextBlock Text="{DynamicResource ai_attacklimit_descr}" TextWrapping="WrapWithOverflow"/>
         </StackPanel>
     </Expander>
 </UserControl>

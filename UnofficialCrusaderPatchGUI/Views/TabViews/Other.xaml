@@ -37,14 +37,14 @@
                         <TextBlock x:Name="o_firecooldown_textbox" HorizontalAlignment="Left" Text="200"/>
                     </StackPanel>
 
-                    <TextBlock Text="{DynamicResource o_firecooldown_descr}" TextWrapping="WrapWithOverflow" />
+                    <TextBlock Text="{DynamicResource o_firecooldown_descr}" TextWrapping="WrapWithOverflow"/>
                 </StackPanel>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource o_xtreme}" x:Name="o_xtreme"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource o_xtreme_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource o_xtreme_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
@@ -76,49 +76,49 @@
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource o_keys}" x:Name="o_keys"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource o_keys_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource o_keys_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource o_healer}" x:Name="o_healer"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource o_healer_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource o_healer_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource o_freetrader}" x:Name="o_freetrader"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource o_freetrader_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource o_freetrader_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource o_engineertent}" x:Name="o_engineertent"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource o_engineertent_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource o_engineertent_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource o_moatvisibility}" x:Name="o_moatvisibility"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource o_moatvisibility_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource o_moatvisibility_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource o_gamespeed}" x:Name="o_gamespeed"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource o_gamespeed_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource o_gamespeed_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource o_responsivegates}" x:Name="o_responsivegates"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource o_responsivegates_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource o_responsivegates_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource o_onlyai}" x:Name="o_onlyai"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource o_onlyai_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource o_onlyai_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>-->
         </StackPanel>
     </ScrollViewer>

@@ -24,19 +24,19 @@
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource u_ArabXBow}" x:Name="u_ArabXBow"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource u_arabxbow_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource u_arabxbow_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource u_ArabWall}" x:Name="u_ArabWall"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource u_ArabWall_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource u_ArabWall_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource u_spearmen}" x:Name="u_spearmen"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource u_spearmen_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource u_spearmen_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>-->
         </StackPanel>
     </ScrollViewer>

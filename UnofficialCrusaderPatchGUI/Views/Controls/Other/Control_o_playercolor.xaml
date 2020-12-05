@@ -10,7 +10,7 @@
         <Expander.Header>
             <CheckBox Content="{DynamicResource o_playercolor}" x:Name="o_playercolor" Click="OnClick"/>
         </Expander.Header>
-        <Grid x:Name="PickColorGrid">
+        <Grid x:Name="PickColorGrid" Margin="20 10 10 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>

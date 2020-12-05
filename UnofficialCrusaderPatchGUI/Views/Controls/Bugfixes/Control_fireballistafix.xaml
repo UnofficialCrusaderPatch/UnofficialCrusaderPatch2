@@ -9,6 +9,6 @@
         <Expander.Header>
             <CheckBox Content="{DynamicResource u_fireballistafix}" x:Name="u_fireballistafix"/>
         </Expander.Header>
-        <TextBlock Text="{DynamicResource u_fireballistafix_descr}" TextWrapping="WrapWithOverflow" />
+        <TextBlock Text="{DynamicResource u_fireballistafix_descr}" TextWrapping="WrapWithOverflow" Margin="20 10 10 0" Background="#7FC8C8C8"/>
     </Expander>
 </UserControl>

@@ -28,14 +28,14 @@
                         <TextBlock x:Name="ai_attacklimit_textbox" HorizontalAlignment="Left" Text="200"/>
                     </StackPanel>
                    
-                    <TextBlock Text="{DynamicResource ai_attacklimit_descr}" TextWrapping="WrapWithOverflow" />
+                    <TextBlock Text="{DynamicResource ai_attacklimit_descr}" TextWrapping="WrapWithOverflow"/>
                 </StackPanel>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource ai_attackwave}" x:Name="ai_attackwave"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource ai_attackwave_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource ai_attackwave_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
@@ -45,14 +45,14 @@
                     <CheckBox Content="{DynamicResource ai_attacktarget_nearest}" x:Name="ai_attacktarget_nearest" Checked="ai_attacktargetChanged" Unchecked="ai_attacktargetChanged" IsChecked="False" />
                     <CheckBox Content="{DynamicResource ai_attacktarget_richest}" x:Name="ai_attacktarget_richest" Checked="ai_attacktargetChanged" Unchecked="ai_attacktargetChanged" IsChecked="False"/>
                     <CheckBox Content="{DynamicResource ai_attacktarget_weakest}" x:Name="ai_attacktarget_weakest" Checked="ai_attacktargetChanged" Unchecked="ai_attacktargetChanged" IsChecked="False"/>
-                    <TextBlock Text="{DynamicResource ai_attacktarget_weakest_descr}" TextWrapping="WrapWithOverflow" />
+                    <TextBlock Text="{DynamicResource ai_attacktarget_weakest_descr}" TextWrapping="WrapWithOverflow"/>
                 </StackPanel>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource ai_nosleep}" x:Name="ai_nosleep"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource ai_nosleep_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource ai_nosleep_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
@@ -62,7 +62,7 @@
                     <CheckBox Content="{DynamicResource ai_demolish_walls}" x:Name="ai_demolish_walls" Checked="ai_demolishChanged" Unchecked="ai_demolishChanged" IsChecked="False" />
                     <CheckBox Content="{DynamicResource ai_demolish_eco}" x:Name="ai_demolish_eco" Checked="ai_demolishChanged" Unchecked="ai_demolishChanged" IsChecked="False"/>
                     <CheckBox Content="{DynamicResource ai_demolish_trapped}" x:Name="ai_demolish_trapped" Checked="ai_demolishChanged" Unchecked="ai_demolishChanged" IsChecked="False"/>
-                    <TextBlock Text="{DynamicResource ai_demolish_eco_descr}" TextWrapping="WrapWithOverflow" />
+                    <TextBlock Text="{DynamicResource ai_demolish_eco_descr}" TextWrapping="WrapWithOverflow"/>
                 </StackPanel>
             </Expander>
             <Expander IsExpanded="false">
@@ -77,7 +77,7 @@
                         TickFrequency="1" ValueChanged="ai_addattack_slider_ValueChanged"/>
                         <TextBlock x:Name="ai_addattack_textbox" HorizontalAlignment="Left" Text="5"/>
                     </StackPanel>
-                    <TextBlock Text="{DynamicResource ai_addattack_descr}" TextWrapping="WrapWithOverflow" />
+                    <TextBlock Text="{DynamicResource ai_addattack_descr}" TextWrapping="WrapWithOverflow"/>
                     <StackPanel Orientation="Horizontal">
                         <CheckBox x:Name="ai_addattack_checkbox1" Checked="ai_addattack1Changed" Unchecked="ai_addattack1Changed"/>
                         <Slider x:Name="ai_addattack_slider1" Maximum="3" Minimum="0" HorizontalAlignment="Left" VerticalAlignment="Stretch" MinWidth="400"     
@@ -85,14 +85,14 @@
                         TickFrequency="0.1" ValueChanged="ai_addattack_slider1_ValueChanged"/>
                         <TextBlock x:Name="ai_addattack_textbox1" HorizontalAlignment="Left" Text="0"/>
                     </StackPanel>
-                    <TextBlock Text="{DynamicResource ai_addattack_alt_descr}" TextWrapping="WrapWithOverflow" />
+                    <TextBlock Text="{DynamicResource ai_addattack_alt_descr}" TextWrapping="WrapWithOverflow"/>
                 </StackPanel>
             </Expander>
             <Expander IsExpanded="false">
                 <Expander.Header>
                     <CheckBox Content="{DynamicResource ai_recruitinterval}" x:Name="ai_recruitinterval"/>
                 </Expander.Header>
-                <TextBlock Text="{DynamicResource ai_recruitinterval_descr}" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{DynamicResource ai_recruitinterval_descr}" TextWrapping="WrapWithOverflow"/>
             </Expander>-->
         </StackPanel>
     </ScrollViewer>

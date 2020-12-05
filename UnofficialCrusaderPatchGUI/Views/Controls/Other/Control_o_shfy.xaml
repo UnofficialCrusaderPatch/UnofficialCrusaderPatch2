@@ -10,12 +10,12 @@
         <Expander.Header>
             <CheckBox Content="{DynamicResource o_shfy}" x:Name="o_shfy" IsEnabled="True" Click="OnMainCheckBoxClicked"/>
         </Expander.Header>
-        <StackPanel>
+        <StackPanel Margin="20 10 10 0" Background="#7FC8C8C8">
             <CheckBox Content="{DynamicResource o_shfy_beer}" x:Name="o_shfy_beer" IsChecked="False" Checked="OnBeerChecked" Unchecked="OnBeerChecked"/>
             <CheckBox Content="{DynamicResource o_shfy_religion}" x:Name="o_shfy_religion" IsChecked="False" Checked="OnReligionChecked" Unchecked="OnReligionChecked"/>
             <CheckBox Content="{DynamicResource o_shfy_peasantspawnrate}" x:Name="o_shfy_peasantspawnrate" IsChecked="False" Checked="OnPeasantSpawnRateChecked" Unchecked="OnPeasantSpawnRateChecked"/>
             <CheckBox Content="{DynamicResource o_shfy_resourcequantity}" x:Name="o_shfy_resourcequantity" IsChecked="False" Checked="OnResourceChecked" Unchecked="OnResourceChecked"/>
-            <TextBlock Text="{DynamicResource o_shfy_descr}" TextWrapping="WrapWithOverflow" />
+            <TextBlock Text="{DynamicResource o_shfy_descr}" TextWrapping="WrapWithOverflow"/>
         </StackPanel>
     </Expander>
 </UserControl>
