@@ -3,76 +3,74 @@
 // ======================
 o_restore_arabian_engineer_speech
 {
-"Restore engineer arabian speech"
+"Arabische Baumeister sprechen Arabisch"
 }
 
 o_restore_arabian_engineer_speech_descr
 {
-"Allows engineers to speak the originally recorded arabian voicelines when the player uses the Arabian lord.
-
-There is not much variation of these voicelines, so it can get annoying after a while."
+"Erlaubt den Baumeistern im Falle, dass der Spieler den Arabischen Lord auswählt, die originalen Arabischen Sounddateien zu verwenden.
 }
 
 u_fix_lord_animation_stuck_movement
 {
-"Fix Lord animation freeze"
+"Entfernt das Einfrieren des Lordes"
 }
 
 u_fix_lord_animation_stuck_movement_descr
 {
-"Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
+"Lässt den Lord nicht mehr in der Animation stecken bleiben, nachdem er ein Gebäude getötet hat."
 }
 
 o_fix_small_wall_placement_count
 {
-"Fix small wall placement count preview"
+"Berichtigt die Steinkostenberechnung für kleinen Wall"
 }
 
 o_fix_small_wall_placement_count_descr
 {
-"Fixes the bug where the small wall placement preview only allowed the player to use half of their stone."
+"Hiermit kann der kleine Wall mit allen Steinen gebaut werden, statt nur mit der Hälfte dieser."
 }
 
 fix_apple_orchard_build_size
 {
-"Shrink apple orchard's build size"
+"Reduziert die Baugröße von Apfelfarmen"
 }
 
 fix_apple_orchard_build_size_descr
 {
-"Changes the apple orchard's build size to the size it occupies after the farm is placed down. This saves some space when building the farms and increases the rate with which the AI is able to put these farms down."
+"Ändert die Baugröße von Apfelfarmen auf die Größe, die sie nach der Platzierung der Farm haben."
 }
 
 u_fix_applefarm_blocking
 {
-"Fix apple farm blocking"
+"Behebt das blockieren des Apfelfarmers"
 }
 
 u_fix_applefarm_blocking_descr
 {
-"Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
+"Apfelfarmer werden nicht länger inaktiv, wenn der Pfad links oben direkt neben der Farm blockiert wird."
 }
 
 o_allow_overbuilding
 {
-"Allow overbuilding workers and units"
+"Überbauen von Einheiten und Arbeitern"
 }
 
 o_allow_overbuilding_descr
 {
-"Allows the player to overbuild workers with buildings, while allowing to overbuild units with walls and towers making them pop at the top."
+"Erlaubt es dem Spieler Gebäude über Arbeiter und Betrunkene zu platzieren und diese damit zu töten. Türme und Mauern können auch unter eigene Einheiten gebaut werden."
 }
 
 o_increase_path_update_tick_rate
 {
-"Increase the tick rate of path update by 4 times."
+"Erhöht die Tickrate für Pfadupdates."
 }
 
 o_increase_path_update_tick_rate_descr
 {
-"In vanilla, it took 200 game ticks to update pathing which resulted in units not being able to move into the castle after destroying a gate or tower.
+"In Vanilla dauerte es 200 gameticks, bis ein Pfad geupdated wurde nachdem ein gebäude zerstört wurde.
 
-This change increases this tick rate by 4 times by lowering this required tick value to 50, allowing the units to 'realize' more quickly that a new path is available."
+Diese Änderung erhöht die Tickrate und updated den Pfad all 50 Ticks."
 }
 
 o_fix_ladderclimb
