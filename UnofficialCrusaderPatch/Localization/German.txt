@@ -8,7 +8,7 @@ o_restore_arabian_engineer_speech
 
 o_restore_arabian_engineer_speech_descr
 {
-"Erlaubt den Baumeistern im Falle, dass der Spieler den Arabischen Lord auswählt, die originalen Arabischen Sounddateien zu verwenden.
+"Erlaubt den Baumeistern im Falle, dass der Spieler den Arabischen Lord auswählt, die originalen Arabischen Sounddateien zu verwenden."
 }
 
 u_fix_lord_animation_stuck_movement
