@@ -17,7 +17,7 @@ namespace UCP.Views.TabViews
     {
         public List<CheckBox> AIVControlList;
         Dictionary<string, AIVConfiguration> availableSelection { get; set; }
-        bool FirstLoad = false;
+        bool FirstLoad = true;
 
         public AIV()
         {
@@ -31,6 +31,20 @@ namespace UCP.Views.TabViews
         {
             var vm = e.NewValue as MainViewModel;
             vm.AddXamlObjects(AIVStackpanel);
+        }
+
+        void OnRefresh(object sender, RoutedEventArgs e)
+        {
+            this.FirstLoad = true;
+            this.AIVStackpanel.Children.Clear();
+            availableSelection = UCP.API.ModAPIContract.ListAIVConfigurations();
+            string previousSelection = (this.DataContext as MainViewModel).ActiveAIV;
+            OnLoad(sender, e);
+            if (!availableSelection.Select(x => x.Key).Contains(previousSelection))
+            {
+                (this.DataContext as MainViewModel).ActiveAIV = null;
+            }
+            (this.DataContext as MainViewModel).WindowClicked(sender, e);
         }
 
         internal void ApplyConfig(string aivOption)
@@ -47,19 +61,11 @@ namespace UCP.Views.TabViews
 
         void OnLoad(object sender, RoutedEventArgs e)
         {
-            if (!FirstLoad)
-            {
-                FirstLoad = true;
-            }
-            else
+            if (!FirstLoad || availableSelection == null)
             {
                 return;
             }
-
-            if (availableSelection == null)
-            {
-                return;
-            }
+            FirstLoad = false;
 
             foreach (KeyValuePair<string, AIVConfiguration> aivOption in availableSelection)
             {

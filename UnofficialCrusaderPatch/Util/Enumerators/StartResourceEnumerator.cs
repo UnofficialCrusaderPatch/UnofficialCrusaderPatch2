@@ -33,6 +33,10 @@ namespace UCP.Startup
 
         internal static Dictionary<string, StartResourceConfiguration> GetStartResourceConfigurations()
         {
+            _changes.Clear();
+            startResourceConfig.Clear();
+            Load();
+            ResetStartResourceConfiguration();
             return startResourceConfig;
         }
 

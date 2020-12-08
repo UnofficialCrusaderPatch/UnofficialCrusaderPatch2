@@ -92,6 +92,8 @@ namespace UCP.AIC
 
         internal static List<AICConfiguration> GetAICConfiguration()
         {
+            availableSelection.Clear();
+            Load();
             return availableSelection;
         }
 

@@ -7,36 +7,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Loaded="OnLoad">
-    <ScrollViewer>
-        <StackPanel x:Name="AICStackpanel">
-            <!--<ItemsControl ItemsSource="{Binding AICObjects}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Expander IsExpanded="false" >
-                            <Expander.Header>
-                                <CheckBox Content="{Binding Name}" Tag="{Binding Name, StringFormat='aic_${0}'}"/>
-                            </Expander.Header>
-                            <StackPanel>
-                                <TextBlock Text="{Binding Description}" TextWrapping="WrapWithOverflow" />
-                                <TextBlock Text="" TextWrapping="WrapWithOverflow" />
-                                --><!--<TextBlock Text="Select Characters:" TextWrapping="WrapWithOverflow" />
-                                <ItemsControl ItemsSource="{Binding Items}">
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <WrapPanel />
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <CheckBox Content="{Binding}" Margin="3" Tag="{Binding Name}"/>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>--><!--
-                            </StackPanel>
-                        </Expander>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>-->
-        </StackPanel>
-    </ScrollViewer>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <StackPanel x:Name="AICStackpanel"/>
+        </ScrollViewer>
+        <Button Grid.Column="1" Grid.Row="1" Height="20" Width="20" Background="#7FC8C8C8" Click="OnRefresh">
+            <Image Source="pack://application:,,,/UnofficialCrusaderPatchGUI;component/Graphics/refresh.png"></Image>
+        </Button>
+    </Grid>
 </UserControl>

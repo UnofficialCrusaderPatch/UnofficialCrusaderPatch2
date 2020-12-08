@@ -7,41 +7,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Loaded="OnLoad">
-    <ScrollViewer>
-        <!--Background="#CCFFFFFF"-->
-        <StackPanel x:Name="AIVStackpanel"/>
-        <!--<ItemsControl x:Name="AIVItemsControl"  ItemsSource="{Binding AIVObjects}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel x:Name="AIVStackpanel"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Expander IsExpanded="false">
-                        <Expander.Header>
-                            <CheckBox IsChecked="{Binding IsSelected}" Content="{Binding DisplayName}" Tag="AIV" ToolTip="{Binding ConflictString}" Loaded="OnLoad" Unloaded="OnUnload" Click="OnClick"/>
-                        </Expander.Header>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Description}" TextWrapping="WrapWithOverflow" />
-                            <TextBlock Text="" TextWrapping="WrapWithOverflow" />
-                            --><!--<TextBlock Text="Select Characters:" TextWrapping="WrapWithOverflow" />
-                            <ItemsControl ItemsSource="{Binding Items}">
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <WrapPanel />
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <CheckBox Content="{Binding CharacterName}" Margin="3" Tag="AIVCharacter" Click="OnClick"/>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>--><!--
-                        </StackPanel>
-                    </Expander>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>-->
-    </ScrollViewer>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <StackPanel x:Name="AIVStackpanel"/>
+        </ScrollViewer>
+        <Button Grid.Column="1" Grid.Row="1" Height="20" Width="20" Background="#7FC8C8C8" Click="OnRefresh">
+            <Image Source="pack://application:,,,/UnofficialCrusaderPatchGUI;component/Graphics/refresh.png"></Image>
+        </Button>
+    </Grid>
 </UserControl>

@@ -28,6 +28,11 @@ namespace UCP.AIV
             JavaScriptSerializer errorSerializer = new JavaScriptSerializer();
             AIVDescriptions = errorSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(aivText);
 
+            Load();
+        }
+
+        private static void Load()
+        {
             _changes = new List<AIVChange>()
             {
                 AIVEnumerator.CreateDefault("Tatha"),
@@ -47,16 +52,19 @@ namespace UCP.AIV
                         _changes.Add(CreateExternal(Path.GetFileName(aivDir.TrimEnd(Path.DirectorySeparatorChar))));
                     }
                 }
-            } catch (ArgumentException e)
+            }
+            catch (ArgumentException e)
             {
                 aivConfig = null;
             }
-
-            
         }
 
         internal static Dictionary<string, AIVConfiguration> GetAIVConfiguration()
         {
+            _changes.Clear();
+            aivConfig.Clear();
+            Load();
+            ResetAIVConfiguration();
             return aivConfig;
         }
 

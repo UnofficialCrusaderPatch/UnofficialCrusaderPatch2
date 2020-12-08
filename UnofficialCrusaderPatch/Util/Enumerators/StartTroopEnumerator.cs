@@ -56,6 +56,10 @@ namespace UCP.Startup
 
         internal static Dictionary<string, StartTroopConfiguration> GetStartTroopConfigurations()
         {
+            _changes.Clear();
+            startTroopConfig.Clear();
+            Load();
+            ResetStartTroopConfiguration();
             return startTroopConfig;
         }
 

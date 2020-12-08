@@ -17,7 +17,7 @@ namespace UCP.Views.TabViews
     {
         List<CheckBox> StartTroopControlList;
         Dictionary<string, StartTroopConfiguration> availableSelection { get; set; }
-        bool FirstLoad = false;
+        bool FirstLoad = true;
 
         public StartTroop()
         {
@@ -34,6 +34,20 @@ namespace UCP.Views.TabViews
             vm.AddXamlObjects(StartTroopStackpanel);
         }
 
+        void OnRefresh(object sender, RoutedEventArgs e)
+        {
+            this.FirstLoad = true;
+            this.StartTroopStackpanel.Children.Clear();
+            availableSelection = UCP.API.ModAPIContract.ListStartTroopConfigurations();
+            string previousSelection = (this.DataContext as MainViewModel).ActiveStartTroop;
+            OnLoad(sender, e);
+            if (!availableSelection.Select(x => x.Key).Contains(previousSelection))
+            {
+                (this.DataContext as MainViewModel).ActiveStartTroop = null;
+            }
+            (this.DataContext as MainViewModel).WindowClicked(sender, e);
+        }
+
         internal void ApplyConfig(string resourceOption)
         {
             foreach (CheckBox checkBox in StartTroopControlList)
@@ -48,19 +62,11 @@ namespace UCP.Views.TabViews
 
         void OnLoad(object sender, RoutedEventArgs e)
         {
-            if (!FirstLoad)
-            {
-                FirstLoad = true;
-            }
-            else
+            if (!FirstLoad || availableSelection == null)
             {
                 return;
             }
-
-            if (availableSelection == null)
-            {
-                return;
-            }
+            FirstLoad = false;
 
             foreach (KeyValuePair<string, StartTroopConfiguration> aivOption in availableSelection)
             {

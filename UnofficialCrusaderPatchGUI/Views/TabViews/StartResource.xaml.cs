@@ -17,7 +17,7 @@ namespace UCP.Views.TabViews
     {
         List<CheckBox> StartResourceControlList;
         Dictionary<string, StartResourceConfiguration> availableSelection { get; set; }
-        bool FirstLoad = false;
+        bool FirstLoad = true;
 
         public StartResource()
         {
@@ -31,6 +31,20 @@ namespace UCP.Views.TabViews
         {
             var vm = e.NewValue as MainViewModel;
             vm.AddXamlObjects(StartResourceStackpanel);
+        }
+
+        void OnRefresh(object sender, RoutedEventArgs e)
+        {
+            this.FirstLoad = true;
+            this.StartResourceStackpanel.Children.Clear();
+            availableSelection = UCP.API.ModAPIContract.ListStartResourceConfigurations();
+            string previousSelection = (this.DataContext as MainViewModel).ActiveStartResource;
+            OnLoad(sender, e);
+            if (!availableSelection.Select(x => x.Key).Contains(previousSelection))
+            {
+                (this.DataContext as MainViewModel).ActiveStartResource = null;
+            }
+            (this.DataContext as MainViewModel).WindowClicked(sender, e);
         }
 
         internal void ApplyConfig(string resourceOption)
@@ -47,19 +61,11 @@ namespace UCP.Views.TabViews
 
         void OnLoad(object sender, RoutedEventArgs e)
         {
-            if (!FirstLoad)
-            {
-                FirstLoad = true;
-            }
-            else
+            if (!FirstLoad || availableSelection == null)
             {
                 return;
             }
-
-            if (availableSelection == null)
-            {
-                return;
-            }
+            FirstLoad = false;
 
             foreach (KeyValuePair<string, StartResourceConfiguration> aivOption in availableSelection)
             {

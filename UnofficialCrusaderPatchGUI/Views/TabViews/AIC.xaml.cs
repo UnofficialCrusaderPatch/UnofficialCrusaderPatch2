@@ -30,6 +30,24 @@ namespace UCP.Views.TabViews
             selectedControlConfiguration = new LinkedList<AICControlConfig>();
         }
 
+        void OnRefresh(object sender, RoutedEventArgs e)
+        {
+            this.FirstLoad = true;
+            this.AICStackpanel.Children.Clear();
+            availableSelection = UCP.API.ModAPIContract.ListAICConfigurations();
+            LinkedList<AICControlConfig> previousSelection = selectedControlConfiguration;
+            OnLoad(sender, e);
+            foreach (AICControlConfig config in previousSelection)
+            {
+                if (!availableSelection.Select(x => x.Identifier).Contains(config.Identifier))
+                {
+                    previousSelection.Remove(config);
+                }
+            }
+            selectedControlConfiguration = previousSelection;
+            (this.DataContext as MainViewModel).WindowClicked(sender, e);
+        }
+
         void DataContextChangedEvent(object sender, DependencyPropertyChangedEventArgs e)
         {
             var vm = e.NewValue as MainViewModel;
