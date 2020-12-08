@@ -10,6 +10,11 @@
     <system:String x:Key="ui_save">Save As</system:String>
     <system:String x:Key="aiv_prompt">Custom modified AIVs detected. Click 'Yes' to overwrite original backup, 'No' to delete modified files, 'Cancel' to cancel.</system:String>
     <system:String x:Key="aiv_cli_prompt">Custom modified AIVs detected. Enter 'delete' to erase or enter folder name to copy files to.</system:String>
+    <system:String x:Key="ui_aicExport">Export</system:String>
+    <system:String x:Key="ui_aicExport_success">Exported successfully.</system:String>
+    <system:String x:Key="ui_aicHint">Exports the .json file from the installer into the resources\aic\exports folder.</system:String>
+    <system:String x:Key="ui_troopExportHint">Exports the .aic-file from the installer into the resources\troops\exports folder.</system:String>
+    <system:String x:Key="ui_resourceExportHint">Exports the .aic-file from the installer into the resources\goods\exports folder.</system:String>
 
     <!-- Language UI -->
     <system:String x:Key="ui_chooseLangTitle">Setup language</system:String>

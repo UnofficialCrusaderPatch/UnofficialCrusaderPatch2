@@ -1,7 +1,10 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -245,8 +248,48 @@ namespace UCP.Views.TabViews
 
             TextBlock descriptionView = BuildAICDescription(aiCConfig.Description);
             aicLayout.Children.Add(descriptionView);
+
+            ConditionalAddExportButton(aicLayout, aicOption);
+            aicLayout.Margin = new Thickness(20, 10, 20, 10);
+            aicLayout.Background = new SolidColorBrush(Color.FromArgb(150, 200, 200, 200));
             AICStackpanel.Children.Add(mainControl);
             AICControlList.Add(aicControlConfiguration);
+        }
+
+        private void ConditionalAddExportButton(StackPanel aicLayout, string aicOption)
+        {
+            if (Assembly.LoadFrom("UnofficialCrusaderPatch.dll").GetManifestResourceNames().Contains("UCP.Resources.AIC." + aicOption + ".json"))
+            {
+                Button exportButton = new Button()
+                {
+                    Height = 20,
+                    Content = LanguageHelper.GetText("ui_aicExport"),
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Bottom,
+                    Margin = new Thickness(0, 0, 20, 10),
+                    ToolTip = LanguageHelper.GetText("ui_aicHint"),
+                };
+                exportButton.Click += (s, e) => this.ExportFile(aicOption);
+                aicLayout.Children.Add(exportButton);
+            }
+        }
+
+        private void ExportFile(string aicOption)
+        {
+            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports", aicOption + ".json");
+            string backupFileName = fileName;
+            while (File.Exists(backupFileName))
+            {
+                backupFileName = backupFileName + ".bak";
+            }
+            if (File.Exists(fileName))
+            {
+                File.Move(fileName, backupFileName);
+            }
+            Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports"));
+            File.WriteAllText(fileName, new StreamReader(Assembly.LoadFrom("UnofficialCrusaderPatch.dll").GetManifestResourceStream("UCP.Resources.AIC." + aicOption + ".json"), Encoding.UTF8).ReadToEnd());
+
+            Debug.Show(LanguageHelper.GetText("ui_aicExport_success"), aicOption + ".json");
         }
 
         private TextBlock BuildAICDescription(Dictionary<string, string> description)
@@ -265,9 +308,8 @@ namespace UCP.Views.TabViews
                         description[language] : description.ContainsKey("English") ? 
                                 description["English"] : description.FirstOrDefault().Value;
             };
-            textBlock.Margin= new Thickness(20, 10, 20, 10);
             textBlock.Padding = new Thickness(5, 5, 5, 5);
-            textBlock.Background = new SolidColorBrush(Color.FromArgb(150, 200, 200, 200));
+            /*textBlock.Background = new SolidColorBrush(Color.FromArgb(150, 200, 200, 200));*/
             return textBlock;
         }
 

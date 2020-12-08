@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -67,10 +70,10 @@ namespace UCP.Views.TabViews
             }
             FirstLoad = false;
 
-            foreach (KeyValuePair<string, StartResourceConfiguration> aivOption in availableSelection)
+            foreach (KeyValuePair<string, StartResourceConfiguration> startResourceOption in availableSelection)
             {
-                string identifier = aivOption.Key;
-                StartResourceConfiguration config = aivOption.Value;
+                string identifier = startResourceOption.Key;
+                StartResourceConfiguration config = startResourceOption.Value;
 
                 Expander mainControl = new Expander();
                 CheckBox fullSelection = new CheckBox();
@@ -82,12 +85,53 @@ namespace UCP.Views.TabViews
                 StartResourceStackpanel.Children.Add(mainControl);
 
                 TextBlock descriptionView = BuildDescription(config.Description);
-                mainControl.Content = descriptionView;
+                StackPanel layout = new StackPanel();
+                layout.Children.Add(descriptionView);
+                layout.Margin = new Thickness(20, 10, 20, 10);
+                layout.Background = new SolidColorBrush(Color.FromArgb(150, 200, 200, 200));
+                ConditionalAddExportButton(layout, identifier);
+                mainControl.Content = layout;
 
                 fullSelection.IsChecked = identifier.Equals((this.DataContext as MainViewModel).ActiveStartResource);
                 StartResourceControlList.Add(fullSelection);
             }
             Utility.SetAutoSaveCallback(StartResourceStackpanel, (this.DataContext as MainViewModel));
+        }
+
+        private void ConditionalAddExportButton(StackPanel resLayout, string aicOption)
+        {
+            if (Assembly.LoadFrom("UnofficialCrusaderPatch.dll").GetManifestResourceNames().Contains("UCP.Resources.StartResource." + aicOption + ".json"))
+            {
+                Button exportButton = new Button()
+                {
+                    Height = 20,
+                    Content = LanguageHelper.GetText("ui_aicExport"),
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Bottom,
+                    Margin = new Thickness(0, 0, 20, 10),
+                    ToolTip = LanguageHelper.GetText("ui_resourceExportHint"),
+                };
+                exportButton.Click += (s, e) => this.ExportFile(aicOption);
+                resLayout.Children.Add(exportButton);
+            }
+        }
+
+        private void ExportFile(string aicOption)
+        {
+            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "goods", "exports", aicOption + ".json");
+            string backupFileName = fileName;
+            while (File.Exists(backupFileName))
+            {
+                backupFileName = backupFileName + ".bak";
+            }
+            if (File.Exists(fileName))
+            {
+                File.Move(fileName, backupFileName);
+            }
+            Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "resources", "goods", "exports"));
+            File.WriteAllText(fileName, new StreamReader(Assembly.LoadFrom("UnofficialCrusaderPatch.dll").GetManifestResourceStream("UCP.Resources.StartResource." + aicOption + ".json"), Encoding.UTF8).ReadToEnd());
+
+            Debug.Show(LanguageHelper.GetText("ui_aicExport_success"), aicOption + ".json");
         }
 
         private TextBlock BuildDescription(Dictionary<string, string> description)
@@ -106,9 +150,7 @@ namespace UCP.Views.TabViews
                         description[language] : description.ContainsKey("English") ?
                                 description["English"] : description.FirstOrDefault().Value;
             };
-            textBlock.Margin = new Thickness(20, 10, 20, 10);
             textBlock.Padding = new Thickness(5, 5, 5, 5);
-            textBlock.Background = new SolidColorBrush(Color.FromArgb(150, 200, 200, 200));
             return textBlock;
         }
 
