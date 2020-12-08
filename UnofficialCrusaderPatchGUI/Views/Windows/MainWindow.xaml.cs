@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Web.Script.Serialization;
 using System.Windows;
 using System.Windows.Controls;
@@ -214,6 +215,20 @@ namespace UCP.Views
                 }
             }
         }
+
+        void OnSelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if ((sender as TabControl).SelectedIndex == 5)
+            {
+                this.AICHint.Visibility = Visibility.Visible;
+                this.Placeholder.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                this.AICHint.Visibility = Visibility.Hidden;
+                this.Placeholder.Visibility = Visibility.Visible;
+            }
+        }
         #endregion
 
         #region StartupConfig
@@ -350,13 +365,16 @@ namespace UCP.Views
         {
             try
             {
-                ModAPIContract.Install(new UCPConfig()
+                UCPConfig installConfig = new UCPConfig()
                     .withAIV(GenerateAIVConfiguration())
                     .withStartResource(GenerateStartResourceConfiguration())
                     .withStartTroop(GenerateStartTroopConfiguration())
                     .withAIC(GenerateAICConfiguration())
                     .withGenericMods(GenerateModConfiguration())
-                    .withPath(_vm.StrongholdPath), false, true);
+                    .withPath(_vm.StrongholdPath);
+                Thread thread = new Thread(() => ModAPIContract.Install(installConfig, false, true));
+                thread.Start();
+                thread.Join();
             } catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
@@ -383,7 +401,7 @@ namespace UCP.Views
         }
         #endregion
 
-        private void LanguageChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void LanguageChanged(object sender, SelectionChangedEventArgs e)
         {
             Utility.FindLogicalChildren<Expander>(this.MainTabControl).ToList().ForEach(x => x.IsExpanded = false);
         }

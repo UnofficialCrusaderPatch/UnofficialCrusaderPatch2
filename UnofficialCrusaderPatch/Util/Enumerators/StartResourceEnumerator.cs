@@ -42,7 +42,7 @@ namespace UCP.Startup
 
         internal static void SetStartResourceConfiguration(string configName)
         {
-            activeChange = _changes.Where(x => x.Identifier.Equals(configName)).ToList().First();
+            activeChange = _changes.Where(x => x.Identifier.Equals(configName)).ToList().SingleOrDefault();
         }
 
         internal static void ResetStartResourceConfiguration()

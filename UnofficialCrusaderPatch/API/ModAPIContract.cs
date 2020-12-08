@@ -22,7 +22,7 @@ namespace UCP.API
         {
             if (aicConfiguration == null)
             {
-                return;
+                AICEnumerator.ResetAICConfiguration();
             }
 
             if (aicConfiguration is string)
@@ -51,9 +51,12 @@ namespace UCP.API
         {
             if (aivName == null)
             {
-                return;
+                AIVEnumerator.ResetAIVConfiguration();
             }
-            AIVEnumerator.SetAIVConfiguration(aivName);
+            else
+            {
+                AIVEnumerator.SetAIVConfiguration(aivName);
+            }
         }
 
         #endregion
@@ -69,9 +72,12 @@ namespace UCP.API
         {
             if (configName == null)
             {
-                return;
+                StartResourceEnumerator.ResetStartResourceConfiguration();
             }
-            StartResourceEnumerator.SetStartResourceConfiguration(configName);
+            else
+            {
+                StartResourceEnumerator.SetStartResourceConfiguration(configName);
+            }
         }
 
         #endregion
@@ -87,9 +93,12 @@ namespace UCP.API
         {
             if (configName == null)
             {
-                return;
+                StartTroopEnumerator.ResetStartTroopConfiguration();
             }
-            StartTroopEnumerator.SetStartTroopConfiguration(configName);
+            else
+            {
+                StartTroopEnumerator.SetStartTroopConfiguration(configName);
+            }
         }
 
         #endregion
@@ -162,7 +171,6 @@ namespace UCP.API
 
             AIVEnumerator.Install(config.Path, overwrite, graphical);
             Installer.Initialize(config.Path);
-
             if (Installer.crusaderArgs.HasValue)
             {
                 SubChange header = AICEnumerator.CreateEdit();
@@ -174,6 +182,7 @@ namespace UCP.API
                     mod.Install(Installer.crusaderArgs.Value);
                 }
             }
+
             string errorMsg = Installer.WriteFinalize();
 
             Installer.InitializeExtreme(config.Path);

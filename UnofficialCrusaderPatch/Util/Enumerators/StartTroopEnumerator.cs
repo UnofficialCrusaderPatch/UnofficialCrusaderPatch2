@@ -65,7 +65,7 @@ namespace UCP.Startup
 
         internal static void SetStartTroopConfiguration(string configName)
         {
-            activeChange = _changes.Where(x => x.Identifier.Equals(configName)).ToList().First();
+            activeChange = _changes.Where(x => x.Identifier.Equals(configName)).ToList().SingleOrDefault();
         }
 
         internal static void ResetStartTroopConfiguration()

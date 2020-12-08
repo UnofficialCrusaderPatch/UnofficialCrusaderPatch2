@@ -19,13 +19,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Image Grid.Row="0"  Source="../../Graphics/frame.jpg" Stretch="Fill" HorizontalAlignment="Center" />
-        <Image Grid.Row="2"  Source="../../Graphics/frame.jpg" Stretch="Fill" HorizontalAlignment="Center" >
+        <Image Grid.Row="3"  Source="../../Graphics/frame.jpg" Stretch="Fill" HorizontalAlignment="Center" >
             <Image.LayoutTransform>
                 <TransformGroup>
                     <RotateTransform Angle="180"/>
@@ -45,7 +46,7 @@
                 </StackPanel>
             </MenuItem>
         </Menu>
-        <TabControl x:Name="MainTabControl" Grid.Row="1" Background="#CCFFFFFF" HorizontalAlignment="Stretch">
+        <TabControl x:Name="MainTabControl" Grid.Row="1" Background="#CCFFFFFF" HorizontalAlignment="Stretch" SelectionChanged="OnSelectionChanged">
             <TabItem Header="{DynamicResource ui_Bugfix}">
                 <myControls:Bugfixes x:Name="BugfixTabControl"/>
             </TabItem>
@@ -71,8 +72,10 @@
                 <myControls:StartResource x:Name="StartResourceControl"/>
             </TabItem>
         </TabControl>
-        <Button Grid.Row="2" x:Name="btn_cancel" Content="{DynamicResource ui_cancel}" HorizontalAlignment="Left" Height="30" Margin="0,0,0,14" VerticalAlignment="Bottom" Width="120" Click="CancelButton_Click"/>
-        <Button Grid.Row="2" x:Name="btn_uninstall" Content="{DynamicResource ui_uninstall}" HorizontalAlignment="Center" Height="30" Margin="0,0,0,14" VerticalAlignment="Bottom" Width="120" Click="OnUninstall"/>
-        <Button Grid.Row="2" x:Name="btn_install" Content="{DynamicResource ui_install}" HorizontalAlignment="Right" Height="30" Margin="0,0,0,14" VerticalAlignment="Bottom" Width="120" Click="OnInstall"/>
+        <TextBlock Grid.Row="2" x:Name="AICHint" Foreground="#FF832708" Text="{DynamicResource ui_aicselect}" Background="#CCFFFFFF" TextAlignment="Center" Visibility="Hidden"></TextBlock>
+        <TextBlock Grid.Row="2" x:Name="Placeholder" Foreground="#FF832708" Text="" Background="#CCFFFFFF" TextAlignment="Center" Visibility="Hidden"></TextBlock>
+        <Button Grid.Row="3" x:Name="btn_cancel" Content="{DynamicResource ui_cancel}" HorizontalAlignment="Left" Height="30" Margin="0,0,0,14" VerticalAlignment="Bottom" Width="120" Click="CancelButton_Click"/>
+        <Button Grid.Row="3" x:Name="btn_uninstall" Content="{DynamicResource ui_uninstall}" HorizontalAlignment="Center" Height="30" Margin="0,0,0,14" VerticalAlignment="Bottom" Width="120" Click="OnUninstall"/>
+        <Button Grid.Row="3" x:Name="btn_install" Content="{DynamicResource ui_install}" HorizontalAlignment="Right" Height="30" Margin="0,0,0,14" VerticalAlignment="Bottom" Width="120" Click="OnInstall"/>
     </Grid>
 </Window>

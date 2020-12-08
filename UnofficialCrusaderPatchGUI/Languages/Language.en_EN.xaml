@@ -13,6 +13,7 @@
     <system:String x:Key="ui_aicExport">Export</system:String>
     <system:String x:Key="ui_aicExport_success">Exported successfully.</system:String>
     <system:String x:Key="ui_aicHint">Exports the .json file from the installer into the resources\aic\exports folder.</system:String>
+    <system:String x:Key="ui_aicselect">Ctrl+Click to select multiple aic files</system:String>
     <system:String x:Key="ui_troopExportHint">Exports the .aic-file from the installer into the resources\troops\exports folder.</system:String>
     <system:String x:Key="ui_resourceExportHint">Exports the .aic-file from the installer into the resources\goods\exports folder.</system:String>
 

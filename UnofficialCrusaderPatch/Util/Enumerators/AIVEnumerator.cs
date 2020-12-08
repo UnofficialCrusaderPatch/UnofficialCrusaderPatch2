@@ -70,7 +70,7 @@ namespace UCP.AIV
 
         internal static void SetAIVConfiguration(string aivName)
         {
-            activeChange = _changes.Where(x => x.Identifier.Equals(aivName)).ToList().First();
+            activeChange = _changes.Where(x => x.Identifier.Equals(aivName)).ToList().SingleOrDefault();
         }
 
         internal static void ResetAIVConfiguration()
