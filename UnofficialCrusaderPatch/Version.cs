@@ -62,6 +62,8 @@ namespace UCP
                         {
                             0x50, // push eax
                             0xA1, new BinRefTo("currentUnitMoved", false), // mov eax,[currentUnitMoved]
+                            0x83, 0xF8, 0x00, // cmp eax,00
+                            0x74, 0x20, // je short 20
                             0x48, // dec eax
                             0x6B, 0xC0, 0x0C, // imul eax,eax,0C
                             0x89, 0xA8, new BinRefTo("savedUnitDestinationForClimbing", false), // mov [eax+savedUnitDestinationForClimbing],ebp
