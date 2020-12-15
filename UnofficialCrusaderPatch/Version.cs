@@ -7,6 +7,7 @@ using UCP.Startup;
 using static UCP.Patching.BinElements.Register;
 using static UCP.Patching.BinElements.OpCodes;
 using static UCP.Patching.BinElements.OpCodes.Condition.Values;
+using System;
 
 namespace UCP
 {
@@ -24,6 +25,173 @@ namespace UCP
             BinRedirect.CreateEdit("menuversion", false, Encoding.ASCII.GetBytes("V1.%d-E UCP" + PatcherVersion + '\0'))
         };
 
+        private static ParamHeader GetAIHousingParamHeader(Dictionary<string, Dictionary<string, object>> parameters)
+        {
+            BinCollection peasantCollection = null;
+            BinCollection campPeasantCollection = null;
+            BinCollection popCollection = null;
+
+
+            /*Debug.Show(parameters["free_peasant"]["value"]);
+            Debug.Show(parameters["campfire_peasant"]["value"]);
+            Debug.Show(parameters["popularity"]["value"]);*/
+
+            int paramSize = (double)parameters["free_peasant"]["value"] > 0x7F ? 4 : 2;
+            if (!parameters["free_peasant"]["value"].Equals(0))
+            {
+                peasantCollection = new BinCollection()
+                {
+                    0x8B, 0x88, new BinRefTo("free_peasant_address", false),
+                };
+
+                BinCollection sizeCollection;
+                if (paramSize == 2)
+                {
+                    byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["free_peasant"]["value"]));
+                    sizeCollection = new BinCollection()
+                    {
+                        0x83, 0xF9, value[0]
+                    };
+                } else
+                {
+                    sizeCollection = new BinCollection()
+                    {
+                        0x81, 0xF9, BitConverter.GetBytes(Convert.ToInt32((double)parameters["free_peasant"]["value"]))
+                    };
+                }
+                foreach (var elem in sizeCollection) peasantCollection.Add(elem);
+
+                BinCollection jumpCollection = new BinCollection()
+                {
+                    0x7F, 0x05, /* if greater continue */
+                    0x33, 0xC0, /* xor eax, eax */
+                    0xC2, 0x08, 0x00 /* ret 0008 */
+                };
+
+                foreach (var elem in jumpCollection) peasantCollection.Add(elem);
+            }
+
+            paramSize = (double)parameters["campfire_peasant"]["value"] > 0x7F ? 4 : 2;
+            if (!parameters["campfire_peasant"]["value"].Equals(0))
+            {
+                campPeasantCollection = new BinCollection()
+                {
+                    0x8B, 0x88, new BinRefTo("campfire_peasant_address", false),
+                };
+
+                BinCollection sizeCollection;
+                if (paramSize == 2)
+                {
+                    byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["campfire_peasant"]["value"]));
+                    sizeCollection = new BinCollection()
+                    {
+                        0x83, 0xF9, value[0]
+                    };
+                }
+                else
+                {
+                    sizeCollection = new BinCollection()
+                    {
+                        0x81, 0xF9, BitConverter.GetBytes(Convert.ToInt32((double)parameters["campfire_peasant"]["value"]))
+                    };
+                }
+                foreach (var elem in sizeCollection) campPeasantCollection.Add(elem);
+
+                BinCollection jumpCollection = new BinCollection()
+                {
+                    0x7F, 0x05, /* if greater continue */
+                    0x33, 0xC0, /* xor eax, eax */
+                    0xC2, 0x08, 0x00 /* ret 0008 */
+                };
+
+                foreach (var elem in jumpCollection) campPeasantCollection.Add(elem);
+            }
+
+            paramSize = (double)parameters["popularity"]["value"] > 0x7F ? 4 : 2;
+            if (!parameters["popularity"]["value"].Equals(0))
+            {
+                popCollection = new BinCollection()
+                {
+                    0x8B, 0x88, new BinRefTo("popularity_address", false),
+                };
+
+                BinCollection sizeCollection;
+                if (paramSize == 2)
+                {
+                    byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["popularity"]["value"]));
+                    sizeCollection = new BinCollection()
+                    {
+                        0x83, 0xF9, value[0]
+                    };
+                }
+                else
+                {
+                    sizeCollection = new BinCollection()
+                    {
+                        0x81, 0xF9, BitConverter.GetBytes(Convert.ToInt32((double)parameters["popularity"]["value"]))
+                    };
+                }
+                foreach (var elem in sizeCollection) popCollection.Add(elem);
+
+                BinCollection jumpCollection = new BinCollection()
+                {
+                    0x7F, 0x05, /* if greater continue */
+                    0x33, 0xC0, /* xor eax, eax */
+                    0xC2, 0x08, 0x00 /* ret 0008 */
+                };
+
+                foreach (var elem in jumpCollection) popCollection.Add(elem);
+            }
+
+            BinBytes init = new BinBytes(
+                    0x8B, 0x44, 0x24, 0x04, /* mov eax, [esp+04] */
+                    0x69, 0xC0, 0xF4, 0x39, 0x00, 0x00 /* imul eax, eax, 0x39f4 */
+                );
+
+            BinBytes finalizer = new BinBytes(
+                0xB8, 0x01, 0x00, 0x00, 0x00,   /* mov eax, 00000001 */
+                0xC2, 0x08, 0x00
+                );
+
+            BinHook hook = new BinHook(5)
+            {
+                init
+            };
+
+            if (peasantCollection != null)
+            {
+                foreach (var elem in peasantCollection) hook.Add(elem);
+            }
+
+            if (campPeasantCollection != null)
+            {
+                foreach (var elem in campPeasantCollection) hook.Add(elem);
+            }
+
+            if (popCollection != null)
+            {
+                foreach (var elem in popCollection) hook.Add(elem);
+            }
+
+            hook.Add(finalizer);
+
+            BinaryEdit edit = new BinaryEdit("ai_buildhousing")
+            {
+                hook,
+                new BinAddress("campfire_peasant_address", 0x12, false), //19
+                new BinAddress("free_peasant_address", 0x27, false), //40
+                new BinAddress("popularity_address", 0x39, false) //57
+            };
+
+
+            ParamHeader aiHousing = new ParamHeader("ai_buildhousing")
+            {
+                edit
+            };
+            aiHousing.IsEnabled = (double)parameters["free_peasant"]["value"] == 12 && (double)parameters["campfire_peasant"]["value"] == 5
+                && (double)parameters["popularity"]["value"] == 5000;
+            return aiHousing;
+        }
 
         static List<Change> changes = new List<Change>()
         {
@@ -40,9 +208,9 @@ namespace UCP
                     {
                         // cache current unti moved
                         new BinAlloc("currentUnitMoved", 4),
-                        
+
                         new BinSkip(9),
-                        
+
                         new BinHook(6)
                         {
                             0x89, 0x15, new BinRefTo("currentUnitMoved", false), // mov [currentUnitMoved],edx
@@ -55,7 +223,7 @@ namespace UCP
                     {
                         // need 120k bytes, because we need 3*4 bytes per unit, and the SHC-E max is 10k units
                         new BinAlloc("savedUnitDestinationForClimbing", 120000),
-                        
+
                         new BinSkip(12), // skip 12 bytes
                         
                         new BinHook(10)
@@ -398,7 +566,7 @@ namespace UCP
 
                 }
             },
-            
+
             new Change("u_fix_lord_animation_stuck_movement", ChangeType.Bugfix, true)
             {
                 new DefaultHeader("u_fix_lord_animation_stuck_movement")
@@ -446,7 +614,7 @@ namespace UCP
                     }
                 }
             },
-          
+
             new Change("o_fix_small_wall_placement_count", ChangeType.Bugfix, true)
             {
                 new DefaultHeader("o_fix_small_wall_placement_count")
@@ -484,7 +652,7 @@ namespace UCP
                     }
                 }
             },
-          
+
             new Change("u_fix_applefarm_blocking", ChangeType.Bugfix, true)
             {
                 new DefaultHeader("u_fix_applefarm_blocking")
@@ -578,7 +746,7 @@ namespace UCP
                     {
                         new BinAddress("UnitAttributeOffset",43)
                     },
-                    
+
                     new BinaryEdit("ai_fix_crusader_archers_pitch")
                     {
                         new BinAddress("CurrentTargetIndex",2),
@@ -631,6 +799,20 @@ namespace UCP
             #endregion
 
             #region AI LORDS
+
+            new Change("ai_housing", ChangeType.AILords, false, false, 
+                (parameters) => {
+                    return GetAIHousingParamHeader(parameters);
+                })
+            {
+                new SliderHeader("free_peasant", false, 0, 50, 1, 12, 30){},
+
+                new SliderHeader("campfire_peasant", false, 0, 50, 1, 5, 30){},
+
+                new SliderHeader("popularity", false, 0, 10000, 100, 5000, 5200){}
+
+            },
+
 
             /*
              *  AI RECRUIT ADDITIONAL ATTACK TROOPS 

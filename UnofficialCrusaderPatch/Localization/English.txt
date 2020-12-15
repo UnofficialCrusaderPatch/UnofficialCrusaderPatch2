@@ -1,6 +1,31 @@
 // ======================
 //         dev
 // ======================
+ai_housing
+{
+"Customize the AIs decision to build houses"
+}
+
+ai_buildhousing_descr
+{
+"Customize the AIs decision to build houses"
+}
+
+free_peasant_descr
+{
+"Number of free peasants before AI stops building houses"
+}
+
+campfire_peasant_descr
+{
+"Number of peasants at campfire before AI stops building houses"
+}
+
+popularity_descr
+{
+"Maximum popularity before AI stops building houses"
+}
+
 o_restore_arabian_engineer_speech
 {
 "Restore engineer arabian speech"
