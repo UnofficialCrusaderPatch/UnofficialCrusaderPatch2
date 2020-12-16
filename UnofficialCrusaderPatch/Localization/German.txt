@@ -3,22 +3,22 @@
 // ======================
 o_change_siege_engine_spawn_position_catapult
 {
-"Center siege engine spawn position"
+"Zentriert Belagerungsgeräte nach der Konstruktion"
 }
 
 o_change_siege_engine_spawn_position_catapult_descr
 {
-"Siege engines are now centered after they are finished building instead of spawning at the top corner of the tent."
+"Belagerungsgeräte erscheinen nun am Punkt der Zeltmitte nach der Konstruktion, statt wie bisher in der oberen linken Ecke."
 }
 
 o_stop_player_keep_rotation
 {
-"Rotate player keeps"
+"Rotiere Spieler Bergfriede"
 }
 
 o_stop_player_keep_rotation_descr
 {
-"Player keeps now get rotated the same way, that AI keeps rotate on a map, facing with their campfire outwards towards the map edge."
+"Spieler Bergfriede werden hiermit auf gleiche Weise rotiert, wie es bei KI Bergfrieden bereits der Fall ist. Hierbei wird das Lagerfeuer immer zum nächsten Rand der Karte hin ausgerichtet."
 }
 
 o_restore_arabian_engineer_speech
