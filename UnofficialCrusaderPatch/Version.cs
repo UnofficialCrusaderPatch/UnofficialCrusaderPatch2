@@ -12,7 +12,7 @@ namespace UCP
 {
     public class Version
     {
-        public static string PatcherVersion = "2.14";
+        public static string PatcherVersion = "-KI-Turnier";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
@@ -2732,7 +2732,7 @@ namespace UCP
                     // 4B4748
                     new BinaryEdit("o_gamespeed_up")
                     {
-                        CMP(EAX, 1000),      // cmp eax, 1000
+                        CMP(EAX, 100000),      // cmp eax, 100000
 
                         JMP(GREATERTHANEQUALS, 0x19), // jge to end
 

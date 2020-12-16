@@ -3,166 +3,162 @@
 // ======================
 o_change_siege_engine_spawn_position_catapult
 {
-"Center siege engine spawn position"
+"Zentriert Belagerungsgeräte nach der Konstruktion"
 }
 
 o_change_siege_engine_spawn_position_catapult_descr
 {
-"Siege engines are now centered after they are finished building instead of spawning at the top corner of the tent."
+"Belagerungsgeräte erscheinen nun am Punkt der Zeltmitte nach der Konstruktion, statt wie bisher in der oberen linken Ecke."
 }
 
 o_stop_player_keep_rotation
 {
-"Rotate player keeps"
+"Rotiere Spieler Bergfriede"
 }
 
 o_stop_player_keep_rotation_descr
 {
-"Player keeps now get rotated the same way, that AI keeps rotate on a map, facing with their campfire outwards towards the map edge."
+"Spieler Bergfriede werden hiermit auf gleiche Weise rotiert, wie es bei KI Bergfrieden bereits der Fall ist. Hierbei wird das Lagerfeuer immer zum nächsten Rand der Karte hin ausgerichtet."
 }
 
 o_restore_arabian_engineer_speech
 {
-"Restore engineer arabian speech"
+"Arabische Baumeister sprechen Arabisch"
 }
 
 o_restore_arabian_engineer_speech_descr
 {
-"Allows engineers to speak the originally recorded arabian voicelines when the player uses the Arabian lord.
-
-There is not much variation of these voicelines, so it can get annoying after a while."
+"Erlaubt den Baumeistern im Falle, dass der Spieler den Arabischen Lord auswählt, die originalen Arabischen Sounddateien zu verwenden."
 }
 
 u_fix_lord_animation_stuck_movement
 {
-"Fix Lord animation freeze"
+"Entfernt das Einfrieren der Lord Animation"
 }
 
 u_fix_lord_animation_stuck_movement_descr
 {
-"Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
+"Der Lord wechselt mit dieser Änderung nach dem Zerstören eines Gebäudes in seine Ausgangsposition. Bisher blieb er in der Zerstöranimation stecken."
 }
 
 o_fix_small_wall_placement_count
 {
-"Fix small wall placement count preview"
+"Berichtigt die Steinkostenberechnung für kleinen Wall"
 }
 
 o_fix_small_wall_placement_count_descr
 {
-"Fixes the bug where the small wall placement preview only allowed the player to use half of their stone."
+"Hiermit kann der kleine Wall mit allen Steinen gebaut werden, statt nur mit der Hälfte dieser."
 }
 
 fix_apple_orchard_build_size
 {
-"Shrink apple orchard's build size"
+"Reduziert die Baugröße von Apfelfarmen"
 }
 
 fix_apple_orchard_build_size_descr
 {
-"Changes the apple orchard's build size to the size it occupies after the farm is placed down. This saves some space when building the farms and increases the rate with which the AI is able to put these farms down."
+"Ändert die Bauvorschau von Apfelfarmen auf die Größe, die sie nach der Platzierung der Farm haben."
 }
 
 u_fix_applefarm_blocking
 {
-"Fix apple farm blocking"
+"Behebt das blockieren des Apfelfarmers"
 }
 
 u_fix_applefarm_blocking_descr
 {
-"Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
+"Apfelfarmer werden nicht länger inaktiv, wenn der Pfad links oben direkt neben der Farm blockiert wird."
 }
 
 o_allow_overbuilding
 {
-"Allow overbuilding workers and units"
+"Überbauen von Einheiten und Arbeitern"
 }
 
 o_allow_overbuilding_descr
 {
-"Allows the player to overbuild workers with buildings, while allowing to overbuild units with walls and towers making them pop at the top."
+"Erlaubt es dem Spieler Gebäude über Arbeiter und Betrunkene zu platzieren und diese damit zu töten. Türme und Mauern können auch unter eigene Einheiten gebaut werden."
 }
 
 o_increase_path_update_tick_rate
 {
-"Increase the tick rate of path update by 4 times."
+"Erhöht die Tickrate für Pfadupdates."
 }
 
 o_increase_path_update_tick_rate_descr
 {
-"In vanilla, it took 200 game ticks to update pathing which resulted in units not being able to move into the castle after destroying a gate or tower.
-
-This change increases this tick rate by 4 times by lowering this required tick value to 50, allowing the units to 'realize' more quickly that a new path is available."
+"In Vanilla aktualisierte sich die Wegberechnung alle 200 Spielticks. Dies führte zu einer Reaktionsverzögerung von Einheiten und Arbeitern wenn neue Wege verfügbar wurden. Diese Änderung setzt dieses Intervall auf 50."
 }
 
 o_fix_ladderclimb
 {
-"Fix ladder climb bug"
+"Behebt Befehlsverlust beim Klettern auf Leitern"
 }
 
 o_fix_ladderclimb_descr
 {
-"Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
+"Einheiten klettern nicht mehr direkt zurück und vergessen auch nicht mehr ihr Ziel, nachdem sie eine Leiter erklommen haben."
 }
 
 u_spearmen_run
 {
-"Spearmen run by default instead of walking"
+"Speerträger rennen nun standartmäßig"
 }
 
 u_spearmen_run_descr
 {
-"Makes spearmen run by default instead of the slow walking."
+"Speerträger rennen nun immer in der Geschwindigkeit, welche sie sonst nur in aggressiver Haltung in der Nähe von Gegnern hatten."
 }
 
 u_tanner_fix
 {
-"Fix tanners getting all the same cow"
+"Gerber holen sich unterschiedliche Kühe"
 }
 
 u_tanner_fix_descr
 {
-"Tanners will no longer return without a cow when another tanner took their target cow. They will now instead stand around a bit and then get another one."
+"Gerber kehren nicht länger ohne Kuh zurück, falls ihre anvisierte Kuh bereits fort ist. Sie warten nun, bis sie eine andere Kuh mitnehmen können."
 }
 
 o_fix_fletcher_bug
 {
-"Fix fletcher bug"
+"Entfernt den Extraweg des Pfeilmachers zur Werkstatt"
 }
 
 o_fix_fletcher_bug_descr
 {
-"Fixes the behaviour where the fletcher goes back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile."
+"Passt das Verhalten des Pfeilmachers and andere Waffenproduzenten an. Nach Abgabe seines Gutes, geht er nun direkt zum Vorratslager, statt erneut zur Werkstatt zurückzukehren."
 }
 
 ai_fix_crusader_archers_pitch
 {
-"Fix AI crusader archers not lighting pitch"
+"Europäische Bogenschützen der KI entzünden Pech."
 }
 
 ai_fix_crusader_archers_pitch_descr
 {
-"Fixes the AI crusader archers not lighting pitch like arabian archers do when enemy units get onto it."
+"Bisher waren nur Arabische Bogenschützen der KI in der Lage gezielt Pechgraben mit Feuerpfeilen zu entzünden. Mit dieser Änderung können sie diesen nun auch mit Europäischen Bogenschützen auslösen."
 }
 
 o_fix_baker_disappear
 {
-"Fix baker disappear bug"
+"Behebt das Verschwinden von Bäckern"
 }
 
 o_fix_baker_disappear_descr
 {
-"Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile."
+"Behebt den Fehler, der Bäcker verschwinden ließ, wenn sie kein Mehl am angestrebten Platz im Vorratslager vorfinden konnten."
 }
 
 o_fix_moat_digging_unit_disappearing
 {
-"Fix moat digging units disappear bug"
+"Behebt das Verschwinden von Ausbuddlern"
 }
 
 o_fix_moat_digging_unit_disappearing_descr
 {
-"Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!"
+"Behebt das Verschwinden von Einheiten, die mit dem Ausbuddeln des Wassergrabens beschäftigt waren. Allerdings können Einheiten, die beim Ausbuddeln neue Befehle kriegen immer noch verschwinden, sollten sie auf unbegehbarem Terrain stehen."
 }
 
 // ======================
