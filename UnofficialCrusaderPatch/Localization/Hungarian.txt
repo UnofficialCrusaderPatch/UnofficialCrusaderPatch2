@@ -1,6 +1,16 @@
 // ======================
 //         dev
 // ======================
+o_stop_player_keep_rotation
+{
+"Stop player castle rotation"
+}
+
+o_stop_player_keep_rotation_descr
+{
+"Player castles are no longer rotated at the start of the match, they keep their original orientation they got placed in the editor."
+}
+
 o_restore_arabian_engineer_speech
 {
 "Restore engineer arabian speech"
