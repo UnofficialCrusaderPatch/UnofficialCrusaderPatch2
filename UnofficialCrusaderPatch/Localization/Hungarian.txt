@@ -1,7 +1,31 @@
 // ======================
 //         dev
 // ======================
-o_restore_arabian_engineer_speech
+
+o_seed_modification_possibility_title
+{
+"Game Seed"
+}
+
+o_seed_modification_possibility_only_set
+{
+"No seed save, only set seed from live"
+}
+
+o_seed_modification_possibility_only_set_descr
+{
+"Does not save seeds to gameseeds folder, but still loads gameseeds/live seed if it exists."
+}
+
+o_seed_modification_possibility
+{
+"Save random seeds, set seed from live"
+}
+
+o_seed_modification_possibility_descr
+{
+"Saves random seeds from matches on match start, but still loads gameseeds/live seed if it exists."
+}o_restore_arabian_engineer_speech
 {
 "Restore engineer arabian speech"
 }
