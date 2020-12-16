@@ -1,6 +1,16 @@
 // ======================
 //         dev
 // ======================
+o_change_siege_engine_spawn_position_catapult
+{
+"Center siege engine spawn position"
+}
+
+o_change_siege_engine_spawn_position_catapult_descr
+{
+"Siege engines are now centered after they are finished building instead of spawning at the top corner of the tent."
+}
+
 o_stop_player_keep_rotation
 {
 "Rotate player keeps"
