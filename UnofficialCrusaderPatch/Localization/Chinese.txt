@@ -3,12 +3,12 @@
 // ======================
 o_stop_player_keep_rotation
 {
-"Stop player castle rotation"
+"Rotate player keeps"
 }
 
 o_stop_player_keep_rotation_descr
 {
-"Player castles are no longer rotated at the start of the match, they keep their original orientation they got placed in the editor."
+"Player keeps now get rotated the same way, that AI keeps rotate on a map, facing with their campfire outwards towards the map edge."
 }
 
 o_restore_arabian_engineer_speech
