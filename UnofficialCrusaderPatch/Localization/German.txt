@@ -33,12 +33,12 @@ o_restore_arabian_engineer_speech_descr
 
 u_fix_lord_animation_stuck_movement
 {
-"Entfernt das Einfrieren des Lordes"
+"Entfernt das Einfrieren der Lord Animation"
 }
 
 u_fix_lord_animation_stuck_movement_descr
 {
-"Lässt den Lord nicht mehr in der Animation stecken bleiben, nachdem er ein Gebäude getötet hat."
+"Der Lord wechselt mit dieser Änderung nach dem Zerstören eines Gebäudes in seine Ausgangsposition. Bisher blieb er in der Zerstöranimation stecken."
 }
 
 o_fix_small_wall_placement_count
@@ -58,7 +58,7 @@ fix_apple_orchard_build_size
 
 fix_apple_orchard_build_size_descr
 {
-"Ändert die Baugröße von Apfelfarmen auf die Größe, die sie nach der Platzierung der Farm haben."
+"Ändert die Bauvorschau von Apfelfarmen auf die Größe, die sie nach der Platzierung der Farm haben."
 }
 
 u_fix_applefarm_blocking
@@ -88,14 +88,12 @@ o_increase_path_update_tick_rate
 
 o_increase_path_update_tick_rate_descr
 {
-"In Vanilla dauerte es 200 gameticks, bis ein Pfad geupdated wurde nachdem ein gebäude zerstört wurde.
-
-Diese Änderung erhöht die Tickrate und updated den Pfad all 50 Ticks."
+"In Vanilla aktualisierte sich die Wegberechnung alle 200 Spielticks. Dies führte zu einer Reaktionsverzögerung von Einheiten und Arbeitern wenn neue Wege verfügbar wurden. Diese Änderung setzt dieses Intervall auf 50."
 }
 
 o_fix_ladderclimb
 {
-"Behebe Befehlsverlust beim Klettern auf Leitern"
+"Behebt Befehlsverlust beim Klettern auf Leitern"
 }
 
 o_fix_ladderclimb_descr
