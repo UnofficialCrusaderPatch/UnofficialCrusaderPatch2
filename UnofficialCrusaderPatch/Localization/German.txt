@@ -4,7 +4,7 @@
 
 o_seed_modification_possibility_title
 {
-"Spiele Seed"
+"Spiel Seed"
 }
 
 o_seed_modification_possibility_only_set
@@ -14,7 +14,7 @@ o_seed_modification_possibility_only_set
 
 o_seed_modification_possibility_only_set_descr
 {
-"Mit dieser Option wird der verwendete Seed am Start einer Partie aus der 'live' Datei im seed Ordner ausgelesen, sollte diese vorhanden sein, und als Grundlage für Zufallszahlen Generierung genutzt. Dies führt dann zu einem immer gleichen Spielverlauf bei gelicher Aufstellung."
+"Mit dieser Option wird der verwendete Seed am Start einer Partie aus der 'live' Datei im gameseeds Ordner ausgelesen, sollte diese vorhanden sein, und als Grundlage für Zufallszahlen Generierung genutzt. Dies führt dann zu einem immer gleichen Spielverlauf bei gleicher Aufstellung."
 }
 
 o_seed_modification_possibility
@@ -24,7 +24,7 @@ o_seed_modification_possibility
 
 o_seed_modification_possibility_descr
 {
-"Mit dieser Option speichert das Spiel den generierten zufälligen Seed am Start einer Partie, liest aber für den Fall in dem ein 'live' Seed vorliegt diesen aus und nutzt ihn als Grundlage für Zufallszahlen Generierung. Dies führt dann zu einem immer gleichen Spielverlauf."
+"Mit dieser Option speichert das Spiel den generierten zufälligen Seed am Start einer Partie in den gameseeds Ordner. Sollte in diesem jedoch eine 'live' Datei vorliegen, wird stattdessen der seed aus diesem ausgelesen und als Grundlage für Zufallszahlen Generierung genutzt."
 }
 
 o_change_siege_engine_spawn_position_catapult
