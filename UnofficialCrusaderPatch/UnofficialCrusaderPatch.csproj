@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -156,6 +156,12 @@
     <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_attr.block" />
     <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_fn.block" />
     <EmbeddedResource Include="CodeBlocks\ai_fix_laddermen_with_enclosed_keep.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_catapult.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_fireballista.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_ram.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_shield.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_tower.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_trebutchet.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_small_wall_placement_count.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_small_wall_placement_count_pre.block" />
     <EmbeddedResource Include="CodeBlocks\fix_apple_orchard_build_size.block" />
@@ -186,6 +192,8 @@
     <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_engine.block" />
     <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_lord_type.block" />
     <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_purchase.block" />
+    <EmbeddedResource Include="CodeBlocks\o_stop_player_keep_rotation.block" />
+    <EmbeddedResource Include="CodeBlocks\o_stop_player_keep_rotation_get_preferred_relative_orientation.block" />
     <EmbeddedResource Include="CodeBlocks\ui_fix_laddermen_cost_display_in_engineers_guild.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix1.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix2.block" />
