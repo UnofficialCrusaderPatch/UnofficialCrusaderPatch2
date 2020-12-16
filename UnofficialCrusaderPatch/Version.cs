@@ -3312,7 +3312,7 @@ namespace UCP
                             0x8B, 0xF0, // mov esi,eax
                             0x81, 0xC4, 0x08, 0x00, 0x00, 0x00, // add esp,08
                             0x83, 0xFE, 0x00, // cmp esi,00
-                            0x74, 0x46, // je short 46
+                            0x74, 0x43, // je short 46
                             
                             0x56, // push esi
                             0x68, 0x01, 0x00, 0x00, 0x00, // push 01
