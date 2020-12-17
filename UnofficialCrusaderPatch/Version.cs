@@ -37,7 +37,7 @@ namespace UCP
             Debug.Show(parameters["popularity"]["value"]);*/
 
             int paramSize = (double)parameters["free_peasant"]["value"] > 0x7F ? 4 : 2;
-            if (!parameters["free_peasant"]["value"].Equals(0))
+            if (!((double)parameters["free_peasant"]["value"] == 0))
             {
                 peasantCollection = new BinCollection()
                 {
@@ -72,7 +72,7 @@ namespace UCP
             }
 
             paramSize = (double)parameters["campfire_peasant"]["value"] > 0x7F ? 4 : 2;
-            if (!parameters["campfire_peasant"]["value"].Equals(0))
+            if (!((double)parameters["campfire_peasant"]["value"] == 0))
             {
                 campPeasantCollection = new BinCollection()
                 {
@@ -108,7 +108,7 @@ namespace UCP
             }
 
             paramSize = (double)parameters["popularity"]["value"] > 0x7F ? 4 : 2;
-            if (!parameters["popularity"]["value"].Equals(0))
+            if (!((double)parameters["popularity"]["value"] == 0))
             {
                 popCollection = new BinCollection()
                 {
