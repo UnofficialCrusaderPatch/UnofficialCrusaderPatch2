@@ -13,7 +13,7 @@ namespace UCP
 {
     public class Version
     {
-        public static string PatcherVersion = "2.14";
+        public static string PatcherVersion = "-KI-Turnier";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
@@ -230,6 +230,8 @@ namespace UCP
                         {
                             0x50, // push eax
                             0xA1, new BinRefTo("currentUnitMoved", false), // mov eax,[currentUnitMoved]
+                            0x83, 0xF8, 0x00, // cmp eax,00
+                            0x74, 0x20, // je short 20
                             0x48, // dec eax
                             0x6B, 0xC0, 0x0C, // imul eax,eax,0C
                             0x89, 0xA8, new BinRefTo("savedUnitDestinationForClimbing", false), // mov [eax+savedUnitDestinationForClimbing],ebp
@@ -2912,7 +2914,7 @@ namespace UCP
                     // 4B4748
                     new BinaryEdit("o_gamespeed_up")
                     {
-                        CMP(EAX, 1000),      // cmp eax, 1000
+                        CMP(EAX, 100000),      // cmp eax, 100000
 
                         JMP(GREATERTHANEQUALS, 0x19), // jge to end
 
@@ -3408,6 +3410,137 @@ namespace UCP
                     },
                 },
             },
+            
+            new Change("o_change_siege_engine_spawn_position_catapult", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_change_siege_engine_spawn_position_catapult")
+                {
+                    // 41F4A2
+                    new BinaryEdit("o_change_siege_engine_spawn_position_catapult")
+                    {
+                        new BinAddress("yPositionAddress", 43),
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 41F8AF
+                    new BinaryEdit("o_change_siege_engine_spawn_position_trebutchet")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 41FD7F
+                    new BinaryEdit("o_change_siege_engine_spawn_position_tower")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 42020F
+                    new BinaryEdit("o_change_siege_engine_spawn_position_ram")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 42069F
+                    new BinaryEdit("o_change_siege_engine_spawn_position_shield")
+                    {
+                        new BinSkip(37),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 41E332
+                    new BinaryEdit("o_change_siege_engine_spawn_position_fireballista")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                }
+            },
+
+            new Change("o_stop_player_keep_rotation", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_stop_player_keep_rotation")
+                {
+                    // 4ECF93
+                    new BinaryEdit("o_stop_player_keep_rotation_get_preferred_relative_orientation")
+                    {
+                        new BinAddress("getPreferredRelativeOrientationHandle", 12),
+                        new BinAddress("getPreferredRelativeOrientation", 23, true)
+                    },
+                    
+                    // 441D3F
+                    new BinaryEdit("o_stop_player_keep_rotation")
+                    {
+                        new BinSkip(32),
+                        new BinAddress("originalFun", 1, true),
+                        new BinHook(5)
+                        {
+                            0x57, // push edi
+                            0x50, // push eax
+                            0x51, // push ecx
+                            0x68, 0xC8, 0x00, 0x00, 0x00, // push C8
+                            0x68, 0xC8, 0x00, 0x00, 0x00, // push C8
+                            0x57, // push edi
+                            0x50, // push eax
+                            0xB9, new BinRefTo("getPreferredRelativeOrientationHandle", false), // mov ecx,getPreferredRelativeOrientationHandle
+                            0xE8, new BinRefTo("getPreferredRelativeOrientation", true), // call getPreferredRelativeOrientation
+                            0xB8, new BinRefTo("getPreferredRelativeOrientationHandle", false), // mov eax,getPreferredRelativeOrientationHandle
+                            0x05, 0x10, 0x00, 0x00, 0x00, // add eax,10
+                            0x8B, 0x00, // mov eax,[eax]
+                            
+                            0x25, 0xFE, 0xFF, 0x00, 0x00, // and eax,0000FFFE
+                            
+                            0x3D, 0x06, 0x00, 0x00, 0x00, // cmp eax,00000006
+                            0x74, 0x09, // je short 9
+                            0x3D, 0x02, 0x00, 0x00, 0x00, // cmp eax,02
+                            0x74, 0x09, // je short 9
+                            0xEB, 0x0C, // jmp short C
+                            0xB8, 0x02, 0x00, 0x00, 0x00, // mov eax,02
+                            0xEB, 0x05, // jmp short 5
+                            0XB8, 0x06, 0x00, 0x00, 0x00, // mov eax,06
+                            
+                            0x89, 0x44, 0x24, 0x20, // mov [esp+20],eax
+                            0x59, // pop ecx
+                            0x58, // pop eax
+                            0x5F, // pop edi
+                            0xE8, new BinRefTo("originalFun"), // call originalFun
+                        }
+                    }
+                }
+            }
 
             #endregion
         };
