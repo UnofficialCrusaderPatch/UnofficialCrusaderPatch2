@@ -27,52 +27,15 @@ namespace UCP
 
         private static ParamHeader GetAIHousingParamHeader(Dictionary<string, Dictionary<string, object>> parameters)
         {
-            BinCollection peasantCollection = null;
             BinCollection campPeasantCollection = null;
-            BinCollection popCollection = null;
 
-
-            /*Debug.Show(parameters["free_peasant"]["value"]);
-            Debug.Show(parameters["campfire_peasant"]["value"]);
-            Debug.Show(parameters["popularity"]["value"]);*/
-
-            int paramSize = (double)parameters["free_peasant"]["value"] > 0x7F ? 4 : 2;
-            if (!((double)parameters["free_peasant"]["value"] == 0))
+            int paramSize = 2;
+            if (!parameters["campfire_peasant"]["value"].Equals(false))
             {
-                peasantCollection = new BinCollection()
-                {
-                    0x8B, 0x88, new BinRefTo("free_peasant_address", false),
-                };
-
-                BinCollection sizeCollection;
-                if (paramSize == 2)
-                {
-                    byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["free_peasant"]["value"]));
-                    sizeCollection = new BinCollection()
-                    {
-                        0x83, 0xF9, value[0]
-                    };
-                } else
-                {
-                    sizeCollection = new BinCollection()
-                    {
-                        0x81, 0xF9, BitConverter.GetBytes(Convert.ToInt32((double)parameters["free_peasant"]["value"]))
-                    };
-                }
-                foreach (var elem in sizeCollection) peasantCollection.Add(elem);
-
-                BinCollection jumpCollection = new BinCollection()
-                {
-                    0x7F, 0x05, /* if greater continue */
-                    0x33, 0xC0, /* xor eax, eax */
-                    0xC2, 0x08, 0x00 /* ret 0008 */
-                };
-
-                foreach (var elem in jumpCollection) peasantCollection.Add(elem);
+                paramSize = (double)parameters["campfire_peasant"]["value"] > 0x7F ? 4 : 2;
             }
-
-            paramSize = (double)parameters["campfire_peasant"]["value"] > 0x7F ? 4 : 2;
-            if (!((double)parameters["campfire_peasant"]["value"] == 0))
+                
+            if (!(parameters["campfire_peasant"]["value"].Equals(false) || (double)parameters["campfire_peasant"]["value"] == 0))
             {
                 campPeasantCollection = new BinCollection()
                 {
@@ -107,41 +70,24 @@ namespace UCP
                 foreach (var elem in jumpCollection) campPeasantCollection.Add(elem);
             }
 
-            paramSize = (double)parameters["popularity"]["value"] > 0x7F ? 4 : 2;
-            if (!((double)parameters["popularity"]["value"] == 0))
+            BinaryEdit delete_edit = null;
+            if (!(parameters["delete_housing"]["value"].Equals(false) || (double)parameters["delete_housing"]["value"] == 20))
             {
-                popCollection = new BinCollection()
+                byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["delete_housing"]["value"]));
+                delete_edit = new BinaryEdit("ai_deletehousing")
                 {
-                    0x8B, 0x88, new BinRefTo("popularity_address", false),
-                };
-
-                BinCollection sizeCollection;
-                if (paramSize == 2)
-                {
-                    byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["popularity"]["value"]));
-                    sizeCollection = new BinCollection()
+                    new BinHook(0x10)
                     {
-                        0x83, 0xF9, value[0]
-                    };
-                }
-                else
-                {
-                    sizeCollection = new BinCollection()
-                    {
-                        0x81, 0xF9, BitConverter.GetBytes(Convert.ToInt32((double)parameters["popularity"]["value"]))
-                    };
-                }
-                foreach (var elem in sizeCollection) popCollection.Add(elem);
-
-                BinCollection jumpCollection = new BinCollection()
-                {
-                    0x7F, 0x05, /* if greater continue */
-                    0x33, 0xC0, /* xor eax, eax */
-                    0xC2, 0x08, 0x00 /* ret 0008 */
+                        0x8B, 0x88, new BinRefTo("campfire_peasant_address", false),
+                        0x83, 0xF9, value[0],
+                        0x7D, 0x06,
+                        0x33, 0xC0,
+                        0x5F,
+                        0xC2, 0x04, 0x00
+                    }
                 };
-
-                foreach (var elem in jumpCollection) popCollection.Add(elem);
             }
+
 
             BinBytes init = new BinBytes(
                     0x8B, 0x44, 0x24, 0x04, /* mov eax, [esp+04] */
@@ -158,19 +104,9 @@ namespace UCP
                 init
             };
 
-            if (peasantCollection != null)
-            {
-                foreach (var elem in peasantCollection) hook.Add(elem);
-            }
-
             if (campPeasantCollection != null)
             {
                 foreach (var elem in campPeasantCollection) hook.Add(elem);
-            }
-
-            if (popCollection != null)
-            {
-                foreach (var elem in popCollection) hook.Add(elem);
             }
 
             hook.Add(finalizer);
@@ -179,17 +115,16 @@ namespace UCP
             {
                 hook,
                 new BinAddress("campfire_peasant_address", 0x12, false), //19
-                new BinAddress("free_peasant_address", 0x27, false), //40
-                new BinAddress("popularity_address", 0x39, false) //57
             };
 
 
             ParamHeader aiHousing = new ParamHeader("ai_buildhousing")
             {
-                edit
+                edit == null ? new BinaryEdit("ai_buildhousing") : edit,
+                delete_edit == null ? new BinaryEdit("ai_deletehousing") : delete_edit
             };
-            aiHousing.IsEnabled = (double)parameters["free_peasant"]["value"] == 12 && (double)parameters["campfire_peasant"]["value"] == 5
-                && (double)parameters["popularity"]["value"] == 5000;
+            aiHousing.IsEnabled = (!parameters["campfire_peasant"]["value"].Equals(false) && (double)parameters["campfire_peasant"]["value"] != 12)
+                || (!parameters["delete_housing"]["value"].Equals(false) && (double)parameters["delete_housing"]["value"] != 20);
             return aiHousing;
         }
 
@@ -807,12 +742,9 @@ namespace UCP
                     return GetAIHousingParamHeader(parameters);
                 })
             {
-                new SliderHeader("free_peasant", false, 0, 50, 1, 12, 30){},
+                new SliderHeader("campfire_peasant", false, 0, 50, 1, 12, 30){},
 
-                new SliderHeader("campfire_peasant", false, 0, 50, 1, 5, 30){},
-
-                new SliderHeader("popularity", false, 0, 10000, 100, 5000, 5200){}
-
+                new SliderHeader("delete_housing", false, 0, 50, 1, 20, 50){},
             },
 
 

@@ -3,17 +3,12 @@
 // ======================
 ai_housing
 {
-"Häuserbaueinstellungen für die KI"
+"Customize the AIs decision to build and delete houses"
 }
 
 ai_buildhousing_descr
 {
-"Mit diesen Einstellungen kannst du die KI entscheiden lassen, in welchen Situationen sie Häuser baut."
-}
-
-free_peasant_descr
-{
-"Die Anzahl von freien Bewohnern, bevor die KI keine Häuser mehr baut"
+"Customize the AIs decision to build and delete houses"
 }
 
 campfire_peasant_descr
@@ -21,9 +16,9 @@ campfire_peasant_descr
 "Die Anzahl der Bauern am Lagerfeuer, bevor die KI keine Häuser mehr baut"
 }
 
-popularity_descr
+delete_housing_descr
 {
-"Maximale Beliebtheit, bevor die KI keine Häuser mehr baut"
+"Number of peasants at campfire before AI deletes houses"
 }
 
 o_change_siege_engine_spawn_position_catapult
