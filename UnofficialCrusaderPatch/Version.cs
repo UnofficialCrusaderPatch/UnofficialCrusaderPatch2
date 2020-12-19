@@ -29,10 +29,10 @@ namespace UCP
         {
             BinCollection campPeasantCollection = null;
 
-            int paramSize = 2;
+            int paramSize = 1;
             if (!parameters["build_housing"]["value"].Equals(false))
             {
-                paramSize = (double)parameters["build_housing"]["value"] > 0x7F ? 4 : 2;
+                paramSize = (double)parameters["build_housing"]["value"] > 0x7F ? 3 : 1;
             }
                 
             if (!(parameters["build_housing"]["value"].Equals(false) || (double)parameters["build_housing"]["value"] == 0))
@@ -43,7 +43,7 @@ namespace UCP
                 };
 
                 BinCollection sizeCollection;
-                if (paramSize == 2)
+                if (paramSize == 1)
                 {
                     byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["build_housing"]["value"]));
                     sizeCollection = new BinCollection()
@@ -70,10 +70,24 @@ namespace UCP
                 foreach (var elem in jumpCollection) campPeasantCollection.Add(elem);
             }
 
+            double delete_value = Convert.ToInt32((double)parameters["delete_housing"]["value"]);
+            if (!(parameters["build_housing"]["value"].Equals(false)))
+            {
+                delete_value += (double)parameters["build_housing"]["value"];
+            } else
+            {
+                delete_value += 12;
+            }
+
+            paramSize = 1;
+            if (!parameters["delete_housing"]["value"].Equals(false))
+            {
+                paramSize = delete_value > 0x7F ? 3 : 1;
+            }
             BinaryEdit delete_edit = null;
             if (!(parameters["delete_housing"]["value"].Equals(false) || (double)parameters["delete_housing"]["value"] == 20))
             {
-                byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["delete_housing"]["value"]));
+                byte[] value = BitConverter.GetBytes(Convert.ToInt32(delete_value));
                 delete_edit = new BinaryEdit("ai_deletehousing")
                 {
                     new BinAddress("housing_address_new", 16),
@@ -81,9 +95,17 @@ namespace UCP
                     new BinSkip(0x7),
                     0xF7, 0xD9,
                     new BinBytes(0x03, 0x88), new BinRefTo("housing_address_new", false),
-                    0x83, 0xF9, value[0],
+                    new BinHook(6)
+                    {
+                        paramSize == 1 ? new BinBytes(0x83, 0xF9, value[0]) : new BinBytes(0x81, 0xF9, value[0], value[1], value[2], value[3]),
+                        0x7F, 0x06,
+                        0x33, 0xC0,
+                        0x5F,
+                        0xC2, 0x04, 0x00
+                    }
+                    /*0x83, 0xF9, value[0],
                     new BinBytes(0x7E, 0xDF),
-                    new BinNops(1)
+                    new BinNops(1)*/
                 };
             }
 
@@ -740,9 +762,9 @@ namespace UCP
                     return GetAIHousingParamHeader(parameters);
                 })
             {
-                new SliderHeader("build_housing", false, 0, 50, 1, 12, 30){},
+                new SliderHeader("build_housing", false, 0, 300, 1, 12, 30){},
 
-                new SliderHeader("delete_housing", false, 0, 50, 1, 20, 50){},
+                new SliderHeader("delete_housing", false, 0, 50, 1, 20, 0x7F){},
             },
 
 
