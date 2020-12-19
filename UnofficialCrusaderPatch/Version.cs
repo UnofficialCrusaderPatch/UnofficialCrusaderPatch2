@@ -30,22 +30,22 @@ namespace UCP
             BinCollection campPeasantCollection = null;
 
             int paramSize = 2;
-            if (!parameters["campfire_peasant"]["value"].Equals(false))
+            if (!parameters["build_housing"]["value"].Equals(false))
             {
-                paramSize = (double)parameters["campfire_peasant"]["value"] > 0x7F ? 4 : 2;
+                paramSize = (double)parameters["build_housing"]["value"] > 0x7F ? 4 : 2;
             }
                 
-            if (!(parameters["campfire_peasant"]["value"].Equals(false) || (double)parameters["campfire_peasant"]["value"] == 0))
+            if (!(parameters["build_housing"]["value"].Equals(false) || (double)parameters["build_housing"]["value"] == 0))
             {
                 campPeasantCollection = new BinCollection()
                 {
-                    0x8B, 0x88, new BinRefTo("campfire_peasant_address", false),
+                    0x2B, 0x88, new BinRefTo("population_address", false),
                 };
 
                 BinCollection sizeCollection;
                 if (paramSize == 2)
                 {
-                    byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["campfire_peasant"]["value"]));
+                    byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["build_housing"]["value"]));
                     sizeCollection = new BinCollection()
                     {
                         0x83, 0xF9, value[0]
@@ -55,7 +55,7 @@ namespace UCP
                 {
                     sizeCollection = new BinCollection()
                     {
-                        0x81, 0xF9, BitConverter.GetBytes(Convert.ToInt32((double)parameters["campfire_peasant"]["value"]))
+                        0x81, 0xF9, BitConverter.GetBytes(Convert.ToInt32((double)parameters["build_housing"]["value"]))
                     };
                 }
                 foreach (var elem in sizeCollection) campPeasantCollection.Add(elem);
@@ -76,23 +76,19 @@ namespace UCP
                 byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["delete_housing"]["value"]));
                 delete_edit = new BinaryEdit("ai_deletehousing")
                 {
-                    new BinHook(0x10)
-                    {
-                        0x8B, 0x88, new BinRefTo("campfire_peasant_address", false),
-                        0x83, 0xF9, value[0],
-                        0x7D, 0x06,
-                        0x33, 0xC0,
-                        0x5F,
-                        0xC2, 0x04, 0x00
-                    }
+                    new BinAddress("housing_address_new", 16),
+                    new BinSkip(0xF),
+                    new BinSkip(0x7),
+                    0xF7, 0xD9,
+                    new BinBytes(0x03, 0x88), new BinRefTo("housing_address_new", false),
+                    0x83, 0xF9, value[0],
+                    new BinBytes(0x7E, 0xDF),
+                    new BinNops(1)
                 };
             }
 
 
-            BinBytes init = new BinBytes(
-                    0x8B, 0x44, 0x24, 0x04, /* mov eax, [esp+04] */
-                    0x69, 0xC0, 0xF4, 0x39, 0x00, 0x00 /* imul eax, eax, 0x39f4 */
-                );
+            BinBytes init = new BinBytes();
 
             BinBytes finalizer = new BinBytes(
                 0xB8, 0x01, 0x00, 0x00, 0x00,   /* mov eax, 00000001 */
@@ -114,7 +110,9 @@ namespace UCP
             BinaryEdit edit = new BinaryEdit("ai_buildhousing")
             {
                 hook,
-                new BinAddress("campfire_peasant_address", 0x12, false), //19
+                new BinAddress("campfire_peasant_address", 0x22, false), //0x22
+                new BinAddress("population_address", 2, false), //5
+                new BinAddress("housing_address", 11, false), //11
             };
 
 
@@ -123,7 +121,7 @@ namespace UCP
                 edit == null ? new BinaryEdit("ai_buildhousing") : edit,
                 delete_edit == null ? new BinaryEdit("ai_deletehousing") : delete_edit
             };
-            aiHousing.IsEnabled = (!parameters["campfire_peasant"]["value"].Equals(false) && (double)parameters["campfire_peasant"]["value"] != 12)
+            aiHousing.IsEnabled = (!parameters["build_housing"]["value"].Equals(false) && (double)parameters["build_housing"]["value"] != 12)
                 || (!parameters["delete_housing"]["value"].Equals(false) && (double)parameters["delete_housing"]["value"] != 20);
             return aiHousing;
         }
@@ -742,7 +740,7 @@ namespace UCP
                     return GetAIHousingParamHeader(parameters);
                 })
             {
-                new SliderHeader("campfire_peasant", false, 0, 50, 1, 12, 30){},
+                new SliderHeader("build_housing", false, 0, 50, 1, 12, 30){},
 
                 new SliderHeader("delete_housing", false, 0, 50, 1, 20, 50){},
             },

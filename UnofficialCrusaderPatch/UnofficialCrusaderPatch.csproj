@@ -1517,6 +1517,7 @@
     <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed_reset.block" />
     <EmbeddedResource Include="CodeBlocks\ai_buildhousing.block" />
     <EmbeddedResource Include="CodeBlocks\ai_deletehousing.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_deletehousing - Copy.block" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />

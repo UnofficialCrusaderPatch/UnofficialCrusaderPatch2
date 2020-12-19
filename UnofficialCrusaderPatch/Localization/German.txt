@@ -11,14 +11,14 @@ ai_buildhousing_descr
 "Customize the AIs decision to build and delete houses"
 }
 
-campfire_peasant_descr
+build_housing_descr
 {
-"Die Anzahl der Bauern am Lagerfeuer, bevor die KI keine Häuser mehr baut"
+"Number of extra available housing before AI stops building houses"
 }
 
 delete_housing_descr
 {
-"Number of peasants at campfire before AI deletes houses"
+"Number of extra available housing before AI starts building houses"
 }
 
 o_change_siege_engine_spawn_position_catapult
