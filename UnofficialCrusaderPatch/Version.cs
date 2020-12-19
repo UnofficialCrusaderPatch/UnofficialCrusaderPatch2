@@ -762,9 +762,9 @@ namespace UCP
                     return GetAIHousingParamHeader(parameters);
                 })
             {
-                new SliderHeader("build_housing", false, 0, 300, 1, 12, 30){},
+                new SliderHeader("build_housing", false, 0, 500, 1, 12, 30){},
 
-                new SliderHeader("delete_housing", false, 0, 50, 1, 20, 0x7F){},
+                new SliderHeader("delete_housing", false, 0, 500, 1, 20, 0x7F){},
             },
 
 
