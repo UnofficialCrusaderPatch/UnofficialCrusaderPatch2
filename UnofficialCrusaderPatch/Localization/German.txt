@@ -1,6 +1,26 @@
 // ======================
 //         dev
 // ======================
+ai_housing
+{
+"Customize the AIs decision to build and delete houses"
+}
+
+ai_buildhousing_descr
+{
+"Customize the AIs decision to build and delete houses"
+}
+
+build_housing_descr
+{
+"Number of extra available housing before AI stops building houses"
+}
+
+delete_housing_descr
+{
+"After the AI has reached this additional amount of available housing after it stopped building houses, it will delete houses"
+}
+
 o_change_siege_engine_spawn_position_catapult
 {
 "Zentriert Belagerungsgeräte nach der Konstruktion"

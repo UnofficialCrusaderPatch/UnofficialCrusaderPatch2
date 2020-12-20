@@ -7,6 +7,7 @@ using UCP.Startup;
 using static UCP.Patching.BinElements.Register;
 using static UCP.Patching.BinElements.OpCodes;
 using static UCP.Patching.BinElements.OpCodes.Condition.Values;
+using System;
 
 namespace UCP
 {
@@ -24,6 +25,128 @@ namespace UCP
             BinRedirect.CreateEdit("menuversion", false, Encoding.ASCII.GetBytes("V1.%d-E UCP" + PatcherVersion + '\0'))
         };
 
+        private static ParamHeader GetAIHousingParamHeader(Dictionary<string, Dictionary<string, object>> parameters)
+        {
+            BinCollection campPeasantCollection = null;
+
+            int paramSize = 1;
+            if (!parameters["build_housing"]["value"].Equals(false))
+            {
+                paramSize = (double)parameters["build_housing"]["value"] > 0x7F ? 3 : 1;
+            }
+                
+            if (!(parameters["build_housing"]["value"].Equals(false) || (double)parameters["build_housing"]["value"] == 0))
+            {
+                campPeasantCollection = new BinCollection()
+                {
+                    0x2B, 0x88, new BinRefTo("population_address", false),
+                };
+
+                BinCollection sizeCollection;
+                if (paramSize == 1)
+                {
+                    byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["build_housing"]["value"]));
+                    sizeCollection = new BinCollection()
+                    {
+                        0x83, 0xF9, value[0]
+                    };
+                }
+                else
+                {
+                    sizeCollection = new BinCollection()
+                    {
+                        0x81, 0xF9, BitConverter.GetBytes(Convert.ToInt32((double)parameters["build_housing"]["value"]))
+                    };
+                }
+                foreach (var elem in sizeCollection) campPeasantCollection.Add(elem);
+
+                BinCollection jumpCollection = new BinCollection()
+                {
+                    0x7F, 0x05, /* if greater continue */
+                    0x33, 0xC0, /* xor eax, eax */
+                    0xC2, 0x08, 0x00 /* ret 0008 */
+                };
+
+                foreach (var elem in jumpCollection) campPeasantCollection.Add(elem);
+            }
+
+            double delete_value = Convert.ToInt32((double)parameters["delete_housing"]["value"]);
+            if (!(parameters["build_housing"]["value"].Equals(false)))
+            {
+                delete_value += (double)parameters["build_housing"]["value"];
+            } else
+            {
+                delete_value += 12;
+            }
+
+            paramSize = 1;
+            if (!parameters["delete_housing"]["value"].Equals(false))
+            {
+                paramSize = delete_value > 0x7F ? 3 : 1;
+            }
+            BinaryEdit delete_edit = null;
+            if (!(parameters["delete_housing"]["value"].Equals(false) || (double)parameters["delete_housing"]["value"] == 20))
+            {
+                byte[] value = BitConverter.GetBytes(Convert.ToInt32(delete_value));
+                delete_edit = new BinaryEdit("ai_deletehousing")
+                {
+                    new BinAddress("housing_address_new", 16),
+                    new BinSkip(0xF),
+                    new BinSkip(0x7),
+                    0xF7, 0xD9,
+                    new BinBytes(0x03, 0x88), new BinRefTo("housing_address_new", false),
+                    new BinHook(6)
+                    {
+                        paramSize == 1 ? new BinBytes(0x83, 0xF9, value[0]) : new BinBytes(0x81, 0xF9, value[0], value[1], value[2], value[3]),
+                        0x7F, 0x06,
+                        0x33, 0xC0,
+                        0x5F,
+                        0xC2, 0x04, 0x00
+                    }
+                    /*0x83, 0xF9, value[0],
+                    new BinBytes(0x7E, 0xDF),
+                    new BinNops(1)*/
+                };
+            }
+
+
+            BinBytes init = new BinBytes();
+
+            BinBytes finalizer = new BinBytes(
+                0xB8, 0x01, 0x00, 0x00, 0x00,   /* mov eax, 00000001 */
+                0xC2, 0x08, 0x00
+                );
+
+            BinHook hook = new BinHook(5)
+            {
+                init
+            };
+
+            if (campPeasantCollection != null)
+            {
+                foreach (var elem in campPeasantCollection) hook.Add(elem);
+            }
+
+            hook.Add(finalizer);
+
+            BinaryEdit edit = new BinaryEdit("ai_buildhousing")
+            {
+                hook,
+                new BinAddress("campfire_peasant_address", 0x22, false), //0x22
+                new BinAddress("population_address", 2, false), //5
+                new BinAddress("housing_address", 11, false), //11
+            };
+
+
+            ParamHeader aiHousing = new ParamHeader("ai_buildhousing")
+            {
+                edit == null ? new BinaryEdit("ai_buildhousing") : edit,
+                delete_edit == null ? new BinaryEdit("ai_deletehousing") : delete_edit
+            };
+            aiHousing.IsEnabled = (!parameters["build_housing"]["value"].Equals(false) && (double)parameters["build_housing"]["value"] != 12)
+                || (!parameters["delete_housing"]["value"].Equals(false) && (double)parameters["delete_housing"]["value"] != 20);
+            return aiHousing;
+        }
 
         static List<Change> changes = new List<Change>()
         {
@@ -40,9 +163,9 @@ namespace UCP
                     {
                         // cache current unti moved
                         new BinAlloc("currentUnitMoved", 4),
-                        
+
                         new BinSkip(9),
-                        
+
                         new BinHook(6)
                         {
                             0x89, 0x15, new BinRefTo("currentUnitMoved", false), // mov [currentUnitMoved],edx
@@ -55,7 +178,7 @@ namespace UCP
                     {
                         // need 120k bytes, because we need 3*4 bytes per unit, and the SHC-E max is 10k units
                         new BinAlloc("savedUnitDestinationForClimbing", 120000),
-                        
+
                         new BinSkip(12), // skip 12 bytes
                         
                         new BinHook(10)
@@ -400,7 +523,7 @@ namespace UCP
 
                 }
             },
-            
+
             new Change("u_fix_lord_animation_stuck_movement", ChangeType.Bugfix, true)
             {
                 new DefaultHeader("u_fix_lord_animation_stuck_movement")
@@ -448,7 +571,7 @@ namespace UCP
                     }
                 }
             },
-          
+
             new Change("o_fix_small_wall_placement_count", ChangeType.Bugfix, true)
             {
                 new DefaultHeader("o_fix_small_wall_placement_count")
@@ -486,7 +609,7 @@ namespace UCP
                     }
                 }
             },
-          
+
             new Change("u_fix_applefarm_blocking", ChangeType.Bugfix, true)
             {
                 new DefaultHeader("u_fix_applefarm_blocking")
@@ -580,7 +703,7 @@ namespace UCP
                     {
                         new BinAddress("UnitAttributeOffset",43)
                     },
-                    
+
                     new BinaryEdit("ai_fix_crusader_archers_pitch")
                     {
                         new BinAddress("CurrentTargetIndex",2),
@@ -633,6 +756,17 @@ namespace UCP
             #endregion
 
             #region AI LORDS
+
+            new Change("ai_housing", ChangeType.AILords, false, false, 
+                (parameters) => {
+                    return GetAIHousingParamHeader(parameters);
+                })
+            {
+                new SliderHeader("build_housing", false, 0, 500, 1, 12, 30){},
+
+                new SliderHeader("delete_housing", false, 0, 500, 1, 20, 0x7F){},
+            },
+
 
             /*
              *  AI RECRUIT ADDITIONAL ATTACK TROOPS 
