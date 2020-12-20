@@ -23,7 +23,7 @@ delete_housing_descr
 
 aiv_prompt
 {
-"Custom modified AIVs detected. Click 'Yes' to backup then clear modified files, 'No' to overwrite and delete original backup, 'Cancel' to cancel."
+"Custom modified AIVs detected. Click 'Yes' to backup then clear modified files, installing new AIVs, 'No' to overwrite and delete original backup, and install new AIVs, 'Cancel' to cancel."
 }
 
 aiv_cli_prompt
