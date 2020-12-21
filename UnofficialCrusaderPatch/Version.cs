@@ -13,7 +13,7 @@ namespace UCP
 {
     public class Version
     {
-        public static string PatcherVersion = "-KI-Turnier";
+        public static string PatcherVersion = "2.15";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
