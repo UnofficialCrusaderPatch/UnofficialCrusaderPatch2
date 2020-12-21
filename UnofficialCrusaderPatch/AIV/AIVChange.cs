@@ -326,16 +326,16 @@ namespace UCP.AIV
                     MessageBoxResult result = System.Windows.MessageBox.Show(Localization.Get("aiv_prompt"), "", MessageBoxButton.YesNoCancel);
                     if (result == MessageBoxResult.No)
                     {
-                        foreach (FileInfo file in backupDir.GetFiles())
+                        foreach (FileInfo file in destinationDir.GetFiles())
                         {
                             file.Delete();
                         }
 
-                        foreach (string aivFile in destinationDir.GetFiles().ToList().Select(x => x.Name))
+                        /*foreach (string aivFile in destinationDir.GetFiles().ToList().Select(x => x.Name))
                         {
                             FileInfo srcFile = new FileInfo(Path.Combine(destinationDir.FullName, aivFile));
                             srcFile.MoveTo(Path.Combine(backupDir.FullName, aivFile));
-                        }
+                        }*/
                     }
                     else if (result == MessageBoxResult.Yes) // Clear destination aiv folder of aiv files.
                     {
