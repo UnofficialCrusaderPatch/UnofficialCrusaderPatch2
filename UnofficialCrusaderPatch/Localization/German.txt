@@ -21,6 +21,31 @@ delete_housing_descr
 "After the AI has reached this additional amount of available housing after it stopped building houses, it will delete houses"
 }
 
+aiv_prompt
+{
+"Custom modified AIVs detected. Before installing, click 'Yes' to save the currently installed AIVs without overwriting the original backup. Click 'No' to overwrite installed AIVs without backing them up, and 'Cancel' to cancel."
+}
+
+aiv_cli_prompt
+{
+"Custom modified AIVs detected. Enter 'delete' to erase or enter folder name to copy files to."
+}
+
+install_abort_io
+{
+"Installation aborted. Files with the same name already exist in this folder. Please try again and select a different folder."
+}
+
+install_abort
+{
+"Installation aborted"
+}
+
+backup_aiv_select
+{
+"Select Backup AIV folder"
+}
+
 o_change_siege_engine_spawn_position_catapult
 {
 "Zentriert Belagerungsgeräte nach der Konstruktion"

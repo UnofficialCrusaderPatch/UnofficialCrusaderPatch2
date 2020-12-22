@@ -79,7 +79,7 @@ namespace UCP
         static void SilentInstall()
         {
             Version.Changes.Contains(null);
-            Patcher.Install(Configuration.Path, null);
+            Patcher.Install(Configuration.Path, null, false, false);
             Console.WriteLine("UCP successfully installed");
             Console.WriteLine("Path to Stronghold Crusader is:" + Configuration.Path);
         }
