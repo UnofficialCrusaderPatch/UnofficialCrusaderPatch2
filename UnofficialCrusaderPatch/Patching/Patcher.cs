@@ -40,8 +40,12 @@ namespace UCP.Patching
 
             perc.NextLimit = 0.1;
 
-            try {
+            try
+            {
                 AIVChange.DoChange(folderPath, overwrite, graphical);
+            } catch (IOException) {
+                Debug.Show(Localization.Get("install_abort_io"));
+                return;
             } catch (Exception)
             {
                 Debug.Show(Localization.Get("install_abort"));
