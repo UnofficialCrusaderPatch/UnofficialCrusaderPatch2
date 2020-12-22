@@ -189,6 +189,7 @@
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield_enemy_taunt.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield_pre.block" />
+    <EmbeddedResource Include="CodeBlocks\o_remove_right_click_context_menu.block" />
     <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech.block" />
     <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_engine.block" />
     <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_lord_type.block" />

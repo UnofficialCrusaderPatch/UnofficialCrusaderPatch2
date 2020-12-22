@@ -3492,6 +3492,19 @@ namespace UCP
                         }
                     }
                 }
+            },
+
+            new Change("o_remove_right_click_context_menu", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_remove_right_click_context_menu")
+                {
+                    // 438B86
+                    new BinaryEdit("o_remove_right_click_context_menu")
+                    {
+                        new BinSkip(29),
+                        0x00
+                    }
+                }
             }
 
             #endregion

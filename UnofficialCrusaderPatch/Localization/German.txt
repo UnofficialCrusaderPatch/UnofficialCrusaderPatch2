@@ -1,6 +1,16 @@
 // ======================
 //         dev
 // ======================
+o_remove_right_click_context_menu
+{
+"Remove right click context menu"
+}
+
+o_remove_right_click_context_menu_descr
+{
+"Removes right click context menu where you can rotate the map, lower walls, zoom and flatten."
+}
+
 ai_housing
 {
 "Customize the AIs decision to build and delete houses"
