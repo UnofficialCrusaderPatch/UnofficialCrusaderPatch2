@@ -193,6 +193,7 @@ namespace UCP.Patching
                     File.Delete(oriPath);
 
                 File.Move(backupPath, oriPath);
+                File.Delete(backupPath);
             }
         }
 
