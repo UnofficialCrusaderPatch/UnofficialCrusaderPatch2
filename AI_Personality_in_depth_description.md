@@ -29,11 +29,16 @@ __TODO:__
 To regulate the AI's economy, you can set a maximum amount for each type of resource building (using the `Max[ResourceBuildingName]` parameters), as well as how fast the AI will build them relative to its other production facilities. The latter is achieved using the `PopulationPer[ResourceBuildingName]` parameters that control at what amounts of (total) population another resource building of the corresponding type will be built. 
 
 - **Note:** 
-    Setting these parameters to 0 will result in the AI not placing any resource buildings of that type, same as setting the max amount parameter to 0 would do. 
+    Setting the `PopulationPer[ResourceBuildingName]` parameters to 0 will result in the AI not placing any resource buildings of that type. 
 
     (Alternatively, setting the parameters to a value higher than the maximum population available to the AI would also achieve the same, but an AI's maximum population is not defined explicitly anywhere and depends on the amount of workers required for its economy (as set up in the AIC file), as well as available houses (in all corresponding AIV files), making this rather unreliable.) 
+- **Note:**
+    Setting the `Max[ResourceBuildingName]` parameters to 0 would not work as an alternative, as the AI would typically still build one of the corresponding building in that case. 
+- **Note:**
+    Some resource buildings, such as stone quarries, are built twice after the first threshold population is reached. For example, setting population per quarry to 12 and max quarries to 4 will cause the AI to build two quarries at 12 population, the third quarry at 24 and the last at 36 population. 
 
 The `ResourceRebuildDelay` parameter defines how fast the AI rebuilds destroyed resource buildings. 
+__TODO:__ Resource Rebuild Delay might actually be for how often the AI checks for newly available farm spaces etc. Needs further investigation, but it isn't consistently 'how long the AI waits'.
 
 All farms "share" their maximum and population parameters, but you can additionally specify which types of farms the AI will build, by populating the values for parameters `Farm1` to `Farm8`. The AI will generally try to build farms in the specified order and ratio (i.e. starting at `Farm1`, going through the list until `Farm8`, then back to `Farm1`, and so on), although it will skip farms it cannot build at the time. 
 
@@ -46,12 +51,10 @@ __TODO:__
 
 ### Build speed
 
-The `BuildInterval` parameter plays a very important role as it determines the build speed for an AI: The lower the interval is set, the faster the AI will build its castle, with 1 resulting in the fastest speed. 
+The `BuildInterval` parameter plays a very important role as it determines the build speed for an AI: The lower the interval is set, the faster the AI will build its castle, with a value of 1 resulting in the fastest speed. This build interval does not only affect the execution of build steps set up in AIV files, but also the placement of resource buildings as defined by AIC parameters, which happens in parallel to castle construction. 
 
 - **Note:** 
-    Any AI with 5k gold or more will temporarily override this value with 1 automatically, until its gold depletes below 5k. Also, the `BuildInterval` parameter only affects the build steps set up in AIV files, but does not affect placement of resource buildings. 
-- **Note:** 
-    The AI will only use the recruitment behavior (see below) defined by the relevant AIC values after its AIV build steps have been completed (or skipped due to a lack of resources); before that, no attack troops will be recruited. Thus, the value of the `BuildInterval` parameter will impact how soon the AI is able to start recruiting attack troops.
+    Any AI with 5k gold or more will temporarily override this value with 1 automatically, until its gold depletes below 5k. 
 
 ### Resource management
 
@@ -59,6 +62,8 @@ Setting the maximum stocked amounts of different resources and weapons is useful
 
 - **Note:** 
     Keep in mind stocks of a resource may sometimes get split between several stockpile spots, even when the set maximum amount would fit in fewer stockpile spots. This should be considered when planning out stockpile space usage. 
+    
+    Additionally, consider the amount of resources a worker would deposit in a single delivery (+50% with negative fear factor): If a delivery doesn't entirely fit into the stockpile / armoury / granary when it was at about the defined max amounts of regularly stocked goods before, the remaining goods from the delivery will be lost. 
 - **Note:** 
     Additionally, for stone (and possibly wood or iron), the AI may sometimes stock up more than the usual maximum amounts as defined above, depending on the cost of its most expensive building. For example, if an AI's AIV contains a big round tower (costing 40 stone), the AI may try to stock up that amount of resources on top of its already maximum defined stock. Sometimes the AI will also keep those extra stocks even after all buildings are constructed and intact, and sometimes it may not keep such extra stocks at all. Either way, building costs should be considered when setting maximum resource values. 
 - **Note:** 
@@ -73,7 +78,7 @@ The AI will sell excess food, and buy food to maintain the minimum amount set fo
 
 Generally, the `TradeAmount[ResourceName]` parameters control how many units of a resource the AI will purchase at once, if it is running low on stocks for certain resources. The AI will periodically buy goods it needs, if it has enough gold to afford them. The AI's gold budget to buy goods is shared with the budget to recruit troops. Both will be initiated usually when the AI surpasses the `RecruitGoldThreshold` value in gold, but also sometimes below that. 
 
-So far, we know that the AI prioritizes buying food (including wheat and hops) over everything else. After that it prioritizes buying weapons and recruiting troops, then buying resources to build up its missing AIV buildings. Next it would proceed to buy wood, iron, flour and beer for consumption/processing by corresponding production buildings (weapon workshops, bakers, inns) if there is still gold left and the stocks for those resources are currently empty. 
+So far, we know that the AI prioritizes buying food (including wheat and hops) over everything else. After that it prioritizes buying weapons and recruiting troops, then buying resources to build up its missing AIV buildings. Next it would proceed to buy wood, iron, flour (but no beer!) for consumption/processing by corresponding production buildings (weapon workshops, bakers) if there is still gold left and the stocks for those resources are currently empty. 
 
 - **Note:** 
     Sortie units, raid units, defensive siege engines and resource buildings are handled outside of this procedure, so the AI will always buy/recruit those even when below its `RecruitGoldThreshold`. 
@@ -89,7 +94,7 @@ A fast way to let the AI sell resources which it doesn't use in any of its produ
 Using the parameters for blacksmith, poleturner and fletcher settings, one can control what weapon types the AI will produce with the corresponding workshops. Setting their value to "Both" will cause the AI to alternate between default and non-default weapon for the corresponding workshop type, i.e. setting every second workshop of that type to produce the non-default weapon. For example, an AI with 5 fletchers/blacksmiths/poleturners would set the 2nd and 4th fletcher/blacksmith/poleturner to produce crossbows/maces/pikes, and the 1st, 3rd and 5th to produce bows/swords/spears respectively, if the workshop settings were set to "Both". 
 
 
-### Ally Interactions
+## Ally Interactions
 
 Human players can interact with allied AI players using the ally menu (trumpet icon). Available actions are help/defense requests, attack requests, as well as requesting or sending goods. Whether or not the AI will accept one of your requests depends on two parameters: 
 
@@ -100,7 +105,7 @@ For commands to attack or defend, the AI will check if the current size of its r
 When the AI itself tries to buy resources from the market but realizes it doesn't have sufficient gold to do so, it will subsequently request twice that amount of goods from human allies instead. 
 
 __TODO:__
-- Does this fit in the economy section or should it be put elsewhere? (It has both military and economy aspects) 
+- add the value that is responsible for the frequency of AI questions for resources.
 
 
 ## Military
@@ -109,16 +114,24 @@ __TODO:__ add an overview / summary sentence here (similar to the one for the "E
 
 ### Recruitment probabilities
 
-The AI groups its troops into four main categories: Sortie units, defensive units, raiding units and attack force units. Moreover, there are three power states in which the AI can be: Default, Weak and Strong. For each of these states, one can set recruiting probabilities for defensive, raiding and attack force units. Thereby, the three probability values for a state need to add up to 100. 
+The AI groups its troops into four main categories: Sortie units, defensive units, raiding units and attack force units. Moreover, there are three power states in which the AI can be: Default, Weak and Strong. For each of these states, one can set recruiting probabilities for defensive, raiding and attack force units. 
 
-The AI will dynamically switch its recruitment activities between those troop categories during a game (e.g. when reaching `RecruitGoldThreshold`), at which point the probabilities come into play: The higher one of the probability values, the more likely the AI is to switch to recruiting troops for the corresponding category. For instance, setting `RecruitProbDefDefault` to 0, `RecruitProbRaidDefault` to 80 and `RecruitProbAttackDefault` to 20 would cause the AI – when being in the default power state – to switch to recruiting raiding troops with about 80% probability, and to attack troops with about 20% probability, whenever the recruitment category switch is triggered. 
+The AI will dynamically switch its recruitment activities between those troop categories during a game (e.g. when reaching `RecruitGoldThreshold`), at which point the probabilities come into play: The higher one of the probability values, the more likely the AI is to switch to recruiting troops for the corresponding category. 
+
+For instance, setting `RecruitProbDefDefault` to 0, `RecruitProbRaidDefault` to 80 and `RecruitProbAttackDefault` to 20 would cause the AI – when being in the default power state – to switch to recruiting raiding troops with about 80% probability, and to attack troops with about 20% probability, whenever the recruitment category switch is triggered. 
+
+__TODO:__  the recruit gold threshhold triggers the recruitment of units for a short period of time, which will continue for that period of time, or until the gold is depleted. So it doesn't check for the second unit to be recruited, if it is still above the recruit gold threshhold.
+
 
 - **Note:** 
-    The AI will always prioritize recruiting sortie units, regardless of what recruitment probabilities are set in the AIC parameters for the other three troop categories. Moreover, the AI's recruitment behavior differs while it is still setting up its castle, being more defensive overall and not recruiting attack troops. Something similar can also be noticed when the AI feels pressured: When this happens, it sends a message, calls its allies for help, recruits defensive units faster than usual and also sells more goods in order to do so. 
+    The AI will always prioritize recruiting sortie units, regardless of what recruitment probabilities are set in the AIC parameters for the other three troop categories. Moreover, the AI's recruitment behavior differs in the beginning of a game, being more defensive overall. Something similar can also be noticed when the AI feels pressured: When this happens, it sends a message, calls its allies for help, recruits defensive units faster than usual and also sells more goods in order to do so. 
 - **Note:** 
-    While it is possible to set recruiting probability values for a power state to not add up to 100, in that case the resulting behavior ingame may happen to not match the provided values. 
+    The three recruiting probability values for a power state do not necessarily need to add up to 100, as the probability values just denote relative probabilities. The corresponding percentages are derived by dividing those values by their sum. For example, values of 1, 2, 3 will result in a sum of 1 + 2 + 3 = 6, and the relative probabilities will be 1/6, 2/6, 3/6, corresponding to percentages of about 17%, 33%, 50%.
 - **Note:** 
-    The AI will recruit sortie units, raid units and defensive siege engines even when below its `RecruitGoldThreshold`. 
+    The AI will recruit sortie units, raid units and defensive siege engines even when below its `RecruitGoldThreshold`. For the latter, the `DefSiegeEngineGoldThreshold` can be used instead though, for a similar effect (see below for further info on that). 
+    
+__TODO:__ recruitment behavior (see below) defined by the relevant AIC values: as NP found out the behavioural switch is tied to matchtime. As soon as matchtime of 4000 ticks (thats 1 minute and 20 seconds on gamespeed 50) is passed, the recruitment behaviour will go into the default. Attacktroops however can be recruited prior to that, if the AI's defense maximum is reached, as defense recruitment probability is then converted into attack recruitment probability.
+ as mentioned above, it can very well recruit attack troops there, but not raiding troops. Attacktroops however would need the AI to have maxed out the defense troops and the actual switch for behavour is at matchtime = 4000.
 
 ### Recruitment speed
 
@@ -129,7 +142,11 @@ The AI's recruitment speed is mainly handled by intervals between subsequent rec
 
 ### Sortie troops
 
-Sortie units are sent out by the AI when one of its workers gets killed by enemy units. `SortieUnitMelee` will run into the attacking enemies, while `SortieUnitRanged` will move towards the spot where the worker died, shooting at enemy units on the way there, and guard that location until another dead worker causes them to move to a different location. 
+Sortie units are sent out by the AI to protect its economy when one of its workers gets killed by enemy units. The AI differentiates between two different kinds of sortie units with slightly different behaviour, `SortieUnitMelee` and `SortieUnitRanged`, which can be assigned one troop type each. 
+
+The `SortieUnitMelee` units run into the attacking enemies, and return to the keep as soon as their targetted enemies are dead. Moreover, if a ranged troop type is assigned here, the units will also stop and shoot at enemy units on their way. 
+
+The `SortieUnitRanged` units will move towards the latest spot where a worker died, shooting at enemy units on the way there, and then stay at that location to guard it until another worker is killed elsewhere, causing them to move to the new location. 
 
 Constantly recruiting (and losing) lots of sortie units can eventually cause the AI to "bleed out" economically in cases where it has set up resource buildings close to enemy defenses, as those defenses will usually be stronger than the sortie units sent there, often resulting in very unfavorable exchanges with high losses for the sortie troops but without noticeable losses for the enemy. 
 
@@ -137,6 +154,11 @@ The AI prioritizes recruiting sortie units over any other recruitments and stock
 
 - **Note:** 
     While it is possible to assign ranged units as `SortieUnitMelee` and melee units as `SortieUnitRanged`, this is generally not recommended due to the different behavior of the two types of sortie troops – sending ranged units to run into close combat is rarely useful. 
+
+    __TODO:__ note that it is possible to set no (or unavailable) troop types as sorties to prevent that the AI recruits sortie troops
+
+    __TODO:__     also note: slingers are very good at sortie unit melee, crossbowmen suck at sortie unit ranged. And also important:
+    -> Sortie Unit ranged get recruited more than their specified number, if the AI feels 'strong' (triggers hasn't been identified explicitly yet, but happens mostly in longer games and with more build up AI's) This can exceed the initial amount by even 25 or 30 units at times.
 
 ### Defense troops
 
@@ -173,8 +195,7 @@ At any point in time, the AI will explicitly target exactly one enemy player wit
 Setting this parameter's value to `Player` will result in the AI always attacking the closest human opponent on the map (or the closest AI opponent if no human opponents are present). This also means the AI will only change its attack target once the current target is killed. 
 
 - **Note:** 
-    Distances are calculated by adding up horizontal and vertical distance between the keeps of the AI and its potential target. 
-    __TODO:__ still true if keeps were moved in the AIV?
+    Distances are calculated by adding up horizontal and vertical distance between the keeps of the AI and its potential target. This also means that AIVs with moved keeps will affect these distance values. 
     
 Setting this parameter's value to `Closest` will make the AI always target its closest enemy (independent of whether it is a human or AI player). This also means the AI will only change its attack target once the current target is killed. 
 
@@ -221,7 +242,7 @@ Besides raids, the AI can build either catapults or fireballistae or both define
 
 The AI recruits its attack force and gathers it around its keep while setting it to aggressive stance, until it reaches the minimum required amount to attack an enemy. This amount is calculated by using the AttForceBase plus a value between 0 and AttForceRandom as a base value. For each consecutive attack the AI will add additional troops to its AttForceBase, depending on the formula chosen inside of the “Increase of the rate of additional attack troops” option inside the AI lords’ section of the Patcher. This additional troops number is set to 5 by default. If an enemy is considered weak, the AI might attack before gathering its full attack force, to a minimum of the AttForceRallyPercentage from the full attack force.
 
-An attack of the AI will start by its troops moving off its keep, gathering in some place closer to the target enemy’s castle walls. It will start sieging the enemy’s castle when all of its remaining troops from its attack force or at least a percentage of AttForceRallyPercentage has gathered at the rally point. Then it will start by building its siege tends and splitting off the army in the predefined groups, which will act according to their roles. The siege engines it constructs have to be defined in the SiegeEngine[number] spots. The attack force army consists of two main groups. The AttUnitMain[number] units and all extra behavior defined units. The ratio of the siege engines built per attack, depends on the number of engineers send with this attack, but will be a maximum of 8. Catapults and trebuchets will throw with cows every CowThrowInterval shot.
+An attack of the AI will start by its troops moving off its keep, gathering in some place closer to the target enemy’s castle walls. It will start sieging the enemy’s castle when all of its remaining troops from its attack force or at least a percentage of AttForceRallyPercentage has gathered at the rally point. Then it will start by building its siege tents and splitting off the army in the predefined groups, which will act according to their roles. The siege engines it constructs have to be defined in the SiegeEngine[number] spots. The attack force army consists of two main groups. The AttUnitMain[number] units and all extra behavior defined units. The ratio of the siege engines built per attack, depends on the number of engineers send with this attack, but will be a maximum of 8. Catapults and trebuchets will throw with cows every CowThrowInterval shot.
 
 All predefined roles of units will be recruited equally, if the AI has enough resources and gold to afford them, otherwise it will priorities units that are available. This means for example, if you define 10 engineers for 5 catapults to be built, set AttMaxAssassins to 10 and set AttUnitMain1 to 4 to Monk, while the minimum amount of troops required for its next attack is only 10, it will get probably 3 engineers, 3 assassins and 4 monks, as monks are cheaper and easier available to it. However, how exactly this composition works and how the proportions of each attacking unit that can be defined are truly set, hasn’t yet been discovered.
 
