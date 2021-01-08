@@ -1,6 +1,16 @@
 // ======================
 //         dev
 // ======================
+o_fix_rapid_deletion_bug
+{
+"Fix resources rapid deletion"
+}
+
+o_fix_rapid_deletion_bug_descr
+{
+"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
+}
+
 o_restore_arabian_engineer_speech
 {
 "Restore engineer arabian speech"

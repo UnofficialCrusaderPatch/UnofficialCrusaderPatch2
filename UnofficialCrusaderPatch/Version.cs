@@ -399,6 +399,24 @@ namespace UCP
                 }
             },
             
+            new Change("o_fix_rapid_deletion_bug", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_rapid_deletion_bug")
+                {
+                    // 0048201B
+                    new BinaryEdit("o_fix_rapid_deletion_bug")
+                    {
+                        new BinHook(6)
+                        {
+                            0xC7, 0x86, 0x0C, 0x86, 0xF9, 0x00, 0x00, 0x00, 0x00, 0x00, // mov [esi+00F9860C],0
+                            
+                            // original code
+                            0x8B, 0x86, 0x2C, 0x86, 0xF9, 0x00, // mov eax,[esi+00F9862C]
+                        }
+                    }
+                }
+            },
+
             new Change("u_fix_lord_animation_stuck_movement", ChangeType.Bugfix, true)
             {
                 new DefaultHeader("u_fix_lord_animation_stuck_movement")
