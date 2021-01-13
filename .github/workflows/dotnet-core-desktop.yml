@@ -6,14 +6,17 @@ name: UCP Build
 on:
   workflow_dispatch:
   push:
-    branches: [ master, GUI-Update ]
+    branches:
+      - !gh-pages
   pull_request:
-    branches: [ master, GUI-Update ]
+    branches:
+      - !gh-pages
     types: [assigned, opened, edited, ready_for_review, reopened, synchronize]
 
 jobs:
 
   build:
+    if: "!startsWith(github.event.head_commit.message, '[doc]')"
 
     strategy:
       matrix:
