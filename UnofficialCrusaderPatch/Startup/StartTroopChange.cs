@@ -21,7 +21,6 @@ namespace UCP.Startup
             Arab
         }
 
-        string headerKey;
         const int lordStrengthBase = 0x64;
 
         // Game offsets for codeblocks
@@ -61,7 +60,7 @@ namespace UCP.Startup
             {
                 activeChange = this;
             }
-            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(2).Replace("UCP.", "");
+            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(2);
 
             if (this.IsValid == false)
             {
@@ -74,23 +73,7 @@ namespace UCP.Startup
             {
                 this.titleBox.IsChecked = selectedChange.Equals(this.TitleIdent);
             }
-            this.titleBox.Background = this.TitleIdent.Substring(2).StartsWith("UCP.") ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque);
-
-            if (this.TitleIdent.Substring(2).StartsWith("UCP."))
-            {
-                Button exportButton = new Button()
-                {
-                    //Width = 40,
-                    Height = 20,
-                    Content = Localization.Get("ui_aicexport"),
-                    HorizontalAlignment = HorizontalAlignment.Right,
-                    VerticalAlignment = VerticalAlignment.Bottom,
-                    Margin = new Thickness(0, 0, 5, 5),
-                };
-                exportButton.Click += (s, e) => this.ExportFile();
-                grid.Height += 15;
-                this.grid.Children.Add(exportButton);
-            }
+            this.titleBox.Background = new SolidColorBrush(Colors.White);
         }
 
         protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
@@ -114,32 +97,6 @@ namespace UCP.Startup
                 selectedChange = String.Empty;
                 activeChange = null;
             }
-        }
-
-        /// <summary>
-        /// Exports vanilla starting troops JSON file to resources\trrops\vanilla.json
-        /// </summary>
-        private void ExportFile()
-        {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "troops", "exports", this.TitleIdent.Substring(2).Replace("UCP.", "")) + ".json";
-            string backupFileName = fileName;
-            while (File.Exists(backupFileName))
-            {
-                backupFileName = backupFileName + ".bak";
-            }
-            if (File.Exists(fileName))
-            {
-                File.Move(fileName, backupFileName);
-            }
-            Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "resources", "troops", "exports"));
-
-            using (StreamReader reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(this.TitleIdent.Substring(2).Replace("UCP.", "UCP.Startup.Resources.Troops.") + ".json"), Encoding.UTF8))
-            {
-                File.WriteAllText(fileName, reader.ReadToEnd(), Encoding.UTF8);
-            }
-
-            Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent.Substring(2).Replace("UCP.", "") + ".json");
         }
 
         public static void Refresh(object sender, RoutedEventArgs args)
@@ -180,7 +137,7 @@ namespace UCP.Startup
 
         static void CreateNullChange(string file, string message)
         {
-            StartTroopChange change = new StartTroopChange(Path.GetFileNameWithoutExtension(file).Replace("UCP.Startup.Resources.Troops.", "UCP."), false)
+            StartTroopChange change = new StartTroopChange(Path.GetFileNameWithoutExtension(file), false)
                         {
                             new DefaultHeader("s_" + file, false)
                             {
@@ -231,9 +188,6 @@ namespace UCP.Startup
         public static void Load()
 
         {
-            Load("UCP.Startup.Resources.Troops.vanilla.json");
-            Load("UCP.Startup.Resources.Troops.UCP-StartingTroops-Patch.json");
-
             if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "troops")))
             {
                 return;
@@ -247,16 +201,7 @@ namespace UCP.Startup
 
         private static void Load(string fileName)
         {
-            StreamReader reader;
-            if (fileName.StartsWith("UCP.Startup"))
-            {
-                reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(fileName), Encoding.UTF8);
-            }
-            else
-            {
-                reader = new StreamReader(new FileStream(fileName, FileMode.Open), Encoding.UTF8);
-            }
-
+            StreamReader reader = new StreamReader(new FileStream(fileName, FileMode.Open), Encoding.UTF8);
             string starttroopsText = reader.ReadToEnd();
             reader.Close();
 
@@ -277,9 +222,9 @@ namespace UCP.Startup
             try 
             { 
                 string description = GetLocalizedDescription(startTroopConfigName, startTroopConfig);
-                StartTroopChange change = new StartTroopChange(startTroopConfigName.Replace("UCP.Startup.Resources.Troops.", "UCP."), false)
+                StartTroopChange change = new StartTroopChange(startTroopConfigName, false)
                 {
-                    CreateStartTroopHeader(startTroopConfigName.Replace("UCP.Startup.Resources.Troops.", "UCP."), startTroopConfig),
+                    CreateStartTroopHeader(startTroopConfigName, startTroopConfig),
                 };
                 change.description = description;
                 changes.Add(change);

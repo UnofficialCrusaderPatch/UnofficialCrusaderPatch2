@@ -22,15 +22,7 @@ namespace UCP.AIV
         const string BackupIdent = "ucp_backup";
 
         public static AIVChange activeChange = null;
-        static List<AIVChange> _changes = new List<AIVChange>()
-        {
-            AIVChange.CreateDefault("Tatha"),
-            AIVChange.CreateDefault("EvreyFixed"),
-            AIVChange.CreateDefault("EvreyImproved"),
-            AIVChange.CreateDefault("EvreyHistory"),
-            AIVChange.CreateDefault("PitchWells"),
-            AIVChange.CreateDefault("PitchSiege"),
-        };
+        static List<AIVChange> _changes = new List<AIVChange>();
         
         private static string selectedChange = String.Empty;
 
@@ -51,13 +43,6 @@ namespace UCP.AIV
             }
         }
 
-        public AIVChange(string titleIdent, bool enabledDefault = false)
-            : base("aiv_" + titleIdent, ChangeType.AIV, true, true)
-        {
-            this.resFolder = "UCP.AIV." + titleIdent;
-            this.isInternal = true;
-        }
-
         public AIVChange(string titleIdent, bool enabledDefault = false, bool isInternal = false)
             : base("aiv_" + titleIdent, ChangeType.AIV, true, true)
         {
@@ -67,14 +52,11 @@ namespace UCP.AIV
 
         public override void InitUI()
         {
-            if (!this.resFolder.StartsWith("UCP.AIV"))
-            {
-                string descr = GetLocalizedDescription(this.TitleIdent);
-                descr = descr == String.Empty ? this.TitleIdent.Substring(4) : descr;
-                Localization.Add(this.TitleIdent + "_descr", descr);
-            }
+            string descr = GetLocalizedDescription(this.TitleIdent);
+            descr = descr == String.Empty ? this.TitleIdent.Substring(4) : descr;
+            Localization.Add(this.TitleIdent + "_descr", descr);
             base.InitUI();
-            this.titleBox.Background = this.resFolder.StartsWith("UCP.AIV") ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque);
+            this.titleBox.Background = new SolidColorBrush(Colors.White);
 
             if (!this.resFolder.StartsWith("UCP.AIV"))
             {
@@ -84,16 +66,6 @@ namespace UCP.AIV
             this.titleBox.IsChecked = selectedChange.Equals(this.TitleIdent);
             if (this.IsChecked)
                 activeChange = this;
-        }
-
-        public static AIVChange CreateDefault(string titleIdent, bool enabledDefault = false)
-        {
-            return new AIVChange(titleIdent, enabledDefault)
-            {
-                new DefaultHeader("aiv_" + titleIdent)
-                {
-                }
-            };
         }
 
         public static AIVChange CreateExternal(string titleIdent, bool enabledDefault = false)
@@ -176,19 +148,8 @@ namespace UCP.AIV
         /// <param name="aivDir"></param>
         internal bool CopyAIVs(DirectoryInfo destinationDir, bool overwrite, bool graphical)
         {
-            bool IsInternal = this.resFolder.StartsWith("UCP.AIV");
-            /*if (1 == 1) throw new Exception();*/
             Assembly asm = Assembly.GetExecutingAssembly();
-            List<string> resourceFiles;
-            if (IsInternal)
-            {
-                resourceFiles = asm.GetManifestResourceNames()
-                    .Where(x => x.StartsWith(resFolder, StringComparison.OrdinalIgnoreCase)).Select(x => Path.GetFileName(x.Replace(resFolder + ".", ""))).ToList();
-            }
-            else
-            {
-                resourceFiles = Directory.GetFiles(Path.Combine("resources", "aiv", resFolder)).Where(x => x.EndsWith(".aiv")).Select(x => Path.GetFileName(ReplaceFirst(x, resFolder + Path.PathSeparator, ""))).ToList();
-            }
+            List<string> resourceFiles = Directory.GetFiles(Path.Combine("resources", "aiv", resFolder)).Where(x => x.EndsWith(".aiv")).Select(x => Path.GetFileName(ReplaceFirst(x, resFolder + Path.PathSeparator, ""))).ToList();
 
             // If same AIV exist in both check if contents identical
             bool isIdentical = true;
@@ -201,7 +162,7 @@ namespace UCP.AIV
                         using (Stream dstStream =
                             new FileInfo(Path.Combine(destinationDir.FullName, aivFile)).OpenRead())
                         {
-                            using (Stream srcStream = IsInternal ? asm.GetManifestResourceStream(resFolder + "." + aivFile) : new FileInfo(Path.Combine("resources", "aiv", resFolder, aivFile)).OpenRead())
+                            using (Stream srcStream = new FileInfo(Path.Combine("resources", "aiv", resFolder, aivFile)).OpenRead())
                             {
                                 if (!Convert.ToBase64String(SHA256Instance.ComputeHash(srcStream))
                                     .Equals(Convert.ToBase64String(SHA256Instance.ComputeHash(dstStream))))
@@ -237,9 +198,7 @@ namespace UCP.AIV
                     using (Stream dstStream =
                         new FileInfo(Path.Combine(destinationDir.FullName, aivFile)).OpenWrite())
                     {
-                        using (Stream srcStream = IsInternal
-                            ? asm.GetManifestResourceStream(resFolder + "." + aivFile)
-                            : new FileInfo(Path.Combine("resources", "aiv", resFolder, aivFile)).OpenRead())
+                        using (Stream srcStream = new FileInfo(Path.Combine("resources", "aiv", resFolder, aivFile)).OpenRead())
                         {
                             srcStream.CopyTo(dstStream);
                         }
@@ -330,12 +289,6 @@ namespace UCP.AIV
                         {
                             file.Delete();
                         }
-
-                        /*foreach (string aivFile in destinationDir.GetFiles().ToList().Select(x => x.Name))
-                        {
-                            FileInfo srcFile = new FileInfo(Path.Combine(destinationDir.FullName, aivFile));
-                            srcFile.MoveTo(Path.Combine(backupDir.FullName, aivFile));
-                        }*/
                     }
                     else if (result == MessageBoxResult.Yes) // Clear destination aiv folder of aiv files.
                     {
@@ -407,9 +360,7 @@ namespace UCP.AIV
                 using (Stream dstStream =
                     new FileInfo(Path.Combine(destinationDir.FullName, aivFile)).OpenWrite())
                 {
-                    using (Stream srcStream = IsInternal
-                        ? asm.GetManifestResourceStream(resFolder + "." + aivFile)
-                        : new FileInfo(Path.Combine("resources", "aiv", resFolder, aivFile)).OpenRead())
+                    using (Stream srcStream = new FileInfo(Path.Combine("resources", "aiv", resFolder, aivFile)).OpenRead())
                     {
                         srcStream.CopyTo(dstStream);
                     }
@@ -421,12 +372,6 @@ namespace UCP.AIV
         public static void Refresh()
         {
             changes.Clear();
-            changes.Add(AIVChange.CreateDefault("Tatha"));
-            changes.Add(AIVChange.CreateDefault("EvreyFixed", true));
-            changes.Add(AIVChange.CreateDefault("EvreyImproved"));
-            changes.Add(AIVChange.CreateDefault("EvreyHistory"));
-            changes.Add(AIVChange.CreateDefault("PitchWells"));
-            changes.Add(AIVChange.CreateDefault("PitchSiege"));
 
             if (Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "aiv")))
             {
