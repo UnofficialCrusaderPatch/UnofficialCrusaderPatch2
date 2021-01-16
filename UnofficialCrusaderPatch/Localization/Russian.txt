@@ -1,6 +1,16 @@
 // ======================
 //         dev
 // ======================
+o_gamespeednumkey
+{
+"Enable gamespeed change with non-numpad keys"
+}
+
+o_gamespeednumkey_descr
+{
+"Enable gamespeed change with non-numpad keys"
+}
+
 ai_housing
 {
 "Customize the AIs decision to build and delete houses"
