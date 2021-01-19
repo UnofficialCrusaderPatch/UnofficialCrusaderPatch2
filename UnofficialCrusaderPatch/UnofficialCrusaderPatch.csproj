@@ -345,34 +345,22 @@
     <EmbeddedResource Include="CodeBlocks\s_lordstrength.block" />
     <EmbeddedResource Include="CodeBlocks\s_lordtype.block" />
     <EmbeddedResource Include="CodeBlocks\u_spearmen_run.block" />
+    <EmbeddedResource Include="Localization\English.json" />
+    <EmbeddedResource Include="Localization\German.json" />
+    <EmbeddedResource Include="Localization\Hungarian.json" />
+    <EmbeddedResource Include="Localization\Polish.json" />
+    <EmbeddedResource Include="Localization\Russian.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\Hungarian.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\English.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\German.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\Polish.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\Russian.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Graphics\shield.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\Chinese.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="CodeBlocks\o_fix_fletcher_bug.block" />
+    <EmbeddedResource Include="Localization\Chinese.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
