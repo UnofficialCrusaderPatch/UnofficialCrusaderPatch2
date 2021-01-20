@@ -163,8 +163,6 @@
     <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_shield.block" />
     <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_tower.block" />
     <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_trebutchet.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_small_wall_placement_count.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_small_wall_placement_count_pre.block" />
     <EmbeddedResource Include="CodeBlocks\fix_apple_orchard_build_size.block" />
     <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_building.block" />
     <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding.block" />

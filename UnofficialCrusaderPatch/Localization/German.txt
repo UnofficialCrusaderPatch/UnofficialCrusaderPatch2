@@ -86,16 +86,6 @@ u_fix_lord_animation_stuck_movement_descr
 "Der Lord wechselt mit dieser Änderung nach dem Zerstören eines Gebäudes in seine Ausgangsposition. Bisher blieb er in der Zerstöranimation stecken."
 }
 
-o_fix_small_wall_placement_count
-{
-"Berichtigt die Steinkostenberechnung für kleinen Wall"
-}
-
-o_fix_small_wall_placement_count_descr
-{
-"Hiermit kann der kleine Wall mit allen Steinen gebaut werden, statt nur mit der Hälfte dieser."
-}
-
 fix_apple_orchard_build_size
 {
 "Reduziert die Baugröße von Apfelfarmen"

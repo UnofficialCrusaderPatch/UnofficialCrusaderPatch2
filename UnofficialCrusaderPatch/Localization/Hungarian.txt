@@ -88,16 +88,6 @@ u_fix_lord_animation_stuck_movement_descr
 "Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
 }
 
-o_fix_small_wall_placement_count
-{
-"Fix small wall placement count preview"
-}
-
-o_fix_small_wall_placement_count_descr
-{
-"Fixes the bug where the small wall placement preview only allowed the player to use half of their stone."
-}
-
 fix_apple_orchard_build_size
 {
 "Shrink apple orchard's build size"
