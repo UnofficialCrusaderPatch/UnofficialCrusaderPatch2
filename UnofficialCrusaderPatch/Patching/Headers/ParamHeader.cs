@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-
-namespace UCP.Patching
+﻿namespace UCP.Patching
 {
     public class ParamHeader : DefaultHeader
     {

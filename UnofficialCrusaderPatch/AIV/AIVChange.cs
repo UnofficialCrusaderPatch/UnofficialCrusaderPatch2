@@ -17,7 +17,7 @@ namespace UCP.AIV
     class AIVChange : Change
     {
         public bool isInternal = false;
-        
+
         string resFolder;
         const string BackupIdent = "ucp_backup";
 
@@ -31,7 +31,7 @@ namespace UCP.AIV
             AIVChange.CreateDefault("PitchWells"),
             AIVChange.CreateDefault("PitchSiege"),
         };
-        
+
         private static string selectedChange = String.Empty;
 
         static AIVChange ActiveChange { get { return activeChange; } }
@@ -41,7 +41,8 @@ namespace UCP.AIV
         /// <summary>
         /// Loads AIV sets from subfolders present in resources\aiv path using foldername as change title
         /// </summary>
-        static AIVChange() {
+        static AIVChange()
+        {
             if (Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "aiv")))
             {
                 foreach (string aivDir in Directory.EnumerateDirectories(Path.Combine(Environment.CurrentDirectory, "resources", "aiv"), "*", SearchOption.TopDirectoryOnly))
@@ -136,7 +137,8 @@ namespace UCP.AIV
             }
             foreach (AIVChange change in changes)
             {
-                if (selectedChange != null && !(change.TitleIdent.Equals(selectedChange))){
+                if (selectedChange != null && !(change.TitleIdent.Equals(selectedChange)))
+                {
                     config.Add(change.TitleIdent + "= { " + change.TitleIdent + "={False} }");
                 }
             }
@@ -344,7 +346,8 @@ namespace UCP.AIV
                             dialog.Description = Localization.Get("backup_aiv_select");
                             dialog.RootFolder = Environment.SpecialFolder.Desktop;
                             DialogResult folderResult = DialogResult.Cancel;
-                            var thread = new Thread(obj => {
+                            var thread = new Thread(obj =>
+                            {
                                 folderResult = dialog.ShowDialog();
                             });
                             thread.SetApartmentState(ApartmentState.STA);
@@ -360,7 +363,8 @@ namespace UCP.AIV
                                 {
                                     file.MoveTo(Path.Combine(savePath.FullName, Path.GetFileName(file.Name)));
                                 }
-                            } else
+                            }
+                            else
                             {
                                 throw new Exception();
                             }

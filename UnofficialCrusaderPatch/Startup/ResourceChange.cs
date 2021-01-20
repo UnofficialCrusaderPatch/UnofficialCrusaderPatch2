@@ -31,8 +31,8 @@ namespace UCP.Startup
         public static TreeView View;
 
         private static string selectedChange = String.Empty;
-        private static object resourceBlockFile = "s_resource";
-        private static object goldBlockFile = "s_gold";
+        private static string resourceBlockFile = "s_resource";
+        private static string goldBlockFile = "s_gold";
         private static byte[] resourceBlock;
         private static byte[] goldBlock;
 
@@ -110,7 +110,6 @@ namespace UCP.Startup
         /// </summary>
         private void ExportFile()
         {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
             string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "goods", "exports", this.TitleIdent.Substring(4).Replace("UCP.", "")) + ".json";
             string backupFileName = fileName;
             while (File.Exists(backupFileName))
@@ -136,25 +135,8 @@ namespace UCP.Startup
         /// </summary>
         static ResourceChange()
         {
-            Assembly asm = Assembly.GetExecutingAssembly();
-
-            // check if code block file is there
-            string file = string.Format("UCP.CodeBlocks.{0}.block", resourceBlockFile);
-            if (!asm.GetManifestResourceNames().Contains(file))
-                throw new Exception("MISSING BLOCK FILE " + file);
-
-            // read code block file
-            using (Stream stream = asm.GetManifestResourceStream(file))
-                resourceBlock = new CodeBlox.CodeBlock(stream).Elements.ToArray().Select(x => x.Value).ToArray();
-
-            // check if code block file is there
-            file = string.Format("UCP.CodeBlocks.{0}.block", goldBlockFile);
-            if (!asm.GetManifestResourceNames().Contains(file))
-                throw new Exception("MISSING BLOCK FILE " + file);
-
-            // read code block file
-            using (Stream stream = asm.GetManifestResourceStream(file))
-                goldBlock = new CodeBlox.CodeBlock(stream).Elements.ToArray().Select(x => x.Value).ToArray();
+            resourceBlock = CodeBlox.CodeBlock.Get(resourceBlockFile).Elements.ToArray().Select(x => x.Value).ToArray();
+            goldBlock = CodeBlox.CodeBlock.Get(goldBlockFile).Elements.ToArray().Select(x => x.Value).ToArray();
         }
 
         public static void LoadConfiguration(List<string> configuration = null)

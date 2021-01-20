@@ -21,7 +21,6 @@ namespace UCP.Startup
             Arab
         }
 
-        string headerKey;
         const int lordStrengthBase = 0x64;
 
         // Game offsets for codeblocks
@@ -34,7 +33,7 @@ namespace UCP.Startup
 
         string description;
         bool IsValid = true;
-        
+
         static string selectedChange = String.Empty;
         public static StartTroopChange activeChange = null;
 
@@ -274,8 +273,8 @@ namespace UCP.Startup
                 return;
             }
 
-            try 
-            { 
+            try
+            {
                 string description = GetLocalizedDescription(startTroopConfigName, startTroopConfig);
                 StartTroopChange change = new StartTroopChange(startTroopConfigName.Replace("UCP.Startup.Resources.Troops.", "UCP."), false)
                 {
@@ -431,7 +430,7 @@ namespace UCP.Startup
 
                 try
                 {
-                    resultConfig["Type"] = new BinBytes(new byte[] { (byte) Enum.Parse(typeof(LordType), lordConfig["Type"]) });
+                    resultConfig["Type"] = new BinBytes(new byte[] { (byte)Enum.Parse(typeof(LordType), lordConfig["Type"]) });
                 }
                 catch (KeyNotFoundException) { }
                 catch (Exception)

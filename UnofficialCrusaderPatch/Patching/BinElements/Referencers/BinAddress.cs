@@ -28,7 +28,7 @@ namespace UCP.Patching
             {
                 virtAddr = read;
             }
-            
+
             rawAddr = virtAddr - 0x400000;
             base.Initialize(rawAddr, virtAddr, original);
         }

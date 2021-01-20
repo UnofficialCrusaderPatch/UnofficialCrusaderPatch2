@@ -6,7 +6,7 @@ namespace UCP.Patching
     /// Percentage handler which can be given limits for subdividing
     /// </summary>
     public class Percentage
-    {        
+    {
         SetHandler handler;
         public delegate void SetHandler(double percent);
         public Percentage(SetHandler handler)

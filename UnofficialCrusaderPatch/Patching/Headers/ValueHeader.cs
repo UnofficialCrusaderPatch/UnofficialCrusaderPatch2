@@ -31,7 +31,7 @@ namespace UCP.Patching
             {
                 if (this.IsEnabled == value)
                     return;
-                
+
                 base.IsEnabled = value;
                 if (IsEnabled)
                 {

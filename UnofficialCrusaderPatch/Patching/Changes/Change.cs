@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -136,7 +135,7 @@ namespace UCP.Patching
                 Margin = new Thickness(-18, 5, 0, 0),
                 Focusable = false,
             };
-            
+
             FillGrid(grid);
 
             tvi.Items.Add(grid);
@@ -186,7 +185,7 @@ namespace UCP.Patching
 
                     grid.Children.Add(uiElement);
                 }
-                
+
                 string headerDescr = header.NoLocalization ? header.DescrIdent : Localization.Get(header.DescrIdent + "_descr");
                 if (!string.IsNullOrWhiteSpace(headerDescr))
                 {
@@ -200,7 +199,7 @@ namespace UCP.Patching
                         FontSize = 13,
                         Width = grid.Width - 12,
                     };
-                    
+
                     TextReferencer.SetText(description, headerDescr);
                     grid.Children.Add(description);
                     height += description.MeasureHeight();
@@ -211,7 +210,7 @@ namespace UCP.Patching
             }
             grid.Height = height + 10;
         }
-        
+
         void Header_OnEnable(DefaultHeader header, bool enabled)
         {
             if (this.exclusive && enabled)

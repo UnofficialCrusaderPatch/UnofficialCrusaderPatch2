@@ -30,7 +30,7 @@ namespace UCP.Patching
             {
                 refAddress -= (this.VirtAddress + 4);
             }
-            
+
             BitConverter.GetBytes(refAddress).CopyTo(data, this.RawAddress);
         }
     }

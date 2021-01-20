@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace UCP.AICharacters
+﻿namespace UCP.AICharacters
 {
     /// <summary>
     /// The topmost character class which contains the AI's personality, its Crusader-intern index and more in the future

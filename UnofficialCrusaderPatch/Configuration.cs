@@ -53,7 +53,7 @@ namespace UCP
         public static void Save(string str = null)
         {
             if (loading) return;
-            
+
             using (StreamWriter sw = new StreamWriter(ConfigFile))
             {
                 // install path
@@ -101,7 +101,7 @@ namespace UCP
 
                         /* Separate configuration for change configurations that are handled within the respective submodule then
                          proceed to load generic change configurations */
-                        if (Regex.Replace(@"\s+","", line).Contains("aic_"))
+                        if (Regex.Replace(@"\s+", "", line).Contains("aic_"))
                         {
                             if (aicConfigurationList == null)
                             {
@@ -110,7 +110,7 @@ namespace UCP
                             aicConfigurationList.Add(line);
                             continue;
                         }
-                        else if(Regex.Replace(@"\s+", "", line).StartsWith("aiv_"))
+                        else if (Regex.Replace(@"\s+", "", line).StartsWith("aiv_"))
                         {
                             if (aivConfigurationList == null)
                             {

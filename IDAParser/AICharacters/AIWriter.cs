@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Text;
 
 namespace UCP.AICharacters
 {
@@ -70,7 +70,7 @@ namespace UCP.AICharacters
             this.WriteLine("*/");
             commenting = false;
         }
-        
+
         public void Write(object o, string name = null)
         {
             if (o == null)
@@ -87,9 +87,9 @@ namespace UCP.AICharacters
                 this.WriteLine(name ?? type.Name);
                 this.OpenSec();
 
-                foreach(FieldInfo fi in type.GetFields(Flags))
+                foreach (FieldInfo fi in type.GetFields(Flags))
                 {
-                    object value = fi.GetValue(o);                    
+                    object value = fi.GetValue(o);
                     this.Write(value, fi.Name);
                 }
 
@@ -104,7 +104,7 @@ namespace UCP.AICharacters
         {
             if (type == null)
                 throw new ArgumentNullException("type");
-            
+
             if (!String.IsNullOrWhiteSpace(name))
             {
                 sb.Append(name);

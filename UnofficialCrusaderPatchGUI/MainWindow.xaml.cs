@@ -1,23 +1,18 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Windows;
+using System.Diagnostics;
 using System.IO;
-using Microsoft.Win32;
-using System.Windows.Threading;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using UCP;
+using System.Windows.Input;
+using System.Windows.Threading;
+using UCP.AIC;
 using UCP.AIV;
 using UCP.Patching;
 using UCP.Startup;
-using UCP.AIC;
-using System.Diagnostics;
-using System.Windows.Input;
 
 namespace UCP
 {
@@ -85,7 +80,7 @@ namespace UCP
             SetBrowsePath();
 
             SetLocalizedUIElements();
-            DisplayLicense();   
+            DisplayLicense();
         }
 
         #region Settings
@@ -288,7 +283,7 @@ namespace UCP
                 {
                     new AIVView().InitUI(grid, View_SelectedItemChanged);
                     continue;
-                } 
+                }
                 else if (type == ChangeType.AIC)
                 {
                     new AICView().InitUI(grid, View_SelectedItemChanged);
@@ -316,17 +311,19 @@ namespace UCP
 
                     change.InitUI();
                     view.Items.Add(change.UIElement);
-                }   
+                }
             }
         }
 
         void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TabControl tab = (TabControl) sender;
+            TabControl tab = (TabControl)sender;
             pbLabel.Content = "";
-            if ((String) (((TabItem) tab.SelectedItem).Header) == "AIC"){
+            if ((String)(((TabItem)tab.SelectedItem).Header) == "AIC")
+            {
                 changeHint.Text = "Ctrl+Click to select multiple aic files";
-            } else
+            }
+            else
             {
                 changeHint.Text = "";
             }

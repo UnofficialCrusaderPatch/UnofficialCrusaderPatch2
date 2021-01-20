@@ -40,11 +40,13 @@ namespace UCP
                 if (arg == "--no-output")
                 {
                     continue;
-                } else if (!arg.StartsWith("--") || !arg.Contains("="))
+                }
+                else if (!arg.StartsWith("--") || !arg.Contains("="))
                 {
                     Console.WriteLine("Install failed. Invalid arguments provided.");
                     return;
-                } else if (arg.Contains("aic"))
+                }
+                else if (arg.Contains("aic"))
                 {
                     continue;
                 }
@@ -57,7 +59,7 @@ namespace UCP
                 }
                 String opt = rawOpt.Split('-')[0];
 
-                fileTransfer(Path.Combine(Environment.CurrentDirectory, srcPath), Path.GetFullPath(Path.Combine(Configuration.Path, PathUtils.Get(opt))), overwrite, !silent);   
+                fileTransfer(Path.Combine(Environment.CurrentDirectory, srcPath), Path.GetFullPath(Path.Combine(Configuration.Path, PathUtils.Get(opt))), overwrite, !silent);
             }
         }
 

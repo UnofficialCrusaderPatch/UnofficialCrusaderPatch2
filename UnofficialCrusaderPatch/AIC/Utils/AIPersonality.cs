@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
 namespace UCPAIConversion
@@ -164,7 +160,8 @@ namespace UCPAIConversion
         [RWComment("An array of farm slots, which the AI builds in the given sequence.")]
         [ScriptIgnore]
         public FarmBuilding _Farm1 { get; set; }
-        public string Farm1 {
+        public string Farm1
+        {
             get => Enum.GetName(typeof(FarmBuilding), _Farm1);
             set
             {
@@ -1510,7 +1507,7 @@ namespace UCPAIConversion
             get => Enum.GetName(typeof(SiegeEngine), _SiegeEngine4);
             set
             {
-                _SiegeEngine4= (SiegeEngine) Enum.Parse(typeof(SiegeEngine), value);
+                _SiegeEngine4 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
             }
         }
 
@@ -1823,7 +1820,7 @@ namespace UCPAIConversion
             get => Enum.GetName(typeof(TargetingType), _TargetChoice);
             set
             {
-                _TargetChoice = (TargetingType) Enum.Parse(typeof(TargetingType), value);
+                _TargetChoice = (TargetingType)Enum.Parse(typeof(TargetingType), value);
             }
         }
     }

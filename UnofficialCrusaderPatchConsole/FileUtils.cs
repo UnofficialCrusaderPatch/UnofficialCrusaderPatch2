@@ -1,9 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UCP
 {
@@ -50,7 +46,8 @@ namespace UCP
                     File.Delete(Path.Combine(destPath, Path.GetFileName(file)));
                     File.Copy(file, Path.Combine(destPath, Path.GetFileName(file)));
                 }
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 return Message(e.Message, false);
             }

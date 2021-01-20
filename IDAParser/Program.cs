@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using UCP.AICharacters;
 
@@ -34,7 +31,7 @@ namespace IDAParser
 
         static void UpdateAICs(string folder)
         {
-            foreach(string file in Directory.EnumerateFiles(folder, "*.aic"))
+            foreach (string file in Directory.EnumerateFiles(folder, "*.aic"))
             {
                 AICCollection aicc;
                 using (FileStream fs = new FileStream(file, FileMode.Open))

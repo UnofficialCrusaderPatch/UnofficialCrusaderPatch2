@@ -19,7 +19,7 @@ namespace AICUpdater
                 Console.WriteLine("The property names of the following .aic files will be updated.");
                 Console.WriteLine("Any custom comments will be lost in the process!");
                 Console.WriteLine();
-                foreach(string file in files)
+                foreach (string file in files)
                 {
                     Console.WriteLine(Path.GetFileName(file));
                 }

@@ -38,7 +38,7 @@ namespace UCP.Patching
 
 
 
-        
+
         static PEHeader header;
         static SectionHeader ucpSec;
 
@@ -60,7 +60,7 @@ namespace UCP.Patching
                 Characteristics = 0xE0000020 // writable, //0x60000020, // executable, readable, contains code
             };
         }
-        
+
         public static byte[] AttachSection(byte[] input)
         {
             if (buffer.Length == 0)
