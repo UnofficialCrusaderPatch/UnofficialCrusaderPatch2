@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
 namespace UCPAIConversion
@@ -28,7 +25,7 @@ namespace UCPAIConversion
         /// </summary>
         /// <param name="errorMessages"></param> Dictionary of error messages to be logged if an error is encountered (key = property, value = error message)
         /// <param name="errorHints"></param> Dictionary of hints to be logged if an error is encountered (key = property, value = hint)
-        public AISerializer (Dictionary<String, String> errorMessages, Dictionary<String, String> errorHints)
+        public AISerializer(Dictionary<String, String> errorMessages, Dictionary<String, String> errorHints)
         {
             this.errorMessages = errorMessages;
             this.errorHints = errorHints;
@@ -94,7 +91,8 @@ namespace UCPAIConversion
                         }
                     }
 
-                } else if (entry.Key == "AICharacters")
+                }
+                else if (entry.Key == "AICharacters")
                 {
                     AICharacter currentCharacter;
                     AIPersonality currentPersonality;
@@ -123,7 +121,8 @@ namespace UCPAIConversion
                                     }
                                 }
 
-                            } else if (definition.Key == "Personality") // Parse the Personality definition within the AICharacter
+                            }
+                            else if (definition.Key == "Personality") // Parse the Personality definition within the AICharacter
                             {
                                 currentPersonality = new AIPersonality();
                                 foreach (KeyValuePair<string, object> personalityValue in (Dictionary<string, object>)definition.Value)
@@ -184,7 +183,7 @@ namespace UCPAIConversion
                 }
             }
             if (AICSerializationExceptionList.ErrorList.Count > 0)
-            {                
+            {
                 throw AICSerializationExceptionList;
             }
             collection.AICShortDescription = header;
@@ -211,7 +210,7 @@ namespace UCPAIConversion
             }
             else
             {
-               try
+                try
                 {
                     parameter.SetValue(target, expectedFieldValue, null);
                 }
@@ -221,7 +220,8 @@ namespace UCPAIConversion
                     {
                         PropertyInfo enumParam = typeof(AIPersonality).GetProperty("_" + expectedFieldValue);
                         enumParam.SetValue(target, expectedFieldValue, null);
-                    } else
+                    }
+                    else
                     {
                         throw e;
                     }

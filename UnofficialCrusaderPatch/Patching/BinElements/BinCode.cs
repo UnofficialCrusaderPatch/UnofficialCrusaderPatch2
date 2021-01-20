@@ -32,13 +32,13 @@ namespace UCP.Patching
             { "push", FuncPush },
            // { "push", FuncSub },
         };
-       
+
         static byte[] FuncPush(string[] args)
         {
             byte reg = RegisterOffsets[args[0]];
             return new byte[] { (byte)(0x50 + reg) };
         }
 
-        
+
     }
 }

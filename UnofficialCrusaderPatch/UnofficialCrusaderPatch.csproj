@@ -65,6 +65,9 @@
     <Compile Include="..\CodeBlox\CodeBlock.cs">
       <Link>CodeBlocks\CodeBlock.cs</Link>
     </Compile>
+    <Compile Include="..\CodeBlox\CodeBlockRetriever.cs">
+      <Link>CodeBlocks\CodeBlockRetriever.cs</Link>
+    </Compile>
     <Compile Include="AIC\AICChange.cs" />
     <Compile Include="AIC\AICView.cs" />
     <Compile Include="AIC\Utils\AICharacter.cs" />
@@ -84,7 +87,6 @@
     <Compile Include="AIC\Utils\PersonalityEnums\WorkshopSettings.cs" />
     <Compile Include="AIC\Utils\RWAttributes.cs" />
     <Compile Include="AIV\AIVView.cs" />
-    <Compile Include="CodeBlocks\CodeBlockRetriever.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Extensions.cs" />

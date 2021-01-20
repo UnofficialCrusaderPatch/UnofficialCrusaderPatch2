@@ -1,8 +1,4 @@
 ﻿using CodeBlox;
-using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 
 namespace UCP.Patching
 {
@@ -12,7 +8,7 @@ namespace UCP.Patching
         public string BlockFile => this.blockFile;
 
         CodeBlock block;
-        
+
         public BinaryEdit(string blockIdent)
         {
             this.block = CodeBlock.Get(blockIdent);

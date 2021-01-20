@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
 using static UCP.Patching.BinElements.Register;
 
 namespace UCP.Patching.BinElements

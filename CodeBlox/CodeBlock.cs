@@ -1,10 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Globalization;
+
+/* Unmerged change from project 'UnofficialCrusaderPatch'
+Before:
 using System.Text;
 using System.IO;
-using System.Globalization;
-using UCP.CodeBlocks;
+After:
+using System.IO;
+using System.Linq;
+*/
+using System.IO;
+using System.Text;
 
 namespace CodeBlox
 {

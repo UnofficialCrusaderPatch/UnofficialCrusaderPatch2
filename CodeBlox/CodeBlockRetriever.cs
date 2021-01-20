@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Web.Script.Serialization;
 
-namespace UCP.CodeBlocks
+namespace CodeBlox
 {
     public class CodeBlockRetriever
     {
 
         public static Dictionary<string, string> CodeBlocks { get; set; }
-        static CodeBlockRetriever() {
+        static CodeBlockRetriever()
+        {
             Assembly asm = Assembly.GetExecutingAssembly();
             string file = string.Format("UCP.CodeBlocks.CodeBlocks.json");
             using (Stream stream = asm.GetManifestResourceStream(file))

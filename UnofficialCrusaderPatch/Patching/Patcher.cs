@@ -43,10 +43,13 @@ namespace UCP.Patching
             try
             {
                 AIVChange.DoChange(folderPath, overwrite, graphical);
-            } catch (IOException) {
+            }
+            catch (IOException)
+            {
                 Debug.Show(Localization.Get("install_abort_io"));
                 return;
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 Debug.Show(Localization.Get("install_abort"));
                 return;
@@ -220,7 +223,7 @@ namespace UCP.Patching
         static readonly List<EditFail> fails = new List<EditFail>();
         public static void AddFailure(string ident, EditFailure failure)
         {
-            fails.Add(new EditFail(){ Ident=ident, Type=failure });
+            fails.Add(new EditFail() { Ident = ident, Type = failure });
         }
     }
 }

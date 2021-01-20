@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -47,7 +46,7 @@ namespace UCPAIConversion
                 if (line.StartsWith("Ger"))
                 {
                     language = "German";
-                } 
+                }
                 else if (line.StartsWith("Eng"))
                 {
                     language = "English";
@@ -60,7 +59,7 @@ namespace UCPAIConversion
                 {
                     language = "Polish";
                 }
-                
+
                 if (i == headerLines.Length - 1)
                 {
                     line = line.Substring(0, line.LastIndexOf("AICharacter")).Trim("\r\n\t =}".ToCharArray());
@@ -100,13 +99,13 @@ namespace UCPAIConversion
             // Remove all comments from the file
             aicSrcFile = Regex.Replace(aicSrcFile, "/[*]([^*]|([*][^/]))*[*]+/", "");
             string[] characterSearch = aicSrcFile.Split(new string[] { "AICharacter" }, StringSplitOptions.None);
-            string[] characters = new string[characterSearch.Length-1];
+            string[] characters = new string[characterSearch.Length - 1];
 
             // Copy file text starting from the first AICharacter definition to be parsed
             Array.Copy(characterSearch, 1, characters, 0, characters.Length);
 
             string aicJSON = "{\n" + headerJson + ",\n\n" + "\"AICharacters\": [";
-            foreach(string character in characters)
+            foreach (string character in characters)
             {
                 string[] personality = character.Split(new string[] { "Personality" }, StringSplitOptions.None);
                 string[] characterID = personality[0].Split('\n');
@@ -168,7 +167,7 @@ namespace UCPAIConversion
                 // Split the Personality definition by newlines and ignore lines without '=' as comments or invalid
                 string[] characterData = personality[1].Split('\n');
                 List<string> fields = new List<string>();
-                foreach(string field in characterData)
+                foreach (string field in characterData)
                 {
                     if (field.Contains("="))
                     {
@@ -223,7 +222,7 @@ namespace UCPAIConversion
                     }
                 }
 
-                string characterJson = "\n\t\t" + String.Join(",\n\t\t", personalityIDs) + ",\n\t\t" + 
+                string characterJson = "\n\t\t" + String.Join(",\n\t\t", personalityIDs) + ",\n\t\t" +
                     "\"Personality\" : {" + "\n\n\t\t\t" + String.Join(",\n\t\t\t", personalityFields) + "\n\t\t}\n\t}";
 
                 aicJSON += "\n\t{" + characterJson + ",";

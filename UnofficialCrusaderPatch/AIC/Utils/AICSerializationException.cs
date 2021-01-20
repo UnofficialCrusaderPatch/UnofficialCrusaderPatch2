@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UCPAIConversion
 {
@@ -24,7 +21,8 @@ namespace UCPAIConversion
             if (aicFile == null)
             {
                 return "AIC Errors found:\n" + String.Join("\n", ErrorList);
-            } else
+            }
+            else
             {
                 return "AIC Errors found in " + aicFile + ":\n" + String.Join("\n", ErrorList);
             }

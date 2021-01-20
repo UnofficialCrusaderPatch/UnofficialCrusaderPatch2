@@ -1,13 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Linq;
 using UCP.AIV;
 using UCP.Patching;
 using UCP.Startup;
-using static UCP.Patching.BinElements.Register;
 using static UCP.Patching.BinElements.OpCodes;
 using static UCP.Patching.BinElements.OpCodes.Condition.Values;
-using System;
+using static UCP.Patching.BinElements.Register;
 
 namespace UCP
 {
@@ -34,7 +33,7 @@ namespace UCP
             {
                 paramSize = (double)parameters["build_housing"]["value"] > 0x7F ? 3 : 1;
             }
-                
+
             if (!(parameters["build_housing"]["value"].Equals(false) || (double)parameters["build_housing"]["value"] == 0))
             {
                 campPeasantCollection = new BinCollection()
@@ -74,7 +73,8 @@ namespace UCP
             if (!(parameters["build_housing"]["value"].Equals(false)))
             {
                 delete_value += (double)parameters["build_housing"]["value"];
-            } else
+            }
+            else
             {
                 delete_value += 12;
             }
@@ -757,7 +757,7 @@ namespace UCP
 
             #region AI LORDS
 
-            new Change("ai_housing", ChangeType.AILords, false, false, 
+            new Change("ai_housing", ChangeType.AILords, false, false,
                 (parameters) => {
                     return GetAIHousingParamHeader(parameters);
                 })
@@ -1192,9 +1192,9 @@ namespace UCP
                     new BinaryEdit("u_spearmen_run")
                     {
                         new BinSkip(5),
-                        
+
                         new BinAddress("IsSelectableAddress", 3),
-                    
+
                         new BinHook(7)
                         {
                             0x53, // push ebx
@@ -3175,13 +3175,13 @@ namespace UCP
                     {
                         new BinAddress("CurrentlySelectedBuilding", 44)
                     },
-                    
+
                     new BinaryEdit("o_allow_overbuilding_build_function_exit")
                     {
                         new BinSkip(15),
                         new BinLabel("BuildFunctionExit")
                     },
-                    
+
                     new BinaryEdit("o_allow_overbuilding")
                     {
                         
@@ -3239,11 +3239,11 @@ namespace UCP
                             0x5B, // pop ebx
                             0xC2, 0x0C, 0x00 // ret 000C
                         },
-                        
+
                         new BinAddress("UnitBaseAddress", 22),
-                        
+
                         new BinSkip(19),
-                        
+
                         new BinHook(8)
                         {
                             0x50, // push eax
@@ -3268,7 +3268,7 @@ namespace UCP
                             0x58, // pop eax
                         }
                     },
-                    
+
                     new BinaryEdit("o_allow_overbuilding_building")
                     {
                         // tower building IDs
@@ -3301,9 +3301,9 @@ namespace UCP
                             0x36, 0x38, 0x39, 0x40, 0x3E, 0x3F,
                             0x00 // delimiter
                         },
-                        
+
                         new BinSkip(23),
-                        
+
                         new BinHook(14)
                         {
                             0x50, // push eax
@@ -3362,7 +3362,7 @@ namespace UCP
                     },
                 },
             },
-            
+
             new Change("o_change_siege_engine_spawn_position_catapult", ChangeType.Other, false)
             {
                 new DefaultHeader("o_change_siege_engine_spawn_position_catapult")

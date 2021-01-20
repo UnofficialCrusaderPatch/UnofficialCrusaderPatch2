@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using System.Reflection;
+using System.Text;
 
 namespace UCP.AICharacters
 {
@@ -91,7 +90,7 @@ namespace UCP.AICharacters
                     return default(T);
 
             } while (line != type.Name);
-            
+
             T result = new T();
             this.Read(result);
             return result;
@@ -115,7 +114,7 @@ namespace UCP.AICharacters
             {
                 if (line == "}")
                     break;
-                
+
                 // get name of field
                 string fieldName;
                 int endIndex = line.IndexOfAny(whiteSpaces);

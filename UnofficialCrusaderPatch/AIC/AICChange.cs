@@ -45,7 +45,8 @@ namespace UCP.AIC
         /// <summary>
         /// Read and store UCP-defined errors messages and field description hints
         /// </summary>
-        static AICChange () {
+        static AICChange()
+        {
             currentSelection = new Dictionary<AICharacterName, string>();
             availableSelection = new Dictionary<string, List<AICharacterName>>();
 
@@ -57,7 +58,7 @@ namespace UCP.AIC
             string errorHintText = reader.ReadToEnd();
             reader.Close();
 
-            
+
             JavaScriptSerializer errorSerializer = new JavaScriptSerializer();
             errorMessages = errorSerializer.Deserialize<Dictionary<String, String>>(errorText);
             errorHints = errorSerializer.Deserialize<Dictionary<String, String>>(errorHintText);
@@ -225,7 +226,7 @@ namespace UCP.AIC
                     count++;
                     if (currentSelection.ContainsKey(character))
                     {
-                        String customName = this.customCharacterNames.ElementAt(count) ;
+                        String customName = this.customCharacterNames.ElementAt(count);
                         String name = Enum.GetName(typeof(AICharacterName), this.collection.GetCharacters().ElementAt(count));
                         conflicts.Add(name + ((customName.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")"));
                     }
@@ -297,7 +298,7 @@ namespace UCP.AIC
         /// </summary>
         private void ConvertAIC()
         {
-            string workaroundFilename =  this.TitleIdent.Substring(4);
+            string workaroundFilename = this.TitleIdent.Substring(4);
             string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "aic", workaroundFilename);
             string newFileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(workaroundFilename) + ".json");
 
@@ -504,7 +505,7 @@ namespace UCP.AIC
                     {
                         exceptions.Add(file);
                     }
-                    
+
                 }
                 if (exceptions.Count > 0)
                 {
@@ -526,15 +527,16 @@ namespace UCP.AIC
                 changes.Add(change);
                 return;
             }
-            
+
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             serializer.RegisterConverters(new ReadOnlyCollection<JavaScriptConverter>(new List<JavaScriptConverter>() { new AISerializer(errorMessages, errorHints) }));
             StreamReader reader;
-            
+
             if (fileName.StartsWith("UCP.AIC.Resources"))
             {
                 reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(fileName), Encoding.UTF8);
-            } else
+            }
+            else
             {
                 reader = new StreamReader(new FileStream(fileName, FileMode.Open), Encoding.UTF8);
             }
@@ -549,7 +551,7 @@ namespace UCP.AIC
                     throw new Exception("AIC with the same filename has already been loaded");
                 }
 
-                AICollection ch = serializer.Deserialize<AICollection>(text);;
+                AICollection ch = serializer.Deserialize<AICollection>(text); ;
                 AICChange change = new AICChange(aicName, true)
                 {
                     new DefaultHeader("aic_" + aicName, true)
