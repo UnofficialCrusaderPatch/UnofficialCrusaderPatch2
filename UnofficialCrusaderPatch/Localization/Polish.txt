@@ -130,16 +130,6 @@ o_fix_ladderclimb_descr
 "Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
 }
 
-u_spearmen_run
-{
-"Spearmen run by default instead of walking"
-}
-
-u_spearmen_run_descr
-{
-"Makes spearmen run by default instead of the slow walking."
-}
-
 u_tanner_fix
 {
 "Fix tanners getting all the same cow"

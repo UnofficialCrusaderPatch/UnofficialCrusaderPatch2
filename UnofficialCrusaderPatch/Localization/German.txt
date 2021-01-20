@@ -126,16 +126,6 @@ o_fix_ladderclimb_descr
 "Einheiten klettern nicht mehr direkt zurück und vergessen auch nicht mehr ihr Ziel, nachdem sie eine Leiter erklommen haben."
 }
 
-u_spearmen_run
-{
-"Speerträger rennen nun standartmäßig"
-}
-
-u_spearmen_run_descr
-{
-"Speerträger rennen nun immer in der Geschwindigkeit, welche sie sonst nur in aggressiver Haltung in der Nähe von Gegnern hatten."
-}
-
 u_tanner_fix
 {
 "Gerber holen sich unterschiedliche Kühe"
