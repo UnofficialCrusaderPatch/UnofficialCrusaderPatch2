@@ -398,20 +398,25 @@ namespace UCP
 
                 }
             },
-            
+
             new Change("o_fix_rapid_deletion_bug", ChangeType.Bugfix, true)
             {
                 new DefaultHeader("o_fix_rapid_deletion_bug")
                 {
-                    // 0048201B
+                    // 00482180
                     new BinaryEdit("o_fix_rapid_deletion_bug")
                     {
-                        new BinHook(6)
+                        new BinAddress("buildingdemolish", 1, true),
+                        new BinAddress("offset", -4, false),
+                        new BinHook(5)
                         {
-                            0xC7, 0x86, 0x0C, 0x86, 0xF9, 0x00, 0x00, 0x00, 0x00, 0x00, // mov [esi+00F9860C],0
+                            // originalcode
+                            0xE8, new BinRefTo("buildingdemolish", true), // call Building_Demolish
                             
-                            // original code
-                            0x8B, 0x86, 0x2C, 0x86, 0xF9, 0x00, // mov eax,[esi+00F9862C]
+                            // Building_Type = 0
+                            0xB9, new BinRefTo("offset", false), // mov ecx,offset
+                            0x8D, 0x8C, 0x0E, 0xE6, 0x00, 0x00, 0x00, // lea ecx,[esi+ecx+0E6]
+                            0xC7, 0x01, 0x00, 0x00, 0x00, 0x00 // mov [ecx],0                                  
                         }
                     }
                 }
