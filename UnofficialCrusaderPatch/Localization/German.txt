@@ -106,16 +106,6 @@ u_fix_applefarm_blocking_descr
 "Apfelfarmer werden nicht länger inaktiv, wenn der Pfad links oben direkt neben der Farm blockiert wird."
 }
 
-o_allow_overbuilding
-{
-"Überbauen von Einheiten und Arbeitern"
-}
-
-o_allow_overbuilding_descr
-{
-"Erlaubt es dem Spieler Gebäude über Arbeiter und Betrunkene zu platzieren und diese damit zu töten. Türme und Mauern können auch unter eigene Einheiten gebaut werden."
-}
-
 o_increase_path_update_tick_rate
 {
 "Erhöht die Tickrate für Pfadupdates."

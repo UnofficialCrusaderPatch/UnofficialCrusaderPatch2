@@ -108,16 +108,6 @@ u_fix_applefarm_blocking_descr
 "Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
 }
 
-o_allow_overbuilding
-{
-"Allow overbuilding workers and units"
-}
-
-o_allow_overbuilding_descr
-{
-"Allows the player to overbuild workers with buildings, while allowing to overbuild units with walls and towers making them pop at the top."
-}
-
 o_increase_path_update_tick_rate
 {
 "Increase the tick rate of path update by 4 times."
