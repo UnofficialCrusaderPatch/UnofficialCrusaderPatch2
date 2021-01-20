@@ -15,17 +15,7 @@ namespace UCP.Patching
         
         public BinaryEdit(string blockIdent)
         {
-            Assembly asm = Assembly.GetExecutingAssembly();
-
-            // check if code block file is there
-            string file = string.Format("UCP.CodeBlocks.{0}.block", blockIdent);
-            if (!asm.GetManifestResourceNames().Contains(file))
-                throw new Exception("MISSING BLOCK FILE " + file);
-
-            // read code block file
-            using (Stream stream = asm.GetManifestResourceStream(file))
-                this.block = new CodeBlock(stream);
-
+            this.block = CodeBlock.Get(blockIdent);
             this.blockFile = blockIdent;
         }
 

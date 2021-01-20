@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Globalization;
+using UCP.CodeBlocks;
 
 namespace CodeBlox
 {
@@ -41,6 +42,12 @@ namespace CodeBlox
         Element[] elements;
         public int Length { get { return elements.Length; } }
         public IEnumerable<Element> Elements { get { return this.elements; } }
+
+        public static CodeBlock Get(string codeBlockName)
+        {
+            string codeBlock = CodeBlockRetriever.CodeBlocks[codeBlockName];
+            return new CodeBlock(new MemoryStream(Encoding.UTF8.GetBytes(codeBlock)));
+        }
 
         public CodeBlock(Stream stream)
         {
