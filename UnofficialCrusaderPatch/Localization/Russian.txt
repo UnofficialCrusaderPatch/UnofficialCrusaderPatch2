@@ -88,16 +88,6 @@ u_fix_lord_animation_stuck_movement_descr
 "Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
 }
 
-o_fix_small_wall_placement_count
-{
-"Fix small wall placement count preview"
-}
-
-o_fix_small_wall_placement_count_descr
-{
-"Fixes the bug where the small wall placement preview only allowed the player to use half of their stone."
-}
-
 fix_apple_orchard_build_size
 {
 "Shrink apple orchard's build size"
@@ -116,16 +106,6 @@ u_fix_applefarm_blocking
 u_fix_applefarm_blocking_descr
 {
 "Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
-}
-
-o_allow_overbuilding
-{
-"Allow overbuilding workers and units"
-}
-
-o_allow_overbuilding_descr
-{
-"Allows the player to overbuild workers with buildings, while allowing to overbuild units with walls and towers making them pop at the top."
 }
 
 o_increase_path_update_tick_rate
@@ -148,16 +128,6 @@ o_fix_ladderclimb
 o_fix_ladderclimb_descr
 {
 "Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
-}
-
-u_spearmen_run
-{
-"Spearmen run by default instead of walking"
-}
-
-u_spearmen_run_descr
-{
-"Makes spearmen run by default instead of the slow walking."
 }
 
 u_tanner_fix

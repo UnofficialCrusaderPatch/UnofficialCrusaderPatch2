@@ -86,16 +86,6 @@ u_fix_lord_animation_stuck_movement_descr
 "Der Lord wechselt mit dieser Änderung nach dem Zerstören eines Gebäudes in seine Ausgangsposition. Bisher blieb er in der Zerstöranimation stecken."
 }
 
-o_fix_small_wall_placement_count
-{
-"Berichtigt die Steinkostenberechnung für kleinen Wall"
-}
-
-o_fix_small_wall_placement_count_descr
-{
-"Hiermit kann der kleine Wall mit allen Steinen gebaut werden, statt nur mit der Hälfte dieser."
-}
-
 fix_apple_orchard_build_size
 {
 "Reduziert die Baugröße von Apfelfarmen"
@@ -116,16 +106,6 @@ u_fix_applefarm_blocking_descr
 "Apfelfarmer werden nicht länger inaktiv, wenn der Pfad links oben direkt neben der Farm blockiert wird."
 }
 
-o_allow_overbuilding
-{
-"Überbauen von Einheiten und Arbeitern"
-}
-
-o_allow_overbuilding_descr
-{
-"Erlaubt es dem Spieler Gebäude über Arbeiter und Betrunkene zu platzieren und diese damit zu töten. Türme und Mauern können auch unter eigene Einheiten gebaut werden."
-}
-
 o_increase_path_update_tick_rate
 {
 "Erhöht die Tickrate für Pfadupdates."
@@ -144,16 +124,6 @@ o_fix_ladderclimb
 o_fix_ladderclimb_descr
 {
 "Einheiten klettern nicht mehr direkt zurück und vergessen auch nicht mehr ihr Ziel, nachdem sie eine Leiter erklommen haben."
-}
-
-u_spearmen_run
-{
-"Speerträger rennen nun standartmäßig"
-}
-
-u_spearmen_run_descr
-{
-"Speerträger rennen nun immer in der Geschwindigkeit, welche sie sonst nur in aggressiver Haltung in der Nähe von Gegnern hatten."
 }
 
 u_tanner_fix
