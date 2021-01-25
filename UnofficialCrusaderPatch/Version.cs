@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using UCP.AIV;
@@ -7,12 +7,13 @@ using UCP.Startup;
 using static UCP.Patching.BinElements.Register;
 using static UCP.Patching.BinElements.OpCodes;
 using static UCP.Patching.BinElements.OpCodes.Condition.Values;
+using System;
 
 namespace UCP
 {
     public class Version
     {
-        public static string PatcherVersion = "2.14";
+        public static string PatcherVersion = "2.15";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
@@ -24,11 +25,242 @@ namespace UCP
             BinRedirect.CreateEdit("menuversion", false, Encoding.ASCII.GetBytes("V1.%d-E UCP" + PatcherVersion + '\0'))
         };
 
+        private static ParamHeader GetAIHousingParamHeader(Dictionary<string, Dictionary<string, object>> parameters)
+        {
+            BinCollection campPeasantCollection = null;
 
-        public static List<Change> Changes { get { return changes; } }
+            int paramSize = 1;
+            if (!parameters["build_housing"]["value"].Equals(false))
+            {
+                paramSize = (double)parameters["build_housing"]["value"] > 0x7F ? 3 : 1;
+            }
+                
+            if (!(parameters["build_housing"]["value"].Equals(false) || (double)parameters["build_housing"]["value"] == 0))
+            {
+                campPeasantCollection = new BinCollection()
+                {
+                    0x2B, 0x88, new BinRefTo("population_address", false),
+                };
+
+                BinCollection sizeCollection;
+                if (paramSize == 1)
+                {
+                    byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["build_housing"]["value"]));
+                    sizeCollection = new BinCollection()
+                    {
+                        0x83, 0xF9, value[0]
+                    };
+                }
+                else
+                {
+                    sizeCollection = new BinCollection()
+                    {
+                        0x81, 0xF9, BitConverter.GetBytes(Convert.ToInt32((double)parameters["build_housing"]["value"]))
+                    };
+                }
+                foreach (var elem in sizeCollection) campPeasantCollection.Add(elem);
+
+                BinCollection jumpCollection = new BinCollection()
+                {
+                    0x7F, 0x05, /* if greater continue */
+                    0x33, 0xC0, /* xor eax, eax */
+                    0xC2, 0x08, 0x00 /* ret 0008 */
+                };
+
+                foreach (var elem in jumpCollection) campPeasantCollection.Add(elem);
+            }
+
+            double delete_value = Convert.ToInt32((double)parameters["delete_housing"]["value"]);
+            if (!(parameters["build_housing"]["value"].Equals(false)))
+            {
+                delete_value += (double)parameters["build_housing"]["value"];
+            } else
+            {
+                delete_value += 12;
+            }
+
+            paramSize = 1;
+            if (!parameters["delete_housing"]["value"].Equals(false))
+            {
+                paramSize = delete_value > 0x7F ? 3 : 1;
+            }
+            BinaryEdit delete_edit = null;
+            if (!(parameters["delete_housing"]["value"].Equals(false) || (double)parameters["delete_housing"]["value"] == 20))
+            {
+                byte[] value = BitConverter.GetBytes(Convert.ToInt32(delete_value));
+                delete_edit = new BinaryEdit("ai_deletehousing")
+                {
+                    new BinAddress("housing_address_new", 16),
+                    new BinSkip(0xF),
+                    new BinSkip(0x7),
+                    0xF7, 0xD9,
+                    new BinBytes(0x03, 0x88), new BinRefTo("housing_address_new", false),
+                    new BinHook(6)
+                    {
+                        paramSize == 1 ? new BinBytes(0x83, 0xF9, value[0]) : new BinBytes(0x81, 0xF9, value[0], value[1], value[2], value[3]),
+                        0x7F, 0x06,
+                        0x33, 0xC0,
+                        0x5F,
+                        0xC2, 0x04, 0x00
+                    }
+                    /*0x83, 0xF9, value[0],
+                    new BinBytes(0x7E, 0xDF),
+                    new BinNops(1)*/
+                };
+            }
+
+
+            BinBytes init = new BinBytes();
+
+            BinBytes finalizer = new BinBytes(
+                0xB8, 0x01, 0x00, 0x00, 0x00,   /* mov eax, 00000001 */
+                0xC2, 0x08, 0x00
+                );
+
+            BinHook hook = new BinHook(5)
+            {
+                init
+            };
+
+            if (campPeasantCollection != null)
+            {
+                foreach (var elem in campPeasantCollection) hook.Add(elem);
+            }
+
+            hook.Add(finalizer);
+
+            BinaryEdit edit = new BinaryEdit("ai_buildhousing")
+            {
+                hook,
+                new BinAddress("campfire_peasant_address", 0x22, false), //0x22
+                new BinAddress("population_address", 2, false), //5
+                new BinAddress("housing_address", 11, false), //11
+            };
+
+
+            ParamHeader aiHousing = new ParamHeader("ai_buildhousing")
+            {
+                edit == null ? new BinaryEdit("ai_buildhousing") : edit,
+                delete_edit == null ? new BinaryEdit("ai_deletehousing") : delete_edit
+            };
+            aiHousing.IsEnabled = (!parameters["build_housing"]["value"].Equals(false) && (double)parameters["build_housing"]["value"] != 12)
+                || (!parameters["delete_housing"]["value"].Equals(false) && (double)parameters["delete_housing"]["value"] != 20);
+            return aiHousing;
+        }
+
         static List<Change> changes = new List<Change>()
         {
             #region BUG FIXES
+            
+            // Fix ladder climbing behaviour
+            new Change("o_fix_ladderclimb", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_ladderclimb")
+                {
+                    
+                    // 53D3D9
+                    new BinaryEdit("o_fix_ladderclimb_pre")
+                    {
+                        // cache current unti moved
+                        new BinAlloc("currentUnitMoved", 4),
+
+                        new BinSkip(9),
+
+                        new BinHook(6)
+                        {
+                            0x89, 0x15, new BinRefTo("currentUnitMoved", false), // mov [currentUnitMoved],edx
+                            0x69, 0xD2, 0x90, 0x04, 0x00, 0x00, // imul edx,edx,00000490
+                        }
+                    },
+                    
+                    // 53D694
+                    new BinaryEdit("o_fix_ladderclimb")
+                    {
+                        // need 120k bytes, because we need 3*4 bytes per unit, and the SHC-E max is 10k units
+                        new BinAlloc("savedUnitDestinationForClimbing", 120000),
+
+                        new BinSkip(12), // skip 12 bytes
+                        
+                        new BinHook(10)
+                        {
+                            0x50, // push eax
+                            0xA1, new BinRefTo("currentUnitMoved", false), // mov eax,[currentUnitMoved]
+                            0x83, 0xF8, 0x00, // cmp eax,00
+                            0x74, 0x20, // je short 20
+                            0x48, // dec eax
+                            0x6B, 0xC0, 0x0C, // imul eax,eax,0C
+                            0x89, 0xA8, new BinRefTo("savedUnitDestinationForClimbing", false), // mov [eax+savedUnitDestinationForClimbing],ebp
+                            0x83, 0xC0, 0x04, // add eax,04
+                            0x89, 0xB8, new BinRefTo("savedUnitDestinationForClimbing", false), // mov [eax+savedUnitDestinationForClimbing],edi
+                            0x83, 0xC0, 0x04, // add eax,04
+                            0xC7, 0x80, new BinRefTo("savedUnitDestinationForClimbing", false), 0x01, 0x00, 0x00, 0x00, // mov [eax+savedUnitDestinationForClimbing],01
+                            0x58, // pop eax
+                            0x66, 0x39, 0xD8, // cmp ax,bx
+                            0x66, 0x89, 0x86, 0xBC, 0x08, 0x00, 0x00, // mov [esi+8BC],ax
+                        }
+                    },
+                    
+                    // 5790CB
+                    new BinaryEdit("o_fix_ladderclimb_2")
+                    {
+                        new BinHook(16)
+                        {
+                            0x50, // push eax
+                            0x8B, 0xC3, // mov eax,ebx
+                            0x48, // dec eax
+                            0x6B, 0xC0, 0x0C, // imul eax,eax,0C
+                            0x83, 0xC0, 0x08, // add eax,08
+                            0x83, 0xB8, new BinRefTo("savedUnitDestinationForClimbing", false), 0x00, // cmp dword ptr [eax+savedUnitDestinationForClimbing],00
+                            0x75, 0x16, // jne short 0x16
+                            0x58, // pop eax
+                            0x66, 0x89, 0x8C, 0x3E, 0x00, 0x07, 0x00, 0x00, // mov [esi+edi+00000700],cx
+                            0x66, 0x89, 0x94, 0x3E, 0x02, 0x07, 0x00, 0x00, // mov [esi+edi+00000702],dx
+                            0xE9, new BinRefTo("exit"), // jmp exit
+                            0xC7, 0x80, new BinRefTo("savedUnitDestinationForClimbing", false), 0x00, 0x00, 0x00, 0x00, // mov [eax+savedUnitDestinationForClimbing],00000000
+                            0x58// pop eax
+                        },
+                        new BinLabel("exit")
+                    },
+                    
+                    // 53D900
+                    new BinaryEdit("o_fix_ladderclimb_3")
+                    {
+                        new BinHook(5)
+                        {
+                            0x50, // push eax
+                            0x8B, 0xC3, // mov eax,ebx
+                            0x48, // dec eax
+                            0x6B, 0xC0, 0x0C, // imul eax,eax,0C
+                            0x83, 0xC0, 0x08, // add eax,08,
+                            0xC7, 0x80, new BinRefTo("savedUnitDestinationForClimbing", false), 0x01, 0x00, 0x00, 0x00, // mov [eax+savedUnitDestinationForClimbing],00000000
+                            0x58, // pop eax
+                            0x53, // push ebx
+                            0x8B, 0x5C, 0x24, 0x08, // mov ebx,[esp+08]
+                        }
+                    },
+                    
+                    // 54C3E5
+                    new BinaryEdit("o_fix_ladderclimb_4")
+                    {
+                        new BinHook(14)
+                        {
+                            0x57, // push edi
+                            0x31, 0xFF, // xor edi,edi
+                            0x66, 0x8B, 0x7C, 0x24, 0x18, // mov di,[esp+18]
+                            0x4F, // dec edi
+                            0x6B, 0xFF, 0x0C, // imul edi,edi,0C
+                            0x8B, 0x87, new BinRefTo("savedUnitDestinationForClimbing", false), // mov eax,[edi+savedUnitDestinationForClimbing]
+                            0x83, 0xC7, 0x04, // add edi,04
+                            0x8B, 0x97, new BinRefTo("savedUnitDestinationForClimbing", false), // mov edx,[edi+savedUnitDestinationForClimbing]
+                            0x89, 0x86, 0x00, 0x07, 0x00, 0x00, // mov [esi+00000700],eax
+                            0x89, 0x96, 0x02, 0x07, 0x00, 0x00, // mov [esi+00000702],edx
+                            0x0F, 0xBF, 0x96, 0x02, 0x07, 0x00, 0x00, // movsx edx,word ptr [esi+00000702]
+                            0x0F, 0xBF, 0x86, 0x00, 0x07, 0x00, 0x00, // movsx edx,word ptr [esi+00000702]
+                            0x5F, // pop edi
+                        }
+                    }
+                }
+            },
 
             /*
              * FIRE BALLISTAS ATTACK MONKS AND TUNNELERS
@@ -291,9 +523,212 @@ namespace UCP
 
                 }
             },
+
+            new Change("u_fix_lord_animation_stuck_movement", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("u_fix_lord_animation_stuck_movement")
+                {
+
+                    new BinaryEdit("u_fix_lord_animation_stuck_movement") // 56E139
+                    {
+                        new BinAddress("originalCompareAddress", 11),
+                        new BinAddress("unitHandle", 18),
+                        new BinSkip(9),
+                        new BinHook(17)
+                        {
+                            0x53, // push ebx
+                            0xBB, new BinRefTo("unitHandle", false), // mov ebx,unitHandle
+                            0xC7, 0x04, 0x33, 0x00, 0x00, 0x00, 0x00, // mov [ebx+esi],00000000
+                            0x81, 0xC3, 0x04, 0x00, 0x00, 0x00, // add ebx,00000004
+                            0x0F, 0xB7, 0x0C, 0x33, // movzx ecx,word ptr [ebx+esi]
+                            
+                            0x81, 0xEB, 0xA8, 0x02, 0x00, 0x00, // sub ebx,000002A8
+                            0x81, 0xC1, 0x29, 0x00, 0x00, 0x00, // add ecx,00000029
+                            0x81, 0x3C, 0x33, 0xCD, 0x00, 0x00, 0x00, // cmp [ebx+esi],000000CD
+                            0x74, 0x06, // je short 0x06
+                            0x81, 0xC1, 0x80, 0x00, 0x00, 0x00, // add ecx,00000080
+                            
+                            0x81, 0xC3, 0x24, 0x00, 0x00, 0x00, // add ebx,00000024
+                            
+                            0xC7, 0x04, 0x33, 0x00, 0x00, 0x00, 0x00, // mov [ebx+esi],00000000
+                            0x81, 0xEB, 0x2C, 0x00, 0x00, 0x00, // sub ebx,0000002C
+                            0x89, 0x0C, 0x33, // mov [ebx+esi],ecx
+                            0x5B, // pop ebx
+                            
+                            // original compare
+                            0x83, 0x3D, new BinRefTo("originalCompareAddress", false), 0x00, // cmp dword ptr [0191DD80],00
+                        }
+                    },
+
+                    new BinaryEdit("u_fix_lord_animation_stuck_building_attack") // 56D856
+                    {
+                        new BinAddress("unitVar", 24),
+                        new BinSkip(21),
+                        new BinHook(7)
+                        {
+                            0xC7, 0x80, new BinRefTo("unitVar", false), 0x65, 0x00, 0x00, 0x00, // mov [eax+unitVar],00000065
+                        }
+                    }
+                }
+            },
+
+            new Change("u_fix_applefarm_blocking", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("u_fix_applefarm_blocking")
+                {
+
+                    new BinaryEdit("u_fix_applefarm_blocking") // 4F36B2
+                    {
+                        new BinSkip(11),
+                        new BinHook(5)
+                        {
+                            0x81, 0x47, 0x14, 0x02, 0x00, 0x00, 0x00, // add [edi+14],00000002
+                            0x81, 0x47, 0x18, 0x02, 0x00, 0x00, 0x00, // add [edi+18],00000002
+                            0x5F, // pop edi
+                        }
+                    }
+                 }
+            },
+          
+            // Fix tanner going back to her hut without cow
+            // Block starts: 559C49
+            new Change("u_tanner_fix", ChangeType.Bugfix, true)
+            {
+                // 559C7A
+                new DefaultHeader("u_tanner_fix")
+                {
+
+                    new BinaryEdit("u_tanner_fix")
+                    {
+                        new BinAddress("unitBaseAddress", 52, false),
+                        new BinSkip(37), // 49
+                        new BinAddress("someCowData", 2, false),
+                        new BinHook(6)
+                        {
+                            0x81, 0xBD, new BinRefTo("someCowData", false), 0x00, 0x00, 0x00, 0x00, // cmp [ebp+someCowData],00000000
+                            0x75, 0x0E, // jne 0x0E
+                            0x66, 0xC7, 0x86, new BinRefTo("unitBaseAddress", false), 0x01, 0x00, // mov word ptr [esi+unitBaseAddress],0001
+                            0x5F, // pop edi
+                            0x5E, // pop esi
+                            0x5D, // pop ebp
+                            0x5B, // pop ebx
+                            0xC3, // ret
+                            0x3B, 0x8D, new BinRefTo("someCowData", false) // cmp ecx,[ebp+someCowData]
+                        },
+                        new BinSkip(6),
+                        new BinHook(8)
+                        {
+                            0x66, 0x83, 0xBD, new BinRefTo("unitBaseAddress", false), 0x00, // cmp word ptr [ebp+unitBaseAddress],00
+                            0x74, 0x19, // je short 0x19
+                            0x66, 0x81, 0xBE, new BinRefTo("unitBaseAddress", false), 0x02, 0x00, // cmp word ptr [esi+unitBaseAddress],0002
+                            0x75, 0x0E, // jne short 0x0E
+                            0x66, 0xC7, 0x86, new BinRefTo("unitBaseAddress", false), 0x01, 0x00, // mov word ptr [esi+unitBaseAddress],0001
+
+                            0x5F, // pop edi
+                            0x5E, // pop esi
+                            0x5D, // pop ebp
+                            0x5B, // pop ebx
+                            0xC3, // ret
+                        }
+                    }
+                }
+            },
+          
+            /*
+             * Fletcher bugfix 
+             */
+            new Change("o_fix_fletcher_bug", ChangeType.Bugfix)
+            {
+                new DefaultHeader("o_fix_fletcher_bug")
+                {
+                    new BinaryEdit("o_fix_fletcher_bug")
+                    {
+                        new BinSkip(0x1E), // skip 30 bytes
+                        new BinBytes(0x01) // set state to 1 instead of 3
+
+                    }
+                }
+            },
+          
+            // Fix AI crusader archers not lighting pitch
+            new Change("ai_fix_crusader_archers_pitch", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("ai_fix_crusader_archers_pitch")
+                {
+
+                    new BinaryEdit("ai_fix_crusader_archers_pitch_fn")
+                    {
+                        new BinLabel("CheckFunction")
+                    },
+
+                    new BinaryEdit("ai_fix_crusader_archers_pitch_attr")
+                    {
+                        new BinAddress("UnitAttributeOffset",43)
+                    },
+
+                    new BinaryEdit("ai_fix_crusader_archers_pitch")
+                    {
+                        new BinAddress("CurrentTargetIndex",2),
+                        new BinSkip(23),
+                        new BinHook(7)
+                        {
+                            0x55, // push ebp
+                            0x51, // push ecx
+                            0xBE, 0x5B, 0x00, 0x00, 0x00, // mov esi,5B
+                            0xE8, new BinRefTo("CheckFunction"),
+                            0xA1, new BinRefTo("CurrentTargetIndex", false),
+                            0x69, 0xC0, 0x90, 0x04, 0x00, 0x00, // imul eax,eax,490
+                            0x0F, 0xB7, 0x80, new BinRefTo("UnitAttributeOffset", false),
+                        }
+                    }
+                }
+            },
+          
+            // Fix baker disappear bug
+            new Change("o_fix_baker_disappear", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_baker_disappear")
+                {
+                    new BinaryEdit("o_fix_baker_disappear") // 5774A
+                    {
+                        new BinSkip(19),
+                        new BinNops(9)
+                    }
+                }
+            },
+          
+            // Fix moat digging unit disappearing
+            new Change("o_fix_moat_digging_unit_disappearing", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_moat_digging_unit_disappearing")
+                {
+
+                    new BinaryEdit("o_fix_moat_digging_unit_disappearing")
+                    {
+                        new BinAddress("skip", 11),
+                        new BinHook(9)
+                        {
+                            0x83, 0xBC, 0x30, 0xD4, 0x08, 0x00, 0x00, 0x7D, // cmp dword ptr [eax+esi+8D4],7D
+                            0x74, 0x09, // je short 9
+                            0x66, 0x83, 0xBC, 0x30, 0xA8, 0x06, 0x00, 0x00, 0x01
+                        }
+                    }
+                }
+            },
             #endregion
 
             #region AI LORDS
+
+            new Change("ai_housing", ChangeType.AILords, false, false, 
+                (parameters) => {
+                    return GetAIHousingParamHeader(parameters);
+                })
+            {
+                new SliderHeader("build_housing", false, 0, 500, 1, 12, 30){},
+
+                new SliderHeader("delete_housing", false, 0, 500, 1, 20, 0x7F){},
+            },
+
 
             /*
              *  AI RECRUIT ADDITIONAL ATTACK TROOPS 
@@ -1078,6 +1513,62 @@ namespace UCP
             },
 
             // ladderman: 0xB55AF4 = soldier bool
+            
+            new Change("o_restore_arabian_engineer_speech", ChangeType.Troops, false)
+            {
+                new DefaultHeader("o_restore_arabian_engineer_speech")
+                {
+                    new BinaryEdit("o_restore_arabian_engineer_speech_lord_type")
+                    {
+                        new BinAddress("SelectedLordType", 2)
+                    },
+                    new BinaryEdit("o_restore_arabian_engineer_speech")
+                    {
+                        new BinAlloc("ArabianEngineerWavs", null)
+                        {
+                            0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x73, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x73, 0x32, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x73, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x73, 0x32, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x73, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x73, 0x32, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x32, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x33, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x6F, 0x61, 0x74, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x6F, 0x61, 0x74, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x6F, 0x61, 0x74, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x6F, 0x61, 0x74, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x6F, 0x61, 0x74, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x64, 0x69, 0x73, 0x62, 0x61, 0x6E, 0x64, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00
+                        },
+                        new BinSkip(6),
+                        new BinAddress("OriginalWavFileAddressArray", 10),
+                        new BinHook(14)
+                        {
+                            0x3D, 0x0A, 0x00, 0x00, 0x00, // cmp eax,0A
+                            0x75, 0x1C, // jne short 1C
+                            
+                            0x81, 0x3D, new BinRefTo("SelectedLordType", false), 0x01, 0x00, 0x00, 0x00, // cmp [SelectedLordType],00000001
+                            0x75, 0x10, // jne short 10
+                            
+                            0x01, 0xD3, // add ebx,edx
+                            0x69, 0xDB, 0x18, 0x00, 0x00, 0x00, // imul ebx,ebx,00000018
+                            0x8D, 0x93, new BinRefTo("ArabianEngineerWavs", false), // lea edx,[ebx+ArabianEngineerWavs]
+                            0xEB, 0x0E, // jmp short E
+                            
+                            0x01, 0xD3, // add ebx,edx
+                            0x6B, 0xDB, 0x25, // imul ebx,ebx,25
+                            0x01, 0xC3, // add ebx,eax
+                            0x8B, 0x14, 0x9D, new BinRefTo("OriginalWavFileAddressArray", false) // mov edx,[ebx*4+OriginalWavFileAddressArray]
+                        }
+                    },
+                    new BinaryEdit("o_restore_arabian_engineer_speech_purchase")
+                    {
+                        0x83, 0x3D, new BinRefTo("SelectedLordType", false), 0x01
+                    },
+                    // 466EC9
+                    new BinaryEdit("o_restore_arabian_engineer_speech_engine")
+                    {
+                        new BinSkip(9),
+                        new BinAddress("OriginalEngineerWavAddress", 1),
+                        new BinHook(5)
+                        {
+                            0x81, 0x3D, new BinRefTo("SelectedLordType", false), 0x01, 0x00, 0x00, 0x00, // cmp [SelectedLordType],00000001
+                            0x75, 0x07, // jne short 0x07
+                            0x68, new BinRefTo("ArabianEngineerWavs", false), // push ArabianEngineerWavs
+                            0xEB, 0x05, // jmp short 0x05
+                            0x68, new BinRefTo("OriginalEngineerWavAddress", false) // push OriginalEngineerWavAddress
+                        }
+                    }
+                }
+            },    
 
             #endregion
 
@@ -1156,30 +1647,30 @@ namespace UCP
 
                     // 004AF15A
                     BinHook.CreateEdit("o_playercolor_table1", 7,
-                            0x89, 0xF0, // mov eax, esi
-                            0x3C, 0x01, //  CMP AL,1
-                            0x75, 0x04, //  JNE SHORT
-                            0xB0, new BinByteValue(), //  MOV AL, value
-                            0xEB, 0x06, //  JMP SHORT
-                            0x3C, new BinByteValue(), //  CMP AL, value
-                            0x75, 0x02, //  JNE SHORT
-                            0xB0, 0x01, //  MOV AL,1
-                            0x8B, 0x14, 0x85, // mov edx, [eax*4 + namecolors]
-                            new BinRefTo("namecolors", false)
+                        0x89, 0xF0, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x01, //  MOV AL,1
+                        0x8B, 0x14, 0x85, // mov edx, [eax*4 + namecolors]
+                        new BinRefTo("namecolors", false)
                     ),
 
                     // 004AF1A9
                     BinHook.CreateEdit("o_playercolor_table2", 7,
-                            0x89, 0xF0, // mov eax, esi
-                            0x3C, 0x01, //  CMP AL,1
-                            0x75, 0x04, //  JNE SHORT
-                            0xB0, new BinByteValue(), //  MOV AL, value
-                            0xEB, 0x06, //  JMP SHORT
-                            0x3C, new BinByteValue(), //  CMP AL, value
-                            0x75, 0x02, //  JNE SHORT
-                            0xB0, 0x01, //  MOV AL,1
-                            0x8B, 0x04, 0x85, // mov eax, [eax*4 + namecolors]
-                            new BinRefTo("namecolors", false)
+                        0x89, 0xF0, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x01, //  MOV AL,1
+                        0x8B, 0x04, 0x85, // mov eax, [eax*4 + namecolors]
+                        new BinRefTo("namecolors", false)
                     ),
 
                     #endregion
@@ -1188,16 +1679,16 @@ namespace UCP
 
                     // 004D60B1 end results scoreboard
                     BinHook.CreateEdit("o_playercolor_endscore", 7,
-                            0x89, 0xF0, // mov eax, esi
-                            0x3C, 0x01, //  CMP AL,1
-                            0x75, 0x04, //  JNE SHORT 
-                            0xB0, new BinByteValue(), //  MOV AL, value
-                            0xEB, 0x06, //  JMP SHORT
-                            0x3C, new BinByteValue(), //  CMP AL, value
-                            0x75, 0x02, //  JNE SHORT
-                            0xB0, 0x01, //  MOV AL,1
-                            0x8B, 0x04, 0x85, // mov eax, [eax*4 + namecolors]
-                            new BinRefTo("namecolors", false)
+                        0x89, 0xF0, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT 
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x01, //  MOV AL,1
+                        0x8B, 0x04, 0x85, // mov eax, [eax*4 + namecolors]
+                        new BinRefTo("namecolors", false)
                     ),
 
 
@@ -1279,16 +1770,16 @@ namespace UCP
                 
                     // 004AE562 mightiest lord
                     BinHook.CreateEdit("o_playercolor_scorename", 7,
-                            0x89, 0xF0, // mov eax, esi
-                            0x3C, 0x01, //  CMP AL,1
-                            0x75, 0x04, //  JNE SHORT 
-                            0xB0, new BinByteValue(), //  MOV AL, value
-                            0xEB, 0x06, //  JMP SHORT
-                            0x3C, new BinByteValue(), //  CMP AL, value
-                            0x75, 0x02, //  JNE SHORT
-                            0xB0, 0x01, //  MOV AL,1
-                            0x8B, 0x04, 0x85, // mov eax, [eax*4 + varscore]
-                            new BinRefTo("namecolors", false)
+                        0x89, 0xF0, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT 
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x01, //  MOV AL,1
+                        0x8B, 0x04, 0x85, // mov eax, [eax*4 + varscore]
+                        new BinRefTo("namecolors", false)
                     ),
 
                     #endregion
@@ -2737,7 +3228,7 @@ namespace UCP
                     // 4B4748
                     new BinaryEdit("o_gamespeed_up")
                     {
-                        CMP(EAX, 1000),      // cmp eax, 1000
+                        CMP(EAX, 100000),      // cmp eax, 100000
 
                         JMP(GREATERTHANEQUALS, 0x19), // jge to end
 
@@ -2907,6 +3398,19 @@ namespace UCP
                 }
             },
 
+            new Change("o_increase_path_update_tick_rate", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_increase_path_update_tick_rate")
+                {
+                    // 499605
+                    new BinaryEdit("o_increase_path_update_tick_rate")
+                    {
+                        new BinSkip(25),
+                        new BinBytes(0x32)
+                    },
+                },
+            },
+
             new Change("o_default_multiplayer_speed", ChangeType.Other)
             {
                 new SliderHeader("o_default_multiplayer_speed", false, 20, 90, 1, 40, 40)
@@ -2928,92 +3432,238 @@ namespace UCP
             new Change("o_shfy", ChangeType.Other, false, false)
             {
                 new DefaultHeader("o_shfy_beer", false)
-                // fixes beer popularity bonus
-                {
-                    new BinaryEdit("o_shfy_beerpopularity")
+                    // fixes beer popularity bonus
                     {
-                        new BinSkip(21),
-                        new BinBytes(0xB8, 0x19, 0x00, 0x00, 0x00),
-                        new BinSkip(7),
-                        new BinBytes(0xB8, 0x32, 0x00, 0x00, 0x00),
-                        new BinSkip(13),
-                        new BinBytes(0x83, 0xE2, 0x9C, 0x83, 0xC2, 0x64, 0x90, 0x90, 0x90)
-                    },
+                        new BinaryEdit("o_shfy_beerpopularity")
+                        {
+                            new BinSkip(21),
+                            new BinBytes(0xB8, 0x19, 0x00, 0x00, 0x00),
+                            new BinSkip(7),
+                            new BinBytes(0xB8, 0x32, 0x00, 0x00, 0x00),
+                            new BinSkip(13),
+                            new BinBytes(0x83, 0xE2, 0x9C, 0x83, 0xC2, 0x64, 0x90, 0x90, 0x90)
+                        },
 
-                    new BinaryEdit("o_shfy_beerpopularitytab")
-                    {
-                        new BinSkip(14),
-                        new BinBytes(0xBE, 0x19, 0x00, 0x00, 0x00),
-                        new BinSkip(7),
-                        new BinBytes(0xBE, 0x32, 0x00, 0x00, 0x00),
-                        new BinSkip(13),
-                        new BinBytes(0x83, 0xE1, 0xE7, 0x83, 0xC1, 0x64, 0x90, 0x90, 0x90)
-                    },
+                        new BinaryEdit("o_shfy_beerpopularitytab")
+                        {
+                            new BinSkip(14),
+                            new BinBytes(0xBE, 0x19, 0x00, 0x00, 0x00),
+                            new BinSkip(7),
+                            new BinBytes(0xBE, 0x32, 0x00, 0x00, 0x00),
+                            new BinSkip(13),
+                            new BinBytes(0x83, 0xE1, 0xE7, 0x83, 0xC1, 0x64, 0x90, 0x90, 0x90)
+                        },
 
-                    new BinaryEdit("o_shfy_beertab")
-                    {
-                        new BinSkip(14),
-                        new BinBytes(0xB8, 0x19, 0x00, 0x00, 0x00),
-                        new BinSkip(7),
-                        new BinBytes(0xB8, 0x32, 0x00, 0x00, 0x00),
-                        new BinSkip(13),
-                        new BinBytes(0x83, 0xE0, 0xE7, 0x83, 0xC0, 0x64, 0x90, 0x90)
-                    }
-                },
+                        new BinaryEdit("o_shfy_beertab")
+                        {
+                            new BinSkip(14),
+                            new BinBytes(0xB8, 0x19, 0x00, 0x00, 0x00),
+                            new BinSkip(7),
+                            new BinBytes(0xB8, 0x32, 0x00, 0x00, 0x00),
+                            new BinSkip(13),
+                            new BinBytes(0x83, 0xE0, 0xE7, 0x83, 0xC0, 0x64, 0x90, 0x90)
+                        }
+                    },
 
                 new DefaultHeader("o_shfy_religion", false)
-                // fixes religion popularity bonus
-                {
-                    new BinaryEdit("o_shfy_religionpopularity")
+                    // fixes religion popularity bonus
                     {
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC1, 0x00),
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC1, 0x00),
-                    },
+                        new BinaryEdit("o_shfy_religionpopularity")
+                        {
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC1, 0x00),
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC1, 0x00),
+                        },
 
-                    new BinaryEdit("o_shfy_religionpopularitytab")
-                    {
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC6, 0x00),
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC6, 0x00),
-                    },
+                        new BinaryEdit("o_shfy_religionpopularitytab")
+                        {
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC6, 0x00),
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC6, 0x00),
+                        },
 
-                    new BinaryEdit("o_shfy_religiontab")
-                    {
-                        JMP(UNCONDITIONAL, 0x6D),
-                        new BinSkip(132),
-                        new BinBytes(0xB9, 0x00, 0x00, 0x00, 0x00),
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC1, 0x00)
-                    }
-                },
+                        new BinaryEdit("o_shfy_religiontab")
+                        {
+                            JMP(UNCONDITIONAL, 0x6D),
+                            new BinSkip(132),
+                            new BinBytes(0xB9, 0x00, 0x00, 0x00, 0x00),
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC1, 0x00)
+                        }
+                    },
 
                 new DefaultHeader("o_shfy_peasantspawnrate", false)
-                // fixes peasant spawnrate
-                {
-                    new BinaryEdit("o_shfy_peasantspawnrate")
+                    // fixes peasant spawnrate
                     {
-                        new BinSkip(8),
-                        new BinBytes(0x83, 0xFB, 0x00, 0x90, 0x90, 0x90),
-                        new BinSkip(8),
-                        new BinBytes(0x83, 0xFB, 0x00, 0x90, 0x90, 0x90)
-                    }
-                },
+                        new BinaryEdit("o_shfy_peasantspawnrate")
+                        {
+                            new BinSkip(8),
+                            new BinBytes(0x83, 0xFB, 0x00, 0x90, 0x90, 0x90),
+                            new BinSkip(8),
+                            new BinBytes(0x83, 0xFB, 0x00, 0x90, 0x90, 0x90)
+                        }
+                    },
 
                 new DefaultHeader("o_shfy_resourcequantity", false)
-                // fixes resource quantity
-                {
-                    new BinaryEdit("o_shfy_resourcequantity")
+                    // fixes resource quantity
                     {
-                        new BinBytes(0x83, 0xC0, 0x00)
+                        new BinaryEdit("o_shfy_resourcequantity")
+                        {
+                            new BinBytes(0x83, 0xC0, 0x00)
+                        },
+                    }
+            },
+            
+            // 4FA620
+            new Change("fix_apple_orchard_build_size", ChangeType.Other)
+            {
+                new DefaultHeader("fix_apple_orchard_build_size")
+                {
+                    new BinaryEdit("fix_apple_orchard_build_size")
+                    {
+                        new BinSkip(16),
+                        0x0A // this is not the size, it is the ID in the switch case!
+                    }
+                }
+            },
+            
+            new Change("o_change_siege_engine_spawn_position_catapult", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_change_siege_engine_spawn_position_catapult")
+                {
+                    // 41F4A2
+                    new BinaryEdit("o_change_siege_engine_spawn_position_catapult")
+                    {
+                        new BinAddress("yPositionAddress", 43),
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 41F8AF
+                    new BinaryEdit("o_change_siege_engine_spawn_position_trebutchet")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 41FD7F
+                    new BinaryEdit("o_change_siege_engine_spawn_position_tower")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 42020F
+                    new BinaryEdit("o_change_siege_engine_spawn_position_ram")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 42069F
+                    new BinaryEdit("o_change_siege_engine_spawn_position_shield")
+                    {
+                        new BinSkip(37),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 41E332
+                    new BinaryEdit("o_change_siege_engine_spawn_position_fireballista")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
                     },
                 }
             },
 
+            new Change("o_stop_player_keep_rotation", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_stop_player_keep_rotation")
+                {
+                    // 4ECF93
+                    new BinaryEdit("o_stop_player_keep_rotation_get_preferred_relative_orientation")
+                    {
+                        new BinAddress("getPreferredRelativeOrientationHandle", 12),
+                        new BinAddress("getPreferredRelativeOrientation", 23, true)
+                    },
+                    
+                    // 441D3F
+                    new BinaryEdit("o_stop_player_keep_rotation")
+                    {
+                        new BinSkip(32),
+                        new BinAddress("originalFun", 1, true),
+                        new BinHook(5)
+                        {
+                            0x57, // push edi
+                            0x50, // push eax
+                            0x51, // push ecx
+                            0x68, 0xC8, 0x00, 0x00, 0x00, // push C8
+                            0x68, 0xC8, 0x00, 0x00, 0x00, // push C8
+                            0x57, // push edi
+                            0x50, // push eax
+                            0xB9, new BinRefTo("getPreferredRelativeOrientationHandle", false), // mov ecx,getPreferredRelativeOrientationHandle
+                            0xE8, new BinRefTo("getPreferredRelativeOrientation", true), // call getPreferredRelativeOrientation
+                            0xB8, new BinRefTo("getPreferredRelativeOrientationHandle", false), // mov eax,getPreferredRelativeOrientationHandle
+                            0x05, 0x10, 0x00, 0x00, 0x00, // add eax,10
+                            0x8B, 0x00, // mov eax,[eax]
+                            
+                            0x25, 0xFE, 0xFF, 0x00, 0x00, // and eax,0000FFFE
+                            
+                            0x3D, 0x06, 0x00, 0x00, 0x00, // cmp eax,00000006
+                            0x74, 0x09, // je short 9
+                            0x3D, 0x02, 0x00, 0x00, 0x00, // cmp eax,02
+                            0x74, 0x09, // je short 9
+                            0xEB, 0x0C, // jmp short C
+                            0xB8, 0x02, 0x00, 0x00, 0x00, // mov eax,02
+                            0xEB, 0x05, // jmp short 5
+                            0XB8, 0x06, 0x00, 0x00, 0x00, // mov eax,06
+                            
+                            0x89, 0x44, 0x24, 0x20, // mov [esp+20],eax
+                            0x59, // pop ecx
+                            0x58, // pop eax
+                            0x5F, // pop edi
+                            0xE8, new BinRefTo("originalFun"), // call originalFun
+                        }
+                    }
+                }
+            }
+
             #endregion
         };
+
+        public static List<Change> Changes { get { return changes; } }
 
         /// <summary>
         /// Load changes stored in submodules
