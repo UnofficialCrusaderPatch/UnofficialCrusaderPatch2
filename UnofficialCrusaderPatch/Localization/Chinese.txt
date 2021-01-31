@@ -1,5 +1,6 @@
 // ======================
 //         dev
+<<<<<<< Updated upstream
 // ======================
 ai_housing
 {
@@ -64,6 +65,16 @@ o_stop_player_keep_rotation
 o_stop_player_keep_rotation_descr
 {
 "Player keeps now get rotated the same way, that AI keeps rotate on a map, facing with their campfire outwards towards the map edge."
+=======
+o_fast_placing
+{
+	"Fast placing"
+}
+
+o_fast_placing_descr
+{
+	"Hold left mouse button down to place killing pits, good/bad things and woodcutters."
+>>>>>>> Stashed changes
 }
 
 o_restore_arabian_engineer_speech
