@@ -1508,12 +1508,9 @@
     <None Include="App.config" />
     <EmbeddedResource Include="CodeBlocks\s_resource.block" />
     <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed_reset.block" />
-<<<<<<< Updated upstream
     <EmbeddedResource Include="CodeBlocks\ai_buildhousing.block" />
     <EmbeddedResource Include="CodeBlocks\ai_deletehousing.block" />
-=======
     <EmbeddedResource Include="CodeBlocks\o_fast_placing.block" />
->>>>>>> Stashed changes
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />

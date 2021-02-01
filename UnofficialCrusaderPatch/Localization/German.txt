@@ -1,9 +1,6 @@
 // ======================
 //         dev
 // ======================
-<<<<<<< Updated upstream
-ai_housing
-=======
 o_fast_placing
 {
 	"Fast placing"
@@ -14,8 +11,7 @@ o_fast_placing_descr
 	"Hold left mouse button down to place killing pits, good/bad things and woodcutters."
 }
 
-o_restore_arabian_engineer_speech
->>>>>>> Stashed changes
+ai_housing
 {
 "Customize the AIs decision to build and delete houses"
 }
