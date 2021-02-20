@@ -302,7 +302,7 @@ namespace UCP
              * REMANNING WALL DEFENSES
              */
 
-            new Change("ai_defense", ChangeType.Bugfix)
+            new Change("ai_defense", ChangeType.Bugfix, true)
             {
                 // Crusader does count defensive units on walls and patrols together
                 // this prevents the AI from reinforcing missing troops on walls, if
@@ -310,7 +310,7 @@ namespace UCP
                 // 
                 // Solution: Implement another counter only for defensive units on walls
 
-                new DefaultHeader("ai_defense")
+                new DefaultHeader("ai_defense", true)
                 {
                     // 4D26AF
                     new BinaryEdit("ai_defense_group")
@@ -373,7 +373,10 @@ namespace UCP
                             0x8B, 0x14, 0x95, new BinRefTo("defNum", false), // mov edx,[edx*4 + defNum]
                         }
                     },
+                },
 
+                new DefaultHeader("ai_defense_legacy", false)
+                {
                     // 004D3486
                     new BinaryEdit("ai_defense_affinity")
                     {

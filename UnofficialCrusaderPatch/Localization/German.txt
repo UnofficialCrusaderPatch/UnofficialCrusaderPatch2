@@ -1,6 +1,16 @@
 // ======================
 //         dev
 // ======================
+ai_defense_legacy
+{
+"Erhöht die Wahrscheinlichkeit der KIs defensive Truppen auszubilden"
+}
+
+ai_defense_legacy_descr
+{
+"Einige KIs bildeten keine defensiven Truppen aus. Als Lösung bekam jede KI eine höhere Wahrscheinlichkeit hierzu. Mit der Möglichkeit die AICs zu ändern ist diese Option unnötig geworden."
+}
+
 ai_housing
 {
 "Customize the AIs decision to build and delete houses"
