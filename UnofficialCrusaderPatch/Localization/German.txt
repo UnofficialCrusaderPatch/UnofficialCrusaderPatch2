@@ -1,6 +1,16 @@
 // ======================
 //         dev
 // ======================
+ai_defense
+{
+"Verstärkung der Burgverteidigung fixen"
+}
+
+ai_defense_descr
+{
+"Fixt einen Bug, der die KI davon abhielt fehlende Truppen auf Wällen und Türmen zu verstärken, solange noch Defensivpatrouillen vorhanden waren."
+}
+
 ai_housing
 {
 "Passe an, wie die KI entscheidet, Häuser zu bauen und abzureißen"
@@ -992,19 +1002,6 @@ o_xtreme_descr
 ui_AIV
 {
 	"AIV"
-}
-
-ai_defense
-{
-	"Verstärkung der Burgverteidigung fixen"
-}
-
-ai_defense_descr
-{
-	"Fixt einen Bug, der die KI davon abhielt fehlende Truppen auf &
-Wällen und Türmen zu verstärken, solange noch Defensivpatrouillen &
-vorhanden waren. Außerdem wurde generell die Wahrscheinlichkeit erhöht &
-Verstärkung zu rekrutieren, da diese bei einigen KIs auf null gesetzt war."
 }
 
 ai_access

@@ -1,6 +1,17 @@
 // ======================
 //         dev
 // ======================
+ai_defense
+{
+	"Fix reinforcement of defense troops"
+}
+
+ai_defense_descr
+{
+	"Fixes a bug which stopped the AI from reinforcing missing troops &
+on walls and towers, as long as defensive patrols were still around."
+}
+
 ai_housing
 {
 "Customize the AIs decision to build and delete houses"
@@ -992,19 +1003,6 @@ o_xtreme_descr
 ui_AIV
 {
 	"AIV"
-}
-
-ai_defense
-{
-	"Fix reinforcement of defense troops"
-}
-
-ai_defense_descr
-{
-	"Fixes a bug which stopped the AI from reinforcing missing troops &
-on walls and towers, as long as defensive patrols were still around. &
-Moreover, the probability for AIs to recruit defensive troops was generally &
-increased, as this value was vor some AIs zero."
 }
 
 ai_access

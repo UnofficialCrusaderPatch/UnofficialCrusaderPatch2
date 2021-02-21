@@ -372,25 +372,9 @@ namespace UCP
                             0x8B, 0x54, 0x24, 0x04, // mov edx,[esp+04]
                             0x8B, 0x14, 0x95, new BinRefTo("defNum", false), // mov edx,[edx*4 + defNum]
                         }
-                    },
-
-                    // 004D3486
-                    new BinaryEdit("ai_defense_affinity")
-                    {
-                        // increase the general affinity to reman defenses
-                        // this value was zero for some AIs like the rat
-                        new BinHook(7)
-                        {
-                            // ori code
-                            0x8B, 0xAC, 0x87, 0x28, 0x01, 0x00, 0x00, // mov ebp,[edi+eax*4+00000128]
-
-                            // add a constant value of 20; snake's default f.e. is 30
-                            ADD(EBP, 0x14) // add ebp, 14h
-                        }
                     }
                 }
             },
-
 
             /*
              *  OX TETHER SPAM
