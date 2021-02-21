@@ -2804,7 +2804,7 @@ namespace UCP
                     // 4B4748
                     new BinaryEdit("o_gamespeed_up")
                     {
-                        CMP(EAX, 100000),      // cmp eax, 100000
+                        CMP(EAX, 10000),      // cmp eax, 10000
 
                         JMP(GREATERTHANEQUALS, 0x19), // jge to end
 
