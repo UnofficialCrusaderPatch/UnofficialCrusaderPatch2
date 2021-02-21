@@ -1,16 +1,6 @@
 // ======================
 //         dev
 // ======================
-ai_defense_legacy
-{
-"Increases the probability for AI to recruit defensive troops"
-}
-
-ai_defense_legacy_descr
-{
-"Some AI had a probability of zero to recruit defensive troops. As fix, each AI got a constant bonus to recruit defensive troops. With the advent of AIC changes, this is not needed anymore."
-}
-
 ai_housing
 {
 "Customize the AIs decision to build and delete houses"
