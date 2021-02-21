@@ -3,67 +3,67 @@
 // ======================
 ai_housing
 {
-"Customize the AIs decision to build and delete houses"
+"Passe an, wie die KI entscheidet, Häuser zu bauen und abzureißen"
 }
 
 ai_buildhousing_descr
 {
-"Customize the AIs decision to build and delete houses"
+"Passe an, wie die KI entscheidet, Häuser zu bauen und abzureißen"
 }
 
 build_housing_descr
 {
-"Number of extra available housing before AI stops building houses"
+"Anzahl zusätzlicher freier Behausungen bevor die KI aufhört, Hütten zu bauen"
 }
 
 delete_housing_descr
 {
-"After the AI has reached this additional amount of available housing after it stopped building houses, it will delete houses"
+"Nachdem die KI diese zusätzliche Menge freier Behausungen erreicht hat, nachdem sie aufgehört hat, Hütten zu bauen, reißt sie Hütten ab"
 }
 
 aiv_prompt
 {
-"Custom modified AIVs detected. Before installing, click 'Yes' to save the currently installed AIVs without overwriting the original backup. Click 'No' to overwrite installed AIVs without backing them up, and 'Cancel' to cancel."
+"Benutzerdefiniert veränderte AIVs erkannt. Klicke vor der Installation auf 'Ja', um die aktuell installierten AIVs zu speichern, ohne das ursprüngliche Backup zu überschreiben. Klicke auf 'Nein', um die installierten AIVs zu überschreiben, ohne ein Backup zu erstellen. Klicke auf 'Abbrechen', um den Vorgang abzubrechen."
 }
 
 aiv_cli_prompt
 {
-"Custom modified AIVs detected. Enter 'delete' to erase or enter folder name to copy files to."
+"Benutzerdefiniert veränderte AIVs erkannt. Gib 'delete' ein, um diese zu löschen, oder gib einen Ordnernamen an, um die Dateien dorthin zu kopieren."
 }
 
 install_abort_io
 {
-"Installation aborted. Files with the same name already exist in this folder. Please try again and select a different folder."
+"Installation abgebrochen. In diesem Ordner sind bereits gleichnamige Dateien vorhanden. Bitte versuche es erneut und wähle einen anderen Ordner aus."
 }
 
 install_abort
 {
-"Installation aborted"
+"Installation abgebrochen"
 }
 
 backup_aiv_select
 {
-"Select Backup AIV folder"
+"Backup AIV Ordner auswählen"
 }
 
 o_change_siege_engine_spawn_position_catapult
 {
-"Zentriert Belagerungsgeräte nach der Konstruktion"
+"Belagerungsgeräte nach dem Aufbauen zentrieren"
 }
 
 o_change_siege_engine_spawn_position_catapult_descr
 {
-"Belagerungsgeräte erscheinen nun am Punkt der Zeltmitte nach der Konstruktion, statt wie bisher in der oberen linken Ecke."
+"Belagerungsgeräte erscheinen nun nach dem Aufbauen am Punkt der Zeltmitte, statt wie bisher in der oberen linken Ecke des Zelts."
 }
 
 o_stop_player_keep_rotation
 {
-"Rotiere Spieler Bergfriede"
+"Drehe Bergfriede menschlicher Spieler"
 }
 
 o_stop_player_keep_rotation_descr
 {
-"Spieler Bergfriede werden hiermit auf gleiche Weise rotiert, wie es bei KI Bergfrieden bereits der Fall ist. Hierbei wird das Lagerfeuer immer zum nächsten Rand der Karte hin ausgerichtet."
+"Bergfriede menschlicher Spieler werden nun zu Beginn des Spiels genauso gedreht wie Bergfriede von KIs, sodass das Lagerfeuer immer zum jeweils nächstliegenden Kartenrand hin ausgerichtet ist."
 }
 
 o_restore_arabian_engineer_speech
@@ -73,7 +73,7 @@ o_restore_arabian_engineer_speech
 
 o_restore_arabian_engineer_speech_descr
 {
-"Erlaubt den Baumeistern im Falle, dass der Spieler den Arabischen Lord auswählt, die originalen Arabischen Sounddateien zu verwenden."
+"Erlaubt den Baumeistern im Falle, dass der Spieler den Arabischen Lord auswählt, die originalen Arabischen Sprachdateien zu verwenden."
 }
 
 u_fix_lord_animation_stuck_movement
