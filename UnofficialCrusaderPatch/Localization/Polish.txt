@@ -1,6 +1,17 @@
 // ======================
 //         dev
 // ======================
+ai_defense
+{
+"Usprawnione wysyłanie posiłków do obrony"
+}
+
+ai_defense_descr
+{
+"Naprawniono błąd, który uniemożliwiał SI dosyłanie brakujących jednostek &
+na mury i wieże w momencie, gdy patrole defensywne były ciągle obecne."
+}
+
 ai_housing
 {
 "Customize the AIs decision to build and delete houses"
@@ -1017,19 +1028,6 @@ o_xtreme_descr
 ui_AIV
 {
 	"AIV"
-}
-
-ai_defense
-{
-	"Usprawnione wysyłanie posiłków do obrony"
-}
-
-ai_defense_descr
-{
-	"Naprawniono błąd, który uniemożliwiał SI dosyłanie brakujących jednostek &
-na mury i wieże w momencie, gdy patrole defensywne były ciągle obecne. &
-Dodatkowo, szansa na to, że SI stworzy jednostki do obrony została &
-zwiększona, gdyż ta wartość była ustawiona jako 0 dla niektórych przeciwników."
 }
 
 ai_access
