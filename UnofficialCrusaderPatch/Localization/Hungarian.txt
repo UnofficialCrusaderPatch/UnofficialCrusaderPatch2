@@ -1,6 +1,16 @@
 // ======================
 //         dev
 // ======================
+ai_defense
+{
+"Várvédédő egységek megerősítése kijavítva"
+}
+
+ai_defense_descr
+{
+"Kijavítja azt a hibát, ami megakadályozza az MI-t abban, hogy a hiányzó egységekkel megerősítse a várfalat és a tornyot, ameddig rendelkezik még védekező-járőröző egységekkel."
+}
+
 ai_housing
 {
 "Az MI döntéseinek testreszabása a házak építése és lerombolásakor"
@@ -985,16 +995,6 @@ o_xtreme_descr
 ui_AIV
 {
 	"AIV"
-}
-
-ai_defense
-{
-	"Várvédédő egységek megerősítése kijavítva"
-}
-
-ai_defense_descr
-{
-	"Kijavítja azt a hibát, ami megakadályozza az MI-t abban, hogy a hiányzó egységekkel megerősítse a várfalat és a tornyot, ameddig rendelkezik még védekező-járőröző egységekkel. Egyébként általánosságban növelve lett az erősítés toborzása, mert egyes MI-nél ez nullára volt állítva."
 }
 
 ai_access
