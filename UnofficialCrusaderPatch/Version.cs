@@ -372,8 +372,8 @@ namespace UCP
                             0x8B, 0x54, 0x24, 0x04, // mov edx,[esp+04]
                             0x8B, 0x14, 0x95, new BinRefTo("defNum", false), // mov edx,[edx*4 + defNum]
                         }
-                    },
-                },
+                    }
+                }
             },
 
             /*
