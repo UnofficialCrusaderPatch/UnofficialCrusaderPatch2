@@ -121,6 +121,7 @@
     <Compile Include="Patching\EditTypes\BinaryEdit.cs" />
     <Compile Include="Patching\EditTypes\EditFailures.cs" />
     <Compile Include="Patching\Headers\LabelCollection.cs" />
+    <Compile Include="Patching\Headers\ParamHeader.cs" />
     <Compile Include="Patching\Headers\ValueHeader.cs" />
     <Compile Include="Patching\Patcher.cs" />
     <Compile Include="Patching\Percentage.cs" />
@@ -162,13 +163,7 @@
     <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_shield.block" />
     <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_tower.block" />
     <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_trebutchet.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_small_wall_placement_count.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_small_wall_placement_count_pre.block" />
     <EmbeddedResource Include="CodeBlocks\fix_apple_orchard_build_size.block" />
-    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_building.block" />
-    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding.block" />
-    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_build_function_exit.block" />
-    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_currently_selected_building.block" />
     <EmbeddedResource Include="CodeBlocks\o_increase_path_update_tick_rate.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb_2.block" />
@@ -210,7 +205,6 @@
     <EmbeddedResource Include="CodeBlocks\u_fix_lord_animation_stuck_building_attack.block" />
     <EmbeddedResource Include="CodeBlocks\u_fix_lord_animation_stuck_movement.block" />
     <EmbeddedResource Include="CodeBlocks\u_fix_applefarm_blocking.block" />
-    <EmbeddedResource Include="CodeBlocks\u_spearmen_run.block" />
     <EmbeddedResource Include="CodeBlocks\u_tanner_fix.block" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -1520,6 +1514,9 @@
     <None Include="App.config" />
     <EmbeddedResource Include="CodeBlocks\s_resource.block" />
     <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed_reset.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_buildhousing.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_deletehousing.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_recruitstate_initialtimer.block" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />

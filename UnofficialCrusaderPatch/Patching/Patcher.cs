@@ -34,13 +34,24 @@ namespace UCP.Patching
             path = Path.Combine(folderPath, XtremeExe);
             return File.Exists(path);
         }
-        public static void Install(string folderPath, Percentage.SetHandler SetPercent)
+        public static void Install(string folderPath, Percentage.SetHandler SetPercent, bool overwrite, bool graphical)
         {
             Percentage perc = new Percentage(SetPercent);
             perc.SetTotal(0);
 
             perc.NextLimit = 0.1;
-            AIVChange.DoChange(folderPath);
+
+            try
+            {
+                AIVChange.DoChange(folderPath, overwrite, graphical);
+            } catch (IOException) {
+                Debug.Show(Localization.Get("install_abort_io"));
+                return;
+            } catch (Exception)
+            {
+                Debug.Show(Localization.Get("install_abort"));
+                return;
+            }
             perc.Set(1.0);
 
             DoChanges(folderPath, perc);

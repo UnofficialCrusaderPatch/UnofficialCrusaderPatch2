@@ -1,7 +1,6 @@
 // ======================
 //         dev
 // ======================
-
 o_seed_modification_possibility_title
 {
 "Game Seed"
@@ -9,22 +8,88 @@ o_seed_modification_possibility_title
 
 o_seed_modification_possibility_only_set
 {
-"No seed save, only set seed from live"
+"Enable game seed"
 }
 
 o_seed_modification_possibility_only_set_descr
 {
-"Does not save seeds to gameseeds folder, but still loads gameseeds/live seed if it exists."
+"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For player-AI games, it will ensure the same start conditions in the map (AIV selection for example). To set the game seed, enable this option and create a file called 'live' with a 6 digit number in the game install/gameseeds directory."
 }
 
 o_seed_modification_possibility
 {
-"Save random seeds, set seed from live"
+"Enable & Save game seeds"
 }
 
 o_seed_modification_possibility_descr
 {
-"Saves random seeds from matches on match start, but still loads gameseeds/live seed if it exists."
+"This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards."
+}
+
+ai_recruitstate_initialtimer
+{
+"Customise the initial AI's defence recruit time"
+}
+
+ai_recruitstate_initialtimervalue_descr
+{
+"Set this value to number of months for which the AI will exclusively recruit defence troops, unless it has already filled up its defence total"
+}
+
+ai_defense
+{
+	"Fix reinforcement of defense troops"
+}
+
+ai_defense_descr
+{
+	"Fixes a bug which stopped the AI from reinforcing missing troops &
+on walls and towers, as long as defensive patrols were still around."
+}
+
+ai_housing
+{
+"Customize the AIs decision to build and delete houses"
+}
+
+ai_buildhousing_descr
+{
+"Customize the AIs decision to build and delete houses"
+}
+
+build_housing_descr
+{
+"Number of extra available housing before AI stops building houses"
+}
+
+delete_housing_descr
+{
+"After the AI has reached this additional amount of available housing after it stopped building houses, it will delete houses"
+}
+
+aiv_prompt
+{
+"Custom modified AIVs detected. Before installing, click 'Yes' to save the currently installed AIVs without overwriting the original backup. Click 'No' to overwrite installed AIVs without backing them up, and 'Cancel' to cancel."
+}
+
+aiv_cli_prompt
+{
+"Custom modified AIVs detected. Enter 'delete' to erase or enter folder name to copy files to."
+}
+
+install_abort_io
+{
+"Installation aborted. Files with the same name already exist in this folder. Please try again and select a different folder."
+}
+
+install_abort
+{
+"Installation aborted"
+}
+
+backup_aiv_select
+{
+"Select Backup AIV folder"
 }
 
 o_change_siege_engine_spawn_position_catapult
@@ -69,16 +134,6 @@ u_fix_lord_animation_stuck_movement_descr
 "Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
 }
 
-o_fix_small_wall_placement_count
-{
-"Fix small wall placement count preview"
-}
-
-o_fix_small_wall_placement_count_descr
-{
-"Fixes the bug where the small wall placement preview only allowed the player to use half of their stone."
-}
-
 fix_apple_orchard_build_size
 {
 "Shrink apple orchard's build size"
@@ -97,16 +152,6 @@ u_fix_applefarm_blocking
 u_fix_applefarm_blocking_descr
 {
 "Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
-}
-
-o_allow_overbuilding
-{
-"Allow overbuilding workers and units"
-}
-
-o_allow_overbuilding_descr
-{
-"Allows the player to overbuild workers with buildings, while allowing to overbuild units with walls and towers making them pop at the top."
 }
 
 o_increase_path_update_tick_rate
@@ -129,16 +174,6 @@ o_fix_ladderclimb
 o_fix_ladderclimb_descr
 {
 "Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
-}
-
-u_spearmen_run
-{
-"Spearmen run by default instead of walking"
-}
-
-u_spearmen_run_descr
-{
-"Makes spearmen run by default instead of the slow walking."
 }
 
 u_tanner_fix
@@ -1003,19 +1038,6 @@ o_xtreme_descr
 ui_AIV
 {
 	"AIV"
-}
-
-ai_defense
-{
-	"Fix reinforcement of defense troops"
-}
-
-ai_defense_descr
-{
-	"Fixes a bug which stopped the AI from reinforcing missing troops &
-on walls and towers, as long as defensive patrols were still around. &
-Moreover, the probability for AIs to recruit defensive troops was generally &
-increased, as this value was vor some AIs zero."
 }
 
 ai_access
