@@ -1,6 +1,16 @@
 // ======================
 //         dev
 // ======================
+ai_recruitstate_initialtimer
+{
+"Customise the initial AI's defence recruit time"
+}
+
+ai_recruitstate_initialtimervalue_descr
+{
+"Set this value to number of months for which the AI will exclusively recruit defence troops, unless it has already filled up its defence total"
+}
+
 ai_defense
 {
 "Исправляет подкрепление войск обороны AI"

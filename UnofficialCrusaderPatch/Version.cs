@@ -714,6 +714,19 @@ namespace UCP
             },
 
 
+            new Change("ai_recruitstate_initialtimer", ChangeType.AILords)
+            {
+                new SliderHeader("ai_recruitstate_initialtimervalue", false, 0, 30, 1, 6, 1)
+                {
+                    new BinaryEdit("ai_recruitstate_initialtimer")
+                    {
+                        new BinSkip(36),
+                        new BinInt32Value(800)
+                    }
+                }
+            },
+
+
             /*
              *  AI RECRUIT ADDITIONAL ATTACK TROOPS 
              */
