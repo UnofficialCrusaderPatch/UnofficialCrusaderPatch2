@@ -1144,7 +1144,19 @@ namespace UCP
                         }
                     }
                 }
-            },    
+            },
+
+            new Change("u_spearmen_run", ChangeType.Troops, true)
+            {
+                new DefaultHeader("u_spearmen_run")
+                {
+                    // 0055E07E
+                    new BinaryEdit("u_spearmen_run")
+                    {
+                        new BinBytes(0x90, 0x90) // remove je
+                    }
+                }
+            },
 
             #endregion
 
