@@ -3348,7 +3348,7 @@ namespace UCP
                         },
                     }
                 },
-                new DefaultHeader("o_seed_modification_possibility", true)
+                new DefaultHeader("o_seed_modification_possibility", false)
                 {
                     // 004964AB
                     new BinaryEdit("o_seed_modification_possibility_fn1")
