@@ -1,6 +1,31 @@
 // ======================
 //         dev
 // ======================
+o_seed_modification_possibility_title
+{
+"Game Seed"
+}
+
+o_seed_modification_possibility_only_set
+{
+"Enable game seed"
+}
+
+o_seed_modification_possibility_only_set_descr
+{
+"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For player-AI games, it will ensure the same start conditions in the map (AIV selection for example). To set the game seed, enable this option and create a file called 'live' with a 6 digit number in the game install/gameseeds directory. CAUTION: This feature only works after also restarting the game!"
+}
+
+o_seed_modification_possibility
+{
+"Enable & Save game seeds"
+}
+
+o_seed_modification_possibility_descr
+{
+"This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards."
+}
+
 ai_recruitstate_initialtimer
 {
 "Customise the initial AI's defence recruit time"
