@@ -11,6 +11,52 @@ u_spearmen_run_descr
 "Makes spearmen run by default instead of the slow walking."
 }
 
+o_seed_modification_possibility_title
+{
+"Game Seed"
+}
+
+o_seed_modification_possibility_only_set
+{
+"Enable game seed"
+}
+
+o_seed_modification_possibility_only_set_descr
+{
+"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For player-AI games, it will ensure the same start conditions in the map (AIV selection for example). To set the game seed, enable this option and create a file called 'live' with a 6 digit number in the game install/gameseeds directory. CAUTION: This feature only works after also restarting the game!"
+}
+
+o_seed_modification_possibility
+{
+"Enable & Save game seeds"
+}
+
+o_seed_modification_possibility_descr
+{
+"This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards."
+}
+
+ai_recruitstate_initialtimer
+{
+"Customise the initial AI's defence recruit time"
+}
+
+ai_recruitstate_initialtimervalue_descr
+{
+"Set this value to number of months for which the AI will exclusively recruit defence troops, unless it has already filled up its defence total"
+}
+
+ai_defense
+{
+"修复ai不会补充防守兵种"
+}
+
+ai_defense_descr
+{
+"当ai城墙防守部队出现减员时，如果城外防守部队仍然存在，那么ai将&
+不会补充城墙防守部队。"
+}
+
 ai_housing
 {
 "Customize the AIs decision to build and delete houses"
@@ -1020,18 +1066,6 @@ o_xtreme_descr
 ui_AIV
 {
 	"AIV"
-}
-
-ai_defense
-{
-	"修复ai不会补充防守兵种"
-}
-
-ai_defense_descr
-{
-	"当ai城墙防守部队出现减员时，如果城外防守部队仍然存在，那么ai将&
-不会补充城墙防守部队。打开此选项后ai将会正确补充减员。这也会加快ai&
-训练防守部队的速度。"
 }
 
 ai_access
