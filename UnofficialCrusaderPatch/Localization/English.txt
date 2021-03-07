@@ -62,9 +62,19 @@ build_housing_descr
 "Number of extra available housing before AI stops building houses"
 }
 
+campfire_housing_descr
+{
+"Number of campfire peasants at which AI stops building houses"
+}
+
+delete_housing
+{
+"Disable the AI's ability to delete houses"
+}
+
 delete_housing_descr
 {
-"After the AI has reached this additional amount of available housing after it stopped building houses, it will delete houses"
+"When this option is selected the AI will never delete houses"
 }
 
 aiv_prompt
