@@ -64,7 +64,7 @@ build_housing_descr
 
 campfire_housing_descr
 {
-"Number of campfire peasants at which AI stops building houses"
+"Number of peasants at the campfire before the AI stops buildings houses"
 }
 
 delete_housing
