@@ -699,6 +699,9 @@ namespace UCP
                     }
                 }
             },
+
+            // Fix Jester visiting assassins on the battlefield
+            BinBytes.Change("u_jestermoveto_assassin", ChangeType.Bugfix, true, 0x01),
             #endregion
 
             #region AI LORDS
