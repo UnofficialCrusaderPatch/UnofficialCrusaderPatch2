@@ -3,7 +3,7 @@
 // ======================
 u_spearmen_run
 {
-"Spearmen run by default instead of walking"
+"Spearmen run by default instead of walking "
 }
 
 u_spearmen_run_descr
