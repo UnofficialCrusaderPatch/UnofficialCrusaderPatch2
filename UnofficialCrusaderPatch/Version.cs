@@ -582,7 +582,7 @@ namespace UCP
 
             new Change("ai_housing", ChangeType.AILords, false, false)
             {
-                new SliderHeader("build_housing", false, 1, 200, 10, 12, 30)
+                new SliderHeader("build_housing", false, 1, 200, 1, 12, 30)
                 {
                     new BinaryEdit("ai_buildhousing")
                     {
