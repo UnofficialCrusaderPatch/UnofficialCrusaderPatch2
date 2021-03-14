@@ -906,6 +906,25 @@ o_keys_descr
 Ctrl+L键打开读取界面。"
 }
 
+o_quicksave
+{
+	"Enable quicksaves via CTRL-S and CTRL-L"
+}
+
+o_quicksave_descr
+{
+	"CTRL-S can be used to perform a quicksave. CTRL-L will load the same save"
+}
+
+o_wasd
+{
+	"Enable using WASD to move around"
+}
+
+o_wasd_descr
+{
+	"WASD can be used to move around in addition to the existing arrow keys"
+}
 
 
 
