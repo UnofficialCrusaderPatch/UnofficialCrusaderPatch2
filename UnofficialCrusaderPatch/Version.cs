@@ -3559,6 +3559,18 @@ namespace UCP
                         }
                     }
                 }
+            },
+
+            new Change("o_disable_border_scrolling", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_disable_border_scrolling")
+                {
+                    // 004681CF
+                    new BinaryEdit("o_disable_border_scrolling")
+                    {
+                        new BinBytes(0xEB, 0x38)
+                    }
+                }
             }
 
             #endregion
