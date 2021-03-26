@@ -3,7 +3,7 @@
 // ======================
 o_disable_border_scrolling
 {
-"Deaktiviere scrollen am Bildschirmrand"
+"Deaktiviere Scrollen am Bildschirmrand"
 }
 
 o_disable_border_scrolling_descr
