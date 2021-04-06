@@ -1143,7 +1143,7 @@ namespace UCP
                 }
             },
 
-            new Change("u_spearmen_run", ChangeType.Troops, true)
+            new Change("u_spearmen_run", ChangeType.Troops, false)
             {
                 new DefaultHeader("u_spearmen_run")
                 {
