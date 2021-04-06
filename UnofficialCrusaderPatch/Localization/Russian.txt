@@ -1,6 +1,16 @@
 // ======================
 //         dev
 // ======================
+u_spearmen_run
+{
+"Spearmen run by default instead of walking"
+}
+
+u_spearmen_run_descr
+{
+"Makes spearmen run by default instead of the slow walking."
+} 
+
 o_seed_modification_possibility_title
 {
 "Game Seed"
