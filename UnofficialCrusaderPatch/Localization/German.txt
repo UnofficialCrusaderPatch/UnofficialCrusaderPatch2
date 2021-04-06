@@ -48,22 +48,32 @@ ai_defense_descr
 
 ai_housing
 {
-"Passe an, wie die KI entscheidet, Häuser zu bauen und abzureißen"
+"Customize the AIs decision to build and delete houses"
 }
 
 ai_buildhousing_descr
 {
-"Passe an, wie die KI entscheidet, Häuser zu bauen und abzureißen"
+"Customize the AIs decision to build and delete houses"
 }
 
 build_housing_descr
 {
-"Anzahl zusätzlicher freier Behausungen bevor die KI aufhört, Hütten zu bauen"
+"Number of extra available housing before AI stops building houses"
+}
+
+campfire_housing_descr
+{
+"Number of peasants at the campfire before the AI stops buildings houses"
+}
+
+delete_housing
+{
+"Disable the AI's ability to delete houses"
 }
 
 delete_housing_descr
 {
-"Nachdem die KI diese zusätzliche Menge freier Behausungen erreicht hat, nachdem sie aufgehört hat, Hütten zu bauen, reißt sie Hütten ab"
+"When this option is selected the AI will never delete houses"
 }
 
 aiv_prompt

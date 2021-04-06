@@ -62,11 +62,20 @@ build_housing_descr
 "Number of extra available housing before AI stops building houses"
 }
 
-delete_housing_descr
+campfire_housing_descr
 {
-"After the AI has reached this additional amount of available housing after it stopped building houses, it will delete houses"
+"Number of peasants at the campfire before the AI stops buildings houses"
 }
 
+delete_housing
+{
+"Disable the AI's ability to delete houses"
+}
+
+delete_housing_descr
+{
+"When this option is selected the AI will never delete houses"
+}
 aiv_prompt
 {
 "Custom modified AIVs detected. Before installing, click 'Yes' to save the currently installed AIVs without overwriting the original backup. Click 'No' to overwrite installed AIVs without backing them up, and 'Cancel' to cancel."
