@@ -11,6 +11,136 @@ o_fix_rapid_deletion_bug_descr
 "Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
 }
 
+u_spearmen_run
+{
+"Spearmen run by default instead of walking"
+}
+
+u_spearmen_run_descr
+{
+"Makes spearmen run by default instead of the slow walking."
+}
+
+o_seed_modification_possibility_title
+{
+"Game Seed"
+}
+
+o_seed_modification_possibility_only_set
+{
+"Enable game seed"
+}
+
+o_seed_modification_possibility_only_set_descr
+{
+"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For player-AI games, it will ensure the same start conditions in the map (AIV selection for example). To set the game seed, enable this option and create a file called 'live' with a 6 digit number in the game install/gameseeds directory. CAUTION: This feature only works after also restarting the game!"
+}
+
+o_seed_modification_possibility
+{
+"Enable & Save game seeds"
+}
+
+o_seed_modification_possibility_descr
+{
+"This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards."
+}
+
+ai_recruitstate_initialtimer
+{
+"Customise the initial AI's defence recruit time"
+}
+
+ai_recruitstate_initialtimervalue_descr
+{
+"Set this value to number of months for which the AI will exclusively recruit defence troops, unless it has already filled up its defence total"
+}
+
+ai_defense
+{
+"Usprawnione wysyłanie posiłków do obrony"
+}
+
+ai_defense_descr
+{
+"Naprawniono błąd, który uniemożliwiał SI dosyłanie brakujących jednostek &
+na mury i wieże w momencie, gdy patrole defensywne były ciągle obecne."
+}
+
+ai_housing
+{
+"Customize the AIs decision to build and delete houses"
+}
+
+ai_buildhousing_descr
+{
+"Customize the AIs decision to build and delete houses"
+}
+
+build_housing_descr
+{
+"Number of extra available housing before AI stops building houses"
+}
+
+campfire_housing_descr
+{
+"Number of peasants at the campfire before the AI stops buildings houses"
+}
+
+delete_housing
+{
+"Disable the AI's ability to delete houses"
+}
+
+delete_housing_descr
+{
+"When this option is selected the AI will never delete houses"
+}
+aiv_prompt
+{
+"Custom modified AIVs detected. Before installing, click 'Yes' to save the currently installed AIVs without overwriting the original backup. Click 'No' to overwrite installed AIVs without backing them up, and 'Cancel' to cancel."
+}
+
+aiv_cli_prompt
+{
+"Custom modified AIVs detected. Enter 'delete' to erase or enter folder name to copy files to."
+}
+
+install_abort_io
+{
+"Installation aborted. Files with the same name already exist in this folder. Please try again and select a different folder."
+}
+
+install_abort
+{
+"Installation aborted"
+}
+
+backup_aiv_select
+{
+"Select Backup AIV folder"
+}
+
+o_change_siege_engine_spawn_position_catapult
+{
+"Center siege engine spawn position"
+}
+
+o_change_siege_engine_spawn_position_catapult_descr
+{
+"Siege engines are now centered after they are finished building instead of spawning at the top corner of the tent."
+}
+
+o_stop_player_keep_rotation
+{
+"Rotate player keeps"
+}
+
+o_stop_player_keep_rotation_descr
+{
+"Player keeps now get rotated the same way, that AI keeps rotate on a map, facing with their campfire outwards towards the map edge."
+}
+
 o_restore_arabian_engineer_speech
 {
 "Restore engineer arabian speech"
@@ -33,16 +163,6 @@ u_fix_lord_animation_stuck_movement_descr
 "Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
 }
 
-o_fix_small_wall_placement_count
-{
-"Fix small wall placement count preview"
-}
-
-o_fix_small_wall_placement_count_descr
-{
-"Fixes the bug where the small wall placement preview only allowed the player to use half of their stone."
-}
-
 fix_apple_orchard_build_size
 {
 "Shrink apple orchard's build size"
@@ -61,16 +181,6 @@ u_fix_applefarm_blocking
 u_fix_applefarm_blocking_descr
 {
 "Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
-}
-
-o_allow_overbuilding
-{
-"Allow overbuilding workers and units"
-}
-
-o_allow_overbuilding_descr
-{
-"Allows the player to overbuild workers with buildings, while allowing to overbuild units with walls and towers making them pop at the top."
 }
 
 o_increase_path_update_tick_rate
@@ -93,16 +203,6 @@ o_fix_ladderclimb
 o_fix_ladderclimb_descr
 {
 "Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
-}
-
-u_spearmen_run
-{
-"Spearmen run by default instead of walking"
-}
-
-u_spearmen_run_descr
-{
-"Makes spearmen run by default instead of the slow walking."
 }
 
 u_tanner_fix
@@ -992,19 +1092,6 @@ o_xtreme_descr
 ui_AIV
 {
 	"AIV"
-}
-
-ai_defense
-{
-	"Usprawnione wysyłanie posiłków do obrony"
-}
-
-ai_defense_descr
-{
-	"Naprawniono błąd, który uniemożliwiał SI dosyłanie brakujących jednostek &
-na mury i wieże w momencie, gdy patrole defensywne były ciągle obecne. &
-Dodatkowo, szansa na to, że SI stworzy jednostki do obrony została &
-zwiększona, gdyż ta wartość była ustawiona jako 0 dla niektórych przeciwników."
 }
 
 ai_access

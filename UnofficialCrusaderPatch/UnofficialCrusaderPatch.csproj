@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -121,6 +121,7 @@
     <Compile Include="Patching\EditTypes\BinaryEdit.cs" />
     <Compile Include="Patching\EditTypes\EditFailures.cs" />
     <Compile Include="Patching\Headers\LabelCollection.cs" />
+    <Compile Include="Patching\Headers\ParamHeader.cs" />
     <Compile Include="Patching\Headers\ValueHeader.cs" />
     <Compile Include="Patching\Patcher.cs" />
     <Compile Include="Patching\Percentage.cs" />
@@ -156,13 +157,13 @@
     <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_attr.block" />
     <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_fn.block" />
     <EmbeddedResource Include="CodeBlocks\ai_fix_laddermen_with_enclosed_keep.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_small_wall_placement_count.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_small_wall_placement_count_pre.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_catapult.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_fireballista.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_ram.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_shield.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_tower.block" />
+    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_trebutchet.block" />
     <EmbeddedResource Include="CodeBlocks\fix_apple_orchard_build_size.block" />
-    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_building.block" />
-    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding.block" />
-    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_build_function_exit.block" />
-    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_currently_selected_building.block" />
     <EmbeddedResource Include="CodeBlocks\o_increase_path_update_tick_rate.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb_2.block" />
@@ -186,6 +187,14 @@
     <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_engine.block" />
     <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_lord_type.block" />
     <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_purchase.block" />
+    <EmbeddedResource Include="CodeBlocks\o_seed_modification_possibility.block" />
+    <EmbeddedResource Include="CodeBlocks\o_seed_modification_possibility_fn1.block" />
+    <EmbeddedResource Include="CodeBlocks\o_seed_modification_possibility_fn2.block" />
+    <EmbeddedResource Include="CodeBlocks\o_seed_modification_possibility_fn3.block" />
+    <EmbeddedResource Include="CodeBlocks\o_seed_modification_possibility_fn4.block" />
+    <EmbeddedResource Include="CodeBlocks\o_seed_modification_possibility_fn5.block" />
+    <EmbeddedResource Include="CodeBlocks\o_stop_player_keep_rotation.block" />
+    <EmbeddedResource Include="CodeBlocks\o_stop_player_keep_rotation_get_preferred_relative_orientation.block" />
     <EmbeddedResource Include="CodeBlocks\ui_fix_laddermen_cost_display_in_engineers_guild.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix1.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix2.block" />
@@ -197,7 +206,6 @@
     <EmbeddedResource Include="CodeBlocks\u_fix_lord_animation_stuck_building_attack.block" />
     <EmbeddedResource Include="CodeBlocks\u_fix_lord_animation_stuck_movement.block" />
     <EmbeddedResource Include="CodeBlocks\u_fix_applefarm_blocking.block" />
-    <EmbeddedResource Include="CodeBlocks\u_spearmen_run.block" />
     <EmbeddedResource Include="CodeBlocks\u_tanner_fix.block" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -1507,6 +1515,9 @@
     <None Include="App.config" />
     <EmbeddedResource Include="CodeBlocks\s_resource.block" />
     <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed_reset.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_buildhousing.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_deletehousing.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_recruitstate_initialtimer.block" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />
@@ -1528,6 +1539,7 @@
     <EmbeddedResource Include="CodeBlocks\s_troops.block" />
     <EmbeddedResource Include="CodeBlocks\s_lordstrength.block" />
     <EmbeddedResource Include="CodeBlocks\s_lordtype.block" />
+    <EmbeddedResource Include="CodeBlocks\u_spearmen_run.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

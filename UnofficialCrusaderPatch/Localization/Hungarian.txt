@@ -11,90 +11,6 @@ o_fix_rapid_deletion_bug_descr
 "Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
 }
 
-o_restore_arabian_engineer_speech
-{
-"Restore engineer arabian speech"
-}
-
-o_restore_arabian_engineer_speech_descr
-{
-"Allows engineers to speak the originally recorded arabian voicelines when the player uses the Arabian lord.
-
-There is not much variation of these voicelines, so it can get annoying after a while."
-}
-
-u_fix_lord_animation_stuck_movement
-{
-"Fix Lord animation freeze"
-}
-
-u_fix_lord_animation_stuck_movement_descr
-{
-"Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
-}
-
-o_fix_small_wall_placement_count
-{
-"Fix small wall placement count preview"
-}
-
-o_fix_small_wall_placement_count_descr
-{
-"Fixes the bug where the small wall placement preview only allowed the player to use half of their stone."
-}
-
-fix_apple_orchard_build_size
-{
-"Shrink apple orchard's build size"
-}
-
-fix_apple_orchard_build_size_descr
-{
-"Changes the apple orchard's build size to the size it occupies after the farm is placed down. This saves some space when building the farms and increases the rate with which the AI is able to put these farms down."
-}
-
-u_fix_applefarm_blocking
-{
-"Fix apple farm blocking"
-}
-
-u_fix_applefarm_blocking_descr
-{
-"Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
-}
-
-o_allow_overbuilding
-{
-"Allow overbuilding workers and units"
-}
-
-o_allow_overbuilding_descr
-{
-"Allows the player to overbuild workers with buildings, while allowing to overbuild units with walls and towers making them pop at the top."
-}
-
-o_increase_path_update_tick_rate
-{
-"Increase the tick rate of path update by 4 times."
-}
-
-o_increase_path_update_tick_rate_descr
-{
-"In vanilla, it took 200 game ticks to update pathing which resulted in units not being able to move into the castle after destroying a gate or tower.
-
-This change increases this tick rate by 4 times by lowering this required tick value to 50, allowing the units to 'realize' more quickly that a new path is available."
-}
-
-o_fix_ladderclimb
-{
-"Fix ladder climb bug"
-}
-
-o_fix_ladderclimb_descr
-{
-"Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
-}
-
 u_spearmen_run
 {
 "Spearmen run by default instead of walking"
@@ -105,54 +21,237 @@ u_spearmen_run_descr
 "Makes spearmen run by default instead of the slow walking."
 }
 
+o_seed_modification_possibility_title
+{
+"Game Seed"
+}
+
+o_seed_modification_possibility_only_set
+{
+"Enable game seed"
+}
+
+o_seed_modification_possibility_only_set_descr
+{
+"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For player-AI games, it will ensure the same start conditions in the map (AIV selection for example). To set the game seed, enable this option and create a file called 'live' with a 6 digit number in the game install/gameseeds directory. CAUTION: This feature only works after also restarting the game!"
+}
+
+o_seed_modification_possibility
+{
+"Enable & Save game seeds"
+}
+
+o_seed_modification_possibility_descr
+{
+"This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards."
+}
+
+ai_recruitstate_initialtimer
+{
+"Customise the initial AI's defence recruit time"
+}
+
+ai_recruitstate_initialtimervalue_descr
+{
+"Set this value to number of months for which the AI will exclusively recruit defence troops, unless it has already filled up its defence total"
+}
+
+ai_defense
+{
+"Várvédédő egységek megerősítése kijavítva"
+}
+
+ai_defense_descr
+{
+"Kijavítja azt a hibát, ami megakadályozza az MI-t abban, hogy a hiányzó egységekkel megerősítse a várfalat és a tornyot, ameddig rendelkezik még védekező-járőröző egységekkel."
+}
+
+ai_housing
+{
+"Customize the AIs decision to build and delete houses"
+}
+
+ai_buildhousing_descr
+{
+"Customize the AIs decision to build and delete houses"
+}
+
+build_housing_descr
+{
+"Number of extra available housing before AI stops building houses"
+}
+
+campfire_housing_descr
+{
+"Number of peasants at the campfire before the AI stops buildings houses"
+}
+
+delete_housing
+{
+"Disable the AI's ability to delete houses"
+}
+
+delete_housing_descr
+{
+"When this option is selected the AI will never delete houses"
+}
+aiv_prompt
+{
+"Módosított AIV fájlok észlelve. Telepítés előtt kattints az 'Igen' gombra, hogy elmentsd a jelenleg telepített AIV fájlokat, az eredeti backup felülírása nélkül. Kattints a 'Nem' gombra, hogy felülírd a telepített AIV fájlokat, nem készül róluk biztonsági mentés. Vagy kattints a 'Mégsem' gombra a telepítés megszakításához."
+}
+
+aiv_cli_prompt
+{
+"Módosított AIV fájlok észlelve. Írd be a 'delete' szót az eltávolításukhoz vagy adj meg egy mappa nevet, ahova a fájlok telepünek."
+}
+
+install_abort_io
+{
+"Telepítés megszakítva. Már léteznek ilyen nevű fájlok ebben a mappában. Kérjük válassz egy másik mappát és próbáld meg újra."
+}
+
+install_abort
+{
+"Telepítés megszakítva"
+}
+
+backup_aiv_select
+{
+"Válaszd ki az AIV Backup mappát"
+}
+
+o_change_siege_engine_spawn_position_catapult
+{
+"Elkészült ostromgépek középre pozicionálása"
+}
+
+o_change_siege_engine_spawn_position_catapult_descr
+{
+"Az elkészült ostromgépek a sátor közepénél jelennek meg a sátor felső sarka helyett."
+}
+
+o_stop_player_keep_rotation
+{
+"Forgó játékos vártornyok"
+}
+
+o_stop_player_keep_rotation_descr
+{
+"A játékosok vártornyai mostantól ugyanolyan módon lesznek elforgatva, mint az MI vártornyok. A tábortűz mindig a térkép legközelebbi széle felé néz."
+}
+
+o_restore_arabian_engineer_speech
+{
+"Az arab mérnök arabul beszél"
+}
+
+o_restore_arabian_engineer_speech_descr
+{
+"Ha a játékos az arab lord-ot választja, akkor a mérnök bészédekor az eredeti felvett arab hangfájlt használja.
+
+Nincs túl sok variáció ezekben a hangfájlokban, így egy idő után zavaró lehet."
+}
+
+u_fix_lord_animation_stuck_movement
+{
+"Lord animáció fagyás javítás"
+}
+
+u_fix_lord_animation_stuck_movement_descr
+{
+"Ezzel a változtatással egy épület lerombolása után a Lord a kiindulási animációra tér vissza. Mostantól nem marad a leromboló animációban."
+}
+
+fix_apple_orchard_build_size
+{
+"Almáskert építési méretének csökkentése"
+}
+
+fix_apple_orchard_build_size_descr
+{
+"Az almáskert elhelyezése előtt az előnézeti mérete nagyobb volt, mint amekkora valójában az almáskert az elhelyezés után. Ez a hiba kijavításra került. Ezzel a beállítással több szabad hely marad az építésekor és megnöveli az MI mezőgazdasági épületek építésének rátáját."
+}
+
+u_fix_applefarm_blocking
+{
+"Almáskert blokkolása javítás"
+}
+
+u_fix_applefarm_blocking_descr
+{
+"Az almatermesztő nem várakozik, ha az almáskert bal felső részénél lévő utat blokkolja valami."
+}
+
+o_increase_path_update_tick_rate
+{
+"Tick ráta növelése az útvonal frissítésnél"
+}
+
+o_increase_path_update_tick_rate_descr
+{
+"Az eredeti játékban 200 játékidő tick után frissült az útvonal, ami azt eredményezte, hogy az egységek nem tudtak bemenni a várba miután lerombolták a kaput vagy a tornyot.
+
+Ez a változtatás 4x-esére növeli a tick rátát, azáltal hogy csökkenti a szükséges tick értéket 50-re, így lehetővé téve hogy az egységek sokkal gyorsabban 'realizálják' az elérhető új útvonalat."
+}
+
+o_fix_ladderclimb
+{
+"Létramászás hibajavítás"
+}
+
+o_fix_ladderclimb_descr
+{
+"Az egységek mászás után nem felejtik el a számukra adott parancsot, és többé nem fognak elkezdeni le vagy felmászni azonnal miután már felmásztak."
+}
+
 u_tanner_fix
 {
-"Fix tanners getting all the same cow"
+"A tímárok ugyanazt a tehenet választják javítás"
 }
 
 u_tanner_fix_descr
 {
-"Tanners will no longer return without a cow when another tanner took their target cow. They will now instead stand around a bit and then get another one."
+"A tímárok mostantól nem fognak tehén nélkül visszatérni, ha egy másik tímár már elvitte az általuk kiválasztott tehenet. Mostantól várakoznak egy ideig és elvisznek egy másikat."
 }
 
 o_fix_fletcher_bug
 {
-"Fix fletcher bug"
+"Íjkészítő hibajavítás"
 }
 
 o_fix_fletcher_bug_descr
 {
-"Fixes the behaviour where the fletcher goes back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile."
+"Kijavítja az íjkészítő azon viselkedését, miszerint visszatér a munkahelyére ha leszállított egy íjat/íjpuskát, ahelyett hogy egyenesen a raktárhoz menne."
 }
 
 ai_fix_crusader_archers_pitch
 {
-"Fix AI crusader archers not lighting pitch"
+"MI keresztes íjász nem gyújtja be az olajosárkot javítás"
 }
 
 ai_fix_crusader_archers_pitch_descr
 {
-"Fixes the AI crusader archers not lighting pitch like arabian archers do when enemy units get onto it."
+"Az MI keresztes íjász most már begyújtja az olajosárkot, úgy mint az arab íjász amikor ellenséges egység lép az olajosárokra."
 }
 
 o_fix_baker_disappear
 {
-"Fix baker disappear bug"
+"Eltűnő pék hibajavítás"
 }
 
 o_fix_baker_disappear_descr
 {
-"Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile."
+"Kijavítja azt a hibát, amikor a pék eltűnik ha a raktárban nem találja meg a kiválasztott helyen a lisztet."
 }
 
 o_fix_moat_digging_unit_disappearing
 {
-"Fix moat digging units disappear bug"
+"Eltűnő árokásó egység hibajavítás"
 }
 
 o_fix_moat_digging_unit_disappearing_descr
 {
-"Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!"
+"Kijavítja azt a hibát, amikor árokásás közben véletlenszerűen eltűnik az árkot ásó egység. Megjegyzés: Az egység még mindig eltűnhet, ha árokásás közben elküldöd máshova és éppen egy nem járható helyen van!"
 }
 
 // ======================
@@ -238,7 +337,7 @@ o_shfy_beer_descr
 
 o_shfy_religion
 {
-	"Templom és Katedrális általi népszerűségi bónusz"
+	"Templom és katedrális általi népszerűségi bónusz"
 }
 
 o_shfy_religion_descr
@@ -268,12 +367,12 @@ o_shfy_resourcequantity_descr
 
 o_armory_marketplace_weapon_order_fix
 {
-	"Egységesített fegyverelhelyezés"
+	"Megegyező fegyver sorrend a fegyverraktár/piacban"
 }
 
 o_armory_marketplace_weapon_order_fix_descr
 {
-	"Egységesíti a fegyver ikonok elhelyezkedését a fegyverraktárban és a piacban. A bőrpáncél a buzogány és számszeríj között lesz, míg a vaspáncél a dárda és kard között, hogy könnyebben megtalálható legyen a piacban való kereséskor."
+	"Újrarendezi a fegyver ikonokat a fegyverraktárban és a piacban, hogy egyforma legyen a sorrend. A bőrpáncél a buzogány és számszeríj között lesz, míg a vaspáncél a dárda és kard között, hogy könnyebben megtalálható legyen a piacban való kereséskor."
 }
 
 ai_fix_laddermen_with_enclosed_keep
@@ -288,12 +387,12 @@ ai_fix_laddermen_with_enclosed_keep_descr
 
 o_override_identity_menu
 {
-    "Új beállítások hozzáadása a 'Személyiség beállítások' menühöz"
+    "Új beállítások hozzáadása a 'Játékos szerkesztése' menühöz"
 }
 
 o_override_identity_menu_descr
 {
-    "Távolsági és közelharci egység kiválasztási lehetőségét adja hozzá a 'Személyiség beállítások' menüponthoz. CSAK NORMÁL JÁTÉK MÓDHOZ!"
+    "Távolsági és közelharci egységek kiválasztási lehetőségét adja hozzá a 'Játékos szerkesztése' menüponthoz. CSAK NORMÁL JÁTÉK MÓDHOZ!"
 }
 
 o_default_multiplayer_speed
@@ -395,7 +494,7 @@ ui_aicExport_success
 
 ui_aicHint
 {
-	"Exportálja a .aic fájlokat a telepítőből a Crusader mappába."
+	"Exportálja az .aic fájlokat a telepítőből a Crusader mappába."
 }
 
 // ======================
@@ -494,7 +593,7 @@ ui_finished
 
 ui_chooseLangTitle
 {
-	"Telepítő Nyelve"
+	"Telepítő nyelve"
 }
 
 ui_chooseLang
@@ -639,7 +738,7 @@ o_trooplimit
 o_trooplimit_descr
 {
 	"Az eredeti játékban az egységek száma egy játékosnak 
-2400/Játékosszám. Itt tudod megváltoztatni ezt a számot."
+2400/játékosszám. Itt tudod megváltoztatni ezt a számot."
 }
 
 ai_demolish
@@ -890,7 +989,7 @@ ai_assaultswitch
 
 ai_assaultswitch_descr
 {
-	"Azok az MI Lordok akik a legerősebbet vagy a leggyengébbet támadják meg, néha hajlamosak voltak a támadás közepén célpontot változtatni, és az egységeiket elküldeni a másik várhoz. Ezzel a beállítással, ez már nem fordul elő, mihelyst a támadást megkezdte, viszont a vár előtti egységek gyülekezésekor még előfordulhat, hogy célpontot vált."
+	"Azok az MI Lordok akik a legerősebbet vagy a leggyengébbet támadták meg, néha hajlamosak voltak a támadás közepén célpontot változtatni, és az egységeiket elküldeni a másik várhoz. Ezzel a beállítással, ez már nem fordul elő, mihelyst a támadást megkezdte, viszont a vár előtti egységek gyülekezésekor még előfordulhat, hogy célpontot vált."
 }
 
 
@@ -962,16 +1061,6 @@ ui_AIV
 	"AIV"
 }
 
-ai_defense
-{
-	"Erősítés a várvédésben javítása"
-}
-
-ai_defense_descr
-{
-	"Kijavítja azt a hibát, ami megakadályozza az MI-t abban, hogy a hiányzó egységekkel megerősítse a várfalat és a tornyot, ameddig rendelkezik még védekező-járőröző egységekkel. Egyébként általánosságban növelve lett az erősítés toborzása, mert egyes MI-nél ez nullára volt állítva."
-}
-
 ai_access
 {
 	"Az elérhetetlen épületek ne kerüljenek lerombolásra"
@@ -979,7 +1068,7 @@ ai_access
 
 ai_access_descr
 {
-	"Megakadályozza azt, hogy az MI ne rombolja le azt az épületet amihez nem lehet hozzáférni. Ezáltal kijavítható az a hiba, hogy az MI ne építse meg és rombolja le újra és újra mindig azt az épületet amihez nem tudnak eljutni."
+	"Megakadályozza azt, hogy az MI lerombolja azt az épületet amihez nem lehet hozzáférni. Ezáltal kijavítható az a hiba, hogy az MI ne építse meg és rombolja le újra és újra mindig azt az épületet amihez nem tudnak eljutni."
 }
 
 ai_moredef
@@ -1062,6 +1151,6 @@ aiv_evreyimproved
 
 aiv_evreyimproved_descr
 {
-	"Új feljavított várakat ad a MI Lordoknak, az eredeti várstílusok alapján.
+	"Új feljavított várakat ad az MI Lordoknak, az eredeti várstílusok alapján.
 [Készítette: Evrey](https://github.com/Evrey/SHC_AIV/)"
 }

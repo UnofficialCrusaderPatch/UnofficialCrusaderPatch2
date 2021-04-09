@@ -26,7 +26,7 @@
 - 埃米尔初始部队由阿拉伯弓箭骑兵替换为阿拉伯弓箭手，阿拉伯剑士和欧洲弓箭手。
 - 院长在十字军模式下初始部队变为更少的僧侣和一些欧洲弓箭手。 ",
     "Hungarian": "Az UCP kezdőegységek konfiguráció kijavítja a nem használt védekező egységeket, a maximális védekező egységek számának túllépését és a hiányzó egységtípusokat a Keresztes háború játékmódban, az alábbi eredeti egységek lecserélésével:
-- Kalifa mostantól tűzvetőgépekkel és arab szablyásokkkal kezd a Keresztes háború játékmódban.
+- Kalifa mostantól tűzvetőgépekkel és arab szablyásokkal kezd a Keresztes háború játékmódban.
 - A Szultán is tűzvetőgépekkel kezd a Keresztes háború játékmódban.
 - Emír arab íjászokkal kezd lovasíjászok helyett.
 - Az Apát jelentősen kevesebb szerzetessel és néhány íjásszal kezd a Keresztes háború játékmódban."
@@ -150,7 +150,7 @@
     },
     "crusader": {
       "Units": [ "ArabSwordsman", "ArabArcher", "FireThrower" ],
-      "Counts": [ 8, 8, 50 ]
+      "Counts": [ 8, 50, 8 ]
     },
     "deathmatch": {
       "Units": [ "ArabSwordsman", "ArabArcher", "FireThrower" ],

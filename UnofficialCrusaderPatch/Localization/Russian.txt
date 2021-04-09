@@ -11,90 +11,6 @@ o_fix_rapid_deletion_bug_descr
 "Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
 }
 
-o_restore_arabian_engineer_speech
-{
-"Restore engineer arabian speech"
-}
-
-o_restore_arabian_engineer_speech_descr
-{
-"Allows engineers to speak the originally recorded arabian voicelines when the player uses the Arabian lord.
-
-There is not much variation of these voicelines, so it can get annoying after a while."
-}
-
-u_fix_lord_animation_stuck_movement
-{
-"Fix Lord animation freeze"
-}
-
-u_fix_lord_animation_stuck_movement_descr
-{
-"Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
-}
-
-o_fix_small_wall_placement_count
-{
-"Fix small wall placement count preview"
-}
-
-o_fix_small_wall_placement_count_descr
-{
-"Fixes the bug where the small wall placement preview only allowed the player to use half of their stone."
-}
-
-fix_apple_orchard_build_size
-{
-"Shrink apple orchard's build size"
-}
-
-fix_apple_orchard_build_size_descr
-{
-"Changes the apple orchard's build size to the size it occupies after the farm is placed down. This saves some space when building the farms and increases the rate with which the AI is able to put these farms down."
-}
-
-u_fix_applefarm_blocking
-{
-"Fix apple farm blocking"
-}
-
-u_fix_applefarm_blocking_descr
-{
-"Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
-}
-
-o_allow_overbuilding
-{
-"Allow overbuilding workers and units"
-}
-
-o_allow_overbuilding_descr
-{
-"Allows the player to overbuild workers with buildings, while allowing to overbuild units with walls and towers making them pop at the top."
-}
-
-o_increase_path_update_tick_rate
-{
-"Increase the tick rate of path update by 4 times."
-}
-
-o_increase_path_update_tick_rate_descr
-{
-"In vanilla, it took 200 game ticks to update pathing which resulted in units not being able to move into the castle after destroying a gate or tower.
-
-This change increases this tick rate by 4 times by lowering this required tick value to 50, allowing the units to 'realize' more quickly that a new path is available."
-}
-
-o_fix_ladderclimb
-{
-"Fix ladder climb bug"
-}
-
-o_fix_ladderclimb_descr
-{
-"Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
-}
-
 u_spearmen_run
 {
 "Spearmen run by default instead of walking"
@@ -103,56 +19,240 @@ u_spearmen_run
 u_spearmen_run_descr
 {
 "Makes spearmen run by default instead of the slow walking."
+} 
+
+o_seed_modification_possibility_title
+{
+"Game Seed"
+}
+
+o_seed_modification_possibility_only_set
+{
+"Enable game seed"
+}
+
+o_seed_modification_possibility_only_set_descr
+{
+"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For player-AI games, it will ensure the same start conditions in the map (AIV selection for example). To set the game seed, enable this option and create a file called 'live' with a 6 digit number in the game install/gameseeds directory. CAUTION: This feature only works after also restarting the game!"
+}
+
+o_seed_modification_possibility
+{
+"Enable & Save game seeds"
+}
+
+o_seed_modification_possibility_descr
+{
+"This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards."
+}
+
+ai_recruitstate_initialtimer
+{
+"Customise the initial AI's defence recruit time"
+}
+
+ai_recruitstate_initialtimervalue_descr
+{
+"Set this value to number of months for which the AI will exclusively recruit defence troops, unless it has already filled up its defence total"
+}
+
+ai_defense
+{
+"Исправляет подкрепление войск обороны AI"
+}
+
+ai_defense_descr
+{
+"Исправлен баг, из-за которого AI не усиливал недостающие войска на стенах и башнях, пока оборонительные патрули все еще были вокруг."
+}
+
+ai_housing
+{
+"Customize the AIs decision to build and delete houses"
+}
+
+ai_buildhousing_descr
+{
+"Customize the AIs decision to build and delete houses"
+}
+
+build_housing_descr
+{
+"Number of extra available housing before AI stops building houses"
+}
+
+campfire_housing_descr
+{
+"Number of peasants at the campfire before the AI stops buildings houses"
+}
+
+delete_housing
+{
+"Disable the AI's ability to delete houses"
+}
+
+delete_housing_descr
+{
+"When this option is selected the AI will never delete houses"
+}
+
+aiv_prompt
+{
+"Обнаружены модифицированные AIV. Перед установкой нажмите "Да", чтобы сохранить установленные AIV, не перезаписывая оригинальную резервную копию. Нажмите "Нет", чтобы перезаписать установленные AIV без создания резервной копии, и "Отмена", чтобы отменить."
+}
+
+aiv_cli_prompt
+{
+"Обнаружены модифицированные AIV. Введите 'delete' для удаления или введите имя папки для копирования файлов на."
+}
+
+install_abort_io
+{
+"Установка отменена. В этой папке уже существуют файлы с таким же именем. Попробуйте еще раз и выберите другую папку."
+}
+
+install_abort
+{
+"Установка отменена"
+}
+
+backup_aiv_select
+{
+"Выберите резервную папку AIV"
+}
+
+o_change_siege_engine_spawn_position_catapult
+{
+"Положение спавна осадных механизмов посредине"
+}
+
+o_change_siege_engine_spawn_position_catapult_descr
+{
+"Осадные механизмы теперь появляется по центру , вместо появления в верхнем углу палатки."
+}
+
+o_stop_player_keep_rotation
+{
+"Поворот крепости игрока"
+}
+
+o_stop_player_keep_rotation_descr
+{
+"Крепость игрока вращяется таким же образом как и крепости ИИ. Точней стоит лицом к костру ИИ , а другой стороной к краю карты"
+}
+
+o_restore_arabian_engineer_speech
+{
+"Восстановление арабской речи инженера"
+}
+
+o_restore_arabian_engineer_speech_descr
+{
+"Позволяет инженерам говорить на изначально записанных арабских голосовых дорожках, когда игрок использует арабского лорда.
+
+Голосовые линии не сильно отличаются друг от друга, так что через некоторое время они могут стать раздражающими."
+}
+
+u_fix_lord_animation_stuck_movement
+{
+"Исправляет анимацию замирания Лорда"
+}
+
+u_fix_lord_animation_stuck_movement_descr
+{
+"Исправляет анимацию замирания Лорда когда тот стоит , либо когда разрушает здание."
+}
+
+fix_apple_orchard_build_size
+{
+"Размер площади яблоневой фермы"
+}
+
+fix_apple_orchard_build_size_descr
+{
+"Изменяет размер постройки яблоневого сада на размер, который он занимает после расположение фермы. Это экономит место при строительстве ферм и увеличивает скорость, с которой ИИ может располагать эти фермы."
+}
+
+u_fix_applefarm_blocking
+{
+"Исправить блокировку яблочных ферм"
+}
+
+u_fix_applefarm_blocking_descr
+{
+"Яблочные фермеры больше нельзя блокировать, размещая здания в верхней левой части фермы."
+}
+
+o_increase_path_update_tick_rate
+{
+"Увеличить скорость обновления пути в 4 раза."
+}
+
+o_increase_path_update_tick_rate_descr
+{
+"В оригинале, потребовалось 200 игровых тиков, чтобы обновить путь, что привело к тому, что юниты не могли перемещаться в замок после разрушения ворот или башни.
+
+Это изменение увеличивает скорость передачи тиков в 4 раза, снижая требуемое значение тика до 50, что позволяет устройствам "понимать" быстрее, что новый путь доступен."
+}
+
+o_fix_ladderclimb
+{
+"Исправить ошибку подъёма по лестнице"
+}
+
+o_fix_ladderclimb_descr
+{
+"Отряды больше не забывают о своем предназначении после восхождения на стену, и они больше не начнут подниматься или спускаться вниз сразу же после того, как они только что поднялись."
 }
 
 u_tanner_fix
 {
-"Fix tanners getting all the same cow"
+"Исправляет кожевников которые получают одну и ту же корову"
 }
 
 u_tanner_fix_descr
 {
-"Tanners will no longer return without a cow when another tanner took their target cow. They will now instead stand around a bit and then get another one."
+"Кожевники больше не вернутся без коровы, когда другой кожевник забрал их целевую корову. Вместо этого они немного встанут вокруг, а потом возьмут еще одну корову."
 }
 
 o_fix_fletcher_bug
 {
-"Fix fletcher bug"
+"Исправляет баг стрельника"
 }
 
 o_fix_fletcher_bug_descr
 {
-"Fixes the behaviour where the fletcher goes back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile."
+"Исправление поведения, при котором стрельник возвращается на рабочее место после сдачи на хранение лука/арбалета вместо того, чтобы идти прямо на склад."
 }
 
 ai_fix_crusader_archers_pitch
 {
-"Fix AI crusader archers not lighting pitch"
+"Исправляет европейских лучников которые не стреляют в нефтяной ров"
 }
 
 ai_fix_crusader_archers_pitch_descr
 {
-"Fixes the AI crusader archers not lighting pitch like arabian archers do when enemy units get onto it."
+"Исправляет, что ИИ-европейские лучники не зажигают рвы, как арабские лучники, когда на них попадают вражеские юниты."
 }
 
 o_fix_baker_disappear
 {
-"Fix baker disappear bug"
+"Исправить ошибку исчезновения пекаря"
 }
 
 o_fix_baker_disappear_descr
 {
-"Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile."
+"Исправляет ошибку, при которой пекарни исчезали бы, если бы они не нашли муку в куче запасов по месту назначения."
 }
 
 o_fix_moat_digging_unit_disappearing
 {
-"Fix moat digging units disappear bug"
+"Исправляет исчезания юнитов при копании рва"
 }
 
 o_fix_moat_digging_unit_disappearing_descr
 {
-"Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!"
+"Исправлена ошибка, при которой копатели рва исчезали случайно во время раскопок. Обратите внимание, что они все равно могут исчезнуть, если вы прикажете им двигаться во время раскопок, и они случайно встанут на непешеходную плитку!"
 }
 
 // ======================
@@ -973,19 +1073,6 @@ o_xtreme_descr
 ui_AIV
 {
 	"AIV"
-}
-
-ai_defense
-{
-	"Исправляет подкрепление войск обороны AI"
-}
-
-ai_defense_descr
-{
-	"Исправлен баг, из-за которого AI не усиливал недостающие войска
-на стенах и башнях, пока оборонительные патрули все еще были вокруг. &
-Более того, вероятность того, что AI вербуют оборонительные войска, была
-увеличился, так как это значение было равно нулю."
 }
 
 ai_access
