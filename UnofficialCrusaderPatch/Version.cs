@@ -3491,7 +3491,7 @@ namespace UCP
                         }
                     }
                 }
-            }
+            },
 
             new Change("o_fast_placing", ChangeType.Other, true)
             {
