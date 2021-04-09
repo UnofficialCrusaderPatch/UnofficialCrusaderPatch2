@@ -516,6 +516,24 @@ namespace UCP.Startup
                         startTroopChanges.Add(new BinSkip(0xF0));
                     }
                 }
+                else
+                {
+                    startTroopChanges.Add(new BinSkip(80));
+                    startTroopChanges.Add(new BinSkip(80));
+                    startTroopChanges.Add(new BinSkip(80));
+
+                    if (playerIndex < 17)
+                    {
+                        lordStrengthChanges.Add(new BinSkip(0x4));
+                        lordStrengthChanges.Add(new BinSkip(0x4));
+                        lordTypeChanges.Add(new BinSkip(0x1));
+                    }
+
+                    if (playerIndex == 16)
+                    {
+                        startTroopChanges.Add(new BinSkip(0xF0));
+                    }
+                }
             }
 
             BinaryEdit troopEdit = new BinaryEdit(troopBlockFile);
