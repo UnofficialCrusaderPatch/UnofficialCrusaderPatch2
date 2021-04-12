@@ -582,7 +582,7 @@ namespace UCP
 
             new Change("ai_housing", ChangeType.AILords, false, false)
             {
-                new SliderHeader("build_housing", false, 1, 200, 1, 12, 30)
+                new SliderHeader("build_housing", false, 1, 200, 1, 0, 10)
                 {
                     new BinaryEdit("ai_buildhousing")
                     {
@@ -610,7 +610,7 @@ namespace UCP
                     }
                 },
 
-                new SliderHeader("campfire_housing", false, 0, 25, 1, 5, 20)
+                new SliderHeader("campfire_housing", false, 0, 25, 1, 5, 10)
                 {
                     new BinaryEdit("ai_buildhousing")
                     {
@@ -827,7 +827,7 @@ namespace UCP
                 // vanilla:
                 // additional attack troops = factor * attack number
 
-                new SliderHeader("ai_addattack", true, 0, 60, 1, 5, 12)
+                new SliderHeader("ai_addattack", true, 0, 250, 1, 5, 12)
                 {
                     // 004CDEDC
                     new BinaryEdit("ai_addattack")
@@ -1086,7 +1086,7 @@ namespace UCP
             // 0x00410A30 + 8 ushort default = 2000
             new Change("o_firecooldown", ChangeType.Other)
             {
-                new SliderHeader("o_firecooldown", true, 0, 20000, 500, 2000, 6000)
+                new SliderHeader("o_firecooldown", false, 0, 20000, 500, 2000, 4000)
                 {
                     new BinaryEdit("o_firecooldown")
                     {
