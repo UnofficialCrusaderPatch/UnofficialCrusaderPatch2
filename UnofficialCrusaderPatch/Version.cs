@@ -25,129 +25,6 @@ namespace UCP
             BinRedirect.CreateEdit("menuversion", false, Encoding.ASCII.GetBytes("V1.%d-E UCP" + PatcherVersion + '\0'))
         };
 
-        private static ParamHeader GetAIHousingParamHeader(Dictionary<string, Dictionary<string, object>> parameters)
-        {
-            BinCollection campPeasantCollection = null;
-
-            int paramSize = 1;
-            if (!parameters["build_housing"]["value"].Equals(false))
-            {
-                paramSize = (double)parameters["build_housing"]["value"] > 0x7F ? 3 : 1;
-            }
-                
-            if (!(parameters["build_housing"]["value"].Equals(false) || (double)parameters["build_housing"]["value"] == 0))
-            {
-                campPeasantCollection = new BinCollection()
-                {
-                    0x2B, 0x88, new BinRefTo("population_address", false),
-                };
-
-                BinCollection sizeCollection;
-                if (paramSize == 1)
-                {
-                    byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["build_housing"]["value"]));
-                    sizeCollection = new BinCollection()
-                    {
-                        0x83, 0xF9, value[0]
-                    };
-                }
-                else
-                {
-                    sizeCollection = new BinCollection()
-                    {
-                        0x81, 0xF9, BitConverter.GetBytes(Convert.ToInt32((double)parameters["build_housing"]["value"]))
-                    };
-                }
-                foreach (var elem in sizeCollection) campPeasantCollection.Add(elem);
-
-                BinCollection jumpCollection = new BinCollection()
-                {
-                    0x7F, 0x05, /* if greater continue */
-                    0x33, 0xC0, /* xor eax, eax */
-                    0xC2, 0x08, 0x00 /* ret 0008 */
-                };
-
-                foreach (var elem in jumpCollection) campPeasantCollection.Add(elem);
-            }
-
-            double delete_value = Convert.ToInt32((double)parameters["delete_housing"]["value"]);
-            if (!(parameters["build_housing"]["value"].Equals(false)))
-            {
-                delete_value += (double)parameters["build_housing"]["value"];
-            } else
-            {
-                delete_value += 12;
-            }
-
-            paramSize = 1;
-            if (!parameters["delete_housing"]["value"].Equals(false))
-            {
-                paramSize = delete_value > 0x7F ? 3 : 1;
-            }
-            BinaryEdit delete_edit = null;
-            if (!(parameters["delete_housing"]["value"].Equals(false) || (double)parameters["delete_housing"]["value"] == 20))
-            {
-                byte[] value = BitConverter.GetBytes(Convert.ToInt32(delete_value));
-                delete_edit = new BinaryEdit("ai_deletehousing")
-                {
-                    new BinAddress("housing_address_new", 16),
-                    new BinSkip(0xF),
-                    new BinSkip(0x7),
-                    0xF7, 0xD9,
-                    new BinBytes(0x03, 0x88), new BinRefTo("housing_address_new", false),
-                    new BinHook(6)
-                    {
-                        paramSize == 1 ? new BinBytes(0x83, 0xF9, value[0]) : new BinBytes(0x81, 0xF9, value[0], value[1], value[2], value[3]),
-                        0x7F, 0x06,
-                        0x33, 0xC0,
-                        0x5F,
-                        0xC2, 0x04, 0x00
-                    }
-                    /*0x83, 0xF9, value[0],
-                    new BinBytes(0x7E, 0xDF),
-                    new BinNops(1)*/
-                };
-            }
-
-
-            BinBytes init = new BinBytes();
-
-            BinBytes finalizer = new BinBytes(
-                0xB8, 0x01, 0x00, 0x00, 0x00,   /* mov eax, 00000001 */
-                0xC2, 0x08, 0x00
-                );
-
-            BinHook hook = new BinHook(5)
-            {
-                init
-            };
-
-            if (campPeasantCollection != null)
-            {
-                foreach (var elem in campPeasantCollection) hook.Add(elem);
-            }
-
-            hook.Add(finalizer);
-
-            BinaryEdit edit = new BinaryEdit("ai_buildhousing")
-            {
-                hook,
-                new BinAddress("campfire_peasant_address", 0x22, false), //0x22
-                new BinAddress("population_address", 2, false), //5
-                new BinAddress("housing_address", 11, false), //11
-            };
-
-
-            ParamHeader aiHousing = new ParamHeader("ai_buildhousing")
-            {
-                edit == null ? new BinaryEdit("ai_buildhousing") : edit,
-                delete_edit == null ? new BinaryEdit("ai_deletehousing") : delete_edit
-            };
-            aiHousing.IsEnabled = (!parameters["build_housing"]["value"].Equals(false) && (double)parameters["build_housing"]["value"] != 12)
-                || (!parameters["delete_housing"]["value"].Equals(false) && (double)parameters["delete_housing"]["value"] != 20);
-            return aiHousing;
-        }
-
         static List<Change> changes = new List<Change>()
         {
             #region BUG FIXES
@@ -706,20 +583,63 @@ namespace UCP
 
             #region AI LORDS
 
-            new Change("ai_housing", ChangeType.AILords, false, false, 
-                (parameters) => {
-                    return GetAIHousingParamHeader(parameters);
-                })
+            new Change("ai_housing", ChangeType.AILords, false)
             {
-                new SliderHeader("build_housing", false, 0, 500, 1, 12, 30){},
+                new SliderHeader("build_housing", true, 1, 200, 1, 1, 10)
+                {
+                    new BinaryEdit("ai_buildhousing")
+                    {
+                        new BinAddress("population", 7),
+                        new BinHook(5)
+                        {
+                            0x81, 0xE9, new BinInt32Value(),
+                        },
+                        new BinSkip(6),
+                        0x7F, 0xDE
+                    },
 
-                new SliderHeader("delete_housing", false, 0, 500, 1, 20, 0x7F){},
+                    new BinaryEdit("ai_deletehousing")
+                    {
+                        new BinAddress("housing", 0x10),
+                        new BinSkip(22),
+                        new BinHook(5)
+                        {
+                            0x8B, 0x88, new BinRefTo("population", false),
+                            0x81, 0xE9, new BinInt32Value(),
+                            0x81, 0xE9, 0x18, 0x00, 0x00, 0x00,
+                            0x3B, 0x88, new BinRefTo("housing", false),
+                        },
+                        0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90
+                    }
+                },
+
+                new SliderHeader("campfire_housing", true, 0, 25, 1, 5, 10)
+                {
+                    new BinaryEdit("ai_buildhousing")
+                    {
+                        new BinSkip(0xB),
+                        0x7F, 0x08,
+                        new BinSkip(0x8),
+                        0xB9, new BinInt32Value(),
+                        new BinSkip(8),
+                        0x7C, 0xC7,
+                        0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90
+                    }
+                },
+
+                new DefaultHeader("delete_housing")
+                {
+                    new BinaryEdit("ai_deletehousing")
+                    {
+                        new BinBytes(0x90, 0x90)
+                    }
+                },
             },
 
 
-            new Change("ai_recruitstate_initialtimer", ChangeType.AILords)
+            new Change("ai_recruitstate_initialtimer", ChangeType.AILords, false)
             {
-                new SliderHeader("ai_recruitstate_initialtimervalue", false, 0, 30, 1, 6, 1)
+                new SliderHeader("ai_recruitstate_initialtimervalue", true, 0, 30, 1, 6, 0)
                 {
                     new BinaryEdit("ai_recruitstate_initialtimer")
                     {
@@ -910,7 +830,7 @@ namespace UCP
                 // vanilla:
                 // additional attack troops = factor * attack number
 
-                new SliderHeader("ai_addattack", true, 0, 60, 1, 5, 12)
+                new SliderHeader("ai_addattack", true, 0, 250, 1, 5, 12)
                 {
                     // 004CDEDC
                     new BinaryEdit("ai_addattack")
@@ -1144,7 +1064,19 @@ namespace UCP
                         }
                     }
                 }
-            },    
+            },
+
+            new Change("u_spearmen_run", ChangeType.Troops, false)
+            {
+                new DefaultHeader("u_spearmen_run")
+                {
+                    // 0055E07E
+                    new BinaryEdit("u_spearmen_run")
+                    {
+                        new BinBytes(0x90, 0x90) // remove je
+                    }
+                }
+            },
 
             #endregion
 
@@ -1155,9 +1087,9 @@ namespace UCP
              */
 
             // 0x00410A30 + 8 ushort default = 2000
-            new Change("o_firecooldown", ChangeType.Other)
+            new Change("o_firecooldown", ChangeType.Other, false)
             {
-                new SliderHeader("o_firecooldown", true, 0, 20000, 500, 2000, 6000)
+                new SliderHeader("o_firecooldown", true, 0, 20000, 500, 2000, 4000)
                 {
                     new BinaryEdit("o_firecooldown")
                     {
@@ -2974,7 +2906,7 @@ namespace UCP
                 }
             },
 
-            new Change("o_increase_path_update_tick_rate", ChangeType.Other, false)
+            new Change("o_increase_path_update_tick_rate", ChangeType.Other, true)
             {
                 new DefaultHeader("o_increase_path_update_tick_rate")
                 {
@@ -2989,7 +2921,7 @@ namespace UCP
 
             new Change("o_default_multiplayer_speed", ChangeType.Other)
             {
-                new SliderHeader("o_default_multiplayer_speed", false, 20, 90, 1, 40, 40)
+                new SliderHeader("o_default_multiplayer_speed", true, 20, 90, 1, 40, 50)
                 {
                     // 878FB
                     new BinaryEdit("o_default_multiplayer_speed")

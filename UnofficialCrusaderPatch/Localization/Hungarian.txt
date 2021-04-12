@@ -11,6 +11,16 @@ u_jestermoveto_assassin_descr
 	"The jester visits your units on the battlefield to cheer them up. Now it wont visit your invisible assassins anymore, showing everyone where they are!"
 }
 
+u_spearmen_run
+{
+"Spearmen run by default instead of walking."
+}
+
+u_spearmen_run_descr
+{
+"Makes spearmen run by default instead of the slow walking."
+}
+
 o_seed_modification_possibility_title
 {
 "Game Seed"
@@ -58,24 +68,33 @@ ai_defense_descr
 
 ai_housing
 {
-"Az MI döntéseinek testreszabása a házak építése és lerombolásakor"
+"Customize the AIs decision to build and delete houses"
 }
 
 ai_buildhousing_descr
 {
-"Az MI döntéseinek testreszabása a házak építése és lerombolásakor"
+"Customize the AIs decision to build and delete houses"
 }
 
 build_housing_descr
 {
-"Extra építhető házak száma, mielőtt az MI nem épít több házat"
+"Number of extra available housing before AI stops building houses"
+}
+
+campfire_housing_descr
+{
+"Number of peasants at the campfire before the AI stops buildings houses"
+}
+
+delete_housing
+{
+"Disable the AI's ability to delete houses"
 }
 
 delete_housing_descr
 {
-"Amikor az MI eléri az extra építhető házak számát, miután az MI nem épít több házat, töröni fogja a házakat."
+"When this option is selected the AI will never delete houses"
 }
-
 aiv_prompt
 {
 "Módosított AIV fájlok észlelve. Telepítés előtt kattints az 'Igen' gombra, hogy elmentsd a jelenleg telepített AIV fájlokat, az eredeti backup felülírása nélkül. Kattints a 'Nem' gombra, hogy felülírd a telepített AIV fájlokat, nem készül róluk biztonsági mentés. Vagy kattints a 'Mégsem' gombra a telepítés megszakításához."
