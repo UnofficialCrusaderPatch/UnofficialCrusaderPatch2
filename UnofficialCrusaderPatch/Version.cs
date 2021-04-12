@@ -580,9 +580,9 @@ namespace UCP
 
             #region AI LORDS
 
-            new Change("ai_housing", ChangeType.AILords, false, false)
+            new Change("ai_housing", ChangeType.AILords, false)
             {
-                new SliderHeader("build_housing", false, 1, 200, 1, 0, 10)
+                new SliderHeader("build_housing", true, 1, 200, 1, 1, 10)
                 {
                     new BinaryEdit("ai_buildhousing")
                     {
@@ -610,7 +610,7 @@ namespace UCP
                     }
                 },
 
-                new SliderHeader("campfire_housing", false, 0, 25, 1, 5, 10)
+                new SliderHeader("campfire_housing", true, 0, 25, 1, 5, 10)
                 {
                     new BinaryEdit("ai_buildhousing")
                     {
@@ -634,9 +634,9 @@ namespace UCP
             },
 
 
-            new Change("ai_recruitstate_initialtimer", ChangeType.AILords)
+            new Change("ai_recruitstate_initialtimer", ChangeType.AILords, false)
             {
-                new SliderHeader("ai_recruitstate_initialtimervalue", false, 0, 30, 1, 6, 1)
+                new SliderHeader("ai_recruitstate_initialtimervalue", true, 0, 30, 1, 6, 0)
                 {
                     new BinaryEdit("ai_recruitstate_initialtimer")
                     {
@@ -1084,9 +1084,9 @@ namespace UCP
              */
 
             // 0x00410A30 + 8 ushort default = 2000
-            new Change("o_firecooldown", ChangeType.Other)
+            new Change("o_firecooldown", ChangeType.Other, false)
             {
-                new SliderHeader("o_firecooldown", false, 0, 20000, 500, 2000, 4000)
+                new SliderHeader("o_firecooldown", true, 0, 20000, 500, 2000, 4000)
                 {
                     new BinaryEdit("o_firecooldown")
                     {
@@ -2903,7 +2903,7 @@ namespace UCP
                 }
             },
 
-            new Change("o_increase_path_update_tick_rate", ChangeType.Other, false)
+            new Change("o_increase_path_update_tick_rate", ChangeType.Other, true)
             {
                 new DefaultHeader("o_increase_path_update_tick_rate")
                 {
@@ -2918,7 +2918,7 @@ namespace UCP
 
             new Change("o_default_multiplayer_speed", ChangeType.Other)
             {
-                new SliderHeader("o_default_multiplayer_speed", false, 20, 90, 1, 40, 40)
+                new SliderHeader("o_default_multiplayer_speed", true, 20, 90, 1, 40, 50)
                 {
                     // 878FB
                     new BinaryEdit("o_default_multiplayer_speed")
