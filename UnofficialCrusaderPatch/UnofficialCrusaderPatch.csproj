@@ -1507,10 +1507,10 @@
     <EmbeddedResource Include="..\SHC_AIV\skirmish\wolf8.aiv">
       <Link>AIV\EvreyImproved\wolf8.aiv</Link>
     </EmbeddedResource>
-    <EmbeddedResource Include="AIC\Resources\Kimberly-Balance-v1.2.json" />
-    <EmbeddedResource Include="AIC\Resources\Krarilotus-aggressiveAI-v1.2.json" />
     <EmbeddedResource Include="AIC\Resources\UCP-AI-Patch.json" />
-    <EmbeddedResource Include="AIC\Resources\Xander10alpha-Release-v1.3.json" />
+    <EmbeddedResource Include="AIC\Resources\Kimberly-Balance-v1.5.json" />
+    <EmbeddedResource Include="AIC\Resources\Krarilotus-aggressiveAI-v1.3.json" />
+    <EmbeddedResource Include="AIC\Resources\Xander10alpha_Enhanced_Vanilla_AI_1.1.json" />
     <None Include="App.config" />
     <EmbeddedResource Include="CodeBlocks\s_resource.block" />
     <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed_reset.block" />
