@@ -30,9 +30,9 @@ namespace UCP.AIC
 
         static List<string> internalAIC = new List<string>()
         {
-            "UCP.vanilla", "UCP.UCP-AI-Patch", "UCP.Kimberly-Balance-v1.2",
-            "UCP.Krarilotus-aggressiveAI-v1.2", "UCP.Tatha 0.5.1",
-            "UCP.Xander10alpha-Release-v1.3"
+            "UCP.vanilla", "UCP.UCP-AI-Patch", "UCP.Kimberly-Balance-v1.5",
+            "UCP.Krarilotus-aggressiveAI-v1.3", "UCP.Tatha 0.5.1",
+            "UCP.Xander10alpha_Enhanced_Vanilla_AI_1.1"
         };
 
         static LinkedList<AICChange> selectedChanges = new LinkedList<AICChange>();
@@ -481,10 +481,10 @@ namespace UCP.AIC
         {
             LoadAIC("UCP.AIC.Resources.UCP-AI-Patch.json");
             LoadAIC("UCP.AIC.Resources.vanilla.json");
-            LoadAIC("UCP.AIC.Resources.Kimberly-Balance-v1.2.json");
-            LoadAIC("UCP.AIC.Resources.Krarilotus-aggressiveAI-v1.2.json");
+            LoadAIC("UCP.AIC.Resources.Kimberly-Balance-v1.5.json");
+            LoadAIC("UCP.AIC.Resources.Krarilotus-aggressiveAI-v1.3.json");
             LoadAIC("UCP.AIC.Resources.Tatha 0.5.1.json");
-            LoadAIC("UCP.AIC.Resources.Xander10alpha-Release-v1.3.json");
+            LoadAIC("UCP.AIC.Resources.Xander10alpha_Enhanced_Vanilla_AI_1.1.json");
 
             if (Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "aic")))
             {
