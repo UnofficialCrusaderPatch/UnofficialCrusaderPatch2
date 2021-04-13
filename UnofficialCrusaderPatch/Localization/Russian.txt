@@ -1,6 +1,7 @@
 // ======================
-//         dev
+//         2.15
 // ======================
+
 u_spearmen_run
 {
 "Spearmen run by default instead of walking"
@@ -13,12 +14,12 @@ u_spearmen_run_descr
 
 o_seed_modification_possibility_title
 {
-"Game Seed"
+"Game Randomseed"
 }
 
 o_seed_modification_possibility_only_set
 {
-"Enable game seed"
+"Enable fixed game randomseed"
 }
 
 o_seed_modification_possibility_only_set_descr
@@ -28,7 +29,7 @@ o_seed_modification_possibility_only_set_descr
 
 o_seed_modification_possibility
 {
-"Enable & Save game seeds"
+"Enable & Save game randomseeds"
 }
 
 o_seed_modification_possibility_descr
@@ -61,11 +62,6 @@ ai_housing
 "Customize the AIs decision to build and delete houses"
 }
 
-ai_buildhousing_descr
-{
-"Customize the AIs decision to build and delete houses"
-}
-
 build_housing_descr
 {
 "Number of extra available housing before AI stops building houses"
@@ -88,17 +84,17 @@ delete_housing_descr
 
 aiv_prompt
 {
-"Обнаружены модифицированные AIV. Перед установкой нажмите "Да", чтобы сохранить установленные AIV, не перезаписывая оригинальную резервную копию. Нажмите "Нет", чтобы перезаписать установленные AIV без создания резервной копии, и "Отмена", чтобы отменить."
+"Custom AIVs detected. Do you want to create a backup Milord?"
 }
 
 aiv_cli_prompt
 {
-"Обнаружены модифицированные AIV. Введите 'delete' для удаления или введите имя папки для копирования файлов на."
+"Custom AIVs detected. Enter 'delete' to erase or enter folder name to copy files to."
 }
 
 install_abort_io
 {
-"Установка отменена. В этой папке уже существуют файлы с таким же именем. Попробуйте еще раз и выберите другую папку."
+"Installation aborted. Files with the same name already exist in this folder. Please try again and select a different folder."
 }
 
 install_abort
@@ -175,14 +171,14 @@ u_fix_applefarm_blocking_descr
 
 o_increase_path_update_tick_rate
 {
-"Увеличить скорость обновления пути в 4 раза."
+"Check more often for available paths"
 }
 
 o_increase_path_update_tick_rate_descr
 {
-"В оригинале, потребовалось 200 игровых тиков, чтобы обновить путь, что привело к тому, что юниты не могли перемещаться в замок после разрушения ворот или башни.
+"In vanilla, it took 200 game ticks to check for new paths, often stopping units to move into the castle after destroying a gate or tower immediately.
 
-Это изменение увеличивает скорость передачи тиков в 4 раза, снижая требуемое значение тика до 50, что позволяет устройствам "понимать" быстрее, что новый путь доступен."
+Availability is calculated every 50 gameticks now, allowing the units to 'realize' new paths more quickly."
 }
 
 o_fix_ladderclimb

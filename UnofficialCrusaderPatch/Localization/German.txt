@@ -1,49 +1,50 @@
 // ======================
-//         dev
+//         2.15
 // ======================
+
 u_spearmen_run
 {
-"Spearmen run by default instead of walking"
+"Speerträger rennen standartmäßig"
 }
 
 u_spearmen_run_descr
 {
-"Makes spearmen run by default instead of the slow walking."
+"Speerträger sind so schnell wie Sklaven und Streitkolbenkämpfer."
 }
 
 o_seed_modification_possibility_title
 {
-"Game Seed"
+"Spiel Zufallsstartwert"
 }
 
 o_seed_modification_possibility_only_set
 {
-"Enable game seed"
+"Ermögliche Festlegung eines Zufallsstartwertes"
 }
 
 o_seed_modification_possibility_only_set_descr
 {
-"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For player-AI games, it will ensure the same start conditions in the map (AIV selection for example). To set the game seed, enable this option and create a file called 'live' with a 6 digit number in the game install/gameseeds directory. CAUTION: This feature only works after also restarting the game!"
+"Das Setzen eines Startwertes für den Zufallszahlen Generator ermöglicht es für KI Spiele immer den gleichen Verlauf zu nehmen. Für normale Spiele mit der KI können feste Startbedingungen ermöglicht werden (z.B. die gleiche Auswahl von AIV Dateien für die KI). Um den Zufallsstartwert zu setzen, erstelle ein Dokument mit dem Namen 'live', welches eine ganze Zahl enthält im Installationsverzeichnis/gameseeds Ordner. ACHTUNG: Dies funktioniert nur nach Neustarten des Spiels!"
 }
 
 o_seed_modification_possibility
 {
-"Enable & Save game seeds"
+"Ermögliche & Speichere Zufallsstartwerte"
 }
 
 o_seed_modification_possibility_descr
 {
-"This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards."
+"Mit dieser Option werden Zufallsstartwerte von Spielen gespeichert, für die keiner im gameseeds Ordner gesetzt wurde. So können diese nachträglich in 'live' umbenannt werden um das Spiel zu wiederholen."
 }
 
 ai_recruitstate_initialtimer
 {
-"Customise the initial AI's defence recruit time"
+"Bestimme die Zeitspanne bis KIs anhand der AIC rekrutieren"
 }
 
 ai_recruitstate_initialtimervalue_descr
 {
-"Set this value to number of months for which the AI will exclusively recruit defence troops, unless it has already filled up its defence total"
+"Die Anzahl an Monaten, bis die KI anhand der in der AIC festgelegten Rekrutierungswahrscheinlichkeiten rekrutiert. Bis dahin rekrutiert sie ausschließlich defensive Truppen und falls diese voll sind Angriffstruppen."
 }
 
 ai_defense
@@ -53,52 +54,47 @@ ai_defense
 
 ai_defense_descr
 {
-"Fixt einen Bug, der die KI davon abhielt fehlende Truppen auf Wällen und Türmen zu verstärken, solange noch Defensivpatrouillen vorhanden waren."
+"Fixt einen bug, der die KI davon abhielt fehlende Truppen auf Wällen und Türmen zu verstärken, solange noch Defensivpatroillien vorhanden waren."
 }
 
 ai_housing
 {
-"Customize the AIs decision to build and delete houses"
-}
-
-ai_buildhousing_descr
-{
-"Customize the AIs decision to build and delete houses"
+"Intelligentere Platzierung von Häusern"
 }
 
 build_housing_descr
 {
-"Number of extra available housing before AI stops building houses"
+"Die Differenz aus aktueller und maximal möglicher Bevölkerung, ab der die KI keine Häuser mehr baut. In Vanilla ist diese 0. Diese Option deaktiviert auch das Abreißen von Häusern für die KI."
 }
 
 campfire_housing_descr
 {
-"Number of peasants at the campfire before the AI stops buildings houses"
+"Wenn mehr als diese Anzahl an freien Bauern am Lagerfeuer sitzen, baut die KI keine Häuser mehr. Diese Option deaktiviert auch das Abreißen von Häusern für die KI."
 }
 
 delete_housing
 {
-"Disable the AI's ability to delete houses"
+"Verhindert das Abreißen von Häusern für die KI."
 }
 
 delete_housing_descr
 {
-"When this option is selected the AI will never delete houses"
+"Mit dieser Option wird die KI nie wieder Häuser abreißen."
 }
 
 aiv_prompt
 {
-"Benutzerdefiniert veränderte AIVs erkannt. Klicke vor der Installation auf 'Ja', um die aktuell installierten AIVs zu speichern, ohne das ursprüngliche Backup zu überschreiben. Klicke auf 'Nein', um die installierten AIVs zu überschreiben, ohne ein Backup zu erstellen. Klicke auf 'Abbrechen', um den Vorgang abzubrechen."
+"Modifizierte AIVs erkannt. Wollen Eure Lordschaft jetzt ein Backup anlegen?"
 }
 
 aiv_cli_prompt
 {
-"Benutzerdefiniert veränderte AIVs erkannt. Gib 'delete' ein, um diese zu löschen, oder gib einen Ordnernamen an, um die Dateien dorthin zu kopieren."
+"Modifizierte AIVs erkannt. Schreibe 'delete' um sie zu löschen oder einen Ordnernamen um ein Backup zu erstellen."
 }
 
 install_abort_io
 {
-"Installation abgebrochen. In diesem Ordner sind bereits gleichnamige Dateien vorhanden. Bitte versuche es erneut und wähle einen anderen Ordner aus."
+"Installation abgebrochen. Dateien mit dem selben Namen waren bereits im gewählten Ordner vorhanden. Bitte wählen Eure Lordschaft einen anderen Ordner aus."
 }
 
 install_abort
@@ -113,22 +109,22 @@ backup_aiv_select
 
 o_change_siege_engine_spawn_position_catapult
 {
-"Belagerungsgeräte nach dem Aufbauen zentrieren"
+"Belagerungsgeräte in der Mitte des Zelts aufbauen"
 }
 
 o_change_siege_engine_spawn_position_catapult_descr
 {
-"Belagerungsgeräte erscheinen nun nach dem Aufbauen am Punkt der Zeltmitte, statt wie bisher in der oberen linken Ecke des Zelts."
+"Belagerungsgeräte erscheinen nun nach dem Aufbauen am Punkt der Zeltmitte, statt wie bisher in der oberen rechten Ecke des Zelts."
 }
 
 o_stop_player_keep_rotation
 {
-"Drehe Bergfriede menschlicher Spieler"
+"Drehe Spielerberfriede wie die der KI"
 }
 
 o_stop_player_keep_rotation_descr
 {
-"Bergfriede menschlicher Spieler werden nun zu Beginn des Spiels genauso gedreht wie Bergfriede von KIs, sodass das Lagerfeuer immer zum jeweils nächstliegenden Kartenrand hin ausgerichtet ist."
+"Die Bergfriede der Spieler richten sich nun so aus wie die der KI; Sie drehen sich so, dass das Lagerfeuer in Richtung des Kartenrands zeigt."
 }
 
 o_restore_arabian_engineer_speech
@@ -143,7 +139,7 @@ o_restore_arabian_engineer_speech_descr
 
 u_fix_lord_animation_stuck_movement
 {
-"Entfernt das Einfrieren der Lord Animation"
+"Setzt den Lordanimation nach Zerstörung von Gebäuden zurück"
 }
 
 u_fix_lord_animation_stuck_movement_descr
@@ -163,7 +159,7 @@ fix_apple_orchard_build_size_descr
 
 u_fix_applefarm_blocking
 {
-"Behebt das blockieren des Apfelfarmers"
+"Behebt das Blockieren des Apfelfarmers"
 }
 
 u_fix_applefarm_blocking_descr
@@ -173,12 +169,14 @@ u_fix_applefarm_blocking_descr
 
 o_increase_path_update_tick_rate
 {
-"Erhöht die Tickrate für Pfadupdates."
+"Suche öfter nach verfügbaren Wegen"
 }
 
 o_increase_path_update_tick_rate_descr
 {
-"In Vanilla aktualisierte sich die Wegberechnung alle 200 Spielticks. Dies führte zu einer Reaktionsverzögerung von Einheiten und Arbeitern wenn neue Wege verfügbar wurden. Diese Änderung setzt dieses Intervall auf 50."
+"In Vanilla dauerte es 200 Spiele Ticks, bis neue Pfade berechnet wurden. Dies verzögerte oft nach Zerstörung von Türmen oder Torhäusern das Betreten der gegnerischen Burg.
+
+Erreichbarkeit wird nun alle 50 Ticks berechnet, wodurch Einheiten Breschen schneller erkennen können."
 }
 
 o_fix_ladderclimb
