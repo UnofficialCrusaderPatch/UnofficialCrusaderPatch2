@@ -1,6 +1,7 @@
 // ======================
-//         dev
+//         2.15
 // ======================
+
 u_spearmen_run
 {
 "Spearmen run by default instead of walking"
@@ -13,12 +14,12 @@ u_spearmen_run_descr
 
 o_seed_modification_possibility_title
 {
-"Game Seed"
+"Game Randomseed"
 }
 
 o_seed_modification_possibility_only_set
 {
-"Enable game seed"
+"Enable fixed game randomseed"
 }
 
 o_seed_modification_possibility_only_set_descr
@@ -28,7 +29,7 @@ o_seed_modification_possibility_only_set_descr
 
 o_seed_modification_possibility
 {
-"Enable & Save game seeds"
+"Enable & Save game randomseeds"
 }
 
 o_seed_modification_possibility_descr
@@ -38,7 +39,7 @@ o_seed_modification_possibility_descr
 
 ai_recruitstate_initialtimer
 {
-"Customise the initial AI's defence recruit time"
+"Set AIs initial time until they recruit by the AIC parameters"
 }
 
 ai_recruitstate_initialtimervalue_descr
@@ -58,46 +59,42 @@ ai_defense_descr
 
 ai_housing
 {
-"Customize the AIs decision to build and delete houses"
-}
-
-ai_buildhousing_descr
-{
-"Customize the AIs decision to build and delete houses"
+"Let the AI build houses smarter"
 }
 
 build_housing_descr
 {
-"Number of extra available housing before AI stops building houses"
+"Difference between current and maximum population, above which the AI stops building houses. This is 0 in vanilla. This also disables deleting of houses for the AI."
 }
 
 campfire_housing_descr
 {
-"Number of peasants at the campfire before the AI stops buildings houses"
+"Number of idle peasants at the campfire before the AI stops building houses. This also disables deleting of houses for the AI."
 }
 
 delete_housing
 {
-"Disable the AI's ability to delete houses"
+"Disable the AI's ability to delete houses."
 }
 
 delete_housing_descr
 {
-"When this option is selected the AI will never delete houses"
+"When this option is selected the AI will never delete houses."
 }
+
 aiv_prompt
 {
-"Módosított AIV fájlok észlelve. Telepítés előtt kattints az 'Igen' gombra, hogy elmentsd a jelenleg telepített AIV fájlokat, az eredeti backup felülírása nélkül. Kattints a 'Nem' gombra, hogy felülírd a telepített AIV fájlokat, nem készül róluk biztonsági mentés. Vagy kattints a 'Mégsem' gombra a telepítés megszakításához."
+"Custom AIVs detected. Do you want to create a backup Milord?"
 }
 
 aiv_cli_prompt
 {
-"Módosított AIV fájlok észlelve. Írd be a 'delete' szót az eltávolításukhoz vagy adj meg egy mappa nevet, ahova a fájlok telepünek."
+"Custom AIVs detected. Enter 'delete' to erase or enter folder name to copy files to."
 }
 
 install_abort_io
 {
-"Telepítés megszakítva. Már léteznek ilyen nevű fájlok ebben a mappában. Kérjük válassz egy másik mappát és próbáld meg újra."
+"Installation aborted. Files with the same name already exist in this folder. Please try again and select a different folder."
 }
 
 install_abort
@@ -174,14 +171,14 @@ u_fix_applefarm_blocking_descr
 
 o_increase_path_update_tick_rate
 {
-"Tick ráta növelése az útvonal frissítésnél"
+"Check more often for available paths"
 }
 
 o_increase_path_update_tick_rate_descr
 {
-"Az eredeti játékban 200 játékidő tick után frissült az útvonal, ami azt eredményezte, hogy az egységek nem tudtak bemenni a várba miután lerombolták a kaput vagy a tornyot.
+"In vanilla, it took 200 game ticks to check for new paths, often stopping units to move into the castle after destroying a gate or tower immediately.
 
-Ez a változtatás 4x-esére növeli a tick rátát, azáltal hogy csökkenti a szükséges tick értéket 50-re, így lehetővé téve hogy az egységek sokkal gyorsabban 'realizálják' az elérhető új útvonalat."
+Availability is calculated every 50 gameticks now, allowing the units to 'realize' new paths more quickly."
 }
 
 o_fix_ladderclimb
