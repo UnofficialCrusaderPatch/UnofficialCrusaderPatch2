@@ -4,47 +4,47 @@
 
 u_spearmen_run
 {
-"Spearmen run by default instead of walking"
+"Копейщики бегут по умолчанию вместо того, чтобы ходить пешком."
 }
 
 u_spearmen_run_descr
 {
-"Makes spearmen run by default instead of the slow walking."
+"Вместо медленной ходьбы копейщики бегут медленно."
 } 
 
 o_seed_modification_possibility_title
 {
-"Game Randomseed"
+"Игровой случайный сид"
 }
 
 o_seed_modification_possibility_only_set
 {
-"Enable fixed game randomseed"
+"Включить фиксированную игру случайным сидом"
 }
 
 o_seed_modification_possibility_only_set_descr
 {
-"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For player-AI games, it will ensure the same start conditions in the map (AIV selection for example). To set the game seed, enable this option and create a file called 'live' with a 6 digit number in the game install/gameseeds directory. CAUTION: This feature only works after also restarting the game!"
+"Установка игрового сида позволит играм только с AI играть точно так же, если используются те же настройки карты. Для игр с AI, он обеспечит такие же условия запуска на карте (например, выбор AIV). Для установки игрового сида, включите эту опцию и создайте файл под названием "live" с 6-значным номером в каталоге установки игры/игр. ВНИМАНИЕ: Эта функция работает только после перезапуска игры!"
 }
 
 o_seed_modification_possibility
 {
-"Enable & Save game randomseeds"
+"Включить и сохранить игру случайных сидов"
 }
 
 o_seed_modification_possibility_descr
 {
-"This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards."
+"Эта опция сохранит сид от игр, которые не имеют "live" сида, так что вы можете переименовать их в "live", чтобы потом воссоздать матч."
 }
 
 ai_recruitstate_initialtimer
 {
-"Customise the initial AI's defence recruit time"
+"Настройка первоначального времени вербовки AI в защиту"
 }
 
 ai_recruitstate_initialtimervalue_descr
 {
-"Set this value to number of months for which the AI will exclusively recruit defence troops, unless it has already filled up its defence total"
+"Установите это значение на количество месяцев, в течение которых AI будет вербовать исключительно войска обороны, если только он уже не заполнил всю оборону."
 }
 
 ai_defense
@@ -59,42 +59,42 @@ ai_defense_descr
 
 ai_housing
 {
-"Customize the AIs decision to build and delete houses"
+"Настройка решения AI о строительстве и удалении домов"
 }
 
 build_housing_descr
 {
-"Number of extra available housing before AI stops building houses"
+"Количество дополнительного доступного жилья до того, как AI прекратит строительство домов"
 }
 
 campfire_housing_descr
 {
-"Number of peasants at the campfire before the AI stops buildings houses"
+"Количество крестьян у костра перед тем, как AI остановит строительство домов."
 }
 
 delete_housing
 {
-"Disable the AI's ability to delete houses"
+"Отключает способность AI удалять дома."
 }
 
 delete_housing_descr
 {
-"When this option is selected the AI will never delete houses"
+"Когда эта опция выбрана, AI никогда не будет удалять дома"
 }
 
 aiv_prompt
 {
-"Custom AIVs detected. Do you want to create a backup Milord?"
+"Обнаружены пользовательские AIV. Вы хотите создать резервную копию Милорд?"
 }
 
 aiv_cli_prompt
 {
-"Custom AIVs detected. Enter 'delete' to erase or enter folder name to copy files to."
+"Обнаружены пользовательские AIV. Введите 'delete' для удаления или введите имя папки для копирования файлов."
 }
 
 install_abort_io
 {
-"Installation aborted. Files with the same name already exist in this folder. Please try again and select a different folder."
+"Установка отменена. В этой папке уже существуют файлы с таким же именем. Попробуйте еще раз и выберите другую папку."
 }
 
 install_abort
@@ -156,7 +156,7 @@ fix_apple_orchard_build_size
 
 fix_apple_orchard_build_size_descr
 {
-"Изменяет размер постройки яблоневого сада на размер, который он занимает после расположение фермы. Это экономит место при строительстве ферм и увеличивает скорость, с которой ИИ может располагать эти фермы."
+"Изменяет размер постройки яблоневого сада на размер, который он занимает после расположение фермы. Это экономит место при строительстве ферм и увеличивает скорость, с которой AI может располагать эти фермы."
 }
 
 u_fix_applefarm_blocking
@@ -171,14 +171,14 @@ u_fix_applefarm_blocking_descr
 
 o_increase_path_update_tick_rate
 {
-"Check more often for available paths"
+"Более частая проверка доступного пути"
 }
 
 o_increase_path_update_tick_rate_descr
 {
-"In vanilla, it took 200 game ticks to check for new paths, often stopping units to move into the castle after destroying a gate or tower immediately.
+"В ваниле, это заняло 200 игровых тиков, чтобы проверить новые пути, часто останавливая юнитов, чтобы перейти в замок после уничтожения ворот или башни немедленно.
 
-Availability is calculated every 50 gameticks now, allowing the units to 'realize' new paths more quickly."
+Доступность рассчитывается теперь каждые 50 игровых тиков, что позволяет юнитам "реализовывать" новые пути быстрее."
 }
 
 o_fix_ladderclimb
@@ -218,7 +218,7 @@ ai_fix_crusader_archers_pitch
 
 ai_fix_crusader_archers_pitch_descr
 {
-"Исправляет, что ИИ-европейские лучники не зажигают рвы, как арабские лучники, когда на них попадают вражеские юниты."
+"Исправляет, что AI-европейские лучники не зажигают рвы, как арабские лучники, когда на них попадают вражеские юниты."
 }
 
 o_fix_baker_disappear
@@ -369,7 +369,7 @@ ai_fix_laddermen_with_enclosed_keep
 
 ai_fix_laddermen_with_enclosed_keep_descr
 {
-    "AI (в частности, Змея) больше не прекращает использование ледоколов с их блоками осады, если их содержание находится в замкнутом пространстве."
+    "AI (в частности, Змея) больше не прекращает использование Лестниц с их блоками осады, если их содержание находится в замкнутом пространстве."
 }
 
 o_override_identity_menu
@@ -419,7 +419,7 @@ ui_aicofferconvert
 
 ui_aicconvertprompt
 {
-	"AIC Conversion"
+	"Преобразование AIC"
 }
 
 ui_aicselect
@@ -797,7 +797,7 @@ o_onlyai
 
 o_onlyai_descr
 {
-	"Убирает игрока 1, чтобы вы могли видеть только 8 ИИ в одном и том же режиме. &
+	"Убирает игрока 1, чтобы вы могли видеть только 8 AI в одном и том же режиме. &
 Сохранения игры теперь правильно загружаются в этом режиме. Иногда ошибка &
 появляется, когда случайные объекты появляются на всей карте. Это просто визуальный баг &
 и его можно убрать &, сохранив игру, завершая миссию и перезагружая &
@@ -1034,7 +1034,7 @@ o_healer_descr
 
 o_xtreme
 {
-	"Умраны значки магии в Stronghold Crusader Extreme"
+	"Убраны значки магии в Stronghold Crusader Extreme"
 }
 
 o_xtreme_descr
