@@ -14,14 +14,17 @@ Warning! This balance is meant to be used with Stronghold Crusader Extreme, as m
 All AI-Lords received an overhaul. All AI lords are allowed to buy weapons and armour. Most AI-Lords had their economy reworked for more efficiency. 
 	
 The balancing was also changed dramatically, as the four animal lords Rat, Snake, Pig and Wolf have been strengthened a lot more than the other lords.",
-  "Polish": "(Wersja 1.2 z 29 marca 2020)
+  "Polish": "(Wersja 1.5 z 22 lutego 2021)
 
-Wszyscy przeciwnicy komputerowi zostali przerobieni. Każdy bot-krzyżowiec może kupować broń i zbroje. Gospodarka większości botów została zmieniona dla zapewnienia lepszej wydajności. 
+Uwaga! Wprowadzone zmiany balansu wymagają Twierdzy Krzyżowiec Extreme, gdyż wielu przeciwników komputerowych ma zwiększoną wielkość armii!
+
+Wszyscy przeciwnicy komputerowi zostali przerobieni. Każdy bot może kupować broń i zbroje. Gospodarka większości botów została zmieniona dla zapewnienia lepszej wydajności. 
 	
 Zmieniono mocno balans - Szczur, Wąż, Wieprz i Wilk zostali wzmocnieni bardziej od pozostałych botów.",
-  "Russian": "(Версия 1.2 от 29 марта 2020 г.)
+  "Russian": "(Версия 1.5 от 13 Апреля 2021 г.)
+Внимание! Этот баланс предназначен для использования с Stronghold Crusader Extreme, так как у многих повелителей AI увеличились размеры армии!
 
-Все AI Лорды получили капитальный ремонт. Каждому Крестоносцу Лорду ИИ теперь разрешено покупать оружие и броню. Большинство AI лордов переделали свою экономику для большей эффективности. 
+Все AI Лорды получили капитальный ремонт. Каждому Лорду AI теперь разрешено покупать оружие и броню. Большинство AI лордов переделали свою экономику для большей эффективности. 
 	
 Балансировка также была кардинально изменена, так как четыре лорда Крыса, Змея, Свинья и Волк были усилены гораздо больше, чем другие лорды.",
   "Chinese": "版本1.2。2020年3月29日。
@@ -29,11 +32,13 @@ Zmieniono mocno balans - Szczur, Wąż, Wieprz i Wilk zostali wzmocnieni bardzie
 所有领主都得到了调整。现在所有领主都会购买武器装备。大部分领主的经济系统被调整为更高效的状态。
 
 平衡也发生了巨大的变化，因为老鼠、蛇、猪和狼这四个动物领主比其他领主得到了更多的加强。",
-  "Hungarian": "(Verzió 1.2 2020. Március 29)
+  "Hungarian": "(Verzió 1.5 2021. Február 22)
+
+Figyelem! Ez a kiegyensúlyozás a Stronghold Crusader Extreme verziójához készült, mivel sok MI Lord seregének a száma jelentősen megnövekedett!
 
 Minden MI Lord át lett szerkesztve. Az összes keresztes MI mostantól vásárol fegyvert és páncélt. A legtöbb MI Lordnál a gazdaság meg lett változtatva, hogy összességében hatékonyabb legyen. 
 	
-Egy kissé átszerkesztésre került a kiegyensúlyozás, mert az állat lordok mint Patkány, Kígyó, Disznó és Farkas a többi lordhoz képest erősebbek lettek."
+A kiegyensúlyozást egy kicsit megváltoztattam, az állat lordok mint Patkány, Kígyó, Disznó és Farkas a többi lordhoz képest erősebbek lettek."
 },
 
 	"AICharacters": [
