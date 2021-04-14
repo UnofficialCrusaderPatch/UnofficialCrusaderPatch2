@@ -4,52 +4,52 @@
 
 u_spearmen_run
 {
-"Spearmen run by default instead of walking"
+"A lándzsás egység sétálás helyett alapból fut"
 }
 
 u_spearmen_run_descr
 {
-"Makes spearmen run by default instead of the slow walking."
+"A lándzsás egység lassú sétálás helyett alapból futni fog. A lándzsás olyan gyorsan fut, mint egy rabszolga vagy buzogányos."
 }
 
 o_seed_modification_possibility_title
 {
-"Game Randomseed"
+"Random játék seed"
 }
 
 o_seed_modification_possibility_only_set
 {
-"Enable fixed game randomseed"
+"Megadott Random játék seed engedélyezése"
 }
 
 o_seed_modification_possibility_only_set_descr
 {
-"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For player-AI games, it will ensure the same start conditions in the map (AIV selection for example). To set the game seed, enable this option and create a file called 'live' with a 6 digit number in the game install/gameseeds directory. CAUTION: This feature only works after also restarting the game!"
+"A játék seed megadásával az MI harcoknak a kimenetele ugyanaz lesz, azonos pályabeállítások esetén. Játékos-MI harc esetén, ugyanazon kezdési feltételeket biztosítja a pályán (mint pl. az AIV kiválasztás). A játék seed megadásához, engedélyezd ezt a beállítást és hozz létre egy 6 darab számot tartalmazó 'live' nevű szöveges fájlt a játék könyvtár/gameseeds mappában. FIGYELEM: Ez a beállítás csak a játék újraindítása után működik!"
 }
 
 o_seed_modification_possibility
 {
-"Enable & Save game randomseeds"
+"Random játék seed-ek engedélyezése és mentése"
 }
 
 o_seed_modification_possibility_descr
 {
-"This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards."
+"Ez a beállítás elmenti a seed-et azon játékokból amikhez nem lett megadva live seed érték, nevezd át a kívánt seed-et tartalmazó szöveges fájlt 'live'-ra hogy a későbbiekben újra rekonstruálhasd a harcot."
 }
 
 ai_recruitstate_initialtimer
 {
-"Set AIs initial time until they recruit by the AIC parameters"
+"Az MI a megadott ideig az AIC paraméterek alapján toborozzon"
 }
 
 ai_recruitstate_initialtimervalue_descr
 {
-"Set this value to number of months for which the AI will exclusively recruit defence troops, unless it has already filled up its defence total"
+"Az értéknek add meg azon hónapok számát, amikor az MI az AIC fájlban megadott toborzási sebeséggel toboroz kizárólag védekező egységeket, ha már teljesen megerősítette a védelmét, akkor támadó egységeket fog toborozni"
 }
 
 ai_defense
 {
-"Várvédédő egységek megerősítése kijavítva"
+"Várvédő egységek megerősítése kijavítva"
 }
 
 ai_defense_descr
@@ -59,42 +59,42 @@ ai_defense_descr
 
 ai_housing
 {
-"Let the AI build houses smarter"
+"Házak okosabb elhelyezése"
 }
 
 build_housing_descr
 {
-"Difference between current and maximum population, above which the AI stops building houses. This is 0 in vanilla. This also disables deleting of houses for the AI."
+"A jelenlegi és a maximális népességszám közötti különbség, amely felett az MI nem épít több házat. Az eredeti játékban ez a szám 0. Ha ez a beállítás be van jelölve, akkor az MI nem rombolja le a házakat."
 }
 
 campfire_housing_descr
 {
-"Number of idle peasants at the campfire before the AI stops building houses. This also disables deleting of houses for the AI."
+"Parasztok száma a tábortűznél, mielőtt az MI nem épít több házat. Ha ez a beállítás be van jelölve, akkor az MI nem rombolja le a házakat."
 }
 
 delete_housing
 {
-"Disable the AI's ability to delete houses."
+"Az MI ne rombolja le a házakat."
 }
 
 delete_housing_descr
 {
-"When this option is selected the AI will never delete houses."
+"Ha ez a beállítás be van jelölve, akkor az MI soha nem rombolja le a házakat."
 }
 
 aiv_prompt
 {
-"Custom AIVs detected. Do you want to create a backup Milord?"
+"Módosított AIV fájlok észlelve. Szeretne egy biztonsági másolatot készíteni, uram?"
 }
 
 aiv_cli_prompt
 {
-"Custom AIVs detected. Enter 'delete' to erase or enter folder name to copy files to."
+"Módosított AIV fájlok észlelve. Írd be a 'delete' szót az eltávolításukhoz vagy adj meg egy mappa nevet, ahova a fájlok települnek."
 }
 
 install_abort_io
 {
-"Installation aborted. Files with the same name already exist in this folder. Please try again and select a different folder."
+"Telepítés megszakítva. Már léteznek ilyen nevű fájlok ebben a mappában. Kérjük válassz egy másik mappát és próbáld meg újra."
 }
 
 install_abort
@@ -114,12 +114,12 @@ o_change_siege_engine_spawn_position_catapult
 
 o_change_siege_engine_spawn_position_catapult_descr
 {
-"Az elkészült ostromgépek a sátor közepénél jelennek meg a sátor felső sarka helyett."
+"Az elkészült ostromgépek a sátor közepénél jelennek meg a sátor jobb felső sarka helyett."
 }
 
 o_stop_player_keep_rotation
 {
-"Forgó játékos vártornyok"
+"Játékos vártornyok elforgatása"
 }
 
 o_stop_player_keep_rotation_descr
@@ -134,14 +134,14 @@ o_restore_arabian_engineer_speech
 
 o_restore_arabian_engineer_speech_descr
 {
-"Ha a játékos az arab lord-ot választja, akkor a mérnök bészédekor az eredeti felvett arab hangfájlt használja.
+"Ha a játékos az Arab Lord-ot választja, akkor a mérnök beszédekor az eredeti felvett arab hangfájlt használja.
 
 Nincs túl sok variáció ezekben a hangfájlokban, így egy idő után zavaró lehet."
 }
 
 u_fix_lord_animation_stuck_movement
 {
-"Lord animáció fagyás javítás"
+"Lord animáció visszaállítása az épületek lerombolása után"
 }
 
 u_fix_lord_animation_stuck_movement_descr
@@ -156,7 +156,7 @@ fix_apple_orchard_build_size
 
 fix_apple_orchard_build_size_descr
 {
-"Az almáskert elhelyezése előtt az előnézeti mérete nagyobb volt, mint amekkora valójában az almáskert az elhelyezés után. Ez a hiba kijavításra került. Ezzel a beállítással több szabad hely marad az építésekor és megnöveli az MI mezőgazdasági épületek építésének rátáját."
+"Az almáskert elhelyezése előtt az előnézeti mérete nagyobb volt, mint amekkora valójában az almáskert az elhelyezés után. Ez a hiba kijavításra került. Ezzel a beállítással több szabad hely marad az almáskertek építésekor és megnöveli az MI mezőgazdasági épületek építésének rátáját."
 }
 
 u_fix_applefarm_blocking
@@ -171,14 +171,14 @@ u_fix_applefarm_blocking_descr
 
 o_increase_path_update_tick_rate
 {
-"Check more often for available paths"
+"Elérhető útvonalak gyakoribb ellenőrzése"
 }
 
 o_increase_path_update_tick_rate_descr
 {
-"In vanilla, it took 200 game ticks to check for new paths, often stopping units to move into the castle after destroying a gate or tower immediately.
+"Az eredeti játékban minden 200. játékidő tick után kerültek ellenőrzésre az új útvonalak, ami azt eredményezte, hogy az egységek nem tudtak azonnal bemenni a várba miután lerombolták a kaput vagy a tornyot.
 
-Availability is calculated every 50 gameticks now, allowing the units to 'realize' new paths more quickly."
+Az elérhető útvonalakat mostantól minden 50. játékidő tick után ellenőrzi, így lehetővé téve hogy az egységek sokkal gyorsabban 'realizálják' az elérhető új útvonalat."
 }
 
 o_fix_ladderclimb
@@ -188,7 +188,7 @@ o_fix_ladderclimb
 
 o_fix_ladderclimb_descr
 {
-"Az egységek mászás után nem felejtik el a számukra adott parancsot, és többé nem fognak elkezdeni le vagy felmászni azonnal miután már felmásztak."
+"Az egységek mászás után nem felejtik el a számukra adott parancsot, és többé nem fognak lemászni miután már felmásztak."
 }
 
 u_tanner_fix

@@ -1,6 +1,6 @@
 {
 "AICShortDescription": {
-  "German": "Diese KI-Charakter Datei verbessert die Effizienz aller KIs und verändert ihr Verhalten in ein deutlich aggressiveres.
+  "German": "Diese KI-Charakter Datei verbessert die Effizienz aller KIs und verändert ihr Verhalten in ein deutlich aggressiveres. (13.04.2021)
 Ziele die mit diesen Veränderungen erreicht werden:
 - Effizientere Wirtschaftsnutzung
 - Frühere erste Angriffe der KI.
@@ -12,7 +12,7 @@ Ziele die mit diesen Veränderungen erreicht werden:
 - Statt Gold anzusammeln gibt die KI dieses aus, um Druck zu machen.
 - Die KI nutzt teilweise neue Einheitentypen nachdem sie ein paar Mal angegriffen hat.",
   
-  "English": "This AI-Character file improves the efficiency of all AIs and makes them more aggressive.
+  "English": "This AI-Character file improves the efficiency of all AIs and makes them more aggressive. (13.04.2021)
 Changes made for that purpose:
 - More efficient economy.
 - Earlier attacks for all AIs.
@@ -24,7 +24,7 @@ Changes made for that purpose:
 - Instead of hoarding gold, the AI re-invests it into map pressure.
 - Some of the AIs use new unit types after a few initial attacks.",
   
-  "Polish": "Ten plik poprawia wydajność wszystkich przeciwników komputerowych, dzięki czemu stają się bardziej agresywni.
+  "Polish": "Ten plik poprawia wydajność wszystkich przeciwników komputerowych, dzięki czemu stają się bardziej agresywni. (13.04.2021)
 Wprowadzone zmiany:
 - Bardziej wydajna ekonomia.
 - Wszystkie boty szybciej atakują.
@@ -34,9 +34,9 @@ Wprowadzone zmiany:
 - Wydajniejsze ataki mniejszych grup.
 - Zmniejszono wykorzystanie jednostek harasujących.
 - Zamiast zbierać złoto, bot wykorzystuje je, aby wywierać presję na wrogach
-- Some of the AIs use new unit types after a few initial attacks.",
+- Niektórzy przeciwnicy wykorzystują nowy rodzaj jednostek po kilku pierwszych atakach.",
   
-  "Russian": "Этот файл AI Персонажей повышает эффективность всех AI и делает их более агрессивными.
+  "Russian": "Этот файл AI Персонажей повышает эффективность всех AI и делает их более агрессивными. (13.04.2021)
 Изменения, сделанные с этой целью:
 - Более эффективная экономика.
 - Ранние атаки на все AI.
@@ -46,9 +46,9 @@ Wprowadzone zmiany:
 - Более эффективные рейды.
 - Снижение интенсивности вылазок.
 - Вместо того, чтобы накапливать золото, AI реинвестировал его в Прессинг войсками.
-- Some of the AIs use new unit types after a few initial attacks.",
+- Некоторые из AI используют новые типы единиц после нескольких начальных атак.",
   
-"Chinese": "这个aic文档提升了所有ai的效率并且使他们更具有侵略性。
+"Chinese": "这个aic文档提升了所有ai的效率并且使他们更具有侵略性。(13.04.2021)
 有以下改变:
 -更高效的经济。
 -更早的发起进攻。
@@ -60,7 +60,7 @@ Wprowadzone zmiany:
 -ai将不再囤积黄金而是将其投入战争。
 - Some of the AIs use new unit types after a few initial attacks。",
 
-  "Hungarian": "Ez az MI karakter fájl javítja az MI-k hatékonyságát és még agresszívabbá teszi őket.
+  "Hungarian": "Ez az MI karakter fájl javítja az MI-k hatékonyságát és még agresszívabbá teszi őket. (13.04.2021)
 Erre a célra végrehajtott változtatások:
 - Hatékonyabb gazdasághasználat
 - Az MI-k első támadása hamarabb jön.
@@ -70,7 +70,7 @@ Erre a célra végrehajtott változtatások:
 - Az MI hatékonyabban alkalmazza a rajtaütéseket.
 - Az MI csökkenti a feleslegesen járőröző egységeit.
 - Az MI az arany felhalmozása helyett elköti azt, hogy nagyobb nyomást gyakoroljon ellenségére.
-- Some of the AIs use new unit types after a few initial attacks."
+- Egyes MI-k néhány kezdeti támadás után új egységtípusokat használnak."
   },
 "AICLongDescription": {
   "German": "Not provided anymore",
