@@ -106,20 +106,20 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			-Alle KIs DefWalls siehe jeweilige KI
 			-Alle KIs haben angepasste RaidUnitsBase
 			-Alle KIs haben RaidUnitsRandom auf 0
-			-Alle KIs Unknown124 auf 0
+			-Alle KIs RaidRetargetDelay auf 0
 			-Alle KIs haben angepasste AttForceBase 
 			-Alle KIs AttForceRandom auf 0
 			-Alle KIs AttForceSupportAllyThreshold auf 0 (KI tut das was der Spieler befehlt)
 			-Alle KIs AttForceRallyPercentage auf 1 (Rat 0)
-			-Alle KIs Unknown130 auf 0
+			-Alle KIs AttAssaultDelay auf 0
 			-Alle KIs AttUnitPatrolRecommandDelay auf 0
 			-Alle KIs Unknown132 auf 0
 			-Alle KIs benutzen jetzt bis zu 8 SiegeEngine 
 			-Alle KIs Unknown142 auf 0
 			-Alle KIs AttDiggingUnit (nutzt Ausgrab Einheiten außer Baumeister)
 			-Alle KIs AttDiggingUnitMax auf 50 (Slave, Pikeman, Maceman, Spearman)
-			-Alle KIs haben AttUnit2 (EuropArcher, ArabArcher, Crossbowman, Swordsman (Phillip, Abt))
-			-Alle KIs haben angepasste AttUnit2Max
+			-Alle KIs haben AttUnitVanguard (EuropArcher, ArabArcher, Crossbowman, Swordsman (Phillip, Abt))
+			-Alle KIs haben angepasste AttUnitVanguardMax
 			-Alle KIs mit Baumeisterguilde haben Laddermen
 			-Einige KIs haben AttUnitPatrol (HorseArcher)
 			-Einige KIs haben angepasste AttUnitPatrolMax
@@ -139,7 +139,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			-Alle KIs haben angepasste MaxFood
 			-Alle KIs haben angepasste TradeAmountFood
 			-Alle KIs haben angepasste TradeAmountEquipment
-			-Alle KIs haben Unknown040 auf 0
+			-Alle KIs haben AIRequestDelay auf 0
 			-Alle KIs haben angepasste (MinimumApples, MinimumCheese, MinimumBread, MinimumWheat, MinimumHop)
 			-Alle KIs haben MinimumGoodsRequiredAfterTrade auf 10, damit sie auch Handeln können
 			-Alle KIs haben angepasste DoubleRationsFoodThreshold oder 0 (wenn sie Nahrung verkauft)
@@ -286,8 +286,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			-HarassingSiegeEngine: 2 FireBallista, 1 Catapult
 			-HarassingSiegeEnginesMax 1->30
 			-SiegeEngine: 2 FireBallista, 2 Catapult, 1 BatteringRam, 1 SiegeTower, 1 Trebuchet, 1 FireBallista
-			-AttUnit2: Swordsman
-			-AttUnit2Max: 30
+			-AttUnitVanguard: Swordsman
+			-AttUnitVanguardMax: 30
 			-AttUnitPatrol: EuropArcher
 			-AttUnitPatrolMax: 20
 		-Wazir:
@@ -371,8 +371,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			-HarassingSiegeEnginesMax 5->50
 			-SiegeEngine: 2 FireBallista, 2 Catapult, 1 BatteringRam, 1 SiegeTower, 2 Trebuchet
 			-AttDiggingUnit: Pikeman
-			-AttUnit2: Swordsman
-			-AttUnit2Max: 50
+			-AttUnitVanguard: Swordsman
+			-AttUnitVanguardMax: 50
 			-AttUnitPatrol: EuropArcher
 			-AttUnitPatrolMax: 20
 			-AttUnitMain3, AttUnitMain4 auf Pikeman",
@@ -423,20 +423,20 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			-All AIs DefWalls see respective AI
 			-All AIs have customized RaidUnitsBase
 			-All AIs have RaidUnitsRandom on 0
-			-All AIs Unknown124 on 0
+			-All AIs RaidRetargetDelay on 0
 			-All AIs have customized AttForceBase
 			-All AIs AttForceRandom on 0
 			-All AIs AttForceSupportAllyThreshold 0 (AI does what the player commands)
 			-All AIs AttForceRallyPercentage on 1 (Rat 0)
-			-All AIs Unknown130 auf 0
+			-All AIs AttAssaultDelay auf 0
 			-All AIs AttUnitPatrolRecommandDelay auf 0
 			-All AIs Unknown132 auf 0
 			-All AIs now use up to 8 SiegeEngine 
 			-All AIs Unknown142 auf 0
 			-All AIs AttDiggingUnit (uses excavation units except builders)
 			-All AIs AttDiggingUnitMax on 50 (Slave, Pikeman, Maceman, Spearman)
-			-All AIs have AttUnit2 (EuropArcher, ArabArcher, Crossbowman, Swordsman (Phillip, Abbot))
-			-All AIs have customized AttUnit2Max
+			-All AIs have AttUnitVanguard (EuropArcher, ArabArcher, Crossbowman, Swordsman (Phillip, Abbot))
+			-All AIs have customized AttUnitVanguardMax
 			-All AIs with Engineersguild have laddermen
 			-Some AIs have AttUnitPatrol (HorseArcher)
 			-Some AIs have customized AttUnitPatrolMax
@@ -456,7 +456,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			-All AIs have customized MaxFood
 			-All AIs have customized TradeAmountFood
 			-All AIs have customized TradeAmountEquipment
-			-All AIs have Unknown040 auf 0
+			-All AIs have AIRequestDelay auf 0
 			-All AIs have customized (MinimumApples, MinimumCheese, MinimumBread, MinimumWheat, MinimumHop)
 			-All AIs have MinimumGoodsRequiredAfterTrade at 10 so they can trade
 			-All AIs have adjusted DoubleRationsFoodThreshold or 0 (if they sell food)
@@ -603,8 +603,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			-HarassingSiegeEngine: 2 FireBallista, 1 Catapult
 			-HarassingSiegeEnginesMax 1->30
 			-SiegeEngine: 2 FireBallista, 2 Catapult, 1 BatteringRam, 1 SiegeTower, 1 Trebuchet, 1 FireBallista
-			-AttUnit2: Swordsman
-			-AttUnit2Max: 30
+			-AttUnitVanguard: Swordsman
+			-AttUnitVanguardMax: 30
 			-AttUnitPatrol: EuropArcher
 			-AttUnitPatrolMax: 20
 		-Wazir:
@@ -688,8 +688,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			-HarassingSiegeEnginesMax 5->50
 			-SiegeEngine: 2 FireBallista, 2 Catapult, 1 BatteringRam, 1 SiegeTower, 2 Trebuchet
 			-AttDiggingUnit: Pikeman
-			-AttUnit2: Swordsman
-			-AttUnit2Max: 50
+			-AttUnitVanguard: Swordsman
+			-AttUnitVanguardMax: 50
 			-AttUnitPatrol: EuropArcher
 			-AttUnitPatrolMax: 20
 			-AttUnitMain3, AttUnitMain4 auf Pikeman",
@@ -705,7 +705,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Rat",
 			"Personality": {
 
-				"Unknown000": 12,
+				"WallDecoration": 12,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -745,7 +745,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 0,
 				"TradeAmountFood": 2,
 				"TradeAmountEquipment": 2,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 25,
 				"MaxWood": 77,
@@ -829,13 +829,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 0,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 25,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 0,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "None",
@@ -851,8 +851,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 0,
 				"AttDiggingUnit": "Spearman",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "EuropArcher",
-				"AttUnit2Max": 10,
+				"AttUnitVanguard": "EuropArcher",
+				"AttUnitVanguardMax": 10,
 				"AttMaxAssassins": 0,
 				"AttMaxLaddermen": 0,
 				"AttMaxTunnelers": 0,
@@ -881,7 +881,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Snake",
 			"Personality": {
 
-				"Unknown000": 12,
+				"WallDecoration": 12,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -921,7 +921,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 0,
 				"TradeAmountFood": 2,
 				"TradeAmountEquipment": 5,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 40,
 				"MaxWood": 203,
@@ -1005,13 +1005,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 30,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 30,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "FireBallista",
@@ -1027,8 +1027,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 21,
 				"AttDiggingUnit": "Spearman",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "EuropArcher",
-				"AttUnit2Max": 20,
+				"AttUnitVanguard": "EuropArcher",
+				"AttUnitVanguardMax": 20,
 				"AttMaxAssassins": 40,
 				"AttMaxLaddermen": 10,
 				"AttMaxTunnelers": 0,
@@ -1057,7 +1057,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Pig",
 			"Personality": {
 
-				"Unknown000": 12,
+				"WallDecoration": 12,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -1097,7 +1097,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 0,
 				"TradeAmountFood": 2,
 				"TradeAmountEquipment": 2,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 40,
 				"MaxWood": 191,
@@ -1181,13 +1181,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 30,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 25,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "FireBallista",
@@ -1203,8 +1203,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 22,
 				"AttDiggingUnit": "Maceman",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "Crossbowman",
-				"AttUnit2Max": 20,
+				"AttUnitVanguard": "Crossbowman",
+				"AttUnitVanguardMax": 20,
 				"AttMaxAssassins": 0,
 				"AttMaxLaddermen": 10,
 				"AttMaxTunnelers": 0,
@@ -1233,7 +1233,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Wolf",
 			"Personality": {
 
-				"Unknown000": 13,
+				"WallDecoration": 13,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -1273,7 +1273,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 2,
 				"TradeAmountFood": 5,
 				"TradeAmountEquipment": 5,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 0,
 				"MaxWood": 77,
@@ -1357,13 +1357,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 50,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 70,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "FireBallista",
@@ -1379,8 +1379,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 22,
 				"AttDiggingUnit": "Pikeman",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "Crossbowman",
-				"AttUnit2Max": 20,
+				"AttUnitVanguard": "Crossbowman",
+				"AttUnitVanguardMax": 20,
 				"AttMaxAssassins": 50,
 				"AttMaxLaddermen": 5,
 				"AttMaxTunnelers": 0,
@@ -1409,7 +1409,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Saladin",
 			"Personality": {
 
-				"Unknown000": 10,
+				"WallDecoration": 10,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -1449,7 +1449,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 5,
 				"TradeAmountFood": 5,
 				"TradeAmountEquipment": 0,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 0,
 				"MaxWood": 59,
@@ -1533,13 +1533,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 40,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 70,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "FireBallista",
@@ -1555,8 +1555,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 22,
 				"AttDiggingUnit": "Slave",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "ArabArcher",
-				"AttUnit2Max": 20,
+				"AttUnitVanguard": "ArabArcher",
+				"AttUnitVanguardMax": 20,
 				"AttMaxAssassins": 50,
 				"AttMaxLaddermen": 5,
 				"AttMaxTunnelers": 0,
@@ -1585,7 +1585,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Caliph",
 			"Personality": {
 
-				"Unknown000": 10,
+				"WallDecoration": 10,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -1625,7 +1625,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 5,
 				"TradeAmountFood": 5,
 				"TradeAmountEquipment": 0,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 40,
 				"MaxWood": 59,
@@ -1709,13 +1709,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 30,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 30,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "FireBallista",
@@ -1731,8 +1731,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 21,
 				"AttDiggingUnit": "Slave",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "ArabArcher",
-				"AttUnit2Max": 20,
+				"AttUnitVanguard": "ArabArcher",
+				"AttUnitVanguardMax": 20,
 				"AttMaxAssassins": 50,
 				"AttMaxLaddermen": 5,
 				"AttMaxTunnelers": 0,
@@ -1761,7 +1761,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Sultan",
 			"Personality": {
 
-				"Unknown000": 10,
+				"WallDecoration": 10,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -1801,7 +1801,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 0,
 				"TradeAmountFood": 2,
 				"TradeAmountEquipment": 0,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 0,
 				"MaxWood": 59,
@@ -1885,13 +1885,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 0,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 20,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "None",
@@ -1907,8 +1907,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 0,
 				"AttDiggingUnit": "Slave",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "ArabArcher",
-				"AttUnit2Max": 10,
+				"AttUnitVanguard": "ArabArcher",
+				"AttUnitVanguardMax": 10,
 				"AttMaxAssassins": 50,
 				"AttMaxLaddermen": 0,
 				"AttMaxTunnelers": 0,
@@ -1937,7 +1937,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Richard",
 			"Personality": {
 
-				"Unknown000": 13,
+				"WallDecoration": 13,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -1977,7 +1977,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 0,
 				"TradeAmountFood": 2,
 				"TradeAmountEquipment": 2,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 50,
 				"MaxWood": 155,
@@ -2061,13 +2061,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 50,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 25,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "FireBallista",
@@ -2083,8 +2083,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 22,
 				"AttDiggingUnit": "Pikeman",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "EuropArcher",
-				"AttUnit2Max": 20,
+				"AttUnitVanguard": "EuropArcher",
+				"AttUnitVanguardMax": 20,
 				"AttMaxAssassins": 0,
 				"AttMaxLaddermen": 5,
 				"AttMaxTunnelers": 5,
@@ -2113,7 +2113,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Frederick",
 			"Personality": {
 
-				"Unknown000": 13,
+				"WallDecoration": 13,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -2153,7 +2153,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 5,
 				"TradeAmountFood": 5,
 				"TradeAmountEquipment": 2,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 0,
 				"MaxWood": 203,
@@ -2237,13 +2237,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 50,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 50,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "FireBallista",
@@ -2259,8 +2259,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 22,
 				"AttDiggingUnit": "Pikeman",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "Crossbowman",
-				"AttUnit2Max": 20,
+				"AttUnitVanguard": "Crossbowman",
+				"AttUnitVanguardMax": 20,
 				"AttMaxAssassins": 0,
 				"AttMaxLaddermen": 5,
 				"AttMaxTunnelers": 0,
@@ -2289,7 +2289,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Phillip",
 			"Personality": {
 
-				"Unknown000": 13,
+				"WallDecoration": 13,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -2329,7 +2329,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 0,
 				"TradeAmountFood": 2,
 				"TradeAmountEquipment": 2,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 0,
 				"MaxWood": 203,
@@ -2413,13 +2413,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 30,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 20,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "FireBallista",
@@ -2435,8 +2435,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 21,
 				"AttDiggingUnit": "Spearman",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "Swordsman",
-				"AttUnit2Max": 30,
+				"AttUnitVanguard": "Swordsman",
+				"AttUnitVanguardMax": 30,
 				"AttMaxAssassins": 0,
 				"AttMaxLaddermen": 5,
 				"AttMaxTunnelers": 0,
@@ -2465,7 +2465,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Wazir",
 			"Personality": {
 
-				"Unknown000": 10,
+				"WallDecoration": 10,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -2505,7 +2505,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 0,
 				"TradeAmountFood": 5,
 				"TradeAmountEquipment": 0,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 50,
 				"MaxWood": 95,
@@ -2589,13 +2589,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 40,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 25,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "FireBallista",
@@ -2611,8 +2611,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 22,
 				"AttDiggingUnit": "Slave",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "ArabArcher",
-				"AttUnit2Max": 20,
+				"AttUnitVanguard": "ArabArcher",
+				"AttUnitVanguardMax": 20,
 				"AttMaxAssassins": 50,
 				"AttMaxLaddermen": 5,
 				"AttMaxTunnelers": 0,
@@ -2641,7 +2641,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Emir",
 			"Personality": {
 
-				"Unknown000": 10,
+				"WallDecoration": 10,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -2681,7 +2681,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 5,
 				"TradeAmountFood": 5,
 				"TradeAmountEquipment": 5,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 0,
 				"MaxWood": 59,
@@ -2765,13 +2765,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 40,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 25,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "FireBallista",
@@ -2787,8 +2787,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 22,
 				"AttDiggingUnit": "Maceman",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "EuropArcher",
-				"AttUnit2Max": 20,
+				"AttUnitVanguard": "EuropArcher",
+				"AttUnitVanguardMax": 20,
 				"AttMaxAssassins": 50,
 				"AttMaxLaddermen": 5,
 				"AttMaxTunnelers": 0,
@@ -2817,7 +2817,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Nizar",
 			"Personality": {
 
-				"Unknown000": 10,
+				"WallDecoration": 10,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -2857,7 +2857,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 5,
 				"TradeAmountFood": 5,
 				"TradeAmountEquipment": 0,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 0,
 				"MaxWood": 59,
@@ -2941,13 +2941,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 30,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 30,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "FireBallista",
@@ -2963,8 +2963,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 19,
 				"AttDiggingUnit": "Slave",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "ArabArcher",
-				"AttUnit2Max": 20,
+				"AttUnitVanguard": "ArabArcher",
+				"AttUnitVanguardMax": 20,
 				"AttMaxAssassins": 200,
 				"AttMaxLaddermen": 5,
 				"AttMaxTunnelers": 0,
@@ -2993,7 +2993,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Sheriff",
 			"Personality": {
 
-				"Unknown000": 13,
+				"WallDecoration": 13,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -3033,7 +3033,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 5,
 				"TradeAmountFood": 5,
 				"TradeAmountEquipment": 5,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 0,
 				"MaxWood": 143,
@@ -3117,13 +3117,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 40,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 50,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "FireBallista",
@@ -3139,8 +3139,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 22,
 				"AttDiggingUnit": "Maceman",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "Crossbowman",
-				"AttUnit2Max": 20,
+				"AttUnitVanguard": "Crossbowman",
+				"AttUnitVanguardMax": 20,
 				"AttMaxAssassins": 50,
 				"AttMaxLaddermen": 10,
 				"AttMaxTunnelers": 0,
@@ -3169,7 +3169,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Marshal",
 			"Personality": {
 
-				"Unknown000": 13,
+				"WallDecoration": 13,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -3209,7 +3209,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 5,
 				"TradeAmountFood": 5,
 				"TradeAmountEquipment": 2,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 0,
 				"MaxWood": 59,
@@ -3293,13 +3293,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 30,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 20,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "FireBallista",
@@ -3315,8 +3315,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 22,
 				"AttDiggingUnit": "Pikeman",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "EuropArcher",
-				"AttUnit2Max": 20,
+				"AttUnitVanguard": "EuropArcher",
+				"AttUnitVanguardMax": 20,
 				"AttMaxAssassins": 0,
 				"AttMaxLaddermen": 5,
 				"AttMaxTunnelers": 0,
@@ -3345,7 +3345,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 			"Name": "Abbot",
 			"Personality": {
 
-				"Unknown000": 13,
+				"WallDecoration": 13,
 				"Unknown001": 0,
 				"Unknown002": 0,
 				"Unknown003": 0,
@@ -3385,7 +3385,7 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"MinimumHop": 5,
 				"TradeAmountFood": 5,
 				"TradeAmountEquipment": 5,
-				"Unknown040": 0,
+				"AIRequestDelay": 0,
 				"MinimumGoodsRequiredAfterTrade": 10,
 				"DoubleRationsFoodThreshold": 0,
 				"MaxWood": 107,
@@ -3469,13 +3469,13 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"HarassingSiegeEngine7": "None",
 				"HarassingSiegeEngine8": "None",
 				"HarassingSiegeEnginesMax": 50,
-				"Unknown124": 0,
+				"RaidRetargetDelay": 0,
 				"AttForceBase": 50,
 				"AttForceRandom": 0,
 				"AttForceSupportAllyThreshold": 0,
 				"AttForceRallyPercentage": 1,
 				"Unknown129": 0,
-				"Unknown130": 0,
+				"AttAssaultDelay": 0,
 				"AttUnitPatrolRecommandDelay": 0,
 				"Unknown132": 0,
 				"SiegeEngine1": "FireBallista",
@@ -3491,8 +3491,8 @@ Celem jest usprawnienie botów, aby były dla gracza jak największym wyzwaniem.
 				"AttMaxEngineers": 22,
 				"AttDiggingUnit": "Pikeman",
 				"AttDiggingUnitMax": 50,
-				"AttUnit2": "Swordsman",
-				"AttUnit2Max": 50,
+				"AttUnitVanguard": "Swordsman",
+				"AttUnitVanguardMax": 50,
 				"AttMaxAssassins": 0,
 				"AttMaxLaddermen": 5,
 				"AttMaxTunnelers": 0,
