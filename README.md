@@ -25,7 +25,7 @@ Furthermore you can join our [Discord Server](https://discord.gg/vmy7CBR) for qu
 [Sh0wdown](https://github.com/Sh0wdown)  
 
 ### Project Management
-[Kimberly](https://github.com/ByBurton/)  
+[Kimberly Azula](https://github.com/ByBurton/)  
 [Krarilotus (YouTube)](https://www.youtube.com/channel/UCMXHqa2vmclSoSkuCu_q5rw)
 
 ### Developers
