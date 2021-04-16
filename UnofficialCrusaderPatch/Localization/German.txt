@@ -300,7 +300,7 @@ ui_Resource
 	"Startgüter"
 }
 
-﻿ui_aicconflict
+ui_aicconflict
 {
 	"Konflikt und wird ignoriert"
 }

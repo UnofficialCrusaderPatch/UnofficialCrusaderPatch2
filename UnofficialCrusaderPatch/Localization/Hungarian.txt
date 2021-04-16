@@ -302,7 +302,7 @@ ui_Resource
 	"Kezdőkészlet"
 }
 
-﻿ui_aicconflict
+ui_aicconflict
 {
 	"A konfliktusok figyelmen kívül lesznek hagyva"
 }

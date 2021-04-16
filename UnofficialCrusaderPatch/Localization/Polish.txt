@@ -303,7 +303,7 @@ ui_Resource
 	"ZasobyPoczątkowe"
 }
 
-﻿ui_aicconflict
+ui_aicconflict
 {
 	"Konflikty zostaną zignorowane"
 }

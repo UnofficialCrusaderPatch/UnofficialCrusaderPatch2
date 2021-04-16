@@ -302,7 +302,7 @@ ui_Resource
 	"Стартовые товары"
 }
 
-﻿ui_aicconflict
+ui_aicconflict
 {
 	"конфликт AI будет игнорироваться"
 }
