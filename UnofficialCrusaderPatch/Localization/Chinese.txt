@@ -302,7 +302,7 @@ ui_Resource
 	"起始资金"
 }
 
-﻿ui_aicconflict
+ui_aicconflict
 {
 	"AIC存在ai冲突，第二个AIC的冲突ai会被忽略"
 }
