@@ -28,13 +28,6 @@ namespace UCP.AIC
         static Dictionary<String, List<AICharacterName>> availableSelection;
         static Dictionary<AICharacterName, String> currentSelection;
 
-        static List<string> internalAIC = new List<string>()
-        {
-            "UCP.vanilla", "UCP.UCP-AI-Patch", "UCP.Kimberly-Balance-v1.5",
-            "UCP.Krarilotus-aggressiveAI-v1.3", "UCP.Tatha 0.5.1",
-            "UCP.Xander10alpha_Enhanced_Vanilla_AI_1.1"
-        };
-
         static LinkedList<AICChange> selectedChanges = new LinkedList<AICChange>();
 
         static List<AICChange> _changes = new List<AICChange>();
@@ -83,7 +76,7 @@ namespace UCP.AIC
             {
                 Content = new TextBlock() // Define title of AIC
                 {
-                    Text = internalAIC.Contains(this.TitleIdent.Substring(4)) ? this.TitleIdent.Substring(4).Replace("UCP.", "") : this.TitleIdent.Substring(4),
+                    Text = this.TitleIdent.Substring(4),
                     TextDecorations = this.GetTitle().EndsWith(".aic") ? TextDecorations.Strikethrough : null,
                     TextWrapping = TextWrapping.Wrap,
                     Margin = new Thickness(0, -1, 0, 0),
@@ -92,7 +85,7 @@ namespace UCP.AIC
                 },
                 IsChecked = currentSelection.ContainsValue(this.TitleIdent),
                 IsEnabled = !this.GetTitle().EndsWith(".aic"),
-                Background = internalAIC.Contains(this.TitleIdent.Substring(4)) ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque)
+                Background = new SolidColorBrush(Colors.White)
             };
 
             TreeViewItem tvi = new TreeViewItem()
@@ -173,26 +166,6 @@ namespace UCP.AIC
                 };
                 panel.Children.Add(conflict);
             }
-
-
-
-            // Add export button for built-in AICs
-            if (internalAIC.Contains(this.TitleIdent.Substring(4)))
-            {
-                Button exportButton = new Button()
-                {
-                    //Width = 40,
-                    Height = 20,
-                    Content = Localization.Get("ui_aicexport"),
-                    HorizontalAlignment = HorizontalAlignment.Right,
-                    VerticalAlignment = VerticalAlignment.Bottom,
-                    Margin = new Thickness(0, 0, 5, 5),
-                    ToolTip = Localization.Get("ui_aichint"),
-                };
-                exportButton.Click += (s, e) => this.ExportFile();
-                grid.Height += 15;
-                this.grid.Children.Add(exportButton);
-            }
             this.uiElement = panel;
         }
 
@@ -213,7 +186,6 @@ namespace UCP.AIC
                     currentSelection.Add(character, this.TitleIdent);
                 }
                 selectedChanges.AddFirst(this);
-                //this.titleBox.IsChecked = true;
             }
             else
             {
@@ -323,38 +295,6 @@ namespace UCP.AIC
         }
 
         /// <summary>
-        /// Exports the current AIC definition to the resources\aic\exports folder
-        /// </summary>
-        private void ExportFile()
-        {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports", this.TitleIdent.Substring(4).Replace("UCP.", "")) + ".json";
-            string backupFileName = fileName;
-            while (File.Exists(backupFileName))
-            {
-                backupFileName = backupFileName + ".bak";
-            }
-            if (File.Exists(fileName))
-            {
-                File.Move(fileName, backupFileName);
-            }
-            Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "resources", "aic", "exports"));
-            File.WriteAllText(fileName, new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(this.TitleIdent.Substring(4).Replace("UCP.", "UCP.AIC.Resources.") + ".json"), Encoding.UTF8).ReadToEnd());
-
-            Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent.Substring(4).Replace("UCP.", "") + ".json");
-        }
-
-        /// <summary>
-        /// Convenience method for exporting custom AICs
-        /// </summary>
-        /// <param name="aicJson"></param>
-        /// <returns></returns>
-        private String Format(String aicJson)
-        {
-            return Regex.Unescape(aicJson.Replace(",\"", ",\n\t\"").Replace("{", "{\n\t").Replace("}", "\n}").Replace("\\r\\n", "\r\n"));
-        }
-
-        /// <summary>
         /// Loads configuration of saved selections of AIC changes.
         /// In the event of conflicts the first listed AIC is given priority.
         /// The first listed AIC is the AIC that was selected first during the user's last session.
@@ -387,7 +327,6 @@ namespace UCP.AIC
                     {
                         if (aicChange.TitleIdent == changeKey && selected == true)
                         {
-                            //aicChange.titleBox.IsChecked = true;
                             foreach (AICharacter character in aicChange.collection.AICharacters)
                             {
                                 currentSelection[(AICharacterName)Enum.Parse(typeof(AICharacterName), character.Name.ToString())] = aicChange.TitleIdent;
@@ -408,7 +347,7 @@ namespace UCP.AIC
             List<string> configuration = new List<string>();
             foreach (AICChange aicChange in selectedChanges.Reverse())
             {
-                configuration.Add(aicChange.TitleIdent + "= { " + aicChange.TitleIdent + IsInternal(aicChange.TitleIdent).ToString() + "={" + (currentSelection.ContainsValue(aicChange.TitleIdent)).ToString() + "} }");
+                configuration.Add(aicChange.TitleIdent + "= { " + aicChange.TitleIdent + "={" + (currentSelection.ContainsValue(aicChange.TitleIdent)).ToString() + "} }");
             }
             foreach (AICChange aicChange in changes)
             {
@@ -416,7 +355,7 @@ namespace UCP.AIC
                 {
                     continue;
                 }
-                configuration.Add(aicChange.TitleIdent + "= { " + aicChange.TitleIdent + IsInternal(aicChange.TitleIdent).ToString() + "={" + (currentSelection.ContainsValue(aicChange.TitleIdent)).ToString() + "} }");
+                configuration.Add(aicChange.TitleIdent + "= { " + aicChange.TitleIdent + "={" + (currentSelection.ContainsValue(aicChange.TitleIdent)).ToString() + "} }");
             }
             return configuration;
         }
@@ -472,20 +411,8 @@ namespace UCP.AIC
             }
         }
 
-        private static bool IsInternal(string titleIdent)
-        {
-            return internalAIC.Contains(titleIdent);
-        }
-
         private static void Load()
         {
-            LoadAIC("UCP.AIC.Resources.UCP-AI-Patch.json");
-            LoadAIC("UCP.AIC.Resources.vanilla.json");
-            LoadAIC("UCP.AIC.Resources.Kimberly-Balance-v1.5.json");
-            LoadAIC("UCP.AIC.Resources.Krarilotus-aggressiveAI-v1.3.json");
-            LoadAIC("UCP.AIC.Resources.Tatha 0.5.1.json");
-            LoadAIC("UCP.AIC.Resources.Xander10alpha_Enhanced_Vanilla_AI_1.1.json");
-
             if (Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "aic")))
             {
                 foreach (string file in Directory.EnumerateFiles(Path.Combine(Environment.CurrentDirectory, "resources", "aic"), "*.aic", SearchOption.TopDirectoryOnly))
@@ -529,19 +456,11 @@ namespace UCP.AIC
             
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             serializer.RegisterConverters(new ReadOnlyCollection<JavaScriptConverter>(new List<JavaScriptConverter>() { new AISerializer(errorMessages, errorHints) }));
-            StreamReader reader;
-            
-            if (fileName.StartsWith("UCP.AIC.Resources"))
-            {
-                reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(fileName), Encoding.UTF8);
-            } else
-            {
-                reader = new StreamReader(new FileStream(fileName, FileMode.Open), Encoding.UTF8);
-            }
+            StreamReader reader = new StreamReader(new FileStream(fileName, FileMode.Open), Encoding.UTF8);
             string text = reader.ReadToEnd();
             reader.Close();
 
-            string aicName = Path.GetFileNameWithoutExtension(fileName).Replace("UCP.AIC.Resources.", "UCP.");
+            string aicName = Path.GetFileNameWithoutExtension(fileName);
             try
             {
                 if (availableSelection.ContainsKey(aicName))
