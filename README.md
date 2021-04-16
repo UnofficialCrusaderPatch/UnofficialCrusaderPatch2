@@ -33,6 +33,8 @@ Furthermore you can join our [Discord Server](https://discord.gg/vmy7CBR) for qu
 [J-T-de](https://github.com/J-T-de)  
 [Chaf1812](https://github.com/Chaf1812)  
 [np123](https://github.com/patel-nikhil)  
+[gynt](https://github.com/gynt)
+[Le spec](https://github.com/LeSpec)
 
 ### Translators
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polish)  
