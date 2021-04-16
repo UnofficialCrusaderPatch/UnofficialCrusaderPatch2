@@ -267,8 +267,10 @@ Zarządzanie projektem
 Twórcy
 [LordHansCapon](https://github.com/LordHansCapon)  
 [np123](https://github.com/patel-nikhil)  
-[J-T-de](https://github.com/J-T-de)  
-[Chaf1812](https://github.com/Chaf1812)  
+[J-T-de](https://github.com/J-T-de)
+[gynt](https://github.com/gynt)
+[Le spec](https://github.com/LeSpec)  
+[Chaf1812](https://github.com/Chaf1812)
 
 Tłumacze
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polski)  
