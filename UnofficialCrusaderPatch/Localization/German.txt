@@ -231,7 +231,7 @@ o_fix_baker_disappear_descr
 
 o_fix_moat_digging_unit_disappearing
 {
-"Behebt das Verschwinden von Truppen, welche Burggräben ausheben."
+"Behebt das Verschwinden von Buddeleinheiten."
 }
 
 o_fix_moat_digging_unit_disappearing_descr
