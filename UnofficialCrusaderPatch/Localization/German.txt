@@ -9,12 +9,12 @@ u_spearmen_run
 
 u_spearmen_run_descr
 {
-"Speerträger sind so schnell wie Sklaven und Streitkolbenkämpfer."
+"Speerträger rennen standartmäßig so schnell wie Sklaven und Streitkolbenkämpfer."
 }
 
 o_seed_modification_possibility_title
 {
-"Spiel Zufallsstartwert"
+"Manipuliere Zufallszahlengenerator"
 }
 
 o_seed_modification_possibility_only_set
@@ -24,7 +24,7 @@ o_seed_modification_possibility_only_set
 
 o_seed_modification_possibility_only_set_descr
 {
-"Das Setzen eines Startwertes für den Zufallszahlen Generator ermöglicht es für KI Spiele immer den gleichen Verlauf zu nehmen. Für normale Spiele mit der KI können feste Startbedingungen ermöglicht werden (z.B. die gleiche Auswahl von AIV Dateien für die KI). Um den Zufallsstartwert zu setzen, erstelle ein Dokument mit dem Namen 'live', welches eine ganze Zahl enthält im Installationsverzeichnis/gameseeds Ordner. ACHTUNG: Dies funktioniert nur nach Neustarten des Spiels!"
+"Das Setzen eines Startwertes für den Zufallszahlen Generator ermöglicht es für KI Spiele immer den gleichen Verlauf zu nehmen. Für Spiele mit menschlichen Spielern und KI können feste Startbedingungen ermöglicht werden (z.B. die gleiche Auswahl von AIV Dateien für die KI). Um den Zufallsstartwert zu setzen, erstelle eine Datei mit dem Namen 'live', welche eine ganze Zahl enthält im Ordner Installationsverzeichnis/gameseeds. ACHTUNG: Vor Beginn eines wiederholbaren Scharmützels muss das Spiel neu gestartet werden!"
 }
 
 o_seed_modification_possibility
@@ -39,12 +39,12 @@ o_seed_modification_possibility_descr
 
 ai_recruitstate_initialtimer
 {
-"Bestimme die Zeitspanne bis KIs anhand der AIC rekrutieren"
+"Setzt den Zeitpunkt, ab dem KIs anhand der AIC rekrutieren"
 }
 
 ai_recruitstate_initialtimervalue_descr
 {
-"Die Anzahl an Monaten, bis die KI anhand der in der AIC festgelegten Rekrutierungswahrscheinlichkeiten rekrutiert. Bis dahin rekrutiert sie ausschließlich defensive Truppen und falls diese voll sind Angriffstruppen."
+"Anzahl an Monaten, ab der die KI anhand der in der AIC festgelegten Rekrutierungswahrscheinlichkeiten rekrutiert. Bis dahin rekrutiert sie ausschließlich Defensivtruppen bis diese vollständig sind und daraufhin Angriffstruppen."
 }
 
 ai_defense
@@ -54,32 +54,32 @@ ai_defense
 
 ai_defense_descr
 {
-"Fixt einen bug, der die KI davon abhielt fehlende Truppen auf Wällen und Türmen zu verstärken, solange noch Defensivpatroillien vorhanden waren."
+"Fixt den Bug, der die KI davon abhielt, fehlende Truppen auf Wällen und Türmen zu verstärken solange noch Defensivpatrouillien vorhanden waren."
 }
 
 ai_housing
 {
-"Intelligentere Platzierung von Häusern"
+"Intelligenteres Errichten und Abreißen von Häusern"
 }
 
 build_housing_descr
 {
-"Die Differenz aus aktueller und maximal möglicher Bevölkerung, ab der die KI keine Häuser mehr baut. In Vanilla ist diese 0. Diese Option deaktiviert auch das Abreißen von Häusern für die KI."
+"Die Differenz aus aktueller und maximal möglicher Bevölkerung, ab der KIs keine Häuser mehr bauen. In Vanilla ist diese 0. Zudem deaktiviert diese Option das Abreißen von Häusern für KIs."
 }
 
 campfire_housing_descr
 {
-"Wenn mehr als diese Anzahl an freien Bauern am Lagerfeuer sitzen, baut die KI keine Häuser mehr. Diese Option deaktiviert auch das Abreißen von Häusern für die KI."
+"Wenn mehr als diese Anzahl an freien Bauern am Lagerfeuer sitzen, baut die KI keine Häuser mehr. Zudem deaktiviert diese Option das Abreißen von Häusern für KIs."
 }
 
 delete_housing
 {
-"Verhindert das Abreißen von Häusern für die KI."
+"Kein Abreißen von Häusern der KIs"
 }
 
 delete_housing_descr
 {
-"Mit dieser Option wird die KI nie wieder Häuser abreißen."
+"Mit dieser Option reißen KIs keine Häuser mehr ab."
 }
 
 aiv_prompt
@@ -89,7 +89,7 @@ aiv_prompt
 
 aiv_cli_prompt
 {
-"Modifizierte AIVs erkannt. Schreibe 'delete' um sie zu löschen oder einen Ordnernamen um ein Backup zu erstellen."
+"Modifizierte AIVs erkannt. Schreibe 'delete', um sie zu löschen oder einen Ordnernamen, um ein Backup zu erstellen."
 }
 
 install_abort_io
@@ -119,7 +119,7 @@ o_change_siege_engine_spawn_position_catapult_descr
 
 o_stop_player_keep_rotation
 {
-"Drehe Spielerberfriede wie die der KI"
+"Drehe Spielerbergfriede wie die der KIs"
 }
 
 o_stop_player_keep_rotation_descr
@@ -129,17 +129,17 @@ o_stop_player_keep_rotation_descr
 
 o_restore_arabian_engineer_speech
 {
-"Arabische Baumeister sprechen Arabisch"
+"Baumeister arabischer Lords sprechen Arabisch"
 }
 
 o_restore_arabian_engineer_speech_descr
 {
-"Erlaubt den Baumeistern im Falle, dass der Spieler den Arabischen Lord auswählt, die originalen Arabischen Sprachdateien zu verwenden."
+"Falls der Spieler den arabischen Lord auswählt nutzen Baumeister nun ihre arabischen Sprachdateien."
 }
 
 u_fix_lord_animation_stuck_movement
 {
-"Setzt den Lordanimation nach Zerstörung von Gebäuden zurück"
+"Setzt die Lordanimation nach Zerstörung von Gebäuden zurück"
 }
 
 u_fix_lord_animation_stuck_movement_descr
@@ -174,7 +174,7 @@ o_increase_path_update_tick_rate
 
 o_increase_path_update_tick_rate_descr
 {
-"In Vanilla dauerte es 200 Spiele Ticks, bis neue Pfade berechnet wurden. Dies verzögerte oft nach Zerstörung von Türmen oder Torhäusern das Betreten der gegnerischen Burg.
+"In Vanilla dauert es 200 Spielticks, bis neue Pfade berechnet wurden. Dies verzögerte oft nach Zerstörung von Türmen oder Torhäusern das Betreten der gegnerischen Burg.
 
 Erreichbarkeit wird nun alle 50 Ticks berechnet, wodurch Einheiten Breschen schneller erkennen können."
 }
@@ -196,7 +196,7 @@ u_tanner_fix
 
 u_tanner_fix_descr
 {
-"Gerber kehren nicht länger ohne Kuh zurück, falls ihre anvisierte Kuh bereits fort ist. Sie warten nun, bis sie eine andere Kuh mitnehmen können."
+"Gerber kehren nicht länger ohne Kuh zurück, falls ihre anvisierte Kuh bereits weg ist. Sie warten nun, bis sie eine andere Kuh mitnehmen können."
 }
 
 o_fix_fletcher_bug
@@ -206,7 +206,7 @@ o_fix_fletcher_bug
 
 o_fix_fletcher_bug_descr
 {
-"Passt das Verhalten des Pfeilmachers and andere Waffenproduzenten an. Nach Abgabe seines Gutes, geht er nun direkt zum Vorratslager, statt erneut zur Werkstatt zurückzukehren."
+"Passt das Verhalten des Pfeilmachers an andere Waffenproduzenten an. Nach Abgabe seines Gutes geht er nun direkt zum Vorratslager, statt erneut zur Werkstatt zurückzukehren."
 }
 
 ai_fix_crusader_archers_pitch
@@ -216,7 +216,7 @@ ai_fix_crusader_archers_pitch
 
 ai_fix_crusader_archers_pitch_descr
 {
-"Bisher waren nur Arabische Bogenschützen der KI in der Lage gezielt Pechgraben mit Feuerpfeilen zu entzünden. Mit dieser Änderung können sie diesen nun auch mit Europäischen Bogenschützen auslösen."
+"Bisher waren nur Arabische Bogenschützen der KIs in der Lage Pechgraben mit Feuerpfeilen zu entzünden; nun können dies auch Europäischen Bogenschützen."
 }
 
 o_fix_baker_disappear
@@ -231,12 +231,12 @@ o_fix_baker_disappear_descr
 
 o_fix_moat_digging_unit_disappearing
 {
-"Behebt das Verschwinden von Ausbuddlern"
+"Behebt das Verschwinden von Buddeleinheiten."
 }
 
 o_fix_moat_digging_unit_disappearing_descr
 {
-"Behebt das Verschwinden von Einheiten, die mit dem Ausbuddeln des Wassergrabens beschäftigt waren. Allerdings können Einheiten, die beim Ausbuddeln neue Befehle kriegen immer noch verschwinden, sollten sie auf unbegehbarem Terrain stehen."
+"Behebt das Verschwinden von Truppen, die mit dem Ausheben von Burggräben beschäftigt sind. Diese verschwinden allerdings weiterhin, falls diese neue Befehle bekommen und zeitgleich auf unbegehbarem Terrain stehen."
 }
 
 // ======================

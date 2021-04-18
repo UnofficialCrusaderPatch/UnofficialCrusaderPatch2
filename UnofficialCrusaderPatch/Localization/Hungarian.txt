@@ -59,7 +59,7 @@ ai_defense_descr
 
 ai_housing
 {
-"Házak okosabb elhelyezése"
+"Házak okosabb építése"
 }
 
 build_housing_descr
@@ -260,16 +260,14 @@ UCP program alkotója
 [Sh0wdown](https://github.com/Sh0wdown)
 
 Projektvezetők
-[Kimberly Azula](https://github.com/ByBurton/)  
+[Kimberly](https://github.com/ByBurton/)  
 [Krarilotus (Youtube)](https://www.youtube.com/channel/UCMXHqa2vmclSoSkuCu_q5rw)
 
 Fejlesztők
 [LordHansCapon](https://github.com/LordHansCapon)  
 [np123](https://github.com/patel-nikhil)  
-[J-T-de](https://github.com/J-T-de)
-[gynt](https://github.com/gynt)
-[Le spec](https://github.com/LeSpec)  
-[Chaf1812](https://github.com/Chaf1812)
+[J-T-de](https://github.com/J-T-de)  
+[Chaf1812](https://github.com/Chaf1812)  
 
 Fordítók
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Lengyel)  
@@ -304,7 +302,7 @@ ui_Resource
 	"Kezdőkészlet"
 }
 
-ui_aicconflict
+﻿ui_aicconflict
 {
 	"A konfliktusok figyelmen kívül lesznek hagyva"
 }
@@ -429,7 +427,6 @@ ui_aicselect
 	"Kérjük először szüntesse meg a többi AIC fájl(ok) kiválasztását. Az alábbi aic karakterek vannak kijelölve: "
 }
 
-
 // ======================
 //         2.13
 // ======================
@@ -438,14 +435,17 @@ o_firecooldown
 {
 	"Eloltott épületek tűzálló időtartamának megnövelése"
 }
+
 o_firecooldown_descr
 {
 	"Itt meghosszabbítható az az időtartam, amely alatt az eloltott épületek nem tudnak újra kigyulladni."
 }
+
 u_ballistamonk
 {
 	"A tűzhajítógépek lőnek a szerzetesekre"
 }
+
 u_ballistamonk_descr
 {
 	"A tűzhajítógépek automatikusan lőnek a szerzetesekre is."
@@ -460,6 +460,7 @@ aiv_EvreyHistory_descr
 {
 	"Minden MI Lordnak ad egy új várat, ami a Lordhoz illő, valós történelmi várról, városról lett mintázva. [Készítette: Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
+
 
 
 // ======================
@@ -796,7 +797,7 @@ ai_overclock
 
 ai_overclock_descr
 {
-	"Itt lehet megvátoztatni az MI parancs időtartamát mint pl. mikor támadási parancsot ad az egységeknek. Ezáltal az egységek nem állnak egy helyen olyan sokáig, miután a célpontot megsemmisítették/legyőzték.
+	"Itt lehet megváltoztatni az MI parancs időtartamát mint pl. mikor támadási parancsot ad az egységeknek. Ezáltal az egységek nem állnak egy helyen olyan sokáig, miután a célpontot megsemmisítették/legyőzték.
 
 Az azonban még nem ismert, hogy az időtartam megváltoztatása befolyásol e valamit, ezért előfordulhat hiba."
 }
@@ -1009,7 +1010,7 @@ o_healer
 
 o_healer_descr
 {
-	"A gyógyszertár gyógyítója mostantól megkeresi a sérült harcosokat, civileket, állatokat és meggyógyítja őket. A hozzá legközelebb lévő célpontokat gyógyítja elöszőr. Minden gyógyító animációval kb. egy lándzsás 1/3 életerejét állítja helyre. A kertekben való mászkálás és a pestisfelhő felkeresése ez által nem lesz lecserélve! Csak a várban való mászkálása lesz kihagyva, ha nincs a hatótávolságán belül beteg."
+	"A gyógyszertár gyógyítója mostantól megkeresi a sérült harcosokat, civileket, állatokat és meggyógyítja őket. A hozzá legközelebb lévő célpontokat gyógyítja először. Minden gyógyító animációval kb. egy lándzsás 1/3 életerejét állítja helyre. A kertekben való mászkálás és a pestisfelhő felkeresése ez által nem lesz lecserélve! Csak a várban való mászkálása lesz kihagyva, ha van sebesült a hatótávolságán belül."
 }
 
 

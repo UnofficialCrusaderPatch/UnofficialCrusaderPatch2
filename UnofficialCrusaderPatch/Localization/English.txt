@@ -8,12 +8,12 @@ u_spearmen_run
 
 u_spearmen_run_descr
 {
-"Makes spearmen run by default instead of the slow walking."
+"Makes spearmen run by default like slaves and macemen."
 }
 
 o_seed_modification_possibility_title
 {
-"Game Randomseed"
+"Manipulate random number generator"
 }
 
 o_seed_modification_possibility_only_set
@@ -23,7 +23,7 @@ o_seed_modification_possibility_only_set
 
 o_seed_modification_possibility_only_set_descr
 {
-"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For player-AI games, it will ensure the same start conditions in the map (AIV selection for example). To set the game seed, enable this option and create a file called 'live' with a 6 digit number in the game install/gameseeds directory. CAUTION: This feature only works after also restarting the game!"
+"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For games involving human players, it will ensure the same starting conditions in the map (e.g. AIV selection). To set the game seed, enable this option and create a file called 'live' containing an integer in the [game install]/gameseeds directory. CAUTION: This feature only works after also restarting the game!"
 }
 
 o_seed_modification_possibility
@@ -139,12 +139,12 @@ o_restore_arabian_engineer_speech_descr
 
 u_fix_lord_animation_stuck_movement
 {
-"Reset Lord animation, after destroying buildings"
+"Reset lord animation after destroying buildings"
 }
 
 u_fix_lord_animation_stuck_movement_descr
 {
-"Reset the pose of the Lord, after it stops moving or destroys a building, into the upright position. Usually it would get stuck bend down to the ground."
+"Reset the pose of the lord after it stops moving or destroys a building into the upright position. Usually it would get stuck bend down to the ground."
 }
 
 fix_apple_orchard_build_size
@@ -216,7 +216,7 @@ ai_fix_crusader_archers_pitch
 
 ai_fix_crusader_archers_pitch_descr
 {
-"AI's crusader archers light pitch the same way arabian archers do, defending against enemy units."
+"AI's European archers light pitch the same way arabian archers do, defending against enemy units."
 }
 
 o_fix_baker_disappear
@@ -226,7 +226,7 @@ o_fix_baker_disappear
 
 o_fix_baker_disappear_descr
 {
-"Bakers no longer disappear, after they find no flour is left at the stockpile."
+"Bakers no longer disappear when they don't find flour at their targeted stockpile."
 }
 
 o_fix_moat_digging_unit_disappearing
@@ -236,7 +236,7 @@ o_fix_moat_digging_unit_disappearing
 
 o_fix_moat_digging_unit_disappearing_descr
 {
-"Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!"
+"Fixes the bug where moat digging units would disappear while digging. Note that they can still disappear if you order them to move while standing on unwalkable terrain!"
 }
 
 // ======================
