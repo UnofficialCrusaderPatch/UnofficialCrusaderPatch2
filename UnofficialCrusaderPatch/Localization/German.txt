@@ -4,12 +4,12 @@
 
 u_spearmen_run
 {
-"Speerträger rennen standartmäßig"
+"Speerträger rennen standardmäßig"
 }
 
 u_spearmen_run_descr
 {
-"Speerträger rennen standartmäßig so schnell wie Sklaven und Streitkolbenkämpfer."
+"Speerträger rennen standardmäßig so schnell wie Sklaven und Streitkolbenkämpfer."
 }
 
 o_seed_modification_possibility_title
