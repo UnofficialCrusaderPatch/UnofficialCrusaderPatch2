@@ -583,7 +583,7 @@ namespace UCP
 
             #region AI LORDS
 
-            new Change("ai_housing", ChangeType.AILords, false)
+            new Change("ai_housing", ChangeType.AILords, false, false)
             {
                 new SliderHeader("build_housing", true, 1, 200, 1, 1, 10)
                 {

@@ -1,5 +1,5 @@
 // ======================
-//         dev
+//         2.15
 // ======================
 u_jestermoveto_assassin
 {
@@ -13,47 +13,47 @@ u_jestermoveto_assassin_descr
 
 u_spearmen_run
 {
-"Spearmen run by default instead of walking."
+"Копейщики бегут по умолчанию вместо того, чтобы ходить пешком."
 }
 
 u_spearmen_run_descr
 {
-"Makes spearmen run by default instead of the slow walking."
-}
+"Вместо медленной ходьбы копейщики бегут медленно."
+} 
 
 o_seed_modification_possibility_title
 {
-"Game Seed"
+"Игровой случайный сид"
 }
 
 o_seed_modification_possibility_only_set
 {
-"Enable game seed"
+"Включить фиксированную игру случайным сидом"
 }
 
 o_seed_modification_possibility_only_set_descr
 {
-"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For player-AI games, it will ensure the same start conditions in the map (AIV selection for example). To set the game seed, enable this option and create a file called 'live' with a 6 digit number in the game install/gameseeds directory. CAUTION: This feature only works after also restarting the game!"
+"Установка игрового сида позволит играм только с AI играть точно так же, если используются те же настройки карты. Для игр с AI, он обеспечит такие же условия запуска на карте (например, выбор AIV). Для установки игрового сида, включите эту опцию и создайте файл под названием "live" с 6-значным номером в каталоге установки игры/игр. ВНИМАНИЕ: Эта функция работает только после перезапуска игры!"
 }
 
 o_seed_modification_possibility
 {
-"Enable & Save game seeds"
+"Включить и сохранить игру случайных сидов"
 }
 
 o_seed_modification_possibility_descr
 {
-"This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards."
+"Эта опция сохранит сид от игр, которые не имеют "live" сида, так что вы можете переименовать их в "live", чтобы потом воссоздать матч."
 }
 
 ai_recruitstate_initialtimer
 {
-"Customise the initial AI's defence recruit time"
+"Настройка первоначального времени вербовки AI в защиту"
 }
 
 ai_recruitstate_initialtimervalue_descr
 {
-"Set this value to number of months for which the AI will exclusively recruit defence troops, unless it has already filled up its defence total"
+"Установите это значение на количество месяцев, в течение которых AI будет вербовать исключительно войска обороны, если только он уже не заполнил всю оборону."
 }
 
 ai_defense
@@ -68,42 +68,37 @@ ai_defense_descr
 
 ai_housing
 {
-"Customize the AIs decision to build and delete houses"
-}
-
-ai_buildhousing_descr
-{
-"Customize the AIs decision to build and delete houses"
+"Настройка решения AI о строительстве и удалении домов"
 }
 
 build_housing_descr
 {
-"Number of extra available housing before AI stops building houses"
+"Количество дополнительного доступного жилья до того, как AI прекратит строительство домов"
 }
 
 campfire_housing_descr
 {
-"Number of peasants at the campfire before the AI stops buildings houses"
+"Количество крестьян у костра перед тем, как AI остановит строительство домов."
 }
 
 delete_housing
 {
-"Disable the AI's ability to delete houses"
+"Отключает способность AI удалять дома."
 }
 
 delete_housing_descr
 {
-"When this option is selected the AI will never delete houses"
+"Когда эта опция выбрана, AI никогда не будет удалять дома"
 }
 
 aiv_prompt
 {
-"Обнаружены модифицированные AIV. Перед установкой нажмите "Да", чтобы сохранить установленные AIV, не перезаписывая оригинальную резервную копию. Нажмите "Нет", чтобы перезаписать установленные AIV без создания резервной копии, и "Отмена", чтобы отменить."
+"Обнаружены пользовательские AIV. Вы хотите создать резервную копию Милорд?"
 }
 
 aiv_cli_prompt
 {
-"Обнаружены модифицированные AIV. Введите 'delete' для удаления или введите имя папки для копирования файлов на."
+"Обнаружены пользовательские AIV. Введите 'delete' для удаления или введите имя папки для копирования файлов."
 }
 
 install_abort_io
@@ -170,7 +165,7 @@ fix_apple_orchard_build_size
 
 fix_apple_orchard_build_size_descr
 {
-"Изменяет размер постройки яблоневого сада на размер, который он занимает после расположение фермы. Это экономит место при строительстве ферм и увеличивает скорость, с которой ИИ может располагать эти фермы."
+"Изменяет размер постройки яблоневого сада на размер, который он занимает после расположение фермы. Это экономит место при строительстве ферм и увеличивает скорость, с которой AI может располагать эти фермы."
 }
 
 u_fix_applefarm_blocking
@@ -185,14 +180,13 @@ u_fix_applefarm_blocking_descr
 
 o_increase_path_update_tick_rate
 {
-"Увеличить скорость обновления пути в 4 раза."
+"Более частая проверка доступного пути"
 }
 
 o_increase_path_update_tick_rate_descr
 {
-"В оригинале, потребовалось 200 игровых тиков, чтобы обновить путь, что привело к тому, что юниты не могли перемещаться в замок после разрушения ворот или башни.
-
-Это изменение увеличивает скорость передачи тиков в 4 раза, снижая требуемое значение тика до 50, что позволяет устройствам "понимать" быстрее, что новый путь доступен."
+"В ваниле, это заняло 200 игровых тиков, чтобы проверить новые пути, часто останавливая юнитов, чтобы перейти в замок после уничтожения ворот или башни немедленно.
+ Доступность рассчитывается теперь каждые 50 игровых тиков, что позволяет юнитам реализовывать новые пути быстрее."
 }
 
 o_fix_ladderclimb
@@ -212,7 +206,7 @@ u_tanner_fix
 
 u_tanner_fix_descr
 {
-"Кожевники больше не вернутся без коровы, когда другой кожевник забрал их целевую корову. Вместо этого они немного встанут вокруг, а потом возьмут еще одну корову."
+"Кожевники больше не вернутся без коровы, когда другой кожевник забрал их целевую корову. Вместо этого они немного подождут, а потом возьмут еще одну корову."
 }
 
 o_fix_fletcher_bug
@@ -232,7 +226,7 @@ ai_fix_crusader_archers_pitch
 
 ai_fix_crusader_archers_pitch_descr
 {
-"Исправляет, что ИИ-европейские лучники не зажигают рвы, как арабские лучники, когда на них попадают вражеские юниты."
+"Исправляет, что AI-европейские лучники не зажигают рвы, как арабские лучники, когда на них попадают вражеские юниты."
 }
 
 o_fix_baker_disappear
@@ -274,14 +268,16 @@ ui_welcometext
 [Sh0wdown](https://github.com/Sh0wdown)  
 
 Управление проектами
-[Kimberly](https://github.com/ByBurton/)  
+[Kimberly Azula](https://github.com/ByBurton/)  
 [Krarilotus (Youtube)](https://www.youtube.com/channel/UCMXHqa2vmclSoSkuCu_q5rw)
 
 Разработчики
 [LordHansCapon](https://github.com/LordHansCapon)  
 [np123](https://github.com/patel-nikhil)  
-[J-T-de](https://github.com/J-T-de)  
-[Chaf1812](https://github.com/Chaf1812)  
+[J-T-de](https://github.com/J-T-de)
+[gynt](https://github.com/gynt)
+[Le spec](https://github.com/LeSpec)  
+[Chaf1812](https://github.com/Chaf1812)
 
 Переводчики
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polish)  
@@ -316,7 +312,7 @@ ui_Resource
 	"Стартовые товары"
 }
 
-﻿ui_aicconflict
+ui_aicconflict
 {
 	"конфликт AI будет игнорироваться"
 }
@@ -383,7 +379,7 @@ ai_fix_laddermen_with_enclosed_keep
 
 ai_fix_laddermen_with_enclosed_keep_descr
 {
-    "AI (в частности, Змея) больше не прекращает использование ледоколов с их блоками осады, если их содержание находится в замкнутом пространстве."
+    "AI (в частности, Змея) больше не прекращает использование Лестниц с их блоками осады, если их содержание находится в замкнутом пространстве."
 }
 
 o_override_identity_menu
@@ -433,7 +429,7 @@ ui_aicofferconvert
 
 ui_aicconvertprompt
 {
-	"AIC Conversion"
+	"Преобразование AIC"
 }
 
 ui_aicselect
@@ -447,7 +443,7 @@ ui_aicselect
 
 o_firecooldown
 {
-	"Увеличить пожаробезопасную продолжительность пожаротушащих зданий"
+	"Увеличить пожаробезопасную продолжительность потушенных зданий"
 }
 
 o_firecooldown_descr
@@ -529,9 +525,8 @@ u_ArabWall
 
 u_ArabWall_descr
 {
-	"В Ваниле арабские мечники разрушают стены медленнее любого другого подразделения &
-ближнего боя. С этой опцией скорость удара против стен примерно удваивается для них, &
-поставив их немного выше копейщиков."
+	"В Ваниле арабские мечники разрушают стены медленнее любого другого подразделения ближнего боя.
+С этой опцией скорость удара против стен примерно удваивается для них,поставив их немного выше копейщиков."
 }
 
 u_spearmen
@@ -811,10 +806,10 @@ o_onlyai
 
 o_onlyai_descr
 {
-	"Убирает игрока 1, чтобы вы могли видеть только 8 ИИ в одном и том же режиме. &
+	"Убирает игрока 1, чтобы вы могли видеть только 8 AI в одном и том же режиме. &
 Сохранения игры теперь правильно загружаются в этом режиме. Иногда ошибка &
 появляется, когда случайные объекты появляются на всей карте. Это просто визуальный баг &
-и его можно убрать &, сохранив игру, завершая миссию и перезагружая &
+и его можно убрать сохранив игру, завершая миссию и перезагружая &
 сохранить файл."
 }
 
@@ -825,7 +820,7 @@ o_moatvisibility
 
 o_moatvisibility_descr
 {
-	"Ваш собственный,но не выкопанный ров всегда будет показан & с этой опцией, даже &
+	"Ваш собственный,но не выкопанный ров всегда будет показан с этой опцией, даже 
 если вы отмените выбор размещения рва."
 }
 
@@ -836,9 +831,9 @@ o_engineertent
 
 o_engineertent_descr
 {
-	"С помощью этой настройки игра не отменяет выбранное вами осадное оборудование &
-после размещения больше одной палатки. Таким образом, вы можете & создать несколько палаток за другим,
-без необходимости повторного выбора & одного и того же осадного оборудования."
+	"С помощью этой настройки игра не отменяет выбранное вами осадное оборудование 
+после размещения больше одной палатки. Таким образом вы можете создать несколько палаток за другим,
+без необходимости повторного выбора одного и того же осадного оборудования."
 }
 
 
@@ -1019,7 +1014,7 @@ ai_rebuild_descr
 
 o_healer
 {
-	"Целитель лечит жертв"
+	"Целитель лечит раненых солдат"
 }
 
 o_healer_descr
@@ -1048,7 +1043,7 @@ o_healer_descr
 
 o_xtreme
 {
-	"Умраны значки магии в Stronghold Crusader Extreme"
+	"Убраны значки магии в Stronghold Crusader Extreme"
 }
 
 o_xtreme_descr
