@@ -453,17 +453,6 @@ u_ballistamonk_descr
 	"A tűzhajítógépek automatikusan lőnek a szerzetesekre is."
 }
 
-aiv_EvreyHistory
-{
-	"Evrey történelmi MI várak"
-}
-
-aiv_EvreyHistory_descr
-{
-	"Minden MI Lordnak ad egy új várat, ami a Lordhoz illő, valós történelmi várról, városról lett mintázva. [Készítette: Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-
 
 // ======================
 //         2.12
@@ -1079,22 +1068,6 @@ Fülöp: 4 -> 32
 Viszont figyelembe kell venni, hogy ezáltal a legelső támadásuk egy kicsivel később következik be."
 }
 
-aiv_tatha
-{
-	"Tatha feljavított MI várak"
-}
-
-aiv_tatha_descr
-{
-	"Az eredeti játékhoz képest jelentősen erősebb várak. A különböző MI vártípusai ugyanannyira erősek.
-[Bemutató-Lejátszási lista](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
-}
-
-
-
-
-// some edits:
-
 ai_attackwave
 {
 	"Támadási hullámok feljavítása"
@@ -1103,46 +1076,4 @@ ai_attackwave
 ai_attackwave_descr
 {
 	"Az eredeti játékban az MI mindig csak annyi egységet küld el egyszerre amennyi elérhető várfal van. Azok a várak amik épületekkel vannak körülépítve, azokat az egységek csak elvétve támadják meg. Ezzel a beállítással az egységek az épületeket és az ostromsátrakat is megtámadják illetve azt a várfalat is amit már egy másik támadó egység rombol. Továbbá az MI mostantól több egységet küld az ellenséges vártoronyra, amint észrevesz egy oda vezető utat."
-}
-
-aiv_pitchsiege
-{
-	"PitchNeeded Evrey Edit (kővetőgépek és hajítógépek)"
-}
-
-aiv_pitchsiege_descr
-{
-	"Kibővíti a 'Evrey feljavított eredeti várak' módosítást azáltal hogy Wazir, Disznó, Nizar és Emír tornyaira kővetőgépet és hajítógépet rak. Átszerkesztette: [PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-aiv_pitchwells
-{
-	"PitchNeeded Evrey Edit (kutak és gyógyszertárak)"
-}
-
-aiv_pitchwells_descr
-{
-	"Kibővített 'Evrey feljavított eredeti várak' módosítás melyben egyes MI várak kutakat és gyógyszertárakat kapnak. Átszerkesztette: [PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-aiv_evreyfixed
-{
-	"Evrey feljavított eredeti várak"
-}
-
-aiv_evreyfixed_descr
-{
-	"Kijavítja az eredeti MI várak hibáit, mint pl. hiányzó házak és céhek vagy blokkolt kijáratok.
-[Készítette: Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreyimproved
-{
-	"Evrey feljavított MI várak"
-}
-
-aiv_evreyimproved_descr
-{
-	"Új feljavított várakat ad az MI Lordoknak, az eredeti várstílusok alapján.
-[Készítette: Evrey](https://github.com/Evrey/SHC_AIV/)"
 }

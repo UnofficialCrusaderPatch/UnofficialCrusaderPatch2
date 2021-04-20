@@ -454,18 +454,6 @@ u_ballistamonk_descr
 	"打开后，巨火弩将会自动攻击僧侣。"
 }
 
-aiv_EvreyHistory
-{
-	"Evrey的历史ai城堡"
-}
-
-aiv_EvreyHistory_descr
-{
-	"给每个ai领主增加一个历史上存在的城堡或城市的aiv 。&
-[创作者:Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-
 
 // ======================
 //         2.12
@@ -1100,23 +1088,6 @@ ai_moredef_descr
 需要注意的是，打开此选项后，会导致这三个ai的初次进攻时间延后。"
 }
 
-aiv_tatha
-{
-	"Tatha的ai提升城堡"
-}
-
-aiv_tatha_descr
-{
-	"ai将会拥有比原版更加强大的城堡，每个ai不同样式的城堡拥有同等的强度&
-[Presentation-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
-}
-
-
-
-
-// some edits:
-
-
 ai_attackwave
 {
 	"提升ai的进攻"
@@ -1125,54 +1096,4 @@ ai_attackwave
 ai_attackwave_descr
 {
 	"在原版中，ai在进攻时，只会派出能够得着城墙的数量的士兵，比如说一圈城堡有50格城墙，那么只有50个人可以在不重叠的情况下砍城墙，此时哪怕有100名士兵集结在敌人城堡附近，也只会派出50人前去攻击城堡，打开此选项后将可以避免此现象。并且，打开此选项后，ai的士兵将会主动攻击城堡建筑和经济建筑。此外，ai将会派出更多的士兵去攻击敌人的领主。"
-}
-
-aiv_pitchsiege
-{
-	"PitchNeeded的加强ai城堡 (射石机和巨弩)"
-}
-
-aiv_pitchsiege_descr
-{
-	"为猪，维奇尔，埃米尔，尼泽尔添加了更多的射石机和巨弩。创作者&
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-
-aiv_PitchWells
-{
-	"PitchNeeded的加强ai城堡 (水井和水缸)"
-}
-
-aiv_PitchWells_descr
-{
-	"为原版ai城堡添加了一些水井和水缸。创作者&
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-
-// no edits, just formatting:
-
-
-
-aiv_evreyimproved
-{
-	"Evrey的加强ai城堡"
-}
-
-aiv_evreyimproved_descr
-{
-	"为ai添加了原版风格但更强劲的城堡&
-[创作者Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreyfixed
-{
-	"Evrey的原版修复城堡"
-}
-
-aiv_evreyfixed_descr
-{
-	"修复了原版ai城堡的一些问题，诸如茅房不足，建筑无通路等&
- [创作者Evrey](https://github.com/Evrey/SHC_AIV/)"
 }

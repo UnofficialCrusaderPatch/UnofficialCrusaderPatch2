@@ -1,0 +1,3 @@
+Historyczne zamki SI od użytkownika Evrey
+Dodaje zamki dla każdego lorda SI, bazujące na prawdziwych zamkach historycznych.
+[Autorstwa gracza Evrey](https://github.com/Evrey/SHC_AIV/)

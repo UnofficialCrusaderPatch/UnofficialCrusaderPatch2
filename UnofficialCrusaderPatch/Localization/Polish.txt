@@ -454,15 +454,6 @@ u_ballistamonk_descr
 	"Balisty ogniowe strzelają automatycznie do mnichów."
 }
 
-aiv_EvreyHistory
-{
-	"Historyczne zamki SI od użytkownika Evrey"
-}
-
-aiv_EvreyHistory_descr
-{
-	"Dodaje zamki dla każdego lorda SI, bazujące na prawdziwych zamkach historycznych. [Autorstwa gracza Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
 
 // ======================
 //         2.12
@@ -1095,24 +1086,6 @@ Sztuczna Inteligencja przestanie ciągle niszczyć i odbudowywać budynki, do kt
 nie da się dojść."
 }
 
-aiv_tatha
-{
-	"Ulepszone zamki użytkownika Tatha"
-}
-
-aiv_tatha_descr
-{
-	"O wiele mocniejsze zamki w porównaniu z oryginałem. Różne rodzaje zamków &
-posiadające tę samą siłę. &
-[Prezentacja](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
-}
-
-
-
-
-// some edits in the descriptions _descr:
-
-
 ai_attackwave
 {
 	"Popraw fale ataków"
@@ -1126,54 +1099,4 @@ gdy atakowany zamek ma wiele budynków bezpośrednio przy murach.
 Ta opcja sprawia, że żołnierze atakują również budynki cywilne i fortyfikacyjne, a także &
 te części murów, które są już atakowane przez inną jednostkę. Dodatkowo
 SI wysyła więcej jednostek do wrogiego lorda, gdy przełamie mury."
-}
-
-aiv_PitchSiege
-{
-	"Dodatkowe zmiany PitchNeeded do Evrey (mangonele & balisty)"
-}
-
-aiv_PitchSiege_descr
-{
-	"Ulepsza oryginalne zamki naprawione przez użytkownika Evrey, dodając mangonele i &
-balisty na wieże Wezyra, Wieprza, Nizara i Emira. Edytowane przez użytkownika &
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-aiv_PitchWells
-{
-	"Dodatkowe zmiany PitchNeeded do Evrey (studnie & apteki)"
-}
-
-aiv_PitchWells_descr
-{
-	"Ulepsza oryginalne zamki naprawione przez użytkownika Evrey, dodając studnie i apteki dla niektórych AI.
-Edytowane przez użytkownika [PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-
-// no edits, just formatting:
-
-
-
-aiv_evreyimproved
-{
-	"Ulepszone zamki autorstwa użytkownika Evrey"
-}
-
-aiv_evreyimproved_descr
-{
-	"Wprowadza nowe i ulepszone zamki przeciwników komputerowych, które bazują na oryginalnym stylu z gry. &
-[Stworzone przez użytkownika Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreyfixed
-{
-	"Oryginalne zamki naprawione przez użytkownika Evrey"
-}
-
-aiv_evreyfixed_descr
-{
-	"Naprawiono błędy oryginalnych zamków przeciwników komputerowych, na przykład brakujące domy i cechy kopaczy/inżynierów &
-lub zablokowane wejścia do zamku. [Stworzone przez użytkownika Evrey](https://github.com/Evrey/SHC_AIV/)"
 }

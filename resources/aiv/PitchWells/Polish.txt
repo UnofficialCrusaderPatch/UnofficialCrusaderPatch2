@@ -1,0 +1,3 @@
+Dodatkowe zmiany PitchNeeded do Evrey (studnie & apteki)
+Ulepsza oryginalne zamki naprawione przez użytkownika Evrey, dodając studnie i apteki dla niektórych AI.
+Edytowane przez użytkownika [PitchNeeded](https://github.com/PitchNeeded).

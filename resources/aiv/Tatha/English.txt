@@ -1,0 +1,3 @@
+Tatha's improved AI castles
+Much stronger castles compared to Vanilla. The different castle variations of each AI have the same strength.
+[Presentation-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)

@@ -452,17 +452,6 @@ u_ballistamonk_descr
 	"Огненные баллисты стреляют автоматически в монахов с этой настройкой."
 }
 
-aiv_EvreyHistory
-{
-	"Evrey Исторические AI Замки"
-}
-
-aiv_EvreyHistory_descr
-{
-	"Добавляет один новый замок AI для каждого лорда, основываясь на реальных &
-исторических замках или городах. [Создано Evrey](https://github.com/Evrey/SHC_AIV/) "
-}
-
 
 // ======================
 //         2.12
@@ -1073,25 +1062,6 @@ ai_access_descr
 доступа к ним."
 }
 
-
-aiv_tatha
-{
-	"Tatha Улучшеные AI Замки"
-}
-
-aiv_tatha_descr
-{
-	"Гораздо сильнее замки по сравнению с ванилью. Различные варианты замка &
-Каждый AI имеет одинаковую силу. &
-[Presentation-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
-}
-
-
-
-
-// some edits in the descriptions _descr:
-
-
 ai_attackwave
 {
 	"Улучшение волны атаки"
@@ -1105,57 +1075,4 @@ ai_attackwave_descr
 подразделениям атаковать гражданские & и фортификационные здания, &
 а также стены, которые уже атакованы одной единицей. Более того,
 AI посылает больше войск к вражескому лорду, как только обнаруживает нарушение."
-}
-
-aiv_pitchsiege
-{
-	"PitchNeeded и Evrey Отредактировано (Мангонелли и Балисты)"
-}
-
-aiv_pitchsiege_descr
-{
-	"Расширяет «улучшеные ванильные замки Evrey», добавляя мангонелей и &
-баллист к башням Вазира, Кабана, Низара и Эмира. Отредактировано &
-[PitchNeeded](https://github.com/PitchNeeded) «."
-}
-
-
-aiv_PitchWells
-{
-	"PitchNeeded и Evrey Отредактировано (Колодцы и Аптеки)"
-}
-
-aiv_PitchWells_descr
-{
-	"Расширяет «фиксированные ванильные замки Evrey», добавляя колодцы и
-аптекари для некоторых замков. Отредактировано &
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-
-// no edits, just formatting:
-
-
-
-
-aiv_evreyimproved
-{
-	"Evrey's улучшенные замки AI"
-}
-
-aiv_evreyimproved_descr
-{
-	"Предоставляет AI-Лордам новые и улучшенные замки, основанные на стиле ванили. &
-[Создано Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreyfixed
-{
-	"Evrey's фиксированные ванильные замки"
-}
-
-aiv_evreyfixed_descr
-{
-	"Исправляет ошибки ванильных замков AI-Лордов, таких как пропущенные дома и гильдии &
-или заблокированные входы. [Создано Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
