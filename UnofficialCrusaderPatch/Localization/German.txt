@@ -124,7 +124,7 @@ o_stop_player_keep_rotation
 
 o_stop_player_keep_rotation_descr
 {
-"Die Bergfriede der Spieler richten sich nun so aus wie die der KI; Sie drehen sich so, dass das Lagerfeuer in Richtung des Kartenrands zeigt."
+"Die Bergfriede der Spieler richten sich nun so aus wie die der KI; sie drehen sich so, dass das Lagerfeuer in Richtung des Kartenrands zeigt."
 }
 
 o_restore_arabian_engineer_speech
@@ -174,9 +174,7 @@ o_increase_path_update_tick_rate
 
 o_increase_path_update_tick_rate_descr
 {
-"In Vanilla dauert es 200 Spielticks, bis neue Pfade berechnet wurden. Dies verzögerte oft nach Zerstörung von Türmen oder Torhäusern das Betreten der gegnerischen Burg.
-
-Erreichbarkeit wird nun alle 50 Ticks berechnet, wodurch Einheiten Breschen schneller erkennen können."
+"Das Spiel überprüft nun viermal so häufig, welche Bereiche der Karte verbunden sind. Dadurch können beispielsweise nach der Zerstörung eines Torhauses oder eines Turmes die Truppen schneller ins Innere einer zuvor unzugänglichen Burg beordert werden."
 }
 
 o_fix_ladderclimb
@@ -191,12 +189,12 @@ o_fix_ladderclimb_descr
 
 u_tanner_fix
 {
-"Gerber holen sich unterschiedliche Kühe"
+"Gerberinnen holen sich unterschiedliche Kühe"
 }
 
 u_tanner_fix_descr
 {
-"Gerber kehren nicht länger ohne Kuh zurück, falls ihre anvisierte Kuh bereits weg ist. Sie warten nun, bis sie eine andere Kuh mitnehmen können."
+"Gerberinnen kehren nicht länger ohne Kuh zurück, falls ihre anvisierte Kuh bereits weg ist. Sie warten nun, bis sie eine andere Kuh mitnehmen können."
 }
 
 o_fix_fletcher_bug
@@ -238,10 +236,6 @@ o_fix_moat_digging_unit_disappearing_descr
 {
 "Behebt das Verschwinden von Truppen, die mit dem Ausheben von Burggräben beschäftigt sind. Diese verschwinden allerdings weiterhin, falls diese neue Befehle bekommen und zeitgleich auf unbegehbarem Terrain stehen."
 }
-
-// ======================
-//         2.14
-// ======================
 
 ui_welcometext
 {
@@ -291,6 +285,10 @@ Und viele mehr
 [GRhin](https://www.twitch.tv/grhin)  
 [Heroesflorian](https://github.com/Heroesflorian)"
 }
+
+// ======================
+//         2.14
+// ======================
 
 ui_StartTroops
 {

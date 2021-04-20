@@ -239,10 +239,6 @@ o_fix_moat_digging_unit_disappearing_descr
 "Fixes the bug where moat digging units would disappear while digging. Note that they can still disappear if you order them to move while standing on unwalkable terrain!"
 }
 
-// ======================
-//         2.14
-// ======================
-
 ui_welcometext
 {
 "This is an unofficial patch for Stronghold Crusader.
@@ -291,6 +287,10 @@ And many more
 [GRhin](https://www.twitch.tv/grhin)  
 [Heroesflorian](https://github.com/Heroesflorian)"
 }
+
+// ======================
+//         2.14
+// ======================
 
 ui_StartTroops
 {
