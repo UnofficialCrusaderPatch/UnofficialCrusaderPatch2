@@ -242,10 +242,6 @@ o_fix_moat_digging_unit_disappearing_descr
 "Naprawia błąd, który powodował losowe znikanie jednostek kopiących fosę. Uwaga: jednostki mogą dalej znikać, jeśli każesz im przemieścić się w momencie, gdy stoją w miejscu, z którego nie da się normalnie ruszyć!"
 }
 
-// ======================
-//         2.14
-// ======================
-
 ui_welcometext
 {
 "Jest to nieoficjalna łatka do Twierdzy Krzyżowiec.
@@ -294,6 +290,10 @@ Oraz dla
 [GRhin](https://www.twitch.tv/grhin)  
 [Heroesflorian](https://github.com/Heroesflorian)"
 }
+
+// ======================
+//         2.14
+// ======================
 
 ui_StartTroops
 {

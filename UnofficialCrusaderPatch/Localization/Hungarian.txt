@@ -241,10 +241,6 @@ o_fix_moat_digging_unit_disappearing_descr
 "Kijavítja azt a hibát, amikor árokásás közben véletlenszerűen eltűnik az árkot ásó egység. Megjegyzés: Az egység még mindig eltűnhet, ha árokásás közben elküldöd máshova és éppen egy nem járható helyen van!"
 }
 
-// ======================
-//         2.14
-// ======================
-
 ui_welcometext
 {
 "Ez egy nem hivatalos patch a Stronghold Crusader játékhoz.
@@ -293,6 +289,10 @@ Továbbá külön köszönet:
 [GRhin](https://www.twitch.tv/grhin)  
 [Heroesflorian](https://github.com/Heroesflorian)"
 }
+
+// ======================
+//         2.14
+// ======================
 
 ui_StartTroops
 {

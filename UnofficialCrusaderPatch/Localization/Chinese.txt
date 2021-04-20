@@ -239,10 +239,6 @@ o_fix_moat_digging_unit_disappearing_descr
 "挖河士兵在挖护城河时不再会随机消失。注意的是，当挖河士兵正好位于无通路地区时，如果你对其下达命令，他仍会消失！"
 }
 
-// ======================
-//         2.14
-// ======================
-
 ui_welcometext
 {
 "这是要塞十字军东征的非官方补丁编辑器。
@@ -293,6 +289,10 @@ for the creation of the Stronghold series
 [GRhin](https://www.twitch.tv/grhin)  
 [Heroesflorian](https://github.com/Heroesflorian)"
 }
+
+// ======================
+//         2.14
+// ======================
 
 ui_StartTroops
 {
