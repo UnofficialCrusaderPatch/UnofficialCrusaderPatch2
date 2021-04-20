@@ -1,0 +1,3 @@
+PitchNeeded Evrey Edit (kutak és gyógyszertárak)
+Kibővített 'Evrey feljavított eredeti várak' módosítás melyben egyes MI várak kutakat és gyógyszertárakat kapnak. 
+Átszerkesztette [PitchNeeded](https://github.com/PitchNeeded).

@@ -452,18 +452,6 @@ u_ballistamonk_descr
 	"Lässt Feuerballisten automatisch auch auf Mönche schießen."
 }
 
-aiv_EvreyHistory
-{
-	"Evreys historische KI-Burgen"
-}
-
-aiv_EvreyHistory_descr
-{
-	"Gibt den KI-Lords jeweils eine neue Burg, die auf einer realen, &
-zum Lord passenden, historischen Burg oder gar Stadt basiert. &
-[Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
 
 // ======================
 //         2.12
@@ -1071,24 +1059,6 @@ Damit soll der Bug verhindert werden, bei dem manche KIs in ihren Burgen &
 andauernd Gebäude abreißen und wieder aufbauen zu denen es keinen Weg gibt."
 }
 
-
-aiv_tatha
-{
-	"Tathas verbesserte KI Burgen"
-}
-
-aiv_tatha_descr
-{
-	"Im Vergleich zu den Vanilla-Versionen deutlich stärkere Burgen. Die verschiedenen &
-Burgvariationen der einzelnen KIs sind alle gleich stark. &
-[Vorstellungs-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
-}
-
-
-
-
-// some edits:
-
 ai_attackwave
 {
 	"Angriffswellen verbessern"
@@ -1105,57 +1075,3 @@ Befestigungsanlagen an, sowie Mauerstücke die bereits von einem Angreifer &
 besetzt sind. Außerdem schickt die KI jetzt auch mehr Truppen auf den &
 gegnerischen Bergfried, sobald sie eine Bresche erkennt."
 }
-
-aiv_pitchsiege
-{
-	"PitchNeededs Evrey Edit (Mangen & Ballisten)"
-}
-
-aiv_pitchsiege_descr
-{
-	"Erweitert 'Evreys gefixte Vanilla-Burgen' indem den Türmen von &
-Wazir, Schwein, Nizar und Emir Mangen und Ballisten hinzugefügt werden. &
-Editiert von [PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-aiv_pitchwells
-{
-	"PitchNeededs Evrey Edit (Brunnen & Apotheken)"
-}
-
-aiv_pitchwells_descr
-{
-	"Erweitert 'Evreys gefixte Vanilla-Burgen' indem einige KI-Burgen &
-Brunnen und Apotheken erhalten. Editiert von [PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-aiv_evreyfixed
-{
-	"Evreys gefixte Vanilla-Burgen"
-}
-
-aiv_evreyfixed_descr
-{
-	"Behebt Fehler der Vanilla-KI-Burgen, wie z.B. fehlende Häuser und Gilden &
-oder blockierte Ausgänge. [Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreyimproved
-{
-	"Evreys verbesserte KI-Burgen"
-}
-
-aiv_evreyimproved_descr
-{
-	"Gibt den KI-Lords neue verbesserte Burgen, angelehnt an den Vanilla-Stil. &
-[Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-
-
-
-
-
-
-
-

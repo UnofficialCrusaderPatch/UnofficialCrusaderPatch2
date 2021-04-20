@@ -1,0 +1,3 @@
+PitchNeededs Evrey Edit (Brunnen & Apotheken)
+Erweitert 'Evreys gefixte Vanilla-Burgen' indem einige KI-Burgen Brunnen und Apotheken erhalten. 
+Editiert von [PitchNeeded](https://github.com/PitchNeeded).

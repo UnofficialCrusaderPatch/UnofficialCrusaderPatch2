@@ -1,0 +1,3 @@
+Ulepszone zamki autorstwa użytkownika Evrey
+Wprowadza nowe i ulepszone zamki przeciwników komputerowych, które bazują na oryginalnym stylu z gry.
+[Stworzone przez użytkownika Evrey](https://github.com/Evrey/SHC_AIV/)
