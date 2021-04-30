@@ -2894,10 +2894,10 @@ Erre a célra végrehajtott változtatások:
 				"AttUnitSiegeDefMax": 16,
 				"AttUnitSiegeDefGroupsCount": 2,
 				"AttUnitMain1": "Monk",
-				"AttUnitMain2": "Monk",
+				"AttUnitMain2": "Swordsman",
 				"AttUnitMain3": "Pikeman",
 				"AttUnitMain4": "Swordsman",
-				"AttMaxDefault": 0,
+				"AttMaxDefault": 36,
 				"AttMainGroupsCount": 2,
 				"TargetChoice": "Balanced"
 			}
