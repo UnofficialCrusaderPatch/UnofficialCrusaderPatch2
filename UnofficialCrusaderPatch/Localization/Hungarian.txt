@@ -781,24 +781,6 @@ ai_nosleep_descr
 }
 
 
-ai_overclock
-{
-	"MI Parancsidőtartam rövidítése [Teszt]"
-}
-
-ai_overclock_descr
-{
-	"Itt lehet megváltoztatni az MI parancs időtartamát mint pl. mikor támadási parancsot ad az egységeknek. Ezáltal az egységek nem állnak egy helyen olyan sokáig, miután a célpontot megsemmisítették/legyőzték.
-
-Az azonban még nem ismert, hogy az időtartam megváltoztatása befolyásol e valamit, ezért előfordulhat hiba."
-}
-
-
-
-
-
-
-
 // 5.12.2018
 
 o_onlyai
