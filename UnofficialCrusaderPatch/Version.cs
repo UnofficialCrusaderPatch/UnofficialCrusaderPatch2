@@ -586,7 +586,6 @@ namespace UCP
                 {
                     new BinaryEdit("ai_buildhousing")
                     {
-                        new BinAddress("population", 7),
                         new BinHook(5) // the first 5 bytes are an if condition that just checks if the first house has been built yet
                         {
                             0x81, 0xE9, new BinInt32Value(), // the value of the slider header gets put into the location of new BinInt32Value()
@@ -605,7 +604,6 @@ namespace UCP
                 {
                     new BinaryEdit("ai_buildhousing")
                     {
-                        new BinAddress("population", 7),
                         new BinSkip(11),
                         0x7D, 0x08,
                         new BinSkip(8), //skip everything until we come to the campfire logic comparison
