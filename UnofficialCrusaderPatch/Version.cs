@@ -582,14 +582,14 @@ namespace UCP
 
             new Change("ai_housing", ChangeType.AILords, false, false)
             {
-                new SliderHeader("build_housing", true, 1, 200, 1, 1, 10)
+                new SliderHeader("build_housing", true, 0, 100, 1, 0, 5)
                 {
                     new BinaryEdit("ai_buildhousing")
                     {
                         new BinAddress("population", 7),
-                        new BinHook(5)
+                        new BinHook(5) // the first 5 bytes are an if condition that just checks if the first house has been built yet
                         {
-                            0x81, 0xE9, new BinInt32Value(),
+                            0x81, 0xE9, new BinInt32Value(), // the value of the slider header gets put into the location of new BinInt32Value()
                         },
                         new BinSkip(6),
                         0x7F, 0xDE
@@ -597,16 +597,7 @@ namespace UCP
 
                     new BinaryEdit("ai_deletehousing")
                     {
-                        new BinAddress("housing", 0x10),
-                        new BinSkip(22),
-                        new BinHook(5)
-                        {
-                            0x8B, 0x88, new BinRefTo("population", false),
-                            0x81, 0xE9, new BinInt32Value(),
-                            0x81, 0xE9, 0x18, 0x00, 0x00, 0x00,
-                            0x3B, 0x88, new BinRefTo("housing", false),
-                        },
-                        0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90
+                        0x90, 0x90
                     }
                 },
 
@@ -614,13 +605,19 @@ namespace UCP
                 {
                     new BinaryEdit("ai_buildhousing")
                     {
-                        new BinSkip(0xB),
-                        0x7F, 0x08,
-                        new BinSkip(0x8),
-                        0xB9, new BinInt32Value(),
+                        new BinAddress("population", 7),
+                        new BinSkip(11),
+                        0x7D, 0x08,
+                        new BinSkip(8), //skip everything until we come to the campfire logic comparison
+                        0xB9, new BinInt32Value(), //replace the 5 with the user input value from the slider header
                         new BinSkip(8),
                         0x7C, 0xC7,
                         0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90
+                    },
+
+                    new BinaryEdit("ai_deletehousing")
+                    {
+                        0x90, 0x90
                     }
                 },
 
@@ -628,9 +625,9 @@ namespace UCP
                 {
                     new BinaryEdit("ai_deletehousing")
                     {
-                        new BinBytes(0x90, 0x90)
+                        0x90, 0x90
                     }
-                },
+                }
             },
 
 
