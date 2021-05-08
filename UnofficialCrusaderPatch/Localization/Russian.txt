@@ -147,7 +147,7 @@ u_fix_lord_animation_stuck_movement
 
 u_fix_lord_animation_stuck_movement_descr
 {
-"Исправляет анимацию замирания Лорда когда тот стоит , либо когда разрушает здание."
+"Исправляет анимацию замирания Лорда когда тот стоит, либо когда разрушает здание."
 }
 
 fix_apple_orchard_build_size
@@ -228,7 +228,7 @@ o_fix_baker_disappear
 
 o_fix_baker_disappear_descr
 {
-"Исправляет ошибку, при которой пекарни исчезали бы, если бы пекари не нашли муку на складе запасов ."
+"Исправляет ошибку, при которой пекарни исчезали бы, если бы пекари не нашли муку на складе запасов."
 }
 
 o_fix_moat_digging_unit_disappearing
@@ -269,8 +269,7 @@ ui_welcometext
 
 Переводчики
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polish)  
-[Lolasik011](https://github.com/Lolasik011),(Steam - YouMoMCallME) (Russian)  
-[LORD_VALROY](LORD_VALROY#0519 Discord),(https://vk.com/club_gmb_mod) (Russian)
+[Lolasik011](https://github.com/Lolasik011) (Russian)
 [Skysoul (e-mail)](mailto:theskysoul@vip.qq.com) (Chinese)  
 [Liegav (YouTube)](https://www.youtube.com/channel/UCFqQMKfYgGb7iFKJagQl_wA) (Hungarian)
 
