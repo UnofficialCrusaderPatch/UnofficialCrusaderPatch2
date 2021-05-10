@@ -13,26 +13,14 @@ namespace UCP
             StartTroopChange.Load();
             ResourceChange.Load();
             Version.AddExternalChanges();
-            ResolveLanguage(args);
-            Localization.Load(Configuration.Language);
+            ResolvePath();
             ResolveArgs(args);
             SilentInstall();
         }
 
-        static void ResolveLanguage(String[] args)
-        {
-            foreach (String arg in args)
-            {
-                if (arg.Contains("--language"))
-                {
-                    Int32.TryParse(arg.Split('=')[1].Trim(), out int parameter);
-                    Configuration.Language = parameter;
-                }
-            }
-        }
-
         static void ResolveArgs(String[] args)
         {
+
             Func<String, String, bool, bool, bool> fileTransfer = (src, dest, overwrite, log) =>
             {
                 return FileUtils.Transfer(src, dest, overwrite, log);
@@ -45,20 +33,11 @@ namespace UCP
                 {
                     silent = true;
                 }
-                else if (arg.Contains("--path"))
-                {
-                    Configuration.Path = arg.Split('=')[1].Trim();
-                }
-            }
-
-            if (!Patcher.CrusaderExists(Configuration.Path))
-            {
-                ResolvePath(silent);
             }
 
             foreach (String arg in args)
             {
-                if (arg == "--no-output" || arg.Contains("--path") || arg.Contains("--language"))
+                if (arg == "--no-output")
                 {
                     continue;
                 } else if (!arg.StartsWith("--") || !arg.Contains("="))
@@ -82,29 +61,18 @@ namespace UCP
             }
         }
 
-        static void ResolvePath(bool silent = false)
+        static void ResolvePath()
         {
-            if (Patcher.CrusaderExists(Environment.CurrentDirectory))
+            if (!Patcher.CrusaderExists(Configuration.Path))
             {
-                Configuration.Path = Environment.CurrentDirectory;
-            }
-            else if (Patcher.CrusaderExists(Path.Combine(Environment.CurrentDirectory, "..\\")))
-            {
-                Configuration.Path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "..\\"));
-            }
-            else if (Patcher.CrusaderExists(Path.Combine(Environment.CurrentDirectory, "..\\..\\")))
-            {
-                Configuration.Path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "..\\..\\"));
-            }
-            else
-            {
-                string input = "";
-                while (!Patcher.CrusaderExists(input))
+                if (Patcher.CrusaderExists(Environment.CurrentDirectory))
                 {
-                    Console.WriteLine(Localization.Get("ui_cli_ask_installation_folder"));
-                    input = Console.ReadLine().Replace("\n", "");
+                    Configuration.Path = Environment.CurrentDirectory;
                 }
-                Configuration.Path = input;
+                else if (Patcher.CrusaderExists(Path.Combine(Environment.CurrentDirectory, "..\\")))
+                {
+                    Configuration.Path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "..\\"));
+                }
             }
         }
 

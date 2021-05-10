@@ -1,15 +1,4 @@
 // ======================
-//         2.15b
-// ======================
-ui_cli_ask_installation_folder
-{
-"Es wurde keine Stronghold Crusader Extreme Installation gefunden. Bitte gib den Installationspfad an!"
-}
-
-
-
-
-// ======================
 //         2.15
 // ======================
 
