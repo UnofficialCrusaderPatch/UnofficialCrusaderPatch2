@@ -159,7 +159,7 @@ fix_apple_orchard_build_size_descr
 
 u_fix_applefarm_blocking
 {
-"Fix apple farm worker getting blocked修复苹果园工人被堵路"
+"修复苹果园工人被堵路"
 }
 
 u_fix_applefarm_blocking_descr
@@ -304,14 +304,14 @@ ui_Resource
 	"起始资金"
 }
 
-ui_aicconflict
+﻿ui_aicconflict
 {
 	"AIC存在ai冲突，第二个AIC的冲突ai会被忽略"
 }
 
 o_shfy
 {
-	"要塞十字军东征修改"
+	"要塞修改"
 }
 
 o_shfy_beer
@@ -351,7 +351,7 @@ o_shfy_resourcequantity
 
 o_shfy_resourcequantity_descr
 {
-	"调整一些方面来匹配游戏，注意:任何改变都会影响ai领主，最坏的情况是失效!"
+	"将这些方面调整为要塞1的数值。注意:任何改变都会影响ai领主，最坏的情况是失效!"
 }
 
 o_armory_marketplace_weapon_order_fix
@@ -751,7 +751,7 @@ ai_demolish_walls_descr
 ai_demolish_eco_descr
 {
 	"如果ai感受到了压力，他会通过拆毁城堡建筑或者经济建筑的方式来快速获取资金&
-这在有时是没有必要的，可以在此处取消这个行为。."
+这在有时是没有必要的，你可以在此处取消这个行为。."
 }
 
 ai_tethers
@@ -765,15 +765,6 @@ ai_tethers_descr
 当采石场被反复摧毁时，会导致牛栏数量很多。打开此选项可以避免这种现象。"
 }
 
-
-
-
-
-
-
-
-
-
 // =======================
 //          2.06
 // =======================
@@ -785,36 +776,18 @@ ai_nosleep
 
 ai_nosleep_descr
 {
-	"ai通常会将正在生产中的建筑休眠，因为部分建筑缺乏原料，哪怕原料&
-正在路上，打开此选项可以取消该行为。" 
+	"ai通常会将正在生产中的建筑休眠，因为有部分建筑缺乏原料，哪怕原料&
+正在运回的路上，打开此选项可以防止ai将建筑休眠。" 
 }
 
 
-ai_overclock
-{
-	"减少ai指挥单位的时间间隔 [测试中]"
-}
-
-ai_overclock_descr
-{
-	"ai的单位在执行完一个命令后，可能并不会立即收到下一个命令，&
-这会导致单位无所事事一段时间，打开此选项可以减少ai的指挥时间间隔。
-
-暂时不知道这个间隔是否还会影响其他方面，因此有可能导致bug。"
-}
-
-
-
-
-
-
-
-
+// =======================
 // 5.12.2018
+// =======================
 
 o_onlyai
 {
-	"打开观察者模式 [可能存在bug]"
+	"打开观察者模式"
 }
 
 o_onlyai_descr
@@ -884,7 +857,7 @@ ai_towerengines
 
 ai_towerengines_descr
 {
-	"在原版，ai每种器械虽多只能放置3个，打开此选项可以解除此限制。"
+	"在原版，每种器械ai最多只能放置3个，打开此选项可以解除此限制。"
 }
 
 ai_buywood
