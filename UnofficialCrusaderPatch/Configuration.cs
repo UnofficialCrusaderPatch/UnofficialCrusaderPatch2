@@ -153,7 +153,8 @@ namespace UCP
                             {
                                 Configuration.Path = changeSetting;
                             }
-                            else if (changeKey == "Language")
+                            //else 
+                            if (changeKey == "Language")
                             {
                                 if (int.TryParse(changeSetting, out int result))
                                     Configuration.Language = result;
