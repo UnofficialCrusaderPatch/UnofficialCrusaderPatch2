@@ -269,7 +269,7 @@ ui_welcometext
 
 Переводчики
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polish)  
-[Lolasik011](https://github.com/Lolasik011) (https://steamcommunity.com/profiles/76561198399248341/) (Russian)
+[Lolasik011](https://steamcommunity.com/profiles/76561198399248341) (Russian)
 [Skysoul (e-mail)](mailto:theskysoul@vip.qq.com) (Chinese)  
 [Liegav (YouTube)](https://www.youtube.com/channel/UCFqQMKfYgGb7iFKJagQl_wA) (Hungarian)
 
