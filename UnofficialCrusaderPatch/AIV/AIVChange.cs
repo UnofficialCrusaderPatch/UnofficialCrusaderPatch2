@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Media;
 using UCP.Patching;
 
@@ -19,15 +22,7 @@ namespace UCP.AIV
         const string BackupIdent = "ucp_backup";
 
         public static AIVChange activeChange = null;
-        static List<AIVChange> _changes = new List<AIVChange>()
-        {
-            AIVChange.CreateDefault("Tatha"),
-            AIVChange.CreateDefault("EvreyFixed"),
-            AIVChange.CreateDefault("EvreyImproved"),
-            AIVChange.CreateDefault("EvreyHistory"),
-            AIVChange.CreateDefault("PitchWells"),
-            AIVChange.CreateDefault("PitchSiege"),
-        };
+        static List<AIVChange> _changes = new List<AIVChange>();
         
         private static string selectedChange = String.Empty;
 
@@ -48,13 +43,6 @@ namespace UCP.AIV
             }
         }
 
-        public AIVChange(string titleIdent, bool enabledDefault = false)
-            : base("aiv_" + titleIdent, ChangeType.AIV, true, true)
-        {
-            this.resFolder = "UCP.AIV." + titleIdent;
-            this.isInternal = true;
-        }
-
         public AIVChange(string titleIdent, bool enabledDefault = false, bool isInternal = false)
             : base("aiv_" + titleIdent, ChangeType.AIV, true, true)
         {
@@ -64,14 +52,11 @@ namespace UCP.AIV
 
         public override void InitUI()
         {
-            if (!this.resFolder.StartsWith("UCP.AIV"))
-            {
-                string descr = GetLocalizedDescription(this.TitleIdent);
-                descr = descr == String.Empty ? this.TitleIdent.Substring(4) : descr;
-                Localization.Add(this.TitleIdent + "_descr", descr);
-            }
+            string descr = GetLocalizedDescription(this.TitleIdent);
+            descr = descr == String.Empty ? this.TitleIdent.Substring(4) : descr;
+            Localization.Add(this.TitleIdent + "_descr", descr);
             base.InitUI();
-            this.titleBox.Background = this.resFolder.StartsWith("UCP.AIV") ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque);
+            this.titleBox.Background = new SolidColorBrush(Colors.White);
 
             if (!this.resFolder.StartsWith("UCP.AIV"))
             {
@@ -81,16 +66,6 @@ namespace UCP.AIV
             this.titleBox.IsChecked = selectedChange.Equals(this.TitleIdent);
             if (this.IsChecked)
                 activeChange = this;
-        }
-
-        public static AIVChange CreateDefault(string titleIdent, bool enabledDefault = false)
-        {
-            return new AIVChange(titleIdent, enabledDefault)
-            {
-                new DefaultHeader("aiv_" + titleIdent)
-                {
-                }
-            };
         }
 
         public static AIVChange CreateExternal(string titleIdent, bool enabledDefault = false)
@@ -162,7 +137,7 @@ namespace UCP.AIV
                 if (selected == true)
                 {
                     selectedChange = changeKey;
-                    activeChange = changes.Where(x => x.TitleIdent.Equals(changeKey)).First();
+                    activeChange = changes.Where(x => x.TitleIdent.Equals(changeKey)).FirstOrDefault();
                 }
             }
         }
@@ -171,44 +146,232 @@ namespace UCP.AIV
         /// Copies AIV sets to aivDir (aiv subdirectory of SHC installation)
         /// </summary>
         /// <param name="aivDir"></param>
-        public void CopyAIVs(DirectoryInfo aivDir)
+        internal bool CopyAIVs(DirectoryInfo destinationDir, bool overwrite, bool graphical)
         {
-            if (this.resFolder.StartsWith("UCP.AIV"))
-            {
-                int len = resFolder.Length + 1;
-                Assembly asm = Assembly.GetExecutingAssembly();
-                foreach (string res in asm.GetManifestResourceNames())
-                {
-                    if (!res.StartsWith(resFolder, StringComparison.OrdinalIgnoreCase))
-                        continue;
+            Assembly asm = Assembly.GetExecutingAssembly();
+            List<string> resourceFiles = Directory.GetFiles(Path.Combine("resources", "aiv", resFolder)).Where(x => x.EndsWith(".aiv")).Select(x => Path.GetFileName(ReplaceFirst(x, resFolder + Path.PathSeparator, ""))).ToList();
 
-                    string path = Path.Combine(aivDir.FullName, res.Substring(len));
-                    using (Stream stream = asm.GetManifestResourceStream(res))
-                    using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
+            // If same AIV exist in both check if contents identical
+            bool isIdentical = true;
+            if (destinationDir.GetFiles().ToList().Select(x => x.Name).Where(x => x.EndsWith(".aiv")).SequenceEqual(resourceFiles, StringComparer.CurrentCultureIgnoreCase))
+            {
+                foreach (string aivFile in resourceFiles)
+                {
+                    using (SHA256 SHA256Instance = SHA256.Create())
                     {
-                        stream.CopyTo(fs);
+                        using (Stream dstStream =
+                            new FileInfo(Path.Combine(destinationDir.FullName, aivFile)).OpenRead())
+                        {
+                            using (Stream srcStream = new FileInfo(Path.Combine("resources", "aiv", resFolder, aivFile)).OpenRead())
+                            {
+                                if (!Convert.ToBase64String(SHA256Instance.ComputeHash(srcStream))
+                                    .Equals(Convert.ToBase64String(SHA256Instance.ComputeHash(dstStream))))
+                                {
+                                    isIdentical = false;
+                                    break;
+                                }
+                            }
+                        }
                     }
                 }
             }
             else
             {
-                foreach (var file in Directory.EnumerateFiles(Path.Combine("resources","aiv",this.resFolder), "*.aiv", SearchOption.TopDirectoryOnly))
+                isIdentical = false;
+            }
+
+            if (isIdentical)
+            {
+                return true;
+            }
+
+            // If overwrite, delete aiv contents of aiv directory and write new AIV files
+            if (overwrite)
+            {
+                foreach (FileInfo file in destinationDir.GetFiles())
                 {
-                    string path = Path.Combine(aivDir.FullName, Path.GetFileName(file));
-                    File.Copy(file, path);
+                    file.Delete();
+                }
+
+                foreach (string aivFile in resourceFiles)
+                {
+                    using (Stream dstStream =
+                        new FileInfo(Path.Combine(destinationDir.FullName, aivFile)).OpenWrite())
+                    {
+                        using (Stream srcStream = new FileInfo(Path.Combine("resources", "aiv", resFolder, aivFile)).OpenRead())
+                        {
+                            srcStream.CopyTo(dstStream);
+                        }
+                    }
+                }
+                return true;
+            }
+
+            /**
+             * This logic runs when the contents of the backup and destination aiv folders are different.
+             * If an existing subfolder named 'original' does not exist in the destination aiv folder
+             *  - Create folder 'original'
+             *  - Copy all files from destination aiv folder to 'original' folder
+             *  - Copy new aiv files to destination aiv folder
+             */
+            DirectoryInfo backupDir = new DirectoryInfo(Path.Combine(destinationDir.FullName, "original"));
+            if (!Directory.Exists(Path.Combine(destinationDir.FullName, "original")) || backupDir.GetFiles().Length == 0)
+            {
+                if (Directory.EnumerateFiles(destinationDir.FullName, "*", SearchOption.TopDirectoryOnly).Select(x => x.EndsWith(".aiv")).ToList().Count > 0)
+                {
+                    backupDir.Create();
+                }
+                foreach (string aivFile in destinationDir.GetFiles().ToList().Select(x => x.Name))
+                {
+                    using (Stream dstStream =
+                        new FileInfo(Path.Combine(backupDir.FullName, aivFile)).OpenWrite())
+                    {
+                        using (Stream srcStream = new FileInfo(Path.Combine(destinationDir.FullName, aivFile)).OpenRead())
+                        {
+                            srcStream.CopyTo(dstStream);
+                        }
+                        File.Delete(Path.Combine(destinationDir.FullName, aivFile));
+                    }
                 }
             }
+            else
+            {
+                // Determine if the aiv files in destination folder are identical to backup folder
+                bool backupIdentical = true;
+                foreach (string aivFile in destinationDir.GetFiles().ToList().Where(x => x.Name.EndsWith(".aiv")).Select(x => x.Name))
+                {
+                    using (SHA256 SHA256Instance = SHA256.Create())
+                    {
+                        try
+                        {
+                            using (Stream dstStream =
+                                new FileInfo(Path.Combine(backupDir.FullName, aivFile)).OpenRead())
+                            {
+                                using (Stream srcStream = new FileInfo(Path.Combine(destinationDir.FullName, aivFile)).OpenRead())
+                                {
+                                    if (!Convert.ToBase64String(SHA256Instance.ComputeHash(srcStream))
+                                        .Equals(Convert.ToBase64String(SHA256Instance.ComputeHash(dstStream))))
+                                    {
+                                        backupIdentical = false;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        catch (IOException)
+                        {
+                            backupIdentical = false;
+                        }
+                    }
+                }
+
+                // If backup contains all aiv files from destination folder then delete aiv from destination folder
+                if (backupIdentical)
+                {
+                    foreach (FileInfo file in destinationDir.GetFiles())
+                    {
+                        if (file.Extension.Equals(".aiv"))
+                        {
+                            file.Delete();
+                        }
+                    }
+                }
+
+                /**
+                  * This logic runs when the contents of the backup and destination aiv folders are different.
+                  */
+                if (!backupIdentical && graphical) // Clear backup folder of aiv files
+                {
+                    MessageBoxResult result = System.Windows.MessageBox.Show(Localization.Get("aiv_prompt"), "", MessageBoxButton.YesNoCancel);
+                    if (result == MessageBoxResult.No)
+                    {
+                        foreach (FileInfo file in destinationDir.GetFiles())
+                        {
+                            file.Delete();
+                        }
+                    }
+                    else if (result == MessageBoxResult.Yes) // Clear destination aiv folder of aiv files.
+                    {
+                        using (var dialog = new FolderBrowserDialog())
+                        {
+                            dialog.Description = Localization.Get("backup_aiv_select");
+                            dialog.RootFolder = Environment.SpecialFolder.Desktop;
+                            DialogResult folderResult = DialogResult.Cancel;
+                            var thread = new Thread(obj => {
+                                folderResult = dialog.ShowDialog();
+                            });
+                            thread.SetApartmentState(ApartmentState.STA);
+                            thread.Start();
+                            thread.Join();
+
+                            if (folderResult == DialogResult.OK && !string.IsNullOrWhiteSpace(dialog.SelectedPath))
+                            {
+                                DirectoryInfo savePath = new DirectoryInfo(dialog.SelectedPath);
+                                string[] files = Directory.GetFiles(dialog.SelectedPath);
+
+                                foreach (FileInfo file in destinationDir.GetFiles())
+                                {
+                                    file.MoveTo(Path.Combine(savePath.FullName, Path.GetFileName(file.Name)));
+                                }
+                            } else
+                            {
+                                throw new Exception();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+                }
+                else if (!backupIdentical)
+                {
+                    string input = "";
+                    while (!input.ToLower().Equals("delete") && (input.IndexOfAny(Path.GetInvalidPathChars()) != -1 || (input.Equals("") || Directory.Exists(Path.Combine(destinationDir.FullName, input)))))
+                    {
+                        Console.WriteLine(Localization.Get("aiv_cli_prompt"));
+                        input = Console.ReadLine().Replace("\n", "");
+                    };
+
+                    if (input.ToLower().Equals("delete"))
+                    {
+                        foreach (string file in Directory.EnumerateFiles(destinationDir.FullName, "*", SearchOption.TopDirectoryOnly))
+                        {
+                            File.Delete(file);
+                        }
+                    }
+                    else
+                    {
+                        DirectoryInfo extraBackupDir = Directory.CreateDirectory(Path.Combine(destinationDir.FullName, input));
+                        foreach (string file in Directory.EnumerateFiles(backupDir.FullName, "*", SearchOption.TopDirectoryOnly))
+                        {
+                            File.Move(file, Path.Combine(extraBackupDir.FullName, Path.GetFileName(file)));
+                        }
+                    }
+                    foreach (string file in Directory.EnumerateFiles(destinationDir.FullName, "*", SearchOption.TopDirectoryOnly))
+                    {
+                        File.Move(file, Path.Combine(backupDir.FullName, Path.GetFileName(file)));
+                    }
+                }
+            }
+
+            foreach (string aivFile in resourceFiles)
+            {
+                using (Stream dstStream =
+                    new FileInfo(Path.Combine(destinationDir.FullName, aivFile)).OpenWrite())
+                {
+                    using (Stream srcStream = new FileInfo(Path.Combine("resources", "aiv", resFolder, aivFile)).OpenRead())
+                    {
+                        srcStream.CopyTo(dstStream);
+                    }
+                }
+            }
+            return true;
         }
 
         public static void Refresh()
         {
             changes.Clear();
-            changes.Add(AIVChange.CreateDefault("Tatha"));
-            changes.Add(AIVChange.CreateDefault("EvreyFixed", true));
-            changes.Add(AIVChange.CreateDefault("EvreyImproved"));
-            changes.Add(AIVChange.CreateDefault("EvreyHistory"));
-            changes.Add(AIVChange.CreateDefault("PitchWells"));
-            changes.Add(AIVChange.CreateDefault("PitchSiege"));
 
             if (Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "aiv")))
             {
@@ -227,46 +390,53 @@ namespace UCP.AIV
         /// Restores the most recently backed-up AIV set found in the aiv subfolder of SHC installation
         /// </summary>
         /// <param name="dir"></param>
-        public static void Restore(string dir)
+        internal static void Restore(string path)
         {
-            string aivPath = Path.Combine(dir, "aiv");
-            foreach (string file in Directory.EnumerateFiles(aivPath, "*.aiv", SearchOption.TopDirectoryOnly))
+            DirectoryInfo destinationDir = new DirectoryInfo(Path.Combine(path, "aiv"));
+            DirectoryInfo backupDir = new DirectoryInfo(Path.Combine(destinationDir.FullName, "original"));
+            if (!backupDir.Exists)
             {
-                File.Delete(file);
+                return;
             }
-            try
+            else
             {
-                DirectoryInfo bupDir = new DirectoryInfo(Path.Combine(aivPath)).GetDirectories().OrderByDescending(d => d.LastWriteTimeUtc).First();
-                if (bupDir.Exists)
+                foreach (FileInfo file in destinationDir.GetFiles())
                 {
-                    foreach (FileInfo fi in bupDir.EnumerateFiles("*.aiv"))
-                        fi.CopyTo(Path.Combine(aivPath, fi.Name), true);
-
-                    bupDir.Delete(true);
+                    if (file.Extension.Equals(".aiv"))
+                    {
+                        file.Delete();
+                    }
                 }
+
+                foreach (FileInfo file in backupDir.GetFiles())
+                {
+                    file.MoveTo(Path.Combine(destinationDir.FullName, Path.GetFileName(file.Name)));
+                }
+                backupDir.Delete();
             }
-            catch (InvalidOperationException) { }
         }
 
         /// <summary>
         /// Creates timestamped backup of existing AIV sets and copies selected AIV set to aivDir (aiv subdirectory of SHC installation)
         /// </summary>
         /// <param name="folderPath"></param>
-        public static void DoChange(string folderPath)
+        public static void DoChange(string folderPath, bool overwrite, bool graphical)
         {
-            DirectoryInfo aivDir = new DirectoryInfo(Path.Combine(folderPath, "aiv"));
-
-            if (AIVChange.ActiveChange != null)
+            if (activeChange == null)
             {
-                // create backup of current AIVs
-                DirectoryInfo bupDir = Directory.CreateDirectory(Path.Combine(aivDir.FullName, "bak-" + DateTime.Now.ToString("yyyy-MM-ddTHHmmss")));
-                foreach (string file in Directory.EnumerateFiles(aivDir.FullName, "*.aiv", SearchOption.TopDirectoryOnly))
-                {
-                    File.Move(file, Path.Combine(bupDir.FullName, Path.GetFileName(file)));
-                }
-                // copy modded AIVs
-                AIVChange.ActiveChange.CopyAIVs(aivDir);
+                return;
             }
+            activeChange.CopyAIVs(new DirectoryInfo(Path.Combine(folderPath, "aiv")), overwrite, graphical);
+        }
+
+        static string ReplaceFirst(string text, string search, string replace)
+        {
+            int pos = text.IndexOf(search);
+            if (pos < 0)
+            {
+                return text;
+            }
+            return text.Substring(0, pos) + replace + text.Substring(pos + search.Length);
         }
 
         private static String GetLocalizedDescription(string titleIdent)

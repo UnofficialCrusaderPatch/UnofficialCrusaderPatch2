@@ -1,0 +1,3 @@
+Evrey的加强ai城堡
+为ai添加了原版风格但更强劲的城堡
+[创作者Evrey](https://github.com/Evrey/SHC_AIV/)

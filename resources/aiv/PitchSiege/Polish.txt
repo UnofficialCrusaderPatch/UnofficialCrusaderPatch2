@@ -1,0 +1,3 @@
+Dodatkowe zmiany PitchNeeded do Evrey (mangonele & balisty)
+Ulepsza oryginalne zamki naprawione przez użytkownika Evrey, dodając mangonele i balisty na wieże Wezyra, Wieprza, Nizara i Emira. 
+Edytowane przez użytkownika [PitchNeeded](https://github.com/PitchNeeded)
