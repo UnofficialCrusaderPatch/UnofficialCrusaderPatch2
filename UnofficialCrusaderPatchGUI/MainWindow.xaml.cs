@@ -238,7 +238,7 @@ namespace UCP
         {
             try
             {
-                Patcher.Install((string)arg, SetPercent);
+                Patcher.Install((string)arg, SetPercent, false, true);
 
                 Dispatcher.Invoke(DispatcherPriority.Render, new Action(() =>
                 {

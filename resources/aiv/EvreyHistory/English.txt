@@ -1,0 +1,3 @@
+Evrey's historic AI castles
+Adds one new AI castle for each lord, based on real historical castles or cities.
+[Created by Evrey](https://github.com/Evrey/SHC_AIV/)

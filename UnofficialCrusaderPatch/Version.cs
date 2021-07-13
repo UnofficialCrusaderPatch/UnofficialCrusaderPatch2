@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using System.Linq;
@@ -8,12 +8,13 @@ using UCP.Startup;
 using static UCP.Patching.BinElements.Register;
 using static UCP.Patching.BinElements.OpCodes;
 using static UCP.Patching.BinElements.OpCodes.Condition.Values;
+using System;
 
 namespace UCP
 {
     public class Version
     {
-        public static string PatcherVersion = "2.14";
+        public static string PatcherVersion = "2.15b";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
@@ -25,11 +26,119 @@ namespace UCP
             BinRedirect.CreateEdit("menuversion", false, Encoding.ASCII.GetBytes("V1.%d-E UCP" + PatcherVersion + '\0'))
         };
 
-
-        public static List<Change> Changes { get { return changes; } }
         static List<Change> changes = new List<Change>()
         {
             #region BUG FIXES
+            
+            // Fix ladder climbing behaviour
+            new Change("o_fix_ladderclimb", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_ladderclimb")
+                {
+                    
+                    // 53D3D9
+                    new BinaryEdit("o_fix_ladderclimb_pre")
+                    {
+                        // cache current unti moved
+                        new BinAlloc("currentUnitMoved", 4),
+
+                        new BinSkip(9),
+
+                        new BinHook(6)
+                        {
+                            0x89, 0x15, new BinRefTo("currentUnitMoved", false), // mov [currentUnitMoved],edx
+                            0x69, 0xD2, 0x90, 0x04, 0x00, 0x00, // imul edx,edx,00000490
+                        }
+                    },
+                    
+                    // 53D694
+                    new BinaryEdit("o_fix_ladderclimb")
+                    {
+                        // need 120k bytes, because we need 3*4 bytes per unit, and the SHC-E max is 10k units
+                        new BinAlloc("savedUnitDestinationForClimbing", 120000),
+
+                        new BinSkip(12), // skip 12 bytes
+                        
+                        new BinHook(10)
+                        {
+                            0x50, // push eax
+                            0xA1, new BinRefTo("currentUnitMoved", false), // mov eax,[currentUnitMoved]
+                            0x83, 0xF8, 0x00, // cmp eax,00
+                            0x74, 0x20, // je short 20
+                            0x48, // dec eax
+                            0x6B, 0xC0, 0x0C, // imul eax,eax,0C
+                            0x89, 0xA8, new BinRefTo("savedUnitDestinationForClimbing", false), // mov [eax+savedUnitDestinationForClimbing],ebp
+                            0x83, 0xC0, 0x04, // add eax,04
+                            0x89, 0xB8, new BinRefTo("savedUnitDestinationForClimbing", false), // mov [eax+savedUnitDestinationForClimbing],edi
+                            0x83, 0xC0, 0x04, // add eax,04
+                            0xC7, 0x80, new BinRefTo("savedUnitDestinationForClimbing", false), 0x01, 0x00, 0x00, 0x00, // mov [eax+savedUnitDestinationForClimbing],01
+                            0x58, // pop eax
+                            0x66, 0x39, 0xD8, // cmp ax,bx
+                            0x66, 0x89, 0x86, 0xBC, 0x08, 0x00, 0x00, // mov [esi+8BC],ax
+                        }
+                    },
+                    
+                    // 5790CB
+                    new BinaryEdit("o_fix_ladderclimb_2")
+                    {
+                        new BinHook(16)
+                        {
+                            0x50, // push eax
+                            0x8B, 0xC3, // mov eax,ebx
+                            0x48, // dec eax
+                            0x6B, 0xC0, 0x0C, // imul eax,eax,0C
+                            0x83, 0xC0, 0x08, // add eax,08
+                            0x83, 0xB8, new BinRefTo("savedUnitDestinationForClimbing", false), 0x00, // cmp dword ptr [eax+savedUnitDestinationForClimbing],00
+                            0x75, 0x16, // jne short 0x16
+                            0x58, // pop eax
+                            0x66, 0x89, 0x8C, 0x3E, 0x00, 0x07, 0x00, 0x00, // mov [esi+edi+00000700],cx
+                            0x66, 0x89, 0x94, 0x3E, 0x02, 0x07, 0x00, 0x00, // mov [esi+edi+00000702],dx
+                            0xE9, new BinRefTo("exit"), // jmp exit
+                            0xC7, 0x80, new BinRefTo("savedUnitDestinationForClimbing", false), 0x00, 0x00, 0x00, 0x00, // mov [eax+savedUnitDestinationForClimbing],00000000
+                            0x58// pop eax
+                        },
+                        new BinLabel("exit")
+                    },
+                    
+                    // 53D900
+                    new BinaryEdit("o_fix_ladderclimb_3")
+                    {
+                        new BinHook(5)
+                        {
+                            0x50, // push eax
+                            0x8B, 0xC3, // mov eax,ebx
+                            0x48, // dec eax
+                            0x6B, 0xC0, 0x0C, // imul eax,eax,0C
+                            0x83, 0xC0, 0x08, // add eax,08,
+                            0xC7, 0x80, new BinRefTo("savedUnitDestinationForClimbing", false), 0x01, 0x00, 0x00, 0x00, // mov [eax+savedUnitDestinationForClimbing],00000000
+                            0x58, // pop eax
+                            0x53, // push ebx
+                            0x8B, 0x5C, 0x24, 0x08, // mov ebx,[esp+08]
+                        }
+                    },
+                    
+                    // 54C3E5
+                    new BinaryEdit("o_fix_ladderclimb_4")
+                    {
+                        new BinHook(14)
+                        {
+                            0x57, // push edi
+                            0x31, 0xFF, // xor edi,edi
+                            0x66, 0x8B, 0x7C, 0x24, 0x18, // mov di,[esp+18]
+                            0x4F, // dec edi
+                            0x6B, 0xFF, 0x0C, // imul edi,edi,0C
+                            0x8B, 0x87, new BinRefTo("savedUnitDestinationForClimbing", false), // mov eax,[edi+savedUnitDestinationForClimbing]
+                            0x83, 0xC7, 0x04, // add edi,04
+                            0x8B, 0x97, new BinRefTo("savedUnitDestinationForClimbing", false), // mov edx,[edi+savedUnitDestinationForClimbing]
+                            0x89, 0x86, 0x00, 0x07, 0x00, 0x00, // mov [esi+00000700],eax
+                            0x89, 0x96, 0x02, 0x07, 0x00, 0x00, // mov [esi+00000702],edx
+                            0x0F, 0xBF, 0x96, 0x02, 0x07, 0x00, 0x00, // movsx edx,word ptr [esi+00000702]
+                            0x0F, 0xBF, 0x86, 0x00, 0x07, 0x00, 0x00, // movsx edx,word ptr [esi+00000702]
+                            0x5F, // pop edi
+                        }
+                    }
+                }
+            },
 
             new Change("u_ghosteng", ChangeType.Bugfix, true)
             {
@@ -315,25 +424,9 @@ namespace UCP
                             0x8B, 0x54, 0x24, 0x04, // mov edx,[esp+04]
                             0x8B, 0x14, 0x95, new BinRefTo("defNum", false), // mov edx,[edx*4 + defNum]
                         }
-                    },
-
-                    // 004D3486
-                    new BinaryEdit("ai_defense_affinity")
-                    {
-                        // increase the general affinity to reman defenses
-                        // this value was zero for some AIs like the rat
-                        new BinHook(7)
-                        {
-                            // ori code
-                            0x8B, 0xAC, 0x87, 0x28, 0x01, 0x00, 0x00, // mov ebp,[edi+eax*4+00000128]
-
-                            // add a constant value of 20; snake's default f.e. is 30
-                            ADD(EBP, 0x14) // add ebp, 14h
-                        }
                     }
                 }
             },
-
 
             /*
              *  OX TETHER SPAM
@@ -466,7 +559,116 @@ namespace UCP
 
                 }
             },
-            
+
+            new Change("u_fix_lord_animation_stuck_movement", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("u_fix_lord_animation_stuck_movement")
+                {
+
+                    new BinaryEdit("u_fix_lord_animation_stuck_movement") // 56E139
+                    {
+                        new BinAddress("originalCompareAddress", 11),
+                        new BinAddress("unitHandle", 18),
+                        new BinSkip(9),
+                        new BinHook(17)
+                        {
+                            0x53, // push ebx
+                            0xBB, new BinRefTo("unitHandle", false), // mov ebx,unitHandle
+                            0xC7, 0x04, 0x33, 0x00, 0x00, 0x00, 0x00, // mov [ebx+esi],00000000
+                            0x81, 0xC3, 0x04, 0x00, 0x00, 0x00, // add ebx,00000004
+                            0x0F, 0xB7, 0x0C, 0x33, // movzx ecx,word ptr [ebx+esi]
+                            
+                            0x81, 0xEB, 0xA8, 0x02, 0x00, 0x00, // sub ebx,000002A8
+                            0x81, 0xC1, 0x29, 0x00, 0x00, 0x00, // add ecx,00000029
+                            0x81, 0x3C, 0x33, 0xCD, 0x00, 0x00, 0x00, // cmp [ebx+esi],000000CD
+                            0x74, 0x06, // je short 0x06
+                            0x81, 0xC1, 0x80, 0x00, 0x00, 0x00, // add ecx,00000080
+                            
+                            0x81, 0xC3, 0x24, 0x00, 0x00, 0x00, // add ebx,00000024
+                            
+                            0xC7, 0x04, 0x33, 0x00, 0x00, 0x00, 0x00, // mov [ebx+esi],00000000
+                            0x81, 0xEB, 0x2C, 0x00, 0x00, 0x00, // sub ebx,0000002C
+                            0x89, 0x0C, 0x33, // mov [ebx+esi],ecx
+                            0x5B, // pop ebx
+                            
+                            // original compare
+                            0x83, 0x3D, new BinRefTo("originalCompareAddress", false), 0x00, // cmp dword ptr [0191DD80],00
+                        }
+                    },
+
+                    new BinaryEdit("u_fix_lord_animation_stuck_building_attack") // 56D856
+                    {
+                        new BinAddress("unitVar", 24),
+                        new BinSkip(21),
+                        new BinHook(7)
+                        {
+                            0xC7, 0x80, new BinRefTo("unitVar", false), 0x65, 0x00, 0x00, 0x00, // mov [eax+unitVar],00000065
+                        }
+                    }
+                }
+            },
+
+            new Change("u_fix_applefarm_blocking", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("u_fix_applefarm_blocking")
+                {
+
+                    new BinaryEdit("u_fix_applefarm_blocking") // 4F36B2
+                    {
+                        new BinSkip(11),
+                        new BinHook(5)
+                        {
+                            0x81, 0x47, 0x14, 0x02, 0x00, 0x00, 0x00, // add [edi+14],00000002
+                            0x81, 0x47, 0x18, 0x02, 0x00, 0x00, 0x00, // add [edi+18],00000002
+                            0x5F, // pop edi
+                        }
+                    }
+                 }
+            },
+          
+            // Fix tanner going back to her hut without cow
+            // Block starts: 559C49
+            new Change("u_tanner_fix", ChangeType.Bugfix, true)
+            {
+                // 559C7A
+                new DefaultHeader("u_tanner_fix")
+                {
+
+                    new BinaryEdit("u_tanner_fix")
+                    {
+                        new BinAddress("unitBaseAddress", 52, false),
+                        new BinSkip(37), // 49
+                        new BinAddress("someCowData", 2, false),
+                        new BinHook(6)
+                        {
+                            0x81, 0xBD, new BinRefTo("someCowData", false), 0x00, 0x00, 0x00, 0x00, // cmp [ebp+someCowData],00000000
+                            0x75, 0x0E, // jne 0x0E
+                            0x66, 0xC7, 0x86, new BinRefTo("unitBaseAddress", false), 0x01, 0x00, // mov word ptr [esi+unitBaseAddress],0001
+                            0x5F, // pop edi
+                            0x5E, // pop esi
+                            0x5D, // pop ebp
+                            0x5B, // pop ebx
+                            0xC3, // ret
+                            0x3B, 0x8D, new BinRefTo("someCowData", false) // cmp ecx,[ebp+someCowData]
+                        },
+                        new BinSkip(6),
+                        new BinHook(8)
+                        {
+                            0x66, 0x83, 0xBD, new BinRefTo("unitBaseAddress", false), 0x00, // cmp word ptr [ebp+unitBaseAddress],00
+                            0x74, 0x19, // je short 0x19
+                            0x66, 0x81, 0xBE, new BinRefTo("unitBaseAddress", false), 0x02, 0x00, // cmp word ptr [esi+unitBaseAddress],0002
+                            0x75, 0x0E, // jne short 0x0E
+                            0x66, 0xC7, 0x86, new BinRefTo("unitBaseAddress", false), 0x01, 0x00, // mov word ptr [esi+unitBaseAddress],0001
+
+                            0x5F, // pop edi
+                            0x5E, // pop esi
+                            0x5D, // pop ebp
+                            0x5B, // pop ebx
+                            0xC3, // ret
+                        }
+                    }
+                }
+            },
           
             /*
              * Fletcher bugfix 
@@ -499,7 +701,7 @@ namespace UCP
                     {
                         new BinAddress("UnitAttributeOffset",43)
                     },
-                    
+
                     new BinaryEdit("ai_fix_crusader_archers_pitch")
                     {
                         new BinAddress("CurrentTargetIndex",2),
@@ -552,6 +754,68 @@ namespace UCP
             #endregion
 
             #region AI LORDS
+
+            new Change("ai_housing", ChangeType.AILords, false, false)
+            {
+                new SliderHeader("build_housing", true, 0, 100, 1, 0, 5)
+                {
+                    new BinaryEdit("ai_buildhousing")
+                    {
+                        new BinHook(5) // the first 5 bytes are an if condition that just checks if the first house has been built yet
+                        {
+                            0x81, 0xE9, new BinInt32Value(), // the value of the slider header gets put into the location of new BinInt32Value()
+                        },
+                        new BinSkip(6),
+                        0x7F, 0xDE
+                    },
+
+                    new BinaryEdit("ai_deletehousing")
+                    {
+                        0x90, 0x90
+                    }
+                },
+
+                new SliderHeader("campfire_housing", true, 0, 25, 1, 5, 10)
+                {
+                    new BinaryEdit("ai_buildhousing")
+                    {
+                        new BinSkip(11),
+                        0x7D, 0x08,
+                        new BinSkip(8), //skip everything until we come to the campfire logic comparison
+                        0xB9, new BinInt32Value(), //replace the 5 with the user input value from the slider header
+                        new BinSkip(8),
+                        0x7C, 0xC7,
+                        0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90
+                    },
+
+                    new BinaryEdit("ai_deletehousing")
+                    {
+                        0x90, 0x90
+                    }
+                },
+
+                new DefaultHeader("delete_housing")
+                {
+                    new BinaryEdit("ai_deletehousing")
+                    {
+                        0x90, 0x90
+                    }
+                }
+            },
+
+
+            new Change("ai_recruitstate_initialtimer", ChangeType.AILords, false)
+            {
+                new SliderHeader("ai_recruitstate_initialtimervalue", true, 0, 30, 1, 6, 0)
+                {
+                    new BinaryEdit("ai_recruitstate_initialtimer")
+                    {
+                        new BinSkip(36),
+                        new BinInt32Value(800)
+                    }
+                }
+            },
+
 
             /*
              *  AI RECRUIT ADDITIONAL ATTACK TROOPS 
@@ -733,7 +997,7 @@ namespace UCP
                 // vanilla:
                 // additional attack troops = factor * attack number
 
-                new SliderHeader("ai_addattack", true, 0, 60, 1, 5, 12)
+                new SliderHeader("ai_addattack", true, 0, 250, 1, 5, 12)
                 {
                     // 004CDEDC
                     new BinaryEdit("ai_addattack")
@@ -912,6 +1176,74 @@ namespace UCP
             },
 
             // ladderman: 0xB55AF4 = soldier bool
+            
+            new Change("o_restore_arabian_engineer_speech", ChangeType.Troops, false)
+            {
+                new DefaultHeader("o_restore_arabian_engineer_speech")
+                {
+                    new BinaryEdit("o_restore_arabian_engineer_speech_lord_type")
+                    {
+                        new BinAddress("SelectedLordType", 2)
+                    },
+                    new BinaryEdit("o_restore_arabian_engineer_speech")
+                    {
+                        new BinAlloc("ArabianEngineerWavs", null)
+                        {
+                            0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x73, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x73, 0x32, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x73, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x73, 0x32, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x73, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x73, 0x32, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x32, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x33, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x6F, 0x61, 0x74, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x6F, 0x61, 0x74, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x6F, 0x61, 0x74, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x6F, 0x61, 0x74, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x6D, 0x6F, 0x61, 0x74, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x65, 0x6E, 0x67, 0x69, 0x6E, 0x65, 0x65, 0x72, 0x5F, 0x64, 0x69, 0x73, 0x62, 0x61, 0x6E, 0x64, 0x31, 0x2E, 0x77, 0x61, 0x76, 0x00, 0x00
+                        },
+                        new BinSkip(6),
+                        new BinAddress("OriginalWavFileAddressArray", 10),
+                        new BinHook(14)
+                        {
+                            0x3D, 0x0A, 0x00, 0x00, 0x00, // cmp eax,0A
+                            0x75, 0x1C, // jne short 1C
+                            
+                            0x81, 0x3D, new BinRefTo("SelectedLordType", false), 0x01, 0x00, 0x00, 0x00, // cmp [SelectedLordType],00000001
+                            0x75, 0x10, // jne short 10
+                            
+                            0x01, 0xD3, // add ebx,edx
+                            0x69, 0xDB, 0x18, 0x00, 0x00, 0x00, // imul ebx,ebx,00000018
+                            0x8D, 0x93, new BinRefTo("ArabianEngineerWavs", false), // lea edx,[ebx+ArabianEngineerWavs]
+                            0xEB, 0x0E, // jmp short E
+                            
+                            0x01, 0xD3, // add ebx,edx
+                            0x6B, 0xDB, 0x25, // imul ebx,ebx,25
+                            0x01, 0xC3, // add ebx,eax
+                            0x8B, 0x14, 0x9D, new BinRefTo("OriginalWavFileAddressArray", false) // mov edx,[ebx*4+OriginalWavFileAddressArray]
+                        }
+                    },
+                    new BinaryEdit("o_restore_arabian_engineer_speech_purchase")
+                    {
+                        0x83, 0x3D, new BinRefTo("SelectedLordType", false), 0x01
+                    },
+                    // 466EC9
+                    new BinaryEdit("o_restore_arabian_engineer_speech_engine")
+                    {
+                        new BinSkip(9),
+                        new BinAddress("OriginalEngineerWavAddress", 1),
+                        new BinHook(5)
+                        {
+                            0x81, 0x3D, new BinRefTo("SelectedLordType", false), 0x01, 0x00, 0x00, 0x00, // cmp [SelectedLordType],00000001
+                            0x75, 0x07, // jne short 0x07
+                            0x68, new BinRefTo("ArabianEngineerWavs", false), // push ArabianEngineerWavs
+                            0xEB, 0x05, // jmp short 0x05
+                            0x68, new BinRefTo("OriginalEngineerWavAddress", false) // push OriginalEngineerWavAddress
+                        }
+                    }
+                }
+            },
+
+            new Change("u_spearmen_run", ChangeType.Troops, false)
+            {
+                new DefaultHeader("u_spearmen_run")
+                {
+                    // 0055E07E
+                    new BinaryEdit("u_spearmen_run")
+                    {
+                        new BinBytes(0x90, 0x90) // remove je
+                    }
+                }
+            },
 
             #endregion
 
@@ -922,9 +1254,9 @@ namespace UCP
              */
 
             // 0x00410A30 + 8 ushort default = 2000
-            new Change("o_firecooldown", ChangeType.Other)
+            new Change("o_firecooldown", ChangeType.Other, false)
             {
-                new SliderHeader("o_firecooldown", true, 0, 20000, 500, 2000, 6000)
+                new SliderHeader("o_firecooldown", true, 0, 20000, 500, 2000, 4000)
                 {
                     new BinaryEdit("o_firecooldown")
                     {
@@ -990,30 +1322,30 @@ namespace UCP
 
                     // 004AF15A
                     BinHook.CreateEdit("o_playercolor_table1", 7,
-                            0x89, 0xF0, // mov eax, esi
-                            0x3C, 0x01, //  CMP AL,1
-                            0x75, 0x04, //  JNE SHORT
-                            0xB0, new BinByteValue(), //  MOV AL, value
-                            0xEB, 0x06, //  JMP SHORT
-                            0x3C, new BinByteValue(), //  CMP AL, value
-                            0x75, 0x02, //  JNE SHORT
-                            0xB0, 0x01, //  MOV AL,1
-                            0x8B, 0x14, 0x85, // mov edx, [eax*4 + namecolors]
-                            new BinRefTo("namecolors", false)
+                        0x89, 0xF0, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x01, //  MOV AL,1
+                        0x8B, 0x14, 0x85, // mov edx, [eax*4 + namecolors]
+                        new BinRefTo("namecolors", false)
                     ),
 
                     // 004AF1A9
                     BinHook.CreateEdit("o_playercolor_table2", 7,
-                            0x89, 0xF0, // mov eax, esi
-                            0x3C, 0x01, //  CMP AL,1
-                            0x75, 0x04, //  JNE SHORT
-                            0xB0, new BinByteValue(), //  MOV AL, value
-                            0xEB, 0x06, //  JMP SHORT
-                            0x3C, new BinByteValue(), //  CMP AL, value
-                            0x75, 0x02, //  JNE SHORT
-                            0xB0, 0x01, //  MOV AL,1
-                            0x8B, 0x04, 0x85, // mov eax, [eax*4 + namecolors]
-                            new BinRefTo("namecolors", false)
+                        0x89, 0xF0, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x01, //  MOV AL,1
+                        0x8B, 0x04, 0x85, // mov eax, [eax*4 + namecolors]
+                        new BinRefTo("namecolors", false)
                     ),
 
                     #endregion
@@ -1022,16 +1354,16 @@ namespace UCP
 
                     // 004D60B1 end results scoreboard
                     BinHook.CreateEdit("o_playercolor_endscore", 7,
-                            0x89, 0xF0, // mov eax, esi
-                            0x3C, 0x01, //  CMP AL,1
-                            0x75, 0x04, //  JNE SHORT 
-                            0xB0, new BinByteValue(), //  MOV AL, value
-                            0xEB, 0x06, //  JMP SHORT
-                            0x3C, new BinByteValue(), //  CMP AL, value
-                            0x75, 0x02, //  JNE SHORT
-                            0xB0, 0x01, //  MOV AL,1
-                            0x8B, 0x04, 0x85, // mov eax, [eax*4 + namecolors]
-                            new BinRefTo("namecolors", false)
+                        0x89, 0xF0, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT 
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x01, //  MOV AL,1
+                        0x8B, 0x04, 0x85, // mov eax, [eax*4 + namecolors]
+                        new BinRefTo("namecolors", false)
                     ),
 
 
@@ -1113,16 +1445,16 @@ namespace UCP
                 
                     // 004AE562 mightiest lord
                     BinHook.CreateEdit("o_playercolor_scorename", 7,
-                            0x89, 0xF0, // mov eax, esi
-                            0x3C, 0x01, //  CMP AL,1
-                            0x75, 0x04, //  JNE SHORT 
-                            0xB0, new BinByteValue(), //  MOV AL, value
-                            0xEB, 0x06, //  JMP SHORT
-                            0x3C, new BinByteValue(), //  CMP AL, value
-                            0x75, 0x02, //  JNE SHORT
-                            0xB0, 0x01, //  MOV AL,1
-                            0x8B, 0x04, 0x85, // mov eax, [eax*4 + varscore]
-                            new BinRefTo("namecolors", false)
+                        0x89, 0xF0, // mov eax, esi
+                        0x3C, 0x01, //  CMP AL,1
+                        0x75, 0x04, //  JNE SHORT 
+                        0xB0, new BinByteValue(), //  MOV AL, value
+                        0xEB, 0x06, //  JMP SHORT
+                        0x3C, new BinByteValue(), //  CMP AL, value
+                        0x75, 0x02, //  JNE SHORT
+                        0xB0, 0x01, //  MOV AL,1
+                        0x8B, 0x04, 0x85, // mov eax, [eax*4 + varscore]
+                        new BinRefTo("namecolors", false)
                     ),
 
                     #endregion
@@ -2571,7 +2903,7 @@ namespace UCP
                     // 4B4748
                     new BinaryEdit("o_gamespeed_up")
                     {
-                        CMP(EAX, 1000),      // cmp eax, 1000
+                        CMP(EAX, 10000),      // cmp eax, 10000
 
                         JMP(GREATERTHANEQUALS, 0x19), // jge to end
 
@@ -2741,9 +3073,22 @@ namespace UCP
                 }
             },
 
+            new Change("o_increase_path_update_tick_rate", ChangeType.Other, true)
+            {
+                new DefaultHeader("o_increase_path_update_tick_rate")
+                {
+                    // 499605
+                    new BinaryEdit("o_increase_path_update_tick_rate")
+                    {
+                        new BinSkip(25),
+                        new BinBytes(0x32)
+                    },
+                },
+            },
+
             new Change("o_default_multiplayer_speed", ChangeType.Other)
             {
-                new SliderHeader("o_default_multiplayer_speed", false, 20, 90, 1, 40, 40)
+                new SliderHeader("o_default_multiplayer_speed", true, 20, 90, 1, 40, 50)
                 {
                     // 878FB
                     new BinaryEdit("o_default_multiplayer_speed")
@@ -2762,92 +3107,566 @@ namespace UCP
             new Change("o_shfy", ChangeType.Other, false, false)
             {
                 new DefaultHeader("o_shfy_beer", false)
-                // fixes beer popularity bonus
-                {
-                    new BinaryEdit("o_shfy_beerpopularity")
+                    // fixes beer popularity bonus
                     {
-                        new BinSkip(21),
-                        new BinBytes(0xB8, 0x19, 0x00, 0x00, 0x00),
-                        new BinSkip(7),
-                        new BinBytes(0xB8, 0x32, 0x00, 0x00, 0x00),
-                        new BinSkip(13),
-                        new BinBytes(0x83, 0xE2, 0x9C, 0x83, 0xC2, 0x64, 0x90, 0x90, 0x90)
-                    },
+                        new BinaryEdit("o_shfy_beerpopularity")
+                        {
+                            new BinSkip(21),
+                            new BinBytes(0xB8, 0x19, 0x00, 0x00, 0x00),
+                            new BinSkip(7),
+                            new BinBytes(0xB8, 0x32, 0x00, 0x00, 0x00),
+                            new BinSkip(13),
+                            new BinBytes(0x83, 0xE2, 0x9C, 0x83, 0xC2, 0x64, 0x90, 0x90, 0x90)
+                        },
 
-                    new BinaryEdit("o_shfy_beerpopularitytab")
-                    {
-                        new BinSkip(14),
-                        new BinBytes(0xBE, 0x19, 0x00, 0x00, 0x00),
-                        new BinSkip(7),
-                        new BinBytes(0xBE, 0x32, 0x00, 0x00, 0x00),
-                        new BinSkip(13),
-                        new BinBytes(0x83, 0xE1, 0xE7, 0x83, 0xC1, 0x64, 0x90, 0x90, 0x90)
-                    },
+                        new BinaryEdit("o_shfy_beerpopularitytab")
+                        {
+                            new BinSkip(14),
+                            new BinBytes(0xBE, 0x19, 0x00, 0x00, 0x00),
+                            new BinSkip(7),
+                            new BinBytes(0xBE, 0x32, 0x00, 0x00, 0x00),
+                            new BinSkip(13),
+                            new BinBytes(0x83, 0xE1, 0xE7, 0x83, 0xC1, 0x64, 0x90, 0x90, 0x90)
+                        },
 
-                    new BinaryEdit("o_shfy_beertab")
-                    {
-                        new BinSkip(14),
-                        new BinBytes(0xB8, 0x19, 0x00, 0x00, 0x00),
-                        new BinSkip(7),
-                        new BinBytes(0xB8, 0x32, 0x00, 0x00, 0x00),
-                        new BinSkip(13),
-                        new BinBytes(0x83, 0xE0, 0xE7, 0x83, 0xC0, 0x64, 0x90, 0x90)
-                    }
-                },
+                        new BinaryEdit("o_shfy_beertab")
+                        {
+                            new BinSkip(14),
+                            new BinBytes(0xB8, 0x19, 0x00, 0x00, 0x00),
+                            new BinSkip(7),
+                            new BinBytes(0xB8, 0x32, 0x00, 0x00, 0x00),
+                            new BinSkip(13),
+                            new BinBytes(0x83, 0xE0, 0xE7, 0x83, 0xC0, 0x64, 0x90, 0x90)
+                        }
+                    },
 
                 new DefaultHeader("o_shfy_religion", false)
-                // fixes religion popularity bonus
-                {
-                    new BinaryEdit("o_shfy_religionpopularity")
+                    // fixes religion popularity bonus
                     {
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC1, 0x00),
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC1, 0x00),
-                    },
+                        new BinaryEdit("o_shfy_religionpopularity")
+                        {
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC1, 0x00),
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC1, 0x00),
+                        },
 
-                    new BinaryEdit("o_shfy_religionpopularitytab")
-                    {
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC6, 0x00),
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC6, 0x00),
-                    },
+                        new BinaryEdit("o_shfy_religionpopularitytab")
+                        {
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC6, 0x00),
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC6, 0x00),
+                        },
 
-                    new BinaryEdit("o_shfy_religiontab")
-                    {
-                        JMP(UNCONDITIONAL, 0x6D),
-                        new BinSkip(132),
-                        new BinBytes(0xB9, 0x00, 0x00, 0x00, 0x00),
-                        new BinSkip(9),
-                        new BinBytes(0x83, 0xC1, 0x00)
-                    }
-                },
+                        new BinaryEdit("o_shfy_religiontab")
+                        {
+                            JMP(UNCONDITIONAL, 0x6D),
+                            new BinSkip(132),
+                            new BinBytes(0xB9, 0x00, 0x00, 0x00, 0x00),
+                            new BinSkip(9),
+                            new BinBytes(0x83, 0xC1, 0x00)
+                        }
+                    },
 
                 new DefaultHeader("o_shfy_peasantspawnrate", false)
-                // fixes peasant spawnrate
-                {
-                    new BinaryEdit("o_shfy_peasantspawnrate")
+                    // fixes peasant spawnrate
                     {
-                        new BinSkip(8),
-                        new BinBytes(0x83, 0xFB, 0x00, 0x90, 0x90, 0x90),
-                        new BinSkip(8),
-                        new BinBytes(0x83, 0xFB, 0x00, 0x90, 0x90, 0x90)
-                    }
-                },
+                        new BinaryEdit("o_shfy_peasantspawnrate")
+                        {
+                            new BinSkip(8),
+                            new BinBytes(0x83, 0xFB, 0x00, 0x90, 0x90, 0x90),
+                            new BinSkip(8),
+                            new BinBytes(0x83, 0xFB, 0x00, 0x90, 0x90, 0x90)
+                        }
+                    },
 
                 new DefaultHeader("o_shfy_resourcequantity", false)
-                // fixes resource quantity
-                {
-                    new BinaryEdit("o_shfy_resourcequantity")
+                    // fixes resource quantity
                     {
-                        new BinBytes(0x83, 0xC0, 0x00)
+                        new BinaryEdit("o_shfy_resourcequantity")
+                        {
+                            new BinBytes(0x83, 0xC0, 0x00)
+                        },
+                    }
+            },
+            
+            // 4FA620
+            new Change("fix_apple_orchard_build_size", ChangeType.Other)
+            {
+                new DefaultHeader("fix_apple_orchard_build_size")
+                {
+                    new BinaryEdit("fix_apple_orchard_build_size")
+                    {
+                        new BinSkip(16),
+                        0x0A // this is not the size, it is the ID in the switch case!
+                    }
+                }
+            },
+            
+            new Change("o_seed_modification_possibility_title", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_seed_modification_possibility_only_set", true)
+                {
+                    // 004964AB
+                    new BinaryEdit("o_seed_modification_possibility_fn1")
+                    {
+                        new BinAddress("_fopen", 1, true),
+                        new BinAddress("_fclose", 972, true),
+                    },
+                    
+                    // 0046C381
+                    new BinaryEdit("o_seed_modification_possibility_fn3")
+                    {
+                        new BinAddress("_internalFileRead", 10, true),
+                    },
+                    
+                    // 00588FF2
+                    new BinaryEdit("o_seed_modification_possibility_fn4")
+                    {
+                        new BinAddress("_atol", 2, true),
+                    },
+                    
+                    // 0046A764
+                    new BinaryEdit("o_seed_modification_possibility")
+                    {
+                        new BinAlloc("isInited", null)
+                        {
+                            0x00,
+                        },
+                        
+                        new BinAlloc("liveSeedFile", null)
+                        {
+                            0x67, 0x61, 0x6D, 0x65, 0x73, 0x65, 0x65, 0x64, 0x73, 0x2F,
+                            0x6C, 0x69, 0x76, 0x65, 0x00
+                        },
+                        
+                        new BinAlloc("readTextFlag", null)
+                        {
+                            0x72, 0x00
+                        },
+                        
+                        new BinAlloc("readSeedString", null)
+                        {
+                            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                        },
+                        
+                        new BinAlloc("loadedSeed", null)
+                        {
+                           0x00, 0x00, 0x00, 0x00
+                        },
+                        
+                        new BinAlloc("cachedSeed", null)
+                        {
+                           0x00, 0x00, 0x00, 0x00
+                        },
+                         // -- end of alloc
+                        
+                        new BinSkip(4), // skip 4
+                        new BinHook(5)
+                        {
+                            0x60, // pushad
+                            0x83, 0x3D, new BinRefTo("isInited", false), 00, // cmp [isInited],00
+                            0x75, 0x0C, // jne short 0C
+                            0xC7, 0x05, new BinRefTo("isInited", false), 0x01, 0x00, 0x00, 0x00, // mov [isInited],01
+                            0xEB, 0x6A, // jmp short 6A
+                            
+                            0x8B, 0x4E, 0x04, // mov ecx,[esi+04]
+                            0x89, 0x0D, new BinRefTo("cachedSeed", false), // mov [cachedSeed],ecx
+                            
+                            0x31, 0xC9, // xor ecx,ecx
+                            // -- loop
+                            0xC7, 0x81, new BinRefTo("readSeedString", false), 0x00, 0x00, 0x00, 0x00, // mov [readSeedString+ecx],00
+                            0x41, // inc ecx
+                            0x81, 0xF9, 0x0A, 0x00, 0x00, 0x00, // cmp ecx,0A
+                            0x75, 0xED, // jne short ED (backwards)
+                            
+                            0x68, new BinRefTo("readTextFlag", false), // push readTextFlag
+                            0x68, new BinRefTo("liveSeedFile", false), // push liveSeedFile
+                            0xE8, new BinRefTo("_fopen", true), // call _fopen
+                            0x8B, 0xF0, // mov esi,eax
+                            0x81, 0xC4, 0x08, 0x00, 0x00, 0x00, // add esp,08
+                            0x83, 0xFE, 0x00, // cmp esi,00
+                            0x74, 0x43, // je short 46
+                            
+                            0x56, // push esi
+                            0x68, 0x01, 0x00, 0x00, 0x00, // push 01
+                            0x68, 0x0A, 0x00, 0x00, 0x00, // push 0A
+                            0x68, new BinRefTo("readSeedString", false), // push readSeedString
+                            0xE8, new BinRefTo("_internalFileRead", true), // call _internalFileRead
+                            
+                            0x68, new BinRefTo("readSeedString", false), // push readSeedString
+                            0xE8, new BinRefTo("_atol", true), // call _atol
+                            
+                            0xA3, new BinRefTo("loadedSeed", false), // mov [loadedSeed],eax
+                            
+                            0x56, // push esi
+                            0xE8, new BinRefTo("_fclose", true), // call _fclose
+                            0x81, 0xC4, 0x18, 0x00, 0x00, 0x00, // add esp,18
+                            0x61, // popad
+                            
+                            0x53, // push ebx
+                            0x8B, 0x1D, new BinRefTo("loadedSeed", false), // mov ebx,[loadedSeed]
+                            0x89, 0x5E, 0x04, // mov [esi+04],ebx
+                            0x5B, // pop ebx
+                            0x8B, 0x46, 0x04, // mov eax,[esi+04]
+                            0x57, // push edi
+                            0x50, // push eax
+                            0xEB, 0x06, // jmp end
+                            // -- end of Read Set Seed
+                            
+                            0x61, // popad
+                            
+                            0x8B, 0x46, 0x04, // mov eax,[esi+04]
+                            0x57, // push edi
+                            0x50, // push eax
+                        },
+                    }
+                },
+                new DefaultHeader("o_seed_modification_possibility", false)
+                {
+                    // 004964AB
+                    new BinaryEdit("o_seed_modification_possibility_fn1")
+                    {
+                        new BinAddress("_fopen", 1, true),
+                        new BinAddress("_fwrite", 59, true),
+                        new BinAddress("_fclose", 972, true),
+                    },
+                    
+                    // 00592CA6
+                    new BinaryEdit("o_seed_modification_possibility_fn2")
+                    {
+                        new BinAddress("_itoa", 13, true),
+                    },
+                    
+                    // 0046C381
+                    new BinaryEdit("o_seed_modification_possibility_fn3")
+                    {
+                        new BinAddress("_internalFileRead", 10, true),
+                    },
+                    
+                    // 00588FF2
+                    new BinaryEdit("o_seed_modification_possibility_fn4")
+                    {
+                        new BinAddress("_atol", 2, true),
+                    },
+                    
+                    // 00588E4B
+                    new BinaryEdit("o_seed_modification_possibility_fn5")
+                    {
+                        new BinAddress("_strlen", 2, true),
+                    },
+                    
+                    // 0046A764
+                    new BinaryEdit("o_seed_modification_possibility")
+                    {
+                        new BinAlloc("isInited", null)
+                        {
+                            0x00,
+                        },
+                        
+                        new BinAlloc("needSeedSave", null)
+                        {
+                            0x01
+                        },
+                        
+                        new BinAlloc("seedFolder", null)
+                        {
+                            0x67, 0x61, 0x6D, 0x65, 0x73, 0x65, 0x65, 0x64, 0x73, 0x2F, 0x00
+                        },
+                        
+                        new BinAlloc("liveSeedFile", null)
+                        {
+                            0x67, 0x61, 0x6D, 0x65, 0x73, 0x65, 0x65, 0x64, 0x73, 0x2F,
+                            0x6C, 0x69, 0x76, 0x65, 0x00
+                        },
+                        
+                        new BinAlloc("readTextFlag", null)
+                        {
+                            0x72, 0x00
+                        },
+                        
+                        new BinAlloc("writeTextFlag", null)
+                        {
+                            0x77, 0x00
+                        },
+                        
+                        new BinAlloc("readSeedString", null)
+                        {
+                            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                        },
+                        
+                        new BinAlloc("saveSeedStringBuffer", null)
+                        {
+                           0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                        },
+                        
+                        new BinAlloc("loadedSeed", null)
+                        {
+                           0x00, 0x00, 0x00, 0x00
+                        },
+                        
+                        new BinAlloc("cachedSeed", null)
+                        {
+                           0x00, 0x00, 0x00, 0x00
+                        },
+                         // -- end of alloc
+                        
+                        new BinSkip(4), // skip 4
+                        new BinHook(5)
+                        {
+                            0x60, // pushad
+                            0x83, 0x3D, new BinRefTo("isInited", false), 00, // cmp [isInited],00
+                            0x75, 0x0C, // jne short 0C
+                            0xC7, 0x05, new BinRefTo("isInited", false), 0x01, 0x00, 0x00, 0x00, // mov [isInited],01
+                            0xEB, 0x6A, // jmp short 6A
+                            
+                            0x8B, 0x4E, 0x04, // mov ecx,[esi+04]
+                            0x89, 0x0D, new BinRefTo("cachedSeed", false), // mov [cachedSeed],ecx
+                            
+                            0x31, 0xC9, // xor ecx,ecx
+                            // -- loop
+                            0xC7, 0x81, new BinRefTo("readSeedString", false), 0x00, 0x00, 0x00, 0x00, // mov [readSeedString+ecx],00
+                            0x41, // inc ecx
+                            0x81, 0xF9, 0x0A, 0x00, 0x00, 0x00, // cmp ecx,0A
+                            0x75, 0xED, // jne short ED (backwards)
+                            
+                            0x68, new BinRefTo("readTextFlag", false), // push readTextFlag
+                            0x68, new BinRefTo("liveSeedFile", false), // push liveSeedFile
+                            0xE8, new BinRefTo("_fopen", true), // call _fopen
+                            0x8B, 0xF0, // mov esi,eax
+                            0x81, 0xC4, 0x08, 0x00, 0x00, 0x00, // add esp,08
+                            0x83, 0xFE, 0x00, // cmp esi,00
+                            0x74, 0x46, // je short 46
+                            
+                            0x56, // push esi
+                            0x68, 0x01, 0x00, 0x00, 0x00, // push 01
+                            0x68, 0x0A, 0x00, 0x00, 0x00, // push 0A
+                            0x68, new BinRefTo("readSeedString", false), // push readSeedString
+                            0xE8, new BinRefTo("_internalFileRead", true), // call _internalFileRead
+                            
+                            0x68, new BinRefTo("readSeedString", false), // push readSeedString
+                            0xE8, new BinRefTo("_atol", true), // call _atol
+                            
+                            0xA3, new BinRefTo("loadedSeed", false), // mov [loadedSeed],eax
+                            
+                            0x56, // push esi
+                            0xE8, new BinRefTo("_fclose", true), // call _fclose
+                            0x81, 0xC4, 0x18, 0x00, 0x00, 0x00, // add esp,18
+                            0x61, // popad
+                            
+                            0x53, // push ebx
+                            0x8B, 0x1D, new BinRefTo("loadedSeed", false), // mov ebx,[loadedSeed]
+                            0x89, 0x5E, 0x04, // mov [esi+04],ebx
+                            0x5B, // pop ebx
+                            0x8B, 0x46, 0x04, // mov eax,[esi+04]
+                            0x57, // push edi
+                            0x50, // push eax
+                            0xE9, 0xAB, 0x00, 0x00, 0x00, // jmp end
+                            // -- end of Read Set Seed
+                            
+                            
+                            
+                            
+                            0x61, // popad
+                            0x80, 0x3D, new BinRefTo("needSeedSave", false), 01, // cmp byte ptr[needSeedSave],01
+                            0x0F, 0x85, 0x98, 0x00, 0x00, 0x00, // jne short 98
+                            0x60, // pushad
+                            
+                            0x31, 0xC9, // xor ecx,ecx
+                            // -- loop
+                            0xC7, 0x81, new BinRefTo("saveSeedStringBuffer", false), 0x00, 0x00, 0x00, 0x00, // mov [saveSeedStringBuffer+ecx],00
+                            0x41, // inc ecx
+                            0x81, 0xF9, 0x3D, 0x00, 0x00, 0x00, // ecx,3D
+                            0x75, 0xED, // jne short ED (backwards)
+                            
+                            0x31, 0xC9, // xor ecx,ecx
+                            0x31, 0xDB, // xor ebx,ebx
+                            // -- loop
+                            0x8A, 0x99, new BinRefTo("seedFolder", false), // mov bl,byte ptr[seedFolder+ecx]
+                            0x88, 0x99, new BinRefTo("saveSeedStringBuffer", false), // mov [saveSeedStringBuffer+ecx],bl
+                            0x41, // inc ecx
+                            0x84, 0xDB, // test bl,bl
+                            0x75, 0xEF, // jne short EF (backwards)
+                            
+                            0x49, // dec ecx
+                            0x8D, 0x81, new BinRefTo("saveSeedStringBuffer", false), // lea eax,[saveSeedStringBuffer+ecx]
+                            0x68, 0x0A, 0x00, 0x00, 0x00, // push 0A
+                            0x68, 0x10, 0x00, 0x00, 0x00, // push 10
+                            0x50, // push eax
+                            0xFF, 0x35, new BinRefTo("cachedSeed", false), // push [cachedSeed]
+                            0xE8, new BinRefTo("_itoa", true), // call _itoa
+                            0x8B, 0x44, 0x24, 0x04, // mov eax,[esp+04]
+                            0xA3, new BinRefTo("loadedSeed", false), // mov [loadedSeed],eax
+                            0x81, 0xC4, 0x10, 0x00, 0x00, 0x00, // add esp,10
+                            
+                            0x68, new BinRefTo("writeTextFlag", false), // push writeTextFlag
+                            0x68, new BinRefTo("saveSeedStringBuffer", false), // push saveSeedStringBuffer
+                            0xE8, new BinRefTo("_fopen", true), // call _fopen
+                            0x8B, 0xF0, // mov esi,eax
+                            0x81, 0xC4, 0x08, 0x00, 0x00, 0x00, // add esp,08
+                            
+                            0xFF, 0x35, new BinRefTo("loadedSeed", false), // push [loadedSeed]
+                            0xE8, new BinRefTo("_strlen", true), // call _strlen
+                            
+                            0x56, // push esi
+                            0x68, 0x01, 0x00, 0x00, 0x00, // push 01
+                            0x50, // push eax
+                            0xFF, 0x35, new BinRefTo("loadedSeed", false), // push [loadedSeed]
+                            0xE8, new BinRefTo("_fwrite", true), // call _fwrite
+                            
+                            0x56, // push esi
+                            0xE8, new BinRefTo("_fclose", true), // call _fclose
+                            
+                            0x81, 0xC4, 0x18, 0x00, 0x00, 0x00, // add esp,18
+                            0x61, // popad
+                            
+                            0x8B, 0x46, 0x04, // mov eax,[esi+04]
+                            0x57, // push edi
+                            0x50, // push eax
+                        },
+                    }
+                }
+            },
+
+            new Change("o_change_siege_engine_spawn_position_catapult", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_change_siege_engine_spawn_position_catapult")
+                {
+                    // 41F4A2
+                    new BinaryEdit("o_change_siege_engine_spawn_position_catapult")
+                    {
+                        new BinAddress("yPositionAddress", 43),
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 41F8AF
+                    new BinaryEdit("o_change_siege_engine_spawn_position_trebutchet")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 41FD7F
+                    new BinaryEdit("o_change_siege_engine_spawn_position_tower")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 42020F
+                    new BinaryEdit("o_change_siege_engine_spawn_position_ram")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 42069F
+                    new BinaryEdit("o_change_siege_engine_spawn_position_shield")
+                    {
+                        new BinSkip(37),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
+                    },
+                    
+                    // 41E332
+                    new BinaryEdit("o_change_siege_engine_spawn_position_fireballista")
+                    {
+                        new BinSkip(40),
+                        new BinHook(7)
+                        {
+                            0x0F, 0xBF, 0x80, new BinRefTo("yPositionAddress", false),
+                            0x40, // inc eax
+                            0x42, // inc edx
+                        }
                     },
                 }
             },
 
+            new Change("o_stop_player_keep_rotation", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_stop_player_keep_rotation")
+                {
+                    // 4ECF93
+                    new BinaryEdit("o_stop_player_keep_rotation_get_preferred_relative_orientation")
+                    {
+                        new BinAddress("getPreferredRelativeOrientationHandle", 12),
+                        new BinAddress("getPreferredRelativeOrientation", 23, true)
+                    },
+                    
+                    // 441D3F
+                    new BinaryEdit("o_stop_player_keep_rotation")
+                    {
+                        new BinSkip(32),
+                        new BinAddress("originalFun", 1, true),
+                        new BinHook(5)
+                        {
+                            0x57, // push edi
+                            0x50, // push eax
+                            0x51, // push ecx
+                            0x68, 0xC8, 0x00, 0x00, 0x00, // push C8
+                            0x68, 0xC8, 0x00, 0x00, 0x00, // push C8
+                            0x57, // push edi
+                            0x50, // push eax
+                            0xB9, new BinRefTo("getPreferredRelativeOrientationHandle", false), // mov ecx,getPreferredRelativeOrientationHandle
+                            0xE8, new BinRefTo("getPreferredRelativeOrientation", true), // call getPreferredRelativeOrientation
+                            0xB8, new BinRefTo("getPreferredRelativeOrientationHandle", false), // mov eax,getPreferredRelativeOrientationHandle
+                            0x05, 0x10, 0x00, 0x00, 0x00, // add eax,10
+                            0x8B, 0x00, // mov eax,[eax]
+                            
+                            0x25, 0xFE, 0xFF, 0x00, 0x00, // and eax,0000FFFE
+                            
+                            0x3D, 0x06, 0x00, 0x00, 0x00, // cmp eax,00000006
+                            0x74, 0x09, // je short 9
+                            0x3D, 0x02, 0x00, 0x00, 0x00, // cmp eax,02
+                            0x74, 0x09, // je short 9
+                            0xEB, 0x0C, // jmp short C
+                            0xB8, 0x02, 0x00, 0x00, 0x00, // mov eax,02
+                            0xEB, 0x05, // jmp short 5
+                            0XB8, 0x06, 0x00, 0x00, 0x00, // mov eax,06
+                            
+                            0x89, 0x44, 0x24, 0x20, // mov [esp+20],eax
+                            0x59, // pop ecx
+                            0x58, // pop eax
+                            0x5F, // pop edi
+                            0xE8, new BinRefTo("originalFun"), // call originalFun
+                        }
+                    }
+                }
+            }
+
             #endregion
         };
+
+        public static List<Change> Changes { get { return changes; } }
 
         /// <summary>
         /// Load changes stored in submodules

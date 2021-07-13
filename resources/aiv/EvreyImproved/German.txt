@@ -1,0 +1,3 @@
+Evreys verbesserte KI-Burgen
+Gibt den KI-Lords neue verbesserte Burgen, angelehnt an den Vanilla-Stil.
+[Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)

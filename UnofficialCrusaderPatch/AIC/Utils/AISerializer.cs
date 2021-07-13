@@ -197,13 +197,45 @@ namespace UCPAIConversion
             throw new NotImplementedException();
         }
 
-        /// <summary>Sets the AIPersonality field based on field type and value defined in the input dictionary</summary>
-        private void SetProperty(Type targetType, object target, String expectedFieldName, object expectedFieldValue)
+        private static string UpdateFieldName(string fieldName)
         {
-            if (expectedFieldName == "Unknown131")
+            switch (fieldName)
             {
-                expectedFieldName = "AttUnitPatrolRecommandDelay";
+                case "Unknown131":
+                    return "AttUnitPatrolRecommandDelay";
+                case "RangedBackupUnitGroupsCount":
+                    return "AttUnitBackupGroupsCount";
+                case "RangedBackupGroupsCount":
+                    return "AttUnitBackupGroupsCount";
+                case "MinimumGoodsRequiredAfterTribute":
+                    return "MinimumGoodsRequiredAfterTrade";
+                case "InvestmentGoldThreshold":
+                    return "RecruitGoldThreshold";
+                case "Unknown161":
+                    return "AttUnitSiegeDefGroupsCount";
+
+                // v2.14 -> v2.15
+                case "Unknown000":
+                    return "WallDecoration";
+                case "Unknown040":
+                    return "AIRequestDelay";
+                case "Unknown124":
+                    return "RaidRetargetDelay";
+                case "Unknown130":
+                    return "AttAssaultDelay";
+                case "AttUnit2":
+                    return "AttUnitVanguard";
+                case "AttUnit2Max":
+                    return "AttUnitVanguardMax";
+                default:
+                    return fieldName;
             }
+        }
+
+        /// <summary>Sets the AIPersonality field based on field type and value defined in the input dictionary</summary>
+        private void SetProperty(Type targetType, object target, string fieldName, object expectedFieldValue)
+        {
+            string expectedFieldName = UpdateFieldName(fieldName);
             PropertyInfo parameter = targetType.GetProperty(expectedFieldName);
             if (parameter.PropertyType == typeof(bool))
             {

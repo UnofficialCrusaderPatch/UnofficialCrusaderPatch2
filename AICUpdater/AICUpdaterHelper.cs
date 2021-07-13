@@ -217,27 +217,36 @@ namespace AICUpdater
 
         private static string UpdateFieldName(string fieldName)
         {
-            if (fieldName == "Unknown131")
+            switch (fieldName)
             {
-                return "AttUnitPatrolRecommandDelay";
-            }
-            else if (fieldName == "RangedBackupUnitGroupsCount" || fieldName == "RangedBackupGroupsCount")
-            {
-                return "AttUnitBackupGroupsCount";
-            }
-            else if (fieldName == "MinimumGoodsRequiredAfterTribute")
-            {
-                return "MinimumGoodsRequiredAfterTrade";
-            }
-            else if (fieldName == "InvestmentGoldThreshold")
-            {
-                return "RecruitGoldThreshold";
-            }
-            else if (fieldName == "Unknown161")
-            {
-                return "AttUnitSiegeDefGroupsCount";
-            }
-            return fieldName;
+                case "Unknown131":
+                    return "AttUnitPatrolRecommandDelay";
+                case "RangedBackupUnitGroupsCount":
+                case "RangedBackupGroupsCount":
+                    return "AttUnitBackupGroupsCount";
+                case "MinimumGoodsRequiredAfterTribute":
+                    return "MinimumGoodsRequiredAfterTrade";
+                case "InvestmentGoldThreshold":
+                    return "RecruitGoldThreshold";
+                case "Unknown161":
+                    return "AttUnitSiegeDefGroupsCount";
+
+                // v2.14 -> v2.15
+                case "Unknown000":
+                    return "WallDecoration";
+                case "Unknown040":
+                    return "AIRequestDelay";
+                case "Unknown124":
+                    return "RaidRetargetDelay";
+                case "Unknown130":
+                    return "AttAssaultDelay";
+                case "AttUnit2":
+                    return "AttUnitVanguard";
+                case "AttUnit2Max":
+                    return "AttUnitVanguardMax";
+                default:
+                    return fieldName;
+            }            
         }
     }
 }

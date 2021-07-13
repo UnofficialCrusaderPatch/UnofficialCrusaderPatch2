@@ -16,6 +16,7 @@ namespace UCP.Patching
 
         const string CrusaderExe = "Stronghold Crusader.exe";
         const string XtremeExe = "Stronghold_Crusader_Extreme.exe";
+        const string GAME_SEEDS_FOLDER = "gameseeds";
 
         /// <summary>
         /// Test existence of SHC of SHC Extreme executables inside specified directory
@@ -33,13 +34,24 @@ namespace UCP.Patching
             path = Path.Combine(folderPath, XtremeExe);
             return File.Exists(path);
         }
-        public static void Install(string folderPath, Percentage.SetHandler SetPercent)
+        public static void Install(string folderPath, Percentage.SetHandler SetPercent, bool overwrite, bool graphical)
         {
             Percentage perc = new Percentage(SetPercent);
             perc.SetTotal(0);
 
             perc.NextLimit = 0.1;
-            AIVChange.DoChange(folderPath);
+
+            try
+            {
+                AIVChange.DoChange(folderPath, overwrite, graphical);
+            } catch (IOException) {
+                Debug.Show(Localization.Get("install_abort_io"));
+                return;
+            } catch (Exception)
+            {
+                Debug.Show(Localization.Get("install_abort"));
+                return;
+            }
             perc.Set(1.0);
 
             DoChanges(folderPath, perc);
@@ -103,6 +115,13 @@ namespace UCP.Patching
         {
             fails.Clear();
             SectionEditor.Reset();
+
+            string gameSeedsFolder = Path.Combine(Configuration.Path, GAME_SEEDS_FOLDER);
+
+            if (!Directory.Exists(gameSeedsFolder))
+            {
+                Directory.CreateDirectory(gameSeedsFolder);
+            }
 
             // Retrieve set of selected binary changes
             var changes = Version.Changes.Where(c => c.IsChecked && c is Change && !(c is ResourceChange) && !(c is StartTroopChange));
