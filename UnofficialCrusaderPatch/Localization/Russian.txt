@@ -244,7 +244,7 @@ o_fix_moat_digging_unit_disappearing_descr
 ui_welcometext
 {
 "Это неофициальный патч для Stronghold Crusader.
-Проект доступен в виде открытого исходного кода по адресу [GitHub]https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch).
+Проект доступен в виде открытого исходного кода по адресу [GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch).
 
 Любая версия Crusader потенциально поддерживается, но так как изменения были получены из версии 1.41 Steam-Version, могут появиться несовместимости.
 После этого в настройках появятся сообщения об ошибках. Установленная версия патча отображается в левом нижнем углу главного меню игры. 
