@@ -1,4 +1,18 @@
 // ======================
+//         DEV
+// ======================
+
+u_ghosteng
+{
+"Fix engineers not dying with siege engines"
+}
+
+u_ghosteng_descr
+{
+"Fix engineers not dying when siege engine they are manning is killed"
+}
+
+// ======================
 //         2.15
 // ======================
 u_spearmen_run
@@ -197,16 +211,6 @@ u_tanner_fix
 u_tanner_fix_descr
 {
 "Tanners will no longer return without a cow when another tanner took their target cow. They will now instead stand around a bit and then get another one."
-}
-
-u_ghosteng
-{
-"Fix engineers not dying with siege engines"
-}
-
-u_ghosteng_descr
-{
-"Fix engineers not dying when siege engine they are manning is killed"
 }
 
 o_fix_fletcher_bug
