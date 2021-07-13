@@ -244,7 +244,7 @@ o_fix_moat_digging_unit_disappearing_descr
 ui_welcometext
 {
 "Ez egy nem hivatalos patch a Stronghold Crusader játékhoz.
-A Projekt nyílt forráskódú, ami megtalálható a [GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch) weboldalon.
+A Projekt nyílt forráskódú, ami megtalálható a [GitHub](https://unofficialcrusaderpatch.github.io/) weboldalon.
 
 Elméletben minden Crusader verzió támogatott, viszont a változtatások eredetileg a 1.41 Steames verzióhoz lettek készítve.
 Azonban ha a játék verziód nem kompatibilis, a telepítő hibaüzenetet fog megjeleníteni. A telepített patch-verzió a főmenü bal alsó sarkában fog megjelenni.

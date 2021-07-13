@@ -40,7 +40,7 @@ namespace UCP
 
         void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch");
+            Process.Start("https://unofficialcrusaderpatch.github.io/");
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)

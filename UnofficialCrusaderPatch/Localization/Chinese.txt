@@ -243,7 +243,7 @@ ui_welcometext
 {
 "这是要塞十字军东征的非官方补丁编辑器。
 该项目在github上开源:
-[GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch).
+[GitHub](https://unofficialcrusaderpatch.github.io/).
 
 通常来说，这个编辑器支持所有游戏版本。但是该编辑器是基于steam上1.41版本制作的，使用更低版本可能会出错。
 安装补丁时若出现问题，会弹出错误信息。

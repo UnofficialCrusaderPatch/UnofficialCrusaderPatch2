@@ -245,7 +245,7 @@ o_fix_moat_digging_unit_disappearing_descr
 ui_welcometext
 {
 "Jest to nieoficjalna łatka do Twierdzy Krzyżowiec.
-Projekt jest dostępny jako otwarte oprogramowanie przez [GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch).
+Projekt jest dostępny jako otwarte oprogramowanie przez [GitHub](https://unofficialcrusaderpatch.github.io/).
 
 Każda wersja Krzyżowca jest potencjalnie obsługiwana, ale wprowadzone zmiany pochodzą z wersji 1.41 Steam, dlatego mogą pojawić się problemy.
 Instalator wyświetli wtedy komunikat o błędzie. Wersja tej łatki jest pokazana w lewym dolnym rogu głównego menu gry. 
