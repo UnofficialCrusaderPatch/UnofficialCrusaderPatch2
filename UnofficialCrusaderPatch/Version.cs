@@ -13,7 +13,7 @@ namespace UCP
 {
     public class Version
     {
-        public static string PatcherVersion = "2.15";
+        public static string PatcherVersion = "2.15b";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
@@ -605,14 +605,13 @@ namespace UCP
 
             new Change("ai_housing", ChangeType.AILords, false, false)
             {
-                new SliderHeader("build_housing", false, 1, 200, 1, 12, 30)
+                new SliderHeader("build_housing", true, 0, 100, 1, 0, 5)
                 {
                     new BinaryEdit("ai_buildhousing")
                     {
-                        new BinAddress("population", 7),
-                        new BinHook(5)
+                        new BinHook(5) // the first 5 bytes are an if condition that just checks if the first house has been built yet
                         {
-                            0x81, 0xE9, new BinInt32Value(),
+                            0x81, 0xE9, new BinInt32Value(), // the value of the slider header gets put into the location of new BinInt32Value()
                         },
                         new BinSkip(6),
                         0x7F, 0xDE
@@ -620,30 +619,26 @@ namespace UCP
 
                     new BinaryEdit("ai_deletehousing")
                     {
-                        new BinAddress("housing", 0x10),
-                        new BinSkip(22),
-                        new BinHook(5)
-                        {
-                            0x8B, 0x88, new BinRefTo("population", false),
-                            0x81, 0xE9, new BinInt32Value(),
-                            0x81, 0xE9, 0x18, 0x00, 0x00, 0x00,
-                            0x3B, 0x88, new BinRefTo("housing", false),
-                        },
-                        0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90
+                        0x90, 0x90
                     }
                 },
 
-                new SliderHeader("campfire_housing", false, 0, 25, 1, 5, 20)
+                new SliderHeader("campfire_housing", true, 0, 25, 1, 5, 10)
                 {
                     new BinaryEdit("ai_buildhousing")
                     {
-                        new BinSkip(0xB),
-                        0x7F, 0x08,
-                        new BinSkip(0x8),
-                        0xB9, new BinInt32Value(),
+                        new BinSkip(11),
+                        0x7D, 0x08,
+                        new BinSkip(8), //skip everything until we come to the campfire logic comparison
+                        0xB9, new BinInt32Value(), //replace the 5 with the user input value from the slider header
                         new BinSkip(8),
                         0x7C, 0xC7,
                         0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90
+                    },
+
+                    new BinaryEdit("ai_deletehousing")
+                    {
+                        0x90, 0x90
                     }
                 },
 
@@ -651,15 +646,15 @@ namespace UCP
                 {
                     new BinaryEdit("ai_deletehousing")
                     {
-                        new BinBytes(0x90, 0x90)
+                        0x90, 0x90
                     }
-                },
+                }
             },
 
 
-            new Change("ai_recruitstate_initialtimer", ChangeType.AILords)
+            new Change("ai_recruitstate_initialtimer", ChangeType.AILords, false)
             {
-                new SliderHeader("ai_recruitstate_initialtimervalue", false, 0, 30, 1, 6, 1)
+                new SliderHeader("ai_recruitstate_initialtimervalue", true, 0, 30, 1, 6, 0)
                 {
                     new BinaryEdit("ai_recruitstate_initialtimer")
                     {
@@ -850,7 +845,7 @@ namespace UCP
                 // vanilla:
                 // additional attack troops = factor * attack number
 
-                new SliderHeader("ai_addattack", true, 0, 60, 1, 5, 12)
+                new SliderHeader("ai_addattack", true, 0, 250, 1, 5, 12)
                 {
                     // 004CDEDC
                     new BinaryEdit("ai_addattack")
@@ -1107,9 +1102,9 @@ namespace UCP
              */
 
             // 0x00410A30 + 8 ushort default = 2000
-            new Change("o_firecooldown", ChangeType.Other)
+            new Change("o_firecooldown", ChangeType.Other, false)
             {
-                new SliderHeader("o_firecooldown", true, 0, 20000, 500, 2000, 6000)
+                new SliderHeader("o_firecooldown", true, 0, 20000, 500, 2000, 4000)
                 {
                     new BinaryEdit("o_firecooldown")
                     {
@@ -2926,7 +2921,7 @@ namespace UCP
                 }
             },
 
-            new Change("o_increase_path_update_tick_rate", ChangeType.Other, false)
+            new Change("o_increase_path_update_tick_rate", ChangeType.Other, true)
             {
                 new DefaultHeader("o_increase_path_update_tick_rate")
                 {
@@ -2941,7 +2936,7 @@ namespace UCP
 
             new Change("o_default_multiplayer_speed", ChangeType.Other)
             {
-                new SliderHeader("o_default_multiplayer_speed", false, 20, 90, 1, 40, 40)
+                new SliderHeader("o_default_multiplayer_speed", true, 20, 90, 1, 40, 50)
                 {
                     // 878FB
                     new BinaryEdit("o_default_multiplayer_speed")

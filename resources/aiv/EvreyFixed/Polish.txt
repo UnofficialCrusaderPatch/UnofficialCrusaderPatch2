@@ -1,0 +1,3 @@
+Oryginalne zamki naprawione przez użytkownika Evrey
+Naprawiono błędy oryginalnych zamków przeciwników komputerowych, na przykład brakujące domy i cechy kopaczy/inżynierów lub zablokowane wejścia do zamku.
+[Stworzone przez użytkownika Evrey](https://github.com/Evrey/SHC_AIV/)
