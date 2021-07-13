@@ -1,4 +1,18 @@
 // ======================
+//         DEV
+// ======================
+
+u_ghosteng
+{
+"Fix engineers not dying with siege engines"
+}
+
+u_ghosteng_descr
+{
+"Fix engineers not dying when siege engine they are manning is killed"
+}
+
+// ======================
 //         2.15
 // ======================
 u_spearmen_run
@@ -197,16 +211,6 @@ u_tanner_fix
 u_tanner_fix_descr
 {
 "现在皮革工人到达牧场后，若发现想要牵走的牛已被其他工人牵去，会转而去牵另外一头牛，而不是直接回到作坊。极大提高皮革作坊的效率。"
-}
-
-u_ghosteng
-{
-"Fix engineers not dying with siege engines"
-}
-
-u_ghosteng_descr
-{
-"Fix engineers not dying when siege engine they are manning is killed"
 }
 
 o_fix_fletcher_bug
