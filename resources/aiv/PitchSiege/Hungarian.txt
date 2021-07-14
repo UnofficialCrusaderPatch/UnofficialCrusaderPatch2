@@ -1,0 +1,3 @@
+PitchNeeded Evrey Edit (kővetőgépek és hajítógépek)
+Kibővíti a 'Evrey feljavított eredeti várak' módosítást azáltal hogy Wazir, Disznó, Nizar és Emír tornyaira kővetőgépet és hajítógépet rak.
+Átszerkesztette: [PitchNeeded](https://github.com/PitchNeeded).

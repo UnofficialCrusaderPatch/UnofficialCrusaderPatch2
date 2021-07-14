@@ -1,0 +1,3 @@
+PitchNeeded's Evrey Edit (mangonels & ballistae)
+Extends 'Evrey's fixed vanilla castles', by adding mangonels and ballistae to the towers of Wazir, Pig, Nizar and Emir.
+Edited by [PitchNeeded](https://github.com/PitchNeeded).

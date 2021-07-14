@@ -6,9 +6,10 @@ name: UCP Build
 on:
   workflow_dispatch:
   push:
-    branches: [ master ]
+    branches: [ master, GUI-Update ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, GUI-Update ]
+    types: [assigned, opened, edited, ready_for_review, reopened, synchronize]
 
 jobs:
 
@@ -70,6 +71,7 @@ jobs:
         path: |
           OutputRelease/*.dll
           OutputRelease/*.exe
+          OutputRelease/resources
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v2

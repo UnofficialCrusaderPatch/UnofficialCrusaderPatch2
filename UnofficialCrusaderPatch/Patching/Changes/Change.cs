@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -9,7 +11,7 @@ namespace UCP.Patching
     public class Change : IEnumerable<DefaultHeader>
     {
         public bool NoLocalization = false;
-
+        Func<Dictionary<string, Dictionary<string, object>>, DefaultHeader> multiChange;
         string titleIdent;
         public string TitleIdent => titleIdent;
         public string GetTitle() { return NoLocalization ? titleIdent : Localization.Get(titleIdent); }
@@ -30,16 +32,31 @@ namespace UCP.Patching
             header.SetParent(this);
         }
 
-        public Change(string titleIdent, ChangeType type, bool enabledDefault = true, bool exclusive = true)
+        public Change(string titleIdent, ChangeType type, bool enabledDefault = true, bool exclusive = true, Func<Dictionary<string, Dictionary<string, object>>, ParamHeader> multiChange = null)
         {
             this.type = type;
             this.titleIdent = titleIdent;
             this.exclusive = exclusive;
             this.enabledDefault = enabledDefault;
+            this.multiChange = multiChange;
         }
 
         public virtual void Activate(ChangeArgs args)
         {
+            if (multiChange != null)
+            {
+                Dictionary<string, Dictionary<string, object>> parameters = new Dictionary<string, Dictionary<string, object>>();
+                foreach (var header in headerList)
+                {
+                    parameters.Add(header.DescrIdent, new Dictionary<string, object>()
+                    {
+                        { "isEnabled", header.IsEnabled },
+                        { "value", (object)header is ValueHeader && header.IsEnabled ? (header as ValueHeader).Value : (object)header.IsEnabled }
+                    });
+                }
+                multiChange(parameters).Activate(args);
+                return;
+            }
             foreach (var header in headerList)
             {
                 if (header.IsEnabled)

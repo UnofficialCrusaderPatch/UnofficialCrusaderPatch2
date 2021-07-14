@@ -1,6 +1,7 @@
 // ======================
-//         dev
+//         DEV
 // ======================
+
 o_fix_rapid_deletion_bug
 {
 "Fix resources rapid deletion"
@@ -11,153 +12,244 @@ o_fix_rapid_deletion_bug_descr
 "Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
 }
 
-o_restore_arabian_engineer_speech
-{
-"Restore engineer arabian speech"
-}
-
-o_restore_arabian_engineer_speech_descr
-{
-"Allows engineers to speak the originally recorded arabian voicelines when the player uses the Arabian lord.
-
-There is not much variation of these voicelines, so it can get annoying after a while."
-}
-
-u_fix_lord_animation_stuck_movement
-{
-"Fix Lord animation freeze"
-}
-
-u_fix_lord_animation_stuck_movement_descr
-{
-"Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
-}
-
-o_fix_small_wall_placement_count
-{
-"Fix small wall placement count preview"
-}
-
-o_fix_small_wall_placement_count_descr
-{
-"Fixes the bug where the small wall placement preview only allowed the player to use half of their stone."
-}
-
-fix_apple_orchard_build_size
-{
-"Shrink apple orchard's build size"
-}
-
-fix_apple_orchard_build_size_descr
-{
-"Changes the apple orchard's build size to the size it occupies after the farm is placed down. This saves some space when building the farms and increases the rate with which the AI is able to put these farms down."
-}
-
-u_fix_applefarm_blocking
-{
-"Fix apple farm blocking"
-}
-
-u_fix_applefarm_blocking_descr
-{
-"Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
-}
-
-o_allow_overbuilding
-{
-"Allow overbuilding workers and units"
-}
-
-o_allow_overbuilding_descr
-{
-"Allows the player to overbuild workers with buildings, while allowing to overbuild units with walls and towers making them pop at the top."
-}
-
-o_increase_path_update_tick_rate
-{
-"Increase the tick rate of path update by 4 times."
-}
-
-o_increase_path_update_tick_rate_descr
-{
-"In vanilla, it took 200 game ticks to update pathing which resulted in units not being able to move into the castle after destroying a gate or tower.
-
-This change increases this tick rate by 4 times by lowering this required tick value to 50, allowing the units to 'realize' more quickly that a new path is available."
-}
-
-o_fix_ladderclimb
-{
-"Fix ladder climb bug"
-}
-
-o_fix_ladderclimb_descr
-{
-"Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
-}
+// ======================
+//         2.15
+// =====================
 
 u_spearmen_run
 {
-"Spearmen run by default instead of walking"
+"Speerträger rennen standardmäßig"
 }
 
 u_spearmen_run_descr
 {
-"Makes spearmen run by default instead of the slow walking."
+"Speerträger rennen standardmäßig so schnell wie Sklaven und Streitkolbenkämpfer."
+}
+
+o_seed_modification_possibility_title
+{
+"Manipuliere Zufallszahlengenerator"
+}
+
+o_seed_modification_possibility_only_set
+{
+"Ermögliche Festlegung eines Zufallsstartwertes"
+}
+
+o_seed_modification_possibility_only_set_descr
+{
+"Das Setzen eines Startwertes für den Zufallszahlen Generator ermöglicht es für KI Spiele immer den gleichen Verlauf zu nehmen. Für Spiele mit menschlichen Spielern und KI können feste Startbedingungen ermöglicht werden (z.B. die gleiche Auswahl von AIV Dateien für die KI). Um den Zufallsstartwert zu setzen, erstelle eine Datei mit dem Namen 'live', welche eine ganze Zahl enthält im Ordner Installationsverzeichnis/gameseeds. ACHTUNG: Vor Beginn eines wiederholbaren Scharmützels muss das Spiel neu gestartet werden!"
+}
+
+o_seed_modification_possibility
+{
+"Ermögliche & Speichere Zufallsstartwerte"
+}
+
+o_seed_modification_possibility_descr
+{
+"Mit dieser Option werden Zufallsstartwerte von Spielen gespeichert, für die keiner im gameseeds Ordner gesetzt wurde. So können diese nachträglich in 'live' umbenannt werden um das Spiel zu wiederholen."
+}
+
+ai_recruitstate_initialtimer
+{
+"Setzt den Zeitpunkt, ab dem KIs anhand der AIC rekrutieren"
+}
+
+ai_recruitstate_initialtimervalue_descr
+{
+"Anzahl an Monaten, ab der die KI anhand der in der AIC festgelegten Rekrutierungswahrscheinlichkeiten rekrutiert. Bis dahin rekrutiert sie ausschließlich Defensivtruppen bis diese vollständig sind und daraufhin Angriffstruppen."
+}
+
+ai_defense
+{
+"Verstärkung der Burgverteidigung fixen"
+}
+
+ai_defense_descr
+{
+"Fixt den Bug, der die KI davon abhielt, fehlende Truppen auf Wällen und Türmen zu verstärken solange noch Defensivpatrouillien vorhanden waren."
+}
+
+ai_housing
+{
+"Intelligenteres Errichten und Abreißen von Häusern"
+}
+
+build_housing_descr
+{
+"Die Differenz aus aktueller und maximal möglicher Bevölkerung, ab der KIs keine Häuser mehr bauen. In Vanilla ist diese 0. Zudem deaktiviert diese Option das Abreißen von Häusern für KIs."
+}
+
+campfire_housing_descr
+{
+"Wenn mehr als diese Anzahl an freien Bauern am Lagerfeuer sitzen, baut die KI keine Häuser mehr. Zudem deaktiviert diese Option das Abreißen von Häusern für KIs."
+}
+
+delete_housing
+{
+"Kein Abreißen von Häusern der KIs"
+}
+
+delete_housing_descr
+{
+"Mit dieser Option reißen KIs keine Häuser mehr ab."
+}
+
+aiv_prompt
+{
+"Modifizierte AIVs erkannt. Wollen Eure Lordschaft jetzt ein Backup anlegen?"
+}
+
+aiv_cli_prompt
+{
+"Modifizierte AIVs erkannt. Schreibe 'delete', um sie zu löschen oder einen Ordnernamen, um ein Backup zu erstellen."
+}
+
+install_abort_io
+{
+"Installation abgebrochen. Dateien mit dem selben Namen waren bereits im gewählten Ordner vorhanden. Bitte wählen Eure Lordschaft einen anderen Ordner aus."
+}
+
+install_abort
+{
+"Installation abgebrochen"
+}
+
+backup_aiv_select
+{
+"Backup AIV Ordner auswählen"
+}
+
+o_change_siege_engine_spawn_position_catapult
+{
+"Belagerungsgeräte in der Mitte des Zelts aufbauen"
+}
+
+o_change_siege_engine_spawn_position_catapult_descr
+{
+"Belagerungsgeräte erscheinen nun nach dem Aufbauen am Punkt der Zeltmitte, statt wie bisher in der oberen rechten Ecke des Zelts."
+}
+
+o_stop_player_keep_rotation
+{
+"Drehe Spielerbergfriede wie die der KIs"
+}
+
+o_stop_player_keep_rotation_descr
+{
+"Die Bergfriede der Spieler richten sich nun so aus wie die der KI; sie drehen sich so, dass das Lagerfeuer in Richtung des Kartenrands zeigt."
+}
+
+o_restore_arabian_engineer_speech
+{
+"Baumeister arabischer Lords sprechen Arabisch"
+}
+
+o_restore_arabian_engineer_speech_descr
+{
+"Falls der Spieler den arabischen Lord auswählt nutzen Baumeister nun ihre arabischen Sprachdateien."
+}
+
+u_fix_lord_animation_stuck_movement
+{
+"Setzt die Lordanimation nach Zerstörung von Gebäuden zurück"
+}
+
+u_fix_lord_animation_stuck_movement_descr
+{
+"Der Lord wechselt mit dieser Änderung nach dem Zerstören eines Gebäudes in seine Ausgangsposition. Bisher blieb er in der Zerstöranimation stecken."
+}
+
+fix_apple_orchard_build_size
+{
+"Reduziert die Baugröße von Apfelfarmen"
+}
+
+fix_apple_orchard_build_size_descr
+{
+"Ändert die Bauvorschau von Apfelfarmen auf die Größe, die sie nach der Platzierung der Farm haben."
+}
+
+u_fix_applefarm_blocking
+{
+"Behebt das Blockieren des Apfelfarmers"
+}
+
+u_fix_applefarm_blocking_descr
+{
+"Apfelfarmer werden nicht länger inaktiv, wenn der Pfad links oben direkt neben der Farm blockiert wird."
+}
+
+o_increase_path_update_tick_rate
+{
+"Suche öfter nach verfügbaren Wegen"
+}
+
+o_increase_path_update_tick_rate_descr
+{
+"Das Spiel überprüft nun viermal so häufig, welche Bereiche der Karte verbunden sind. Dadurch können beispielsweise nach der Zerstörung eines Torhauses oder eines Turmes die Truppen schneller ins Innere einer zuvor unzugänglichen Burg beordert werden."
+}
+
+o_fix_ladderclimb
+{
+"Behebt Befehlsverlust beim Klettern auf Leitern"
+}
+
+o_fix_ladderclimb_descr
+{
+"Einheiten klettern nicht mehr direkt zurück und vergessen auch nicht mehr ihr Ziel, nachdem sie eine Leiter erklommen haben."
 }
 
 u_tanner_fix
 {
-"Fix tanners getting all the same cow"
+"Gerberinnen holen sich unterschiedliche Kühe"
 }
 
 u_tanner_fix_descr
 {
-"Tanners will no longer return without a cow when another tanner took their target cow. They will now instead stand around a bit and then get another one."
+"Gerberinnen kehren nicht länger ohne Kuh zurück, falls ihre anvisierte Kuh bereits weg ist. Sie warten nun, bis sie eine andere Kuh mitnehmen können."
 }
 
 o_fix_fletcher_bug
 {
-"Fix fletcher bug"
+"Entfernt den Extraweg des Pfeilmachers zur Werkstatt"
 }
 
 o_fix_fletcher_bug_descr
 {
-"Fixes the behaviour where the fletcher goes back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile."
+"Passt das Verhalten des Pfeilmachers an andere Waffenproduzenten an. Nach Abgabe seines Gutes geht er nun direkt zum Vorratslager, statt erneut zur Werkstatt zurückzukehren."
 }
 
 ai_fix_crusader_archers_pitch
 {
-"Fix AI crusader archers not lighting pitch"
+"Europäische Bogenschützen der KI entzünden Pech."
 }
 
 ai_fix_crusader_archers_pitch_descr
 {
-"Fixes the AI crusader archers not lighting pitch like arabian archers do when enemy units get onto it."
+"Bisher waren nur Arabische Bogenschützen der KIs in der Lage Pechgraben mit Feuerpfeilen zu entzünden; nun können dies auch Europäischen Bogenschützen."
 }
 
 o_fix_baker_disappear
 {
-"Fix baker disappear bug"
+"Behebt das Verschwinden von Bäckern"
 }
 
 o_fix_baker_disappear_descr
 {
-"Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile."
+"Behebt den Fehler, der Bäcker verschwinden ließ, wenn sie kein Mehl am angestrebten Platz im Vorratslager vorfinden konnten."
 }
 
 o_fix_moat_digging_unit_disappearing
 {
-"Fix moat digging units disappear bug"
+"Behebt das Verschwinden von Buddeleinheiten."
 }
 
 o_fix_moat_digging_unit_disappearing_descr
 {
-"Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!"
+"Behebt das Verschwinden von Truppen, die mit dem Ausheben von Burggräben beschäftigt sind. Diese verschwinden allerdings weiterhin, falls diese neue Befehle bekommen und zeitgleich auf unbegehbarem Terrain stehen."
 }
-
-// ======================
-//         2.14
-// ======================
 
 ui_welcometext
 {
@@ -174,14 +266,16 @@ Erschaffer des UCP
 [Sh0wdown](https://github.com/Sh0wdown)
 
 Projektleitung
-[Kimberly](https://github.com/ByBurton/)  
+[Kimberly Azula](https://github.com/ByBurton/)  
 [Krarilotus (Youtube)](https://www.youtube.com/channel/UCMXHqa2vmclSoSkuCu_q5rw)
 
 Entwickler
 [LordHansCapon](https://github.com/LordHansCapon)  
 [np123](https://github.com/patel-nikhil)  
-[J-T-de](https://github.com/J-T-de)  
-[Chaf1812](https://github.com/Chaf1812)  
+[J-T-de](https://github.com/J-T-de)
+[gynt](https://github.com/gynt)
+[Le spec](https://github.com/LeSpec)  
+[Chaf1812](https://github.com/Chaf1812)
 
 Übersetzer
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polnisch)  
@@ -206,6 +300,10 @@ Und viele mehr
 [Heroesflorian](https://github.com/Heroesflorian)"
 }
 
+// ======================
+//         2.14
+// ======================
+
 ui_StartTroops
 {
 	"Starttruppen"
@@ -216,7 +314,7 @@ ui_Resource
 	"Startgüter"
 }
 
-﻿ui_aicconflict
+ui_aicconflict
 {
 	"Konflikt und wird ignoriert"
 }
@@ -364,18 +462,6 @@ u_ballistamonk
 u_ballistamonk_descr
 {
 	"Lässt Feuerballisten automatisch auch auf Mönche schießen."
-}
-
-aiv_EvreyHistory
-{
-	"Evreys historische KI-Burgen"
-}
-
-aiv_EvreyHistory_descr
-{
-	"Gibt den KI-Lords jeweils eine neue Burg, die auf einer realen, &
-zum Lord passenden, historischen Burg oder gar Stadt basiert. &
-[Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
 
 
@@ -973,19 +1059,6 @@ ui_AIV
 	"AIV"
 }
 
-ai_defense
-{
-	"Verstärkung der Burgverteidigung fixen"
-}
-
-ai_defense_descr
-{
-	"Fixt einen Bug, der die KI davon abhielt fehlende Truppen auf &
-Wällen und Türmen zu verstärken, solange noch Defensivpatrouillen &
-vorhanden waren. Außerdem wurde generell die Wahrscheinlichkeit erhöht &
-Verstärkung zu rekrutieren, da diese bei einigen KIs auf null gesetzt war."
-}
-
 ai_access
 {
 	"Kein Abreißen von unzugänglichen Gebäuden"
@@ -997,24 +1070,6 @@ ai_access_descr
 Damit soll der Bug verhindert werden, bei dem manche KIs in ihren Burgen &
 andauernd Gebäude abreißen und wieder aufbauen zu denen es keinen Weg gibt."
 }
-
-
-aiv_tatha
-{
-	"Tathas verbesserte KI Burgen"
-}
-
-aiv_tatha_descr
-{
-	"Im Vergleich zu den Vanilla-Versionen deutlich stärkere Burgen. Die verschiedenen &
-Burgvariationen der einzelnen KIs sind alle gleich stark. &
-[Vorstellungs-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
-}
-
-
-
-
-// some edits:
 
 ai_attackwave
 {
@@ -1032,57 +1087,3 @@ Befestigungsanlagen an, sowie Mauerstücke die bereits von einem Angreifer &
 besetzt sind. Außerdem schickt die KI jetzt auch mehr Truppen auf den &
 gegnerischen Bergfried, sobald sie eine Bresche erkennt."
 }
-
-aiv_pitchsiege
-{
-	"PitchNeededs Evrey Edit (Mangen & Ballisten)"
-}
-
-aiv_pitchsiege_descr
-{
-	"Erweitert 'Evreys gefixte Vanilla-Burgen' indem den Türmen von &
-Wazir, Schwein, Nizar und Emir Mangen und Ballisten hinzugefügt werden. &
-Editiert von [PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-aiv_pitchwells
-{
-	"PitchNeededs Evrey Edit (Brunnen & Apotheken)"
-}
-
-aiv_pitchwells_descr
-{
-	"Erweitert 'Evreys gefixte Vanilla-Burgen' indem einige KI-Burgen &
-Brunnen und Apotheken erhalten. Editiert von [PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-aiv_evreyfixed
-{
-	"Evreys gefixte Vanilla-Burgen"
-}
-
-aiv_evreyfixed_descr
-{
-	"Behebt Fehler der Vanilla-KI-Burgen, wie z.B. fehlende Häuser und Gilden &
-oder blockierte Ausgänge. [Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreyimproved
-{
-	"Evreys verbesserte KI-Burgen"
-}
-
-aiv_evreyimproved_descr
-{
-	"Gibt den KI-Lords neue verbesserte Burgen, angelehnt an den Vanilla-Stil. &
-[Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-
-
-
-
-
-
-
-

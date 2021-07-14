@@ -1,0 +1,88 @@
+{
+	"description": {
+		"English"	: "This is the vanilla resource configuration.",
+		"German"	: "Dies ist die Vanilla Ressourcen Einstellung.",
+		"Russian"	: "Это настройка ванильных ресурсов (AI)",
+		"Polish"	: "To jest ustawienie zasobów wanilii.",
+		"Chinese"	: "这是原始资源设置.",
+		"Hungarian"	: "Ez az eredeti erőforrás konfiguráció."
+	},
+	"normal": {
+		"gold": {
+			"human": [8000, 4000, 2000, 2000, 2000],
+			"ai": [2000, 2000, 2000, 4000, 8000]
+		},
+		"wood": 100,
+		"hop": 0,
+		"stone": 50,
+		"iron": 0,
+		"pitch": 0,
+		"wheat": 0,
+		"bread": 60,
+		"cheese": 0,
+		"meat": 0,
+		"fruit": 0,
+		"beer": 0,
+		"flour": 0,
+		"bows": 0,
+		"crossbows": 0,
+		"spears": 0,
+		"pikes": 0,
+		"maces": 0,
+		"swords": 0,
+		"leatherarmor": 0,
+		"metalarmor": 0
+	},
+	"crusader": {
+		"gold": {
+			"human": [8000, 4000, 2000, 2000, 2000],
+			"ai": [2000, 2000, 2000, 4000, 8000]
+		},
+		"wood": 100,
+		"hop": 0,
+		"stone": 50,
+		"iron": 0,
+		"pitch": 0,
+		"wheat": 0,
+		"bread": 60,
+		"cheese": 0,
+		"meat": 0,
+		"fruit": 0,
+		"beer": 0,
+		"flour": 0,
+		"bows": 0,
+		"crossbows": 0,
+		"spears": 0,
+		"pikes": 0,
+		"maces": 0,
+		"swords": 0,
+		"leatherarmor": 0,
+		"metalarmor": 0
+	},
+	"deathmatch": {
+		"gold": {
+			"human": [40000, 20000, 10000, 7000, 3000],
+			"ai": [3000, 7000, 10000, 20000, 40000]
+		},
+		"wood": 150,
+		"hop": 20,
+		"stone": 150,
+		"iron": 25,
+		"pitch": 48,
+		"wheat": 25,
+		"bread": 200,
+		"cheese": 0,
+		"meat": 0,
+		"fruit": 0,
+		"beer": 10,
+		"flour": 0,
+		"bows": 0,
+		"crossbows": 0,
+		"spears": 0,
+		"pikes": 0,
+		"maces": 0,
+		"swords": 0,
+		"leatherarmor": 0,
+		"metalarmor": 0
+	}
+}

@@ -1,0 +1,3 @@
+Evrey feljavított eredeti várak
+Kijavítja az eredeti MI várak hibáit, mint pl. hiányzó házak és céhek vagy blokkolt kijáratok.
+[Készítette: Evrey](https://github.com/Evrey/SHC_AIV/)

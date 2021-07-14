@@ -1,0 +1,3 @@
+PitchNeededs Evrey Edit (Mangen & Ballisten)
+Erweitert 'Evreys gefixte Vanilla-Burgen' indem den Türmen von Wazir, Schwein, Nizar und Emir Mangen und Ballisten hinzugefügt werden.
+Editiert von [PitchNeeded](https://github.com/PitchNeeded).
