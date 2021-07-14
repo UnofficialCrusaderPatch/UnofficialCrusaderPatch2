@@ -403,20 +403,25 @@ namespace UCP
             {
                 new DefaultHeader("o_fix_rapid_deletion_bug")
                 {
+                    // 0045CF4E
+                    new BinaryEdit("o_fix_rapid_deletion_bug_addresses")
+                    {
+                        new BinAddress("offset", 53, false),
+                        new BinAddress("buildcheckstuff", 58, true)
+                    },
+
                     // 00482180
                     new BinaryEdit("o_fix_rapid_deletion_bug")
                     {
                         new BinAddress("buildingdemolish", 1, true),
-                        new BinAddress("offset", -4, false),
                         new BinHook(5)
                         {
                             // originalcode
                             0xE8, new BinRefTo("buildingdemolish", true), // call Building_Demolish
                             
-                            // Building_Type = 0
-                            0xB9, new BinRefTo("offset", false), // mov ecx,offset
-                            0x8D, 0x8C, 0x0E, 0xE6, 0x00, 0x00, 0x00, // lea ecx,[esi+ecx+0E6]
-                            0xC7, 0x01, 0x00, 0x00, 0x00, 0x00 // mov [ecx],0                                  
+                            // call Build_CheckStuff
+                            0xB9, new BinRefTo("offset", false), // mov ecx, offset
+                            0xE8, new BinRefTo("buildcheckstuff", true)
                         }
                     }
                 }
