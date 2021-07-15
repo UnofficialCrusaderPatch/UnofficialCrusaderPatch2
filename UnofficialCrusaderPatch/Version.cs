@@ -390,24 +390,32 @@ namespace UCP
                 new DefaultHeader("o_fix_rapid_deletion_bug")
                 {
                     // 0045CF4E
-                    new BinaryEdit("o_fix_rapid_deletion_bug_addresses")
+                    new BinaryEdit("o_fix_rapid_deletion_bug_address_1")
                     {
-                        new BinAddress("offset", 53, false),
-                        new BinAddress("buildcheckstuff", 58, true)
+                        new BinAddress("offset", 53, false)
+                    },
+
+                    // 00422F43
+                    new BinaryEdit("o_fix_rapid_deletion_bug_address_2")
+                    {
+                        new BinAddress("dodemolish", 10, true)
                     },
 
                     // 00482180
                     new BinaryEdit("o_fix_rapid_deletion_bug")
                     {
+                        new BinAddress("buildingID", -4, false),
                         new BinAddress("buildingdemolish", 1, true),
                         new BinHook(5)
                         {
                             // originalcode
                             0xE8, new BinRefTo("buildingdemolish", true), // call Building_Demolish
                             
-                            // call Build_CheckStuff
+                            // call Building_DoDemolish
+                            0x8B, 0x15, new BinRefTo("buildingID", false), // mov edx, [buildingID]
+                            0x52, // push edx
                             0xB9, new BinRefTo("offset", false), // mov ecx, offset
-                            0xE8, new BinRefTo("buildcheckstuff", true)
+                            0xE8, new BinRefTo("dodemolish", true)
                         }
                     }
                 }
