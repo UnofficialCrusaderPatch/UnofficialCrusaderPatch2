@@ -1,0 +1,3 @@
+Evrey的原版修复城堡
+修复了原版ai城堡的一些问题，诸如茅房不足，建筑无通路等
+ [创作者Evrey](https://github.com/Evrey/SHC_AIV/)

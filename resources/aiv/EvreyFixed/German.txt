@@ -1,0 +1,3 @@
+Evreys gefixte Vanilla-Burgen
+Behebt Fehler der Vanilla-KI-Burgen, wie z.B. fehlende Häuser und Gilden oder blockierte Ausgänge.
+[Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)

@@ -13,7 +13,7 @@ namespace UCP
 {
     public class Version
     {
-        public static string PatcherVersion = "2.15";
+        public static string PatcherVersion = "2.15b";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
@@ -24,129 +24,6 @@ namespace UCP
         {
             BinRedirect.CreateEdit("menuversion", false, Encoding.ASCII.GetBytes("V1.%d-E UCP" + PatcherVersion + '\0'))
         };
-
-        private static ParamHeader GetAIHousingParamHeader(Dictionary<string, Dictionary<string, object>> parameters)
-        {
-            BinCollection campPeasantCollection = null;
-
-            int paramSize = 1;
-            if (!parameters["build_housing"]["value"].Equals(false))
-            {
-                paramSize = (double)parameters["build_housing"]["value"] > 0x7F ? 3 : 1;
-            }
-                
-            if (!(parameters["build_housing"]["value"].Equals(false) || (double)parameters["build_housing"]["value"] == 0))
-            {
-                campPeasantCollection = new BinCollection()
-                {
-                    0x2B, 0x88, new BinRefTo("population_address", false),
-                };
-
-                BinCollection sizeCollection;
-                if (paramSize == 1)
-                {
-                    byte[] value = BitConverter.GetBytes(Convert.ToInt32((double)parameters["build_housing"]["value"]));
-                    sizeCollection = new BinCollection()
-                    {
-                        0x83, 0xF9, value[0]
-                    };
-                }
-                else
-                {
-                    sizeCollection = new BinCollection()
-                    {
-                        0x81, 0xF9, BitConverter.GetBytes(Convert.ToInt32((double)parameters["build_housing"]["value"]))
-                    };
-                }
-                foreach (var elem in sizeCollection) campPeasantCollection.Add(elem);
-
-                BinCollection jumpCollection = new BinCollection()
-                {
-                    0x7F, 0x05, /* if greater continue */
-                    0x33, 0xC0, /* xor eax, eax */
-                    0xC2, 0x08, 0x00 /* ret 0008 */
-                };
-
-                foreach (var elem in jumpCollection) campPeasantCollection.Add(elem);
-            }
-
-            double delete_value = Convert.ToInt32((double)parameters["delete_housing"]["value"]);
-            if (!(parameters["build_housing"]["value"].Equals(false)))
-            {
-                delete_value += (double)parameters["build_housing"]["value"];
-            } else
-            {
-                delete_value += 12;
-            }
-
-            paramSize = 1;
-            if (!parameters["delete_housing"]["value"].Equals(false))
-            {
-                paramSize = delete_value > 0x7F ? 3 : 1;
-            }
-            BinaryEdit delete_edit = null;
-            if (!(parameters["delete_housing"]["value"].Equals(false) || (double)parameters["delete_housing"]["value"] == 20))
-            {
-                byte[] value = BitConverter.GetBytes(Convert.ToInt32(delete_value));
-                delete_edit = new BinaryEdit("ai_deletehousing")
-                {
-                    new BinAddress("housing_address_new", 16),
-                    new BinSkip(0xF),
-                    new BinSkip(0x7),
-                    0xF7, 0xD9,
-                    new BinBytes(0x03, 0x88), new BinRefTo("housing_address_new", false),
-                    new BinHook(6)
-                    {
-                        paramSize == 1 ? new BinBytes(0x83, 0xF9, value[0]) : new BinBytes(0x81, 0xF9, value[0], value[1], value[2], value[3]),
-                        0x7F, 0x06,
-                        0x33, 0xC0,
-                        0x5F,
-                        0xC2, 0x04, 0x00
-                    }
-                    /*0x83, 0xF9, value[0],
-                    new BinBytes(0x7E, 0xDF),
-                    new BinNops(1)*/
-                };
-            }
-
-
-            BinBytes init = new BinBytes();
-
-            BinBytes finalizer = new BinBytes(
-                0xB8, 0x01, 0x00, 0x00, 0x00,   /* mov eax, 00000001 */
-                0xC2, 0x08, 0x00
-                );
-
-            BinHook hook = new BinHook(5)
-            {
-                init
-            };
-
-            if (campPeasantCollection != null)
-            {
-                foreach (var elem in campPeasantCollection) hook.Add(elem);
-            }
-
-            hook.Add(finalizer);
-
-            BinaryEdit edit = new BinaryEdit("ai_buildhousing")
-            {
-                hook,
-                new BinAddress("campfire_peasant_address", 0x22, false), //0x22
-                new BinAddress("population_address", 2, false), //5
-                new BinAddress("housing_address", 11, false), //11
-            };
-
-
-            ParamHeader aiHousing = new ParamHeader("ai_buildhousing")
-            {
-                edit == null ? new BinaryEdit("ai_buildhousing") : edit,
-                delete_edit == null ? new BinaryEdit("ai_deletehousing") : delete_edit
-            };
-            aiHousing.IsEnabled = (!parameters["build_housing"]["value"].Equals(false) && (double)parameters["build_housing"]["value"] != 12)
-                || (!parameters["delete_housing"]["value"].Equals(false) && (double)parameters["delete_housing"]["value"] != 20);
-            return aiHousing;
-        }
 
         static List<Change> changes = new List<Change>()
         {
@@ -372,25 +249,9 @@ namespace UCP
                             0x8B, 0x54, 0x24, 0x04, // mov edx,[esp+04]
                             0x8B, 0x14, 0x95, new BinRefTo("defNum", false), // mov edx,[edx*4 + defNum]
                         }
-                    },
-
-                    // 004D3486
-                    new BinaryEdit("ai_defense_affinity")
-                    {
-                        // increase the general affinity to reman defenses
-                        // this value was zero for some AIs like the rat
-                        new BinHook(7)
-                        {
-                            // ori code
-                            0x8B, 0xAC, 0x87, 0x28, 0x01, 0x00, 0x00, // mov ebp,[edi+eax*4+00000128]
-
-                            // add a constant value of 20; snake's default f.e. is 30
-                            ADD(EBP, 0x14) // add ebp, 14h
-                        }
                     }
                 }
             },
-
 
             /*
              *  OX TETHER SPAM
@@ -572,44 +433,6 @@ namespace UCP
                 }
             },
 
-            new Change("o_fix_small_wall_placement_count", ChangeType.Bugfix, true)
-            {
-                new DefaultHeader("o_fix_small_wall_placement_count")
-                {
-
-                    new BinaryEdit("o_fix_small_wall_placement_count_pre") // 437FB1
-                    {
-                        new BinAddress("CurrentlyControlledPlayer", 2),
-                        new BinAddress("CurrentlySelectedWallID", 42),
-                    },
-
-                    new BinaryEdit("o_fix_small_wall_placement_count") // 457EB2
-                    {
-                        new BinAddress("SomeWallRelatedOffset", 28),
-                        new BinSkip(24), // skip 24 bytes
-                        new BinHook(9)
-                        {
-                            0x01, 0xC0, // add eax,eax
-                            0x53, // push ebx
-                            0x8B, 0x1D, new BinRefTo("CurrentlyControlledPlayer", false), // mov ebx,[CurrentlyControlledPlayer]
-                            
-                            0x3B, 0x5C, 0x24, 0x08, // cmp ebx,[esp+08]
-                            0x75, 0x11, // jne skip
-                            
-                            0x0F, 0xB7, 0x1D, new BinRefTo("CurrentlySelectedWallID", false), // movzx ebx,word ptr [CurrentlySelectedWallID]
-                            0x81, 0xFB, 0x2E, 0x00, 0x00, 0x00, // cmp ebx,0000002E
-                            0x75, 0x02, // jne skip
-                            
-                            0x01, 0xC0, // add eax,eax
-                            
-                            // skip
-                            0x5B, // pop ebx
-                            0x83, 0xB9, new BinRefTo("SomeWallRelatedOffset", false), 0x00,// cmp dword ptr [ecx+SomeWallRelatedOffset],00
-                        }
-                    }
-                }
-            },
-
             new Change("u_fix_applefarm_blocking", ChangeType.Bugfix, true)
             {
                 new DefaultHeader("u_fix_applefarm_blocking")
@@ -757,14 +580,65 @@ namespace UCP
 
             #region AI LORDS
 
-            new Change("ai_housing", ChangeType.AILords, false, false, 
-                (parameters) => {
-                    return GetAIHousingParamHeader(parameters);
-                })
+            new Change("ai_housing", ChangeType.AILords, false, false)
             {
-                new SliderHeader("build_housing", false, 0, 500, 1, 12, 30){},
+                new SliderHeader("build_housing", true, 0, 100, 1, 0, 5)
+                {
+                    new BinaryEdit("ai_buildhousing")
+                    {
+                        new BinHook(5) // the first 5 bytes are an if condition that just checks if the first house has been built yet
+                        {
+                            0x81, 0xE9, new BinInt32Value(), // the value of the slider header gets put into the location of new BinInt32Value()
+                        },
+                        new BinSkip(6),
+                        0x7F, 0xDE
+                    },
 
-                new SliderHeader("delete_housing", false, 0, 500, 1, 20, 0x7F){},
+                    new BinaryEdit("ai_deletehousing")
+                    {
+                        0x90, 0x90
+                    }
+                },
+
+                new SliderHeader("campfire_housing", true, 0, 25, 1, 5, 10)
+                {
+                    new BinaryEdit("ai_buildhousing")
+                    {
+                        new BinSkip(11),
+                        0x7D, 0x08,
+                        new BinSkip(8), //skip everything until we come to the campfire logic comparison
+                        0xB9, new BinInt32Value(), //replace the 5 with the user input value from the slider header
+                        new BinSkip(8),
+                        0x7C, 0xC7,
+                        0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90
+                    },
+
+                    new BinaryEdit("ai_deletehousing")
+                    {
+                        0x90, 0x90
+                    }
+                },
+
+                new DefaultHeader("delete_housing")
+                {
+                    new BinaryEdit("ai_deletehousing")
+                    {
+                        0x90, 0x90
+                    }
+                }
+            },
+
+
+            new Change("ai_recruitstate_initialtimer", ChangeType.AILords, false)
+            {
+                new SliderHeader("ai_recruitstate_initialtimervalue", true, 0, 30, 1, 6, 0)
+                {
+                    new BinaryEdit("ai_recruitstate_initialtimer")
+                    {
+                        new BinSkip(36),
+                        new BinInt32Value(800)
+                    }
+                }
             },
 
 
@@ -948,7 +822,7 @@ namespace UCP
                 // vanilla:
                 // additional attack troops = factor * attack number
 
-                new SliderHeader("ai_addattack", true, 0, 60, 1, 5, 12)
+                new SliderHeader("ai_addattack", true, 0, 250, 1, 5, 12)
                 {
                     // 004CDEDC
                     new BinaryEdit("ai_addattack")
@@ -1182,28 +1056,16 @@ namespace UCP
                         }
                     }
                 }
-            },    
-          
-            // 55DA88
+            },
+
             new Change("u_spearmen_run", ChangeType.Troops, false)
             {
                 new DefaultHeader("u_spearmen_run")
                 {
+                    // 0055E07E
                     new BinaryEdit("u_spearmen_run")
                     {
-                        new BinSkip(5),
-                        
-                        new BinAddress("IsSelectableAddress", 3),
-                    
-                        new BinHook(7)
-                        {
-                            0x53, // push ebx
-                            0xBB, new BinRefTo("IsSelectableAddress", false), // mov ebx,IsSelectableAddress
-                            0x81, 0xC3, 0xA2, 0x00, 0x00, 0x00, // add ebx,A2
-                            0x66, 0xC7, 0x04, 0x18, 0x02, 0x00, // mov word ptr [eax+ebx],0002
-                            0x5B, // pop ebx
-                            0x66, 0x89, 0x90, new BinRefTo("IsSelectableAddress", false), //mov [eax+IsSelectableAddress],dx 
-                        }
+                        new BinBytes(0x90, 0x90) // remove je
                     }
                 }
             },
@@ -1217,9 +1079,9 @@ namespace UCP
              */
 
             // 0x00410A30 + 8 ushort default = 2000
-            new Change("o_firecooldown", ChangeType.Other)
+            new Change("o_firecooldown", ChangeType.Other, false)
             {
-                new SliderHeader("o_firecooldown", true, 0, 20000, 500, 2000, 6000)
+                new SliderHeader("o_firecooldown", true, 0, 20000, 500, 2000, 4000)
                 {
                     new BinaryEdit("o_firecooldown")
                     {
@@ -2896,7 +2758,7 @@ namespace UCP
                     // 4B4748
                     new BinaryEdit("o_gamespeed_up")
                     {
-                        CMP(EAX, 100000),      // cmp eax, 100000
+                        CMP(EAX, 10000),      // cmp eax, 10000
 
                         JMP(GREATERTHANEQUALS, 0x19), // jge to end
 
@@ -3066,7 +2928,7 @@ namespace UCP
                 }
             },
 
-            new Change("o_increase_path_update_tick_rate", ChangeType.Other, false)
+            new Change("o_increase_path_update_tick_rate", ChangeType.Other, true)
             {
                 new DefaultHeader("o_increase_path_update_tick_rate")
                 {
@@ -3081,7 +2943,7 @@ namespace UCP
 
             new Change("o_default_multiplayer_speed", ChangeType.Other)
             {
-                new SliderHeader("o_default_multiplayer_speed", false, 20, 90, 1, 40, 40)
+                new SliderHeader("o_default_multiplayer_speed", true, 20, 90, 1, 40, 50)
                 {
                     // 878FB
                     new BinaryEdit("o_default_multiplayer_speed")
@@ -3196,203 +3058,335 @@ namespace UCP
                     }
                 }
             },
-
-            new Change("o_allow_overbuilding", ChangeType.Other, false)
-            {
-                new DefaultHeader("o_allow_overbuilding")
-                {
-                    new BinaryEdit("o_allow_overbuilding_currently_selected_building")
-                    {
-                        new BinAddress("CurrentlySelectedBuilding", 44)
-                    },
-                    
-                    new BinaryEdit("o_allow_overbuilding_build_function_exit")
-                    {
-                        new BinSkip(15),
-                        new BinLabel("BuildFunctionExit")
-                    },
-                    
-                    new BinaryEdit("o_allow_overbuilding")
-                    {
-                        
-                        
-                        // these units can be overbuilt by walls
-                        new BinAlloc("WallSkipUnitIDArray", null)
-                        {
-                            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
-                            0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1E, 0x20, 0x21,
-                            0x22, 0x23, 0x24, 0x25, 0x26, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F, 0x30, 0x31, 0x32, 0x33,
-                            0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3C, 0x3D, 0x3E, 0x3F, 0x40, 0x46, 0x47, 0x48, 0x49,
-                            0x4B, 0x4C,
-                            0x00 // delimiter
-                        },
-                        
-                        /**
-                         * Searches a byte in a byte array and writes 1 if found in eax, otherwise 0.
-                         * Custom end byte can be set.
-                         * 
-                         * Parameters:
-                         * - byte to search for
-                         * - address where the byte array is found (end the bytearray with "end byte")
-                         * - end byte (such as 00)
-                         *
-                         * Return:
-                         * - eax will contain 1 if found in array, otherwise 0.
-                         *
-                         * Example:
-                         * push 00             // end byte is 00
-                         * push 025B0831       // address set
-                         * push cx             // we search for this byte
-                         * call InByteArray    // call function
-                         * cmp eax,01          // check if we found it
-                         */
-                        new BinAlloc("InByteArray", null)
-                        {
-                            0x53, // push ebx
-                            0x51, // push ecx
-                            0x52, // push edx
-                            0x31, 0xC9, // xor ecx,ecx
-                            0x31, 0xDB, // xor ebx,ebx
-                            0x31, 0xD2, // xor edx,edx
-                            0xB8, 0x00, 0x00, 0x00, 0x00, // mov eax,00
-                            0x8B, 0x54, 0x24, 0x14, // mov edx,[esp+14]
-                            0x8A, 0x1C, 0x11, // mov bl,[ecx+edx]
-                            0x3A, 0x5C, 0x24, 0x18, // cmp bl,[esp+18]
-                            0x0F, 0x84, 0x12, 0x00, 0x00, 0x00, // je short 0x12
-                            0xB8, 0x01, 0x00, 0x00, 0x00, // mov eax,01
-                            0x3B, 0x5C, 0x24, 0x10, // cmp ebx,[esp+10]
-                            0x0F, 0x84, 0x03, 0x00, 0x00, 0x00, // je short 0x03
-                            0x41, // inc ecx
-                            0xEB, 0xD8, // jmp short backwards
-                            0x5A, // pop edx
-                            0x59, // pop ecx
-                            0x5B, // pop ebx
-                            0xC2, 0x0C, 0x00 // ret 000C
-                        },
-                        
-                        new BinAddress("UnitBaseAddress", 22),
-                        
-                        new BinSkip(19),
-                        
-                        new BinHook(8)
-                        {
-                            0x50, // push eax
-                            
-                            0x83, 0xC1, 0x08, // add ecx,08
-                            0x0F, 0xB6, 0x81, new BinRefTo("UnitBaseAddress", false), // movzx eax, byte ptr[ecx+UnitBaseAddress]
-                            0x83, 0xE9, 0x08, // sub ecx,08
-                            // Check owner
-                            0x83, 0xF8, 0x00, // cmp eax,00  -- check for neutral
-                            0x74, 0x05, // je short 0x05
-                            0x83, 0xF8, 0x01, // cmp eax,01
-                            0x75, 0x1D, // jne short 0x1D
-                            
-                            0x0F, 0xB6, 0x81, new BinRefTo("UnitBaseAddress", false), // movzx eax, byte ptr[ecx+UnitBaseAddress]
-                            0x6A, 0x00, // push 00
-                            0x68, new BinRefTo("WallSkipUnitIDArray", false), // push WallSkipUnitIDArray
-                            0x50, // push eax
-                            0xE8, new BinRefTo("InByteArray"), // call InByteArray
-                            0x83, 0xF8, 0x01, // cmp eax,01
-                            0x0F, 0x84, 0x08, 0x00, 0x00, 0x00, // je short 0x08
-                            0x66, 0x83, 0xB9, new BinRefTo("UnitBaseAddress", false), 0x3E, // cmp word ptr[ecx+UnitBaseAddress],3E
-                            0x58, // pop eax
-                        }
-                    },
-                    
-                    new BinaryEdit("o_allow_overbuilding_building")
-                    {
-                        // tower building IDs
-                        new BinAlloc("TowerIDArray", null)
-                        {
-                            0x6E, 0x6F, 0x70, 0x71, 0x72, // tower variations
-                            0x90, 0x91, // small gate variations
-                            0x92, 0x93, // big gate variations
-                            0x62, // killing pit
-                            0x63, // pitch
-                            0x00 // delimiter
-                        },
-                        
-                        // these units can be overbuilt by tower buildings
-                        new BinAlloc("TowerSkipUnitIDArray", null)
-                        {
-                            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
-                            0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1E, 0x1F, 0x20,
-                            0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F, 0x30, 0x31, 0x32,
-                            0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3C, 0x3D, 0x3E, 0x3F, 0x40, 0x46, 0x47, 0x48,
-                            0x49, 0x4B, 0x4C,
-                            0x00 // delimiter
-                        },
-                        
-                        // these units can be overbuilt by non-tower buildings
-                        new BinAlloc("NonTowerSkipUnitIDArray", null)
-                        {
-                            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
-                            0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x1F, 0x20, 0x21, 0x22, 0x23, 0x24, 0x2F, 0x34, 0x35,
-                            0x36, 0x38, 0x39, 0x40, 0x3E, 0x3F,
-                            0x00 // delimiter
-                        },
-                        
-                        new BinSkip(23),
-                        
-                        new BinHook(14)
-                        {
-                            0x50, // push eax
-                            0x53, // push ebx
-                            0x51, // push ecx
-                            0x31, 0xDB, // xor ebx,ebx
-                            0x31, 0xC9, // xor ecx,ecx
-                            
-                            0x83, 0xC5, 0x08, // add ebp,08
-                            0x0F, 0xB6, 0x85, new BinRefTo("UnitBaseAddress", false), // movzx eax, byte ptr[ebp+UnitBaseAddress]
-                            0x83, 0xED, 0x08, // sub ebp,08
-                            // Check owner
-                            0x83, 0xF8, 0x00, // cmp eax,00  -- check for neutral
-                            0x74, 0x09, // je short 0x09
-                            0x83, 0xF8, 0x01, // cmp eax,01 
-                            0x0F, 0x85, 0x61, 0x00, 0x00, 0x00, // jne short 0x61
-                            
-                            0x0F, 0xB6, 0x05, new BinRefTo("CurrentlySelectedBuilding", false), // movzx eax,byte ptr [CurrentlySelectedBuilding]
-                            0x6A, 0x00, // push 00
-                            0x68, new BinRefTo("TowerIDArray", false), // push TowerIDArray
-                            0x50, // push eax
-                            0xE8, new BinRefTo("InByteArray"), // call InByteArray
-                            0x83, 0xF8, 0x01, // cmp eax,01
-                            0x0F, 0x84, 0x05, 0x00, 0x00, 0x00, // je short 0x05
-                            0xE9, 0x22, 0x00, 0x00, 0x00, // jmp short 0x22
-                            
-                            // Tower building
-                            0x0F, 0xB6, 0x85, new BinRefTo("UnitBaseAddress", false), // movzx eax, byte ptr [ebp+UnitBaseAddress]
-                            0x6A, 0x00, // push 00
-                            0x68, new BinRefTo("TowerSkipUnitIDArray", false), // push TowerSkipUnitIDArray
-                            0x50, // push eax
-                            0xE8, new BinRefTo("InByteArray"), // call InByteArray
-                            0x83, 0xF8, 0x01, // cmp eax,01
-                            0x0F, 0x84, 0x35, 0x00, 0x00, 0x00, // je short 0x35
-                            0xE9, 0x1D, 0x00, 0x00, 0x00, // jmp short 0x1D
-                            
-                            // Not tower building
-                            0x0F, 0xB6, 0x85, new BinRefTo("UnitBaseAddress", false), // movzx eax, byte ptr [ebp+UnitBaseAddress]
-                            0x6A, 0x00, // push 00
-                            0x68, new BinRefTo("NonTowerSkipUnitIDArray", false), // push NonTowerSkipUnitIDArray
-                            0x50, // push eax
-                            0xE8, new BinRefTo("InByteArray"), // call InByteArray
-                            0x83, 0xF8, 0x01, // cmp eax,01
-                            0x0F, 0x84, 0x13, 0x00, 0x00, 0x00, // je short 0x13
-                            
-                            0x66, 0x83, 0xBD, new BinRefTo("UnitBaseAddress", false), 0x3E, // cmp word ptr [ebp+UnitBaseAddress],3E
-                            0x59, // pop ecx
-                            0x5B, // pop ebx
-                            0x58, // pop eax
-                            0x0F, 0x85, new BinRefTo("BuildFunctionExit"), // jne BuildFunctionExit
-                            0xEB, 0x03, // jmp short 03
-                            0x59, // pop ecx
-                            0x5B, // pop ebx
-                            0x58, // pop eax
-                        }
-                    },
-                },
-            },
             
+            new Change("o_seed_modification_possibility_title", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_seed_modification_possibility_only_set", true)
+                {
+                    // 004964AB
+                    new BinaryEdit("o_seed_modification_possibility_fn1")
+                    {
+                        new BinAddress("_fopen", 1, true),
+                        new BinAddress("_fclose", 972, true),
+                    },
+                    
+                    // 0046C381
+                    new BinaryEdit("o_seed_modification_possibility_fn3")
+                    {
+                        new BinAddress("_internalFileRead", 10, true),
+                    },
+                    
+                    // 00588FF2
+                    new BinaryEdit("o_seed_modification_possibility_fn4")
+                    {
+                        new BinAddress("_atol", 2, true),
+                    },
+                    
+                    // 0046A764
+                    new BinaryEdit("o_seed_modification_possibility")
+                    {
+                        new BinAlloc("isInited", null)
+                        {
+                            0x00,
+                        },
+                        
+                        new BinAlloc("liveSeedFile", null)
+                        {
+                            0x67, 0x61, 0x6D, 0x65, 0x73, 0x65, 0x65, 0x64, 0x73, 0x2F,
+                            0x6C, 0x69, 0x76, 0x65, 0x00
+                        },
+                        
+                        new BinAlloc("readTextFlag", null)
+                        {
+                            0x72, 0x00
+                        },
+                        
+                        new BinAlloc("readSeedString", null)
+                        {
+                            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                        },
+                        
+                        new BinAlloc("loadedSeed", null)
+                        {
+                           0x00, 0x00, 0x00, 0x00
+                        },
+                        
+                        new BinAlloc("cachedSeed", null)
+                        {
+                           0x00, 0x00, 0x00, 0x00
+                        },
+                         // -- end of alloc
+                        
+                        new BinSkip(4), // skip 4
+                        new BinHook(5)
+                        {
+                            0x60, // pushad
+                            0x83, 0x3D, new BinRefTo("isInited", false), 00, // cmp [isInited],00
+                            0x75, 0x0C, // jne short 0C
+                            0xC7, 0x05, new BinRefTo("isInited", false), 0x01, 0x00, 0x00, 0x00, // mov [isInited],01
+                            0xEB, 0x6A, // jmp short 6A
+                            
+                            0x8B, 0x4E, 0x04, // mov ecx,[esi+04]
+                            0x89, 0x0D, new BinRefTo("cachedSeed", false), // mov [cachedSeed],ecx
+                            
+                            0x31, 0xC9, // xor ecx,ecx
+                            // -- loop
+                            0xC7, 0x81, new BinRefTo("readSeedString", false), 0x00, 0x00, 0x00, 0x00, // mov [readSeedString+ecx],00
+                            0x41, // inc ecx
+                            0x81, 0xF9, 0x0A, 0x00, 0x00, 0x00, // cmp ecx,0A
+                            0x75, 0xED, // jne short ED (backwards)
+                            
+                            0x68, new BinRefTo("readTextFlag", false), // push readTextFlag
+                            0x68, new BinRefTo("liveSeedFile", false), // push liveSeedFile
+                            0xE8, new BinRefTo("_fopen", true), // call _fopen
+                            0x8B, 0xF0, // mov esi,eax
+                            0x81, 0xC4, 0x08, 0x00, 0x00, 0x00, // add esp,08
+                            0x83, 0xFE, 0x00, // cmp esi,00
+                            0x74, 0x43, // je short 46
+                            
+                            0x56, // push esi
+                            0x68, 0x01, 0x00, 0x00, 0x00, // push 01
+                            0x68, 0x0A, 0x00, 0x00, 0x00, // push 0A
+                            0x68, new BinRefTo("readSeedString", false), // push readSeedString
+                            0xE8, new BinRefTo("_internalFileRead", true), // call _internalFileRead
+                            
+                            0x68, new BinRefTo("readSeedString", false), // push readSeedString
+                            0xE8, new BinRefTo("_atol", true), // call _atol
+                            
+                            0xA3, new BinRefTo("loadedSeed", false), // mov [loadedSeed],eax
+                            
+                            0x56, // push esi
+                            0xE8, new BinRefTo("_fclose", true), // call _fclose
+                            0x81, 0xC4, 0x18, 0x00, 0x00, 0x00, // add esp,18
+                            0x61, // popad
+                            
+                            0x53, // push ebx
+                            0x8B, 0x1D, new BinRefTo("loadedSeed", false), // mov ebx,[loadedSeed]
+                            0x89, 0x5E, 0x04, // mov [esi+04],ebx
+                            0x5B, // pop ebx
+                            0x8B, 0x46, 0x04, // mov eax,[esi+04]
+                            0x57, // push edi
+                            0x50, // push eax
+                            0xEB, 0x06, // jmp end
+                            // -- end of Read Set Seed
+                            
+                            0x61, // popad
+                            
+                            0x8B, 0x46, 0x04, // mov eax,[esi+04]
+                            0x57, // push edi
+                            0x50, // push eax
+                        },
+                    }
+                },
+                new DefaultHeader("o_seed_modification_possibility", false)
+                {
+                    // 004964AB
+                    new BinaryEdit("o_seed_modification_possibility_fn1")
+                    {
+                        new BinAddress("_fopen", 1, true),
+                        new BinAddress("_fwrite", 59, true),
+                        new BinAddress("_fclose", 972, true),
+                    },
+                    
+                    // 00592CA6
+                    new BinaryEdit("o_seed_modification_possibility_fn2")
+                    {
+                        new BinAddress("_itoa", 13, true),
+                    },
+                    
+                    // 0046C381
+                    new BinaryEdit("o_seed_modification_possibility_fn3")
+                    {
+                        new BinAddress("_internalFileRead", 10, true),
+                    },
+                    
+                    // 00588FF2
+                    new BinaryEdit("o_seed_modification_possibility_fn4")
+                    {
+                        new BinAddress("_atol", 2, true),
+                    },
+                    
+                    // 00588E4B
+                    new BinaryEdit("o_seed_modification_possibility_fn5")
+                    {
+                        new BinAddress("_strlen", 2, true),
+                    },
+                    
+                    // 0046A764
+                    new BinaryEdit("o_seed_modification_possibility")
+                    {
+                        new BinAlloc("isInited", null)
+                        {
+                            0x00,
+                        },
+                        
+                        new BinAlloc("needSeedSave", null)
+                        {
+                            0x01
+                        },
+                        
+                        new BinAlloc("seedFolder", null)
+                        {
+                            0x67, 0x61, 0x6D, 0x65, 0x73, 0x65, 0x65, 0x64, 0x73, 0x2F, 0x00
+                        },
+                        
+                        new BinAlloc("liveSeedFile", null)
+                        {
+                            0x67, 0x61, 0x6D, 0x65, 0x73, 0x65, 0x65, 0x64, 0x73, 0x2F,
+                            0x6C, 0x69, 0x76, 0x65, 0x00
+                        },
+                        
+                        new BinAlloc("readTextFlag", null)
+                        {
+                            0x72, 0x00
+                        },
+                        
+                        new BinAlloc("writeTextFlag", null)
+                        {
+                            0x77, 0x00
+                        },
+                        
+                        new BinAlloc("readSeedString", null)
+                        {
+                            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                        },
+                        
+                        new BinAlloc("saveSeedStringBuffer", null)
+                        {
+                           0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                        },
+                        
+                        new BinAlloc("loadedSeed", null)
+                        {
+                           0x00, 0x00, 0x00, 0x00
+                        },
+                        
+                        new BinAlloc("cachedSeed", null)
+                        {
+                           0x00, 0x00, 0x00, 0x00
+                        },
+                         // -- end of alloc
+                        
+                        new BinSkip(4), // skip 4
+                        new BinHook(5)
+                        {
+                            0x60, // pushad
+                            0x83, 0x3D, new BinRefTo("isInited", false), 00, // cmp [isInited],00
+                            0x75, 0x0C, // jne short 0C
+                            0xC7, 0x05, new BinRefTo("isInited", false), 0x01, 0x00, 0x00, 0x00, // mov [isInited],01
+                            0xEB, 0x6A, // jmp short 6A
+                            
+                            0x8B, 0x4E, 0x04, // mov ecx,[esi+04]
+                            0x89, 0x0D, new BinRefTo("cachedSeed", false), // mov [cachedSeed],ecx
+                            
+                            0x31, 0xC9, // xor ecx,ecx
+                            // -- loop
+                            0xC7, 0x81, new BinRefTo("readSeedString", false), 0x00, 0x00, 0x00, 0x00, // mov [readSeedString+ecx],00
+                            0x41, // inc ecx
+                            0x81, 0xF9, 0x0A, 0x00, 0x00, 0x00, // cmp ecx,0A
+                            0x75, 0xED, // jne short ED (backwards)
+                            
+                            0x68, new BinRefTo("readTextFlag", false), // push readTextFlag
+                            0x68, new BinRefTo("liveSeedFile", false), // push liveSeedFile
+                            0xE8, new BinRefTo("_fopen", true), // call _fopen
+                            0x8B, 0xF0, // mov esi,eax
+                            0x81, 0xC4, 0x08, 0x00, 0x00, 0x00, // add esp,08
+                            0x83, 0xFE, 0x00, // cmp esi,00
+                            0x74, 0x46, // je short 46
+                            
+                            0x56, // push esi
+                            0x68, 0x01, 0x00, 0x00, 0x00, // push 01
+                            0x68, 0x0A, 0x00, 0x00, 0x00, // push 0A
+                            0x68, new BinRefTo("readSeedString", false), // push readSeedString
+                            0xE8, new BinRefTo("_internalFileRead", true), // call _internalFileRead
+                            
+                            0x68, new BinRefTo("readSeedString", false), // push readSeedString
+                            0xE8, new BinRefTo("_atol", true), // call _atol
+                            
+                            0xA3, new BinRefTo("loadedSeed", false), // mov [loadedSeed],eax
+                            
+                            0x56, // push esi
+                            0xE8, new BinRefTo("_fclose", true), // call _fclose
+                            0x81, 0xC4, 0x18, 0x00, 0x00, 0x00, // add esp,18
+                            0x61, // popad
+                            
+                            0x53, // push ebx
+                            0x8B, 0x1D, new BinRefTo("loadedSeed", false), // mov ebx,[loadedSeed]
+                            0x89, 0x5E, 0x04, // mov [esi+04],ebx
+                            0x5B, // pop ebx
+                            0x8B, 0x46, 0x04, // mov eax,[esi+04]
+                            0x57, // push edi
+                            0x50, // push eax
+                            0xE9, 0xAB, 0x00, 0x00, 0x00, // jmp end
+                            // -- end of Read Set Seed
+                            
+                            
+                            
+                            
+                            0x61, // popad
+                            0x80, 0x3D, new BinRefTo("needSeedSave", false), 01, // cmp byte ptr[needSeedSave],01
+                            0x0F, 0x85, 0x98, 0x00, 0x00, 0x00, // jne short 98
+                            0x60, // pushad
+                            
+                            0x31, 0xC9, // xor ecx,ecx
+                            // -- loop
+                            0xC7, 0x81, new BinRefTo("saveSeedStringBuffer", false), 0x00, 0x00, 0x00, 0x00, // mov [saveSeedStringBuffer+ecx],00
+                            0x41, // inc ecx
+                            0x81, 0xF9, 0x3D, 0x00, 0x00, 0x00, // ecx,3D
+                            0x75, 0xED, // jne short ED (backwards)
+                            
+                            0x31, 0xC9, // xor ecx,ecx
+                            0x31, 0xDB, // xor ebx,ebx
+                            // -- loop
+                            0x8A, 0x99, new BinRefTo("seedFolder", false), // mov bl,byte ptr[seedFolder+ecx]
+                            0x88, 0x99, new BinRefTo("saveSeedStringBuffer", false), // mov [saveSeedStringBuffer+ecx],bl
+                            0x41, // inc ecx
+                            0x84, 0xDB, // test bl,bl
+                            0x75, 0xEF, // jne short EF (backwards)
+                            
+                            0x49, // dec ecx
+                            0x8D, 0x81, new BinRefTo("saveSeedStringBuffer", false), // lea eax,[saveSeedStringBuffer+ecx]
+                            0x68, 0x0A, 0x00, 0x00, 0x00, // push 0A
+                            0x68, 0x10, 0x00, 0x00, 0x00, // push 10
+                            0x50, // push eax
+                            0xFF, 0x35, new BinRefTo("cachedSeed", false), // push [cachedSeed]
+                            0xE8, new BinRefTo("_itoa", true), // call _itoa
+                            0x8B, 0x44, 0x24, 0x04, // mov eax,[esp+04]
+                            0xA3, new BinRefTo("loadedSeed", false), // mov [loadedSeed],eax
+                            0x81, 0xC4, 0x10, 0x00, 0x00, 0x00, // add esp,10
+                            
+                            0x68, new BinRefTo("writeTextFlag", false), // push writeTextFlag
+                            0x68, new BinRefTo("saveSeedStringBuffer", false), // push saveSeedStringBuffer
+                            0xE8, new BinRefTo("_fopen", true), // call _fopen
+                            0x8B, 0xF0, // mov esi,eax
+                            0x81, 0xC4, 0x08, 0x00, 0x00, 0x00, // add esp,08
+                            
+                            0xFF, 0x35, new BinRefTo("loadedSeed", false), // push [loadedSeed]
+                            0xE8, new BinRefTo("_strlen", true), // call _strlen
+                            
+                            0x56, // push esi
+                            0x68, 0x01, 0x00, 0x00, 0x00, // push 01
+                            0x50, // push eax
+                            0xFF, 0x35, new BinRefTo("loadedSeed", false), // push [loadedSeed]
+                            0xE8, new BinRefTo("_fwrite", true), // call _fwrite
+                            
+                            0x56, // push esi
+                            0xE8, new BinRefTo("_fclose", true), // call _fclose
+                            
+                            0x81, 0xC4, 0x18, 0x00, 0x00, 0x00, // add esp,18
+                            0x61, // popad
+                            
+                            0x8B, 0x46, 0x04, // mov eax,[esi+04]
+                            0x57, // push edi
+                            0x50, // push eax
+                        },
+                    }
+                }
+            },
+
             new Change("o_change_siege_engine_spawn_position_catapult", ChangeType.Other, false)
             {
                 new DefaultHeader("o_change_siege_engine_spawn_position_catapult")
