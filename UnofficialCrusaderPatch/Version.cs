@@ -1105,6 +1105,9 @@ namespace UCP
                     
                     // 4DA3E0 disable manabar clicks
                     BinBytes.CreateEdit("o_xtreme_bar2", 0xC3),
+
+                    // 486530 disable manabar network function
+                    BinBytes.CreateEdit("o_xtreme_bar3", 0xC3)
                 }
             },
 
