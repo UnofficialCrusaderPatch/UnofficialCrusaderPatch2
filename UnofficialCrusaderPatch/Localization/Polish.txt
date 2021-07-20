@@ -2,6 +2,16 @@
 //         2.15
 // ======================
 
+o_fix_map_sending
+{
+"Sending maps works now"
+}
+
+o_fix_map_sending_descr
+{
+"Reduces the length of the sent map name."
+}
+
 u_spearmen_run
 {
 "Biegający włócznicy"

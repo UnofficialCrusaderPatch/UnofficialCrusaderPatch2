@@ -576,6 +576,23 @@ namespace UCP
                     }
                 }
             },
+
+            // Fix broken map sending mechanic
+            new Change("o_fix_map_sending", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_map_sending")
+                {
+                    // 00489CE9
+                    new BinaryEdit("o_fix_map_sending")
+                    {
+                        new BinSkip(3),
+                        new BinBytes(0xE0, 0x03), // sent map name size; before: 7D0h
+                        new BinSkip(134),
+                        new BinBytes(0xE0, 0x03)
+                    }
+                }
+            },
+
             #endregion
 
             #region AI LORDS
