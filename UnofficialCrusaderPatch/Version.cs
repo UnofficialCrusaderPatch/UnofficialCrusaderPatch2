@@ -389,33 +389,21 @@ namespace UCP
             {
                 new DefaultHeader("o_fix_rapid_deletion_bug")
                 {
-                    // 0045CF4E
-                    new BinaryEdit("o_fix_rapid_deletion_bug_address_1")
-                    {
-                        new BinAddress("offset", 53, false)
-                    },
-
-                    // 00422F43
-                    new BinaryEdit("o_fix_rapid_deletion_bug_address_2")
-                    {
-                        new BinAddress("dodemolish", 10, true)
-                    },
-
-                    // 00482180
+                    // 0048201B
                     new BinaryEdit("o_fix_rapid_deletion_bug")
                     {
-                        new BinAddress("buildingID", -4, false),
-                        new BinAddress("buildingdemolish", 1, true),
-                        new BinHook(5)
+                        new BinAddress("label", -4, true),
+                        new BinAddress("offset", 2, false),
+                        new BinHook(6)
                         {
+                            0xBA, new BinRefTo("offset", false), // mov edx, offset
+                            0x8D, 0x52, 0xD8, // lea edx, [edx-28]
+                            0x66, 0x8B, 0x14, 0x32, // mov dx, [esi+edx]
+                            0x66, 0x83, 0xFA, 0x03, // cmp dx, 3
+                            0x0F, 0x84, new BinRefTo("label", true), // je label
+
                             // originalcode
-                            0xE8, new BinRefTo("buildingdemolish", true), // call Building_Demolish
-                            
-                            // call Building_DoDemolish
-                            0x8B, 0x15, new BinRefTo("buildingID", false), // mov edx, [buildingID]
-                            0x52, // push edx
-                            0xB9, new BinRefTo("offset", false), // mov ecx, offset
-                            0xE8, new BinRefTo("dodemolish", true)
+                            0x8B, 0x86, new BinRefTo("offset", false) // mov eax, [esi+offset]
                         }
                     }
                 }

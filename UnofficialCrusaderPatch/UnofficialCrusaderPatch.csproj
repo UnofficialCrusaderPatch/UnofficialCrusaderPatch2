@@ -324,8 +324,6 @@
     <EmbeddedResource Include="CodeBlocks\ai_buildhousing.block" />
     <EmbeddedResource Include="CodeBlocks\ai_deletehousing.block" />
     <EmbeddedResource Include="CodeBlocks\ai_recruitstate_initialtimer.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_rapid_deletion_bug_address_1.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_rapid_deletion_bug_address_2.block" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />
