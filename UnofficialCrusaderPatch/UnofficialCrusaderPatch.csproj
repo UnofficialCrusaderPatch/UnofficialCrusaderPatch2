@@ -366,10 +366,13 @@
     <EmbeddedResource Include="Localization\Russian.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Graphics\shield.png" />
+    <EmbeddedResource Include="Localization\Arabian.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Localization\Chinese.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\shield.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CodeBlocks\o_fix_fletcher_bug.block" />
