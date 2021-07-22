@@ -366,7 +366,7 @@
     <EmbeddedResource Include="Localization\Russian.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\Arabian.txt" />
+    <EmbeddedResource Include="Localization\Arabic.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Localization\Chinese.txt" />
