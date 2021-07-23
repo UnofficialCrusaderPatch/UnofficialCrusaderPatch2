@@ -98,7 +98,7 @@ install_abort_io
 
 install_abort
 {
-"تم ألغاء التنصيب"
+"تم ألغاء التثبيت"
 }
 
 backup_aiv_select
@@ -577,7 +577,7 @@ ui_cancel
 
 ui_uninstall
 {
-	"إزالة"
+	"الغاء التثبيت"
 }
 
 ui_uninstalldone
