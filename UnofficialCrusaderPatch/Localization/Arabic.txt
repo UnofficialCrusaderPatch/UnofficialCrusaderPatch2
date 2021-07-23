@@ -240,7 +240,7 @@ o_fix_moat_digging_unit_disappearing_descr
 ui_welcometext
 {
 "(Stronghold Crusader) هذا اصلاح اخطاء غير رسمي للعبة
-[GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch) هذا المشروع متوفر كمشروع مفتوح المصدر على
+[GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch) هذا المشروع مفتوح المصدر متوفر على
 
 جميع اصدارات العبة مدعومه, لكن بما أن هذا المشروع تم انشاءه على نسخة متجر ستيم اصدار 1.41, ربما يكون هناك عدم توافق
 فستظهر عند التثبيت رسائل اخطاء. اصدار التصحيح سيظهر في اسفل يسار القائمة الرئيسية للعبة 
