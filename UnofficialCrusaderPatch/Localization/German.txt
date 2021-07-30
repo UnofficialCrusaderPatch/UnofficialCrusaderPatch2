@@ -16,16 +16,6 @@ o_fix_map_sending_descr
 //         2.15
 // ======================
 
-o_fix_map_sending
-{
-"Macht Kartensenden möglich"
-}
-
-o_fix_map_sending_descr
-{
-"Verkürzt die Länge des gesendeten Namens."
-}
-
 u_spearmen_run
 {
 "Speerträger rennen standardmäßig"
