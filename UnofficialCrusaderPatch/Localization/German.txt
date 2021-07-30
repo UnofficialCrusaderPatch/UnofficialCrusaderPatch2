@@ -1,4 +1,18 @@
 // ======================
+//         DEV
+// ======================
+
+o_fix_map_sending
+{
+"Sending maps works now"
+}
+
+o_fix_map_sending_descr
+{
+"Reduces the length of the sent map name."
+}
+
+// ======================
 //         2.15
 // ======================
 
