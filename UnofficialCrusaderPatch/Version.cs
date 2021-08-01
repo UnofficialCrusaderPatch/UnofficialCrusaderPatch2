@@ -3493,9 +3493,9 @@ namespace UCP
                 }
             },
 
-            new Change("o_fast_placing", ChangeType.Other, true)
+            new Change("o_fast_placing", ChangeType.Other, false)
             {
-                new DefaultHeader("o_fast_placing")
+                new DefaultHeader("o_fast_placing_common", true)
                 {
                     // 00445D8C
                     new BinaryEdit("o_fast_placing")
@@ -3506,6 +3506,7 @@ namespace UCP
                             0x62, 0x00, // killing pit
                             0x63, 0x00, // pitch ditch
                             0x33, 0x00, // woodcutter
+
                             // bad things
                             0xB0, 0x00,
                             0x2D, 0x01, 0x2E, 0x01, 0x2F, 0x01, 0x30, 0x01, // cesspit
@@ -3516,6 +3517,7 @@ namespace UCP
                             0x32, 0x01,
                             0x36, 0x01,
                             0x37, 0x01,
+                            
                             // good things
                             0xAF, 0x00,
                             0x44, 0x01,
@@ -3524,6 +3526,12 @@ namespace UCP
                             0xA9, 0x00, 0xAA, 0x00, 0xAB, 0x00, // big garden
                             0x39, 0x01, 0x3A, 0x01, 0x3B, 0x01, 0x3C, 0x01, 0x3D, 0x01, // statue
                             0x3E, 0x01, 0x3F, 0x01, // shrine
+
+                            0x4A, 0x00, // mill
+                            0x56, 0x01, // water pot
+                            0x4B, 0x00, // bakery
+                            0x36, 0x00, // hovel
+
 
                             0x00, 0x00 // delimiter
                         },
@@ -3540,7 +3548,7 @@ namespace UCP
                             
                             new BinLabel("Rotate"),
                             0x8D, 0x8A, new BinRefTo("BuildingIDArray", false), // lea ecx,[BuildingIDArray + edx]
-                            0x0F, 0xB7, 0x09, // movzx ecx,byte ptr [ecx]
+                            0x0F, 0xB7, 0x09, // movzx ecx, word ptr [ecx]
                             0x85, 0xC9, // test ecx, ecx
                             0x74, 0x10, // jz short JMPSkip
                             0x39, 0xCE, // cmp esi,ecx
@@ -3552,7 +3560,7 @@ namespace UCP
                             // JMPContinue
                             0x59, // pop ecx
                             0x5A, // pop edx
-                            0x0F, 0x84, new BinRefTo("Continue"), // je Continue
+                            0xE9, new BinRefTo("Continue"), // jmp Continue
                             
                             // JMPSkip
                             0x59, // pop ecx
@@ -3585,6 +3593,40 @@ namespace UCP
 
                         new BinLabel("SkipSpeedCap")
                     }
+                },
+
+                new DefaultHeader("o_fast_placing_all", false)
+                {
+                    // 00445D8C
+                    new BinaryEdit("o_fast_placing")
+                    {
+                        new BinSkip(3),
+
+                        new BinBytes(0x90, 0x90, 0x90, 0x90, 0x90, 0x90),
+
+                        new BinSkip(9),
+
+                        new BinAddress("timeGetTime", 6),
+
+                        // reverse assembler optimization
+                        new BinHook(10)
+                        {
+                            0x83, 0xF8, 0x63, // cmp eax,0x63
+                            0x0F, 0x84, new BinRefTo("SkipSpeedCap"), // je SkipSpeedCap
+
+                            // original code
+                            0x8B, 0x35, new BinRefTo("timeGetTime", false)// mov esi,ds:timeGetTime
+                        },
+
+                        new BinSkip(22),
+
+                        // reduce multiplayer speed cap
+                        new BinBytes(0x64),
+
+                        new BinSkip(20),
+
+                        new BinLabel("SkipSpeedCap")
+                    },
                 }
             },
 
