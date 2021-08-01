@@ -1,0 +1,3 @@
+Evrey的历史ai城堡
+给每个ai领主增加一个历史上存在的城堡或城市的aiv 。
+[创作者:Evrey](https://github.com/Evrey/SHC_AIV/)

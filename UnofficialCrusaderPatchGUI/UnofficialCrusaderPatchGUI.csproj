@@ -55,6 +55,14 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -156,4 +164,12 @@
     <Resource Include="Graphics\shield.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+      xcopy "$(SolutionDir)resources"  "resources" /E /I /Y
+      xcopy "$(SolutionDir)SHC_AIV\firefly_fixed"  "resources\aiv\EvreyFixed" /E /I /Y
+      xcopy "$(SolutionDir)SHC_AIV\history"  "resources\aiv\EvreyHistory" /E /I /Y
+      xcopy "$(SolutionDir)SHC_AIV\skirmish"  "resources\aiv\EvreyImproved" /E /I /Y
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

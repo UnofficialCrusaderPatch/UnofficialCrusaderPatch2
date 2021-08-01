@@ -1,5 +1,5 @@
 // ======================
-//         dev
+//         2.15
 // ======================
 o_fast_placing
 {
@@ -28,47 +28,47 @@ o_fast_placing_all_descr
 
 u_spearmen_run
 {
-"Spearmen run by default instead of walking."
+"矛兵默认为奔跑状态而不是步行"
 }
 
 u_spearmen_run_descr
 {
-"Makes spearmen run by default instead of the slow walking."
+"矛兵在默认状态下将使用奔跑作为移动方式，而不是步行。"
 }
 
 o_seed_modification_possibility_title
 {
-"Game Seed"
+"游戏种子"
 }
 
 o_seed_modification_possibility_only_set
 {
-"Enable game seed"
+"启用固定游戏随机种子"
 }
 
 o_seed_modification_possibility_only_set_descr
 {
-"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For player-AI games, it will ensure the same start conditions in the map (AIV selection for example). To set the game seed, enable this option and create a file called 'live' with a 6 digit number in the game install/gameseeds directory. CAUTION: This feature only works after also restarting the game!"
+"如果使用相同的地图设置，设置游戏种子可以使只有AI的游戏对局每次都以相同的过程进行。对于既有玩家也有AI的游戏对局，设置游戏种子可以确保每次游戏的开始条件是相同的（例如相同的AIV）。若要设置游戏种子，请启用此选项并在game install/gameseeds目录中创建一个名为“live”的txt文件，并手动写上6位数字。注意：启动此功能后需要重新启动游戏！"
 }
 
 o_seed_modification_possibility
 {
-"Enable & Save game seeds"
+"启用或保存游戏随机种子"
 }
 
 o_seed_modification_possibility_descr
 {
-"This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards."
+"这个选项可以保存你当前的游戏种子，前提是你当前没有设定游戏种子，你可以将保存的游戏种子重命名为“live”使其应用在之后的游戏中。"
 }
 
 ai_recruitstate_initialtimer
 {
-"Customise the initial AI's defence recruit time"
+"AI在初期阶段只招募防御士兵"
 }
 
 ai_recruitstate_initialtimervalue_descr
 {
-"Set this value to number of months for which the AI will exclusively recruit defence troops, unless it has already filled up its defence total"
+"AI在游戏开始起的以下时间内只会招募防御士兵，除非防御士兵数量已达上限。"
 }
 
 ai_defense
@@ -84,202 +84,191 @@ ai_defense_descr
 
 ai_housing
 {
-"Customize the AIs decision to build and delete houses"
-}
-
-ai_buildhousing_descr
-{
-"Customize the AIs decision to build and delete houses"
+"AI建造民房更加智能"
 }
 
 build_housing_descr
 {
-"Number of extra available housing before AI stops building houses"
+"你可以设定AI的民房数量的浮动值，AI建造民房时，会额外建造该数值的民房，这样直到下次人口不足之前，AI都不需要建造民房；同样的，当AI工作人口减少时，AI也会最多保留该数值的超出工作人口部分的民房。这使得AI无需频繁的拆建民房，浪费木材资源，尤其是人口频繁波动时。"
 }
 
 campfire_housing_descr
 {
-"Number of peasants at the campfire before the AI stops buildings houses"
+"此处设置AI篝火处的空闲农民数量，当空闲农民数量多于此数值时，AI会停止建造民房。这个功能同时会禁止AI拆除民房。"
 }
 
 delete_housing
 {
-"Disable the AI's ability to delete houses"
+"禁止AI拆除民房"
 }
 
 delete_housing_descr
 {
-"When this option is selected the AI will never delete houses"
+"打开这个功能，AI将不会拆除民房。"
 }
 
 aiv_prompt
 {
-"Custom modified AIVs detected. Before installing, click 'Yes' to save the currently installed AIVs without overwriting the original backup. Click 'No' to overwrite installed AIVs without backing them up, and 'Cancel' to cancel."
+"检测到自定义AIV。你希望创建一个备份吗？"
 }
 
 aiv_cli_prompt
 {
-"Custom modified AIVs detected. Enter 'delete' to erase or enter folder name to copy files to."
+"检测到自定义AIV。输入“delete”删除此AIV或者输入文件夹的名字将AIV复制进此文件夹。"
 }
 
 install_abort_io
 {
-"Installation aborted. Files with the same name already exist in this folder. Please try again and select a different folder."
+"安装中止。该文件夹下已存在相同名称的文件，请再次尝试并选择一个不同的文件夹。"
 }
 
 install_abort
 {
-"Installation aborted"
+"安装中止"
 }
 
 backup_aiv_select
 {
-"Select Backup AIV folder"
+"选择备份AIV文件夹"
 }
 
 o_change_siege_engine_spawn_position_catapult
 {
-"Center siege engine spawn position"
+"器械建造完成时将位于帐篷中央"
 }
 
 o_change_siege_engine_spawn_position_catapult_descr
 {
-"Siege engines are now centered after they are finished building instead of spawning at the top corner of the tent."
+"器械建造完成时将不再位于帐篷的右上角，而是位于帐篷的中央。"
 }
 
 o_stop_player_keep_rotation
 {
-"Rotate player keeps"
+"玩家的大本营会根据所处地图方位进行旋转"
 }
 
 o_stop_player_keep_rotation_descr
 {
-"Player keeps now get rotated the same way, that AI keeps rotate on a map, facing with their campfire outwards towards the map edge."
+"玩家的大本营将可以和AI一样，会根据所处地图方位进行旋转，使篝火处永远背向地图中央。"
 }
 
 o_restore_arabian_engineer_speech
 {
-"Restore engineer arabian speech"
+"工程师切换为阿拉伯语音"
 }
 
 o_restore_arabian_engineer_speech_descr
 {
-"Allows engineers to speak the originally recorded arabian voicelines when the player uses the Arabian lord.
-
-There is not much variation of these voicelines, so it can get annoying after a while."
+"当玩家使用阿拉伯领主时，工程师的语音将会切换为阿拉伯语。"
 }
 
 u_fix_lord_animation_stuck_movement
 {
-"Fix Lord animation freeze"
+"修正领主摧毁建筑物后的人物动画"
 }
 
 u_fix_lord_animation_stuck_movement_descr
 {
-"Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
+"修正了领主的姿势，当领主停止移动或者摧毁一个建筑物后，他将会站立，而不是被卡在地上。"
 }
 
 fix_apple_orchard_build_size
 {
-"Shrink apple orchard's build size"
+"修正苹果园建造时的面积"
 }
 
 fix_apple_orchard_build_size_descr
 {
-"Changes the apple orchard's build size to the size it occupies after the farm is placed down. This saves some space when building the farms and increases the rate with which the AI is able to put these farms down."
+"将建造时苹果园需求的面积修正为苹果园的实际面积，这也可以让AI正确的放置苹果园。"
 }
 
 u_fix_applefarm_blocking
 {
-"Fix apple farm blocking"
+"修复苹果园工人被堵路"
 }
 
 u_fix_applefarm_blocking_descr
 {
-"Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
+"当农场的左上方被建筑堵住时，将不再阻止苹果园工人进入苹果园。"
 }
 
 o_increase_path_update_tick_rate
 {
-"Increase the tick rate of path update by 4 times."
+"寻路检测频率增加"
 }
 
 o_increase_path_update_tick_rate_descr
 {
-"In vanilla, it took 200 game ticks to update pathing which resulted in units not being able to move into the castle after destroying a gate or tower.
+"在原版，每200游戏刻会检测一次可行通路，经常导致ai的单位在摧毁了敌人的城门或者塔楼时不能立刻进入城堡。
 
-This change increases this tick rate by 4 times by lowering this required tick value to 50, allowing the units to 'realize' more quickly that a new path is available."
+打开后，每50个游戏刻就会进行一次检测，使得单位的反应速度加快。"
 }
 
 o_fix_ladderclimb
 {
-"Fix ladder climb bug"
+"修复士兵爬上云梯后遗失目的地bug"
 }
 
 o_fix_ladderclimb_descr
 {
-"Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
+"士兵现在爬上云梯后将会记住目的地，而不会被困在云梯上。"
 }
 
 u_tanner_fix
 {
-"Fix tanners getting all the same cow"
+"修复所有皮革工人获取同一头牛"
 }
 
 u_tanner_fix_descr
 {
-"Tanners will no longer return without a cow when another tanner took their target cow. They will now instead stand around a bit and then get another one."
+"现在皮革工人到达牧场后，若发现想要牵走的牛已被其他工人牵去，会转而去牵另外一头牛，而不是直接回到作坊。极大提高皮革作坊的效率。"
 }
 
 o_fix_fletcher_bug
 {
-"Fix fletcher bug"
+"修复弓弩工人的路线"
 }
 
 o_fix_fletcher_bug_descr
 {
-"Fixes the behaviour where the fletcher goes back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile."
+"现在弓弩工人在武器库放下弓弩后会直接去储存区拿原料，而不是先返回作坊。"
 }
 
 ai_fix_crusader_archers_pitch
 {
-"Fix AI crusader archers not lighting pitch"
+"修复AI的欧洲弓箭手不会点燃沥青"
 }
 
 ai_fix_crusader_archers_pitch_descr
 {
-"Fixes the AI crusader archers not lighting pitch like arabian archers do when enemy units get onto it."
+"AI的欧洲弓箭手可以和阿拉伯弓箭手一样点燃沥青。"
 }
 
 o_fix_baker_disappear
 {
-"Fix baker disappear bug"
+"修复面包工人消失"
 }
 
 o_fix_baker_disappear_descr
 {
-"Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile."
+"当面包工人到达储存区却没有面粉时，不再会消失。"
 }
 
 o_fix_moat_digging_unit_disappearing
 {
-"Fix moat digging units disappear bug"
+"修复挖河士兵消失"
 }
 
 o_fix_moat_digging_unit_disappearing_descr
 {
-"Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!"
+"挖河士兵在挖护城河时不再会随机消失。注意的是，当挖河士兵正好位于无通路地区时，如果你对其下达命令，他仍会消失！"
 }
-
-// ======================
-//         2.14
-// ======================
 
 ui_welcometext
 {
 "这是要塞十字军东征的非官方补丁编辑器。
 该项目在github上开源:
-[GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
+[GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch).
 
 通常来说，这个编辑器支持所有游戏版本。但是该编辑器是基于steam上1.41版本制作的，使用更低版本可能会出错。
 安装补丁时若出现问题，会弹出错误信息。
@@ -292,14 +281,16 @@ UCP制作团队
 [Sh0wdown](https://github.com/Sh0wdown)  
 
 项目负责
-[Kimberly](https://github.com/ByBurton/)  
+[Kimberly Azula](https://github.com/ByBurton/)  
 [Krarilotus (Youtube)](https://www.youtube.com/channel/UCMXHqa2vmclSoSkuCu_q5rw)
 
 协力制作
 [LordHansCapon](https://github.com/LordHansCapon)  
 [np123](https://github.com/patel-nikhil)  
-[J-T-de](https://github.com/J-T-de)  
-[Chaf1812](https://github.com/Chaf1812)  
+[J-T-de](https://github.com/J-T-de)
+[gynt](https://github.com/gynt)
+[Le spec](https://github.com/LeSpec)  
+[Chaf1812](https://github.com/Chaf1812)
 
 翻译提供者
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (波兰语)  
@@ -324,6 +315,10 @@ for the creation of the Stronghold series
 [Heroesflorian](https://github.com/Heroesflorian)"
 }
 
+// ======================
+//         2.14
+// ======================
+
 ui_StartTroops
 {
 	"起始部队"
@@ -341,7 +336,7 @@ ui_Resource
 
 o_shfy
 {
-	"要塞十字军东征修改"
+	"要塞修改"
 }
 
 o_shfy_beer
@@ -381,7 +376,7 @@ o_shfy_resourcequantity
 
 o_shfy_resourcequantity_descr
 {
-	"调整一些方面来匹配游戏，注意:任何改变都会影响ai领主，最坏的情况是失效!"
+	"将这些方面调整为要塞1的数值。注意:任何改变都会影响ai领主，最坏的情况是失效!"
 }
 
 o_armory_marketplace_weapon_order_fix
@@ -483,18 +478,6 @@ u_ballistamonk_descr
 {
 	"打开后，巨火弩将会自动攻击僧侣。"
 }
-
-aiv_EvreyHistory
-{
-	"Evrey的历史ai城堡"
-}
-
-aiv_EvreyHistory_descr
-{
-	"给每个ai领主增加一个历史上存在的城堡或城市的aiv 。&
-[创作者:Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
 
 
 // ======================
@@ -793,7 +776,7 @@ ai_demolish_walls_descr
 ai_demolish_eco_descr
 {
 	"如果ai感受到了压力，他会通过拆毁城堡建筑或者经济建筑的方式来快速获取资金&
-这在有时是没有必要的，可以在此处取消这个行为。."
+这在有时是没有必要的，你可以在此处取消这个行为。."
 }
 
 ai_tethers
@@ -807,15 +790,6 @@ ai_tethers_descr
 当采石场被反复摧毁时，会导致牛栏数量很多。打开此选项可以避免这种现象。"
 }
 
-
-
-
-
-
-
-
-
-
 // =======================
 //          2.06
 // =======================
@@ -827,36 +801,18 @@ ai_nosleep
 
 ai_nosleep_descr
 {
-	"ai通常会将正在生产中的建筑休眠，因为部分建筑缺乏原料，哪怕原料&
-正在路上，打开此选项可以取消该行为。" 
+	"ai通常会将正在生产中的建筑休眠，因为有部分建筑缺乏原料，哪怕原料&
+正在运回的路上，打开此选项可以防止ai将建筑休眠。" 
 }
 
 
-ai_overclock
-{
-	"减少ai指挥单位的时间间隔 [测试中]"
-}
-
-ai_overclock_descr
-{
-	"ai的单位在执行完一个命令后，可能并不会立即收到下一个命令，&
-这会导致单位无所事事一段时间，打开此选项可以减少ai的指挥时间间隔。
-
-暂时不知道这个间隔是否还会影响其他方面，因此有可能导致bug。"
-}
-
-
-
-
-
-
-
-
+// =======================
 // 5.12.2018
+// =======================
 
 o_onlyai
 {
-	"打开观察者模式 [可能存在bug]"
+	"打开观察者模式"
 }
 
 o_onlyai_descr
@@ -926,7 +882,7 @@ ai_towerengines
 
 ai_towerengines_descr
 {
-	"在原版，ai每种器械虽多只能放置3个，打开此选项可以解除此限制。"
+	"在原版，每种器械ai最多只能放置3个，打开此选项可以解除此限制。"
 }
 
 ai_buywood
@@ -1130,23 +1086,6 @@ ai_moredef_descr
 需要注意的是，打开此选项后，会导致这三个ai的初次进攻时间延后。"
 }
 
-aiv_tatha
-{
-	"Tatha的ai提升城堡"
-}
-
-aiv_tatha_descr
-{
-	"ai将会拥有比原版更加强大的城堡，每个ai不同样式的城堡拥有同等的强度&
-[Presentation-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
-}
-
-
-
-
-// some edits:
-
-
 ai_attackwave
 {
 	"提升ai的进攻"
@@ -1155,54 +1094,4 @@ ai_attackwave
 ai_attackwave_descr
 {
 	"在原版中，ai在进攻时，只会派出能够得着城墙的数量的士兵，比如说一圈城堡有50格城墙，那么只有50个人可以在不重叠的情况下砍城墙，此时哪怕有100名士兵集结在敌人城堡附近，也只会派出50人前去攻击城堡，打开此选项后将可以避免此现象。并且，打开此选项后，ai的士兵将会主动攻击城堡建筑和经济建筑。此外，ai将会派出更多的士兵去攻击敌人的领主。"
-}
-
-aiv_pitchsiege
-{
-	"PitchNeeded的加强ai城堡 (射石机和巨弩)"
-}
-
-aiv_pitchsiege_descr
-{
-	"为猪，维奇尔，埃米尔，尼泽尔添加了更多的射石机和巨弩。创作者&
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-
-aiv_PitchWells
-{
-	"PitchNeeded的加强ai城堡 (水井和水缸)"
-}
-
-aiv_PitchWells_descr
-{
-	"为原版ai城堡添加了一些水井和水缸。创作者&
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-
-// no edits, just formatting:
-
-
-
-aiv_evreyimproved
-{
-	"Evrey的加强ai城堡"
-}
-
-aiv_evreyimproved_descr
-{
-	"为ai添加了原版风格但更强劲的城堡&
-[创作者Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreyfixed
-{
-	"Evrey的原版修复城堡"
-}
-
-aiv_evreyfixed_descr
-{
-	"修复了原版ai城堡的一些问题，诸如茅房不足，建筑无通路等&
- [创作者Evrey](https://github.com/Evrey/SHC_AIV/)"
 }

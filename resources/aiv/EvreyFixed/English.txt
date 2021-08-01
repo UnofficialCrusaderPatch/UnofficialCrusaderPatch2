@@ -1,0 +1,3 @@
+Evrey's fixed vanilla castles
+Fixes bugs of the vanilla AI-Lord castles, like missing houses and guilds or blocked entrances.
+[Created by Evrey](https://github.com/Evrey/SHC_AIV/)
