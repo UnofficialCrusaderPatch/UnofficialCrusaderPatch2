@@ -1,6 +1,7 @@
 // ======================
-//         2.15
+//         DEV
 // ======================
+
 o_fast_placing
 {
 	"Fast placing"
@@ -25,6 +26,10 @@ o_fast_placing_all_descr
 {
 	"Hold left mouse button down to place buildings."
 }
+
+// ======================
+//         2.15
+// ======================
 
 u_spearmen_run
 {
