@@ -1,4 +1,18 @@
 // ======================
+//         DEV
+// ======================
+
+o_fix_rapid_deletion_bug
+{
+"Fix resources rapid deletion"
+}
+
+o_fix_rapid_deletion_bug_descr
+{
+"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
+}
+
+// ======================
 //         2.15
 // ======================
 

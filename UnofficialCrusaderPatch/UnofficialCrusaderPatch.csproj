@@ -213,6 +213,7 @@
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix4.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix5.block" />
     <EmbeddedResource Include="CodeBlocks\u_fireballistatunneler.block" />
+    <EmbeddedResource Include="CodeBlocks\o_fix_rapid_deletion_bug.block" />
     <EmbeddedResource Include="CodeBlocks\u_fix_lord_animation_stuck_building_attack.block" />
     <EmbeddedResource Include="CodeBlocks\u_fix_lord_animation_stuck_movement.block" />
     <EmbeddedResource Include="CodeBlocks\u_fix_applefarm_blocking.block" />
