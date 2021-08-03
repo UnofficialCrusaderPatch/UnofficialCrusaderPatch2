@@ -240,7 +240,7 @@ o_fix_moat_digging_unit_disappearing_descr
 ui_welcometext
 {
 "Dies ist ein inoffizieller Patch für Stronghold Crusader.
-Das Projekt ist Open-Source auf [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch) zu finden.
+Das Projekt ist Open-Source auf [GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch) zu finden.
 
 Potenziell wird jede Crusader-Version unterstützt, die Änderungen wurden allerdings anhand der 1.41 Steam-Version hergeleitet.
 Im Falle von Versionsinkompatibilität wird der Setup Fehlermeldungen zeigen. Die installierte Patchversion wird unten links im Hauptmenü angezeigt.

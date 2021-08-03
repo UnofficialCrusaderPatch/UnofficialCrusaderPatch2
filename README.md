@@ -3,11 +3,12 @@
 
  ## Project
 
-This project is an unofficial patcher for [Firefly Studio's](https://fireflyworlds.com/) game Stronghold Crusader 1. It features bug-fixes, balancing and quality-of-life changes, as well as several AIV castles. To apply this patch you need to have Stronghold Crusader installed, the setup does not include any files created by FireFly Studios, but instead edits them or adds community-made files. Further information can be found on our official [website](https://sh0wdown.github.io/UnofficialCrusaderPatch/).
+This project is an unofficial patcher for [Firefly Studio's](https://fireflyworlds.com/) game Stronghold Crusader 1. It features bug-fixes, balancing and quality-of-life changes, as well as several AIV castles. To apply this patch you need to have Stronghold Crusader installed, the setup does not include any files created by FireFly Studios, but instead edits them or adds community-made files. Further information can be found on our official [website](https://unofficialcrusaderpatch.github.io/).
 
 ## Installation
 
-To install the patch you just have to download the [latest UnofficialCrusaderPatch.exe release](https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases), execute it and choose the correct path of your Stronghold Crusader installation. You can then select several features you wish to install, recommended presettings are selected by default. The patch should work for most crusader versions, but only v1.41 and v1.41E are officially supported. If you encounter an error using a different version, you can upgrade to 1.41 for free using Firefly’s [Crusader HD Patch](http://www.strongholdcrusaderhd.com/patch.html).
+To install the patch you just have to download the latest [UnofficialCrusaderPatch 2.15b.zip
+](https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases), extract it, execute the UnofficialCrusaderPatchGUI.exe and choose the correct path of your Stronghold Crusader installation. You can then select several features you wish to install, recommended presettings are selected by default. The patch should work for most crusader versions, but only v1.41 and v1.41E are officially supported. If you encounter an error using a different version, you can upgrade to 1.41 for free using Firefly’s [Crusader HD Patch](http://www.strongholdcrusaderhd.com/patch.html).
 
 ## Issues and Suggestions
 
