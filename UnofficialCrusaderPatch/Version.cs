@@ -601,6 +601,9 @@ namespace UCP
                 }
             },
 
+            // Fix Jester visiting assassins on the battlefield
+            BinBytes.Change("u_jestermoveto_assassin", ChangeType.Bugfix, true, 0x01),
+          
             // Fix broken map sending mechanic
             new Change("o_fix_map_sending", ChangeType.Bugfix, true)
             {
@@ -616,7 +619,7 @@ namespace UCP
                     }
                 }
             },
-
+          
             #endregion
 
             #region AI LORDS
@@ -1794,12 +1797,42 @@ namespace UCP
             },
 
             /*
+             * Allow non-numpad +/- to change gamespeed
+             */
+            new Change("o_gamespeednumkey", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_gamespeednumkey")
+                {
+                    new BinaryEdit("o_gamespeednumkey")
+                    {
+                        new BinSkip(4),
+                        new BinHook(5)
+                        {
+                            0x81, 0xF9, 0x01, 0x00, 0x0C, 0x00,
+                            0x75, 0x12,
+                            0x81, 0xFE, 0xBD, 0x00, 0x00, 0x00,
+                            0x75, 0x0A,
+                            0xB9, 0x01, 0x00, 0x4A, 0x00,
+                            0xBE, 0x6D, 0x00, 0x00, 0x00,
+                            0x81, 0xF9, 0x01, 0x00, 0x0D, 0x00,
+                            0x75, 0x12,
+                            0x81, 0xFE, 0xBB, 0x00, 0x00, 0x00,
+                            0x75, 0x0A,
+                            0xB9, 0x01, 0x00, 0x4E, 0x00,
+                            0xBE, 0x6B, 0x00, 0x00, 0x00,
+                            0xBD, 0x01, 0x00, 0x00, 0x00    // mov ebp, 01
+                        }
+                    }
+                }
+            },
+
+            /*
              *  WASD
              */
              
-            new Change("o_keys", ChangeType.Other, false)
+            new Change("o_keys", ChangeType.Other, false, false)
             {
-                new DefaultHeader("o_keys")
+                new DefaultHeader("o_quicksave")
                 {
                     // 495800
                     new BinaryEdit("o_keys_savefunc")
@@ -1901,7 +1934,32 @@ namespace UCP
                         }
                     },
 
-                    // WASD
+                    new BinaryEdit("o_keys_menu")
+                    {
+                        new BinAddress("callright", 6, true),
+                        new BinAddress("callleft", 0x93, true),
+
+                        new BinSkip(5),
+                        new BinHook(5)
+                        {
+                            0x83, 0xFE, 0x44,
+                            JMP(EQUALS, 0x05),
+                            0xE8, new BinRefTo("callright")
+                        },
+
+                        new BinSkip(0x88),
+                        new BinHook(5)
+                        {
+                            0x83, 0xFE, 0x41,
+                            JMP(EQUALS, 0x05),
+                            0xE8, new BinRefTo("callleft")
+                        }
+                    }
+                },
+
+                new DefaultHeader("o_wasd")
+                {
+                                        // WASD
                     // Arrow Keys: 4b4ee4 + 1D => 9, A, B, C
                     // WASD Keys: 4b4ee4 + 39, 4F, 3C, 4B
                     new BinaryEdit("o_keys_down")
@@ -1952,28 +2010,6 @@ namespace UCP
                             CMP(EAX, 0x3), // cmp eax, 3
                         }
                     },
-
-                    new BinaryEdit("o_keys_menu")
-                    {
-                        new BinAddress("callright", 6, true),
-                        new BinAddress("callleft", 0x93, true),
-
-                        new BinSkip(5),
-                        new BinHook(5)
-                        {
-                            0x83, 0xFE, 0x44,
-                            JMP(EQUALS, 0x05),
-                            0xE8, new BinRefTo("callright")
-                        },
-
-                        new BinSkip(0x88),
-                        new BinHook(5)
-                        {
-                            0x83, 0xFE, 0x41,
-                            JMP(EQUALS, 0x05),
-                            0xE8, new BinRefTo("callleft")
-                        }
-                    }
                 }
             },
             
@@ -3541,6 +3577,155 @@ namespace UCP
                     {
                         new BinSkip(29),
                         0x00
+                    }
+                }
+            },
+
+            new Change("o_fast_placing", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_fast_placing_common", true)
+                {
+                    // 00445D8C
+                    new BinaryEdit("o_fast_placing")
+                    {
+                        // affected buildings
+                        new BinAlloc("BuildingIDArray", null)
+                        {
+                            0x62, 0x00, // killing pit
+                            0x63, 0x00, // pitch ditch
+                            0x33, 0x00, // woodcutter
+
+                            // bad things
+                            0xB0, 0x00,
+                            0x2D, 0x01, 0x2E, 0x01, 0x2F, 0x01, 0x30, 0x01, // cesspit
+                            0xB1, 0x00,
+                            0x31, 0x01,
+                            0x33, 0x01,
+                            0x34, 0x01,
+                            0x32, 0x01,
+                            0x36, 0x01,
+                            0x37, 0x01,
+                            
+                            // good things
+                            0xAF, 0x00,
+                            0x44, 0x01,
+                            0xA0, 0x00, 0xA1, 0x00, 0xA2, 0x00, 0xA3, 0x00, 0xA4, 0x00, 0xA5, 0x00, // small garden
+                            0xA6, 0x00, 0xA7, 0x00, 0xA8, 0x00, // middle garden
+                            0xA9, 0x00, 0xAA, 0x00, 0xAB, 0x00, // big garden
+                            0x39, 0x01, 0x3A, 0x01, 0x3B, 0x01, 0x3C, 0x01, 0x3D, 0x01, // statue
+                            0x3E, 0x01, 0x3F, 0x01, // shrine
+
+                            0x4A, 0x00, // mill
+                            0x56, 0x01, // water pot
+                            0x4B, 0x00, // bakery
+                            0x36, 0x00, // hovel
+
+
+                            0x00, 0x00 // delimiter
+                        },
+
+                        new BinAddress("Skip", 5, true),
+
+                        // check building
+                        new BinHook(9)
+                        {
+                            0x52, // push edx
+                            0x51, // push ecx
+
+                            0xBA, 0x00, 0x00, 0x00, 0x00, // mov edx,0
+                            
+                            new BinLabel("Rotate"),
+                            0x8D, 0x8A, new BinRefTo("BuildingIDArray", false), // lea ecx,[BuildingIDArray + edx]
+                            0x0F, 0xB7, 0x09, // movzx ecx, word ptr [ecx]
+                            0x85, 0xC9, // test ecx, ecx
+                            0x74, 0x10, // jz short JMPSkip
+                            0x39, 0xCE, // cmp esi,ecx
+                            0x74, 0x04, // je short JMPContinue
+                            0x42, // inc edx
+                            0x42, // inc edx
+                            0xEB, 0xEB, // jmp short Rotate
+
+                            // JMPContinue
+                            0x59, // pop ecx
+                            0x5A, // pop edx
+                            0xE9, new BinRefTo("Continue"), // jmp Continue
+                            
+                            // JMPSkip
+                            0x59, // pop ecx
+                            0x5A, // pop edx
+                            0xE9, new BinRefTo("Skip",true) // jmp Skip
+                        },
+
+                        new BinLabel("Continue"),
+
+                        new BinSkip(9),
+
+                        new BinAddress("timeGetTime", 6),
+
+                        // reverse assembler optimization
+                        new BinHook(10)
+                        {
+                            0x83, 0xF8, 0x63, // cmp eax,0x63
+                            0x0F, 0x84, new BinRefTo("SkipSpeedCap"), // je SkipSpeedCap
+
+                            // original code
+                            0x8B, 0x35, new BinRefTo("timeGetTime", false)// mov esi,ds:timeGetTime
+                        },
+
+                        new BinSkip(22),
+
+                        // reduce multiplayer speed cap
+                        new BinBytes(0x64),
+
+                        new BinSkip(20),
+
+                        new BinLabel("SkipSpeedCap")
+                    }
+                },
+
+                new DefaultHeader("o_fast_placing_all", false)
+                {
+                    // 00445D8C
+                    new BinaryEdit("o_fast_placing")
+                    {
+                        new BinSkip(3),
+
+                        new BinBytes(0x90, 0x90, 0x90, 0x90, 0x90, 0x90),
+
+                        new BinSkip(9),
+
+                        new BinAddress("timeGetTime", 6),
+
+                        // reverse assembler optimization
+                        new BinHook(10)
+                        {
+                            0x83, 0xF8, 0x63, // cmp eax,0x63
+                            0x0F, 0x84, new BinRefTo("SkipSpeedCap"), // je SkipSpeedCap
+
+                            // original code
+                            0x8B, 0x35, new BinRefTo("timeGetTime", false)// mov esi,ds:timeGetTime
+                        },
+
+                        new BinSkip(22),
+
+                        // reduce multiplayer speed cap
+                        new BinBytes(0x64),
+
+                        new BinSkip(20),
+
+                        new BinLabel("SkipSpeedCap")
+                    },
+                }
+            },
+          
+            new Change("o_disable_border_scrolling", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_disable_border_scrolling")
+                {
+                    // 004681CF
+                    new BinaryEdit("o_disable_border_scrolling")
+                    {
+                        new BinBytes(0xEB, 0x38)
                     }
                 }
             }
