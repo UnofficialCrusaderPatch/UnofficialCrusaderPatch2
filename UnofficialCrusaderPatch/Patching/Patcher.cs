@@ -16,6 +16,7 @@ namespace UCP.Patching
 
         const string CrusaderExe = "Stronghold Crusader.exe";
         const string XtremeExe = "Stronghold_Crusader_Extreme.exe";
+        const string GAME_SEEDS_FOLDER = "gameseeds";
 
         /// <summary>
         /// Test existence of SHC of SHC Extreme executables inside specified directory
@@ -114,6 +115,13 @@ namespace UCP.Patching
         {
             fails.Clear();
             SectionEditor.Reset();
+
+            string gameSeedsFolder = Path.Combine(Configuration.Path, GAME_SEEDS_FOLDER);
+
+            if (!Directory.Exists(gameSeedsFolder))
+            {
+                Directory.CreateDirectory(gameSeedsFolder);
+            }
 
             // Retrieve set of selected binary changes
             var changes = Version.Changes.Where(c => c.IsChecked && c is Change && !(c is ResourceChange) && !(c is StartTroopChange));

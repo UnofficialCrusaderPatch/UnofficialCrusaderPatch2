@@ -48,7 +48,7 @@ namespace UCPAIConversion
         private int _AttMainGroupsCount;
 
         // Index: 0 Hex: 0x00
-        public int Unknown000 { get; set; }
+        public int WallDecoration { get; set; }
 
         // Index: 1 Hex: 0x04
         public int Unknown001 { get; set; }
@@ -500,7 +500,7 @@ namespace UCPAIConversion
         }
 
         // Index: 40 Hex: 0xA0
-        public int Unknown040 { get; set; }
+        public int AIRequestDelay { get; set; }
 
         // Index: 41 Hex: 0xA4
         [RWNames("Unknown041", "MinimumGoodsRequiredAfterTrade")]
@@ -1402,7 +1402,7 @@ namespace UCPAIConversion
         public int HarassingSiegeEnginesMax { get; set; }
 
         // Index: 124 Hex: 0x1F0
-        public int Unknown124 { get; set; }
+        public int RaidRetargetDelay { get; set; }
 
         // Index: 125 Hex: 0x1F4
         [RWComment("The base amount of troops with which this AI attacks")]
@@ -1455,7 +1455,7 @@ namespace UCPAIConversion
 
         // Index: 130 Hex: 0x208
         [RWNames("Unknown130")] //Delay between siege engines being build and the army moving?
-        public int Unknown130 { get; set; }
+        public int AttAssaultDelay { get; set; }
 
         // Index: 131 Hex: 0x20C
         [RWComment("The delay that the AI waits until the AttUnitPatrol get a new attack-move order.")]
@@ -1608,19 +1608,19 @@ namespace UCPAIConversion
         [ScriptIgnore]
         [RWNames("Unknown146")]
         //Not without improved attack waves: [RWComment("These units split from the main attack force to destroy enemy buildings. If the enemy walls are nearby those may be attacked.")]
-        public Unit _AttUnit2 { get; set; }
-        public string AttUnit2
+        public Unit _AttUnitVanguard { get; set; }
+        public string AttUnitVanguard
         {
-            get => Enum.GetName(typeof(Unit), _AttUnit2);
+            get => Enum.GetName(typeof(Unit), _AttUnitVanguard);
             set
             {
-                _AttUnit2 = (Unit)Enum.Parse(typeof(Unit), value);
+                _AttUnitVanguard = (Unit)Enum.Parse(typeof(Unit), value);
             }
         }
 
         // Index: 147 Hex: 0x24C
         [RWNames("Unknown147")]
-        public int AttUnit2Max { get; set; }
+        public int AttUnitVanguardMax { get; set; }
 
         // Index: 148 Hex: 0x250
         public int AttMaxAssassins { get; set; }

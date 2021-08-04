@@ -1,6 +1,7 @@
 // ======================
-//         dev
+//         DEV
 // ======================
+
 o_remove_right_click_context_menu
 {
 "Remove right click context menu"
@@ -11,34 +12,101 @@ o_remove_right_click_context_menu_descr
 "Removes right click context menu where you can rotate the map, lower walls, zoom and flatten."
 }
 
-ai_housing
+
+
+// ======================
+//         2.15
+// ======================
+
+u_spearmen_run
 {
-"Customize the AIs decision to build and delete houses"
+"Spearmen run by default instead of walking"
 }
 
-ai_buildhousing_descr
+u_spearmen_run_descr
 {
-"Customize the AIs decision to build and delete houses"
+"Makes spearmen run by default like slaves and macemen."
+}
+
+o_seed_modification_possibility_title
+{
+"Manipulate random number generator"
+}
+
+o_seed_modification_possibility_only_set
+{
+"Enable fixed game randomseed"
+}
+
+o_seed_modification_possibility_only_set_descr
+{
+"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For games involving human players, it will ensure the same starting conditions in the map (e.g. AIV selection). To set the game seed, enable this option and create a file called 'live' containing an integer in the [game install]/gameseeds directory. CAUTION: This feature only works after also restarting the game!"
+}
+
+o_seed_modification_possibility
+{
+"Enable & Save game randomseeds"
+}
+
+o_seed_modification_possibility_descr
+{
+"This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards."
+}
+
+ai_recruitstate_initialtimer
+{
+"Set AIs initial time until they recruit by the AIC parameters"
+}
+
+ai_recruitstate_initialtimervalue_descr
+{
+"Set this value to number of months for which the AI will exclusively recruit defence troops, unless it has already filled up its defence total"
+}
+
+ai_defense
+{
+"Fix reinforcement of defense troops"
+}
+
+ai_defense_descr
+{
+	"Fixes a bug which stopped the AI from reinforcing missing troops &
+on walls and towers, as long as defensive patrols were still around."
+}
+
+ai_housing
+{
+"Let the AI build houses smarter"
 }
 
 build_housing_descr
 {
-"Number of extra available housing before AI stops building houses"
+"Difference between current and maximum population, above which the AI stops building houses. This is 0 in vanilla. This also disables deleting of houses for the AI."
+}
+
+campfire_housing_descr
+{
+"Number of idle peasants at the campfire before the AI stops building houses. This also disables deleting of houses for the AI."
+}
+
+delete_housing
+{
+"Disable the AI's ability to delete houses."
 }
 
 delete_housing_descr
 {
-"After the AI has reached this additional amount of available housing after it stopped building houses, it will delete houses"
+"When this option is selected the AI will never delete houses."
 }
 
 aiv_prompt
 {
-"Custom modified AIVs detected. Before installing, click 'Yes' to save the currently installed AIVs without overwriting the original backup. Click 'No' to overwrite installed AIVs without backing them up, and 'Cancel' to cancel."
+"Custom AIVs detected. Do you want to create a backup Milord?"
 }
 
 aiv_cli_prompt
 {
-"Custom modified AIVs detected. Enter 'delete' to erase or enter folder name to copy files to."
+"Custom AIVs detected. Enter 'delete' to erase or enter folder name to copy files to."
 }
 
 install_abort_io
@@ -58,17 +126,17 @@ backup_aiv_select
 
 o_change_siege_engine_spawn_position_catapult
 {
-"Center siege engine spawn position"
+"Spawn siege engines in the center of their tent"
 }
 
 o_change_siege_engine_spawn_position_catapult_descr
 {
-"Siege engines are now centered after they are finished building instead of spawning at the top corner of the tent."
+"Siege engines are spawning in the middle of their construction tent, instead of the top right corner."
 }
 
 o_stop_player_keep_rotation
 {
-"Rotate player keeps"
+"Rotate player keeps same as AI's"
 }
 
 o_stop_player_keep_rotation_descr
@@ -83,29 +151,17 @@ o_restore_arabian_engineer_speech
 
 o_restore_arabian_engineer_speech_descr
 {
-"Allows engineers to speak the originally recorded arabian voicelines when the player uses the Arabian lord.
-
-There is not much variation of these voicelines, so it can get annoying after a while."
+"Allows engineers to speak the originally recorded arabian voicelines when the player uses the Arabian lord."
 }
 
 u_fix_lord_animation_stuck_movement
 {
-"Fix Lord animation freeze"
+"Reset lord animation after destroying buildings"
 }
 
 u_fix_lord_animation_stuck_movement_descr
 {
-"Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
-}
-
-o_fix_small_wall_placement_count
-{
-"Fix small wall placement count preview"
-}
-
-o_fix_small_wall_placement_count_descr
-{
-"Fixes the bug where the small wall placement preview only allowed the player to use half of their stone."
+"Reset the pose of the lord after it stops moving or destroys a building into the upright position. Usually it would get stuck bend down to the ground."
 }
 
 fix_apple_orchard_build_size
@@ -120,7 +176,7 @@ fix_apple_orchard_build_size_descr
 
 u_fix_applefarm_blocking
 {
-"Fix apple farm blocking"
+"Fix apple farm worker getting blocked"
 }
 
 u_fix_applefarm_blocking_descr
@@ -128,46 +184,26 @@ u_fix_applefarm_blocking_descr
 "Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
 }
 
-o_allow_overbuilding
-{
-"Allow overbuilding workers and units"
-}
-
-o_allow_overbuilding_descr
-{
-"Allows the player to overbuild workers with buildings, while allowing to overbuild units with walls and towers making them pop at the top."
-}
-
 o_increase_path_update_tick_rate
 {
-"Increase the tick rate of path update by 4 times."
+"Check more often for available paths"
 }
 
 o_increase_path_update_tick_rate_descr
 {
-"In vanilla, it took 200 game ticks to update pathing which resulted in units not being able to move into the castle after destroying a gate or tower.
+"In vanilla, it took 200 game ticks to check for new paths, often stopping units to move into the castle after destroying a gate or tower immediately.
 
-This change increases this tick rate by 4 times by lowering this required tick value to 50, allowing the units to 'realize' more quickly that a new path is available."
+Availability is calculated every 50 gameticks now, allowing the units to 'realize' new paths more quickly."
 }
 
 o_fix_ladderclimb
 {
-"Fix ladder climb bug"
+"Fix ladder climbing destination bug"
 }
 
 o_fix_ladderclimb_descr
 {
-"Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
-}
-
-u_spearmen_run
-{
-"Spearmen run by default instead of walking"
-}
-
-u_spearmen_run_descr
-{
-"Makes spearmen run by default instead of the slow walking."
+"Units will now remember their original destination after climbing a ladder, not getting stuck on the ladder."
 }
 
 u_tanner_fix
@@ -182,52 +218,48 @@ u_tanner_fix_descr
 
 o_fix_fletcher_bug
 {
-"Fix fletcher bug"
+"Fix fletcher pathing"
 }
 
 o_fix_fletcher_bug_descr
 {
-"Fixes the behaviour where the fletcher goes back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile."
+"Fixes the behaviour where fletchers go back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile."
 }
 
 ai_fix_crusader_archers_pitch
 {
-"Fix AI crusader archers not lighting pitch"
+"Fix AI's crusader archers not lighting pitch"
 }
 
 ai_fix_crusader_archers_pitch_descr
 {
-"Fixes the AI crusader archers not lighting pitch like arabian archers do when enemy units get onto it."
+"AI's European archers light pitch the same way arabian archers do, defending against enemy units."
 }
 
 o_fix_baker_disappear
 {
-"Fix baker disappear bug"
+"Fix bakers despawning"
 }
 
 o_fix_baker_disappear_descr
 {
-"Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile."
+"Bakers no longer disappear when they don't find flour at their targeted stockpile."
 }
 
 o_fix_moat_digging_unit_disappearing
 {
-"Fix moat digging units disappear bug"
+"Fix despawning of digging units"
 }
 
 o_fix_moat_digging_unit_disappearing_descr
 {
-"Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!"
+"Fixes the bug where moat digging units would disappear while digging. Note that they can still disappear if you order them to move while standing on unwalkable terrain!"
 }
-
-// ======================
-//         2.14
-// ======================
 
 ui_welcometext
 {
 "This is an unofficial patch for Stronghold Crusader.
-The project ist available as open-source on [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
+The project ist available as open-source on [GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch).
 
 Any Crusader version is potentially supported, but since the changes were derived from the 1.41 Steam-Version, incompatibilities may appear.
 The setup will then show error messages. The installed patch version is shown in the bottom left corner of the main menu of the game. 
@@ -239,14 +271,16 @@ Creator of the UCP
 [Sh0wdown](https://github.com/Sh0wdown)  
 
 Project Management
-[Kimberly](https://github.com/ByBurton/)  
+[Kimberly Azula](https://github.com/ByBurton/)  
 [Krarilotus (Youtube)](https://www.youtube.com/channel/UCMXHqa2vmclSoSkuCu_q5rw)
 
 Developers
 [LordHansCapon](https://github.com/LordHansCapon)  
 [np123](https://github.com/patel-nikhil)  
-[J-T-de](https://github.com/J-T-de)  
-[Chaf1812](https://github.com/Chaf1812)  
+[J-T-de](https://github.com/J-T-de)
+[gynt](https://github.com/gynt)
+[Le spec](https://github.com/LeSpec)  
+[Chaf1812](https://github.com/Chaf1812)
 
 Translators
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polish)  
@@ -270,6 +304,10 @@ And many more
 [GRhin](https://www.twitch.tv/grhin)  
 [Heroesflorian](https://github.com/Heroesflorian)"
 }
+
+// ======================
+//         2.14
+// ======================
 
 ui_StartTroops
 {
@@ -429,18 +467,6 @@ u_ballistamonk_descr
 {
 	"Fire ballistas shoot automatically at monks with this setting."
 }
-
-aiv_EvreyHistory
-{
-	"Evrey's historic AI castles"
-}
-
-aiv_EvreyHistory_descr
-{
-	"Adds one new AI castle for each lord, based on real historical &
-castles or cities. [Created by Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
 
 
 // ======================
@@ -1034,19 +1060,6 @@ ui_AIV
 	"AIV"
 }
 
-ai_defense
-{
-	"Fix reinforcement of defense troops"
-}
-
-ai_defense_descr
-{
-	"Fixes a bug which stopped the AI from reinforcing missing troops &
-on walls and towers, as long as defensive patrols were still around. &
-Moreover, the probability for AIs to recruit defensive troops was generally &
-increased, as this value was vor some AIs zero."
-}
-
 ai_access
 {
 	"No demolishing of inaccessible buildings"
@@ -1058,24 +1071,6 @@ ai_access_descr
 stop the AI from continuously demolishing and rebuilding buildings where no &
 access is available."
 }
-
-aiv_tatha
-{
-	"Tatha's improved AI castles"
-}
-
-aiv_tatha_descr
-{
-	"Much stronger castles compared to Vanilla. The different castle variations of &
-each AI have the same strength. &
-[Presentation-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
-}
-
-
-
-
-// some edits:
-
 
 ai_attackwave
 {
@@ -1090,56 +1085,4 @@ when the target castle has a lot of buildings directly at its walls.
 This option makes units also attack civil and fortification buildings, as &
 well as wall parts which are already being attacked by one unit. Moreover,
 the AI sends more troops to the enemy lord as soon as it detects a breach."
-}
-
-aiv_pitchsiege
-{
-	"PitchNeeded's Evrey Edit (mangonels & ballistae)"
-}
-
-aiv_pitchsiege_descr
-{
-	"Extends 'Evrey's fixed vanilla castles', by adding mangonels and &
-ballistae to the towers of Wazir, Pig, Nizar and Emir. Edited by &
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-
-aiv_PitchWells
-{
-	"PitchNeeded's Evrey Edit (wells & apothecaries)"
-}
-
-aiv_PitchWells_descr
-{
-	"Extends 'Evrey's fixed vanilla castles', by adding wells &
-apothecaries to some castles. Edited by &
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-
-// no edits, just formatting:
-
-
-
-aiv_evreyimproved
-{
-	"Evrey's improved AI castles"
-}
-
-aiv_evreyimproved_descr
-{
-	"Grants the AI-Lords new and improved castles, based on the vanilla style. &
-[Created by Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreyfixed
-{
-	"Evrey's fixed vanilla castles"
-}
-
-aiv_evreyfixed_descr
-{
-	"Fixes bugs of the vanilla AI-Lord castles, like missing houses and guilds &
-or blocked entrances. [Created by Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
