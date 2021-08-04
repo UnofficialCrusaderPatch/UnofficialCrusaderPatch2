@@ -21,6 +21,31 @@ o_disable_border_scrolling_descr
 "Bewegen des Mauszeigers zum Bildschirmrand bewegt nicht mehr die Ansicht."
 }
 
+o_fast_placing
+{
+	"Fast placing"
+}
+
+o_fast_placing_common
+{
+	"killing pit, pitch ditch, woodcutter, good & bad things, mill, water pot, bakery, hovel)"
+}
+
+o_fast_placing_common_descr
+{
+	" "
+}
+
+o_fast_placing_all
+{
+	"all builds"
+}
+
+o_fast_placing_all_descr
+{
+	"Hold left mouse button down to place buildings."
+}
+
 o_fix_map_sending
 {
 "Enable map sending in multiplayer"
