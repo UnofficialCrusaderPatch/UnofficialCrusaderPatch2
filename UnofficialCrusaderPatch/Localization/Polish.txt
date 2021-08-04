@@ -2,6 +2,16 @@
 //         DEV
 // ======================
 
+o_gamespeednumkey
+{
+"Enable gamespeed change with non-numpad keys"
+}
+
+o_gamespeednumkey_descr
+{
+"Enable gamespeed change with non-numpad keys"
+}
+
 o_fast_placing
 {
 	"Fast placing"

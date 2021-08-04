@@ -46,6 +46,16 @@ o_fast_placing_all_descr
 	"Hold left mouse button down to place buildings."
 }
 
+o_gamespeednumkey
+{
+"Enable gamespeed change with non-numpad keys"
+}
+
+o_gamespeednumkey_descr
+{
+"Enable gamespeed change with non-numpad keys"
+}
+
 o_fix_map_sending
 {
 "Enable map sending in multiplayer"
