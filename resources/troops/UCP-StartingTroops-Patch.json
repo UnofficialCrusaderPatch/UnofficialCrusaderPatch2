@@ -29,7 +29,13 @@
 - Kalifa mostantól tűzvetőgépekkel és arab szablyásokkal kezd a Keresztes háború játékmódban.
 - A Szultán is tűzvetőgépekkel kezd a Keresztes háború játékmódban.
 - Emír arab íjászokkal kezd lovasíjászok helyett.
-- Az Apát jelentősen kevesebb szerzetessel és néhány íjásszal kezd a Keresztes háború játékmódban."
+- Az Apát jelentősen kevesebb szerzetessel és néhány íjásszal kezd a Keresztes háború játékmódban.",
+     "Arabic": "التصحيح سيقوم بأصلاح بعض الاخطاء في الجنود التابعين للملك (الذكاء الاصطناعي) الذين يكونون معه في بداية المبارة مثل عدم استعمال بعض أنواع من الجنود و نقص في بعض الجنود وتجاوز عدد الجنود الحد المسموح به وسيتم أصلاح الاخطاء على النحو الآتي
+
+- كّيلف سيضاف اليه الجنود الذين يقذفون الكرات النارية و السيافين العربيين
+- سلطان سيضاف اليه الجنود الذين يقذفون الكرات النارية
+- أمير سيبدء ب السهامين العاديين بدلا من السهامين فوق الاحصنة
+- أبيّت سيبدء بعدد اقل من الكهنة بالاضافة الى بعض السهامين"
   },
   "1": {
     "Name": "Rat",
