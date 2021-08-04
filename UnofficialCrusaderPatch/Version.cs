@@ -601,6 +601,9 @@ namespace UCP
                 }
             },
 
+            // Fix Jester visiting assassins on the battlefield
+            BinBytes.Change("u_jestermoveto_assassin", ChangeType.Bugfix, true, 0x01),
+          
             // Fix broken map sending mechanic
             new Change("o_fix_map_sending", ChangeType.Bugfix, true)
             {
@@ -616,7 +619,7 @@ namespace UCP
                     }
                 }
             },
-
+          
             #endregion
 
             #region AI LORDS
@@ -1797,9 +1800,9 @@ namespace UCP
              *  WASD
              */
              
-            new Change("o_keys", ChangeType.Other, false)
+            new Change("o_keys", ChangeType.Other, false, false)
             {
-                new DefaultHeader("o_keys")
+                new DefaultHeader("o_quicksave")
                 {
                     // 495800
                     new BinaryEdit("o_keys_savefunc")
@@ -1901,7 +1904,32 @@ namespace UCP
                         }
                     },
 
-                    // WASD
+                    new BinaryEdit("o_keys_menu")
+                    {
+                        new BinAddress("callright", 6, true),
+                        new BinAddress("callleft", 0x93, true),
+
+                        new BinSkip(5),
+                        new BinHook(5)
+                        {
+                            0x83, 0xFE, 0x44,
+                            JMP(EQUALS, 0x05),
+                            0xE8, new BinRefTo("callright")
+                        },
+
+                        new BinSkip(0x88),
+                        new BinHook(5)
+                        {
+                            0x83, 0xFE, 0x41,
+                            JMP(EQUALS, 0x05),
+                            0xE8, new BinRefTo("callleft")
+                        }
+                    }
+                },
+
+                new DefaultHeader("o_wasd")
+                {
+                                        // WASD
                     // Arrow Keys: 4b4ee4 + 1D => 9, A, B, C
                     // WASD Keys: 4b4ee4 + 39, 4F, 3C, 4B
                     new BinaryEdit("o_keys_down")
@@ -1952,28 +1980,6 @@ namespace UCP
                             CMP(EAX, 0x3), // cmp eax, 3
                         }
                     },
-
-                    new BinaryEdit("o_keys_menu")
-                    {
-                        new BinAddress("callright", 6, true),
-                        new BinAddress("callleft", 0x93, true),
-
-                        new BinSkip(5),
-                        new BinHook(5)
-                        {
-                            0x83, 0xFE, 0x44,
-                            JMP(EQUALS, 0x05),
-                            0xE8, new BinRefTo("callright")
-                        },
-
-                        new BinSkip(0x88),
-                        new BinHook(5)
-                        {
-                            0x83, 0xFE, 0x41,
-                            JMP(EQUALS, 0x05),
-                            0xE8, new BinRefTo("callleft")
-                        }
-                    }
                 }
             },
             
@@ -3668,6 +3674,18 @@ namespace UCP
                     },
                 }
             },
+          
+            new Change("o_disable_border_scrolling", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_disable_border_scrolling")
+                {
+                    // 004681CF
+                    new BinaryEdit("o_disable_border_scrolling")
+                    {
+                        new BinBytes(0xEB, 0x38)
+                    }
+                }
+            }
 
             #endregion
         };

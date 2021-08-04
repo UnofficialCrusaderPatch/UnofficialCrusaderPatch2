@@ -47,13 +47,33 @@ o_fix_rapid_deletion_bug_descr
 "Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
 }
 
+u_jestermoveto_assassin
+{
+	"Stop the jester from visiting assassins"
+}
+
+u_jestermoveto_assassin_descr
+{
+	"The jester visits your units on the battlefield to cheer them up. Now it wont visit your invisible assassins anymore, showing everyone where they are!"
+}
+
+o_disable_border_scrolling
+{
+"Disable border scrolling"
+}
+
+o_disable_border_scrolling_descr
+{
+"Moving the cursor to the edge of the screen will no longer move its position."
+}
+
 // ======================
 //         2.15
 // ======================
 
 u_spearmen_run
 {
-"Spearmen run by default instead of walking"
+"Spearmen run by default instead of walking."
 }
 
 u_spearmen_run_descr
@@ -931,11 +951,25 @@ o_keys_descr
 CTRL-S and CTRL-L to quicksave and load respectively."
 }
 
+o_quicksave
+{
+	"Enable quicksaves via CTRL-S and CTRL-L"
+}
 
+o_quicksave_descr
+{
+	"CTRL-S can be used to perform a quicksave. CTRL-L will load the same save"
+}
 
+o_wasd
+{
+	"Enable using WASD to move around"
+}
 
-
-
+o_wasd_descr
+{
+	"WASD can be used to move around in addition to the existing arrow keys"
+}
 
 
 

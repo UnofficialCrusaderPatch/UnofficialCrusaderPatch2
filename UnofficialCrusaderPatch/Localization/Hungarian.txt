@@ -27,6 +27,16 @@ o_fast_placing_all_descr
 	"Hold left mouse button down to place buildings."
 }
 
+o_disable_border_scrolling
+{
+"Deaktiviere Scrollen am Bildschirmrand"
+}
+
+o_disable_border_scrolling_descr
+{
+"Bewegen des Mauszeigers zum Bildschirmrand bewegt nicht mehr die Ansicht."
+}
+
 o_fix_map_sending
 {
 "Enable map sending in multiplayer"
@@ -50,6 +60,15 @@ o_fix_rapid_deletion_bug_descr
 // ======================
 //         2.15
 // ======================
+u_jestermoveto_assassin
+{
+	"Stop the jester from visiting assassins"
+}
+
+u_jestermoveto_assassin_descr
+{
+	"The jester visits your units on the battlefield to cheer them up. Now it wont visit your invisible assassins anymore, showing everyone where they are!"
+}
 
 u_spearmen_run
 {
@@ -926,7 +945,25 @@ o_keys_descr
 Ezenkívül a CTRL-S és a CTRL-L billentyűkkel lehet gyorsmentést létrehozni és betölteni."
 }
 
+o_quicksave
+{
+	"Enable quicksaves via CTRL-S and CTRL-L"
+}
 
+o_quicksave_descr
+{
+	"CTRL-S can be used to perform a quicksave. CTRL-L will load the same save"
+}
+
+o_wasd
+{
+	"Enable using WASD to move around"
+}
+
+o_wasd_descr
+{
+	"WASD can be used to move around in addition to the existing arrow keys"
+}
 
 
 
