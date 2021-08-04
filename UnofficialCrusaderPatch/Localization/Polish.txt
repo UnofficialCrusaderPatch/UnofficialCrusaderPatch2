@@ -1,5 +1,5 @@
 // ======================
-//         dev
+//         DEV
 // ======================
 u_assassinfix
 {
@@ -10,6 +10,26 @@ u_assassinfix_descr
 {
 "- Assassins will no longer stop and forget their destination in the middle of the map after encountering an enemy on the way
 - Assassins will no longer attack units on atop the keep after descending the wall into a 1 tile gap path between the wall and the keep"
+}
+
+o_fix_map_sending
+{
+"Enable map sending in multiplayer"
+}
+
+o_fix_map_sending_descr
+{
+"Reduces the length of the sent map name, to make map sending possible again!"
+}
+
+o_fix_rapid_deletion_bug
+{
+"Fix resources rapid deletion"
+}
+
+o_fix_rapid_deletion_bug_descr
+{
+"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
 }
 
 // ======================
@@ -259,7 +279,7 @@ o_fix_moat_digging_unit_disappearing_descr
 ui_welcometext
 {
 "Jest to nieoficjalna łatka do Twierdzy Krzyżowiec.
-Projekt jest dostępny jako otwarte oprogramowanie przez [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
+Projekt jest dostępny jako otwarte oprogramowanie przez [GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch).
 
 Każda wersja Krzyżowca jest potencjalnie obsługiwana, ale wprowadzone zmiany pochodzą z wersji 1.41 Steam, dlatego mogą pojawić się problemy.
 Instalator wyświetli wtedy komunikat o błędzie. Wersja tej łatki jest pokazana w lewym dolnym rogu głównego menu gry. 
