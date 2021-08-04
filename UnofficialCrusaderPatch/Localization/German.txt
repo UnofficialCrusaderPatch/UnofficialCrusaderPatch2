@@ -118,6 +118,20 @@ ai_restore_ai_siege_messages_50_descr
 This option restores this feature."
 }
 
+u_ghosteng
+{
+"Fix engineers not dying with siege engines"
+}
+
+u_ghosteng_descr
+{
+"Fix engineers not dying when siege engine they are manning is killed"
+}
+
+// ======================
+//         2.15
+// ======================
+
 o_fix_map_sending
 {
 "Enable map sending in multiplayer"

@@ -2,6 +2,16 @@
 //         DEV
 // ======================
 
+u_ghosteng
+{
+"Fix engineers not dying with siege engines"
+}
+
+u_ghosteng_descr
+{
+"Fix engineers not dying when siege engine they are manning is killed"
+}
+
 ai_restore_ai_siege_messages
 {
 "Restore AI siege messages"
@@ -140,6 +150,16 @@ u_jestermoveto_assassin
 u_jestermoveto_assassin_descr
 {
 	"The jester visits your units on the battlefield to cheer them up. Now it wont visit your invisible assassins anymore, showing everyone where they are!"
+}
+
+u_ghosteng
+{
+"Fix engineers not dying with siege engines"
+}
+
+u_ghosteng_descr
+{
+"Fix engineers not dying when siege engine they are manning is killed"
 }
 
 u_spearmen_run

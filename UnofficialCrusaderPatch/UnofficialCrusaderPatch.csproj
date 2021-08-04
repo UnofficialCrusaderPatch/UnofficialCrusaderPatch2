@@ -355,6 +355,7 @@
     <EmbeddedResource Include="CodeBlocks\s_troops.block" />
     <EmbeddedResource Include="CodeBlocks\s_lordstrength.block" />
     <EmbeddedResource Include="CodeBlocks\s_lordtype.block" />
+    <EmbeddedResource Include="CodeBlocks\u_ghostengineer.block" />
     <EmbeddedResource Include="CodeBlocks\u_jestermoveto_assassin.block" />
     <EmbeddedResource Include="CodeBlocks\u_spearmen_run.block" />
     <EmbeddedResource Include="CodeBlocks\o_xtreme_bar3.block" />
