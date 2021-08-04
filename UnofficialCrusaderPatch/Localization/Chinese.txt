@@ -1,6 +1,27 @@
 // ======================
-//         2.15
+//         DEV
 // ======================
+
+o_fix_map_sending
+{
+"Enable map sending in multiplayer"
+}
+
+o_fix_map_sending_descr
+{
+"Reduces the length of the sent map name, to make map sending possible again!"
+}
+
+o_fix_rapid_deletion_bug
+{
+"Fix resources rapid deletion"
+}
+
+o_fix_rapid_deletion_bug_descr
+{
+"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
+}
+
 o_disable_border_scrolling
 {
 "Disable border scrolling"
@@ -10,6 +31,10 @@ o_disable_border_scrolling_descr
 {
 "Moving the cursor to the edge of the screen will no longer move its position."
 }
+
+// ======================
+//         2.15
+// ======================
 
 u_spearmen_run
 {
