@@ -776,6 +776,9 @@ namespace UCP
                 }
             },
 
+            // Fix Jester visiting assassins on the battlefield
+            BinBytes.Change("u_jestermoveto_assassin", ChangeType.Bugfix, true, 0x01),
+          
             // Fix broken map sending mechanic
             new Change("o_fix_map_sending", ChangeType.Bugfix, true)
             {
@@ -791,7 +794,7 @@ namespace UCP
                     }
                 }
             },
-
+          
             #endregion
 
             #region AI LORDS
@@ -1164,6 +1167,430 @@ namespace UCP
             // sheriff => 50
             // marshal => 10
             // abbot => 50
+            
+            
+
+            new Change("ai_restore_ai_siege_messages", ChangeType.AILords, false)
+            {
+                
+                new DefaultHeader("ai_restore_ai_siege_messages_always", true)
+                {
+                    // 4D0FC0
+                    new BinaryEdit("ai_restore_ai_siege_messages_data1")
+                    {
+                        new BinAddress("isPlayerAliveHandle", 7),
+                        new BinAddress("IsPlayerAliveFunction", 12, true),
+                        new BinAddress("playerDataArray", 30),
+                        new BinAddress("playBikHandle", 42),
+                        new BinAddress("QueueBikPlayFunction", 47, true),
+                    },
+                    
+                    // 42793C
+                    new BinaryEdit("ai_restore_ai_siege_messages_data2")
+                    {
+                        new BinAddress("playerGroupArray", 22),
+                    },
+                    
+                    // 57BA78
+                    new BinaryEdit("ai_restore_ai_siege_messages_data3")
+                    {
+                        new BinAddress("currentPlayerID", 1),
+                        new BinAddress("AICArray", 8),
+                    },
+                    
+                    // 4D4BD6
+                    new BinaryEdit("ai_restore_ai_siege_messages")
+                    {
+                        new BinAlloc("aiToldToAttackBooleanArray", null)
+                        {
+                            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                        },
+                        new BinAlloc("PlaySiegeBikFromPlayer", null)
+                        {
+                            0x56, // push esi
+                            0x8B, 0x74, 0x24, 0x08, // mov esi,[esp+08]
+                            0x56, // push esi
+                            0xB9, new BinRefTo("isPlayerAliveHandle", false), // mov ecx,isPlayerAliveHandle
+                            0xE8, new BinRefTo("IsPlayerAliveFunction"), // call IsPlayerAliveFunction
+                            0x85, 0xC0, // test eax,eax
+                            0x53, // push ebx
+                            0x74, 0x45, // je playSiegeBikFromPlayerSkip
+                            
+                            // Check if player is in the same group as the attacking AI
+                            0xA1, new BinRefTo("currentPlayerID", false), // mov eax,currentPlayerID
+                            0x0F, 0xB6, 0x98, new BinRefTo("playerGroupArray", false), // movzx ebx,byte ptr[eax+playerGroupArray]
+                            0x38, 0x9E, new BinRefTo("playerGroupArray", false), // cmp [esi+playerGroupArray],bl
+                            0x75, 0x31, // jne playSiegeBikFromPlayerSkip
+                            
+                            // Check if the AI just got the command to attack.
+                            0xBB, new BinRefTo("aiToldToAttackBooleanArray", false), // mov ebx,aiToldToAttackBooleanArray
+                            0x4B, // dec ebx
+                            0x83, 0x3C, 0x33, 0x00, // cmp dword ptr [ebx+esi],00
+                            0x75, 0x25, // jne playSiegeBikFromPlayerSkip
+                            
+                            // We play the bik.
+                            0x8B, 0xC6, // mov eax,esi
+                            0x69, 0xC0, 0xF4, 0x39, 0x00, 0x00, // imul eax,eax,000039F4
+                            0x8B, 0x88, new BinRefTo("playerDataArray", false), // mov ecx,[eax+playerDataArray]
+                            0x68, 0x17, 0x00, 0x00, 0x00, // push 17
+                            0x81, 0xE9, 0x01, 0x00, 0x00, 0x00, // sub ecx,01
+                            0x51, // push ecx
+                            0x56, // push esi
+                            0xB9, new BinRefTo("playBikHandle", false), // mov ecx,playBikHandle
+                            0xE8, new BinRefTo("QueueBikPlayFunction", true), // call QueueBikPlayFunction
+                            
+                            new BinLabel("playSiegeBikFromPlayerSkip"),
+                            // reset aiToldToAttackBooleanArray for ai
+                            0xBB, new BinRefTo("aiToldToAttackBooleanArray", false), // mov ebx,aiToldToAttackBooleanArray
+                            0x4B, // dec ebx
+                            0xC7, 0x04, 0x33, 0x00, 0x00, 0x00, 0x00, // mov [ebx+esi],00000000
+                            0x5B, // pop ebx
+                            0x5E, // pop esi
+                            0xC2, 0x04, 0x00, // ret 0004
+                        },
+                        new BinAddress("AIStateAddress", 13), // 2BA4
+                        new BinAddress("OriginalFunctionAddress", 88, true),
+                        new BinSkip(87),
+                        new BinHook(5)
+                        {
+                            0xE8, new BinRefTo("OriginalFunctionAddress", true),
+                            
+                            // Now we can call PlaySiegeBikFromPlayer
+                            0x56, // push esi
+                            0xB9, new BinRefTo("AICArray", false), // mov ecx,AICArray
+                            0xE8, new BinRefTo("PlaySiegeBikFromPlayer"), // call PlaySiegeBikFromPlayer
+                        }
+                    }
+                },
+                
+                new DefaultHeader("ai_restore_ai_siege_messages_stronger", false)
+                {
+                    // 4D0FC0
+                    new BinaryEdit("ai_restore_ai_siege_messages_data1")
+                    {
+                        new BinAddress("isPlayerAliveHandle", 7),
+                        new BinAddress("IsPlayerAliveFunction", 12, true),
+                        new BinAddress("playerDataArray", 30),
+                        new BinAddress("playBikHandle", 42),
+                        new BinAddress("QueueBikPlayFunction", 47, true),
+                    },
+                    
+                    // 42793C
+                    new BinaryEdit("ai_restore_ai_siege_messages_data2")
+                    {
+                        new BinAddress("playerGroupArray", 22),
+                    },
+                    
+                    // 57BA78
+                    new BinaryEdit("ai_restore_ai_siege_messages_data3")
+                    {
+                        new BinAddress("currentPlayerID", 1),
+                        new BinAddress("AICArray", 8),
+                    },
+                    
+                    // 4D4BD6
+                    new BinaryEdit("ai_restore_ai_siege_messages")
+                    {
+                        new BinAlloc("aiToldToAttackBooleanArray", null)
+                        {
+                            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                        },
+                        new BinAlloc("PlaySiegeBikFromPlayer", null)
+                        {
+                            0x56, // push esi
+                            0x8B, 0x74, 0x24, 0x08, // mov esi,[esp+08]
+                            0x56, // push esi
+                            0xB9, new BinRefTo("isPlayerAliveHandle", false), // mov ecx,isPlayerAliveHandle
+                            0xE8, new BinRefTo("IsPlayerAliveFunction"), // call IsPlayerAliveFunction
+                            0x85, 0xC0, // test eax,eax
+                            0x53, // push ebx
+                            0x74, 0x45, // je playSiegeBikFromPlayerSkip
+                            
+                            // Check if player is in the same group as the attacking AI
+                            0xA1, new BinRefTo("currentPlayerID", false), // mov eax,currentPlayerID
+                            0x0F, 0xB6, 0x98, new BinRefTo("playerGroupArray", false), // movzx ebx,byte ptr[eax+playerGroupArray]
+                            0x38, 0x9E, new BinRefTo("playerGroupArray", false), // cmp [esi+playerGroupArray],bl
+                            0x75, 0x31, // jne playSiegeBikFromPlayerSkip
+                            
+                            // Check if the AI just got the command to attack.
+                            0xBB, new BinRefTo("aiToldToAttackBooleanArray", false), // mov ebx,aiToldToAttackBooleanArray
+                            0x4B, // dec ebx
+                            0x83, 0x3C, 0x33, 0x00, // cmp dword ptr [ebx+esi],00
+                            0x75, 0x25, // jne playSiegeBikFromPlayerSkip
+                            
+                            // We play the bik.
+                            0x8B, 0xC6, // mov eax,esi
+                            0x69, 0xC0, 0xF4, 0x39, 0x00, 0x00, // imul eax,eax,000039F4
+                            0x8B, 0x88, new BinRefTo("playerDataArray", false), // mov ecx,[eax+playerDataArray]
+                            0x68, 0x17, 0x00, 0x00, 0x00, // push 17
+                            0x81, 0xE9, 0x01, 0x00, 0x00, 0x00, // sub ecx,01
+                            0x51, // push ecx
+                            0x56, // push esi
+                            0xB9, new BinRefTo("playBikHandle", false), // mov ecx,playBikHandle
+                            0xE8, new BinRefTo("QueueBikPlayFunction", true), // call QueueBikPlayFunction
+                            
+                            new BinLabel("playSiegeBikFromPlayerSkip"),
+                            // reset aiToldToAttackBooleanArray for ai
+                            0xBB, new BinRefTo("aiToldToAttackBooleanArray", false), // mov ebx,aiToldToAttackBooleanArray
+                            0x4B, // dec ebx
+                            0xC7, 0x04, 0x33, 0x00, 0x00, 0x00, 0x00, // mov [ebx+esi],00000000
+                            0x5B, // pop ebx
+                            0x5E, // pop esi
+                            0xC2, 0x04, 0x00, // ret 0004
+                        },
+                        new BinAddress("AIStateAddress", 13), // 2BA4
+                        new BinAddress("OriginalFunctionAddress", 88, true),
+                        new BinSkip(87),
+                        new BinHook(5)
+                        {
+                            0xE8, new BinRefTo("OriginalFunctionAddress", true),
+                            
+                            0x50, // push eax
+                            0x53, // push ebx
+                            0x8B, 0xC6, // mov eax,esi
+                            0x69, 0xC0, 0xF4, 0x39, 0x00, 0x00, // imul eax,eax,000039F4
+                            0x8D, 0x80, new BinRefTo("AIStateAddress", false), // lea eax,[eax+AIStateAddress]
+                            0x8B, 0x58, 0x34, // mov ebx,[eax+34]
+                            0x69, 0xDB, 0xF4, 0x39, 0x00, 0x00, // imul ebx,ebx,000039F4
+                            0x8D, 0x9B, new BinRefTo("AIStateAddress", false), // lea ebx,[ebx+AIStateAddress]
+                            0x8B, 0x5B, 0xD0, // mov ebx,[ebx-30]
+                            0x8B, 0x40, 0xD0, // mov eax,[eax-30]
+                            0x39, 0xD8, // cmp eax,ebx
+                            0x5B, // pop ebx
+                            0x58, // pop eax
+                            0x0F, 0x8C, new BinRefTo("ai_restore_ai_siege_messages_end", true),
+                            
+                            // Now we can call PlaySiegeBikFromPlayer
+                            0x56, // push esi
+                            0xB9, new BinRefTo("AICArray", false), // mov ecx,AICArray
+                            0xE8, new BinRefTo("PlaySiegeBikFromPlayer"), // call PlaySiegeBikFromPlayer
+                            new BinLabel("ai_restore_ai_siege_messages_end")
+                        }
+                    }
+                },
+                
+                new DefaultHeader("ai_restore_ai_siege_messages_33_or_stronger", false)
+                {
+                    // 4D0FC0
+                    new BinaryEdit("ai_restore_ai_siege_messages_data1")
+                    {
+                        new BinAddress("isPlayerAliveHandle", 7),
+                        new BinAddress("IsPlayerAliveFunction", 12, true),
+                        new BinAddress("playerDataArray", 30),
+                        new BinAddress("playBikHandle", 42),
+                        new BinAddress("QueueBikPlayFunction", 47, true),
+                    },
+                    
+                    // 42793C
+                    new BinaryEdit("ai_restore_ai_siege_messages_data2")
+                    {
+                        new BinAddress("playerGroupArray", 22),
+                    },
+                    
+                    // 57BA78
+                    new BinaryEdit("ai_restore_ai_siege_messages_data3")
+                    {
+                        new BinAddress("currentPlayerID", 1),
+                        new BinAddress("AICArray", 8),
+                    },
+                    
+                    // 47A38B
+                    new BinaryEdit("ai_restore_ai_siege_messages_data4")
+                    {
+                        new BinAddress("DAT_RandomNumber1", 12),
+                    },
+                    
+                    // 4D4BD6
+                    new BinaryEdit("ai_restore_ai_siege_messages")
+                    {
+                        new BinAlloc("aiToldToAttackBooleanArray", null)
+                        {
+                            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                        },
+                        new BinAlloc("PlaySiegeBikFromPlayer", null)
+                        {
+                            0x56, // push esi
+                            0x8B, 0x74, 0x24, 0x08, // mov esi,[esp+08]
+                            0x56, // push esi
+                            0xB9, new BinRefTo("isPlayerAliveHandle", false), // mov ecx,isPlayerAliveHandle
+                            0xE8, new BinRefTo("IsPlayerAliveFunction"), // call IsPlayerAliveFunction
+                            0x85, 0xC0, // test eax,eax
+                            0x53, // push ebx
+                            0x74, 0x45, // je playSiegeBikFromPlayerSkip
+                            
+                            // Check if player is in the same group as the attacking AI
+                            0xA1, new BinRefTo("currentPlayerID", false), // mov eax,currentPlayerID
+                            0x0F, 0xB6, 0x98, new BinRefTo("playerGroupArray", false), // movzx ebx,byte ptr[eax+playerGroupArray]
+                            0x38, 0x9E, new BinRefTo("playerGroupArray", false), // cmp [esi+playerGroupArray],bl
+                            0x75, 0x31, // jne playSiegeBikFromPlayerSkip
+                            
+                            // Check if the AI just got the command to attack.
+                            0xBB, new BinRefTo("aiToldToAttackBooleanArray", false), // mov ebx,aiToldToAttackBooleanArray
+                            0x4B, // dec ebx
+                            0x83, 0x3C, 0x33, 0x00, // cmp dword ptr [ebx+esi],00
+                            0x75, 0x25, // jne playSiegeBikFromPlayerSkip
+                            
+                            // We play the bik.
+                            0x8B, 0xC6, // mov eax,esi
+                            0x69, 0xC0, 0xF4, 0x39, 0x00, 0x00, // imul eax,eax,000039F4
+                            0x8B, 0x88, new BinRefTo("playerDataArray", false), // mov ecx,[eax+playerDataArray]
+                            0x68, 0x17, 0x00, 0x00, 0x00, // push 17
+                            0x81, 0xE9, 0x01, 0x00, 0x00, 0x00, // sub ecx,01
+                            0x51, // push ecx
+                            0x56, // push esi
+                            0xB9, new BinRefTo("playBikHandle", false), // mov ecx,playBikHandle
+                            0xE8, new BinRefTo("QueueBikPlayFunction", true), // call QueueBikPlayFunction
+                            
+                            new BinLabel("playSiegeBikFromPlayerSkip"),
+                            // reset aiToldToAttackBooleanArray for ai
+                            0xBB, new BinRefTo("aiToldToAttackBooleanArray", false), // mov ebx,aiToldToAttackBooleanArray
+                            0x4B, // dec ebx
+                            0xC7, 0x04, 0x33, 0x00, 0x00, 0x00, 0x00, // mov [ebx+esi],00000000
+                            0x5B, // pop ebx
+                            0x5E, // pop esi
+                            0xC2, 0x04, 0x00, // ret 0004
+                        },
+                        new BinAddress("AIStateAddress", 13), // 2BA4
+                        new BinAddress("OriginalFunctionAddress", 88, true),
+                        new BinSkip(87),
+                        new BinHook(5)
+                        {
+                            0xE8, new BinRefTo("OriginalFunctionAddress", true),
+                            
+                            0x50, // push eax
+                            0x53, // push ebx
+                            0x8B, 0xC6, // mov eax,esi
+                            0x69, 0xC0, 0xF4, 0x39, 0x00, 0x00, // imul eax,eax,000039F4
+                            0x8D, 0x80, new BinRefTo("AIStateAddress", false), // lea eax,[eax+AIStateAddress]
+                            0x8B, 0x58, 0x34, // mov ebx,[eax+34]
+                            0x69, 0xDB, 0xF4, 0x39, 0x00, 0x00, // imul ebx,ebx,000039F4
+                            0x8D, 0x9B, new BinRefTo("AIStateAddress", false), // lea ebx,[ebx+AIStateAddress]
+                            0x8B, 0x5B, 0xD0, // mov ebx,[ebx-30]
+                            0x8B, 0x40, 0xD0, // mov eax,[eax-30]
+                            0x39, 0xD8, // cmp eax,ebx
+                            0x0F, 0x8E, new BinRefTo("checkChanceLabel", true), // jle checkChanceLabel
+                            0x5B, // pop ebx
+                            0x58, // pop eax
+                            0xE9, new BinRefTo("playBikLabel"), // jmp playBikLabel
+                            
+                            new BinLabel("checkChanceLabel"),
+                            0x0F, 0xB6, 0x05, new BinRefTo("DAT_RandomNumber1", false), // movzx eax,byte ptr [DAT_RandomNumber1]
+                            0x25, 0x02, 0x00, 0x00, 0x00, // and eax,00000002
+                            0x3D, 0x01, 0x00, 0x00, 0x00, // cmp eax,00000001
+                            0x5B, // pop ebx
+                            0x58, // pop eax
+                            0x0F, 0x85, new BinRefTo("ai_restore_ai_siege_messages_end", true), // jne ai_restore_ai_siege_messages_end
+                            
+                            new BinLabel("playBikLabel"),
+                            // Now we can call PlaySiegeBikFromPlayer
+                            0x56, // push esi
+                            0xB9, new BinRefTo("AICArray", false), // mov ecx,AICArray
+                            0xE8, new BinRefTo("PlaySiegeBikFromPlayer"), // call PlaySiegeBikFromPlayer
+                            new BinLabel("ai_restore_ai_siege_messages_end")
+                        }
+                    }
+                },
+                
+                new DefaultHeader("ai_restore_ai_siege_messages_50", false)
+                {
+                    // 4D0FC0
+                    new BinaryEdit("ai_restore_ai_siege_messages_data1")
+                    {
+                        new BinAddress("isPlayerAliveHandle", 7),
+                        new BinAddress("IsPlayerAliveFunction", 12, true),
+                        new BinAddress("playerDataArray", 30),
+                        new BinAddress("playBikHandle", 42),
+                        new BinAddress("QueueBikPlayFunction", 47, true),
+                    },
+                    
+                    // 42793C
+                    new BinaryEdit("ai_restore_ai_siege_messages_data2")
+                    {
+                        new BinAddress("playerGroupArray", 22),
+                    },
+                    
+                    // 57BA78
+                    new BinaryEdit("ai_restore_ai_siege_messages_data3")
+                    {
+                        new BinAddress("currentPlayerID", 1),
+                        new BinAddress("AICArray", 8),
+                    },
+                    
+                    // 47A38B
+                    new BinaryEdit("ai_restore_ai_siege_messages_data4")
+                    {
+                        new BinAddress("DAT_RandomNumber1", 12),
+                    },
+                    
+                    // 4D4BD6
+                    new BinaryEdit("ai_restore_ai_siege_messages")
+                    {
+                        new BinAlloc("aiToldToAttackBooleanArray", null)
+                        {
+                            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                        },
+                        new BinAlloc("PlaySiegeBikFromPlayer", null)
+                        {
+                            0x56, // push esi
+                            0x8B, 0x74, 0x24, 0x08, // mov esi,[esp+08]
+                            0x56, // push esi
+                            0xB9, new BinRefTo("isPlayerAliveHandle", false), // mov ecx,isPlayerAliveHandle
+                            0xE8, new BinRefTo("IsPlayerAliveFunction"), // call IsPlayerAliveFunction
+                            0x85, 0xC0, // test eax,eax
+                            0x53, // push ebx
+                            0x74, 0x45, // je playSiegeBikFromPlayerSkip
+                            
+                            // Check if player is in the same group as the attacking AI
+                            0xA1, new BinRefTo("currentPlayerID", false), // mov eax,currentPlayerID
+                            0x0F, 0xB6, 0x98, new BinRefTo("playerGroupArray", false), // movzx ebx,byte ptr[eax+playerGroupArray]
+                            0x38, 0x9E, new BinRefTo("playerGroupArray", false), // cmp [esi+playerGroupArray],bl
+                            0x75, 0x31, // jne playSiegeBikFromPlayerSkip
+                            
+                            // Check if the AI just got the command to attack.
+                            0xBB, new BinRefTo("aiToldToAttackBooleanArray", false), // mov ebx,aiToldToAttackBooleanArray
+                            0x4B, // dec ebx
+                            0x83, 0x3C, 0x33, 0x00, // cmp dword ptr [ebx+esi],00
+                            0x75, 0x25, // jne playSiegeBikFromPlayerSkip
+                            
+                            // We play the bik.
+                            0x8B, 0xC6, // mov eax,esi
+                            0x69, 0xC0, 0xF4, 0x39, 0x00, 0x00, // imul eax,eax,000039F4
+                            0x8B, 0x88, new BinRefTo("playerDataArray", false), // mov ecx,[eax+playerDataArray]
+                            0x68, 0x17, 0x00, 0x00, 0x00, // push 17
+                            0x81, 0xE9, 0x01, 0x00, 0x00, 0x00, // sub ecx,01
+                            0x51, // push ecx
+                            0x56, // push esi
+                            0xB9, new BinRefTo("playBikHandle", false), // mov ecx,playBikHandle
+                            0xE8, new BinRefTo("QueueBikPlayFunction", true), // call QueueBikPlayFunction
+                            
+                            new BinLabel("playSiegeBikFromPlayerSkip"),
+                            // reset aiToldToAttackBooleanArray for ai
+                            0xBB, new BinRefTo("aiToldToAttackBooleanArray", false), // mov ebx,aiToldToAttackBooleanArray
+                            0x4B, // dec ebx
+                            0xC7, 0x04, 0x33, 0x00, 0x00, 0x00, 0x00, // mov [ebx+esi],00000000
+                            0x5B, // pop ebx
+                            0x5E, // pop esi
+                            0xC2, 0x04, 0x00, // ret 0004
+                        },
+                        new BinAddress("AIStateAddress", 13), // 2BA4
+                        new BinAddress("OriginalFunctionAddress", 88, true),
+                        new BinSkip(87),
+                        new BinHook(5)
+                        {
+                            0xE8, new BinRefTo("OriginalFunctionAddress", true),
+                            
+                            0xF6, 0x05, new BinRefTo("DAT_RandomNumber1", false), 0x01, // test byte ptr [DAT_RandomNumber1],01
+                            0x0F, 0x85, new BinRefTo("ai_restore_ai_siege_messages_end", true), // jne ai_restore_ai_siege_messages_end
+                            
+                            // Now we can call PlaySiegeBikFromPlayer
+                            0x56, // push esi
+                            0xB9, new BinRefTo("AICArray", false), // mov ecx,AICArray
+                            0xE8, new BinRefTo("PlaySiegeBikFromPlayer"), // call PlaySiegeBikFromPlayer
+                            new BinLabel("ai_restore_ai_siege_messages_end")
+                        }
+                    }
+                },
+            },
 
             #endregion
 
@@ -1969,12 +2396,42 @@ namespace UCP
             },
 
             /*
+             * Allow non-numpad +/- to change gamespeed
+             */
+            new Change("o_gamespeednumkey", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_gamespeednumkey")
+                {
+                    new BinaryEdit("o_gamespeednumkey")
+                    {
+                        new BinSkip(4),
+                        new BinHook(5)
+                        {
+                            0x81, 0xF9, 0x01, 0x00, 0x0C, 0x00,
+                            0x75, 0x12,
+                            0x81, 0xFE, 0xBD, 0x00, 0x00, 0x00,
+                            0x75, 0x0A,
+                            0xB9, 0x01, 0x00, 0x4A, 0x00,
+                            0xBE, 0x6D, 0x00, 0x00, 0x00,
+                            0x81, 0xF9, 0x01, 0x00, 0x0D, 0x00,
+                            0x75, 0x12,
+                            0x81, 0xFE, 0xBB, 0x00, 0x00, 0x00,
+                            0x75, 0x0A,
+                            0xB9, 0x01, 0x00, 0x4E, 0x00,
+                            0xBE, 0x6B, 0x00, 0x00, 0x00,
+                            0xBD, 0x01, 0x00, 0x00, 0x00    // mov ebp, 01
+                        }
+                    }
+                }
+            },
+
+            /*
              *  WASD
              */
              
-            new Change("o_keys", ChangeType.Other, false)
+            new Change("o_keys", ChangeType.Other, false, false)
             {
-                new DefaultHeader("o_keys")
+                new DefaultHeader("o_quicksave")
                 {
                     // 495800
                     new BinaryEdit("o_keys_savefunc")
@@ -2076,7 +2533,32 @@ namespace UCP
                         }
                     },
 
-                    // WASD
+                    new BinaryEdit("o_keys_menu")
+                    {
+                        new BinAddress("callright", 6, true),
+                        new BinAddress("callleft", 0x93, true),
+
+                        new BinSkip(5),
+                        new BinHook(5)
+                        {
+                            0x83, 0xFE, 0x44,
+                            JMP(EQUALS, 0x05),
+                            0xE8, new BinRefTo("callright")
+                        },
+
+                        new BinSkip(0x88),
+                        new BinHook(5)
+                        {
+                            0x83, 0xFE, 0x41,
+                            JMP(EQUALS, 0x05),
+                            0xE8, new BinRefTo("callleft")
+                        }
+                    }
+                },
+
+                new DefaultHeader("o_wasd")
+                {
+                                        // WASD
                     // Arrow Keys: 4b4ee4 + 1D => 9, A, B, C
                     // WASD Keys: 4b4ee4 + 39, 4F, 3C, 4B
                     new BinaryEdit("o_keys_down")
@@ -2127,28 +2609,6 @@ namespace UCP
                             CMP(EAX, 0x3), // cmp eax, 3
                         }
                     },
-
-                    new BinaryEdit("o_keys_menu")
-                    {
-                        new BinAddress("callright", 6, true),
-                        new BinAddress("callleft", 0x93, true),
-
-                        new BinSkip(5),
-                        new BinHook(5)
-                        {
-                            0x83, 0xFE, 0x44,
-                            JMP(EQUALS, 0x05),
-                            0xE8, new BinRefTo("callright")
-                        },
-
-                        new BinSkip(0x88),
-                        new BinHook(5)
-                        {
-                            0x83, 0xFE, 0x41,
-                            JMP(EQUALS, 0x05),
-                            0xE8, new BinRefTo("callleft")
-                        }
-                    }
                 }
             },
             
@@ -3703,6 +4163,168 @@ namespace UCP
                             0x5F, // pop edi
                             0xE8, new BinRefTo("originalFun"), // call originalFun
                         }
+                    }
+                }
+            },
+
+            new Change("o_remove_right_click_context_menu", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_remove_right_click_context_menu")
+                {
+                    // 438B86
+                    new BinaryEdit("o_remove_right_click_context_menu")
+                    {
+                        new BinSkip(29),
+                        0x00
+                    }
+                }
+            },
+
+            new Change("o_fast_placing", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_fast_placing_common", true)
+                {
+                    // 00445D8C
+                    new BinaryEdit("o_fast_placing")
+                    {
+                        // affected buildings
+                        new BinAlloc("BuildingIDArray", null)
+                        {
+                            0x62, 0x00, // killing pit
+                            0x63, 0x00, // pitch ditch
+                            0x33, 0x00, // woodcutter
+
+                            // bad things
+                            0xB0, 0x00,
+                            0x2D, 0x01, 0x2E, 0x01, 0x2F, 0x01, 0x30, 0x01, // cesspit
+                            0xB1, 0x00,
+                            0x31, 0x01,
+                            0x33, 0x01,
+                            0x34, 0x01,
+                            0x32, 0x01,
+                            0x36, 0x01,
+                            0x37, 0x01,
+                            
+                            // good things
+                            0xAF, 0x00,
+                            0x44, 0x01,
+                            0xA0, 0x00, 0xA1, 0x00, 0xA2, 0x00, 0xA3, 0x00, 0xA4, 0x00, 0xA5, 0x00, // small garden
+                            0xA6, 0x00, 0xA7, 0x00, 0xA8, 0x00, // middle garden
+                            0xA9, 0x00, 0xAA, 0x00, 0xAB, 0x00, // big garden
+                            0x39, 0x01, 0x3A, 0x01, 0x3B, 0x01, 0x3C, 0x01, 0x3D, 0x01, // statue
+                            0x3E, 0x01, 0x3F, 0x01, // shrine
+
+                            0x4A, 0x00, // mill
+                            0x56, 0x01, // water pot
+                            0x4B, 0x00, // bakery
+                            0x36, 0x00, // hovel
+
+
+                            0x00, 0x00 // delimiter
+                        },
+
+                        new BinAddress("Skip", 5, true),
+
+                        // check building
+                        new BinHook(9)
+                        {
+                            0x52, // push edx
+                            0x51, // push ecx
+
+                            0xBA, 0x00, 0x00, 0x00, 0x00, // mov edx,0
+                            
+                            new BinLabel("Rotate"),
+                            0x8D, 0x8A, new BinRefTo("BuildingIDArray", false), // lea ecx,[BuildingIDArray + edx]
+                            0x0F, 0xB7, 0x09, // movzx ecx, word ptr [ecx]
+                            0x85, 0xC9, // test ecx, ecx
+                            0x74, 0x10, // jz short JMPSkip
+                            0x39, 0xCE, // cmp esi,ecx
+                            0x74, 0x04, // je short JMPContinue
+                            0x42, // inc edx
+                            0x42, // inc edx
+                            0xEB, 0xEB, // jmp short Rotate
+
+                            // JMPContinue
+                            0x59, // pop ecx
+                            0x5A, // pop edx
+                            0xE9, new BinRefTo("Continue"), // jmp Continue
+                            
+                            // JMPSkip
+                            0x59, // pop ecx
+                            0x5A, // pop edx
+                            0xE9, new BinRefTo("Skip",true) // jmp Skip
+                        },
+
+                        new BinLabel("Continue"),
+
+                        new BinSkip(9),
+
+                        new BinAddress("timeGetTime", 6),
+
+                        // reverse assembler optimization
+                        new BinHook(10)
+                        {
+                            0x83, 0xF8, 0x63, // cmp eax,0x63
+                            0x0F, 0x84, new BinRefTo("SkipSpeedCap"), // je SkipSpeedCap
+
+                            // original code
+                            0x8B, 0x35, new BinRefTo("timeGetTime", false)// mov esi,ds:timeGetTime
+                        },
+
+                        new BinSkip(22),
+
+                        // reduce multiplayer speed cap
+                        new BinBytes(0x64),
+
+                        new BinSkip(20),
+
+                        new BinLabel("SkipSpeedCap")
+                    }
+                },
+
+                new DefaultHeader("o_fast_placing_all", false)
+                {
+                    // 00445D8C
+                    new BinaryEdit("o_fast_placing")
+                    {
+                        new BinSkip(3),
+
+                        new BinBytes(0x90, 0x90, 0x90, 0x90, 0x90, 0x90),
+
+                        new BinSkip(9),
+
+                        new BinAddress("timeGetTime", 6),
+
+                        // reverse assembler optimization
+                        new BinHook(10)
+                        {
+                            0x83, 0xF8, 0x63, // cmp eax,0x63
+                            0x0F, 0x84, new BinRefTo("SkipSpeedCap"), // je SkipSpeedCap
+
+                            // original code
+                            0x8B, 0x35, new BinRefTo("timeGetTime", false)// mov esi,ds:timeGetTime
+                        },
+
+                        new BinSkip(22),
+
+                        // reduce multiplayer speed cap
+                        new BinBytes(0x64),
+
+                        new BinSkip(20),
+
+                        new BinLabel("SkipSpeedCap")
+                    },
+                }
+            },
+          
+            new Change("o_disable_border_scrolling", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_disable_border_scrolling")
+                {
+                    // 004681CF
+                    new BinaryEdit("o_disable_border_scrolling")
+                    {
+                        new BinBytes(0xEB, 0x38)
                     }
                 }
             }

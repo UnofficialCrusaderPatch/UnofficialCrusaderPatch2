@@ -194,6 +194,12 @@
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield_enemy_taunt.block" />
     <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield_pre.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_restore_ai_siege_messages.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_restore_ai_siege_messages_data1.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_restore_ai_siege_messages_data2.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_restore_ai_siege_messages_data3.block" />
+    <EmbeddedResource Include="CodeBlocks\ai_restore_ai_siege_messages_data4.block" />
+    <EmbeddedResource Include="CodeBlocks\o_remove_right_click_context_menu.block" />
     <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech.block" />
     <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_engine.block" />
     <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_lord_type.block" />
@@ -323,7 +329,10 @@
     <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed_reset.block" />
     <EmbeddedResource Include="CodeBlocks\ai_buildhousing.block" />
     <EmbeddedResource Include="CodeBlocks\ai_deletehousing.block" />
+    <EmbeddedResource Include="CodeBlocks\o_gamespeednumkey.block" />
+    <EmbeddedResource Include="CodeBlocks\o_fast_placing.block" />
     <EmbeddedResource Include="CodeBlocks\ai_recruitstate_initialtimer.block" />
+    <EmbeddedResource Include="CodeBlocks\o_disable_border_scrolling.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_map_sending.block" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
@@ -347,6 +356,7 @@
     <EmbeddedResource Include="CodeBlocks\s_lordstrength.block" />
     <EmbeddedResource Include="CodeBlocks\s_lordtype.block" />
     <EmbeddedResource Include="CodeBlocks\u_ghostengineer.block" />
+    <EmbeddedResource Include="CodeBlocks\u_jestermoveto_assassin.block" />
     <EmbeddedResource Include="CodeBlocks\u_spearmen_run.block" />
     <EmbeddedResource Include="CodeBlocks\o_xtreme_bar3.block" />
     <None Include="Properties\Settings.settings">
