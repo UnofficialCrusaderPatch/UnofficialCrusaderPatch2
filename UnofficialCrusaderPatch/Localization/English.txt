@@ -2,6 +2,58 @@
 //         DEV
 // ======================
 
+ai_restore_ai_siege_messages
+{
+"Restore AI siege messages"
+}
+
+ai_restore_ai_siege_messages_descr
+{
+" "
+}
+
+ai_restore_ai_siege_messages_always
+{
+"Always"
+}
+
+ai_restore_ai_siege_messages_always_descr
+{
+" "
+}
+
+ai_restore_ai_siege_messages_stronger
+{
+"Only when attacking weaker enemy"
+}
+
+ai_restore_ai_siege_messages_stronger_descr
+{
+" "
+}
+
+ai_restore_ai_siege_messages_33_or_stronger
+{
+"Always when attacking weaker, 33% chance when attacking stronger"
+}
+
+ai_restore_ai_siege_messages_33_or_stronger_descr
+{
+" "
+}
+
+ai_restore_ai_siege_messages_50
+{
+"50% chance"
+}
+
+ai_restore_ai_siege_messages_50_descr
+{
+"AIs have recorded Siege messages which they send to their allies when they are about to attack an enemy. This feature was cut from the game, but the assets remained.
+
+This option restores this feature."
+}
+
 o_remove_right_click_context_menu
 {
 "Remove right click context menu"
