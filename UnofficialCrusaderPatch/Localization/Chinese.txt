@@ -4,12 +4,22 @@
 
 o_fix_map_sending
 {
-"Sending maps works now"
+"Enable map sending in multiplayer"
 }
 
 o_fix_map_sending_descr
 {
-"Reduces the length of the sent map name."
+"Reduces the length of the sent map name, to make map sending possible again!"
+}
+
+o_fix_rapid_deletion_bug
+{
+"Fix resources rapid deletion"
+}
+
+o_fix_rapid_deletion_bug_descr
+{
+"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
 }
 
 // ======================

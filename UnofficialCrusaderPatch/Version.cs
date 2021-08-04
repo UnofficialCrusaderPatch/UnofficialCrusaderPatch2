@@ -385,6 +385,30 @@ namespace UCP
                 }
             },
 
+            new Change("o_fix_rapid_deletion_bug", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_rapid_deletion_bug")
+                {
+                    // 0048201B
+                    new BinaryEdit("o_fix_rapid_deletion_bug")
+                    {
+                        new BinAddress("label", -4, true),
+                        new BinAddress("offset", 2, false),
+                        new BinHook(6)
+                        {
+                            0xBA, new BinRefTo("offset", false), // mov edx, offset
+                            0x8D, 0x52, 0xD8, // lea edx, [edx-28]
+                            0x66, 0x8B, 0x14, 0x32, // mov dx, [esi+edx]
+                            0x66, 0x83, 0xFA, 0x03, // cmp dx, 3
+                            0x0F, 0x84, new BinRefTo("label", true), // je label
+
+                            // originalcode
+                            0x8B, 0x86, new BinRefTo("offset", false) // mov eax, [esi+offset]
+                        }
+                    }
+                }
+            },
+
             new Change("u_fix_lord_animation_stuck_movement", ChangeType.Bugfix, true)
             {
                 new DefaultHeader("u_fix_lord_animation_stuck_movement")
@@ -1122,6 +1146,9 @@ namespace UCP
                     
                     // 4DA3E0 disable manabar clicks
                     BinBytes.CreateEdit("o_xtreme_bar2", 0xC3),
+
+                    // 486530 disable manabar network function
+                    BinBytes.CreateEdit("o_xtreme_bar3", 0xC3)
                 }
             },
 
