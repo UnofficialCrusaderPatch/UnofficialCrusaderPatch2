@@ -12,11 +12,29 @@ o_remove_right_click_context_menu_descr
 "Removes right click context menu where you can rotate the map, lower walls, zoom and flatten."
 }
 
+o_fix_map_sending
+{
+"Enable map sending in multiplayer"
+}
 
+o_fix_map_sending_descr
+{
+"Reduces the length of the sent map name, to make map sending possible again!"
+}
+
+o_fix_rapid_deletion_bug
+{
+"Fix resources rapid deletion"
+}
+
+o_fix_rapid_deletion_bug_descr
+{
+"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
+}
 
 // ======================
 //         2.15
-// ======================
+// =====================
 
 u_spearmen_run
 {
