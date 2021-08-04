@@ -1,5 +1,5 @@
 // ======================
-//         2.15
+//         DEV
 // ======================
 u_jestermoveto_assassin
 {
@@ -10,6 +10,30 @@ u_jestermoveto_assassin_descr
 {
 	"The jester visits your units on the battlefield to cheer them up. Now it wont visit your invisible assassins anymore, showing everyone where they are!"
 }
+
+o_fix_map_sending
+{
+"Enable map sending in multiplayer"
+}
+
+o_fix_map_sending_descr
+{
+"Reduces the length of the sent map name, to make map sending possible again!"
+}
+
+o_fix_rapid_deletion_bug
+{
+"Fix resources rapid deletion"
+}
+
+o_fix_rapid_deletion_bug_descr
+{
+"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
+}
+
+// ======================
+//         2.15
+// =====================
 
 u_spearmen_run
 {
@@ -133,7 +157,7 @@ o_stop_player_keep_rotation
 
 o_stop_player_keep_rotation_descr
 {
-"Die Bergfriede der Spieler richten sich nun so aus wie die der KI; Sie drehen sich so, dass das Lagerfeuer in Richtung des Kartenrands zeigt."
+"Die Bergfriede der Spieler richten sich nun so aus wie die der KI; sie drehen sich so, dass das Lagerfeuer in Richtung des Kartenrands zeigt."
 }
 
 o_restore_arabian_engineer_speech
@@ -183,9 +207,7 @@ o_increase_path_update_tick_rate
 
 o_increase_path_update_tick_rate_descr
 {
-"In Vanilla dauert es 200 Spielticks, bis neue Pfade berechnet wurden. Dies verzögerte oft nach Zerstörung von Türmen oder Torhäusern das Betreten der gegnerischen Burg.
-
-Erreichbarkeit wird nun alle 50 Ticks berechnet, wodurch Einheiten Breschen schneller erkennen können."
+"Das Spiel überprüft nun viermal so häufig, welche Bereiche der Karte verbunden sind. Dadurch können beispielsweise nach der Zerstörung eines Torhauses oder eines Turmes die Truppen schneller ins Innere einer zuvor unzugänglichen Burg beordert werden."
 }
 
 o_fix_ladderclimb
@@ -200,12 +222,12 @@ o_fix_ladderclimb_descr
 
 u_tanner_fix
 {
-"Gerber holen sich unterschiedliche Kühe"
+"Gerberinnen holen sich unterschiedliche Kühe"
 }
 
 u_tanner_fix_descr
 {
-"Gerber kehren nicht länger ohne Kuh zurück, falls ihre anvisierte Kuh bereits weg ist. Sie warten nun, bis sie eine andere Kuh mitnehmen können."
+"Gerberinnen kehren nicht länger ohne Kuh zurück, falls ihre anvisierte Kuh bereits weg ist. Sie warten nun, bis sie eine andere Kuh mitnehmen können."
 }
 
 o_fix_fletcher_bug
@@ -248,14 +270,10 @@ o_fix_moat_digging_unit_disappearing_descr
 "Behebt das Verschwinden von Truppen, die mit dem Ausheben von Burggräben beschäftigt sind. Diese verschwinden allerdings weiterhin, falls diese neue Befehle bekommen und zeitgleich auf unbegehbarem Terrain stehen."
 }
 
-// ======================
-//         2.14
-// ======================
-
 ui_welcometext
 {
 "Dies ist ein inoffizieller Patch für Stronghold Crusader.
-Das Projekt ist Open-Source auf [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch) zu finden.
+Das Projekt ist Open-Source auf [GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch) zu finden.
 
 Potenziell wird jede Crusader-Version unterstützt, die Änderungen wurden allerdings anhand der 1.41 Steam-Version hergeleitet.
 Im Falle von Versionsinkompatibilität wird der Setup Fehlermeldungen zeigen. Die installierte Patchversion wird unten links im Hauptmenü angezeigt.
@@ -300,6 +318,10 @@ Und viele mehr
 [GRhin](https://www.twitch.tv/grhin)  
 [Heroesflorian](https://github.com/Heroesflorian)"
 }
+
+// ======================
+//         2.14
+// ======================
 
 ui_StartTroops
 {
@@ -459,18 +481,6 @@ u_ballistamonk
 u_ballistamonk_descr
 {
 	"Lässt Feuerballisten automatisch auch auf Mönche schießen."
-}
-
-aiv_EvreyHistory
-{
-	"Evreys historische KI-Burgen"
-}
-
-aiv_EvreyHistory_descr
-{
-	"Gibt den KI-Lords jeweils eine neue Burg, die auf einer realen, &
-zum Lord passenden, historischen Burg oder gar Stadt basiert. &
-[Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
 
 
@@ -1080,24 +1090,6 @@ Damit soll der Bug verhindert werden, bei dem manche KIs in ihren Burgen &
 andauernd Gebäude abreißen und wieder aufbauen zu denen es keinen Weg gibt."
 }
 
-
-aiv_tatha
-{
-	"Tathas verbesserte KI Burgen"
-}
-
-aiv_tatha_descr
-{
-	"Im Vergleich zu den Vanilla-Versionen deutlich stärkere Burgen. Die verschiedenen &
-Burgvariationen der einzelnen KIs sind alle gleich stark. &
-[Vorstellungs-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
-}
-
-
-
-
-// some edits:
-
 ai_attackwave
 {
 	"Angriffswellen verbessern"
@@ -1114,57 +1106,3 @@ Befestigungsanlagen an, sowie Mauerstücke die bereits von einem Angreifer &
 besetzt sind. Außerdem schickt die KI jetzt auch mehr Truppen auf den &
 gegnerischen Bergfried, sobald sie eine Bresche erkennt."
 }
-
-aiv_pitchsiege
-{
-	"PitchNeededs Evrey Edit (Mangen & Ballisten)"
-}
-
-aiv_pitchsiege_descr
-{
-	"Erweitert 'Evreys gefixte Vanilla-Burgen' indem den Türmen von &
-Wazir, Schwein, Nizar und Emir Mangen und Ballisten hinzugefügt werden. &
-Editiert von [PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-aiv_pitchwells
-{
-	"PitchNeededs Evrey Edit (Brunnen & Apotheken)"
-}
-
-aiv_pitchwells_descr
-{
-	"Erweitert 'Evreys gefixte Vanilla-Burgen' indem einige KI-Burgen &
-Brunnen und Apotheken erhalten. Editiert von [PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-aiv_evreyfixed
-{
-	"Evreys gefixte Vanilla-Burgen"
-}
-
-aiv_evreyfixed_descr
-{
-	"Behebt Fehler der Vanilla-KI-Burgen, wie z.B. fehlende Häuser und Gilden &
-oder blockierte Ausgänge. [Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreyimproved
-{
-	"Evreys verbesserte KI-Burgen"
-}
-
-aiv_evreyimproved_descr
-{
-	"Gibt den KI-Lords neue verbesserte Burgen, angelehnt an den Vanilla-Stil. &
-[Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-
-
-
-
-
-
-
-

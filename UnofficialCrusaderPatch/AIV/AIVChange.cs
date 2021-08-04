@@ -137,7 +137,7 @@ namespace UCP.AIV
                 if (selected == true)
                 {
                     selectedChange = changeKey;
-                    activeChange = changes.Where(x => x.TitleIdent.Equals(changeKey)).First();
+                    activeChange = changes.Where(x => x.TitleIdent.Equals(changeKey)).FirstOrDefault();
                 }
             }
         }

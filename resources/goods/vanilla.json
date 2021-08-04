@@ -5,7 +5,8 @@
 		"Russian"	: "Это настройка ванильных ресурсов (AI)",
 		"Polish"	: "To jest ustawienie zasobów wanilii.",
 		"Chinese"	: "这是原始资源设置.",
-		"Hungarian"	: "Ez az eredeti erőforrás konfiguráció."
+		"Hungarian"	: "Ez az eredeti erőforrás konfiguráció.",
+		"Arabic"	: "vanilla  هذه الاعدادات لموارد بداية العبة من"
 	},
 	"normal": {
 		"gold": {

@@ -13,7 +13,7 @@ namespace UCP
 {
     public class Version
     {
-        public static string PatcherVersion = "2.15";
+        public static string PatcherVersion = "2.15b";
 
         // change version 0x424EF1 + 1
         public static readonly ChangeHeader MenuChange = new ChangeHeader()
@@ -385,6 +385,30 @@ namespace UCP
                 }
             },
 
+            new Change("o_fix_rapid_deletion_bug", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_rapid_deletion_bug")
+                {
+                    // 0048201B
+                    new BinaryEdit("o_fix_rapid_deletion_bug")
+                    {
+                        new BinAddress("label", -4, true),
+                        new BinAddress("offset", 2, false),
+                        new BinHook(6)
+                        {
+                            0xBA, new BinRefTo("offset", false), // mov edx, offset
+                            0x8D, 0x52, 0xD8, // lea edx, [edx-28]
+                            0x66, 0x8B, 0x14, 0x32, // mov dx, [esi+edx]
+                            0x66, 0x83, 0xFA, 0x03, // cmp dx, 3
+                            0x0F, 0x84, new BinRefTo("label", true), // je label
+
+                            // originalcode
+                            0x8B, 0x86, new BinRefTo("offset", false) // mov eax, [esi+offset]
+                        }
+                    }
+                }
+            },
+
             new Change("u_fix_lord_animation_stuck_movement", ChangeType.Bugfix, true)
             {
                 new DefaultHeader("u_fix_lord_animation_stuck_movement")
@@ -579,20 +603,36 @@ namespace UCP
 
             // Fix Jester visiting assassins on the battlefield
             BinBytes.Change("u_jestermoveto_assassin", ChangeType.Bugfix, true, 0x01),
+          
+            // Fix broken map sending mechanic
+            new Change("o_fix_map_sending", ChangeType.Bugfix, true)
+            {
+                new DefaultHeader("o_fix_map_sending")
+                {
+                    // 00489CE9
+                    new BinaryEdit("o_fix_map_sending")
+                    {
+                        new BinSkip(3),
+                        new BinBytes(0xE0, 0x03), // sent map name size; before: 7D0h
+                        new BinSkip(134),
+                        new BinBytes(0xE0, 0x03)
+                    }
+                }
+            },
+          
             #endregion
 
             #region AI LORDS
 
             new Change("ai_housing", ChangeType.AILords, false, false)
             {
-                new SliderHeader("build_housing", true, 1, 200, 1, 1, 10)
+                new SliderHeader("build_housing", true, 0, 100, 1, 0, 5)
                 {
                     new BinaryEdit("ai_buildhousing")
                     {
-                        new BinAddress("population", 7),
-                        new BinHook(5)
+                        new BinHook(5) // the first 5 bytes are an if condition that just checks if the first house has been built yet
                         {
-                            0x81, 0xE9, new BinInt32Value(),
+                            0x81, 0xE9, new BinInt32Value(), // the value of the slider header gets put into the location of new BinInt32Value()
                         },
                         new BinSkip(6),
                         0x7F, 0xDE
@@ -600,16 +640,7 @@ namespace UCP
 
                     new BinaryEdit("ai_deletehousing")
                     {
-                        new BinAddress("housing", 0x10),
-                        new BinSkip(22),
-                        new BinHook(5)
-                        {
-                            0x8B, 0x88, new BinRefTo("population", false),
-                            0x81, 0xE9, new BinInt32Value(),
-                            0x81, 0xE9, 0x18, 0x00, 0x00, 0x00,
-                            0x3B, 0x88, new BinRefTo("housing", false),
-                        },
-                        0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90
+                        0x90, 0x90
                     }
                 },
 
@@ -617,13 +648,18 @@ namespace UCP
                 {
                     new BinaryEdit("ai_buildhousing")
                     {
-                        new BinSkip(0xB),
-                        0x7F, 0x08,
-                        new BinSkip(0x8),
-                        0xB9, new BinInt32Value(),
+                        new BinSkip(11),
+                        0x7D, 0x08,
+                        new BinSkip(8), //skip everything until we come to the campfire logic comparison
+                        0xB9, new BinInt32Value(), //replace the 5 with the user input value from the slider header
                         new BinSkip(8),
                         0x7C, 0xC7,
                         0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90
+                    },
+
+                    new BinaryEdit("ai_deletehousing")
+                    {
+                        0x90, 0x90
                     }
                 },
 
@@ -631,9 +667,9 @@ namespace UCP
                 {
                     new BinaryEdit("ai_deletehousing")
                     {
-                        new BinBytes(0x90, 0x90)
+                        0x90, 0x90
                     }
-                },
+                }
             },
 
 
@@ -1113,6 +1149,9 @@ namespace UCP
                     
                     // 4DA3E0 disable manabar clicks
                     BinBytes.CreateEdit("o_xtreme_bar2", 0xC3),
+
+                    // 486530 disable manabar network function
+                    BinBytes.CreateEdit("o_xtreme_bar3", 0xC3)
                 }
             },
 

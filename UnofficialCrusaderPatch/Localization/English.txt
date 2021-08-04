@@ -1,6 +1,27 @@
 // ======================
-//         2.15
+//         DEV
 // ======================
+
+o_fix_map_sending
+{
+"Enable map sending in multiplayer"
+}
+
+o_fix_map_sending_descr
+{
+"Reduces the length of the sent map name, to make map sending possible again!"
+}
+
+o_fix_rapid_deletion_bug
+{
+"Fix resources rapid deletion"
+}
+
+o_fix_rapid_deletion_bug_descr
+{
+"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
+}
+
 u_jestermoveto_assassin
 {
 	"Stop the jester from visiting assassins"
@@ -10,6 +31,10 @@ u_jestermoveto_assassin_descr
 {
 	"The jester visits your units on the battlefield to cheer them up. Now it wont visit your invisible assassins anymore, showing everyone where they are!"
 }
+
+// ======================
+//         2.15
+// ======================
 
 u_spearmen_run
 {
@@ -249,14 +274,10 @@ o_fix_moat_digging_unit_disappearing_descr
 "Fixes the bug where moat digging units would disappear while digging. Note that they can still disappear if you order them to move while standing on unwalkable terrain!"
 }
 
-// ======================
-//         2.14
-// ======================
-
 ui_welcometext
 {
 "This is an unofficial patch for Stronghold Crusader.
-The project ist available as open-source on [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
+The project ist available as open-source on [GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch).
 
 Any Crusader version is potentially supported, but since the changes were derived from the 1.41 Steam-Version, incompatibilities may appear.
 The setup will then show error messages. The installed patch version is shown in the bottom left corner of the main menu of the game. 
@@ -301,6 +322,10 @@ And many more
 [GRhin](https://www.twitch.tv/grhin)  
 [Heroesflorian](https://github.com/Heroesflorian)"
 }
+
+// ======================
+//         2.14
+// ======================
 
 ui_StartTroops
 {
@@ -460,18 +485,6 @@ u_ballistamonk_descr
 {
 	"Fire ballistas shoot automatically at monks with this setting."
 }
-
-aiv_EvreyHistory
-{
-	"Evrey's historic AI castles"
-}
-
-aiv_EvreyHistory_descr
-{
-	"Adds one new AI castle for each lord, based on real historical &
-castles or cities. [Created by Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
 
 
 // ======================
@@ -1077,24 +1090,6 @@ stop the AI from continuously demolishing and rebuilding buildings where no &
 access is available."
 }
 
-aiv_tatha
-{
-	"Tatha's improved AI castles"
-}
-
-aiv_tatha_descr
-{
-	"Much stronger castles compared to Vanilla. The different castle variations of &
-each AI have the same strength. &
-[Presentation-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
-}
-
-
-
-
-// some edits:
-
-
 ai_attackwave
 {
 	"Improve attack waves"
@@ -1108,56 +1103,4 @@ when the target castle has a lot of buildings directly at its walls.
 This option makes units also attack civil and fortification buildings, as &
 well as wall parts which are already being attacked by one unit. Moreover,
 the AI sends more troops to the enemy lord as soon as it detects a breach."
-}
-
-aiv_pitchsiege
-{
-	"PitchNeeded's Evrey Edit (mangonels & ballistae)"
-}
-
-aiv_pitchsiege_descr
-{
-	"Extends 'Evrey's fixed vanilla castles', by adding mangonels and &
-ballistae to the towers of Wazir, Pig, Nizar and Emir. Edited by &
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-
-aiv_PitchWells
-{
-	"PitchNeeded's Evrey Edit (wells & apothecaries)"
-}
-
-aiv_PitchWells_descr
-{
-	"Extends 'Evrey's fixed vanilla castles', by adding wells &
-apothecaries to some castles. Edited by &
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-
-// no edits, just formatting:
-
-
-
-aiv_evreyimproved
-{
-	"Evrey's improved AI castles"
-}
-
-aiv_evreyimproved_descr
-{
-	"Grants the AI-Lords new and improved castles, based on the vanilla style. &
-[Created by Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreyfixed
-{
-	"Evrey's fixed vanilla castles"
-}
-
-aiv_evreyfixed_descr
-{
-	"Fixes bugs of the vanilla AI-Lord castles, like missing houses and guilds &
-or blocked entrances. [Created by Evrey](https://github.com/Evrey/SHC_AIV/)"
 }

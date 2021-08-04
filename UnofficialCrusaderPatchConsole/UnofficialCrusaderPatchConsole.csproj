@@ -68,6 +68,10 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
+      xcopy "$(SolutionDir)resources"  "resources" /E /I /Y
+      xcopy "$(SolutionDir)SHC_AIV\firefly_fixed"  "resources\aiv\EvreyFixed" /E /I /Y
+      xcopy "$(SolutionDir)SHC_AIV\history"  "resources\aiv\EvreyHistory" /E /I /Y
+      xcopy "$(SolutionDir)SHC_AIV\skirmish"  "resources\aiv\EvreyImproved" /E /I /Y
     </PostBuildEvent>
   </PropertyGroup>
 </Project>

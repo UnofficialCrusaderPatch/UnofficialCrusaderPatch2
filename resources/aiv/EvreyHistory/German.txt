@@ -1,0 +1,3 @@
+Evreys historische KI-Burgen
+Gibt den KI-Lords jeweils eine neue Burg, die auf einer realen, zum Lord passenden, historischen Burg oder gar Stadt basiert.
+[Erstellt von Evrey](https://github.com/Evrey/SHC_AIV/)

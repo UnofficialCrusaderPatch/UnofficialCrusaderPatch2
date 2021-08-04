@@ -1,6 +1,27 @@
 // ======================
-//         2.15
+//         DEV
 // ======================
+
+o_fix_map_sending
+{
+"Enable map sending in multiplayer"
+}
+
+o_fix_map_sending_descr
+{
+"Reduces the length of the sent map name, to make map sending possible again!"
+}
+
+o_fix_rapid_deletion_bug
+{
+"Fix resources rapid deletion"
+}
+
+o_fix_rapid_deletion_bug_descr
+{
+"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
+}
+
 u_jestermoveto_assassin
 {
 	"Stop the jester from visiting assassins"
@@ -10,6 +31,10 @@ u_jestermoveto_assassin_descr
 {
 	"The jester visits your units on the battlefield to cheer them up. Now it wont visit your invisible assassins anymore, showing everyone where they are!"
 }
+
+// ======================
+//         2.15
+// ======================
 
 u_spearmen_run
 {
@@ -169,7 +194,7 @@ fix_apple_orchard_build_size_descr
 
 u_fix_applefarm_blocking
 {
-"Fix apple farm worker getting blocked修复苹果园工人被堵路"
+"修复苹果园工人被堵路"
 }
 
 u_fix_applefarm_blocking_descr
@@ -249,15 +274,11 @@ o_fix_moat_digging_unit_disappearing_descr
 "挖河士兵在挖护城河时不再会随机消失。注意的是，当挖河士兵正好位于无通路地区时，如果你对其下达命令，他仍会消失！"
 }
 
-// ======================
-//         2.14
-// ======================
-
 ui_welcometext
 {
 "这是要塞十字军东征的非官方补丁编辑器。
 该项目在github上开源:
-[GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
+[GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch).
 
 通常来说，这个编辑器支持所有游戏版本。但是该编辑器是基于steam上1.41版本制作的，使用更低版本可能会出错。
 安装补丁时若出现问题，会弹出错误信息。
@@ -304,6 +325,10 @@ for the creation of the Stronghold series
 [Heroesflorian](https://github.com/Heroesflorian)"
 }
 
+// ======================
+//         2.14
+// ======================
+
 ui_StartTroops
 {
 	"起始部队"
@@ -314,14 +339,14 @@ ui_Resource
 	"起始资金"
 }
 
-ui_aicconflict
+﻿ui_aicconflict
 {
 	"AIC存在ai冲突，第二个AIC的冲突ai会被忽略"
 }
 
 o_shfy
 {
-	"要塞十字军东征修改"
+	"要塞修改"
 }
 
 o_shfy_beer
@@ -361,7 +386,7 @@ o_shfy_resourcequantity
 
 o_shfy_resourcequantity_descr
 {
-	"调整一些方面来匹配游戏，注意:任何改变都会影响ai领主，最坏的情况是失效!"
+	"将这些方面调整为要塞1的数值。注意:任何改变都会影响ai领主，最坏的情况是失效!"
 }
 
 o_armory_marketplace_weapon_order_fix
@@ -463,18 +488,6 @@ u_ballistamonk_descr
 {
 	"打开后，巨火弩将会自动攻击僧侣。"
 }
-
-aiv_EvreyHistory
-{
-	"Evrey的历史ai城堡"
-}
-
-aiv_EvreyHistory_descr
-{
-	"给每个ai领主增加一个历史上存在的城堡或城市的aiv 。&
-[创作者:Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
 
 
 // ======================
@@ -773,7 +786,7 @@ ai_demolish_walls_descr
 ai_demolish_eco_descr
 {
 	"如果ai感受到了压力，他会通过拆毁城堡建筑或者经济建筑的方式来快速获取资金&
-这在有时是没有必要的，可以在此处取消这个行为。."
+这在有时是没有必要的，你可以在此处取消这个行为。."
 }
 
 ai_tethers
@@ -787,15 +800,6 @@ ai_tethers_descr
 当采石场被反复摧毁时，会导致牛栏数量很多。打开此选项可以避免这种现象。"
 }
 
-
-
-
-
-
-
-
-
-
 // =======================
 //          2.06
 // =======================
@@ -807,36 +811,18 @@ ai_nosleep
 
 ai_nosleep_descr
 {
-	"ai通常会将正在生产中的建筑休眠，因为部分建筑缺乏原料，哪怕原料&
-正在路上，打开此选项可以取消该行为。" 
+	"ai通常会将正在生产中的建筑休眠，因为有部分建筑缺乏原料，哪怕原料&
+正在运回的路上，打开此选项可以防止ai将建筑休眠。" 
 }
 
 
-ai_overclock
-{
-	"减少ai指挥单位的时间间隔 [测试中]"
-}
-
-ai_overclock_descr
-{
-	"ai的单位在执行完一个命令后，可能并不会立即收到下一个命令，&
-这会导致单位无所事事一段时间，打开此选项可以减少ai的指挥时间间隔。
-
-暂时不知道这个间隔是否还会影响其他方面，因此有可能导致bug。"
-}
-
-
-
-
-
-
-
-
+// =======================
 // 5.12.2018
+// =======================
 
 o_onlyai
 {
-	"打开观察者模式 [可能存在bug]"
+	"打开观察者模式"
 }
 
 o_onlyai_descr
@@ -906,7 +892,7 @@ ai_towerengines
 
 ai_towerengines_descr
 {
-	"在原版，ai每种器械虽多只能放置3个，打开此选项可以解除此限制。"
+	"在原版，每种器械ai最多只能放置3个，打开此选项可以解除此限制。"
 }
 
 ai_buywood
@@ -1110,23 +1096,6 @@ ai_moredef_descr
 需要注意的是，打开此选项后，会导致这三个ai的初次进攻时间延后。"
 }
 
-aiv_tatha
-{
-	"Tatha的ai提升城堡"
-}
-
-aiv_tatha_descr
-{
-	"ai将会拥有比原版更加强大的城堡，每个ai不同样式的城堡拥有同等的强度&
-[Presentation-Playlist](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
-}
-
-
-
-
-// some edits:
-
-
 ai_attackwave
 {
 	"提升ai的进攻"
@@ -1135,54 +1104,4 @@ ai_attackwave
 ai_attackwave_descr
 {
 	"在原版中，ai在进攻时，只会派出能够得着城墙的数量的士兵，比如说一圈城堡有50格城墙，那么只有50个人可以在不重叠的情况下砍城墙，此时哪怕有100名士兵集结在敌人城堡附近，也只会派出50人前去攻击城堡，打开此选项后将可以避免此现象。并且，打开此选项后，ai的士兵将会主动攻击城堡建筑和经济建筑。此外，ai将会派出更多的士兵去攻击敌人的领主。"
-}
-
-aiv_pitchsiege
-{
-	"PitchNeeded的加强ai城堡 (射石机和巨弩)"
-}
-
-aiv_pitchsiege_descr
-{
-	"为猪，维奇尔，埃米尔，尼泽尔添加了更多的射石机和巨弩。创作者&
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-
-aiv_PitchWells
-{
-	"PitchNeeded的加强ai城堡 (水井和水缸)"
-}
-
-aiv_PitchWells_descr
-{
-	"为原版ai城堡添加了一些水井和水缸。创作者&
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-
-// no edits, just formatting:
-
-
-
-aiv_evreyimproved
-{
-	"Evrey的加强ai城堡"
-}
-
-aiv_evreyimproved_descr
-{
-	"为ai添加了原版风格但更强劲的城堡&
-[创作者Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreyfixed
-{
-	"Evrey的原版修复城堡"
-}
-
-aiv_evreyfixed_descr
-{
-	"修复了原版ai城堡的一些问题，诸如茅房不足，建筑无通路等&
- [创作者Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
