@@ -1,0 +1,3 @@
+PitchNeeded's Evrey Edit (wells & apothecaries)
+Extends 'Evrey's fixed vanilla castles', by adding wells apothecaries to some castles.
+Edited by [PitchNeeded](https://github.com/PitchNeeded).

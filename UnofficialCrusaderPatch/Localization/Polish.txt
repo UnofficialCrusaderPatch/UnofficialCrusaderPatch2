@@ -1,6 +1,7 @@
 // ======================
-//         dev
+//         DEV
 // ======================
+
 ai_restore_ai_siege_messages
 {
 "Restore AI siege messages"
@@ -53,193 +54,256 @@ ai_restore_ai_siege_messages_50_descr
 This option restores this feature."
 }
 
-ai_housing
+
+
+// ======================
+//         2.15
+// ======================
+
+u_spearmen_run
 {
-"Customize the AIs decision to build and delete houses"
+"Biegający włócznicy"
 }
 
-ai_buildhousing_descr
+u_spearmen_run_descr
 {
-"Customize the AIs decision to build and delete houses"
+"Włócznicy będą cały czas biegać."
+}
+
+o_seed_modification_possibility_title
+{
+"Generowane ziarno gry"
+}
+
+o_seed_modification_possibility_only_set
+{
+"Włącza generowane ziarno gry"
+}
+
+o_seed_modification_possibility_only_set_descr
+{
+"Ta opcja pozwala na wygenerowanie ziarna gry (działa tylko na rozgrywki samych botów), aby rozgrywka była za każdym razem taka sama, jeśli wybrało się takie same ustawienia mapy. Aby to zrobić, włącz tę opcję i stwórz plik o nazwie 'live' z 6 cyframi w folderze z zainstalowaną grą/podfolderze z ziarnami (gameseed). UWAGA: Ta opcja działa po zrestartowaniu gry!"
+}
+
+o_seed_modification_possibility
+{
+"Włącz i zapisuj generowane ziarna gry"
+}
+
+o_seed_modification_possibility_descr
+{
+"This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards."
+}
+
+ai_recruitstate_initialtimer
+{
+"Ustaw botom czas do rekrutacji jednostek zgodnie z parametrami AIC"
+}
+
+ai_recruitstate_initialtimervalue_descr
+{
+"Można tu ustawić liczbę miesięcy, do której boty będą rekrutować wyłącznie jednostki do obrony, chyba że wypełnili już limit żołnierzy na zamku"
+}
+
+ai_defense
+{
+"Usprawnione wysyłanie posiłków do obrony"
+}
+
+ai_defense_descr
+{
+"Naprawniono błąd, który uniemożliwiał SI dosyłanie brakujących jednostek &
+na mury i wieże w momencie, gdy patrole defensywne były ciągle obecne."
+}
+
+ai_housing
+{
+"Mądrzejsze budowanie domów przez boty"
 }
 
 build_housing_descr
 {
-"Number of extra available housing before AI stops building houses"
+"Różnica między obecną a maksymalną populacją, po której bot przestaje stawiać domy. W oryginale jest to 0. Ta opcja wyłącza również usuwanie domów przez bota."
+}
+
+campfire_housing_descr
+{
+"Ilość wolnych chłopów przy ognisku, zanim bot przestanie stawiać domy. Ta opcja wyłącza również usuwanie domów przez bota."
+}
+
+delete_housing
+{
+"Wyłącz usuwanie domów."
 }
 
 delete_housing_descr
 {
-"After the AI has reached this additional amount of available housing after it stopped building houses, it will delete houses"
+"Kiedy ta opcja jest zaznaczona, boty nie będą usuwać domów."
 }
 
 aiv_prompt
 {
-"Custom modified AIVs detected. Before installing, click 'Yes' to save the currently installed AIVs without overwriting the original backup. Click 'No' to overwrite installed AIVs without backing them up, and 'Cancel' to cancel."
+"Wykryto własne pliki AIV. Czy chcesz stworzyć kopię zapasową, mój Panie?"
 }
 
 aiv_cli_prompt
 {
-"Custom modified AIVs detected. Enter 'delete' to erase or enter folder name to copy files to."
+"Wykryto własne pliki AIV. Wpisz 'delete', aby usunąć lub podaj nazwę folderu w celu przekopiowania plików."
 }
 
 install_abort_io
 {
-"Installation aborted. Files with the same name already exist in this folder. Please try again and select a different folder."
+"Instalacja przerwana. Pliki z taką samą nazwą znajdują się już w tym folderze. Wybierz inny folder i spróbuj ponownie."
 }
 
 install_abort
 {
-"Installation aborted"
+"Instalacja przerwana"
 }
 
 backup_aiv_select
 {
-"Select Backup AIV folder"
+"Wybierz zapasowy folder dla plików AIV"
 }
 
 o_change_siege_engine_spawn_position_catapult
 {
-"Center siege engine spawn position"
+"Wyśrodkuj pozycję pojawiania się machin oblężniczych"
 }
 
 o_change_siege_engine_spawn_position_catapult_descr
 {
-"Siege engines are now centered after they are finished building instead of spawning at the top corner of the tent."
+"Machiny oblężnicze będą pojawiać się na środku miejsca, w którym stał namiot oblężniczy."
 }
 
 o_stop_player_keep_rotation
 {
-"Rotate player keeps"
+"Odwróć siedziby graczy"
 }
 
 o_stop_player_keep_rotation_descr
 {
-"Player keeps now get rotated the same way, that AI keeps rotate on a map, facing with their campfire outwards towards the map edge."
+"Siedziby graczy będą odwracać się ogniskiem (wejściem) w stronę krańca mapy."
 }
 
 o_restore_arabian_engineer_speech
 {
-"Restore engineer arabian speech"
+"Przywróć arabskie teksty inżynierów"
 }
 
 o_restore_arabian_engineer_speech_descr
 {
-"Allows engineers to speak the originally recorded arabian voicelines when the player uses the Arabian lord.
+"Ta opcja pozwala inżynierom na korzystanie z nagranych arabskich tekstów, gdy gracz gra jako arabski lord.
 
-There is not much variation of these voicelines, so it can get annoying after a while."
+Tekstów nie ma zbyt wielu, więc mogą być irytujące po dłuższej chwili."
 }
 
 u_fix_lord_animation_stuck_movement
 {
-"Fix Lord animation freeze"
+"Zresetuj animację lorda po zniszczeniu budynku"
 }
 
 u_fix_lord_animation_stuck_movement_descr
 {
-"Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
+"Opcja pozwala zresetować animację lorda, gdy każemu mu zniszczyć budynek. Zazwyczaj po wykonaniu zadania stał w dziwnej pozie."
 }
 
 fix_apple_orchard_build_size
 {
-"Shrink apple orchard's build size"
+"Zmniejsz rozmiar budowy sadów jabłoni"
 }
 
 fix_apple_orchard_build_size_descr
 {
-"Changes the apple orchard's build size to the size it occupies after the farm is placed down. This saves some space when building the farms and increases the rate with which the AI is able to put these farms down."
+"Opcja zmniejsza rozmiar budowy sadów jabłoni, aby był taki sam, jak rzeczywisty rozmiar całego budynku. Zaoszczędzi to miejsce na trawie i pomoże botom na lepszy rozwój."
 }
 
 u_fix_applefarm_blocking
 {
-"Fix apple farm blocking"
+"Napraw blokowanie sadów jabłoni"
 }
 
 u_fix_applefarm_blocking_descr
 {
-"Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
+"Farmerzy nie będą już blokowani, gdy postawi się budynek w lewej, górnej stronie farmy."
 }
 
 o_increase_path_update_tick_rate
 {
-"Increase the tick rate of path update by 4 times."
+"Zwiększ częstotliwość odświeżania możliwych ścieżek"
 }
 
 o_increase_path_update_tick_rate_descr
 {
-"In vanilla, it took 200 game ticks to update pathing which resulted in units not being able to move into the castle after destroying a gate or tower.
+"W oryginale jednostki potrzebowały dużo czasu, zanim mogły zrozumieć, że można wejść do zamku po zniszczeniu bramy lub wieży..
 
-This change increases this tick rate by 4 times by lowering this required tick value to 50, allowing the units to 'realize' more quickly that a new path is available."
+Ta opcja zwiększa czterokrotnie częstotliwość odświeżania możliwych ścieżek wykrywanych przez jednostki, dzięki czemu szybciej zrozumieją, że można już wejść do zamku."
 }
 
 o_fix_ladderclimb
 {
-"Fix ladder climb bug"
+"Napraw błąd związany z wchodzeniem po drabinie"
 }
 
 o_fix_ladderclimb_descr
 {
-"Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
+"Jednostki nie będą już gubić się po wejściu na mury po drabinie i nie będą schodzić od razu na dół."
 }
 
 u_tanner_fix
 {
-"Fix tanners getting all the same cow"
+"Zwiększ wydajność garbarzy"
 }
 
 u_tanner_fix_descr
 {
-"Tanners will no longer return without a cow when another tanner took their target cow. They will now instead stand around a bit and then get another one."
+"Garbarze nie będą już wracać do budynku, gdy ktoś inny zabrał krowę, po którą szli. Zamiast tego postoją chwilę w miejscu i wyruszą po kolejną krowę."
 }
 
 o_fix_fletcher_bug
 {
-"Fix fletcher bug"
+"Napraw błąd łuczarza"
 }
 
 o_fix_fletcher_bug_descr
 {
-"Fixes the behaviour where the fletcher goes back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile."
+"Naprawia błąd, który powoduje, że łuczarz idzie do swojego budynku po odniesieniu broni do zbrojowni. Zamiast tego będzie teraz szedł od razu do składu zapasów po deski."
 }
 
 ai_fix_crusader_archers_pitch
 {
-"Fix AI crusader archers not lighting pitch"
+"Napraw błąd z brakiem podpalania smoły przez łuczników europejskich"
 }
 
 ai_fix_crusader_archers_pitch_descr
 {
-"Fixes the AI crusader archers not lighting pitch like arabian archers do when enemy units get onto it."
+"Łucznicy europejscy zarządzani przez SI nie podpalali smoły. Ta opcja naprawia ten błąd."
 }
 
 o_fix_baker_disappear
 {
-"Fix baker disappear bug"
+"Napraw błąd ze znikającym piekarzem"
 }
 
 o_fix_baker_disappear_descr
 {
-"Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile."
+"Piekarze nie będą znikać, gdy dojdą do składu zapasów, w którym nie ma już mąki."
 }
 
 o_fix_moat_digging_unit_disappearing
 {
-"Fix moat digging units disappear bug"
+"Napraw błąd ze znikającymi jednostkami kopiącymi fosę"
 }
 
 o_fix_moat_digging_unit_disappearing_descr
 {
-"Fixes the bug where moat diggers would disappear randomly while digging. Note that they can still disappear if you order them to move while digging and they happen to stand on an unwalkable tile!"
+"Naprawia błąd, który powodował losowe znikanie jednostek kopiących fosę. Uwaga: jednostki mogą dalej znikać, jeśli każesz im przemieścić się w momencie, gdy stoją w miejscu, z którego nie da się normalnie ruszyć!"
 }
-
-// ======================
-//         2.14
-// ======================
 
 ui_welcometext
 {
 "Jest to nieoficjalna łatka do Twierdzy Krzyżowiec.
-Projekt jest dostępny jako otwarte oprogramowanie przez [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
+Projekt jest dostępny jako otwarte oprogramowanie przez [GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch).
 
 Każda wersja Krzyżowca jest potencjalnie obsługiwana, ale wprowadzone zmiany pochodzą z wersji 1.41 Steam, dlatego mogą pojawić się problemy.
 Instalator wyświetli wtedy komunikat o błędzie. Wersja tej łatki jest pokazana w lewym dolnym rogu głównego menu gry. 
@@ -251,14 +315,16 @@ Oryginalny twórca UCP
 [Sh0wdown](https://github.com/Sh0wdown)  
 
 Zarządzanie projektem
-[Kimberly](https://github.com/ByBurton/)  
+[Kimberly Azula](https://github.com/ByBurton/)  
 [Krarilotus (Youtube)](https://www.youtube.com/channel/UCMXHqa2vmclSoSkuCu_q5rw)
 
 Twórcy
 [LordHansCapon](https://github.com/LordHansCapon)  
 [np123](https://github.com/patel-nikhil)  
-[J-T-de](https://github.com/J-T-de)  
-[Chaf1812](https://github.com/Chaf1812)  
+[J-T-de](https://github.com/J-T-de)
+[gynt](https://github.com/gynt)
+[Le spec](https://github.com/LeSpec)  
+[Chaf1812](https://github.com/Chaf1812)
 
 Tłumacze
 [Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polski)  
@@ -283,6 +349,10 @@ Oraz dla
 [Heroesflorian](https://github.com/Heroesflorian)"
 }
 
+// ======================
+//         2.14
+// ======================
+
 ui_StartTroops
 {
 	"JednostkiPoczątkowe"
@@ -293,7 +363,7 @@ ui_Resource
 	"ZasobyPoczątkowe"
 }
 
-﻿ui_aicconflict
+ui_aicconflict
 {
 	"Konflikty zostaną zignorowane"
 }
@@ -442,15 +512,6 @@ u_ballistamonk_descr
 	"Balisty ogniowe strzelają automatycznie do mnichów."
 }
 
-aiv_EvreyHistory
-{
-	"Historyczne zamki SI od użytkownika Evrey"
-}
-
-aiv_EvreyHistory_descr
-{
-	"Dodaje zamki dla każdego lorda SI, bazujące na prawdziwych zamkach historycznych. [Autorstwa gracza Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
 
 // ======================
 //         2.12
@@ -1071,19 +1132,6 @@ ui_AIV
 	"AIV"
 }
 
-ai_defense
-{
-	"Usprawnione wysyłanie posiłków do obrony"
-}
-
-ai_defense_descr
-{
-	"Naprawniono błąd, który uniemożliwiał SI dosyłanie brakujących jednostek &
-na mury i wieże w momencie, gdy patrole defensywne były ciągle obecne. &
-Dodatkowo, szansa na to, że SI stworzy jednostki do obrony została &
-zwiększona, gdyż ta wartość była ustawiona jako 0 dla niektórych przeciwników."
-}
-
 ai_access
 {
 	"Brak niszczenia niedostępnych budynków"
@@ -1095,24 +1143,6 @@ ai_access_descr
 Sztuczna Inteligencja przestanie ciągle niszczyć i odbudowywać budynki, do których &
 nie da się dojść."
 }
-
-aiv_tatha
-{
-	"Ulepszone zamki użytkownika Tatha"
-}
-
-aiv_tatha_descr
-{
-	"O wiele mocniejsze zamki w porównaniu z oryginałem. Różne rodzaje zamków &
-posiadające tę samą siłę. &
-[Prezentacja](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
-}
-
-
-
-
-// some edits in the descriptions _descr:
-
 
 ai_attackwave
 {
@@ -1127,54 +1157,4 @@ gdy atakowany zamek ma wiele budynków bezpośrednio przy murach.
 Ta opcja sprawia, że żołnierze atakują również budynki cywilne i fortyfikacyjne, a także &
 te części murów, które są już atakowane przez inną jednostkę. Dodatkowo
 SI wysyła więcej jednostek do wrogiego lorda, gdy przełamie mury."
-}
-
-aiv_PitchSiege
-{
-	"Dodatkowe zmiany PitchNeeded do Evrey (mangonele & balisty)"
-}
-
-aiv_PitchSiege_descr
-{
-	"Ulepsza oryginalne zamki naprawione przez użytkownika Evrey, dodając mangonele i &
-balisty na wieże Wezyra, Wieprza, Nizara i Emira. Edytowane przez użytkownika &
-[PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-aiv_PitchWells
-{
-	"Dodatkowe zmiany PitchNeeded do Evrey (studnie & apteki)"
-}
-
-aiv_PitchWells_descr
-{
-	"Ulepsza oryginalne zamki naprawione przez użytkownika Evrey, dodając studnie i apteki dla niektórych AI.
-Edytowane przez użytkownika [PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-
-// no edits, just formatting:
-
-
-
-aiv_evreyimproved
-{
-	"Ulepszone zamki autorstwa użytkownika Evrey"
-}
-
-aiv_evreyimproved_descr
-{
-	"Wprowadza nowe i ulepszone zamki przeciwników komputerowych, które bazują na oryginalnym stylu z gry. &
-[Stworzone przez użytkownika Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreyfixed
-{
-	"Oryginalne zamki naprawione przez użytkownika Evrey"
-}
-
-aiv_evreyfixed_descr
-{
-	"Naprawiono błędy oryginalnych zamków przeciwników komputerowych, na przykład brakujące domy i cechy kopaczy/inżynierów &
-lub zablokowane wejścia do zamku. [Stworzone przez użytkownika Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
