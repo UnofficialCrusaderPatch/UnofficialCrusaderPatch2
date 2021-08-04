@@ -16,6 +16,30 @@ u_ghosteng_descr
 //         2.15
 // ======================
 
+o_fix_map_sending
+{
+"Enable map sending in multiplayer"
+}
+
+o_fix_map_sending_descr
+{
+"Reduces the length of the sent map name, to make map sending possible again!"
+}
+
+o_fix_rapid_deletion_bug
+{
+"Fix resources rapid deletion"
+}
+
+o_fix_rapid_deletion_bug_descr
+{
+"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
+}
+
+// ======================
+//         2.15
+// =====================
+
 u_spearmen_run
 {
 "Speerträger rennen standardmäßig"
@@ -254,7 +278,7 @@ o_fix_moat_digging_unit_disappearing_descr
 ui_welcometext
 {
 "Dies ist ein inoffizieller Patch für Stronghold Crusader.
-Das Projekt ist Open-Source auf [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch) zu finden.
+Das Projekt ist Open-Source auf [GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch) zu finden.
 
 Potenziell wird jede Crusader-Version unterstützt, die Änderungen wurden allerdings anhand der 1.41 Steam-Version hergeleitet.
 Im Falle von Versionsinkompatibilität wird der Setup Fehlermeldungen zeigen. Die installierte Patchversion wird unten links im Hauptmenü angezeigt.

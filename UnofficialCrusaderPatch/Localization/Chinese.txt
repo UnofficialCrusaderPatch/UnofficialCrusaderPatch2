@@ -12,9 +12,30 @@ u_ghosteng_descr
 "Fix engineers not dying when siege engine they are manning is killed"
 }
 
+o_fix_map_sending
+{
+"Enable map sending in multiplayer"
+}
+
+o_fix_map_sending_descr
+{
+"Reduces the length of the sent map name, to make map sending possible again!"
+}
+
+o_fix_rapid_deletion_bug
+{
+"Fix resources rapid deletion"
+}
+
+o_fix_rapid_deletion_bug_descr
+{
+"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
+}
+
 // ======================
 //         2.15
 // ======================
+
 u_spearmen_run
 {
 "矛兵默认为奔跑状态而不是步行"
@@ -257,7 +278,7 @@ ui_welcometext
 {
 "这是要塞十字军东征的非官方补丁编辑器。
 该项目在github上开源:
-[GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
+[GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch).
 
 通常来说，这个编辑器支持所有游戏版本。但是该编辑器是基于steam上1.41版本制作的，使用更低版本可能会出错。
 安装补丁时若出现问题，会弹出错误信息。

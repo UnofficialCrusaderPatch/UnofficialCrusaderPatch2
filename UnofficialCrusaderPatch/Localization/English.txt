@@ -12,9 +12,30 @@ u_ghosteng_descr
 "Fix engineers not dying when siege engine they are manning is killed"
 }
 
+o_fix_map_sending
+{
+"Enable map sending in multiplayer"
+}
+
+o_fix_map_sending_descr
+{
+"Reduces the length of the sent map name, to make map sending possible again!"
+}
+
+o_fix_rapid_deletion_bug
+{
+"Fix resources rapid deletion"
+}
+
+o_fix_rapid_deletion_bug_descr
+{
+"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
+}
+
 // ======================
 //         2.15
 // ======================
+
 u_spearmen_run
 {
 "Spearmen run by default instead of walking"
@@ -256,7 +277,7 @@ o_fix_moat_digging_unit_disappearing_descr
 ui_welcometext
 {
 "This is an unofficial patch for Stronghold Crusader.
-The project ist available as open-source on [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch).
+The project ist available as open-source on [GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch).
 
 Any Crusader version is potentially supported, but since the changes were derived from the 1.41 Steam-Version, incompatibilities may appear.
 The setup will then show error messages. The installed patch version is shown in the bottom left corner of the main menu of the game. 
