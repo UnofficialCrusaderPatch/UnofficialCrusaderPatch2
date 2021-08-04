@@ -22,6 +22,15 @@ o_fix_rapid_deletion_bug_descr
 "Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
 }
 
+o_disable_border_scrolling
+{
+"Disable border scrolling"
+}
+
+o_disable_border_scrolling_descr
+{
+"Moving the cursor to the edge of the screen will no longer move its position."
+}
 
 // ======================
 //         2.15
