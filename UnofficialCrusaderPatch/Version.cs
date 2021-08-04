@@ -4265,7 +4265,7 @@ namespace UCP
                             0x8D, 0x8A, new BinRefTo("BuildingIDArray", false), // lea ecx,[BuildingIDArray + edx]
                             0x0F, 0xB7, 0x09, // movzx ecx, word ptr [ecx]
                             0x85, 0xC9, // test ecx, ecx
-                            0x74, 0x10, // jz short JMPSkip
+                            0x74, 0x0F, // jz short JMPSkip
                             0x39, 0xCE, // cmp esi,ecx
                             0x74, 0x04, // je short JMPContinue
                             0x42, // inc edx
