@@ -50,7 +50,7 @@ namespace UCP.Startup
             {
                 activeChange = this;
             }
-            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(4).StartsWith("UCP.") ? this.TitleIdent.Substring(4).Replace("UCP.", "") : this.TitleIdent.Substring(4);
+            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(4);
 
             if (this.IsValid == false)
             {
@@ -63,24 +63,7 @@ namespace UCP.Startup
             {
                 this.titleBox.IsChecked = selectedChange.Equals(this.TitleIdent);
             }
-            this.titleBox.Background = this.TitleIdent.Substring(4).StartsWith("UCP.") ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Bisque);
-
-
-            if (this.TitleIdent.Substring(4).StartsWith("UCP."))
-            {
-                Button exportButton = new Button()
-                {
-                    //Width = 40,
-                    Height = 20,
-                    Content = Localization.Get("ui_aicexport"),
-                    HorizontalAlignment = HorizontalAlignment.Right,
-                    VerticalAlignment = VerticalAlignment.Bottom,
-                    Margin = new Thickness(0, 0, 5, 5),
-                };
-                exportButton.Click += (s, e) => this.ExportFile();
-                grid.Height += 15;
-                this.grid.Children.Add(exportButton);
-            }
+            this.titleBox.Background = new SolidColorBrush(Colors.White);
         }
 
         protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
@@ -103,32 +86,6 @@ namespace UCP.Startup
                 activeChange = null;
                 selectedChange = String.Empty;
             }
-        }
-
-        /// <summary>
-        /// Exports vanilla starting goods JSON file to resources\goods\vanilla.json
-        /// </summary>
-        private void ExportFile()
-        {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            string fileName = Path.Combine(Environment.CurrentDirectory, "resources", "goods", "exports", this.TitleIdent.Substring(4).Replace("UCP.", "")) + ".json";
-            string backupFileName = fileName;
-            while (File.Exists(backupFileName))
-            {
-                backupFileName = backupFileName + ".bak";
-            }
-            if (File.Exists(fileName))
-            {
-                File.Move(fileName, backupFileName);
-            }
-            Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "resources", "goods", "exports"));
-
-            using (StreamReader reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(this.TitleIdent.Substring(4).Replace("UCP.", "UCP.Startup.Resources.Goods.") + ".json"), Encoding.UTF8))
-            {
-                File.WriteAllText(fileName, reader.ReadToEnd(), Encoding.UTF8);
-            }
-
-            Debug.Show(Localization.Get("ui_aicexport_success"), this.TitleIdent.Substring(4).Replace("UCP.", "") + ".json");
         }
 
         /// <summary>
@@ -189,23 +146,6 @@ namespace UCP.Startup
         public static void Load()
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-
-            StreamReader vanilla = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("UCP.Startup.Resources.Goods.vanilla.json"), Encoding.UTF8);
-            string vanillaText = vanilla.ReadToEnd();
-            vanilla.Close();
-            Dictionary<String, Dictionary<String, Object>> vanillaConfig = serializer.Deserialize<Dictionary<String, Dictionary<String, Object>>>(vanillaText);
-            if (vanillaConfig != null)
-            {
-                string description = GetLocalizedDescription("UCP.vanilla", vanillaConfig);
-                ResourceChange change = new ResourceChange("UCP.vanilla", false)
-                        {
-                            CreateResourceHeader("res_UCP.vanilla", vanillaConfig),
-                        };
-                change.description = description;
-                changes.Add(change);
-            }
-
-
             if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "resources", "goods")))
             {
                 return;

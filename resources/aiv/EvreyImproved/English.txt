@@ -1,0 +1,3 @@
+Evrey's improved AI castles
+Grants the AI-Lords new and improved castles, based on the vanilla style.
+[Created by Evrey](https://github.com/Evrey/SHC_AIV/)

@@ -1,64 +1,69 @@
 // ======================
-//         dev
+//         DEV
 // ======================
+
 o_disable_border_scrolling
 {
-"Disable border scrolling"
+"Deaktiviere Scrollen am Bildschirmrand"
 }
 
 o_disable_border_scrolling_descr
 {
-"Moving the cursor to the edge of the screen will no longer move its position."
+"Bewegen des Mauszeigers zum Bildschirmrand bewegt nicht mehr die Ansicht."
 }
+
+// ======================
+//         2.15
+// ======================
 
 u_spearmen_run
 {
-"Spearmen run by default instead of walking"
+"A lándzsás egység sétálás helyett alapból fut"
 }
 
 u_spearmen_run_descr
 {
-"Makes spearmen run by default instead of the slow walking."
+"A lándzsás egység lassú sétálás helyett alapból futni fog. A lándzsás olyan gyorsan fut, mint egy rabszolga vagy buzogányos."
 }
 
 o_seed_modification_possibility_title
 {
-"Game Seed"
+"Random játék seed"
 }
 
 o_seed_modification_possibility_only_set
 {
-"Enable game seed"
+"Megadott Random játék seed engedélyezése"
 }
 
 o_seed_modification_possibility_only_set_descr
 {
-"Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For player-AI games, it will ensure the same start conditions in the map (AIV selection for example). To set the game seed, enable this option and create a file called 'live' with a 6 digit number in the game install/gameseeds directory. CAUTION: This feature only works after also restarting the game!"
+"A játék seed megadásával az MI harcoknak a kimenetele ugyanaz lesz, azonos pályabeállítások esetén. Játékos-MI harc esetén, ugyanazon kezdési feltételeket biztosítja a pályán (mint pl. az AIV kiválasztás). A játék seed megadásához, engedélyezd ezt a beállítást és hozz létre egy 6 darab számot tartalmazó 'live' nevű szöveges fájlt a játék könyvtár/gameseeds mappában. FIGYELEM: Ez a beállítás csak a játék újraindítása után működik!"
 }
 
 o_seed_modification_possibility
 {
-"Enable & Save game seeds"
+"Random játék seed-ek engedélyezése és mentése"
 }
 
 o_seed_modification_possibility_descr
 {
-"This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards."
+"Ez a beállítás elmenti a seed-et azon játékokból amikhez nem lett megadva live seed érték, nevezd át a kívánt seed-et tartalmazó szöveges fájlt 'live'-ra hogy a későbbiekben újra rekonstruálhasd a harcot."
 }
 
 ai_recruitstate_initialtimer
 {
-"Customise the initial AI's defence recruit time"
+"Az MI a megadott ideig az AIC paraméterek alapján toborozzon"
 }
 
 ai_recruitstate_initialtimervalue_descr
 {
-"Set this value to number of months for which the AI will exclusively recruit defence troops, unless it has already filled up its defence total"
+"Az értéknek add meg azon hónapok számát, amikor az MI az AIC fájlban megadott toborzási sebeséggel toboroz kizárólag védekező egységeket, ha már teljesen megerősítette a védelmét, akkor támadó egységeket fog toborozni"
 }
 
 ai_defense
 {
-"Várvédédő egységek megerősítése kijavítva"
+"Várvédő egységek megerősítése kijavítva"
 }
 
 ai_defense_descr
@@ -68,41 +73,37 @@ ai_defense_descr
 
 ai_housing
 {
-"Customize the AIs decision to build and delete houses"
-}
-
-ai_buildhousing_descr
-{
-"Customize the AIs decision to build and delete houses"
+"Házak okosabb építése"
 }
 
 build_housing_descr
 {
-"Number of extra available housing before AI stops building houses"
+"A jelenlegi és a maximális népességszám közötti különbség, amely felett az MI nem épít több házat. Az eredeti játékban ez a szám 0. Ha ez a beállítás be van jelölve, akkor az MI nem rombolja le a házakat."
 }
 
 campfire_housing_descr
 {
-"Number of peasants at the campfire before the AI stops buildings houses"
+"Parasztok száma a tábortűznél, mielőtt az MI nem épít több házat. Ha ez a beállítás be van jelölve, akkor az MI nem rombolja le a házakat."
 }
 
 delete_housing
 {
-"Disable the AI's ability to delete houses"
+"Az MI ne rombolja le a házakat."
 }
 
 delete_housing_descr
 {
-"When this option is selected the AI will never delete houses"
+"Ha ez a beállítás be van jelölve, akkor az MI soha nem rombolja le a házakat."
 }
+
 aiv_prompt
 {
-"Módosított AIV fájlok észlelve. Telepítés előtt kattints az 'Igen' gombra, hogy elmentsd a jelenleg telepített AIV fájlokat, az eredeti backup felülírása nélkül. Kattints a 'Nem' gombra, hogy felülírd a telepített AIV fájlokat, nem készül róluk biztonsági mentés. Vagy kattints a 'Mégsem' gombra a telepítés megszakításához."
+"Módosított AIV fájlok észlelve. Szeretne egy biztonsági másolatot készíteni, uram?"
 }
 
 aiv_cli_prompt
 {
-"Módosított AIV fájlok észlelve. Írd be a 'delete' szót az eltávolításukhoz vagy adj meg egy mappa nevet, ahova a fájlok telepünek."
+"Módosított AIV fájlok észlelve. Írd be a 'delete' szót az eltávolításukhoz vagy adj meg egy mappa nevet, ahova a fájlok települnek."
 }
 
 install_abort_io
@@ -127,12 +128,12 @@ o_change_siege_engine_spawn_position_catapult
 
 o_change_siege_engine_spawn_position_catapult_descr
 {
-"Az elkészült ostromgépek a sátor közepénél jelennek meg a sátor felső sarka helyett."
+"Az elkészült ostromgépek a sátor közepénél jelennek meg a sátor jobb felső sarka helyett."
 }
 
 o_stop_player_keep_rotation
 {
-"Forgó játékos vártornyok"
+"Játékos vártornyok elforgatása"
 }
 
 o_stop_player_keep_rotation_descr
@@ -147,14 +148,14 @@ o_restore_arabian_engineer_speech
 
 o_restore_arabian_engineer_speech_descr
 {
-"Ha a játékos az arab lord-ot választja, akkor a mérnök bészédekor az eredeti felvett arab hangfájlt használja.
+"Ha a játékos az Arab Lord-ot választja, akkor a mérnök beszédekor az eredeti felvett arab hangfájlt használja.
 
 Nincs túl sok variáció ezekben a hangfájlokban, így egy idő után zavaró lehet."
 }
 
 u_fix_lord_animation_stuck_movement
 {
-"Lord animáció fagyás javítás"
+"Lord animáció visszaállítása az épületek lerombolása után"
 }
 
 u_fix_lord_animation_stuck_movement_descr
@@ -169,7 +170,7 @@ fix_apple_orchard_build_size
 
 fix_apple_orchard_build_size_descr
 {
-"Az almáskert elhelyezése előtt az előnézeti mérete nagyobb volt, mint amekkora valójában az almáskert az elhelyezés után. Ez a hiba kijavításra került. Ezzel a beállítással több szabad hely marad az építésekor és megnöveli az MI mezőgazdasági épületek építésének rátáját."
+"Az almáskert elhelyezése előtt az előnézeti mérete nagyobb volt, mint amekkora valójában az almáskert az elhelyezés után. Ez a hiba kijavításra került. Ezzel a beállítással több szabad hely marad az almáskertek építésekor és megnöveli az MI mezőgazdasági épületek építésének rátáját."
 }
 
 u_fix_applefarm_blocking
@@ -184,14 +185,14 @@ u_fix_applefarm_blocking_descr
 
 o_increase_path_update_tick_rate
 {
-"Tick ráta növelése az útvonal frissítésnél"
+"Elérhető útvonalak gyakoribb ellenőrzése"
 }
 
 o_increase_path_update_tick_rate_descr
 {
-"Az eredeti játékban 200 játékidő tick után frissült az útvonal, ami azt eredményezte, hogy az egységek nem tudtak bemenni a várba miután lerombolták a kaput vagy a tornyot.
+"Az eredeti játékban minden 200. játékidő tick után kerültek ellenőrzésre az új útvonalak, ami azt eredményezte, hogy az egységek nem tudtak azonnal bemenni a várba miután lerombolták a kaput vagy a tornyot.
 
-Ez a változtatás 4x-esére növeli a tick rátát, azáltal hogy csökkenti a szükséges tick értéket 50-re, így lehetővé téve hogy az egységek sokkal gyorsabban 'realizálják' az elérhető új útvonalat."
+Az elérhető útvonalakat mostantól minden 50. játékidő tick után ellenőrzi, így lehetővé téve hogy az egységek sokkal gyorsabban 'realizálják' az elérhető új útvonalat."
 }
 
 o_fix_ladderclimb
@@ -201,7 +202,7 @@ o_fix_ladderclimb
 
 o_fix_ladderclimb_descr
 {
-"Az egységek mászás után nem felejtik el a számukra adott parancsot, és többé nem fognak elkezdeni le vagy felmászni azonnal miután már felmásztak."
+"Az egységek mászás után nem felejtik el a számukra adott parancsot, és többé nem fognak lemászni miután már felmásztak."
 }
 
 u_tanner_fix
@@ -254,14 +255,10 @@ o_fix_moat_digging_unit_disappearing_descr
 "Kijavítja azt a hibát, amikor árokásás közben véletlenszerűen eltűnik az árkot ásó egység. Megjegyzés: Az egység még mindig eltűnhet, ha árokásás közben elküldöd máshova és éppen egy nem járható helyen van!"
 }
 
-// ======================
-//         2.14
-// ======================
-
 ui_welcometext
 {
 "Ez egy nem hivatalos patch a Stronghold Crusader játékhoz.
-A Projekt nyílt forráskódú, ami megtalálható a [GitHub](https://github.com/Sh0wdown/UnofficialCrusaderPatch) weboldalon.
+A Projekt nyílt forráskódú, ami megtalálható a [GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch) weboldalon.
 
 Elméletben minden Crusader verzió támogatott, viszont a változtatások eredetileg a 1.41 Steames verzióhoz lettek készítve.
 Azonban ha a játék verziód nem kompatibilis, a telepítő hibaüzenetet fog megjeleníteni. A telepített patch-verzió a főmenü bal alsó sarkában fog megjelenni.
@@ -273,13 +270,15 @@ UCP program alkotója
 [Sh0wdown](https://github.com/Sh0wdown)
 
 Projektvezetők
-[Kimberly](https://github.com/ByBurton/)  
+[Kimberly Azula](https://github.com/ByBurton/)  
 [Krarilotus (Youtube)](https://www.youtube.com/channel/UCMXHqa2vmclSoSkuCu_q5rw)
 
 Fejlesztők
 [LordHansCapon](https://github.com/LordHansCapon)  
 [np123](https://github.com/patel-nikhil)  
+[gynt](https://github.com/gynt)
 [J-T-de](https://github.com/J-T-de)  
+[Le spec](https://github.com/LeSpec)  
 [Chaf1812](https://github.com/Chaf1812)  
 
 Fordítók
@@ -304,6 +303,10 @@ Továbbá külön köszönet:
 [GRhin](https://www.twitch.tv/grhin)  
 [Heroesflorian](https://github.com/Heroesflorian)"
 }
+
+// ======================
+//         2.14
+// ======================
 
 ui_StartTroops
 {
@@ -440,7 +443,6 @@ ui_aicselect
 	"Kérjük először szüntesse meg a többi AIC fájl(ok) kiválasztását. Az alábbi aic karakterek vannak kijelölve: "
 }
 
-
 // ======================
 //         2.13
 // ======================
@@ -449,27 +451,20 @@ o_firecooldown
 {
 	"Eloltott épületek tűzálló időtartamának megnövelése"
 }
+
 o_firecooldown_descr
 {
 	"Itt meghosszabbítható az az időtartam, amely alatt az eloltott épületek nem tudnak újra kigyulladni."
 }
+
 u_ballistamonk
 {
 	"A tűzhajítógépek lőnek a szerzetesekre"
 }
+
 u_ballistamonk_descr
 {
 	"A tűzhajítógépek automatikusan lőnek a szerzetesekre is."
-}
-
-aiv_EvreyHistory
-{
-	"Evrey történelmi MI várak"
-}
-
-aiv_EvreyHistory_descr
-{
-	"Minden MI Lordnak ad egy új várat, ami a Lordhoz illő, valós történelmi várról, városról lett mintázva. [Készítette: Evrey](https://github.com/Evrey/SHC_AIV/)"
 }
 
 
@@ -800,24 +795,6 @@ ai_nosleep_descr
 }
 
 
-ai_overclock
-{
-	"MI Parancsidőtartam rövidítése [Teszt]"
-}
-
-ai_overclock_descr
-{
-	"Itt lehet megvátoztatni az MI parancs időtartamát mint pl. mikor támadási parancsot ad az egységeknek. Ezáltal az egységek nem állnak egy helyen olyan sokáig, miután a célpontot megsemmisítették/legyőzték.
-
-Az azonban még nem ismert, hogy az időtartam megváltoztatása befolyásol e valamit, ezért előfordulhat hiba."
-}
-
-
-
-
-
-
-
 // 5.12.2018
 
 o_onlyai
@@ -1020,7 +997,7 @@ o_healer
 
 o_healer_descr
 {
-	"A gyógyszertár gyógyítója mostantól megkeresi a sérült harcosokat, civileket, állatokat és meggyógyítja őket. A hozzá legközelebb lévő célpontokat gyógyítja elöszőr. Minden gyógyító animációval kb. egy lándzsás 1/3 életerejét állítja helyre. A kertekben való mászkálás és a pestisfelhő felkeresése ez által nem lesz lecserélve! Csak a várban való mászkálása lesz kihagyva, ha nincs a hatótávolságán belül beteg."
+	"A gyógyszertár gyógyítója mostantól megkeresi a sérült harcosokat, civileket, állatokat és meggyógyítja őket. A hozzá legközelebb lévő célpontokat gyógyítja először. Minden gyógyító animációval kb. egy lándzsás 1/3 életerejét állítja helyre. A kertekben való mászkálás és a pestisfelhő felkeresése ez által nem lesz lecserélve! Csak a várban való mászkálása lesz kihagyva, ha van sebesült a hatótávolságán belül."
 }
 
 
@@ -1087,22 +1064,6 @@ Fülöp: 4 -> 32
 Viszont figyelembe kell venni, hogy ezáltal a legelső támadásuk egy kicsivel később következik be."
 }
 
-aiv_tatha
-{
-	"Tatha feljavított MI várak"
-}
-
-aiv_tatha_descr
-{
-	"Az eredeti játékhoz képest jelentősen erősebb várak. A különböző MI vártípusai ugyanannyira erősek.
-[Bemutató-Lejátszási lista](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)"
-}
-
-
-
-
-// some edits:
-
 ai_attackwave
 {
 	"Támadási hullámok feljavítása"
@@ -1111,46 +1072,4 @@ ai_attackwave
 ai_attackwave_descr
 {
 	"Az eredeti játékban az MI mindig csak annyi egységet küld el egyszerre amennyi elérhető várfal van. Azok a várak amik épületekkel vannak körülépítve, azokat az egységek csak elvétve támadják meg. Ezzel a beállítással az egységek az épületeket és az ostromsátrakat is megtámadják illetve azt a várfalat is amit már egy másik támadó egység rombol. Továbbá az MI mostantól több egységet küld az ellenséges vártoronyra, amint észrevesz egy oda vezető utat."
-}
-
-aiv_pitchsiege
-{
-	"PitchNeeded Evrey Edit (kővetőgépek és hajítógépek)"
-}
-
-aiv_pitchsiege_descr
-{
-	"Kibővíti a 'Evrey feljavított eredeti várak' módosítást azáltal hogy Wazir, Disznó, Nizar és Emír tornyaira kővetőgépet és hajítógépet rak. Átszerkesztette: [PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-aiv_pitchwells
-{
-	"PitchNeeded Evrey Edit (kutak és gyógyszertárak)"
-}
-
-aiv_pitchwells_descr
-{
-	"Kibővített 'Evrey feljavított eredeti várak' módosítás melyben egyes MI várak kutakat és gyógyszertárakat kapnak. Átszerkesztette: [PitchNeeded](https://github.com/PitchNeeded)."
-}
-
-aiv_evreyfixed
-{
-	"Evrey feljavított eredeti várak"
-}
-
-aiv_evreyfixed_descr
-{
-	"Kijavítja az eredeti MI várak hibáit, mint pl. hiányzó házak és céhek vagy blokkolt kijáratok.
-[Készítette: Evrey](https://github.com/Evrey/SHC_AIV/)"
-}
-
-aiv_evreyimproved
-{
-	"Evrey feljavított MI várak"
-}
-
-aiv_evreyimproved_descr
-{
-	"Új feljavított várakat ad az MI Lordoknak, az eredeti várstílusok alapján.
-[Készítette: Evrey](https://github.com/Evrey/SHC_AIV/)"
 }

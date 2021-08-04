@@ -47,10 +47,7 @@ namespace UCP.AIV
             String activeChange = AIVChange.activeChange == null ? String.Empty : AIVChange.activeChange.TitleIdent;
             foreach (AIVChange change in AIVChange.changes)
             {
-                if (!change.isInternal)
-                {
-                    Localization.Remove(change.TitleIdent + "_descr");
-                }
+                Localization.Remove(change.TitleIdent + "_descr");
                 view.Items.Remove(change.UIElement);
             }
             AIVChange.Refresh();
