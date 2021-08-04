@@ -601,6 +601,9 @@ namespace UCP
                 }
             },
 
+            // Fix Jester visiting assassins on the battlefield
+            BinBytes.Change("u_jestermoveto_assassin", ChangeType.Bugfix, true, 0x01),
+          
             // Fix broken map sending mechanic
             new Change("o_fix_map_sending", ChangeType.Bugfix, true)
             {
@@ -616,7 +619,7 @@ namespace UCP
                     }
                 }
             },
-
+          
             #endregion
 
             #region AI LORDS

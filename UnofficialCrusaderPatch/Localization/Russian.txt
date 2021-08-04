@@ -35,6 +35,15 @@ o_fix_rapid_deletion_bug_descr
 // ======================
 //         2.15
 // ======================
+u_jestermoveto_assassin
+{
+	"Stop the jester from visiting assassins"
+}
+
+u_jestermoveto_assassin_descr
+{
+	"The jester visits your units on the battlefield to cheer them up. Now it wont visit your invisible assassins anymore, showing everyone where they are!"
+}
 
 u_spearmen_run
 {

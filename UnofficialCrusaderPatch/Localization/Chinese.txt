@@ -22,6 +22,16 @@ o_fix_rapid_deletion_bug_descr
 "Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
 }
 
+u_jestermoveto_assassin
+{
+	"Stop the jester from visiting assassins"
+}
+
+u_jestermoveto_assassin_descr
+{
+	"The jester visits your units on the battlefield to cheer them up. Now it wont visit your invisible assassins anymore, showing everyone where they are!"
+}
+
 o_disable_border_scrolling
 {
 "Disable border scrolling"
