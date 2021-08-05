@@ -337,6 +337,15 @@
     <EmbeddedResource Include="CodeBlocks\ai_recruitstate_initialtimer.block" />
     <EmbeddedResource Include="CodeBlocks\o_disable_border_scrolling.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_map_sending.block" />
+    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding.block" />
+    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_building.block" />
+    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_build_function_exit.block" />
+    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_requesting_player_1.block" />
+    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_requesting_player_2.block" />
+    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_init_compare_build1.block" />
+    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_init_compare_build2.block" />
+    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_init_compare_wall1.block" />
+    <EmbeddedResource Include="CodeBlocks\o_allow_overbuilding_init_compare_wall2.block" />
     <None Include="CodeBlocks\o_healer_cmp.block" />
     <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
     <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />

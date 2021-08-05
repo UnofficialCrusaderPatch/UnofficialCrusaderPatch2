@@ -4355,6 +4355,328 @@ namespace UCP
                         new BinBytes(0xEB, 0x38)
                     }
                 }
+            },
+
+            new Change("o_allow_overbuilding", ChangeType.Other, false)
+            {
+                new DefaultHeader("o_allow_overbuilding")
+                {
+                    // 0057C35F
+                    new BinaryEdit("o_allow_overbuilding_requesting_player_1")
+                    {
+                        new BinAddress("RequestingPlayer1", 18)
+                    },
+                    
+                    // 00489320
+                    new BinaryEdit("o_allow_overbuilding_requesting_player_2")
+                    {
+                        new BinAddress("RequestingPlayer2", 43)
+                    },
+
+                    // 004F9B38
+                    new BinaryEdit("o_allow_overbuilding_build_function_exit")
+                    {
+                        new BinSkip(15),
+                        new BinLabel("BuildFunctionExit")
+                    },
+
+                    // 00445B4B
+                    new BinaryEdit("o_allow_overbuilding_init_compare_build1")
+                    {
+                        new BinAlloc("PlayerToCompare", 4)
+                        {
+                        },
+
+                        new BinAlloc("CompareFlag", 1)
+                        {
+                            0x00
+                        },
+
+                        new BinSkip(48),
+
+                        // initialize compare
+                        new BinHook(6)
+                        {
+                            0xC6, 0x05, new BinRefTo("CompareFlag", false), 0x01, // mov byte ptr[CompareFlag],01
+                            0x50, // push eax
+                            0xB8, new BinRefTo("RequestingPlayer1", false), // mov eax,RequestingPlayer1
+                            0x83, 0xC0, 0x04, // add eax,4
+                            0x8B, 0x80, new BinRefTo("RequestingPlayer2", false), // mov eax,[eax+RequestingPlayer2]
+                            0xA3, new BinRefTo("PlayerToCompare", false), // mov [PlayerToCompare],eax
+                            0x58, // pop eax
+
+                            // original code
+                            0x0F, 0x85, new BinRefTo("JMP"), // jnz JMP
+                        },
+
+                        new BinSkip(181),
+                        new BinLabel("JMP"),
+
+                        new BinSkip(44),
+
+                        // deinitialize compare
+                        new BinHook(6)
+                        {
+                            0xC6, 0x05, new BinRefTo("CompareFlag", false), 0x00, // mov byte ptr[CompareFlag],00
+
+                            // original code
+                            0x8D, 0x46, 0xCE, // lea eax,[esi-32]
+                            0x83, 0xF8, 0x37 // cmp eax,37
+                        }
+                    },
+
+                    // 00516316
+                    new BinaryEdit("o_allow_overbuilding_init_compare_build2")
+                    {
+                        new BinSkip(15),
+                        new BinAddress("CheckCanBuild", 1, true),
+
+                        new BinHook(5)
+                        {
+                            // initialize compare
+                            0xC6, 0x05, new BinRefTo("CompareFlag", false), 0x01, // mov byte ptr[CompareFlag],01
+                            0x50, // push eax
+                            0xB8, new BinRefTo("RequestingPlayer1", false), // mov eax,RequestingPlayer1
+                            0x8B, 0x80, new BinRefTo("RequestingPlayer2", false), // mov eax,[eax+RequestingPlayer2]
+                            0xA3, new BinRefTo("PlayerToCompare", false), // mov [PlayerToCompare],eax
+                            0x58, // pop eax
+
+                            // original code
+                            0xE8, new BinRefTo("CheckCanBuild"), // call CheckCanBuild
+
+                            // deinitialize compare
+                            0xC6, 0x05, new BinRefTo("CompareFlag", false), 0x00 // mov byte ptr[CompareFlag],00
+                        }
+                    },
+
+                    // 0043800B
+                    new BinaryEdit("o_allow_overbuilding_init_compare_wall1")
+                    {
+                        new BinAddress("WallFunc", 1, true),
+
+                        new BinHook(5)
+                        {
+                            // initialize compare
+                            0xC6, 0x05, new BinRefTo("CompareFlag", false), 0x01, // mov byte ptr[CompareFlag],01
+                            0x50, // push eax
+                            0xB8, new BinRefTo("RequestingPlayer1", false), // mov eax,RequestingPlayer1
+                            0x83, 0xC0, 0x04, // add eax,4
+                            0x8B, 0x80, new BinRefTo("RequestingPlayer2", false), // mov eax,[eax+RequestingPlayer2]
+                            0xA3, new BinRefTo("PlayerToCompare", false), // mov [PlayerToCompare],eax
+                            0x58, // pop eax
+
+                            // original code
+                            0xE8, new BinRefTo("WallFunc"), // call Func
+
+                            // deinitialize compare
+                            0xC6, 0x05, new BinRefTo("CompareFlag", false), 0x00 // mov byte ptr[CompareFlag],00
+                        }
+                    },
+
+                    // 00502F67
+                    new BinaryEdit("o_allow_overbuilding_init_compare_wall2")
+                    {
+                        new BinHook(5)
+                        {
+                            // initialize compare
+                            0xC6, 0x05, new BinRefTo("CompareFlag", false), 0x01, // mov byte ptr[CompareFlag],01
+                            0x50, // push eax
+                            0xB8, new BinRefTo("RequestingPlayer1", false), // mov eax,RequestingPlayer1
+                            0x8B, 0x80, new BinRefTo("RequestingPlayer2", false), // mov eax,[eax+RequestingPlayer2]
+                            0xA3, new BinRefTo("PlayerToCompare", false), // mov [PlayerToCompare],eax
+                            0x58, // pop eax
+
+                            // original code
+                            0xE8, new BinRefTo("WallFunc"), // call Func
+
+                            // deinitialize compare
+                            0xC6, 0x05, new BinRefTo("CompareFlag", false), 0x00 // mov byte ptr[CompareFlag],00
+                        }
+                    },
+
+                    // 00502C04
+                    new BinaryEdit("o_allow_overbuilding")
+                    {
+                        // these units can be overbuilt by walls
+                        new BinAlloc("WallSkipUnitIDArray", null)
+                        {
+                            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
+                            0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1E, 0x20, 0x21,
+                            0x22, 0x23, 0x24, 0x25, 0x26, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F, 0x30, 0x31, 0x32, 0x33,
+                            0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3C, 0x3D, 0x3E, 0x3F, 0x40, 0x46, 0x47, 0x48, 0x49,
+                            0x4B, 0x4C,
+                            0x00 // delimiter
+                        },
+
+                        /**
+                         * Searches a byte in a byte array and writes 1 if found in eax, otherwise 0.
+                         * Custom end byte can be set.
+                         * 
+                         * Parameters:
+                         * - byte to search for
+                         * - address where the byte array is found (end the bytearray with "end byte")
+                         * - end byte (such as 00)
+                         *
+                         * Return:
+                         * - eax will contain 1 if found in array, otherwise 0.
+                         *
+                         * Example:
+                         * push 00             // end byte is 00
+                         * push 025B0831       // address set
+                         * push cx             // we search for this byte
+                         * call InByteArray    // call function
+                         * cmp eax,01          // check if we found it
+                         */
+                        new BinAlloc("InByteArray", null)
+                        {
+                            0x53, // push ebx
+                            0x51, // push ecx
+                            0x52, // push edx
+                            0x31, 0xC9, // xor ecx,ecx
+                            0x31, 0xDB, // xor ebx,ebx
+                            0x31, 0xD2, // xor edx,edx
+                            0xB8, 0x00, 0x00, 0x00, 0x00, // mov eax,00
+                            0x8B, 0x54, 0x24, 0x14, // mov edx,[esp+14]
+                            0x8A, 0x1C, 0x11, // mov bl,[ecx+edx]
+                            0x3A, 0x5C, 0x24, 0x18, // cmp bl,[esp+18]
+                            0x0F, 0x84, 0x12, 0x00, 0x00, 0x00, // je short 0x12
+                            0xB8, 0x01, 0x00, 0x00, 0x00, // mov eax,01
+                            0x3B, 0x5C, 0x24, 0x10, // cmp ebx,[esp+10]
+                            0x0F, 0x84, 0x03, 0x00, 0x00, 0x00, // je short 0x03
+                            0x41, // inc ecx
+                            0xEB, 0xD8, // jmp short backwards
+                            0x5A, // pop edx
+                            0x59, // pop ecx
+                            0x5B, // pop ebx
+                            0xC2, 0x0C, 0x00 // ret 000C
+                        },
+
+                        new BinAddress("UnitBaseAddress", 22),
+
+                        new BinSkip(19),
+
+                        new BinHook(8)
+                        {
+                            0x50, // push eax
+
+                            0x83, 0xC1, 0x08, // add ecx,08
+                            0x0F, 0xB6, 0x81, new BinRefTo("UnitBaseAddress", false), // movzx eax, byte ptr[ecx+UnitBaseAddress]
+                            0x83, 0xE9, 0x08, // sub ecx,08
+                            // Check owner
+                            0x80, 0x3D, new BinRefTo("CompareFlag", false), 0x00, // cmp byte ptr[CompareFlag],00
+                            0x74, 0x2A, // je short 2A
+                            0x83, 0xF8, 0x00, // cmp eax,00  -- check for neutral
+                            0x74, 0x8, // je short 0x8
+                            0x3B, 0x05, new BinRefTo("PlayerToCompare", false), // cmp eax,[PlayerToCompare]
+                            0x75, 0x1D, // jne short 0x1D
+
+                            0x0F, 0xB6, 0x81, new BinRefTo("UnitBaseAddress", false), // movzx eax, byte ptr[ecx+UnitBaseAddress]
+                            0x6A, 0x00, // push 00
+                            0x68, new BinRefTo("WallSkipUnitIDArray", false), // push WallSkipUnitIDArray
+                            0x50, // push eax
+                            0xE8, new BinRefTo("InByteArray"), // call InByteArray
+                            0x83, 0xF8, 0x01, // cmp eax,01
+                            0x0F, 0x84, 0x08, 0x00, 0x00, 0x00, // je short 0x08
+                            0x66, 0x83, 0xB9, new BinRefTo("UnitBaseAddress", false), 0x3E, // cmp word ptr[ecx+UnitBaseAddress],3E
+                            0x58, // pop eax
+                        }
+                    },
+
+                    // 004F9BD3
+                    new BinaryEdit("o_allow_overbuilding_building")
+                    {
+                        // tower building IDs
+                        new BinAlloc("TowerIDArray", null)
+                        {
+                            0x6E, 0x6F, 0x70, 0x71, 0x72, // tower variations
+                            0x90, 0x91, // small gate variations
+                            0x92, 0x93, // big gate variations
+                            0x62, // killing pit
+                            0x63, // pitch
+                            0x00 // delimiter
+                        },
+
+                        // these units can be overbuilt by tower buildings
+                        new BinAlloc("TowerSkipUnitIDArray", null)
+                        {
+                            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
+                            0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1E, 0x1F, 0x20,
+                            0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F, 0x30, 0x31, 0x32,
+                            0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3C, 0x3D, 0x3E, 0x3F, 0x40, 0x46, 0x47, 0x48,
+                            0x49, 0x4B, 0x4C,
+                            0x00 // delimiter
+                        },
+
+                        // these units can be overbuilt by non-tower buildings
+                        new BinAlloc("NonTowerSkipUnitIDArray", null)
+                        {
+                            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
+                            0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x1F, 0x20, 0x21, 0x22, 0x23, 0x24, 0x2F, 0x34, 0x35,
+                            0x36, 0x38, 0x39, 0x40, 0x3E, 0x3F,
+                            0x00 // delimiter
+                        },
+
+                        new BinSkip(23),
+
+                        new BinHook(14)
+                        {
+                            0x50, // push eax
+                            0x53, // push ebx
+                            0x51, // push ecx
+                            0x31, 0xDB, // xor ebx,ebx
+                            0x31, 0xC9, // xor ecx,ecx
+
+                            0x83, 0xC5, 0x08, // add ebp,08
+                            0x0F, 0xB6, 0x85, new BinRefTo("UnitBaseAddress", false), // movzx eax, byte ptr[ebp+UnitBaseAddress]
+                            0x83, 0xED, 0x08, // sub ebp,08
+                            // Check owner
+                            0x80, 0x3D, new BinRefTo("CompareFlag", false), 0x00, // cmp byte ptr[CompareFlag],00
+                            0x74, 0x72, // je short 0x72
+                            0x83, 0xF8, 0x00, // cmp eax,00  -- check for neutral
+                            0x74, 0xC, // je short 0xC
+                            0x3B, 0x05, new BinRefTo("PlayerToCompare", false), // cmp eax,[PlayerToCompare]
+                            0x0F, 0x85, 0x61, 0x00, 0x00, 0x00, // jne short 0x61
+
+                            0x0F, 0xB6, 0x44, 0x24, 0x1C, 0x90, 0x90, // movzx eax,byte ptr [esp+1C]
+                            0x6A, 0x00, // push 00
+                            0x68, new BinRefTo("TowerIDArray", false), // push TowerIDArray
+                            0x50, // push eax
+                            0xE8, new BinRefTo("InByteArray"), // call InByteArray
+                            0x83, 0xF8, 0x01, // cmp eax,01
+                            0x0F, 0x84, 0x05, 0x00, 0x00, 0x00, // je short 0x05
+                            0xE9, 0x22, 0x00, 0x00, 0x00, // jmp short 0x22
+
+                            // Tower building
+                            0x0F, 0xB6, 0x85, new BinRefTo("UnitBaseAddress", false), // movzx eax, byte ptr [ebp+UnitBaseAddress]
+                            0x6A, 0x00, // push 00
+                            0x68, new BinRefTo("TowerSkipUnitIDArray", false), // push TowerSkipUnitIDArray
+                            0x50, // push eax
+                            0xE8, new BinRefTo("InByteArray"), // call InByteArray
+                            0x83, 0xF8, 0x01, // cmp eax,01
+                            0x0F, 0x84, 0x35, 0x00, 0x00, 0x00, // je short 0x35
+                            0xE9, 0x1D, 0x00, 0x00, 0x00, // jmp short 0x1D
+
+                            // Not tower building
+                            0x0F, 0xB6, 0x85, new BinRefTo("UnitBaseAddress", false), // movzx eax, byte ptr [ebp+UnitBaseAddress]
+                            0x6A, 0x00, // push 00
+                            0x68, new BinRefTo("NonTowerSkipUnitIDArray", false), // push NonTowerSkipUnitIDArray
+                            0x50, // push eax
+                            0xE8, new BinRefTo("InByteArray"), // call InByteArray
+                            0x83, 0xF8, 0x01, // cmp eax,01
+                            0x0F, 0x84, 0x13, 0x00, 0x00, 0x00, // je short 0x13
+
+                            0x66, 0x83, 0xBD, new BinRefTo("UnitBaseAddress", false), 0x3E, // cmp word ptr [ebp+UnitBaseAddress],3E
+                            0x59, // pop ecx
+                            0x5B, // pop ebx
+                            0x58, // pop eax
+                            0x0F, 0x85, new BinRefTo("BuildFunctionExit"), // jne BuildFunctionExit
+                            0xEB, 0x03, // jmp short 03
+                            0x59, // pop ecx
+                            0x5B, // pop ebx
+                            0x58, // pop eax
+                        }
+                    },
+                },
             }
 
             #endregion
