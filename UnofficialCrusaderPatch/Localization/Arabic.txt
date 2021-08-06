@@ -3,48 +3,48 @@
 // ======================
 u_assassinfix
 {
-"Fix assassin unit pathing and behaviour"
+"أصلاح سلوك و مسار القاتل المأجور"
 }
 
 u_assassinfix_descr
 {
-"- Assassins will no longer stop and forget their destination in the middle of the map after encountering an enemy on the way
-- Assassins will no longer attack units on atop the keep after descending the wall into a 1 tile gap path between the wall and the keep"
+"- القتلة المأجوين لن يتوقفوا في منتصف الطريق عندما يواجهون العدو في اثناء الذهاب الى وجهتهم
+- القتلة المأجورين لن يقوموا بمهاجمة القوات في قلعة الملك عندما يكون الحائط فيه فجوة بمقدار حجر واحد بين قوات القلعة و القتلة المأجورين"
 }
 
 u_ghosteng
 {
-"Fix engineers not dying with siege engines"
+"أصلاح المهندسين لا يموتون مع الآلات الحربية"
 }
 
 u_ghosteng_descr
 {
-"Fix engineers not dying when siege engine they are manning is killed"
+"أصلاح المهندسين لا يموتون عندما يتم تدمير الآلات الحربية الخاصة بهم"
 }
 
 ai_restore_ai_siege_messages
 {
-"Restore AI siege messages"
+"استعادة رسائل الملك (الذكاء الاصطناعي) عند الهجوم"
 }
 
 ai_restore_ai_siege_messages_descr
 {
-" "
+""
 }
 
 ai_restore_ai_siege_messages_always
 {
-"Always"
+"دائما"
 }
 
 ai_restore_ai_siege_messages_always_descr
 {
-" "
+""
 }
 
 ai_restore_ai_siege_messages_stronger
 {
-"Only when attacking weaker enemy"
+"فقط عند مهاجمة العدو الأضعف"
 }
 
 ai_restore_ai_siege_messages_stronger_descr
@@ -54,109 +54,108 @@ ai_restore_ai_siege_messages_stronger_descr
 
 ai_restore_ai_siege_messages_33_or_stronger
 {
-"Always when attacking weaker, 33% chance when attacking stronger"
+" دائما عند مهاجمة العدو الأضعف, احتمال بنسبة 33% عند مهاجمة الأقوى"
 }
 
 ai_restore_ai_siege_messages_33_or_stronger_descr
 {
-" "
+""
 }
 
 ai_restore_ai_siege_messages_50
 {
-"50% chance"
+"احتمال بنسبة 50% ّ"
 }
 
 ai_restore_ai_siege_messages_50_descr
 {
-"AIs have recorded Siege messages which they send to their allies when they are about to attack an enemy. This feature was cut from the game, but the assets remained.
+"الملك (الذكاء الاصطناعي) سيرسل رسائل الى حلفائه عندما يكونون على وشك مهاجمة العدو,  هذه الميزة قد تم أزالتها من العبة, لكن الملفات التابعة لها بقيت
 
-This option restores this feature."
+هذا الخيار يعيد هذه الميزة"
 }
 
 o_remove_right_click_context_menu
 {
-"Remove right click context menu"
+"ازالة قائمة زر الماوس الأيمن"
 }
 
 o_remove_right_click_context_menu_descr
 {
-"Removes right click context menu where you can rotate the map, lower walls, zoom and flatten."
+"أزالة محتويات زر الماوس الأيمن مثل تدوير منظور القلعة, اخفاض الجدران, التكبير و التصغير واخفاء المباني"
 }
 
 o_gamespeednumkey
 {
-"Enable gamespeed change with non-numpad keys"
+"تفعيل تغيير سرعة العبة بدون الحاجة الى لوحة الأرقام (النمبر باد)"
 }
 
-o_gamespeednumkey_descr
 {
-"Enable gamespeed change with non-numpad keys"
+"تفعيل تغيير سرعة العبة بدون الحاجة الى لوحة الأرقام (النمبر باد)"
 }
 
 o_fast_placing
 {
-	"Fast placing"
+"وضع سريع"
 }
 
 o_fast_placing_common
 {
-	"killing pit, pitch ditch, woodcutter, good & bad things, mill, water pot, bakery, hovel)"
+"فخ الخشب القاتل, فخ خندق القطران (الفخ الحارق), الحطاب, الأشياء الجيدة والسيئة, المطحنة, خزانات الماء لأطفاء الحرائق, مخبز, المنازل"
 }
 
 o_fast_placing_common_descr
 {
-	" "
+""
 }
 
 o_fast_placing_all
 {
-	"all builds"
+"كل المباني"
 }
 
 o_fast_placing_all_descr
 {
-	"Hold left mouse button down to place buildings."
+"أضغط مطولاّ زر الماوس الأيسر لوضع المباني"
 }
 
 o_fix_map_sending
 {
-"Enable map sending in multiplayer"
+"تفعيل إرسال الخريطة في وضع متعدد اللاعبين"
 }
 
 o_fix_map_sending_descr
 {
-"Reduces the length of the sent map name, to make map sending possible again!"
+"تقليل اسم الخريطة المرسلة, لجعل ارسال الخريطة ممكناّ مرة اخرى"
 }
 
 o_fix_rapid_deletion_bug
 {
-"Fix resources rapid deletion"
+"إصلاح الحذف السريع للموارد"
 }
 
 o_fix_rapid_deletion_bug_descr
 {
-"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
+"لم يعد حذف المباني باستخدام أداة النقر التلقائي السريعة يوفر موارد لحذف أكثر من مرة"
 }
 
 u_jestermoveto_assassin
 {
-"Stop the jester from visiting assassins"
+"ايقاف المهرج من زيارة القتلة المأجورين"
 }
 
 u_jestermoveto_assassin_descr
 {
-"The jester visits your units on the battlefield to cheer them up. Now it wont visit your invisible assassins anymore, showing everyone where they are!"
+"المهرج يزور وحدات القتال في المعركة ليهتف لهم. الآن لن يقوم بزيارة القتلة المأجورين المتخفين, ويكشف مكانهم للجميع"
 }
 
 o_disable_border_scrolling
 {
-"Disable border scrolling"
+"تعطيل تحريك موضع رؤية الخارطة"
 }
 
 o_disable_border_scrolling_descr
 {
-"Moving the cursor to the edge of the screen will no longer move its position."
+"تحريك الماوس الى حافة الخارطة لن يقوم بتحريك موضع رؤية الخارطة"
 }
 
 // ======================
