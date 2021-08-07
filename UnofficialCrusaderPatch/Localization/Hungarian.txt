@@ -3,28 +3,28 @@
 // ======================
 u_assassinfix
 {
-"Fix assassin unit pathing and behaviour"
+"Orgyilkos egység útvonalkeresés és viselkedés javítás"
 }
 
 u_assassinfix_descr
 {
-"- Assassins will no longer stop and forget their destination in the middle of the map after encountering an enemy on the way
-- Assassins will no longer attack units on atop the keep after descending the wall into a 1 tile gap path between the wall and the keep"
+"- Az orgyilkosok nem felejtik el az érkezési helyüket, ha belefutnak egy ellenséges egységbe
+- Az orgyilkosok már nem támadják meg a vártorony tetején lévő egységeket, miután leereszkedtek a fal és a vártorony között lévő 1 mező széles helyre"
 }
 
 u_ghosteng
 {
-"Fix engineers not dying with siege engines"
+"A mérnökök nem halnak meg az ostromgépekkel hibajavítás"
 }
 
 u_ghosteng_descr
 {
-"Fix engineers not dying when siege engine they are manning is killed"
+"Kijavítja azt a hibát, amikor a mérnökök nem halnak meg az általuk működtetett ostromgép elpusztítása után"
 }
 
 ai_restore_ai_siege_messages
 {
-"Restore AI siege messages"
+"MI ostrom üzenetek visszaállítása"
 }
 
 ai_restore_ai_siege_messages_descr
@@ -34,7 +34,7 @@ ai_restore_ai_siege_messages_descr
 
 ai_restore_ai_siege_messages_always
 {
-"Always"
+"Mindig"
 }
 
 ai_restore_ai_siege_messages_always_descr
@@ -44,7 +44,7 @@ ai_restore_ai_siege_messages_always_descr
 
 ai_restore_ai_siege_messages_stronger
 {
-"Only when attacking weaker enemy"
+"Csak ha gyengébb ellenséget támad"
 }
 
 ai_restore_ai_siege_messages_stronger_descr
@@ -54,7 +54,7 @@ ai_restore_ai_siege_messages_stronger_descr
 
 ai_restore_ai_siege_messages_33_or_stronger
 {
-"Always when attacking weaker, 33% chance when attacking stronger"
+"Mindig ha gyengébbet támad, 33% eséllyel, ha erősebbet támad"
 }
 
 ai_restore_ai_siege_messages_33_or_stronger_descr
@@ -64,44 +64,44 @@ ai_restore_ai_siege_messages_33_or_stronger_descr
 
 ai_restore_ai_siege_messages_50
 {
-"50% chance"
+"50% esély"
 }
 
 ai_restore_ai_siege_messages_50_descr
 {
-"AIs have recorded Siege messages which they send to their allies when they are about to attack an enemy. This feature was cut from the game, but the assets remained.
+"Az MI Lordoknak van felvett ostrom üzenetük, amit akkor küldenek el a szövetségeseiknek, amikor épp készülnek megtámadni egy ellenséget. Ez a funkció kikerült a játékból, de a szükséges fájlok benne maradtak a játékban.
 
-This option restores this feature."
+Ez az opció visszaállítja ezt a funkciót."
 }
 
 o_remove_right_click_context_menu
 {
-"Remove right click context menu"
+"Kamera kezelőfelület eltávolítása"
 }
 
 o_remove_right_click_context_menu_descr
 {
-"Removes right click context menu where you can rotate the map, lower walls, zoom and flatten."
+"Eltávolítja a jobb egérgomb kattintással megnyitható kamera kezelőfelületet, ahol a térképet lehet forgatni, magas épületeket lekicsinyíteni, nagyítani és a lapítottmódot használni."
 }
 
 o_gamespeednumkey
 {
-"Enable gamespeed change with non-numpad keys"
+"Játéksebesség megváltoztatása nem numerikus billentyűvel"
 }
 
 o_gamespeednumkey_descr
 {
-"Enable gamespeed change with non-numpad keys"
+"Ezzel az opcióval megváltoztatható a játék sebessége egy nem numerikus billentyűvel"
 }
 
 o_fast_placing
 {
-	"Fast placing"
+	"Gyors elhelyezés"
 }
 
 o_fast_placing_common
 {
-	"killing pit, pitch ditch, woodcutter, good & bad things, mill, water pot, bakery, hovel)"
+	"Karós verem, olajos árok, jó/rossz dolog, favágó kunyhó, malom, ciszterna, pékség és lakóház"
 }
 
 o_fast_placing_common_descr
@@ -111,42 +111,42 @@ o_fast_placing_common_descr
 
 o_fast_placing_all
 {
-	"all builds"
+	"Minden építéskor"
 }
 
 o_fast_placing_all_descr
 {
-	"Hold left mouse button down to place buildings."
+	"Tarsd lenyomva a bal egérgombot az épületek gyors elhelyezéséhez."
 }
 
 o_disable_border_scrolling
 {
-"Deaktiviere Scrollen am Bildschirmrand"
+"A képernyő szélén való görgetés letiltása"
 }
 
 o_disable_border_scrolling_descr
 {
-"Bewegen des Mauszeigers zum Bildschirmrand bewegt nicht mehr die Ansicht."
+"Mostantól nem mozdul el a képernyő poziciója, ha a kurzor a képernyő szélére ér."
 }
 
 o_fix_map_sending
 {
-"Enable map sending in multiplayer"
+"Térképek küldésének engedélyezése a többjátékos módban"
 }
 
 o_fix_map_sending_descr
 {
-"Reduces the length of the sent map name, to make map sending possible again!"
+"Lecsökkenti az elküldött térképnév hosszát, így újra lehetséges a térképek elküldése!"
 }
 
 o_fix_rapid_deletion_bug
 {
-"Fix resources rapid deletion"
+"Gyors törléssel visszakapott nyersanyag javítás"
 }
 
 o_fix_rapid_deletion_bug_descr
 {
-"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
+"Az épületek törlése gyors auto-kattintással nem ad több nyersanyagot vissza."
 }
 
 // ======================
@@ -154,22 +154,22 @@ o_fix_rapid_deletion_bug_descr
 // ======================
 u_jestermoveto_assassin
 {
-	"Stop the jester from visiting assassins"
+	"Az udvari bolond nem megy oda az orgyilkosokhoz"
 }
 
 u_jestermoveto_assassin_descr
 {
-	"The jester visits your units on the battlefield to cheer them up. Now it wont visit your invisible assassins anymore, showing everyone where they are!"
+	"Az udvari bolond meglátogatja a harctéren lévő egységeket, hogy felvídítsa őket. Most már nem megy oda a rejtőzködő orgyilkosokhoz, ezáltal nem fedi fel őket!"
 }
 
 u_ghosteng
 {
-"Fix engineers not dying with siege engines"
+"A mérnökök nem halnak meg az ostromgépekkel hibajavítás"
 }
 
 u_ghosteng_descr
 {
-"Fix engineers not dying when siege engine they are manning is killed"
+"Kijavítja azt a hibát, amikor a mérnökök nem halnak meg az általuk működtetett ostromgép elpusztítása után"
 }
 
 u_spearmen_run
@@ -204,7 +204,7 @@ o_seed_modification_possibility
 
 o_seed_modification_possibility_descr
 {
-"Ez a beállítás elmenti a seed-et azon játékokból amikhez nem lett megadva live seed érték, nevezd át a kívánt seed-et tartalmazó szöveges fájlt 'live'-ra hogy a későbbiekben újra rekonstruálhasd a harcot."
+"Ez a beállítás elmenti a seed-et azon játékokból, amikhez nem lett megadva live seed érték. Nevezd át a kívánt seed-et tartalmazó szöveges fájlt 'live'-ra, hogy a későbbiekben újra rekonstruálhasd a harcot."
 }
 
 ai_recruitstate_initialtimer
@@ -214,7 +214,7 @@ ai_recruitstate_initialtimer
 
 ai_recruitstate_initialtimervalue_descr
 {
-"Az értéknek add meg azon hónapok számát, amikor az MI az AIC fájlban megadott toborzási sebeséggel toboroz kizárólag védekező egységeket, ha már teljesen megerősítette a védelmét, akkor támadó egységeket fog toborozni"
+"Az értéknek add meg azon hónapok számát, amikor az MI az AIC fájlban megadott toborzási sebeséggel toboroz, kizárólag védekező egységeket. Ha már teljesen megerősítette a védelmét, akkor támadó egységeket fog toborozni"
 }
 
 ai_defense
@@ -259,7 +259,7 @@ aiv_prompt
 
 aiv_cli_prompt
 {
-"Módosított AIV fájlok észlelve. Írd be a 'delete' szót az eltávolításukhoz vagy adj meg egy mappa nevet, ahova a fájlok települnek."
+"Módosított AIV fájlok észlelve. Írd be a 'delete' szót az eltávolításukhoz, vagy adj meg egy mappanevet, ahova a fájlok települnek."
 }
 
 install_abort_io
@@ -284,7 +284,7 @@ o_change_siege_engine_spawn_position_catapult
 
 o_change_siege_engine_spawn_position_catapult_descr
 {
-"Az elkészült ostromgépek a sátor közepénél jelennek meg a sátor jobb felső sarka helyett."
+"Az elkészült ostromgépek a sátor közepénél jelennek meg, a sátor jobb felső sarka helyett."
 }
 
 o_stop_player_keep_rotation
@@ -368,7 +368,7 @@ u_tanner_fix
 
 u_tanner_fix_descr
 {
-"A tímárok mostantól nem fognak tehén nélkül visszatérni, ha egy másik tímár már elvitte az általuk kiválasztott tehenet. Mostantól várakoznak egy ideig és elvisznek egy másikat."
+"A tímárok mostantól nem fognak tehén nélkül visszatérni, ha egy másik tímár már elvitte az általuk kiválasztott tehenet. Mostantól várakoznak egy ideig, és elvisznek egy másikat."
 }
 
 o_fix_fletcher_bug
@@ -378,17 +378,17 @@ o_fix_fletcher_bug
 
 o_fix_fletcher_bug_descr
 {
-"Kijavítja az íjkészítő azon viselkedését, miszerint visszatér a munkahelyére ha leszállított egy íjat/íjpuskát, ahelyett hogy egyenesen a raktárhoz menne."
+"Kijavítja az íjkészítő azon viselkedését, miszerint visszatér a munkahelyére, ha leszállított egy íjat/íjpuskát, ahelyett hogy egyenesen a raktárhoz menne."
 }
 
 ai_fix_crusader_archers_pitch
 {
-"MI keresztes íjász nem gyújtja be az olajosárkot javítás"
+"MI keresztes íjász nem gyújtja be az olajos árkot javítás"
 }
 
 ai_fix_crusader_archers_pitch_descr
 {
-"Az MI keresztes íjász most már begyújtja az olajosárkot, úgy mint az arab íjász amikor ellenséges egység lép az olajosárokra."
+"Az MI keresztes íjász most már begyújtja az olajos árkot, úgy mint az arab íjász, amikor ellenséges egység lép az olajos árokra."
 }
 
 o_fix_baker_disappear
@@ -398,7 +398,7 @@ o_fix_baker_disappear
 
 o_fix_baker_disappear_descr
 {
-"Kijavítja azt a hibát, amikor a pék eltűnik ha a raktárban nem találja meg a kiválasztott helyen a lisztet."
+"Kijavítja azt a hibát, amikor a pék eltűnik, ha a raktárban nem találja meg a kiválasztott helyen a lisztet."
 }
 
 o_fix_moat_digging_unit_disappearing
@@ -408,7 +408,7 @@ o_fix_moat_digging_unit_disappearing
 
 o_fix_moat_digging_unit_disappearing_descr
 {
-"Kijavítja azt a hibát, amikor árokásás közben véletlenszerűen eltűnik az árkot ásó egység. Megjegyzés: Az egység még mindig eltűnhet, ha árokásás közben elküldöd máshova és éppen egy nem járható helyen van!"
+"Kijavítja azt a hibát, amikor árokásás közben véletlenszerűen eltűnik az árkot ásó egység. Megjegyzés: Az egység még mindig eltűnhet, ha árokásás közben elküldöd máshova, és éppen egy nem járható helyen van!"
 }
 
 ui_welcometext
@@ -418,7 +418,7 @@ A Projekt nyílt forráskódú, ami megtalálható a [GitHub](https://github.com
 
 Elméletben minden Crusader verzió támogatott, viszont a változtatások eredetileg a 1.41 Steames verzióhoz lettek készítve.
 Azonban ha a játék verziód nem kompatibilis, a telepítő hibaüzenetet fog megjeleníteni. A telepített patch-verzió a főmenü bal alsó sarkában fog megjelenni.
-Minden változtatás előtt Backup fájl készül, ami visszaállítható a 'Eltávolítás' gombra kattintva vagy manuálisan visszahelyezhető.
+Minden változtatás előtt Backup fájl készül, ami visszaállítható a 'Eltávolítás' gombra kattintva, vagy manuálisan visszahelyezhető.
 
 Az Unofficial Crusader Patch csapat
 
@@ -853,7 +853,7 @@ ai_addattack_descr
 
 ai_addattack_alt_descr
 {
-	"Alternatív megoldásként, a további csatlakozó egységek számát az első támadás erősségétől függetlenné lehet tenni. De mivel minden MI Lord különböző számú egységet használ az első támadásnál, ezzel együtt a következő támadások is skálázódnak ahelyett, hogy minden MI Lordnak ugyanaz az értéke lenne.
+	"Alternatív megoldásként, a további csatlakozó egységek számát az első támadás erősségétől függetlenné lehet tenni. De mivel minden MI Lord különböző számú egységet használ az első támadásnál, ezzel együtt a következő támadások is skálázódnak, ahelyett, hogy minden MI Lordnak ugyanaz az értéke lenne.
 Például: Skálázási faktor = 0,5
 Szultán támadásainak száma = 10, 15, 20, 25, ...
 Szaladin támadásainak száma = 50, 75, 100, 125, ..."
@@ -894,7 +894,7 @@ o_trooplimit_descr
 
 ai_demolish
 {
-	"Az MI Lord lerombol mindent hogy pénzhez jusson deaktiválása"
+	"Az MI Lord lerombol mindent, hogy pénzhez jusson deaktiválása"
 }
 
 ai_demolish_walls
@@ -914,7 +914,7 @@ ai_demolish_walls_descr
 
 ai_demolish_eco_descr
 {
-	"Ha az MI Lord sarokba szorítva érzi magát és gyorsan pénzt akar szerezni az egységekhez, előszeretettel rombolja le a teljes iparát vagy várépületeit. Néha ez az esemény láthatólag minden indok nélkül megtörténik és emiatt itt ki tudod kapcsolni."
+	"Ha az MI Lord sarokba szorítva érzi magát, és gyorsan pénzt akar szerezni az egységekhez, előszeretettel rombolja le a teljes iparát vagy várépületeit. Néha ez az esemény láthatólag minden indok nélkül megtörténik, és emiatt itt ki tudod kapcsolni."
 }
 
 ai_tethers
@@ -1049,22 +1049,22 @@ Ezenkívül a CTRL-S és a CTRL-L billentyűkkel lehet gyorsmentést létrehozni
 
 o_quicksave
 {
-	"Enable quicksaves via CTRL-S and CTRL-L"
+	"Gyorsmentés a CTRL-S és a CTRL-L billentyűkkel"
 }
 
 o_quicksave_descr
 {
-	"CTRL-S can be used to perform a quicksave. CTRL-L will load the same save"
+	"A CTRL-S és a CTRL-L billentyűkkel lehet gyorsmentést létrehozni és betölteni"
 }
 
 o_wasd
 {
-	"Enable using WASD to move around"
+	"Kamera mozgatása a WASD billentyűkkel"
 }
 
 o_wasd_descr
 {
-	"WASD can be used to move around in addition to the existing arrow keys"
+	"A WASD billentyűket is lehet használni a kamera mozgatásához a már meglévő nyílbilletyűk melett"
 }
 
 
@@ -1115,7 +1115,7 @@ ai_attacktarget_weakest
 
 ai_attacktarget_weakest_descr
 {
-	"Ezzel a beállítással az MI Lordok a saját módjukon keresik meg a célpontot a következő támadásukhoz. Ez megakadályozza azt, hogy az egységek támadás közben célpontot változtassanak vagy az MI ne a másik ellenséges várhoz küldje gyülekezni a seregét."
+	"Ezzel a beállítással az MI Lordok a saját módjukon keresik meg a célpontot a következő támadásukhoz. Ez megakadályozza azt, hogy az egységek támadás közben célpontot változtassanak, vagy az MI ne a másik ellenséges várhoz küldje gyülekezni a seregét."
 }
 
 
@@ -1140,7 +1140,7 @@ ai_assaultswitch
 
 ai_assaultswitch_descr
 {
-	"Azok az MI Lordok akik a legerősebbet vagy a leggyengébbet támadták meg, néha hajlamosak voltak a támadás közepén célpontot változtatni, és az egységeiket elküldeni a másik várhoz. Ezzel a beállítással, ez már nem fordul elő, mihelyst a támadást megkezdte, viszont a vár előtti egységek gyülekezésekor még előfordulhat, hogy célpontot vált."
+	"Azok az MI Lordok, akik a legerősebbet vagy a leggyengébbet támadták meg, néha hajlamosak voltak a támadás közepén célpontot változtatni, és az egységeiket elküldeni a másik várhoz. Ezzel a beállítással, ez már nem fordul elő, mihelyst a támadást megkezdte, viszont a vár előtti egységek gyülekezésekor még előfordulhat, hogy célpontot vált."
 }
 
 
@@ -1152,7 +1152,7 @@ ai_rebuild
 
 ai_rebuild_descr
 {
-	"Ezzel a beállítással az MI Lordok megjavítják a toronyromokat is, enyhén megrongált várfalakat, továbbá mérnökök-, alagútásók céhet és olajfőző kunyhót ha a helyük megmaradt. Továbbá az MI most már képes építeni a kőfejtők helye felett is."
+	"Ezzel a beállítással az MI Lordok megjavítják a toronyromokat is, enyhén megrongált várfalakat, továbbá mérnökök-, alagútásók céhet és olajfőző kunyhót, ha a helyük megmaradt. Továbbá az MI most már képes építeni a kőfejtők kőgyűjtő helye felett is."
 }
 
 
@@ -1188,7 +1188,7 @@ o_healer_descr
 
 o_xtreme
 {
-	"Varázserő-sáv eltávolítása az Extreme kiegészítőből."
+	"Varázserő-sáv eltávolítása az Extreme kiegészítőből"
 }
 
 o_xtreme_descr
@@ -1219,7 +1219,7 @@ ai_access
 
 ai_access_descr
 {
-	"Megakadályozza azt, hogy az MI lerombolja azt az épületet amihez nem lehet hozzáférni. Ezáltal kijavítható az a hiba, hogy az MI ne építse meg és rombolja le újra és újra mindig azt az épületet amihez nem tudnak eljutni."
+	"Megakadályozza azt, hogy az MI lerombolja azt az épületet, amihez nem lehet hozzáférni. Ezáltal kijavítható az a hiba, hogy az MI ne építse meg és rombolja le újra és újra mindig azt az épületet, amihez nem tudnak eljutni."
 }
 
 ai_moredef
@@ -1229,7 +1229,7 @@ ai_moredef
 
 ai_moredef_descr
 {
-	"Az eredeti játékban Richárd, Patkány de leginkább Fülöpnek nagyon kevés védekező egysége volt a várfalakon, tornyokon. Ezzel a beállítással a távolsági harcosok száma a következőképpen változik meg:
+	"Az eredeti játékban Richárd, Patkány, de leginkább Fülöpnek nagyon kevés védekező egysége volt a várfalakon, tornyokon. Ezzel a beállítással a távolsági harcosok száma a következőképpen változik meg:
 
 Patkány: 20 -> 40
 Richárd: 20 -> 40
@@ -1245,5 +1245,5 @@ ai_attackwave
 
 ai_attackwave_descr
 {
-	"Az eredeti játékban az MI mindig csak annyi egységet küld el egyszerre amennyi elérhető várfal van. Azok a várak amik épületekkel vannak körülépítve, azokat az egységek csak elvétve támadják meg. Ezzel a beállítással az egységek az épületeket és az ostromsátrakat is megtámadják illetve azt a várfalat is amit már egy másik támadó egység rombol. Továbbá az MI mostantól több egységet küld az ellenséges vártoronyra, amint észrevesz egy oda vezető utat."
+	"Az eredeti játékban az MI mindig csak annyi egységet küld el egyszerre, amennyi elérhető várfal van. Azok a várak amik épületekkel vannak körülépítve, azokat az egységek csak elvétve támadják meg. Ezzel a beállítással az egységek az épületeket és az ostromsátrakat is megtámadják, illetve azt a várfalat is, amit már egy másik támadó egység rombol. Továbbá az MI mostantól több egységet küld az ellenséges vártoronyra, amint észrevesz egy oda vezető utat."
 }
