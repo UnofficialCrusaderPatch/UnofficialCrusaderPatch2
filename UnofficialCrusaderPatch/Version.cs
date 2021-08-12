@@ -4637,7 +4637,7 @@ namespace UCP
                             0x3B, 0x05, new BinRefTo("PlayerToCompare", false), // cmp eax,[PlayerToCompare]
                             0x0F, 0x85, 0x61, 0x00, 0x00, 0x00, // jne short 0x61
 
-                            0x0F, 0xB6, 0x44, 0x24, 0x1C, 0x90, 0x90, // movzx eax,byte ptr [esp+1C]
+                            0x0F, 0xB6, 0x44, 0x24, 0x34, 0x90, 0x90, // movzx eax,byte ptr [esp+34]
                             0x6A, 0x00, // push 00
                             0x68, new BinRefTo("TowerIDArray", false), // push TowerIDArray
                             0x50, // push eax
