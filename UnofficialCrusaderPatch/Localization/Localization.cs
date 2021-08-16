@@ -217,7 +217,15 @@ namespace UCP
                         if (!r.ReadLine(out line) || !line.StartsWith("}"))
                             throw new Exception(ident + " Missing closing bracket at line " + r.LineNumber);
 
-                        localStrs.Add(ident, text);
+                        //localStrs.Add(ident, text);
+			if (localStrs.ContainsKey(ident))
+                        {
+                            localStrs[ident] = text;
+                        }
+                        else
+                        {
+                            localStrs.Add(ident, text);
+                        }
                     }
                 }
             }
