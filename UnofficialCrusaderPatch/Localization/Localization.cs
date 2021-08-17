@@ -38,7 +38,7 @@ namespace UCP
             new Language("Русский", "Russian", "ru"),
             new Language("中文", "Chinese", "ch"),
             new Language("Magyar", "Hungarian", "hu"),
-	    new Language("العربية", "Arabic", "ar")
+            new Language("العربية", "Arabic", "ar")
         };
         public static IEnumerable<Language> Translations => translations;
         public static int GetLangByCulture(string culture)
@@ -217,7 +217,8 @@ namespace UCP
                         if (!r.ReadLine(out line) || !line.StartsWith("}"))
                             throw new Exception(ident + " Missing closing bracket at line " + r.LineNumber);
 
-                        localStrs.Add(ident, text);
+                        //localStrs.Add(ident, text);
+                        Add(ident, text);
                     }
                 }
             }
