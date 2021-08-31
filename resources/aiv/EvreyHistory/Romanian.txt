@@ -1,0 +1,3 @@
+Castelele AI bazate pe istorie ale lui Evrey.
+Adaugă un nou castel AI pentru fiecare lord, fiind bazat pe castele sau orașe istorice reale.
+[Creat de Evrey](https://github.com/Evrey/SHC_AIV/)
