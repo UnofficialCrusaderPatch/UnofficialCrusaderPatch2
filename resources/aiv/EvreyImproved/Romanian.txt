@@ -1,0 +1,3 @@
+Castelele AI îmbunătățite ale lui Evrey.
+Oferă lorzilor AI castele noi și îmbunătățite, bazate pe stilul vanilla.
+[Creat de Evrey](https://github.com/Evrey/SHC_AIV/)
