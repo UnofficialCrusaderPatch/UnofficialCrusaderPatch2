@@ -1,0 +1,3 @@
+Îmbunătățirea castelelor AI de către Tatha.
+Adaugă niște castele mult mai puternice în comparație cu cele din vanilla. Variațiile diferite de castele ale fiecărui AI au aceeași putere.
+[Listă de videouri cu prezentare](https://www.youtube.com/playlist?list=PLvxeAM4gClqDoMU8i8WnTsZ4x8b1vIkTM)
