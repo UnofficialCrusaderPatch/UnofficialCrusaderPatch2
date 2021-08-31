@@ -41,7 +41,14 @@ Patkány, Fülöp
 - Élelem és fegyvervásárlási problémák kiigazításra kerültek:
 Frigyes, Tábornok, Emír, Apát, Wazir, Nizar, Szultán, Farkas
 - Épületek építésekor fellépő hibák kijavítva:
-Apát, Kalifa"
+Apát, Kalifa",
+  "Romanian": "Această configurație AI-Caracter remediază unele încurcături de coduri și erori ale AI-ului.
+- Au fost remediate erorile în manevrarea apărării castelului pentru:
+Șobolan, Filip
+- Problemele de gestionare a mâncării și a armelor au fost ajustate pentru:
+Frederick, Mareșal, Emir, Călugăr, Vizir, Nizar, Sultan, Lup
+- Au fost remediate erori legate de construirea unor clădiri esențiale pentru:
+Stareț, Calif"
   },
 "AICLongDescription": {
   "German": "Die folgenden Änderngen wurden an den Vanilla Charakteren vorgenommen:
@@ -136,7 +143,23 @@ Apát, Kalifa"
   - Kalifa erőforrás eladása megváltoztatva, hogy legyen 10 helye a vasnak.
   - Az Apát mostantól 1000 aranyat rak félre a katedrálisához
   - Wazir és Nizar RecruitGoldThreshold megváltoztatva 200-ra
-  - Wazir és Nizar minimum búza 15-re állítva"
+  - Wazir és Nizar minimum búza 15-re állítva",
+  "Romanian": "Următoarele schimbări au fost făcute în configurația caracterului din modul vanilla:
+  - Șobolanul își întărește din nou apărarea puțin câte puțin.
+  - Filip are un nivel de apărare al zidurilor la fel ca Șobolanul
+  - Frederick, Mareșalul, Emirul & Călugărul cumpără echipamente.
+  - Vizirul cumpără pâine la nevoie - Nizar cumpără pâine în loc de mere
+  - Sultanul cumpără de asemenea și cașcaval și pâine
+  - Vizirul vizează întotdeauna să aibă cel puțin 5 bucăți de grâu în stoc, în loc de 2
+  - Vizirul, Emirul, Mareșalul și Filip cumpără mâncare & grâu, câte 10 bucăți în loc de 20.
+  - Lupul oferă rații duble dacă are cel puțin 80 de bucăți de mâncare în grânărie.
+  - Lupul își gestionează stocul de arme, astfel încât să îi ajungă la unele castele doar o armurărie.
+  - Lupul își gestionează stocurile, astfel încât lui îi ajung castele cu doar 2 stocuri.
+  - Califul strânge 10 bucăți de fier pentru construirea topitorului de smoală
+  - Califul și-a gestionat spațiul în stocuri pentru a face loc pentru 10 bucăți de fier.
+  - Călugărul economisește 1000 aur pentru a-și construi catedrala.
+  - Limita necesară de bani pentru Wazir și Nizar este acum de 200.
+  - Vizirul și Nizarul au nevoie de minim 15 bucăți de grâu."
 },
 
 	"AICharacters": [
