@@ -7,8 +7,26 @@ This project is an unofficial patcher for [Firefly Studio's](https://fireflyworl
 
 ## Installation
 
+### Windows 
+
 To install the patch you just have to download the latest [UnofficialCrusaderPatch 2.15b.zip
 ](https://github.com/Sh0wdown/UnofficialCrusaderPatch/releases), extract it, execute the UnofficialCrusaderPatchGUI.exe and choose the correct path of your Stronghold Crusader installation. You can then select several features you wish to install, recommended presettings are selected by default. The patch should work for most crusader versions, but only v1.41 and v1.41E are officially supported. If you encounter an error using a different version, you can upgrade to 1.41 for free using Firefly’s [Crusader HD Patch](http://www.strongholdcrusaderhd.com/patch.html).
+
+### Linux
+
+In order to run the patcher, you need [wine](https://www.winehq.org/) and [winetricks](https://wiki.winehq.org/Winetricks).
+
+After installing wine and winetricks, run the following in your terminal:
+
+```bash
+winetricks -q dotnet40
+```
+The GUI does not recognize hidden directories (any directory starting with "**.**") when you browse for files. You either move the game install location to a different location or create a symlink with:
+
+```bash
+ln -s ~/.steam/path/to/shc
+```
+
 
 ## Issues and Suggestions
 
