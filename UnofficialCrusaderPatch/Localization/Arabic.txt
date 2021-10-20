@@ -29,7 +29,7 @@ ai_restore_ai_siege_messages
 
 ai_restore_ai_siege_messages_descr
 {
-""
+" "
 }
 
 ai_restore_ai_siege_messages_always
