@@ -2,16 +2,6 @@
 //         DEV
 // ======================
 
-u_ghosteng
-{
-"Fix engineers not dying with siege engines"
-}
-
-u_ghosteng_descr
-{
-"Fix engineers not dying when siege engine they are manning is killed"
-}
-
 ai_restore_ai_siege_messages
 {
 "Restore AI siege messages"

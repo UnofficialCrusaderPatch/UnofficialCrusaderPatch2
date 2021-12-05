@@ -631,7 +631,7 @@ namespace UCP.AIC
                     // ori code
                     0xE8, new BinRefTo("call"),
 
-                    //// edit ais
+                    // edit ais
                     new BinBytes(data),
                 }
             };
