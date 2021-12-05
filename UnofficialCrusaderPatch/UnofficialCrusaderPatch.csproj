@@ -164,7 +164,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="CodeBlocks\u_assassinfix_descension.block" />
     <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch.block" />
     <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_attr.block" />
     <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_fn.block" />
@@ -219,8 +218,6 @@
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix3.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix4.block" />
     <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix5.block" />
-    <EmbeddedResource Include="CodeBlocks\u_assassinfix_forgetfullness.block" />
-    <EmbeddedResource Include="CodeBlocks\u_assassinfix_forgetfullness_wall_climb.block" />
     <EmbeddedResource Include="CodeBlocks\u_fireballistatunneler.block" />
     <EmbeddedResource Include="CodeBlocks\o_fix_rapid_deletion_bug.block" />
     <EmbeddedResource Include="CodeBlocks\u_fix_lord_animation_stuck_building_attack.block" />
