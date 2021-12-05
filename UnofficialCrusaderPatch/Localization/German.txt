@@ -46,16 +46,6 @@ o_fast_placing_all_descr
 	"Hold left mouse button down to place buildings."
 }
 
-o_gamespeednumkey
-{
-"Enable gamespeed change with non-numpad keys"
-}
-
-o_gamespeednumkey_descr
-{
-"Enable gamespeed change with non-numpad keys"
-}
-
 o_remove_right_click_context_menu
 {
 "Remove right click context menu"

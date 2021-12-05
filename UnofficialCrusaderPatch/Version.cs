@@ -1797,36 +1797,6 @@ namespace UCP
             },
 
             /*
-             * Allow non-numpad +/- to change gamespeed
-             */
-            new Change("o_gamespeednumkey", ChangeType.Other, false)
-            {
-                new DefaultHeader("o_gamespeednumkey")
-                {
-                    new BinaryEdit("o_gamespeednumkey")
-                    {
-                        new BinSkip(4),
-                        new BinHook(5)
-                        {
-                            0x81, 0xF9, 0x01, 0x00, 0x0C, 0x00,
-                            0x75, 0x12,
-                            0x81, 0xFE, 0xBD, 0x00, 0x00, 0x00,
-                            0x75, 0x0A,
-                            0xB9, 0x01, 0x00, 0x4A, 0x00,
-                            0xBE, 0x6D, 0x00, 0x00, 0x00,
-                            0x81, 0xF9, 0x01, 0x00, 0x0D, 0x00,
-                            0x75, 0x12,
-                            0x81, 0xFE, 0xBB, 0x00, 0x00, 0x00,
-                            0x75, 0x0A,
-                            0xB9, 0x01, 0x00, 0x4E, 0x00,
-                            0xBE, 0x6B, 0x00, 0x00, 0x00,
-                            0xBD, 0x01, 0x00, 0x00, 0x00    // mov ebp, 01
-                        }
-                    }
-                }
-            },
-
-            /*
              *  WASD
              */
              

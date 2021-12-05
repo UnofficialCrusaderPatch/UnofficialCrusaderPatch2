@@ -12,16 +12,6 @@ o_remove_right_click_context_menu_descr
 "Removes right click context menu where you can rotate the map, lower walls, zoom and flatten."
 }
 
-o_gamespeednumkey
-{
-"Enable gamespeed change with non-numpad keys"
-}
-
-o_gamespeednumkey_descr
-{
-"Enable gamespeed change with non-numpad keys"
-}
-
 o_fast_placing
 {
 	"Fast placing"
