@@ -1,78 +1,6 @@
 // ======================
 //         DEV
 // ======================
-u_assassinfix
-{
-"Fix assassin unit pathing and behaviour"
-}
-
-u_assassinfix_descr
-{
-"- Assassins will no longer stop and forget their destination in the middle of the map after encountering an enemy on the way
-- Assassins will no longer attack units on atop the keep after descending the wall into a 1 tile gap path between the wall and the keep"
-}
-
-u_ghosteng
-{
-"Fix engineers not dying with siege engines"
-}
-
-u_ghosteng_descr
-{
-"Fix engineers not dying when siege engine they are manning is killed"
-}
-
-ai_restore_ai_siege_messages
-{
-"Restore AI siege messages"
-}
-
-ai_restore_ai_siege_messages_descr
-{
-" "
-}
-
-ai_restore_ai_siege_messages_always
-{
-"Always"
-}
-
-ai_restore_ai_siege_messages_always_descr
-{
-" "
-}
-
-ai_restore_ai_siege_messages_stronger
-{
-"Only when attacking weaker enemy"
-}
-
-ai_restore_ai_siege_messages_stronger_descr
-{
-" "
-}
-
-ai_restore_ai_siege_messages_33_or_stronger
-{
-"Always when attacking weaker, 33% chance when attacking stronger"
-}
-
-ai_restore_ai_siege_messages_33_or_stronger_descr
-{
-" "
-}
-
-ai_restore_ai_siege_messages_50
-{
-"50% chance"
-}
-
-ai_restore_ai_siege_messages_50_descr
-{
-"AIs have recorded Siege messages which they send to their allies when they are about to attack an enemy. This feature was cut from the game, but the assets remained.
-
-This option restores this feature."
-}
 
 o_remove_right_click_context_menu
 {
@@ -82,16 +10,6 @@ o_remove_right_click_context_menu
 o_remove_right_click_context_menu_descr
 {
 "Removes right click context menu where you can rotate the map, lower walls, zoom and flatten."
-}
-
-o_gamespeednumkey
-{
-"Enable gamespeed change with non-numpad keys"
-}
-
-o_gamespeednumkey_descr
-{
-"Enable gamespeed change with non-numpad keys"
 }
 
 o_fast_placing
