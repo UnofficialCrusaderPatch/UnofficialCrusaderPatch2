@@ -66,58 +66,6 @@ o_remove_right_click_context_menu_descr
 "Removes right click context menu where you can rotate the map, lower walls, zoom and flatten."
 }
 
-ai_restore_ai_siege_messages
-{
-"Restore AI siege messages"
-}
-
-ai_restore_ai_siege_messages_descr
-{
-" "
-}
-
-ai_restore_ai_siege_messages_always
-{
-"Always"
-}
-
-ai_restore_ai_siege_messages_always_descr
-{
-" "
-}
-
-ai_restore_ai_siege_messages_stronger
-{
-"Only when attacking weaker enemy"
-}
-
-ai_restore_ai_siege_messages_stronger_descr
-{
-" "
-}
-
-ai_restore_ai_siege_messages_33_or_stronger
-{
-"Always when attacking weaker, 33% chance when attacking stronger"
-}
-
-ai_restore_ai_siege_messages_33_or_stronger_descr
-{
-" "
-}
-
-ai_restore_ai_siege_messages_50
-{
-"50% chance"
-}
-
-ai_restore_ai_siege_messages_50_descr
-{
-"AIs have recorded Siege messages which they send to their allies when they are about to attack an enemy. This feature was cut from the game, but the assets remained.
-
-This option restores this feature."
-}
-
 o_fix_map_sending
 {
 "Enable map sending in multiplayer"
@@ -284,17 +232,17 @@ u_fix_lord_animation_stuck_movement
 
 u_fix_lord_animation_stuck_movement_descr
 {
-"Fixes Lord animation freezes after the Lord stops moving and after the Lord destroys a building."
+"Der Lord wechselt mit dieser Änderung nach dem Zerstören eines Gebäudes in seine Ausgangsposition. Bisher blieb er in der Zerstöranimation stecken."
 }
 
 fix_apple_orchard_build_size
 {
-"Shrink apple orchard's build size"
+"Reduziert die Baugröße von Apfelfarmen"
 }
 
 fix_apple_orchard_build_size_descr
 {
-"Changes the apple orchard's build size to the size it occupies after the farm is placed down. This saves some space when building the farms and increases the rate with which the AI is able to put these farms down."
+"Ändert die Bauvorschau von Apfelfarmen auf die Größe, die sie nach der Platzierung der Farm haben."
 }
 
 u_fix_applefarm_blocking
@@ -304,7 +252,7 @@ u_fix_applefarm_blocking
 
 u_fix_applefarm_blocking_descr
 {
-"Apple farmers can no longer be blocked by placing buildings at the top left side of the farm."
+"Apfelfarmer werden nicht länger inaktiv, wenn der Pfad links oben direkt neben der Farm blockiert wird."
 }
 
 o_increase_path_update_tick_rate
@@ -319,12 +267,12 @@ o_increase_path_update_tick_rate_descr
 
 o_fix_ladderclimb
 {
-"Fix ladder climb bug"
+"Behebt Befehlsverlust beim Klettern auf Leitern"
 }
 
 o_fix_ladderclimb_descr
 {
-"Units no longer forget their destination after climbing, and they will no longer start climbing back down or up immediately afterwards they just climbed."
+"Einheiten klettern nicht mehr direkt zurück und vergessen auch nicht mehr ihr Ziel, nachdem sie eine Leiter erklommen haben."
 }
 
 u_tanner_fix
@@ -339,7 +287,7 @@ u_tanner_fix_descr
 
 o_fix_fletcher_bug
 {
-"Fix fletcher bug"
+"Entfernt den Extraweg des Pfeilmachers zur Werkstatt"
 }
 
 o_fix_fletcher_bug_descr
@@ -349,7 +297,7 @@ o_fix_fletcher_bug_descr
 
 ai_fix_crusader_archers_pitch
 {
-"Fix AI crusader archers not lighting pitch"
+"Europäische Bogenschützen der KI entzünden Pech."
 }
 
 ai_fix_crusader_archers_pitch_descr
@@ -359,12 +307,12 @@ ai_fix_crusader_archers_pitch_descr
 
 o_fix_baker_disappear
 {
-"Fix baker disappear bug"
+"Behebt das Verschwinden von Bäckern"
 }
 
 o_fix_baker_disappear_descr
 {
-"Fixes the bug where the bakes would disappear if they found no flour at their destination stockpile pile."
+"Behebt den Fehler, der Bäcker verschwinden ließ, wenn sie kein Mehl am angestrebten Platz im Vorratslager vorfinden konnten."
 }
 
 o_fix_moat_digging_unit_disappearing
