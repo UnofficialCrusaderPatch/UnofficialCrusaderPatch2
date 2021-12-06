@@ -624,6 +624,39 @@ namespace UCP
 
             #region AI LORDS
 
+            new Change("ai_resources_rebuy", ChangeType.AILords, true)
+            {
+                // vanilla:
+                // additional attack troops = factor * attack number
+
+                new SliderHeader("ai_nowood_maxtime", true, 0, 72, 1, 36, 1)
+                {
+                    // 004CDEDC
+                    new BinaryEdit("ai_nowood_maxtime")
+                    {
+                        new BinByteValue(),
+                    }
+                },
+
+                new SliderHeader("ai_noiron_maxtime", true, 0, 72, 1, 36, 4)
+                {
+                    // 004CDEDC
+                    new BinaryEdit("ai_noiron_maxtime")
+                    {
+                        new BinByteValue(),
+                    }
+                },
+
+                new SliderHeader("ai_noflour_maxtime", true, 0, 72, 1, 36, 6)
+                {
+                    // 004CDEDC
+                    new BinaryEdit("ai_noflour_maxtime")
+                    {
+                        new BinByteValue(),
+                    }
+                }
+            },
+
             new Change("ai_housing", ChangeType.AILords, false, false)
             {
                 new SliderHeader("build_housing", true, 0, 100, 1, 0, 5)

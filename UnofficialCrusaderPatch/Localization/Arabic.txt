@@ -1,77 +1,30 @@
 // ======================
 //         DEV
 // ======================
-u_assassinfix
+
+ai_resources_rebuy
 {
-"Fix assassin unit pathing and behaviour"
+"Improve AI restocking of needed goods"
 }
 
-u_assassinfix_descr
+ai_resources_rebuy_descr
 {
-"- Assassins will no longer stop and forget their destination in the middle of the map after encountering an enemy on the way
-- Assassins will no longer attack units on atop the keep after descending the wall into a 1 tile gap path between the wall and the keep"
+"The AI often doesn't restock goods even if it has the gold for it, leaving its production chains running dry. This option reduces the amount of time the AI waits for its stocks to be empty before restocking the necessary goods."
 }
 
-u_ghosteng
+ai_nowood_maxtime_descr
 {
-"Fix engineers not dying with siege engines"
+"Time in 1/12th of months until the AI restocks 5 wood."
 }
 
-u_ghosteng_descr
+ai_noiron_maxtime_descr
 {
-"Fix engineers not dying when siege engine they are manning is killed"
+"Time in 1/12th of months until the AI restocks 2 iron."
 }
 
-ai_restore_ai_siege_messages
+ai_noflour_maxtime_descr
 {
-"Restore AI siege messages"
-}
-
-ai_restore_ai_siege_messages_descr
-{
-" "
-}
-
-ai_restore_ai_siege_messages_always
-{
-"Always"
-}
-
-ai_restore_ai_siege_messages_always_descr
-{
-" "
-}
-
-ai_restore_ai_siege_messages_stronger
-{
-"Only when attacking weaker enemy"
-}
-
-ai_restore_ai_siege_messages_stronger_descr
-{
-" "
-}
-
-ai_restore_ai_siege_messages_33_or_stronger
-{
-"Always when attacking weaker, 33% chance when attacking stronger"
-}
-
-ai_restore_ai_siege_messages_33_or_stronger_descr
-{
-" "
-}
-
-ai_restore_ai_siege_messages_50
-{
-"50% chance"
-}
-
-ai_restore_ai_siege_messages_50_descr
-{
-"AIs have recorded Siege messages which they send to their allies when they are about to attack an enemy. This feature was cut from the game, but the assets remained.
-
-This option restores this feature."
+"Time in 1/12th of months until the AI restocks 2 flour."
 }
 
 o_remove_right_click_context_menu
