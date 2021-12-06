@@ -4,47 +4,47 @@
 
 ai_resources_rebuy
 {
-"Improve AI restocking of needed goods"
+"Улучшение пополнения запасов, необходимых товаров для AI"
 }
 
 ai_resources_rebuy_descr
 {
-"The AI often doesn't restock goods even if it has the gold for it, leaving its production chains running dry. This option reduces the amount of time the AI waits for its stocks to be empty before restocking the necessary goods."
+"AI часто не пополняет запасы товаров даже если у него есть золото для этого, в результате чего его производственные цепочки истощаются. Этот параметр уменьшает время, в течение которого AI ждет пока его запасы опустеют прежде чем пополнить запасы необходимых товаров."
 }
 
 ai_nowood_maxtime_descr
 {
-"Time in 1/12th of months until the AI restocks 5 wood."
+"Время в 1/12 месяца до тех пор, пока AI не пополнит запасы 5 древесины."
 }
 
 ai_noiron_maxtime_descr
 {
-"Time in 1/12th of months until the AI restocks 2 iron."
+"Время в 1/12 месяца до того момента, когда AI не пополнит запасы 2 железа."
 }
 
 ai_noflour_maxtime_descr
 {
-"Time in 1/12th of months until the AI restocks 2 flour."
+"Время в 1/12 месяца, пока AI не пополнит запасы 2 муки."
 }
 
 o_remove_right_click_context_menu
 {
-"Remove right click context menu"
+"Удалить контекстное меню правой кнопки мыши"
 }
 
 o_remove_right_click_context_menu_descr
 {
-"Removes right click context menu where you can rotate the map, lower walls, zoom and flatten."
+"Удаляет контекстное меню правой кнопки мыши, в котором можно поворачивать карту, опускать стены, масштабировать и сплющивать."
 }
 
 o_fast_placing
 {
-	"Fast placing"
+	"Быстрое размещение"
 }
 
 o_fast_placing_common
 {
-	"killing pit, pitch ditch, woodcutter, good & bad things, mill, water pot, bakery, hovel)"
+	"волчья яма, нефтяной ров, дровосек, кнуты и пряники, мельница, котел с водой, пекарня, лачуга)"
 }
 
 o_fast_placing_common_descr
@@ -54,42 +54,42 @@ o_fast_placing_common_descr
 
 o_fast_placing_all
 {
-	"all builds"
+	"все постройки"
 }
 
 o_fast_placing_all_descr
 {
-	"Hold left mouse button down to place buildings."
+	"Удерживайте левую кнопку мыши нажатой чтобы разместить здания."
 }
 
 o_disable_border_scrolling
 {
-"Deaktiviere Scrollen am Bildschirmrand"
+"Отключает прокрутку по краям"
 }
 
 o_disable_border_scrolling_descr
 {
-"Bewegen des Mauszeigers zum Bildschirmrand bewegt nicht mehr die Ansicht."
+"При перемещении указателя мыши к краю экрана вид больше не перемещается."
 }
 
 o_fix_map_sending
 {
-"Enable map sending in multiplayer"
+"Включить отправку карт в многопользовательской игре"
 }
 
 o_fix_map_sending_descr
 {
-"Reduces the length of the sent map name, to make map sending possible again!"
+"Уменьшает длину отправляемого имени карты, чтобы сделать отправку карты снова возможной!"
 }
 
 o_fix_rapid_deletion_bug
 {
-"Fix resources rapid deletion"
+"Исправляет быстрое удаление ресурсов"
 }
 
 o_fix_rapid_deletion_bug_descr
 {
-"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
+"Удаление зданий с помощью быстрого автоклика больше не дает ресурсов на более чем одно удаление."
 }
 
 // ======================
@@ -97,12 +97,12 @@ o_fix_rapid_deletion_bug_descr
 // ======================
 u_jestermoveto_assassin
 {
-	"Stop the jester from visiting assassins"
+	"Остановит шута от посещения Ассасинов"
 }
 
 u_jestermoveto_assassin_descr
 {
-	"The jester visits your units on the battlefield to cheer them up. Now it wont visit your invisible assassins anymore, showing everyone where they are!"
+	"Шут посещает ваши отряды на поле боя, чтобы подбодрить их. Теперь он больше не будет посещать ваших Ассасинов, показывая всем где они находятся!"
 }
 
 u_spearmen_run
