@@ -626,12 +626,14 @@ namespace UCP
 
             new Change("ai_resources_rebuy", ChangeType.AILords, true)
             {
-                // vanilla:
-                // additional attack troops = factor * attack number
+                // wood, iron, flour and hops are checked periodically if there is at least one building using the resource
+                // A tracker tracks the time that no stock is available
+                // When the time reaches a limit, the resource is restocked: 5 wood / 2 iron / 2 flour / 2 hops
+                // we only make the first 3 accessible, as hops is dealt with by minimumHops in the AIC
 
                 new SliderHeader("ai_nowood_maxtime", true, 0, 72, 1, 36, 1)
                 {
-                    // 004CDEDC
+                    // Extreme: 004CC010
                     new BinaryEdit("ai_nowood_maxtime")
                     {
                         new BinByteValue(),
@@ -640,7 +642,7 @@ namespace UCP
 
                 new SliderHeader("ai_noiron_maxtime", true, 0, 72, 1, 36, 4)
                 {
-                    // 004CDEDC
+                    // Extreme: 004cc02B
                     new BinaryEdit("ai_noiron_maxtime")
                     {
                         new BinByteValue(),
@@ -649,7 +651,7 @@ namespace UCP
 
                 new SliderHeader("ai_noflour_maxtime", true, 0, 72, 1, 36, 6)
                 {
-                    // 004CDEDC
+                    // Extreme: 004cc04E
                     new BinaryEdit("ai_noflour_maxtime")
                     {
                         new BinByteValue(),
