@@ -2,6 +2,31 @@
 //         DEV
 // ======================
 
+ai_resources_rebuy
+{
+"Improve AI restocking of needed goods"
+}
+
+ai_resources_rebuy_descr
+{
+"The AI often doesn't restock goods even if it has the gold for it, leaving its production chains running dry. This option reduces the amount of time the AI waits for its stocks to be empty before restocking the necessary goods."
+}
+
+ai_nowood_maxtime_descr
+{
+"Time in 1/12th of months until the AI restocks 5 wood."
+}
+
+ai_noiron_maxtime_descr
+{
+"Time in 1/12th of months until the AI restocks 2 iron."
+}
+
+ai_noflour_maxtime_descr
+{
+"Time in 1/12th of months until the AI restocks 2 flour."
+}
+
 o_remove_right_click_context_menu
 {
 "Remove right click context menu"
