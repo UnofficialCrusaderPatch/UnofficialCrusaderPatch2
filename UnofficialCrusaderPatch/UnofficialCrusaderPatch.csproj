@@ -95,6 +95,8 @@
     <Compile Include="AIC\Utils\PersonalityEnums\WorkshopSettings.cs" />
     <Compile Include="AIC\Utils\RWAttributes.cs" />
     <Compile Include="AIV\AIVView.cs" />
+    <Compile Include="Balance\BalanceChange.cs" />
+    <Compile Include="Balance\BalanceView.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Extensions.cs" />

@@ -13,6 +13,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using UCP;
 using UCP.AIV;
+using UCP.Balance;
 using UCP.Patching;
 using UCP.Startup;
 using UCP.AIC;
@@ -73,6 +74,7 @@ namespace UCP
             }
             StartTroopChange.Load();
             ResourceChange.Load();
+            BalanceChange.Load();
             Version.AddExternalChanges();
 
             // init main window
@@ -297,6 +299,11 @@ namespace UCP
                 else if (type == ChangeType.StartTroops)
                 {
                     new StartTroopView().InitUI(grid, View_SelectedItemChanged);
+                    continue;
+                }
+                else if (type == ChangeType.Balance)
+                {
+                    new BalanceView().InitUI(grid, View_SelectedItemChanged);
                     continue;
                 }
 

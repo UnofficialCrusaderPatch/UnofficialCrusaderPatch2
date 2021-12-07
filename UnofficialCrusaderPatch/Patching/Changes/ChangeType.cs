@@ -6,6 +6,7 @@
         AILords,
         Troops,
         Other,
+        Balance,
         AIV,
         AIC,
         Resource,

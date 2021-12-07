@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UCP.AIC;
 using UCP.AIV;
+using UCP.Balance;
 using UCP.Patching;
 using UCP.Startup;
 
@@ -89,6 +90,7 @@ namespace UCP
         {
             List<string> aicConfigurationList = null;
             List<string> aivConfigurationList = null;
+            List<string> balanceConfigurationList = null;
             List<string> resourceConfigurationList = null;
             List<string> startTroopConfigurationList = null;
             if (File.Exists(ConfigFile))
@@ -117,6 +119,15 @@ namespace UCP
                                 aivConfigurationList = new List<string>();
                             }
                             aivConfigurationList.Add(line);
+                            continue;
+                        }
+                        else if (Regex.Replace(@"\s+", "", line).StartsWith("bal_"))
+                        {
+                            if (balanceConfigurationList == null)
+                            {
+                                balanceConfigurationList = new List<string>();
+                            }
+                            balanceConfigurationList.Add(line);
                             continue;
                         }
                         else if (Regex.Replace(@"\s+", "", line).StartsWith("res_"))
@@ -182,6 +193,7 @@ namespace UCP
             // Calls change modules to set their selections based on the provided configuration list
             AICChange.LoadConfiguration(aicConfigurationList);
             AIVChange.LoadConfiguration(aivConfigurationList);
+            BalanceChange.LoadConfiguration(balanceConfigurationList);
             ResourceChange.LoadConfiguration(resourceConfigurationList);
             StartTroopChange.LoadConfiguration(startTroopConfigurationList);
         }
