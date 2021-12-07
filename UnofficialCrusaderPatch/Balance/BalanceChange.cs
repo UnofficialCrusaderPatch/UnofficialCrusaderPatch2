@@ -228,9 +228,12 @@ namespace UCP.Balance
         {
             try
             {
-                return new DefaultHeader(file, true)
+                DefaultHeader header = new DefaultHeader(file, true);
+                foreach (ChangeEdit edit in BalanceHelper.GetBinaryEdits(balanceConfig))
                 {
-                };
+                    header.Add(edit);
+                }
+                return header;
             }
             catch (Exception e)
             {
