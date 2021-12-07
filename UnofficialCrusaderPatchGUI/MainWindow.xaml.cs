@@ -252,8 +252,25 @@ namespace UCP
             }
             catch (Exception e)
             {
-                if (!(e is TaskCanceledException || e is ThreadAbortException)) // in case of exit
+                // in case of exit
+                if (!(e is TaskCanceledException || e is ThreadAbortException))
+                {
                     MessageBox.Show(e.ToString(), Localization.Get("ui_error"));
+                }
+                else
+                {
+                    MessageBox.Show(e.ToString(), e.Message);
+                }
+
+                Dispatcher.Invoke(DispatcherPriority.Render, new Action(() =>
+                {
+                    iButtonInstall.IsEnabled = true;
+                    pButtonSearch.IsEnabled = true;
+                    pTextBoxPath.IsReadOnly = false;
+                    Version.Changes.ForEach(c => c.SetUIEnabled(true));
+                    pbSetup.Value = 0;
+                    pbLabel.Content = Localization.Get("ui_finished");
+                }));
             }
         }
 
