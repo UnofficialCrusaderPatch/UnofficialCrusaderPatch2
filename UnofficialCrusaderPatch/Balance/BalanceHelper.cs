@@ -8,7 +8,7 @@ namespace UCP.Balance
 {
     class BalanceHelper
     {
-        public static ChangeEdit[] GetBinaryEdits(Dictionary<String, Dictionary<String, Object>> balanceConfig)
+        public static ChangeEdit[] GetBinaryEdits(BalanceConfig balanceConfig)
         {
             List<ChangeEdit> editList = new List<ChangeEdit>();
 

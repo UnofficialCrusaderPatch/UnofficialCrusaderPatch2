@@ -121,12 +121,12 @@ namespace UCP.Balance
                 string balanceText = reader.ReadToEnd();
                 reader.Close();
 
-                Dictionary<String, Dictionary<String, Object>> balanceConfig;
+                BalanceConfig balanceConfig;
                 try
                 {
-                    balanceConfig = serializer.Deserialize<Dictionary<String, Dictionary<String, Object>>>(balanceText);
+                    balanceConfig = serializer.Deserialize<BalanceConfig>(balanceText);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     CreateNullChange(Path.GetFileNameWithoutExtension(file), "Invalid JSON detected");
                     continue;
@@ -158,13 +158,13 @@ namespace UCP.Balance
             Version.Changes.AddRange(changes);
         }
 
-        static String GetLocalizedDescription(String file, Dictionary<String, Dictionary<String, Object>> balanceConfig)
+        static String GetLocalizedDescription(String file, BalanceConfig balanceConfig)
         {
             String description = file;
             string currentLang = Localization.Translations.ToArray()[Configuration.Language].Ident;
             try
             {
-                description = balanceConfig["description"][currentLang].ToString();
+                description = balanceConfig.description[currentLang].ToString();
             }
             catch (Exception)
             {
@@ -172,7 +172,7 @@ namespace UCP.Balance
                 {
                     try
                     {
-                        description = balanceConfig["description"][lang.Ident].ToString();
+                        description = balanceConfig.description[lang.Ident].ToString();
                         break;
                     }
                     catch (Exception)
@@ -224,7 +224,7 @@ namespace UCP.Balance
             }
         }
 
-        static DefaultHeader CreateBalanceHeader(String file, Dictionary<String, Dictionary<String, Object>> balanceConfig)
+        static DefaultHeader CreateBalanceHeader(String file, BalanceConfig balanceConfig)
         {
             try
             {
