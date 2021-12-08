@@ -7,7 +7,7 @@ namespace UCP.Balance
 {
     public class BalanceEnums
     {
-        public List<string> buildingNames = new List<string>()
+        public static List<string> buildingNames = new List<string>()
         {
             "Hovel",
             "House",
@@ -118,7 +118,7 @@ namespace UCP.Balance
             "Mercenary Outpost"
         };
 
-        public List<string> unitNames = new List<string>()
+        public static List<string> unitNames = new List<string>()
         {
             "Peasant",
             "Burning man",
