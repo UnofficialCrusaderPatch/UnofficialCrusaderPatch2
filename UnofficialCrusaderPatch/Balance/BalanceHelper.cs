@@ -85,7 +85,36 @@ namespace UCP.Balance
 
         private static ChangeEdit GetBuildingHealthEdit(Dictionary<string, BalanceConfig.BuildingConfig> buildings)
         {
-            throw new NotImplementedException();
+            BinaryEdit buildingHealthEdit = new BinaryEdit("bal_building_health");
+            for (int i = 0; i < BalanceEnums.buildingNames.Count; i++)
+            {
+                List<BinElement> currentBuildingEdit = new List<BinElement>();
+                BalanceConfig.BuildingConfig buildingConfig;
+                if (buildings.TryGetValue(BalanceEnums.buildingNames[i], out buildingConfig))
+                {
+                    if (buildingConfig.health.HasValue)
+                    {
+                        if (buildingConfig.health < 0 || buildingConfig.health > Int16.MaxValue)
+                        {
+                            throw new Exception("Invalid health of " + buildingConfig.health.ToString() + " for building " + BalanceEnums.buildingNames[i]);
+                        }
+                        currentBuildingEdit.Add(new BinInt32(buildingConfig.health.Value));
+                    }
+                }
+
+                // if current building or current building health entry is not specified then add skip
+                if (currentBuildingEdit.Count == 0)
+                {
+                    buildingHealthEdit.Add(new BinSkip(4));
+                }
+
+                // Add elements of currentBuildingEdit to the combined list of edits for building health binaryEdit
+                foreach (BinElement element in currentBuildingEdit)
+                {
+                    buildingHealthEdit.Add(element);
+                }
+            }
+            return buildingHealthEdit;
         }
 
         private static ChangeEdit GetBuildingCostEdit(Dictionary<string, BalanceConfig.BuildingConfig> buildings)
@@ -103,6 +132,10 @@ namespace UCP.Balance
                         {
                             foreach (int resourceCost in buildingConfig.cost)
                             {
+                                if (resourceCost < 0 || resourceCost > Int16.MaxValue)
+                                {
+                                    throw new Exception("Invalid resource cost of " + resourceCost.ToString() + " for building " + BalanceEnums.buildingNames[i]);
+                                }
                                 currentBuildingEdit.Add(new BinInt32(resourceCost));
                             }
                         }
@@ -113,7 +146,7 @@ namespace UCP.Balance
                     }
                 }
 
-                // if current building or current building cost entry is not specified then skip
+                // if current building or current building cost entry is not specified then add skip
                 if (currentBuildingEdit.Count == 0)
                 {
                     for (int j = 0; j < buildingCostLength; j++)
