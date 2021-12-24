@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>UCP</RootNamespace>
     <AssemblyName>UnofficialCrusaderPatch</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -46,15 +46,20 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\Debug\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\Release\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -76,79 +81,87 @@
     <Compile Include="..\CodeBlox\CodeBlock.cs">
       <Link>CodeBlocks\CodeBlock.cs</Link>
     </Compile>
-    <Compile Include="AIC\AICChange.cs" />
-    <Compile Include="AIC\AICView.cs" />
-    <Compile Include="AIC\Utils\AICharacter.cs" />
-    <Compile Include="AIC\Utils\AICharacterName.cs" />
-    <Compile Include="AIC\Utils\AICharacterSerializationException.cs" />
-    <Compile Include="AIC\Utils\AICHelper.cs" />
-    <Compile Include="AIC\Utils\AICollection.cs" />
-    <Compile Include="AIC\Utils\AICSerializationException.cs" />
-    <Compile Include="AIC\Utils\AIPersonality.cs" />
-    <Compile Include="AIC\Utils\AISerializer.cs" />
-    <Compile Include="AIC\Utils\AIPersonalityFieldsEnum.cs" />
-    <Compile Include="AIC\Utils\PersonalityEnums\Buildings.cs" />
-    <Compile Include="AIC\Utils\PersonalityEnums\Resources.cs" />
-    <Compile Include="AIC\Utils\PersonalityEnums\SiegeEngines.cs" />
-    <Compile Include="AIC\Utils\PersonalityEnums\TargetingType.cs" />
-    <Compile Include="AIC\Utils\PersonalityEnums\Units.cs" />
-    <Compile Include="AIC\Utils\PersonalityEnums\WorkshopSettings.cs" />
-    <Compile Include="AIC\Utils\RWAttributes.cs" />
-    <Compile Include="AIV\AIVView.cs" />
-    <Compile Include="Configuration.cs" />
-    <Compile Include="Debug.cs" />
-    <Compile Include="Extensions.cs" />
     <Compile Include="Localization\Localization.cs" />
     <Compile Include="Localization\TextReferencer.cs" />
-    <Compile Include="Patching\BinElements\BinCode.cs" />
-    <Compile Include="Patching\BinElements\BinCollection.cs" />
-    <Compile Include="Patching\BinElements\OpCodes.cs" />
-    <Compile Include="Patching\BinElements\Referencers\BinAddress.cs" />
-    <Compile Include="Patching\BinElements\Referencers\BinAlloc.cs" />
-    <Compile Include="AIV\AIVChange.cs" />
-    <Compile Include="Patching\BinElements\Register.cs" />
-    <Compile Include="Patching\EditTypes\BinArgs.cs" />
-    <Compile Include="Patching\BinElements\StructTypes\BinBytes.cs" />
-    <Compile Include="Patching\BinElements\BinElement.cs" />
-    <Compile Include="Patching\BinElements\Referencers\BinHook.cs" />
-    <Compile Include="Patching\BinElements\StructTypes\BinInt32.cs" />
-    <Compile Include="Patching\BinElements\BinValue.cs" />
-    <Compile Include="Patching\BinElements\BinNops.cs" />
-    <Compile Include="Patching\BinElements\Referencers\BinRedirect.cs" />
-    <Compile Include="Patching\BinElements\StructTypes\BinShort.cs" />
-    <Compile Include="Patching\BinElements\Referencers\BinLabel.cs" />
-    <Compile Include="Patching\BinElements\Referencers\BinRefTo.cs" />
-    <Compile Include="Patching\BinElements\BinSkip.cs" />
-    <Compile Include="Patching\Changes\Change.cs" />
-    <Compile Include="Patching\Changes\ChangeArgs.cs" />
-    <Compile Include="Patching\Changes\ChangeType.cs" />
-    <Compile Include="Patching\EditTypes\BinaryEditBase.cs" />
-    <Compile Include="Patching\EditTypes\ChangeEdit.cs" />
-    <Compile Include="Patching\EditTypes\UCPEdit.cs" />
-    <Compile Include="Patching\Headers\ChangeHeader.cs" />
-    <Compile Include="Patching\Headers\DefaultHeader.cs" />
-    <Compile Include="Patching\Headers\ColorHeader.cs" />
-    <Compile Include="Patching\Headers\SliderHeader.cs" />
-    <Compile Include="Patching\EditTypes\BinaryEdit.cs" />
-    <Compile Include="Patching\EditTypes\EditFailures.cs" />
-    <Compile Include="Patching\Headers\LabelCollection.cs" />
-    <Compile Include="Patching\Headers\ParamHeader.cs" />
-    <Compile Include="Patching\Headers\ValueHeader.cs" />
-    <Compile Include="Patching\Patcher.cs" />
-    <Compile Include="Patching\Percentage.cs" />
-    <Compile Include="Patching\Section\AddressSpace.cs" />
-    <Compile Include="Patching\Section\PEHeader.cs" />
-    <Compile Include="Patching\Section\SectionEditor.cs" />
-    <Compile Include="Patching\Section\SectionHeader.cs" />
-    <Compile Include="Startup\StartTroopView.cs" />
-    <Compile Include="Startup\ResourceView.cs" />
-    <Compile Include="Startup\StartingEnums.cs" />
-    <Compile Include="Startup\ResourceChange.cs" />
-    <Compile Include="Startup\StartTroopChange.cs" />
+    <Compile Include="Model\AICConfiguration.cs" />
+    <Compile Include="Model\AIVConfiguration.cs" />
+    <Compile Include="API\Startup.cs" />
+    <Compile Include="Model\Patching\Installer.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\BinCode.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\BinCollection.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\BinElement.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\BinNops.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\BinSkip.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\BinValue.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\OpCodes.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\Referencers\BinAddress.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\Referencers\BinAlloc.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\Referencers\BinHook.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\Referencers\BinLabel.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\Referencers\BinRedirect.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\Referencers\BinRefTo.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\Register.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\StructTypes\BinBytes.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\StructTypes\BinInt32.cs" />
+    <Compile Include="Model\Patching\Utils\BinElements\StructTypes\BinShort.cs" />
+    <Compile Include="Model\Patching\Utils\Changes\AICChange.cs" />
+    <Compile Include="Model\Patching\Utils\Changes\AIVChange.cs" />
+    <Compile Include="Model\Patching\Utils\Changes\Change.cs" />
+    <Compile Include="Model\Patching\Utils\Changes\ChangeArgs.cs" />
+    <Compile Include="Model\Patching\Utils\Changes\ChangeType.cs" />
+    <Compile Include="Model\Patching\Utils\Changes\StartResourceChange.cs" />
+    <Compile Include="Model\Patching\Utils\Changes\StartTroopChange.cs" />
+    <Compile Include="Model\Patching\Utils\EditTypes\BinArgs.cs" />
+    <Compile Include="Model\Patching\Utils\EditTypes\BinaryEdit.cs" />
+    <Compile Include="Model\Patching\Utils\EditTypes\BinaryEditBase.cs" />
+    <Compile Include="Model\Patching\Utils\EditTypes\ChangeEdit.cs" />
+    <Compile Include="Model\Patching\Utils\EditTypes\EditFailures.cs" />
+    <Compile Include="Model\Patching\Utils\EditTypes\UCPEdit.cs" />
+    <Compile Include="Model\Patching\Utils\GlobalLabels.cs" />
+    <Compile Include="Model\Patching\Utils\LabelCollection.cs" />
+    <Compile Include="Model\Patching\Utils\Section\AddressSpace.cs" />
+    <Compile Include="Model\Patching\Utils\Section\PEHeader.cs" />
+    <Compile Include="Model\Patching\Utils\Section\SectionEditor.cs" />
+    <Compile Include="Model\Patching\Utils\Section\SectionHeader.cs" />
+    <Compile Include="Model\Patching\Utils\Section\Utils.cs" />
+    <Compile Include="Model\Patching\Utils\SubChanges\DefaultSubChange.cs" />
+    <Compile Include="Model\Patching\Utils\SubChanges\SubChange.cs" />
+    <Compile Include="Model\Patching\Utils\SubChanges\ValuedSubChange.cs" />
+    <Compile Include="Model\Patching\Utils\UI_Text.cs" />
+    <Compile Include="Util\Readers\Extensions.cs" />
+    <Compile Include="Model\ChangeConfiguration.cs" />
+    <Compile Include="ClientConfig\ChangeUIConfig.cs" />
+    <Compile Include="Model\Mod.cs" />
+    <Compile Include="ClientConfig\ModSelectionType.cs" />
+    <Compile Include="ClientConfig\ModUIConfig.cs" />
+    <Compile Include="ClientConfig\SelectionParameter.cs" />
+    <Compile Include="ClientConfig\SelectionType.cs" />
+    <Compile Include="Model\StartResourceConfiguration.cs" />
+    <Compile Include="Model\StartTroopConfiguration.cs" />
+    <Compile Include="Model\UCPConfig.cs" />
+    <Compile Include="Util\Comparators\FileComparer.cs" />
+    <Compile Include="Util\Enumerators\AICEnumerator.cs" />
+    <Compile Include="Util\Enumerators\AIVEnumerator.cs" />
+    <Compile Include="Util\Enumerators\StartingEnums.cs" />
+    <Compile Include="Util\Enumerators\StartResourceEnumerator.cs" />
+    <Compile Include="Util\Enumerators\StartTroopEnumerator.cs" />
+    <Compile Include="Util\Readers\Utils\AICharacter.cs" />
+    <Compile Include="Util\Readers\Utils\AICharacterName.cs" />
+    <Compile Include="Util\Readers\Utils\AICharacterSerializationException.cs" />
+    <Compile Include="Util\Readers\Utils\AICHelper.cs" />
+    <Compile Include="Util\Readers\Utils\AICollection.cs" />
+    <Compile Include="Util\Readers\Utils\AICSerializationException.cs" />
+    <Compile Include="Util\Readers\Utils\AIPersonality.cs" />
+    <Compile Include="Util\Readers\Utils\AIPersonalityFieldsEnum.cs" />
+    <Compile Include="Util\Readers\Utils\AISerializer.cs" />
+    <Compile Include="Util\Readers\Utils\PersonalityEnums\Buildings.cs" />
+    <Compile Include="Util\Readers\Utils\PersonalityEnums\Resources.cs" />
+    <Compile Include="Util\Readers\Utils\PersonalityEnums\SiegeEngines.cs" />
+    <Compile Include="Util\Readers\Utils\PersonalityEnums\TargetingType.cs" />
+    <Compile Include="Util\Readers\Utils\PersonalityEnums\Units.cs" />
+    <Compile Include="Util\Readers\Utils\PersonalityEnums\WorkshopSettings.cs" />
+    <Compile Include="Util\Readers\Utils\RWAttributes.cs" />
     <Compile Include="Version.cs" />
-    <Compile Include="_Crusader\Building.cs" />
-    <Compile Include="_Crusader\UI_Button.cs" />
-    <Compile Include="_Crusader\Unit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -164,228 +177,215 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_attr.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_fix_crusader_archers_pitch_fn.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_fix_laddermen_with_enclosed_keep.block" />
-    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_catapult.block" />
-    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_fireballista.block" />
-    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_ram.block" />
-    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_shield.block" />
-    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_tower.block" />
-    <EmbeddedResource Include="CodeBlocks\o_change_siege_engine_spawn_position_trebutchet.block" />
-    <EmbeddedResource Include="CodeBlocks\fix_apple_orchard_build_size.block" />
-    <EmbeddedResource Include="CodeBlocks\o_increase_path_update_tick_rate.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb_2.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb_3.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb_4.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_ladderclimb_pre.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_fletcher_bug.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_baker_disappear.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_moat_digging_unit_disappearing.block" />
-    <EmbeddedResource Include="CodeBlocks\o_override_identity_menu.block" />
-    <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_ally_name.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_attack_emblem.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_allied_menu_emblem.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_order_menu_emblem.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_emblem.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield_enemy_taunt.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_ai_video_message_shield_pre.block" />
-    <EmbeddedResource Include="CodeBlocks\o_remove_right_click_context_menu.block" />
-    <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech.block" />
-    <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_engine.block" />
-    <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_lord_type.block" />
-    <EmbeddedResource Include="CodeBlocks\o_restore_arabian_engineer_speech_purchase.block" />
-    <EmbeddedResource Include="CodeBlocks\o_seed_modification_possibility.block" />
-    <EmbeddedResource Include="CodeBlocks\o_seed_modification_possibility_fn1.block" />
-    <EmbeddedResource Include="CodeBlocks\o_seed_modification_possibility_fn2.block" />
-    <EmbeddedResource Include="CodeBlocks\o_seed_modification_possibility_fn3.block" />
-    <EmbeddedResource Include="CodeBlocks\o_seed_modification_possibility_fn4.block" />
-    <EmbeddedResource Include="CodeBlocks\o_seed_modification_possibility_fn5.block" />
-    <EmbeddedResource Include="CodeBlocks\o_stop_player_keep_rotation.block" />
-    <EmbeddedResource Include="CodeBlocks\o_stop_player_keep_rotation_get_preferred_relative_orientation.block" />
-    <EmbeddedResource Include="CodeBlocks\ui_fix_laddermen_cost_display_in_engineers_guild.block" />
-    <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix1.block" />
-    <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix2.block" />
-    <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix3.block" />
-    <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix4.block" />
-    <EmbeddedResource Include="CodeBlocks\o_armory_marketplace_weapon_order_fix5.block" />
-    <EmbeddedResource Include="CodeBlocks\u_fireballistatunneler.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_rapid_deletion_bug.block" />
-    <EmbeddedResource Include="CodeBlocks\u_fix_lord_animation_stuck_building_attack.block" />
-    <EmbeddedResource Include="CodeBlocks\u_fix_lord_animation_stuck_movement.block" />
-    <EmbeddedResource Include="CodeBlocks\u_fix_applefarm_blocking.block" />
-    <EmbeddedResource Include="CodeBlocks\u_tanner_fix.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_fix_crusader_archers_pitch.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_fix_crusader_archers_pitch_attr.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_fix_crusader_archers_pitch_fn.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_fix_laddermen_with_enclosed_keep.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_change_siege_engine_spawn_position_catapult.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_change_siege_engine_spawn_position_fireballista.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_change_siege_engine_spawn_position_ram.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_change_siege_engine_spawn_position_shield.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_change_siege_engine_spawn_position_tower.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_change_siege_engine_spawn_position_trebutchet.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\fix_apple_orchard_build_size.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_increase_path_update_tick_rate.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_fix_ladderclimb.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_fix_ladderclimb_2.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_fix_ladderclimb_3.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_fix_ladderclimb_4.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_fix_ladderclimb_pre.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_fix_fletcher_bug.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_fix_baker_disappear.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_fix_moat_digging_unit_disappearing.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_override_identity_menu.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_default_multiplayer_speed.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_ai_allied_menu_ally_name.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_ai_allied_menu_attack_emblem.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_ai_allied_menu_emblem.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_ai_order_menu_emblem.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_ai_video_message_emblem.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_ai_video_message_shield.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_ai_video_message_shield_enemy_taunt.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_ai_video_message_shield_pre.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_remove_right_click_context_menu.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_restore_arabian_engineer_speech.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_restore_arabian_engineer_speech_engine.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_restore_arabian_engineer_speech_lord_type.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_restore_arabian_engineer_speech_purchase.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_seed_modification_possibility.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_seed_modification_possibility_fn1.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_seed_modification_possibility_fn2.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_seed_modification_possibility_fn3.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_seed_modification_possibility_fn4.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_seed_modification_possibility_fn5.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_stop_player_keep_rotation.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_stop_player_keep_rotation_get_preferred_relative_orientation.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ui_fix_laddermen_cost_display_in_engineers_guild.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_armory_marketplace_weapon_order_fix1.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_armory_marketplace_weapon_order_fix2.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_armory_marketplace_weapon_order_fix3.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_armory_marketplace_weapon_order_fix4.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_armory_marketplace_weapon_order_fix5.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_fireballistatunneler.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_fix_rapid_deletion_bug.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_fix_lord_animation_stuck_building_attack.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_fix_lord_animation_stuck_movement.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_fix_applefarm_blocking.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_tanner_fix.block" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="CodeBlocks\u_arabwall.block" />
-    <EmbeddedResource Include="CodeBlocks\u_arabxbow.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_wepbuy_frederick.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_wepbuy_marshal.block" />
-    <EmbeddedResource Include="CodeBlocks\u_spearbow.block" />
-    <EmbeddedResource Include="CodeBlocks\u_spearxbow.block" />
-    <EmbeddedResource Include="CodeBlocks\menuversion.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_recruitinterval.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_recruitsleep.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_attacklimit.block" />
-    <EmbeddedResource Include="CodeBlocks\o_gamespeed_up.block" />
-    <EmbeddedResource Include="CodeBlocks\o_gamespeed_down.block" />
-    <EmbeddedResource Include="CodeBlocks\o_gatedistance.block" />
-    <EmbeddedResource Include="CodeBlocks\o_gatetime.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_wepbuy_abbot.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_wepbuy_emir.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_addattack.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_foodbuy_wazir.block" />
-    <EmbeddedResource Include="CodeBlocks\u_ladderarmor_bow.block" />
-    <EmbeddedResource Include="CodeBlocks\u_ladderarmor_sling.block" />
-    <EmbeddedResource Include="CodeBlocks\u_ladderarmor_xbow.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_ingame.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_addattack_alt.block" />
-    <EmbeddedResource Include="CodeBlocks\u_laddergold.block" />
-    <EmbeddedResource Include="CodeBlocks\o_trooplimit.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_tethers.block" />
-    <EmbeddedResource Include="CodeBlocks\o_onlyai.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_list.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_emblem1.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_emblem2.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_minimap.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_mm_emblem1.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_mm_emblem2.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_mm_shields.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_demolish_walls.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_demolish_eco.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_mm_shield_drag.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_mm_shield_hover.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_minilist2.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_minilist1.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_scorename.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_trail_name.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_trail_shield.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_trail_shield2.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_trail_portrait.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_chat.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_gameover.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_endscore.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_chat2.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_table1.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_table2.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_table_back.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_table_drag.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_attackwave.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_attackwave_wallcount.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_overclock.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_nosleep.block" />
-    <EmbeddedResource Include="CodeBlocks\o_onlyai_load1.block" />
-    <EmbeddedResource Include="CodeBlocks\o_onlyai_load2.block" />
-    <EmbeddedResource Include="CodeBlocks\o_moatvisibility.block" />
-    <EmbeddedResource Include="CodeBlocks\o_engineertent.block" />
-    <EmbeddedResource Include="CodeBlocks\o_onlyai_face.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_demolish_trapped.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_attacktarget.block" />
-    <EmbeddedResource Include="CodeBlocks\o_freetrader.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_towerengines.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_buywood.block" />
-    <EmbeddedResource Include="CodeBlocks\o_keys_down.block" />
-    <EmbeddedResource Include="CodeBlocks\o_keys_up.block" />
-    <EmbeddedResource Include="CodeBlocks\o_keys_savename.block" />
-    <EmbeddedResource Include="CodeBlocks\o_keys_s.block" />
-    <EmbeddedResource Include="CodeBlocks\o_keys_savefunc.block" />
-    <EmbeddedResource Include="CodeBlocks\o_keys_loadname.block" />
-    <EmbeddedResource Include="CodeBlocks\o_keys_l.block" />
-    <EmbeddedResource Include="CodeBlocks\o_onlyai_reset.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_rebuildwalls.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_rebuildtowers.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_fade.block" />
-    <EmbeddedResource Include="CodeBlocks\o_playercolor_trebuchet.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_assaultswitch.block" />
-    <EmbeddedResource Include="CodeBlocks\o_healer_find.block" />
-    <EmbeddedResource Include="CodeBlocks\o_healer_next.block" />
-    <EmbeddedResource Include="CodeBlocks\o_healer_jesternext.block" />
-    <EmbeddedResource Include="CodeBlocks\o_healerroam.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_attackwave_lord.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_defense_count.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_defense_group.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_defense_reset.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_defense_check.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_prop.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_access.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_defense_affinity.block" />
-    <EmbeddedResource Include="CodeBlocks\o_firecooldown.block" />
-    <EmbeddedResource Include="CodeBlocks\laddermadness.block" />
-    <EmbeddedResource Include="AIC\Resources\descriptions.json" />
-    <EmbeddedResource Include="AIC\Resources\errors.json" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_arabwall.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_arabxbow.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_wepbuy_frederick.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_wepbuy_marshal.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_spearbow.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_spearxbow.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\menuversion.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_recruitinterval.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_recruitsleep.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_attacklimit.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_gamespeed_up.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_gamespeed_down.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_gatedistance.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_gatetime.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_wepbuy_abbot.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_wepbuy_emir.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_addattack.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_foodbuy_wazir.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_ladderarmor_bow.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_ladderarmor_sling.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_ladderarmor_xbow.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_ingame.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_addattack_alt.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_laddergold.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_trooplimit.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_tethers.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_onlyai.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_list.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_emblem1.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_emblem2.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_minimap.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_mm_emblem1.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_mm_emblem2.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_mm_shields.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_demolish_walls.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_demolish_eco.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_mm_shield_drag.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_mm_shield_hover.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_minilist2.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_minilist1.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_scorename.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_trail_name.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_trail_shield.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_trail_shield2.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_trail_portrait.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_chat.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_gameover.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_endscore.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_chat2.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_table1.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_table2.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_table_back.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_table_drag.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_attackwave.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_attackwave_wallcount.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_overclock.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_nosleep.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_onlyai_load1.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_onlyai_load2.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_moatvisibility.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_engineertent.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_onlyai_face.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_demolish_trapped.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_attacktarget.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_freetrader.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_towerengines.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_buywood.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_keys_down.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_keys_up.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_keys_savename.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_keys_s.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_keys_savefunc.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_keys_loadname.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_keys_l.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_onlyai_reset.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_rebuildwalls.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_rebuildtowers.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_fade.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_playercolor_trebuchet.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_assaultswitch.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_healer_find.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_healer_next.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_healer_jesternext.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_healerroam.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_attackwave_lord.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_defense_count.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_defense_group.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_defense_reset.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_defense_check.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_prop.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_access.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_defense_affinity.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_firecooldown.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\laddermadness.block" />
+    <EmbeddedResource Include="Resources\AIC\descriptions.json" />
+    <EmbeddedResource Include="Resources\AIC\errors.json" />
     <None Include="App.config" />
-    <EmbeddedResource Include="CodeBlocks\s_resource.block" />
-    <EmbeddedResource Include="CodeBlocks\o_default_multiplayer_speed_reset.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_buildhousing.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_deletehousing.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fast_placing.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_recruitstate_initialtimer.block" />
-    <EmbeddedResource Include="CodeBlocks\o_disable_border_scrolling.block" />
-    <EmbeddedResource Include="CodeBlocks\o_fix_map_sending.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_nowood_maxtime.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_noiron_maxtime.block" />
-    <EmbeddedResource Include="CodeBlocks\ai_noflour_maxtime.block" />
-    <None Include="CodeBlocks\o_healer_cmp.block" />
-    <EmbeddedResource Include="CodeBlocks\o_jesterroam.block" />
-    <EmbeddedResource Include="CodeBlocks\o_healer_plague.block" />
-    <EmbeddedResource Include="CodeBlocks\random.block" />
-    <EmbeddedResource Include="CodeBlocks\o_keys_menu.block" />
-    <EmbeddedResource Include="CodeBlocks\o_xtreme_bar1.block" />
-    <EmbeddedResource Include="CodeBlocks\o_xtreme_bar2.block" />
-    <EmbeddedResource Include="CodeBlocks\u_fireballistamonk.block" />
-    <EmbeddedResource Include="CodeBlocks\o_onlyai_assassins.block" />
-    <EmbeddedResource Include="CodeBlocks\o_shfy_beerpopularity.block" />
-    <EmbeddedResource Include="CodeBlocks\o_shfy_beerpopularitytab.block" />
-    <EmbeddedResource Include="CodeBlocks\o_shfy_beertab.block" />
-    <EmbeddedResource Include="CodeBlocks\o_shfy_religionpopularity.block" />
-    <EmbeddedResource Include="CodeBlocks\o_shfy_religionpopularitytab.block" />
-    <EmbeddedResource Include="CodeBlocks\o_shfy_religiontab.block" />
-    <EmbeddedResource Include="CodeBlocks\o_shfy_resourcequantity.block" />
-    <EmbeddedResource Include="CodeBlocks\o_shfy_peasantspawnrate.block" />
-    <EmbeddedResource Include="CodeBlocks\s_gold.block" />
-    <EmbeddedResource Include="CodeBlocks\s_troops.block" />
-    <EmbeddedResource Include="CodeBlocks\s_lordstrength.block" />
-    <EmbeddedResource Include="CodeBlocks\s_lordtype.block" />
-    <EmbeddedResource Include="CodeBlocks\u_jestermoveto_assassin.block" />
-    <EmbeddedResource Include="CodeBlocks\u_spearmen_run.block" />
-    <EmbeddedResource Include="CodeBlocks\o_xtreme_bar3.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\s_resource.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_default_multiplayer_speed_reset.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_buildhousing.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_deletehousing.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_fast_placing.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_recruitstate_initialtimer.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_disable_border_scrolling.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_fix_map_sending.block" />
+    <EmbeddedResource Include="Resources\modConfig.json" />
+    <None Include="packages.config" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_fix_map_sending.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_nowood_maxtime.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_noiron_maxtime.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\ai_noflour_maxtime.block" />
+    <None Include="Resources\CodeBlocks\o_healer_cmp.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_jesterroam.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_healer_plague.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\random.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_keys_menu.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_xtreme_bar1.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_xtreme_bar2.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_fireballistamonk.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_onlyai_assassins.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_shfy_beerpopularity.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_shfy_beerpopularitytab.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_shfy_beertab.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_shfy_religionpopularity.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_shfy_religionpopularitytab.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_shfy_religiontab.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_shfy_resourcequantity.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_shfy_peasantspawnrate.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\s_gold.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\s_troops.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\s_lordstrength.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\s_lordtype.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_jestermoveto_assassin.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\u_spearmen_run.block" />
+    <EmbeddedResource Include="Resources\CodeBlocks\o_xtreme_bar3.block" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\Hungarian.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\English.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\German.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\Polish.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\Russian.txt" />
+    <None Include="Resources\Config\mods.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Localization\Arabic.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Localization\Chinese.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\shield.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="CodeBlocks\o_fix_fletcher_bug.block" />
+    <EmbeddedResource Include="Localization\English.txt" />
+    <EmbeddedResource Include="Localization\German.txt" />
+    <EmbeddedResource Include="Localization\Hungarian.txt" />
+    <EmbeddedResource Include="Localization\Polish.txt" />
+    <EmbeddedResource Include="Localization\Russian.txt" />
+    <Content Include="Resources\CodeBlocks\o_fix_fletcher_bug.block" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -1,0 +1,119 @@
+{
+  "name": "unofficialcrusaderpatch-gui",
+  "productName": "unofficialcrusaderpatch-gui",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": ".webpack/main",
+  "scripts": {
+    "build": "electron-forge start",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "eslint --ext .ts,.tsx .",
+    "prettier": "prettier --config .prettierrc src/**/*.ts src/**/*.tsx --write"
+  },
+  "keywords": [],
+  "author": {
+    "name": "patel-nikhil",
+    "email": "patenikh2@gmail.com"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "electronRebuildConfig": {
+        "forceABI": 89
+      },
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "unofficialcrusaderpatch_gui"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/index.html",
+                  "js": "./src/renderer.ts",
+                  "name": "main_window",
+                  "preload": {
+                    "js": "./src/ucp.ts"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@electron-forge/cli": "^6.0.0-beta.33",
+    "@electron-forge/maker-deb": "^6.0.0-beta.33",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.33",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.33",
+    "@electron-forge/maker-zip": "^6.0.0-beta.33",
+    "@electron-forge/plugin-webpack": "^6.0.0-beta.61",
+    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "@vercel/webpack-asset-relocator-loader": "^1.7.0",
+    "autoprefixer": "^10.4.0",
+    "babel-loader": "^8.2.3",
+    "copy-webpack-plugin": "^10.0.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.5.1",
+    "electron": "^13.0.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.25.3",
+    "file-loader": "^6.2.0",
+    "fork-ts-checker-webpack-plugin": "^6.4.2",
+    "node-loader": "^2.0.0",
+    "postcss": "^8.4.4",
+    "postcss-loader": "^6.2.1",
+    "prettier": "^2.5.0",
+    "sass": "^1.44.0",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.2.6",
+    "tsconfig-paths-webpack-plugin": "^3.5.2",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.0",
+    "bootstrap": "^5.1.3",
+    "electron-edge-js": "^14.16.1",
+    "electron-rebuild": "^3.2.5",
+    "electron-squirrel-startup": "^1.0.0",
+    "jquery": "^3.6.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

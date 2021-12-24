@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using UCP.AIV;
@@ -139,9 +139,9 @@ namespace UCP
                 }
             },
 
-            /*
+            *//*
              * FIRE BALLISTAS ATTACK MONKS AND TUNNELERS
-             */
+             *//*
 
             new Change("u_fireballistafix", ChangeType.Bugfix, true)
             {
@@ -168,16 +168,16 @@ namespace UCP
                 }
             },
 
-            /*
+            *//*
              * DISABLE DEMOLISHING OF INACCESSIBLE BUILDINGS
-             */
+             *//*
 
             // 004242C3
             BinBytes.Change("ai_access", ChangeType.Bugfix, true, 0xEB),
             
-            /*
+            *//*
              * REMANNING WALL DEFENSES
-             */
+             *//*
 
             new Change("ai_defense", ChangeType.Bugfix)
             {
@@ -253,16 +253,16 @@ namespace UCP
                 }
             },
 
-            /*
+            *//*
              *  OX TETHER SPAM
-             */
+             *//*
              
             // 004EFF9A => jne to jmp
             BinBytes.Change("ai_tethers", ChangeType.Bugfix, true, 0x90, 0xE9),
 
-            /*
+            *//*
              *  IMPROVE WOOD BUYING
-             */ 
+             *//* 
 
             // 00457DF4
             new Change("ai_buywood", ChangeType.Bugfix, true)
@@ -281,16 +281,16 @@ namespace UCP
                 }
             },
 
-            /*
+            *//*
              * UNLIMITED SIEGE ENGINES ON TOWERS
-             */
+             *//*
              
             // 004D20A2
             BinBytes.Change("ai_towerengines", ChangeType.Bugfix, true, 0xEB),
             
-            /*
+            *//*
              *  NO ASSAULT SWITCHES
-             */
+             *//*
 
             
             new Change("ai_assaultswitch", ChangeType.Bugfix)
@@ -324,9 +324,9 @@ namespace UCP
             },
 
 
-            /*
+            *//*
              *  AI REBUILD STUFF
-             */ 
+             *//* 
 
             new Change("ai_rebuild", ChangeType.Bugfix, true)
             {
@@ -519,9 +519,9 @@ namespace UCP
                 }
             },
           
-            /*
+            *//*
              * Fletcher bugfix 
-             */
+             *//*
             new Change("o_fix_fletcher_bug", ChangeType.Bugfix)
             {
                 new DefaultHeader("o_fix_fletcher_bug")
@@ -721,9 +721,9 @@ namespace UCP
             },
 
 
-            /*
+            *//*
              *  AI RECRUIT ADDITIONAL ATTACK TROOPS 
-             */
+             *//*
 
             // 115EEE0 + (AI1 = 73E8) = stay home troops?
             // +8 attack troops
@@ -741,9 +741,9 @@ namespace UCP
             },
 
 
-            /*
+            *//*
              * IMPROVED ATTACKS
-             */ 
+             *//* 
 
             new Change("ai_attackwave", ChangeType.AILords)
             {
@@ -806,9 +806,9 @@ namespace UCP
             },
 
 
-            /*
+            *//*
              * ALWAYS ATTACK NEAREST NEIGHBOR
-             */ 
+             *//* 
 
             // 004D47B2
             new Change("ai_attacktarget", ChangeType.AILords, false)
@@ -829,9 +829,9 @@ namespace UCP
                 },
             },
 
-            /*
+            *//*
              * AI NO SLEEP
-             */
+             *//*
 
             // 004CBCD5
             new Change("ai_nosleep", ChangeType.AILords, false)
@@ -865,9 +865,9 @@ namespace UCP
                 }
             },
 
-            /*
+            *//*
              *  ECONOMY DEMOLISHING
-             */
+             *//*
              
             // 004D0280
             new Change("ai_demolish", ChangeType.AILords, false, false)
@@ -966,9 +966,9 @@ namespace UCP
                 },
             },
 
-            /*
+            *//*
              * AI RECRUIT INTERVALS
-             */
+             *//*
 
             // AI_OFFSET = AI_INDEX * 169
 
@@ -1006,9 +1006,9 @@ namespace UCP
             //BinBytes.Change("ai_recruitsleep", ChangeType.Balancing, false, 0x75, 0x2E),
 
 
-            /*
+            *//*
              * AI RECRUITMENT ATTACK LIMITS
-             */ 
+             *//* 
 
             // attack start troops: 023FC8E8 + AI_OFFSET * 4 + 1F4
             // rat => 20
@@ -1153,9 +1153,9 @@ namespace UCP
 
             #region OTHER
 
-            /*
+            *//*
              *  FIRE COOLDOWN
-             */
+             *//*
 
             // 0x00410A30 + 8 ushort default = 2000
             new Change("o_firecooldown", ChangeType.Other, false)
@@ -1171,9 +1171,9 @@ namespace UCP
             },
 
 
-            /*
+            *//*
              * EXTREME
-             */
+             *//*
 
             new Change("o_xtreme", ChangeType.Other, false)
             {
@@ -1191,9 +1191,9 @@ namespace UCP
             },
 
 
-            /*
+            *//*
              * PLAYER 1 COLOR
-             */
+             *//*
 
             new Change("o_playercolor", ChangeType.Other, false)
             {
@@ -1831,9 +1831,9 @@ namespace UCP
                 },
             },
 
-            /*
+            *//*
              *  WASD
-             */
+             *//*
              
             new Change("o_keys", ChangeType.Other, false, false)
             {
@@ -2018,9 +2018,9 @@ namespace UCP
                 }
             },
             
-            /*
+            *//*
              *  Override Identity Menu
-             */
+             *//*
              
             new Change("o_override_identity_menu", ChangeType.Other, false, false)
             {
@@ -2389,9 +2389,9 @@ namespace UCP
             },
 
 
-            /*
+            *//*
              *   HEALER
-             */
+             *//*
 
             new Change("o_healer", ChangeType.Other)
             {
@@ -2766,26 +2766,26 @@ namespace UCP
 
 
 
-            /* 
+            *//* 
              *  FREE TRADER POST
-             */
+             *//*
              
             // trader post: runtime 01124EFC
             // 005C23D8
             BinBytes.Change("o_freetrader", ChangeType.Other, true, 0x00),
 
 
-            /*
+            *//*
              * SIEGE EQUIPMENT BUILDING
-             */
+             *//*
 
             // 0044612B
             // nop out: mov [selection], ebp = 0
             BinBytes.Change("o_engineertent", ChangeType.Other, true, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90),
 
-            /*
+            *//*
              *  MOAT VISIBILITY
-             */
+             *//*
              
             new Change("o_moatvisibility", ChangeType.Other)
             {
@@ -2802,9 +2802,9 @@ namespace UCP
             
 
 
-            /*
+            *//*
              *  EXTENDED GAME SPEED 
-             */ 
+             *//* 
 
             new Change("o_gamespeed", ChangeType.Other)
             {
@@ -2857,9 +2857,9 @@ namespace UCP
 
 
 
-            /*
+            *//*
              * GATES
-             */ 
+             *//* 
 
             new Change("o_responsivegates", ChangeType.Other)
             {
@@ -2877,9 +2877,9 @@ namespace UCP
 
 
 
-            /*
+            *//*
              * ONLY AI / SPECTATOR MODE
-             */
+             *//*
 
             new Change("o_onlyai", ChangeType.Other, false)
             {
@@ -3760,3 +3760,4 @@ namespace UCP
         }
     }
 }
+*/
