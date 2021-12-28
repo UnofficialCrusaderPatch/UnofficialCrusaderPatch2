@@ -35,14 +35,14 @@ namespace UCP.API
             reader.Close();
 
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            List<object> config = serializer.Deserialize<List<object>>(configText);
+            List<ModBackendConfig> config = serializer.Deserialize<List<ModBackendConfig>>(configText);
 
-            List<dynamic> modules = new List<dynamic>();
-            foreach (var mod in config)
+            List<ModUIConfig> modules = new List<ModUIConfig>();
+            foreach (ModBackendConfig mod in config)
             {
                 try
                 {
-                    dynamic transformedMod = ConstructMod(mod, language);
+                    ModUIConfig transformedMod = ConstructMod(mod, language);
                     modules.Add(transformedMod);
                 } catch (Exception e)
                 {
@@ -55,11 +55,12 @@ namespace UCP.API
             Dictionary<string, AIVConfiguration> aivConfiguration = AIVEnumerator.GetAIVConfiguration();
             foreach (KeyValuePair<string, AIVConfiguration> aivPair in aivConfiguration)
             {
-                Dictionary<string, dynamic> modConfig = new Dictionary<string, dynamic>();
-                modConfig["modIdentifier"] = aivPair.Key;
-                modConfig["modType"] = "AIV";
-                modConfig["modDescription"] = aivPair.Value.Description[language];
-                modConfig["modSelectionRule"] = "*";
+                ModUIConfig modConfig = new ModUIConfig();
+                /*Dictionary<string, dynamic> modConfig = new Dictionary<string, dynamic>();*/
+                modConfig.modIdentifier = aivPair.Key;
+                modConfig.modType = Enum.GetName(typeof(ChangeType), ChangeType.AIV);
+                modConfig.modDescription = aivPair.Value.Description[language];
+                modConfig.modSelectionRule = "*";
                 //IEnumerable<object> castles = keyValuePair.Value.Description.Values.AsEnumerable();
                 //keyValuePair.Value.Castles: { filename/id, description, image }
                 // modConfig["modChanges"] = keyValuePair.Value.Castles
@@ -69,47 +70,53 @@ namespace UCP.API
             List<AICConfiguration> aicConfiguration = AICEnumerator.GetAICConfiguration();
             foreach (AICConfiguration aic in aicConfiguration)
             {
-                Dictionary<string, dynamic> modConfig = new Dictionary<string, dynamic>();
-                modConfig["modIdentifier"] = aic.Identifier;
-                modConfig["modType"] = "AIC";
-                modConfig["modDescription"] = aic.Description[language];
-                modConfig["modChanges"] = aic.CustomCharacterList;
-                modConfig["modSelectionRule"] = "*";
+                ModUIConfig modConfig = new ModUIConfig();
+                modConfig.modIdentifier = aic.Identifier;
+                modConfig.modType = Enum.GetName(typeof(ChangeType), ChangeType.AIC);
+                modConfig.modDescription = aic.Description[language];
+                modConfig.changes = aic.CustomCharacterList.Select(aicName =>
+                {
+                    ChangeUIConfig changeConfig = new ChangeUIConfig();
+                    changeConfig.identifier = aicName;
+                    return changeConfig;
+                });
+                modConfig.modSelectionRule = "*";
                 modules.Add(modConfig);
             }
 
             Dictionary<string, StartTroopConfiguration> startTroopConfiguration = StartTroopEnumerator.GetStartTroopConfigurations();
             foreach (KeyValuePair<string, StartTroopConfiguration> troop in startTroopConfiguration)
             {
-                Dictionary<string, dynamic> modConfig = new Dictionary<string, dynamic>();
-                modConfig["modIdentifier"] = troop.Key;
-                modConfig["modType"] = "troop";
-                modConfig["modDescription"] = troop.Value.Description[language];
-                modConfig["modSelectionRule"] = "*";
+                ModUIConfig modConfig = new ModUIConfig();
+                modConfig.modIdentifier = troop.Key;
+                modConfig.modType = Enum.GetName(typeof(ChangeType), ChangeType.StartTroops);
+                modConfig.modDescription = troop.Value.Description[language];
+                modConfig.modSelectionRule = "*";
                 modules.Add(modConfig);
             }
 
             Dictionary<string, StartResourceConfiguration> startResourceConfiguration = StartResourceEnumerator.GetStartResourceConfigurations();
             foreach (KeyValuePair<string, StartResourceConfiguration> res in startResourceConfiguration)
             {
-                Dictionary<string, dynamic> modConfig = new Dictionary<string, dynamic>();
-                modConfig["modIdentifier"] = res.Key;
-                modConfig["modType"] = "resource";
-                modConfig["modDescription"] = res.Value.Description[language];
-                modConfig["modSelectionRule"] = "*";
+                ModUIConfig modConfig = new ModUIConfig();
+                modConfig.modIdentifier = res.Key;
+                modConfig.modType = Enum.GetName(typeof(ChangeType), ChangeType.StartResource);
+                modConfig.modDescription = res.Value.Description[language];
+                modConfig.modSelectionRule = "*";
                 modules.Add(modConfig);
             }
             return modules;
         }
 
-        static object ConstructMod(dynamic mod, string language)
+        static ModUIConfig ConstructMod(ModBackendConfig mod, string language)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            dynamic transformedMod = serializer.Deserialize<object>(serializer.Serialize(mod));
+            //ModBackendConfig transformedMod = serializer.Deserialize<object>(serializer.Serialize(mod));
+            ModUIConfig transformedMod = new ModUIConfig();
 
             try
             {
-                transformedMod["modDescription"] = mod["modDescription"][language];
+                transformedMod.modDescription = mod.modDescription[language];
             } catch (KeyNotFoundException) {}
             catch (Exception)
             {
@@ -118,59 +125,59 @@ namespace UCP.API
 
             try
             {
-                transformedMod["detailedDescription"] = mod["detailedDescription"][language];
+                transformedMod.detailedDescription = mod.detailedDescription[language];
             }
             catch (KeyNotFoundException) { }
             catch (Exception)
             {
-                transformedMod["detailedDescription"] = "";
+                transformedMod.detailedDescription = "";
             }
 
-            List<dynamic> changes = new List<dynamic>();
-            foreach (var change in mod["changes"])
+            List<ChangeUIConfig> changes = new List<ChangeUIConfig>();
+            foreach (var change in mod.changes)
             {
                 if (!IsValidChange(change))
                 {
-                    throw new Exception("Invalid change configuration for mod: " + mod["modIdentifier"]);
+                    throw new Exception("Invalid change configuration for mod: " + mod.modIdentifier);
                 }
-                dynamic changeCopy = serializer.Deserialize<object>(serializer.Serialize(change));
+                ChangeUIConfig transformedChange = new ChangeUIConfig();
 
                 try
                 {
-                    changeCopy["description"] = changeCopy["description"][language];
+                    transformedChange.description = change.description[language];
                 }
                 catch (KeyNotFoundException) {
-                    changeCopy["description"] = "";
+                    transformedChange.description = "";
                 }
 
                 try
                 {
-                    changeCopy["detailedDescription"] = changeCopy["detailedDescription"][language];
+                    transformedChange.detailedDescription = change.detailedDescription[language];
                 } catch (KeyNotFoundException) {
-                    changeCopy["detailedDescription"] = "";
+                    transformedChange.detailedDescription = "";
                 }
 
                 try
                 {
-                    for (int i = 0; i < changeCopy["selectionParameters"]["options"].Length; i++)
+                    for (int i = 0; i < change["selectionParameters"]["options"].Length; i++)
                     {
                         try
                         {
-                            changeCopy["selectionParameters"]["options"][i]["description"] = changeCopy["selectionParameters"]["options"][i]["description"][language];
+                            transformedChange["selectionParameters"]["options"][i]["description"] = changeCopy["selectionParameters"]["options"][i]["description"][language];
                         }
                         catch (KeyNotFoundException) { }
 
                         try
                         {
-                            changeCopy["selectionParameters"]["options"][i]["detailedDescription"] = changeCopy["selectionParameters"]["options"][i]["detailedDescription"][language];
+                            transformedChange["selectionParameters"]["options"][i]["detailedDescription"] = changeCopy["selectionParameters"]["options"][i]["detailedDescription"][language];
                         }
                         catch (KeyNotFoundException) { }
                     }
                 } catch (KeyNotFoundException) { }
 
-                changes.Add(changeCopy);
+                changes.Add(transformedChange);
             }
-            transformedMod["changes"] = changes;
+            transformedMod.changes = changes;
             return transformedMod;
         }
 

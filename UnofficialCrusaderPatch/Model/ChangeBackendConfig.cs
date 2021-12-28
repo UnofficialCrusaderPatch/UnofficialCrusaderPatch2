@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace UCP.Model
 {
-    public class ChangeUIConfig
+    public class ChangeBackendConfig
     {
         public IEnumerable<string> compatibility { get; set; }
         public string identifier { get; set; }
@@ -13,7 +13,7 @@ namespace UCP.Model
         public SelectionType selectionType { get; set; }
         public SelectionParameter selectionParameters { get; set; }
         public object defaultValue { get; set; }
-        public string description { get; set; }
-        public string detailedDescription { get; set;  }
+        public Dictionary<string, string> description { get; set; }
+        public Dictionary<string, string> detailedDescription { get; set;  }
     }
 }
