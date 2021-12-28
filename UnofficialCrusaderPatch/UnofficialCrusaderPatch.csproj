@@ -81,6 +81,7 @@
     <Compile Include="..\CodeBlox\CodeBlock.cs">
       <Link>CodeBlocks\CodeBlock.cs</Link>
     </Compile>
+    <Compile Include="ClientConfig\ModUIConfig.cs" />
     <Compile Include="Localization\Localization.cs" />
     <Compile Include="Localization\TextReferencer.cs" />
     <Compile Include="Model\AICConfiguration.cs" />
@@ -132,8 +133,6 @@
     <Compile Include="Model\ChangeConfiguration.cs" />
     <Compile Include="ClientConfig\ChangeUIConfig.cs" />
     <Compile Include="Model\Mod.cs" />
-    <Compile Include="ClientConfig\ModSelectionType.cs" />
-    <Compile Include="ClientConfig\ModUIConfig.cs" />
     <Compile Include="ClientConfig\SelectionParameter.cs" />
     <Compile Include="ClientConfig\SelectionType.cs" />
     <Compile Include="Model\StartResourceConfiguration.cs" />

@@ -1,6 +1,7 @@
 ﻿namespace UCP.Model
 {
-    public interface SelectionParameter
+    public class SelectionParameter
     {
+
     }
 }

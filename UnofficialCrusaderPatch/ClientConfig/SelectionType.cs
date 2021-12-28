@@ -1,5 +1,8 @@
-﻿namespace UCP.Model
+﻿using System;
+
+namespace UCP.Model
 {
+    [Serializable]
     public enum SelectionType
     {
         CHECKBOX,
