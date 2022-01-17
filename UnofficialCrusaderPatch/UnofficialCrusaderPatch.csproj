@@ -341,7 +341,6 @@
     <EmbeddedResource Include="Resources\CodeBlocks\o_fast_placing.block" />
     <EmbeddedResource Include="Resources\CodeBlocks\ai_recruitstate_initialtimer.block" />
     <EmbeddedResource Include="Resources\CodeBlocks\o_disable_border_scrolling.block" />
-    <EmbeddedResource Include="Resources\CodeBlocks\o_fix_map_sending.block" />
     <EmbeddedResource Include="Resources\modConfig.json" />
     <None Include="packages.config" />
     <EmbeddedResource Include="Resources\CodeBlocks\o_fix_map_sending.block" />
