@@ -24,7 +24,11 @@
       "electronRebuildConfig": {
         "forceABI": 89
       },
-      "packagerConfig": {},
+      "packagerConfig": {
+        "afterExtract": [
+          "./build-scripts/packaging.js"
+        ]
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",

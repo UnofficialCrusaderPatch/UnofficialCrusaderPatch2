@@ -1,5 +1,6 @@
 const { contextBridge } = require('electron');
 
+
 var edge = require('electron-edge-js');
 var clrMethod = edge.func({
   assemblyFile: 'UnofficialCrusaderPatch.dll',
