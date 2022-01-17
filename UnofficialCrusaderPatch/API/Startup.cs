@@ -134,7 +134,7 @@ namespace UCP.API
             }
 
             List<ChangeUIConfig> changes = new List<ChangeUIConfig>();
-            foreach (var change in mod.changes)
+            foreach (ChangeBackendConfig change in mod.changes)
             {
                 if (!IsValidChange(change))
                 {
@@ -159,17 +159,17 @@ namespace UCP.API
 
                 try
                 {
-                    for (int i = 0; i < change["selectionParameters"]["options"].Length; i++)
+                    for (int i = 0; i < change.selectionParameters.options.Count; i++)
                     {
                         try
                         {
-                            transformedChange["selectionParameters"]["options"][i]["description"] = changeCopy["selectionParameters"]["options"][i]["description"][language];
+                            change.selectionParameters.options.ElementAt(i)["description"] = transformedChange.selectionParameters.options.ElementAt(i)["description"][language];
                         }
                         catch (KeyNotFoundException) { }
 
                         try
                         {
-                            transformedChange["selectionParameters"]["options"][i]["detailedDescription"] = changeCopy["selectionParameters"]["options"][i]["detailedDescription"][language];
+                            change.selectionParameters.options.ElementAt(i)["detailedDescription"] = transformedChange.selectionParameters.options.ElementAt(i)["detailedDescription"][language];
                         }
                         catch (KeyNotFoundException) { }
                     }
