@@ -112,7 +112,7 @@ u_spearmen_run
 
 u_spearmen_run_descr
 {
-"Вместо медленной ходьбы копейщики бегут медленно."
+"Копейщики бегут со скоростью пехотинцев с булавами, а также рабов."
 } 
 
 o_seed_modification_possibility_title
