@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
+using UCP.Model;
 using UCP.Patching;
-using UCP.Startup;
+using static UCP.API.Startup;
 
 namespace UCP
 {
@@ -9,25 +10,30 @@ namespace UCP
     {
         static void Main(string[] args)
         {
-            Configuration.Load();
-            StartTroopChange.Load();
-            ResourceChange.Load();
-            Version.AddExternalChanges();
-            ResolvePath();
-            ResolveArgs(args);
-            SilentInstall();
+            UCPConfig config = ResolveConfig();
+            string resolvedPath = ResolvePath(config);
+            config.withPath(resolvedPath);
+            ResolveArgs(args, resolvedPath);
+            SilentInstall(config);
         }
 
-        static void ResolveArgs(String[] args)
+        // Parse user config file
+        static UCPConfig ResolveConfig()
+        {
+            UCPConfig config = new UCPConfig();
+            return config;
+        }
+
+        static void ResolveArgs(string[] args, string configPath)
         {
 
-            Func<String, String, bool, bool, bool> fileTransfer = (src, dest, overwrite, log) =>
+            Func<string, string, bool, bool, bool> fileTransfer = (src, dest, overwrite, log) =>
             {
                 return FileUtils.Transfer(src, dest, overwrite, log);
             };
 
             bool silent = false;
-            foreach (String arg in args)
+            foreach (string arg in args)
             {
                 if (arg == "--no-output")
                 {
@@ -35,7 +41,7 @@ namespace UCP
                 }
             }
 
-            foreach (String arg in args)
+            foreach (string arg in args)
             {
                 if (arg == "--no-output")
                 {
@@ -48,40 +54,41 @@ namespace UCP
                 {
                     continue;
                 }
-                String srcPath = arg.Split('=')[1];
-                String rawOpt = arg.Split('=')[0].Substring(2);
+                string srcPath = arg.Split('=')[1];
+                string rawOpt = arg.Split('=')[0].Substring(2);
                 bool overwrite = false;
                 if (rawOpt.Split('-').Length > 1 && rawOpt.Split('-')[1].ToLower().Contains("overwrite"))
                 {
                     overwrite = true;
                 }
-                String opt = rawOpt.Split('-')[0];
+                string opt = rawOpt.Split('-')[0];
 
-                fileTransfer(Path.Combine(Environment.CurrentDirectory, srcPath), Path.GetFullPath(Path.Combine(Configuration.Path, PathUtils.Get(opt))), overwrite, !silent);   
+                fileTransfer(Path.Combine(Environment.CurrentDirectory, srcPath), Path.GetFullPath(Path.Combine(configPath, PathUtils.Get(opt))), overwrite, !silent);   
             }
         }
 
-        static void ResolvePath()
+        static string ResolvePath(UCPConfig config)
         {
-            if (!Patcher.CrusaderExists(Configuration.Path))
+            string resolvedPath = config.Path;
+            if (!PathUtils.CrusaderExists(resolvedPath))
             {
-                if (Patcher.CrusaderExists(Environment.CurrentDirectory))
+                if (PathUtils.CrusaderExists(Environment.CurrentDirectory))
                 {
-                    Configuration.Path = Environment.CurrentDirectory;
+                    resolvedPath = Environment.CurrentDirectory;
                 }
-                else if (Patcher.CrusaderExists(Path.Combine(Environment.CurrentDirectory, "..\\")))
+                else if (PathUtils.CrusaderExists(Path.Combine(Environment.CurrentDirectory, "..\\")))
                 {
-                    Configuration.Path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "..\\"));
+                    resolvedPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "..\\"));
                 }
             }
+            return resolvedPath;
         }
 
-        static void SilentInstall()
+        static void SilentInstall(UCPConfig config)
         {
-            Version.Changes.Contains(null);
-            Patcher.Install(Configuration.Path, null, false, false);
+            Install(config, false, false);
             Console.WriteLine("UCP successfully installed");
-            Console.WriteLine("Path to Stronghold Crusader is:" + Configuration.Path);
+            Console.WriteLine("Path to Stronghold Crusader is:" + config.Path);
         }
     }
 }
