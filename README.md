@@ -1,4 +1,4 @@
-# Unofficial Crusader Patch  [![UCP_Official](https://discordapp.com/api/guilds/426318193603117057/widget.png?style=shield)](https://discord.gg/vmy7CBR)
+# Unofficial Crusader Patch  [![UCP_Official](https://discordapp.com/api/guilds/426318193603117057/widget.png?style=shield)](https://discord.gg/N4UVjZBRXU)
 
 
  ## Project
