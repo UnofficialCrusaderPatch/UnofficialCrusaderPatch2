@@ -36,7 +36,7 @@ If you have suggestions, you are welcome to post new ideas or discuss already ex
 - try to check if your suggestion already has a topic and join that discussion instead of creating a new one
 - keep the tone nice and civil  
 
-Furthermore you can join our [Discord Server](https://discord.gg/vmy7CBR) for quick help and feedback.
+Furthermore you can join our [Discord Server](https://discord.gg/N4UVjZBRXU) for quick help and feedback.
 
 ## The team behind the UCP
 
