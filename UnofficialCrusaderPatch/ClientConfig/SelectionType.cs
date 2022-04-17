@@ -7,6 +7,7 @@ namespace UCP.Model
     {
         CHECKBOX,
         COLOUR,
-        SLIDER
+        SLIDER,
+        RADIO
     }
 }

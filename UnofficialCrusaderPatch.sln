@@ -14,6 +14,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnofficialCrusaderPatchConsole", "UnofficialCrusaderPatchConsole\UnofficialCrusaderPatchConsole.csproj", "{743F77E0-AD5A-42FE-B928-535AAF40AC4D}"
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "UnofficialCrusaderPatchGUI", "unofficialcrusaderpatch-gui\UnofficialCrusaderPatchGUI.njsproj", "{98C96052-2188-48A6-BCEC-CDFE4D55354A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{53FFBF10-68B1-474F-BD93-903195B2A14C} = {53FFBF10-68B1-474F-BD93-903195B2A14C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
