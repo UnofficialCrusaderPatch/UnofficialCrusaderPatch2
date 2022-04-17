@@ -1,22 +1,25 @@
 {
   "compilerOptions": {
-    "allowJs": true,
+    "target": "es2021",
     "module": "commonjs",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "noImplicitAny": true,
+    "lib": ["dom", "es2021"],
+    "declaration": true,
+    "declarationMap": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "pretty": true,
     "sourceMap": true,
-    "jsx": "react",
-    "baseUrl": ".",
-    "outDir": "dist",
+    "baseUrl": "./src",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "paths": {
-      "*": ["node_modules/*"],
-      "src/*": ["./src/*"]
-    }
+    "allowJs": true,
+    "outDir": "release/app/dist"
   },
-  "include": [
-    "src/**/*"
-  ]
+  "exclude": ["test", "release/build", "release/app/dist", "config/dll"]
 }

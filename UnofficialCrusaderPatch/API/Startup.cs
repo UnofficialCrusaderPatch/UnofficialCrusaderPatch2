@@ -47,9 +47,7 @@ namespace UCP.API
                 } catch (Exception e)
                 {
                     throw new Exception("Mod that failed is" + ((dynamic) mod)["modIdentifier"].ToString() + e.Message);
-                }
-                
-                
+                }                              
             }
 
             Dictionary<string, AIVConfiguration> aivConfiguration = AIVEnumerator.GetAIVConfiguration();

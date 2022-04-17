@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AICUpdater", "AICUpdater\AI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnofficialCrusaderPatchConsole", "UnofficialCrusaderPatchConsole\UnofficialCrusaderPatchConsole.csproj", "{743F77E0-AD5A-42FE-B928-535AAF40AC4D}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "unofficialcrusaderpatch-gui", "unofficialcrusaderpatch-gui\unofficialcrusaderpatch-gui.njsproj", "{363843C4-9ECD-49B4-BF39-2DB76B28F1DF}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "UnofficialCrusaderPatchGUI", "unofficialcrusaderpatch-gui\UnofficialCrusaderPatchGUI.njsproj", "{98C96052-2188-48A6-BCEC-CDFE4D55354A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,14 +63,14 @@ Global
 		{743F77E0-AD5A-42FE-B928-535AAF40AC4D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{743F77E0-AD5A-42FE-B928-535AAF40AC4D}.Release|x86.ActiveCfg = Release|Any CPU
 		{743F77E0-AD5A-42FE-B928-535AAF40AC4D}.Release|x86.Build.0 = Release|Any CPU
-		{363843C4-9ECD-49B4-BF39-2DB76B28F1DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{363843C4-9ECD-49B4-BF39-2DB76B28F1DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{363843C4-9ECD-49B4-BF39-2DB76B28F1DF}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{363843C4-9ECD-49B4-BF39-2DB76B28F1DF}.Debug|x86.Build.0 = Debug|Any CPU
-		{363843C4-9ECD-49B4-BF39-2DB76B28F1DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{363843C4-9ECD-49B4-BF39-2DB76B28F1DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{363843C4-9ECD-49B4-BF39-2DB76B28F1DF}.Release|x86.ActiveCfg = Release|Any CPU
-		{363843C4-9ECD-49B4-BF39-2DB76B28F1DF}.Release|x86.Build.0 = Release|Any CPU
+		{98C96052-2188-48A6-BCEC-CDFE4D55354A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98C96052-2188-48A6-BCEC-CDFE4D55354A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98C96052-2188-48A6-BCEC-CDFE4D55354A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{98C96052-2188-48A6-BCEC-CDFE4D55354A}.Debug|x86.Build.0 = Debug|Any CPU
+		{98C96052-2188-48A6-BCEC-CDFE4D55354A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98C96052-2188-48A6-BCEC-CDFE4D55354A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98C96052-2188-48A6-BCEC-CDFE4D55354A}.Release|x86.ActiveCfg = Release|Any CPU
+		{98C96052-2188-48A6-BCEC-CDFE4D55354A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

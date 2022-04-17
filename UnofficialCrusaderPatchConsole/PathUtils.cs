@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UCP
 {
     class PathUtils
     {
-        static Dictionary<String, String> installPaths;
+        static readonly Dictionary<string, string> installPaths;
 
         static PathUtils()
         {
@@ -27,7 +23,7 @@ namespace UCP
 
         public static string Get(string path)
         {
-            String folder;
+            string folder;
             installPaths.TryGetValue(path, out folder);
             return folder;
         }
