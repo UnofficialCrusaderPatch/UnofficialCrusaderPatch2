@@ -11,7 +11,7 @@ namespace UCP.Model
 
         [JsonConverter(typeof(StringEnumConverter))]
         public SelectionType selectionType { get; set; }
-        public SelectionParameter selectionParameters { get; set; }
+        public Dictionary<string, dynamic> selectionParameters { get; set; }
         public object defaultValue { get; set; }
         public string description { get; set; }
         public string detailedDescription { get; set;  }

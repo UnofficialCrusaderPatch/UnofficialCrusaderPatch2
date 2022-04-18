@@ -4,6 +4,6 @@ namespace UCP.Model
 {
     public class SelectionParameter
     {
-        public List<dynamic> options { get; set; }
+        public Dictionary<string, dynamic> options { get; set; }
     }
 }

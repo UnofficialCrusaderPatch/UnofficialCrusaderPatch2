@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -46,7 +47,7 @@ namespace UCP.API
                     modules.Add(transformedMod);
                 } catch (Exception e)
                 {
-                    throw new Exception("Mod that failed is" + ((dynamic) mod)["modIdentifier"].ToString() + e.Message);
+                    throw new Exception("Mod that failed is" + mod.modIdentifier + e.Message);
                 }                              
             }
 
@@ -114,11 +115,22 @@ namespace UCP.API
 
             try
             {
+                transformedMod.modIdentifier = mod.modIdentifier;
+                transformedMod.modType = mod.modType;
+            }
+            catch (KeyNotFoundException) { }
+            catch (Exception)
+            {
+                throw new Exception("Invalid modIdentifier present in mod");
+            }
+
+            try
+            {
                 transformedMod.modDescription = mod.modDescription[language];
             } catch (KeyNotFoundException) {}
             catch (Exception)
             {
-                throw new Exception("Invalid modIdentifier present in mod");
+                throw new Exception("Invalid mod description present in mod");
             }
 
             try
@@ -142,36 +154,56 @@ namespace UCP.API
 
                 try
                 {
+                    transformedChange.identifier = change.identifier;
+                }
+                catch (KeyNotFoundException)
+                {
+                    transformedChange.identifier = "";
+                }
+
+                try
+                {
                     transformedChange.description = change.description[language];
                 }
-                catch (KeyNotFoundException) {
+                catch (KeyNotFoundException)
+                {
                     transformedChange.description = "";
                 }
 
                 try
                 {
                     transformedChange.detailedDescription = change.detailedDescription[language];
-                } catch (KeyNotFoundException) {
+                }
+                catch (KeyNotFoundException)
+                {
+                    transformedChange.detailedDescription = "";
+                } catch (NullReferenceException)
+                {
                     transformedChange.detailedDescription = "";
                 }
 
-                try
+                if (change.selectionParameters.ContainsKey("options"))
                 {
-                    for (int i = 0; i < change.selectionParameters.options.Count; i++)
+                    transformedChange.selectionParameters = change.selectionParameters;
+                    try
                     {
-                        try
+                        for (int i = 0; i < change.selectionParameters["options"].Count; i++)
                         {
-                            change.selectionParameters.options.ElementAt(i)["description"] = transformedChange.selectionParameters.options.ElementAt(i)["description"][language];
-                        }
-                        catch (KeyNotFoundException) { }
+                            try
+                            {
+                                transformedChange.selectionParameters["options"][i]["description"] = change.selectionParameters["options"][i]["description"][language];
+                            }
+                            catch (KeyNotFoundException) { }
 
-                        try
-                        {
-                            change.selectionParameters.options.ElementAt(i)["detailedDescription"] = transformedChange.selectionParameters.options.ElementAt(i)["detailedDescription"][language];
+                            try
+                            {
+                                transformedChange.selectionParameters["options"][i]["detailedDescription"] = change.selectionParameters["options"][i]["detailedDescription"][language];
+                            }
+                            catch (KeyNotFoundException) { }
                         }
-                        catch (KeyNotFoundException) { }
                     }
-                } catch (KeyNotFoundException) { }
+                    catch (KeyNotFoundException) { }
+                }
 
                 changes.Add(transformedChange);
             }
@@ -181,11 +213,11 @@ namespace UCP.API
 
         static List<string> compatibilityList = new List<string> { "crusader", "extreme", "singleplayer", "multiplayer" };
 
-        static bool IsValidChange(dynamic change)
+        static bool IsValidChange(ChangeBackendConfig change)
         {
             try
             {
-                var compatibility = change["compatibility"];
+                var compatibility = change.compatibility;
                 foreach (var env in compatibility)
                 {
                     if (!compatibilityList.Contains(env))
@@ -201,7 +233,7 @@ namespace UCP.API
 
             try
             {
-                var identifier = change["identifier"];
+                var identifier = change.identifier;
             }
             catch (KeyNotFoundException e)
             {
@@ -210,19 +242,19 @@ namespace UCP.API
 
             try
             {
-                string selectionType = change["selectionType"];
-                Dictionary<string, object> selectionParameters = change["selectionParameters"];
+                SelectionType selectionType = change.selectionType;
+                Dictionary<string, dynamic> selectionParameters = change.selectionParameters;
 
-                if (selectionType == "checkbox")
+                if (selectionType == SelectionType.CHECKBOX)
                 {
-                    if (selectionParameters.Count > 0)
+                    if (selectionParameters.ContainsKey("options"))
                     {
                         return false;
                     }
                     try
                     {
-                        var defaultValue = change["defaultValue"];
-                        if (defaultValue != "true" && defaultValue != "false")
+                        var defaultValue = change.defaultValue;
+                        if (!defaultValue.ToString().Equals("true") && !defaultValue.ToString().Equals("false"))
                         {
                             return false;
                         }
@@ -233,24 +265,20 @@ namespace UCP.API
                     }
                 }
 
-                if (selectionType == "radio")
+                if (selectionType == SelectionType.RADIO)
                 {
-                    if (selectionParameters.Count != 1)
-                    {
-                        return false;
-                    }
-                    if (!selectionParameters.ContainsKey("options"))
+                    if (selectionParameters["options"].Count == 0)
                     {
                         return false;
                     }
 
-                    object[] options = selectionParameters["options"] as dynamic;
+                    List<dynamic> options = selectionParameters["options"] as List<dynamic>;
                     try
                     {
-                        var defaultValue = change["defaultValue"];
-                        if (defaultValue != "false")
+                        string defaultValue = change.defaultValue.ToString();
+                        if (!defaultValue.ToString().Equals("false"))
                         {
-                            if (!options.Contains(defaultValue as string))
+                            if (!options.Exists(x => x["value"].ToString().Equals(defaultValue as string)))
                             {
                                 return false;
                             }
@@ -262,7 +290,7 @@ namespace UCP.API
                     }
                 }
 
-                if (selectionType == "slider")
+                if (selectionType == SelectionType.SLIDER)
                 {
                     if (selectionParameters.Count != 5)
                     {
@@ -280,8 +308,8 @@ namespace UCP.API
                     }
                     try
                     {
-                        var defaultValue = change["defaultValue"];
-                        if (defaultValue != "true" && defaultValue != "false")
+                        var defaultValue = change.defaultValue;
+                        if (!defaultValue.ToString().Equals("true") && !defaultValue.ToString().Equals("false"))
                         {
                             return false;
                         }
@@ -294,7 +322,7 @@ namespace UCP.API
             }
             catch (KeyNotFoundException e)
             {
-                throw new Exception(change["identifier"] + ": selectionType and/or selectionParameters key is missing: " + e.Message, e);
+                throw new Exception(change.identifier + ": selectionType and/or selectionParameters key is missing: " + e.Message, e);
             }
             return true;
         }
