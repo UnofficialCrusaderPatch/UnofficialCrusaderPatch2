@@ -116,7 +116,19 @@ namespace UCP.API
             transformedMod.modIdentifier = mod.modIdentifier;
             transformedMod.modType = mod.modType;
             transformedMod.modDescription = mod.modDescription[language];
-            transformedMod.detailedDescription = mod.detailedDescription[language];
+
+            try
+            {
+                transformedMod.detailedDescription = mod.detailedDescription[language];
+            }
+            catch (KeyNotFoundException)
+            {
+                transformedMod.detailedDescription = "";
+            }
+            catch (NullReferenceException)
+            {
+                transformedMod.detailedDescription = "";
+            }
 
             List<ChangeUIConfig> changes = new List<ChangeUIConfig>();
             foreach (ChangeBackendConfig change in mod.changes)
