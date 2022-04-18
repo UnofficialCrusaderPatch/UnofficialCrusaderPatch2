@@ -113,35 +113,10 @@ namespace UCP.API
             //ModBackendConfig transformedMod = serializer.Deserialize<object>(serializer.Serialize(mod));
             ModUIConfig transformedMod = new ModUIConfig();
 
-            try
-            {
-                transformedMod.modIdentifier = mod.modIdentifier;
-                transformedMod.modType = mod.modType;
-            }
-            catch (KeyNotFoundException) { }
-            catch (Exception)
-            {
-                throw new Exception("Invalid modIdentifier present in mod");
-            }
-
-            try
-            {
-                transformedMod.modDescription = mod.modDescription[language];
-            } catch (KeyNotFoundException) {}
-            catch (Exception)
-            {
-                throw new Exception("Invalid mod description present in mod");
-            }
-
-            try
-            {
-                transformedMod.detailedDescription = mod.detailedDescription[language];
-            }
-            catch (KeyNotFoundException) { }
-            catch (Exception)
-            {
-                transformedMod.detailedDescription = "";
-            }
+            transformedMod.modIdentifier = mod.modIdentifier;
+            transformedMod.modType = mod.modType;
+            transformedMod.modDescription = mod.modDescription[language];
+            transformedMod.detailedDescription = mod.detailedDescription[language];
 
             List<ChangeUIConfig> changes = new List<ChangeUIConfig>();
             foreach (ChangeBackendConfig change in mod.changes)
@@ -151,16 +126,8 @@ namespace UCP.API
                     throw new Exception("Invalid change configuration for mod: " + mod.modIdentifier);
                 }
                 ChangeUIConfig transformedChange = new ChangeUIConfig();
-
-                try
-                {
-                    transformedChange.identifier = change.identifier;
-                }
-                catch (KeyNotFoundException)
-                {
-                    transformedChange.identifier = "";
-                }
-
+                transformedChange.identifier = change.identifier;
+                
                 try
                 {
                     transformedChange.description = change.description[language];
