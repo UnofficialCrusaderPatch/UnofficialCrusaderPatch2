@@ -6,7 +6,7 @@ The UnofficialCrusaderPatchGUI (_unofficialcrusaderpatch-gui-1.0.0-alpha_) is an
 
 - Built upon the Electron React Boilerplate tempalte
 - Uses Electron framework to render within a desktop application context
-- Uses EdgeJS to interact with C# .NET dll (the UnofficialCrusaderPatch backend)
+- Uses EdgeJS to interact with C# .NET DLL (the UnofficialCrusaderPatch backend)
 - Uses React.js, TypeScript, Webpack
 - Uses Bootstrap for additional element styling
 
@@ -15,7 +15,8 @@ The UnofficialCrusaderPatchGUI (_unofficialcrusaderpatch-gui-1.0.0-alpha_) is an
 - Install NodeJS (which includes the npm package manager) and ensure it is added to path.
   - Running the command `node -v` should print out your installed NodeJS version.
   - Running the command `npm -v` should print out your installed npm version.
-- Clone this project from github to your local workspace
+- Clone the repository from github to your local workspace
+- Build the `UnofficialCrusaderPatch` project first! Copy the DLL to the root directory of this project (in the same folder as this README)
 - Open a terminal (command prompt) window in your workspace
 - Run the command `npm ci` to install all project dependencies with the versions specified in the `package-lock.json` file. This is essential for a reproducible build.
 - Run the command `npm run start` to start the application. You will see many lines of logging appear in your command prompt window following which the application window will eventually open.
