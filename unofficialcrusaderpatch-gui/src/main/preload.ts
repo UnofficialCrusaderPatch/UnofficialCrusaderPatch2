@@ -2,12 +2,11 @@ const { contextBridge } = require('electron');
 const path = require('path');
 var edge = require('electron-edge-js');
 
+/**
+ * Retrieve UCP config from the UnofficialCrusaderPatch.dll
+ * @param language language to use with UCP
+ */
 function getUCPConfig(language: string) {
-  let execPath = path.dirname(process.execPath);
-  console.log(process.env.PORTABLE_EXECUTABLE_DIR);
-  console.log(path.resolve('.'));
-  console.log(execPath);
-
   let ucpPath: string;
   if (process.env.PORTABLE_EXECUTABLE_DIR) {
     ucpPath = path.join(process.env.PORTABLE_EXECUTABLE_DIR, 'UnofficialCrusaderPatch.dll');
@@ -15,12 +14,14 @@ function getUCPConfig(language: string) {
     ucpPath = path.join(path.resolve('.'), 'UnofficialCrusaderPatch.dll');
   }
   
+  // declare edge function for calling .NET dll
   var clrMethod = edge.func({
     assemblyFile: ucpPath,
     typeName: 'UCP.API.Startup',
     methodName: 'Invoke', // This must be Func<object,Task<object>>
   });
 
+  // .NET dll calls should be asynchronous to avoid blocking the rendering thread (UI)
   return new Promise(function (resolve, reject) {
     clrMethod(language, function (error: any, result: any) {
       if (error) reject(error);
@@ -29,6 +30,7 @@ function getUCPConfig(language: string) {
   });
 }
 
+// this method forms the contract for the API for methods that can be called from renderer process
 contextBridge.exposeInMainWorld('electron', {
   getConfig: async (language: string) => getUCPConfig(language),
 });

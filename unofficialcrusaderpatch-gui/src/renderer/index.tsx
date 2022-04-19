@@ -29,21 +29,18 @@ import 'bootstrap';
 import './app.css';
 import './scss/app.scss';
 import { AppLayout } from './App';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
-
-const test = async () => {
+const initialize = async () => {
   return window.electron.getConfig('English');
 };
 
 
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-
 const getWindow = (result: object[]): React.ReactElement => {
+  console.log(result);
   return React.createElement(AppLayout, { config: result });
 };
 
-// test().then((result) => console.log(result));
-test().then((result) => ReactDOM.render(getWindow(result), document.getElementById("ucp")));
-
-// ReactDOM.render(getWindow(), document.body);
+// render the AppLayout UI element within the <div> tag with id=ucp
+initialize().then((result) => ReactDOM.render(getWindow(result), document.getElementById("ucp")));

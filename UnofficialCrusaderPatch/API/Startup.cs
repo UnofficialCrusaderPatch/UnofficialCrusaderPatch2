@@ -139,7 +139,8 @@ namespace UCP.API
                 }
                 ChangeUIConfig transformedChange = new ChangeUIConfig();
                 transformedChange.identifier = change.identifier;
-                
+                transformedChange.selectionType = change.selectionType;
+
                 try
                 {
                     transformedChange.description = change.description[language];
@@ -161,9 +162,9 @@ namespace UCP.API
                     transformedChange.detailedDescription = "";
                 }
 
+                transformedChange.selectionParameters = change.selectionParameters;
                 if (change.selectionParameters.ContainsKey("options"))
                 {
-                    transformedChange.selectionParameters = change.selectionParameters;
                     try
                     {
                         for (int i = 0; i < change.selectionParameters["options"].Count; i++)

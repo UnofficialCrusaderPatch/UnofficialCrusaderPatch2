@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+/**
+ * Header element for a single mod element
+ */
 export class ModHeader extends React.Component<{mod: any, modIndex: number}> {
   componentDidMount() {}
 

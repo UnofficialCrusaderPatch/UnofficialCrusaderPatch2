@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { ModLayout } from '../Components/Options/ModLayout';
 
+/**
+ * Renders the Tab content corresponding to a single mod type
+ */ 
 export class TabContent extends React.Component<{
   modList: any[];
   modType: string;

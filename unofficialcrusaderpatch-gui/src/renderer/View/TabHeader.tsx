@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+/**
+ * Renders a Tab header corresponding to a single mod type
+ */ 
 export class TabHeader extends React.Component<{ modType: string }> {
   componentDidMount() {}
 

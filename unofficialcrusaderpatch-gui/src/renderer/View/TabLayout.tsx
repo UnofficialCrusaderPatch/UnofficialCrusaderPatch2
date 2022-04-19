@@ -2,6 +2,9 @@ import * as React from 'react';
 import { TabContent } from './TabContent';
 import { TabHeader } from './TabHeader';
 
+/**
+ * Renders the Tab-based layout for the GUI
+ */
 export class TabLayout extends React.Component<{
   options: any[];
   modTypes: string[];
@@ -21,6 +24,7 @@ export class TabLayout extends React.Component<{
     );
   }
 
+  // renders the set of Tab headers
   getTabHeaders(modTypes: string[]) {
     return modTypes.map((currentModType) => (
       <TabHeader
@@ -30,6 +34,7 @@ export class TabLayout extends React.Component<{
     ));
   }
 
+  // renders the set of Tab contents
   getTabContent(options: any[], modTypes: string[]) {
     return modTypes.map((currentModType, currentModIndex) => {
       const modTypeOptions = options.filter(

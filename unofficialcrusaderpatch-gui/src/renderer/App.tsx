@@ -6,6 +6,9 @@ export interface AppProps {
   config: any[];
 }
 
+/*
+ * Root element for the UCP GUI
+ */
 export class AppLayout extends React.Component<AppProps, {}> {
   render() {
     return (
@@ -15,6 +18,7 @@ export class AppLayout extends React.Component<AppProps, {}> {
     );
   }
 
+  // returns the Tab-based layout for the GUI
   getTabLayout = (configList: any[]): React.ReactElement => {
     const uniqueModTypes = this.getUniqueModTypes(configList);
     return (
@@ -22,6 +26,7 @@ export class AppLayout extends React.Component<AppProps, {}> {
     );
   };
 
+  // returns the list of unique mod types ie. Bugfixes, AIV, Other
   getUniqueModTypes = (configList: any[]): string[] => {
     const uniqueModTypes: string[] = [];
     configList.forEach((config) => {
