@@ -51,6 +51,7 @@
     <None Include="src\main\menu.ts" />
     <None Include="src\main\preload.ts" />
     <None Include="src\main\util.ts" />
+    <Content Include="README.md" />
     <Content Include="src\renderer\app.css" />
     <Content Include="src\renderer\index.ejs" />
     <None Include="src\renderer\preload.d.ts" />
