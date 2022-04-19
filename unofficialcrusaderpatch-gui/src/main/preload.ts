@@ -17,7 +17,7 @@ function getUCPConfig(language: string) {
   // declare edge function for calling .NET dll
   var clrMethod = edge.func({
     assemblyFile: ucpPath,
-    typeName: 'UCP.API.Startup',
+    typeName: 'UCP.API.UCPContract',
     methodName: 'Invoke', // This must be Func<object,Task<object>>
   });
 

@@ -16,7 +16,7 @@ using UCP.Util.Builders;
 
 namespace UCP.API
 {
-    public class Startup
+    public class UCPContract
     {
         const string MOD_CONFIG_PATH = "UCP.Resources.modConfig.json";
 

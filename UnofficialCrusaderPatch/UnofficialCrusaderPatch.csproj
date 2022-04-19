@@ -86,7 +86,7 @@
     <Compile Include="Localization\TextReferencer.cs" />
     <Compile Include="Model\AICConfiguration.cs" />
     <Compile Include="Model\AIVConfiguration.cs" />
-    <Compile Include="API\Startup.cs" />
+    <Compile Include="API\UCPContract.cs" />
     <Compile Include="Model\ChangeBackendConfig.cs" />
     <Compile Include="Model\ModBackendConfig.cs" />
     <Compile Include="Model\Patching\Installer.cs" />

@@ -2,7 +2,7 @@
 using System.IO;
 using UCP.Model;
 using UCP.Patching;
-using static UCP.API.Startup;
+using static UCP.API.UCPContract;
 
 namespace UCP
 {
