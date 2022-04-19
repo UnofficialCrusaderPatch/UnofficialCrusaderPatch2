@@ -2,7 +2,7 @@
 
 namespace UCP.Model
 {
-    class ModUIConfig
+    public class ModUIConfig
     {
         public string modType { get; set; }
         public string modIdentifier { get; set;  }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,11 +12,14 @@ using UCP.Model;
 using UCP.Model.Patching;
 using UCP.Patching;
 using UCP.Startup;
+using UCP.Util.Builders;
 
 namespace UCP.API
 {
     public class Startup
     {
+        const string MOD_CONFIG_PATH = "UCP.Resources.modConfig.json";
+
         #region Configuration
         /**
          * Func<Task, Task<Object>> delegate to expose method to external callers (ie NodeJS)
@@ -30,282 +32,51 @@ namespace UCP.API
         public static object GetUCPConfiguration(string language)
         {
             Localization.Load(language);
+            List<ModBackendConfig> config = ReadStoredConfig();
+            return BuildModUIConfigList(config, language);
+        }
 
-            StreamReader reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("UCP.Resources.modConfig.json"), Encoding.UTF8);
+        private static List<ModBackendConfig> ReadStoredConfig()
+        {
+            StreamReader reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(MOD_CONFIG_PATH), Encoding.UTF8);
             string configText = reader.ReadToEnd();
             reader.Close();
 
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            List<ModBackendConfig> config = serializer.Deserialize<List<ModBackendConfig>>(configText);
+            return serializer.Deserialize<List<ModBackendConfig>>(configText);
+        }
 
+        private static List<ModUIConfig> BuildModUIConfigList(List<ModBackendConfig> config, string language)
+        {
             List<ModUIConfig> modules = new List<ModUIConfig>();
             foreach (ModBackendConfig mod in config)
             {
                 try
                 {
-                    ModUIConfig transformedMod = ConstructMod(mod, language);
-                    modules.Add(transformedMod);
-                } catch (Exception e)
+                    ModUIConfig modUIConfig = GenericModBuilder.ConstructMod(mod, language);
+                    modules.Add(modUIConfig);
+                }
+                catch (Exception e)
                 {
-                    throw new Exception("Mod that failed is" + mod.modIdentifier + e.Message);
-                }                              
+                    throw new Exception("Generic Mod that failed is " + mod.modIdentifier + " " + e.Message);
+                }
             }
 
-            Dictionary<string, AIVConfiguration> aivConfiguration = AIVEnumerator.GetAIVConfiguration();
-            foreach (KeyValuePair<string, AIVConfiguration> aivPair in aivConfiguration)
-            {
-                ModUIConfig modConfig = new ModUIConfig();
-                /*Dictionary<string, dynamic> modConfig = new Dictionary<string, dynamic>();*/
-                modConfig.modIdentifier = aivPair.Key;
-                modConfig.modType = Enum.GetName(typeof(ChangeType), ChangeType.AIV);
-                modConfig.modDescription = aivPair.Value.Description[language];
-                modConfig.modSelectionRule = "*";
-                //IEnumerable<object> castles = keyValuePair.Value.Description.Values.AsEnumerable();
-                //keyValuePair.Value.Castles: { filename/id, description, image }
-                // modConfig["modChanges"] = keyValuePair.Value.Castles
-                modules.Add(modConfig);
-            }
+            List<ModUIConfig> aivMods = AIVModBuilder.ConstructMods(language);
+            modules.AddRange(aivMods);
 
-            List<AICConfiguration> aicConfiguration = AICEnumerator.GetAICConfiguration();
-            foreach (AICConfiguration aic in aicConfiguration)
-            {
-                ModUIConfig modConfig = new ModUIConfig();
-                modConfig.modIdentifier = aic.Identifier;
-                modConfig.modType = Enum.GetName(typeof(ChangeType), ChangeType.AIC);
-                modConfig.modDescription = aic.Description[language];
-                modConfig.changes = aic.CustomCharacterList.Select(aicName =>
-                {
-                    ChangeUIConfig changeConfig = new ChangeUIConfig();
-                    changeConfig.identifier = aicName;
-                    return changeConfig;
-                });
-                modConfig.modSelectionRule = "*";
-                modules.Add(modConfig);
-            }
+            List<ModUIConfig> aicMods = AICModBuilder.ConstructMods(language);
+            modules.AddRange(aicMods);
 
-            Dictionary<string, StartTroopConfiguration> startTroopConfiguration = StartTroopEnumerator.GetStartTroopConfigurations();
-            foreach (KeyValuePair<string, StartTroopConfiguration> troop in startTroopConfiguration)
-            {
-                ModUIConfig modConfig = new ModUIConfig();
-                modConfig.modIdentifier = troop.Key;
-                modConfig.modType = Enum.GetName(typeof(ChangeType), ChangeType.StartTroops);
-                modConfig.modDescription = troop.Value.Description[language];
-                modConfig.modSelectionRule = "*";
-                modules.Add(modConfig);
-            }
+            List<ModUIConfig> startTroopMods = StartTroopModBuilder.ConstructMods(language);
+            modules.AddRange(startTroopMods);
 
-            Dictionary<string, StartResourceConfiguration> startResourceConfiguration = StartResourceEnumerator.GetStartResourceConfigurations();
-            foreach (KeyValuePair<string, StartResourceConfiguration> res in startResourceConfiguration)
-            {
-                ModUIConfig modConfig = new ModUIConfig();
-                modConfig.modIdentifier = res.Key;
-                modConfig.modType = Enum.GetName(typeof(ChangeType), ChangeType.StartResource);
-                modConfig.modDescription = res.Value.Description[language];
-                modConfig.modSelectionRule = "*";
-                modules.Add(modConfig);
-            }
+            List<ModUIConfig> startResourceMods = StartResourceModBuilder.ConstructMods(language);
+            modules.AddRange(startResourceMods);
+
             return modules;
         }
 
-        static ModUIConfig ConstructMod(ModBackendConfig mod, string language)
-        {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            //ModBackendConfig transformedMod = serializer.Deserialize<object>(serializer.Serialize(mod));
-            ModUIConfig transformedMod = new ModUIConfig();
-
-            transformedMod.modIdentifier = mod.modIdentifier;
-            transformedMod.modType = mod.modType;
-            transformedMod.modDescription = mod.modDescription[language];
-
-            try
-            {
-                transformedMod.detailedDescription = mod.detailedDescription[language];
-            }
-            catch (KeyNotFoundException)
-            {
-                transformedMod.detailedDescription = "";
-            }
-            catch (NullReferenceException)
-            {
-                transformedMod.detailedDescription = "";
-            }
-
-            List<ChangeUIConfig> changes = new List<ChangeUIConfig>();
-            foreach (ChangeBackendConfig change in mod.changes)
-            {
-                if (!IsValidChange(change))
-                {
-                    throw new Exception("Invalid change configuration for mod: " + mod.modIdentifier);
-                }
-                ChangeUIConfig transformedChange = new ChangeUIConfig();
-                transformedChange.identifier = change.identifier;
-                transformedChange.selectionType = change.selectionType;
-
-                try
-                {
-                    transformedChange.description = change.description[language];
-                }
-                catch (KeyNotFoundException)
-                {
-                    transformedChange.description = "";
-                }
-
-                try
-                {
-                    transformedChange.detailedDescription = change.detailedDescription[language];
-                }
-                catch (KeyNotFoundException)
-                {
-                    transformedChange.detailedDescription = "";
-                } catch (NullReferenceException)
-                {
-                    transformedChange.detailedDescription = "";
-                }
-
-                transformedChange.selectionParameters = change.selectionParameters;
-                if (change.selectionParameters.ContainsKey("options"))
-                {
-                    try
-                    {
-                        for (int i = 0; i < change.selectionParameters["options"].Count; i++)
-                        {
-                            try
-                            {
-                                transformedChange.selectionParameters["options"][i]["description"] = change.selectionParameters["options"][i]["description"][language];
-                            }
-                            catch (KeyNotFoundException) { }
-
-                            try
-                            {
-                                transformedChange.selectionParameters["options"][i]["detailedDescription"] = change.selectionParameters["options"][i]["detailedDescription"][language];
-                            }
-                            catch (KeyNotFoundException) { }
-                        }
-                    }
-                    catch (KeyNotFoundException) { }
-                }
-
-                changes.Add(transformedChange);
-            }
-            transformedMod.changes = changes;
-            return transformedMod;
-        }
-
-        static List<string> compatibilityList = new List<string> { "crusader", "extreme", "singleplayer", "multiplayer" };
-
-        static bool IsValidChange(ChangeBackendConfig change)
-        {
-            try
-            {
-                var compatibility = change.compatibility;
-                foreach (var env in compatibility)
-                {
-                    if (!compatibilityList.Contains(env))
-                    {
-                        return false;
-                    }
-                }
-            }
-            catch (KeyNotFoundException e)
-            {
-                throw new Exception("compatibility key is missing", e);
-            }
-
-            try
-            {
-                var identifier = change.identifier;
-            }
-            catch (KeyNotFoundException e)
-            {
-                throw new Exception("identifier key is missing", e);
-            }
-
-            try
-            {
-                SelectionType selectionType = change.selectionType;
-                Dictionary<string, dynamic> selectionParameters = change.selectionParameters;
-
-                if (selectionType == SelectionType.CHECKBOX)
-                {
-                    if (selectionParameters.ContainsKey("options"))
-                    {
-                        return false;
-                    }
-                    try
-                    {
-                        var defaultValue = change.defaultValue;
-                        if (!defaultValue.ToString().Equals("true") && !defaultValue.ToString().Equals("false"))
-                        {
-                            return false;
-                        }
-                    }
-                    catch (KeyNotFoundException e)
-                    {
-                        throw new Exception("defaultValue key is missing" + e.Message, e);
-                    }
-                }
-
-                if (selectionType == SelectionType.RADIO)
-                {
-                    if (selectionParameters["options"].Count == 0)
-                    {
-                        return false;
-                    }
-
-                    List<dynamic> options = selectionParameters["options"] as List<dynamic>;
-                    try
-                    {
-                        string defaultValue = change.defaultValue.ToString();
-                        if (!defaultValue.ToString().Equals("false"))
-                        {
-                            if (!options.Exists(x => x["value"].ToString().Equals(defaultValue as string)))
-                            {
-                                return false;
-                            }
-                        }
-                    }
-                    catch (KeyNotFoundException e)
-                    {
-                        throw new Exception("defaultValue key is missing", e);
-                    }
-                }
-
-                if (selectionType == SelectionType.SLIDER)
-                {
-                    if (selectionParameters.Count != 5)
-                    {
-                        return false;
-                    }
-                    if (
-                        !selectionParameters.ContainsKey("minimum") ||
-                        !selectionParameters.ContainsKey("maximum") ||
-                        !selectionParameters.ContainsKey("interval") ||
-                        !selectionParameters.ContainsKey("default") ||
-                        !selectionParameters.ContainsKey("suggested")
-                        )
-                    {
-                        return false;
-                    }
-                    try
-                    {
-                        var defaultValue = change.defaultValue;
-                        if (!defaultValue.ToString().Equals("true") && !defaultValue.ToString().Equals("false"))
-                        {
-                            return false;
-                        }
-                    }
-                    catch (KeyNotFoundException e)
-                    {
-                        throw new Exception("defaultValue key is missing", e);
-                    }
-                }
-            }
-            catch (KeyNotFoundException e)
-            {
-                throw new Exception(change.identifier + ": selectionType and/or selectionParameters key is missing: " + e.Message, e);
-            }
-            return true;
-        }
 
         static string GetTranslations(string identifier)
         {
@@ -467,12 +238,12 @@ namespace UCP.API
         #region Installation
         public static bool Install(UCPConfig config, bool overwrite = false, bool graphical = false)
         {
-            Startup.SetAICConfiguration(config.AIC);
-            Startup.SetAIVConfiguration(config.AIV);
-            Startup.SetStartResourceConfiguration(config.StartResource);
-            Startup.SetStartTroopConfiguration(config.StartTroop);
-            Startup.SetModValues(config.GenericMods);
-            Startup.SetModExtremeValues(config.GenericMods);
+            SetAICConfiguration(config.AIC);
+            SetAIVConfiguration(config.AIV);
+            SetStartResourceConfiguration(config.StartResource);
+            SetStartTroopConfiguration(config.StartTroop);
+            SetModValues(config.GenericMods);
+            SetModExtremeValues(config.GenericMods);
 
 
             AIVEnumerator.Install(config.Path, overwrite, graphical);

@@ -131,6 +131,11 @@
     <Compile Include="Model\Patching\Utils\SubChanges\SubChange.cs" />
     <Compile Include="Model\Patching\Utils\SubChanges\ValuedSubChange.cs" />
     <Compile Include="Model\Patching\Utils\UI_Text.cs" />
+    <Compile Include="Util\Builders\StartResourceModBuilder.cs" />
+    <Compile Include="Util\Builders\StartTroopModBuilder.cs" />
+    <Compile Include="Util\Builders\AIVModBuilder.cs" />
+    <Compile Include="Util\Builders\AICModBuilder.cs" />
+    <Compile Include="Util\Builders\GenericModBuilder.cs" />
     <Compile Include="Util\Readers\Extensions.cs" />
     <Compile Include="Model\ChangeConfiguration.cs" />
     <Compile Include="ClientConfig\ChangeUIConfig.cs" />
