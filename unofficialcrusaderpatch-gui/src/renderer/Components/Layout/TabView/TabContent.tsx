@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ModLayout } from '../Components/Options/ModLayout';
+import { ModLayout } from '../../Options/ModLayout';
 
 /**
  * Renders the Tab content corresponding to a single mod type
@@ -11,6 +11,7 @@ export class TabContent extends React.Component<{
   componentDidMount() {}
 
   render() {
+    const ariaLabel: string = 'ucp-tab-' + this.props.modType;
     return (
       <React.Fragment>
         <div
@@ -18,7 +19,7 @@ export class TabContent extends React.Component<{
           id={this.props.modType}
           key={this.props.modType}
           role='tabpanel'
-          aria-labelledby={'ucp-tab-' + this.props.modType}
+          aria-labelledby={ariaLabel}
         >
           {this.getOptionElements(this.props.modList, this.props.modType)}
         </div>
@@ -28,7 +29,8 @@ export class TabContent extends React.Component<{
 
   getOptionElements(modList: any[], _: string): React.ReactNode {
     return modList.map((mod, modIndex) => {
-      return <ModLayout mod={mod} modIndex={modIndex} key={'modlayout-' + mod.modIdentifier + '-' + modIndex}></ModLayout>;
+      const elementKey: string = 'modlayout-' + mod.modIdentifier + '-' + modIndex;
+      return <ModLayout mod={mod} modIndex={modIndex} key={elementKey}></ModLayout>;
     });
   }
 }

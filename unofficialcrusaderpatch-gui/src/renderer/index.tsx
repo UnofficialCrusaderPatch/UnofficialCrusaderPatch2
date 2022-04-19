@@ -26,9 +26,9 @@
  * ```
  */
 import 'bootstrap';
-import './app.css';
+import './Components/app.css';
 import './scss/app.scss';
-import { AppLayout } from './App';
+import { AppLayout } from './Components/App';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
@@ -37,10 +37,10 @@ const initialize = async () => {
 };
 
 
-const getWindow = (result: object[]): React.ReactElement => {
+const buildUCPContent = (result: object[]): React.ReactElement => {
   console.log(result);
   return React.createElement(AppLayout, { config: result });
 };
 
 // render the AppLayout UI element within the <div> tag with id=ucp
-initialize().then((result) => ReactDOM.render(getWindow(result), document.getElementById("ucp")));
+initialize().then((result) => ReactDOM.render(buildUCPContent(result), document.getElementById("ucp")));

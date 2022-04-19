@@ -9,11 +9,12 @@ export class ModLayout extends React.Component<{mod: any, modIndex: number}> {
   componentDidMount() {}
 
   render() {
-    const modType = this.props.mod.modType;
-    const modIndex = this.props.modIndex;
-    const modIdentifier = this.props.mod.modIdentifier;
+    const modType: string = this.props.mod.modType;
+    const modIndex: number = this.props.modIndex;
+    const modIdentifier: string = this.props.mod.modIdentifier;
+    const elementKey: string = 'mod-root' + modType + '-' + modIdentifier + '-' + modIndex;
     return (
-      <React.Fragment key={'mod-root' + modType + '-' + modIdentifier + '-' + modIndex}>
+      <React.Fragment key={elementKey}>
         <ModHeader mod={this.props.mod} modIndex={modIndex}></ModHeader>
         <ModBody mod={this.props.mod} modIndex={modIndex}></ModBody>
       </React.Fragment>

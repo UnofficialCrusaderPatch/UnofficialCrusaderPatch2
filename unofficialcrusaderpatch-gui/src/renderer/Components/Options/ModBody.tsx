@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { ChangeProvider } from './ChangeElements/ChangeProvider';
+import { Radio } from './ChangeElements/Radio';
+import { Slider } from './ChangeElements/Slider';
 
 /**
  * Body element for a single mod element
@@ -8,17 +11,20 @@ export class ModBody extends React.Component<{mod: any, modIndex: number}> {
 
   // render the mod as the set of its comprising changes followed by a comprehensive detailed description
   render() {
-    const modType = this.props.mod.modType;
-    const modIndex = this.props.modIndex;
-    const modIdentifier = this.props.mod.modIdentifier;
-    const detailedDescription = this.props.mod.detailedDescription;
+    const modType: string = this.props.mod.modType;
+    const modIndex: number = this.props.modIndex;
+    const modIdentifier: string = this.props.mod.modIdentifier;
+    const detailedDescription: string = this.props.mod.detailedDescription;
+
+    const elementUniqueId: string = modType + '-' + modIdentifier + '-' + modIndex;
+    const ariaLabel: string = modType + '-' + modIdentifier;
     return (
       <React.Fragment>
         <div
-          id={modType + '-' + modIdentifier + '-' + modIndex}
-          key={modType + '-' + modIdentifier + '-' + modIndex}
+          id={elementUniqueId}
+          key={elementUniqueId}
           className='accordion-collapse collapse description modBody'
-          aria-labelledby={modType + '-' + modIdentifier}
+          aria-labelledby={ariaLabel}
         >
           {this.getBody(this.props.mod)}
           {detailedDescription !== undefined && detailedDescription}
@@ -40,10 +46,11 @@ export class ModBody extends React.Component<{mod: any, modIndex: number}> {
      */
     if (mod.changes.length === 1) {
       const change = mod.changes[0];
+      const elementKey: string = 'ucp-change-' + change.identifier;
       return (
-        <React.Fragment key={'ucp-change-' + change.identifier}>
-          {change.selectionType === 'RADIO' && this.getRadioChange(mod, change)}
-          {change.selectionType === 'SLIDER' && this.getSliderChange(mod, change)}
+        <React.Fragment key={elementKey}>
+          {change.selectionType === 'RADIO' && <Radio mod={mod} change={change}></Radio>}
+          {change.selectionType === 'SLIDER' && <Slider mod={mod} change={change}></Slider>}
           {change.selectionType === 'CHECKBOX' && change.description}
           {change.detailedDescription !== undefined && change.detailedDescription}
         </React.Fragment>
@@ -61,90 +68,14 @@ export class ModBody extends React.Component<{mod: any, modIndex: number}> {
     }
 
     return mod.changes.map((change: any) => {
-      return <React.Fragment key={'ucp-change-' + change.identifier}>
-        {change.selectionType === 'CHECKBOX' && this.getSelectChange(mod, change)}
-        {change.selectionType === 'RADIO' && this.getRadioChange(mod, change)}
-        {change.selectionType === 'SLIDER' && this.getSliderChange(mod, change)}
+      const elementKey: string = 'ucp-change-' + change.identifier;
+      return <React.Fragment key={elementKey}>
+        <ChangeProvider mod={mod} change={change}/>
+        {/* {change.selectionType === 'CHECKBOX' && this.getSelectChange(mod, change)}
+        {change.selectionType === 'RADIO' && <Radio mod={mod} change={change}></Radio>}
+        {change.selectionType === 'SLIDER' && this.getSliderChange(mod, change)} */}
         {change.detailedDescription !== undefined && change.detailedDescription}
       </React.Fragment>;
     });
-  }
-
-  // constructs a single checkbox option
-  getSelectChange(mod: any, change: any): React.ReactNode {
-    return (
-      <React.Fragment>
-        <div className='ucp-select-header'>
-          <input
-            className='form-check-input ucp-select'
-            type='checkbox'
-            name={mod.modIdentifier + '-' + change.identifier}
-            defaultChecked={change.defaultValue}
-            id={mod.modIdentifier + '-' + change.identifier}
-            key={mod.modIdentifier + '-' + change.identifier}
-          />
-          <label
-            className='form-check-label ucp-change-text'
-            htmlFor={mod.modIdentifier + '-' + change.identifier}
-          >
-            {change.description}
-          </label>
-        </div>
-      </React.Fragment>
-    );
-  }
-
-  // constructs a single radio option
-  getRadioChange(mod: any, change: any): React.ReactNode {
-    return (
-      <React.Fragment>
-        <div className='ucp-select-header'>
-          {change.selectionParameters.options.map((option: any, optionIndex: number) => {
-            return <React.Fragment key={mod.modIdentifier + '-' + change.identifier + "-selectionParameter-" + optionIndex}>
-              <input
-                className='form-check-input ucp-select'
-                type='radio'
-                name={mod.modIdentifier + '-' + change.identifier}
-                value={option}
-                id={mod.modIdentifier + '-' + change.identifier}
-                key={mod.modIdentifier + '-' + change.identifier + '-selectionParameter-input-' + optionIndex}
-              />
-              <label
-                className='form-check-label ucp-change-text'
-                htmlFor={mod.modIdentifier + '-' + change.identifier}
-              >
-                { typeof option.description === 'string' && option.description }
-              </label>
-            </React.Fragment>;
-          })}
-        </div>
-      </React.Fragment>
-    );
-  }
-
-  // constructs a single slider option
-  getSliderChange(mod: any, change: any): React.ReactNode {
-    return (
-      <React.Fragment>
-        <div className='ucp-select-header'>
-          <input
-            className='ucp-slider'
-            type='range'
-            defaultValue={change.selectionParameters.suggested}
-            min={change.selectionParameters.minimum}
-            max={change.selectionParameters.maximum}
-            step={change.selectionParameters.interval}
-            id={mod.modIdentifier + '-' + change.identifier}
-            key={mod.modIdentifier + '-' + change.identifier}
-          />
-          <label
-            className='form-check-label ucp-change-text'
-            htmlFor={mod.modIdentifier + '-' + change.identifier}
-          >
-            {change.description}
-          </label>
-        </div>
-      </React.Fragment>
-    );
   }
 }

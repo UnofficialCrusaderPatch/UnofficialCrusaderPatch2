@@ -26,12 +26,15 @@ export class TabLayout extends React.Component<{
 
   // renders the set of Tab headers
   getTabHeaders(modTypes: string[]) {
-    return modTypes.map((currentModType) => (
+    return modTypes.map((currentModType) => {
+      const elementKey: string = 'ucp-tab-header-' + currentModType;
+      return (
       <TabHeader
         modType={currentModType}
-        key={'ucp-tab-header-' + currentModType}
+        key={elementKey}
       />
-    ));
+      );
+    });
   }
 
   // renders the set of Tab contents
@@ -40,11 +43,12 @@ export class TabLayout extends React.Component<{
       const modTypeOptions = options.filter(
         (option) => option.modType === currentModType
       );
+      const elementKey: string = 'ucp-tab-content-' + currentModType + '-' + currentModIndex;
       return (
         <TabContent
           modList={modTypeOptions}
           modType={currentModType}
-          key={'ucp-tab-content-' + currentModType + '-' + currentModIndex}
+          key={elementKey}
         />
       );
     });

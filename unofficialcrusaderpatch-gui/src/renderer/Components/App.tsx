@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { View } from './View';
-import { TabLayout } from './View/TabLayout';
+import { TabLayout } from './Layout/TabView/TabLayout';
+import { Header } from './Header';
 
 export interface AppProps {
   config: any[];
@@ -13,14 +13,15 @@ export class AppLayout extends React.Component<AppProps, {}> {
   render() {
     return (
       <React.Fragment>
-        <View>{this.getTabLayout(this.props.config)}</View>
+        <Header/>
+        {this.getTabLayout(this.props.config)}
       </React.Fragment>
     );
   }
 
   // returns the Tab-based layout for the GUI
   getTabLayout = (configList: any[]): React.ReactElement => {
-    const uniqueModTypes = this.getUniqueModTypes(configList);
+    const uniqueModTypes: string[] = this.getUniqueModTypes(configList);
     return (
       <TabLayout options={configList} modTypes={uniqueModTypes}></TabLayout>
     );
@@ -29,11 +30,13 @@ export class AppLayout extends React.Component<AppProps, {}> {
   // returns the list of unique mod types ie. Bugfixes, AIV, Other
   getUniqueModTypes = (configList: any[]): string[] => {
     const uniqueModTypes: string[] = [];
+
     configList.forEach((config) => {
       if (uniqueModTypes.indexOf(config.modType) === -1) {
         uniqueModTypes.push(config.modType);
       }
     });
+
     return uniqueModTypes;
   };
 }
