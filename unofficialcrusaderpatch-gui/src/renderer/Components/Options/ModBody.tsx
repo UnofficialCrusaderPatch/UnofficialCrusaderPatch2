@@ -71,9 +71,6 @@ export class ModBody extends React.Component<{mod: any, modIndex: number}> {
       const elementKey: string = 'ucp-change-' + change.identifier;
       return <React.Fragment key={elementKey}>
         <ChangeProvider mod={mod} change={change}/>
-        {/* {change.selectionType === 'CHECKBOX' && this.getSelectChange(mod, change)}
-        {change.selectionType === 'RADIO' && <Radio mod={mod} change={change}></Radio>}
-        {change.selectionType === 'SLIDER' && this.getSliderChange(mod, change)} */}
         {change.detailedDescription !== undefined && change.detailedDescription}
       </React.Fragment>;
     });
