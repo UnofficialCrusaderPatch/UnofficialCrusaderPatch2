@@ -8,6 +8,24 @@ namespace UCP.Util.Builders
     {
         static List<string> compatibilityList = new List<string> { "crusader", "extreme", "singleplayer", "multiplayer" };
 
+        internal static List<ModUIConfig> ConstructMods(List<ModBackendConfig> config, string language)
+        {
+            List<ModUIConfig> mods = new List<ModUIConfig>();
+            foreach (ModBackendConfig mod in config)
+            {
+                try
+                {
+                    ModUIConfig modUIConfig = GenericModBuilder.ConstructMod(mod, language);
+                    mods.Add(modUIConfig);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Generic Mod that failed is " + mod.modIdentifier + " " + e.Message);
+                }
+            }
+            return mods;
+        }
+
         internal static ModUIConfig ConstructMod(ModBackendConfig mod, string language)
         {
             ModUIConfig transformedMod = new ModUIConfig();

@@ -46,21 +46,13 @@ namespace UCP.API
             return serializer.Deserialize<List<ModBackendConfig>>(configText);
         }
 
+        // Builds the list of mod UI configs for each mod type using the ModBuilders
         private static List<ModUIConfig> BuildModUIConfigList(List<ModBackendConfig> config, string language)
         {
             List<ModUIConfig> modules = new List<ModUIConfig>();
-            foreach (ModBackendConfig mod in config)
-            {
-                try
-                {
-                    ModUIConfig modUIConfig = GenericModBuilder.ConstructMod(mod, language);
-                    modules.Add(modUIConfig);
-                }
-                catch (Exception e)
-                {
-                    throw new Exception("Generic Mod that failed is " + mod.modIdentifier + " " + e.Message);
-                }
-            }
+
+            List<ModUIConfig> genericMods = GenericModBuilder.ConstructMods(config, language);
+            modules.AddRange(genericMods);
 
             List<ModUIConfig> aivMods = AIVModBuilder.ConstructMods(language);
             modules.AddRange(aivMods);
