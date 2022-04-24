@@ -28,7 +28,7 @@
 import 'bootstrap';
 import './Components/app.css';
 import './scss/app.scss';
-import { AppLayout } from './Components/App';
+import { AppLayout, BackendModConfig } from './Components/app';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
@@ -37,8 +37,7 @@ const initialize = async () => {
 };
 
 
-const buildUCPContent = (result: object[]): React.ReactElement => {
-  console.log(result);
+const buildUCPContent = (result: BackendModConfig[]): React.ReactElement => {
   return React.createElement(AppLayout, { config: result });
 };
 

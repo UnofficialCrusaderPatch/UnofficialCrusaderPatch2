@@ -57,6 +57,8 @@ namespace UCP.Util.Builders
                 ChangeUIConfig transformedChange = new ChangeUIConfig();
                 transformedChange.identifier = change.identifier;
                 transformedChange.selectionType = change.selectionType;
+                transformedChange.defaultValue = change.defaultValue;
+                transformedChange.compatibility = change.compatibility;
 
                 try
                 {

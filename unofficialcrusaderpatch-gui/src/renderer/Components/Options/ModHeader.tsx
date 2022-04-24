@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { store } from '../app';
 
 /**
  * Header element for a single mod element
@@ -20,6 +21,7 @@ export class ModHeader extends React.Component<{mod: any, modIndex: number}> {
             value={modIdentifier}
             id={modType + '-' + modIdentifier}
             key={'input' + '-' + modType + '-' + modIdentifier + '-' + modIndex}
+            onChange={e => {store.dispatch({type:modIdentifier, value: e.currentTarget.checked})}}
           />
           <label
             className='form-check-label ucp-select-text'
