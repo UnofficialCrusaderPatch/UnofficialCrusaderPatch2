@@ -52,6 +52,14 @@ jobs:
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v1.1
 
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm ci
+
       # Execute all unit tests in the solution
       # - name: Execute unit tests
       #   run: dotnet test
@@ -78,14 +86,6 @@ jobs:
           path: |
             OutputDebug
 
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
-      - name: Install dependencies
-        run: npm ci
-
       - name: Package nodejs app
         run: npm run --prefix unofficialcrusaderpatch-gui/ package
 
@@ -94,4 +94,4 @@ jobs:
         with:
           name: UnofficialCrusaderPatchGUI
           path: |
-            release/build/*.exe
+            unofficialcrusaderpatch-gui/release/build/*.exe
