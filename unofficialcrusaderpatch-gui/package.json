@@ -12,6 +12,7 @@
     "build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
     "build:main": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./config/webpack.main.prod.ts",
     "build:renderer": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./config/webpack.renderer.prod.ts",
+    "clean": "if exist \"./release/build\" rmdir \"./release/build\"",
     "lint": "cross-env NODE_ENV=development eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "package": "npm run build && electron-builder build --publish never",
     "publish": "electron-builder --win -p always",
