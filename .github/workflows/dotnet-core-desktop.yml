@@ -84,4 +84,4 @@ jobs:
           node-version: 16
 
       - name: "Package nodejs app"
-        run: npm run package
+        run: npm run --prefix unofficialcrusaderpatch-gui/ package
