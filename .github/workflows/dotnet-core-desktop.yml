@@ -38,7 +38,7 @@ jobs:
       - name: Install .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "4.6.x"
+          dotnet-version: "5.0.x"
 
       # Restore NuGet packages
       - name: Setup NuGet.exe
@@ -77,3 +77,10 @@ jobs:
           name: UCP-latest-debug
           path: |
             OutputDebug
+
+      - name:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm run package
