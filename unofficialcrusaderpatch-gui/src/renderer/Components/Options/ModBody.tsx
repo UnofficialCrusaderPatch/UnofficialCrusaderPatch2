@@ -6,7 +6,7 @@ import { Slider } from './ChangeElements/Slider';
 /**
  * Body element for a single mod element
  */
-export class ModBody extends React.Component<{mod: any, modIndex: number}> {
+export class ModBody extends React.Component<{mod: any, modIndex: number, onchange: (config: { enabled: boolean, identifier: string}[]) => void}> {
   componentDidMount() {}
 
   // render the mod as the set of its comprising changes followed by a comprehensive detailed description

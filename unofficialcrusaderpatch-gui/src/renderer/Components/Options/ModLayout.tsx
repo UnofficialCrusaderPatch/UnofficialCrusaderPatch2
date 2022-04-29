@@ -15,9 +15,22 @@ export class ModLayout extends React.Component<{mod: any, modIndex: number}> {
     const elementKey: string = 'mod-root' + modType + '-' + modIdentifier + '-' + modIndex;
     return (
       <React.Fragment key={elementKey}>
-        <ModHeader mod={this.props.mod} modIndex={modIndex}></ModHeader>
-        <ModBody mod={this.props.mod} modIndex={modIndex}></ModBody>
+        <ModHeader mod={this.props.mod} modIndex={modIndex} onchange={this.getModEnabled.bind(this)}></ModHeader>
+        <ModBody mod={this.props.mod} modIndex={modIndex} onchange={this.getModValues.bind(this)}></ModBody>
       </React.Fragment>
     );
+  }
+
+  getModEnabled = (enabled: boolean, identifier: string) => {
+    if (enabled) {
+      console.log(enabled);
+      console.log(identifier);
+    }
+  }
+
+  getModValues = (config: { enabled: boolean, identifier: string}[]) => {
+    if (config) {
+      console.log(config);
+    }
   }
 }
