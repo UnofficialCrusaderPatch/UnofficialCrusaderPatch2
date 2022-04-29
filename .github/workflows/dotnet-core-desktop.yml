@@ -58,7 +58,7 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: npm ci
+        run: cd unofficialcrusaderpatch-gui && npm install && cd ..
 
       # Execute all unit tests in the solution
       # - name: Execute unit tests
