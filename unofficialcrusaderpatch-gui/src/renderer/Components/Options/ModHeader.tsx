@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { store } from '../app';
+import { store } from '../App';
 
 /**
  * Header element for a single mod element

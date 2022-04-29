@@ -28,7 +28,7 @@
 import 'bootstrap';
 import './Components/app.css';
 import './scss/app.scss';
-import { AppLayout, BackendModConfig } from './Components/app';
+import { AppLayout, BackendModConfig } from './Components/App';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
