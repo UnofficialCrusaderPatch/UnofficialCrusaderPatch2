@@ -1,5 +1,6 @@
 export type ChangeConfig = {
   identifier: string;
+  enabled: boolean;
   value?: string | number
 }
 
@@ -19,15 +20,8 @@ export function rootReducer(state: ModConfig = initialState, action: { type: str
       ... state,
     };
     delete newState[action.type]
-    console.log(newState)
     return newState;
   } else {
-    console.log({
-      // that has all the existing state data
-      ...state,
-      // but has a new array for the `todos` field
-      [action.type]: action.value
-    })
     return {
       // that has all the existing state data
       ...state,

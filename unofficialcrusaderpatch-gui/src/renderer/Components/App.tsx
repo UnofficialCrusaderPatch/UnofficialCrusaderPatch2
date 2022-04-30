@@ -43,12 +43,12 @@ export type CheckboxChangeConfig = {
 
 export type RadioChangeConfig = {
   selectionType: 'RADIO'
-  selectionParameters?: RadioParams
+  selectionParameters: RadioParams
 } & BaseChangeConfig;
 
 export type SliderChangeConfig = {
   selectionType: 'SLIDER'
-  selectionParameters?: SliderParams
+  selectionParameters: SliderParams
 } & BaseChangeConfig;
 
 export type BackendChangeConfig = CheckboxChangeConfig | RadioChangeConfig | SliderChangeConfig;
@@ -91,7 +91,7 @@ export class AppLayout extends React.Component<AppProps, {}> {
   }
 
   // returns the Tab-based layout for the GUI
-  getTabLayout = (configList: any[]): React.ReactElement => {
+  getTabLayout = (configList: BackendModConfig[]): React.ReactElement => {
     const uniqueModTypes: string[] = this.getUniqueModTypes(configList);
     return (
       <TabLayout options={configList} modTypes={uniqueModTypes}></TabLayout>
@@ -99,7 +99,7 @@ export class AppLayout extends React.Component<AppProps, {}> {
   };
 
   // returns the list of unique mod types ie. Bugfixes, AIV, Other
-  getUniqueModTypes = (configList: any[]): string[] => {
+  getUniqueModTypes = (configList: BackendModConfig[]): string[] => {
     const uniqueModTypes: string[] = [];
 
     configList.forEach((config) => {
@@ -121,16 +121,14 @@ const createStateFromProps = (config: BackendModConfig[]): Readonly<{}> => {
     const enabledChangeConfigs: ChangeConfig[] = [];
 
     currentMod.changes.forEach(function(item) {
-      if (item.defaultValue === 'true') {
-        if (item.selectionType === 'RADIO') {
-          enabledChangeConfigs.push({ identifier: item.identifier, value: item.defaultValue });
-        }
-        if (item.selectionType === 'CHECKBOX') {
-          enabledChangeConfigs.push({ identifier: item.identifier });
-        }
-        if (item.selectionType === 'SLIDER') {
-          enabledChangeConfigs.push({ identifier: item.identifier, value: item.selectionParameters!.default });
-        }
+      if (item.selectionType === 'RADIO') {
+        enabledChangeConfigs.push({ identifier: item.identifier, enabled: item.defaultValue !== "false", value: item.defaultValue });
+      }
+      if (item.selectionType === 'CHECKBOX') {
+        enabledChangeConfigs.push({ identifier: item.identifier, enabled: item.defaultValue !== "false" });
+      }
+      if (item.selectionType === 'SLIDER') {
+        enabledChangeConfigs.push({ identifier: item.identifier, enabled: item.defaultValue !== "false", value: item.selectionParameters!.default });
       }
     });
     if (enabledChangeConfigs.length > 0) {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BackendModConfig } from 'renderer/Components/App';
 import { TabContent } from './TabContent';
 import { TabHeader } from './TabHeader';
 
@@ -6,7 +7,7 @@ import { TabHeader } from './TabHeader';
  * Renders the Tab-based layout for the GUI
  */
 export class TabLayout extends React.Component<{
-  options: any[];
+  options: BackendModConfig[];
   modTypes: string[];
 }> {
   componentDidMount() {}
@@ -38,7 +39,7 @@ export class TabLayout extends React.Component<{
   }
 
   // renders the set of Tab contents
-  getTabContent(options: any[], modTypes: string[]) {
+  getTabContent(options: BackendModConfig[], modTypes: string[]) {
     return modTypes.map((currentModType, currentModIndex) => {
       const modTypeOptions = options.filter(
         (option) => option.modType === currentModType

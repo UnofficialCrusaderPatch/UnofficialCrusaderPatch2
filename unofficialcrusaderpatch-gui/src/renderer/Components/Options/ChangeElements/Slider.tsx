@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { BackendModConfig, SliderChangeConfig } from 'renderer/Components/App';
 
 /**
  * Renders a single slider option
  */
-export class Slider extends React.Component<{ mod: any, change: any }> {
+export class Slider extends React.Component<{ mod: BackendModConfig, change: SliderChangeConfig, selectedValue: number, onchange: (enabled: boolean, identifier: string, value: number) => void }> {
   componentDidMount() {}
 
   render() {
@@ -14,12 +15,13 @@ export class Slider extends React.Component<{ mod: any, change: any }> {
           <input
             className='ucp-slider'
             type='range'
-            defaultValue={this.props.change.selectionParameters.suggested}
             min={this.props.change.selectionParameters.minimum}
             max={this.props.change.selectionParameters.maximum}
             step={this.props.change.selectionParameters.interval}
             id={elementUniqueId}
             key={elementUniqueId}
+            value={this.props.selectedValue}
+            onChange={(e) => this.props.onchange(parseInt(e.currentTarget.value) !== this.props.change.selectionParameters.default, this.props.change.identifier, parseInt(e.currentTarget.value))}
           />
           <label
             className='form-check-label ucp-change-text'

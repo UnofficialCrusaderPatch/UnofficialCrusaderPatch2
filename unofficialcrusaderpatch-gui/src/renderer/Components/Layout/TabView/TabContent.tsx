@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { BackendModConfig } from 'renderer/Components/App';
 import { ModLayout } from '../../Options/ModLayout';
 
 /**
  * Renders the Tab content corresponding to a single mod type
  */ 
 export class TabContent extends React.Component<{
-  modList: any[];
+  modList: BackendModConfig[];
   modType: string;
 }> {
   componentDidMount() {}
@@ -27,7 +28,7 @@ export class TabContent extends React.Component<{
     );
   }
 
-  getOptionElements(modList: any[], _: string): React.ReactNode {
+  getOptionElements(modList: BackendModConfig[], _: string): React.ReactNode {
     return modList.map((mod, modIndex) => {
       const elementKey: string = 'modlayout-' + mod.modIdentifier + '-' + modIndex;
       return <ModLayout mod={mod} modIndex={modIndex} key={elementKey}></ModLayout>;

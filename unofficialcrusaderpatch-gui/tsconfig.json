@@ -10,6 +10,7 @@
     "pretty": true,
     "sourceMap": true,
     "baseUrl": "./src",
+    "forceConsistentCasingInFileNames": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
