@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { BackendModConfig, CheckboxChangeConfig } from 'renderer/Components/App';
+
+import { BackendModConfig, CheckboxChangeConfig } from '../../Config';
 
 /**
  * Renders a single checkbox option
  */
 export class Checkbox extends React.Component<{ mod: BackendModConfig, change: CheckboxChangeConfig, isChecked: boolean, onchange: (enabled: boolean, identifier: string) => void }> {
-  componentDidMount() {}
 
   render() {
     const elementUniqueId: string = this.props.mod.modIdentifier + '-' + this.props.change.identifier;

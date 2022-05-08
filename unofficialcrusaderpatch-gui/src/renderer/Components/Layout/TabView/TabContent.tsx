@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { BackendModConfig } from 'renderer/Components/App';
+
+import { BackendModConfig } from '../../Config';
 import { ModLayout } from '../../Options/ModLayout';
 
 /**
@@ -9,7 +10,6 @@ export class TabContent extends React.Component<{
   modList: BackendModConfig[];
   modType: string;
 }> {
-  componentDidMount() {}
 
   render() {
     const ariaLabel: string = 'ucp-tab-' + this.props.modType;

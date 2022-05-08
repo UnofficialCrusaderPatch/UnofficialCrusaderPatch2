@@ -10,7 +10,8 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:import/recommended",
     "plugin:import/electron",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:ordered-imports/recommended"
   ],
   rules: {
     // A temporary hack related to IDE not resolving correct package.json

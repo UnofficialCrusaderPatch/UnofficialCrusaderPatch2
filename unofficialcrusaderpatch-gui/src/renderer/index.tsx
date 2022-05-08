@@ -26,11 +26,13 @@
  * ```
  */
 import 'bootstrap';
-import './Components/app.css';
-import './scss/app.scss';
-import { AppLayout, BackendModConfig } from './Components/App';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+
+import './Components/app.css';
+import './scss/app.scss';
+import { AppLayout } from './Components/App';
+import { BackendModConfig } from './Components/Config';
 
 const initialize = async () => {
   return window.electron.getConfig('English');

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { BackendModConfig, RadioChangeConfig, RadioOption } from 'renderer/Components/App';
+
+import { BackendModConfig, RadioChangeConfig, RadioOption } from '../../Config';
 
 /**
  * Renders a single radio option
  */
 export class Radio extends React.Component<{ mod: BackendModConfig, change: RadioChangeConfig, selected: string, onchange: (enabled: boolean, identifier: string, value: string) => void }> {
-  componentDidMount() {}
 
   render() {
     const mod: any = this.props.mod;

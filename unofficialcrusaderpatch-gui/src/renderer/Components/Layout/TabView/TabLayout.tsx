@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { BackendModConfig } from 'renderer/Components/App';
+
+import { BackendModConfig } from '../../Config';
+
 import { TabContent } from './TabContent';
 import { TabHeader } from './TabHeader';
 
@@ -10,7 +12,6 @@ export class TabLayout extends React.Component<{
   options: BackendModConfig[];
   modTypes: string[];
 }> {
-  componentDidMount() {}
 
   render() {
     return (

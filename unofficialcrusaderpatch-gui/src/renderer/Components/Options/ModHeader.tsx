@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { BackendModConfig } from '../App';
-import { ModState } from '../reducers';
+
+import { BackendModConfig, ModState } from '../Config';
 
 /**
  * Header element for a single mod element
@@ -11,7 +11,6 @@ export class ModHeader extends React.Component<{
   config: ModState,
   onchange: (enabled: boolean) => void
 }> {
-  componentDidMount() {}
 
   render() {
     const modType = this.props.mod.modType;

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { BackendModConfig, SliderChangeConfig } from 'renderer/Components/App';
+
+import { BackendModConfig, SliderChangeConfig } from '../../Config';
 
 /**
  * Renders a single slider option
  */
 export class Slider extends React.Component<{ mod: BackendModConfig, change: SliderChangeConfig, hasHeader?: boolean, isEnabled: boolean, selectedValue: number, onchange: (enabled: boolean, identifier: string, value?: number) => void }> {
-  componentDidMount() {}
 
   render() {
     const elementUniqueId: string = this.props.mod.modIdentifier + '-' + this.props.change.identifier;

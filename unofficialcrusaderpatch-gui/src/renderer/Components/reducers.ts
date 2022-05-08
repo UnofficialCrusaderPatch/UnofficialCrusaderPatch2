@@ -1,19 +1,4 @@
-export type ChangeConfig = {
-  identifier: string;
-  enabled: boolean;
-  value?: string | number
-}
-
-export type ModConfig = {
-  [identifier: string]: ChangeConfig[];
-}
-
-export type ModState = {
-  [identifier: string]: {
-    enabled: boolean;
-    value?: string | number;
-  }
-}
+import { ModConfig } from "./Config";
 
 const initialState: ModConfig = {};
 

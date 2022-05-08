@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { BackendChangeConfig, BackendModConfig } from '../App';
-import { ModState } from '../reducers';
+
+import { BackendChangeConfig, BackendModConfig, ModState } from '../Config';
+
 import { ChangeProvider } from './ChangeElements/ChangeProvider';
 import { Radio } from './ChangeElements/Radio';
 import { Slider } from './ChangeElements/Slider';
@@ -14,7 +15,6 @@ export class ModBody extends React.Component<{
   config: ModState,
   onchange: ( enabled: boolean, identifier: string) => void
 }> {
-  componentDidMount() {}
 
   // render the mod as the set of its comprising changes followed by a comprehensive detailed description
   render() {

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { BackendChangeConfig, BackendModConfig } from '../App';
-import { ModState } from '../reducers';
+
+import { BackendChangeConfig, BackendModConfig, ModState } from '../Config';
+
 import { ModBody } from './ModBody';
 import { ModHeader } from './ModHeader';
 
@@ -12,8 +13,6 @@ export class ModLayout extends React.Component<{mod: BackendModConfig, modIndex:
     super(props);
     this.state = this.getInitialState(props.mod);
   }
-
-  componentDidMount() {}
 
   render() {
     const modType: string = this.props.mod.modType;
@@ -140,5 +139,5 @@ export class ModLayout extends React.Component<{mod: BackendModConfig, modIndex:
       }
     });
     return changeConfigState;
-  };
+  }
 }

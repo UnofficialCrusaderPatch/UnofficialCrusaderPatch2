@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { contextBridge } = require('electron');
 const path = require('path');
-var edge = require('electron-edge-js');
+const edge = require('electron-edge-js');
 
 /**
  * Retrieve UCP config from the UnofficialCrusaderPatch.dll
@@ -15,7 +16,7 @@ function getUCPConfig(language: string) {
   }
   
   // declare edge function for calling .NET dll
-  var clrMethod = edge.func({
+  const clrMethod = edge.func({
     assemblyFile: ucpPath,
     typeName: 'UCP.API.UCPContract',
     methodName: 'Invoke', // This must be Func<object,Task<object>>

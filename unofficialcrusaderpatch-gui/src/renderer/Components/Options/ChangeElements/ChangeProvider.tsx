@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { BackendChangeConfig, BackendModConfig } from 'renderer/Components/App';
+
+import { BackendChangeConfig, BackendModConfig } from '../../Config';
+
 import { Checkbox } from './Checkbox';
 import { Radio } from './Radio';
 import { Slider } from './Slider';
@@ -8,7 +10,6 @@ import { Slider } from './Slider';
  * Renders a single radio option
  */
 export class ChangeProvider extends React.Component<{ mod: BackendModConfig, change: BackendChangeConfig, isEnabled: boolean, selectedValue?: string | number, onchange: (enabled: boolean, identifier: string) => void }> {
-  componentDidMount() {}
 
   render() {
     switch (this.props.change.selectionType) {
