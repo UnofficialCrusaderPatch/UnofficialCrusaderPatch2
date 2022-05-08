@@ -29,7 +29,6 @@ export class ModHeader extends React.Component<{
             key={'input' + '-' + modType + '-' + modIdentifier + '-' + modIndex}
             onChange={e => {this.props.onchange(e.currentTarget.checked)}}
             checked={Object.values(this.props.config).some(x => x.enabled === true)}
-            //onChange={e => {store.dispatch({type:modIdentifier, value: e.currentTarget.checked})}}
           />
           <label
             className='form-check-label ucp-select-text'

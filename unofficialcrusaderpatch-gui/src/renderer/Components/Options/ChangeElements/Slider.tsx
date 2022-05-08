@@ -18,6 +18,39 @@ export class Slider extends React.Component<{ mod: BackendModConfig, change: Sli
     );
   }
 
+  getSlider = (elementUniqueId: string, hasHeader?: boolean) => {
+    return <React.Fragment>
+      {hasHeader && this.getHeader(elementUniqueId)}
+      <div>
+        <span className='ucp-slider-range'>{this.props.change.selectionParameters.minimum}</span>
+        <input
+          className='ucp-slider ucp-slider-range'
+          type='range'
+          min={this.props.change.selectionParameters.minimum}
+          max={this.props.change.selectionParameters.maximum}
+          step={this.props.change.selectionParameters.interval}
+          id={elementUniqueId}
+          key={elementUniqueId}
+          value={this.props.selectedValue}
+          onChange={(e) => this.onChangeHandler(e, elementUniqueId)}
+        />
+        <span className='ucp-slider-range'>{this.props.change.selectionParameters.maximum}</span>
+      </div>
+      <div className='ucp-slider-values'>
+        <span>  Current value: </span><span className='ucp-slider-range' id={elementUniqueId + '-value'}>{this.props.selectedValue}</span>
+        <span>  Default value: {this.props.change.selectionParameters.default}</span>
+        <span>  Suggested: {this.props.change.selectionParameters.suggested}</span>
+      </div>
+      <label
+        className='form-check-label ucp-change-text'
+        htmlFor={elementUniqueId}
+      >
+        {!hasHeader && this.props.change.description}
+        {this.props.change.detailedDescription}
+      </label>
+    </React.Fragment>
+  }
+
   getHeader = (elementUniqueId: string) => {
     return (
       <React.Fragment>
@@ -38,40 +71,7 @@ export class Slider extends React.Component<{ mod: BackendModConfig, change: Sli
     );
   }
 
-  getSlider = (elementUniqueId: string, hasHeader?: boolean) => {
-    return <React.Fragment>
-      {hasHeader && this.getHeader(elementUniqueId)}
-      <div>
-        <span className='ucp-slider-range'>{this.props.change.selectionParameters.minimum}</span>
-        <input
-          className='ucp-slider ucp-slider-range'
-          type='range'
-          min={this.props.change.selectionParameters.minimum}
-          max={this.props.change.selectionParameters.maximum}
-          step={this.props.change.selectionParameters.interval}
-          id={elementUniqueId}
-          key={elementUniqueId}
-          value={this.props.selectedValue}
-          onChange={(e) => this.onChange(e, elementUniqueId)}
-        />
-        <span className='ucp-slider-range'>{this.props.change.selectionParameters.maximum}</span>
-      </div>
-      <div className='ucp-slider-values'>
-        <span>  Current value: </span><span className='ucp-slider-range' id={elementUniqueId + '-value'}>{this.props.selectedValue}</span>
-        <span>  Default value: {this.props.change.selectionParameters.default}</span>
-        <span>  Suggested: {this.props.change.selectionParameters.suggested}</span>
-      </div>
-      <label
-        className='form-check-label ucp-change-text'
-        htmlFor={elementUniqueId}
-      >
-        {!hasHeader && this.props.change.description}
-        {this.props.change.detailedDescription}
-      </label>
-    </React.Fragment>
-  }
-
-  onChange = (e: React.ChangeEvent<HTMLInputElement>, elementUniqueId: string) => {
+  onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>, elementUniqueId: string) => {
     this.props.onchange(parseInt(e.currentTarget.value) !== this.props.change.selectionParameters.default, this.props.change.identifier, parseInt(e.currentTarget.value))
     document.getElementById(`${elementUniqueId}-value`)!.innerText = e.currentTarget.value;
   }
