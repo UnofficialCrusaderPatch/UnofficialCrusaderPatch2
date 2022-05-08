@@ -34,11 +34,12 @@ import './scss/app.scss';
 import { AppLayout } from './Components/App';
 import { BackendModConfig } from './Components/Config';
 
+// get UCP config for language from the main process
 const initialize = async () => {
   return window.electron.getConfig('English');
 };
 
-
+// build the UCP window config and structure
 const buildUCPContent = (result: BackendModConfig[]): React.ReactElement => {
   return React.createElement(AppLayout, { config: result });
 };

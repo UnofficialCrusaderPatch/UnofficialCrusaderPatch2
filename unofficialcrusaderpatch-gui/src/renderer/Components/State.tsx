@@ -1,5 +1,6 @@
 import { BackendModConfig, ChangeConfig, ModConfig } from "./Config";
 
+// initializes the initial state for the GUI
 export const createStateFromProps = (config: BackendModConfig[]): Readonly<ModConfig> => {
   const initialState: ModConfig = {};
 

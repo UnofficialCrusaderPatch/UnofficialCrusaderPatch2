@@ -8,8 +8,8 @@ import { BackendModConfig, RadioChangeConfig, RadioOption } from '../../Config';
 export class Radio extends React.Component<{ mod: BackendModConfig, change: RadioChangeConfig, selected: string, onchange: (enabled: boolean, identifier: string, value: string) => void }> {
 
   render() {
-    const mod: any = this.props.mod;
-    const change: any = this.props.change;
+    const mod: BackendModConfig = this.props.mod;
+    const change: RadioChangeConfig = this.props.change;
 
     const containerElementUniqueId: string = mod.modIdentifier + '-' + change.identifier;
 

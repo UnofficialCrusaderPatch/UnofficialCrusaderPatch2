@@ -22,13 +22,13 @@ export class TabContent extends React.Component<{
           role='tabpanel'
           aria-labelledby={ariaLabel}
         >
-          {this.getOptionElements(this.props.modList, this.props.modType)}
+          {this.getOptionElements(this.props.modList)}
         </div>
       </React.Fragment>
     );
   }
 
-  getOptionElements(modList: BackendModConfig[], _: string): React.ReactNode {
+  getOptionElements(modList: BackendModConfig[]): React.ReactNode {
     return modList.map((mod, modIndex) => {
       const elementKey: string = 'modlayout-' + mod.modIdentifier + '-' + modIndex;
       return <ModLayout mod={mod} modIndex={modIndex} key={elementKey}></ModLayout>;
