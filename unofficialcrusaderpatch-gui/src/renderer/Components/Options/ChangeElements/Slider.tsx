@@ -73,6 +73,7 @@ export class Slider extends React.Component<{ mod: BackendModConfig, change: Sli
 
   onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>, elementUniqueId: string) => {
     this.props.onchange(parseInt(e.currentTarget.value) !== this.props.change.selectionParameters.default, this.props.change.identifier, parseInt(e.currentTarget.value))
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     document.getElementById(`${elementUniqueId}-value`)!.innerText = e.currentTarget.value;
   }
 }
