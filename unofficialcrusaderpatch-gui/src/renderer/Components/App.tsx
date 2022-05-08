@@ -6,7 +6,7 @@ import { AnyAction, Store, configureStore } from '@reduxjs/toolkit';
 import { Header } from './Header';
 import { TabLayout } from './Layout/TabView/TabLayout';
 import { BackendModConfig, ModConfig } from './Config';
-import { rootReducer } from './Reducers';
+import { rootReducer } from './Reducer';
 import { createStateFromProps } from './State';
 
 export interface AppProps {
