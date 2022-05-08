@@ -4,7 +4,7 @@ import { BackendModConfig, CheckboxChangeConfig } from 'renderer/Components/App'
 /**
  * Renders a single checkbox option
  */
-export class Checkbox extends React.Component<{ mod: BackendModConfig, change: CheckboxChangeConfig, onchange: (enabled: boolean, identifier: string) => void }> {
+export class Checkbox extends React.Component<{ mod: BackendModConfig, change: CheckboxChangeConfig, isChecked: boolean, onchange: (enabled: boolean, identifier: string) => void }> {
   componentDidMount() {}
 
   render() {
@@ -16,7 +16,7 @@ export class Checkbox extends React.Component<{ mod: BackendModConfig, change: C
             className='form-check-input ucp-select'
             type='checkbox'
             name={elementUniqueId}
-            defaultChecked={this.props.change.defaultValue === "true"}
+            checked={this.props.isChecked}
             id={elementUniqueId}
             key={elementUniqueId}
             onChange={(e) => this.props.onchange(e.currentTarget.checked, this.props.change.identifier)}

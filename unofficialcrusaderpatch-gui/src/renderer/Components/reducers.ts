@@ -8,6 +8,13 @@ export type ModConfig = {
   [identifier: string]: ChangeConfig[];
 }
 
+export type ModState = {
+  [identifier: string]: {
+    enabled: boolean;
+    value?: string | number;
+  }
+}
+
 const initialState: ModConfig = {};
 
 // Use the initialState as a default value

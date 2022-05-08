@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { BackendModConfig } from '../App';
-import { ChangeConfig, ModConfig } from '../reducers';
+import { BackendChangeConfig, BackendModConfig } from '../App';
+import { ModState } from '../reducers';
 import { ModBody } from './ModBody';
 import { ModHeader } from './ModHeader';
 
 /**
  * Container for a single mod element with a header and a body
  */
-export class ModLayout extends React.Component<{mod: BackendModConfig, modIndex: number}, ModConfig > {
+export class ModLayout extends React.Component<{mod: BackendModConfig, modIndex: number}, ModState > {
   constructor(props: {mod: BackendModConfig, modIndex: number}){
     super(props);
     this.state = this.getInitialState(props.mod);
@@ -30,83 +30,115 @@ export class ModLayout extends React.Component<{mod: BackendModConfig, modIndex:
 
 
   // toggle change enabled/disabled status when enabling/disabling the entire mod
-  toggleMod = (isEnabled: boolean, identifier: string) => {
-    const currentState: ModConfig = JSON.parse(JSON.stringify(this.state));
-    const changes: ChangeConfig[] = currentState[this.props.mod.modIdentifier];
-    const newChanges = changes.map(function(change: ChangeConfig) {
-      return {
-        ...change,
-        enabled: isEnabled
-      }
-    });
-    this.setState({ [identifier]: newChanges});
+  toggleMod = (isEnabled: boolean) => {
+    const currentState: ModState = JSON.parse(JSON.stringify(this.state));
+
+    if (!isEnabled) {
+      const newState: ModState = {};
+      Object.keys(currentState).forEach(function(identifier: string) {
+        newState[identifier] = currentState[identifier];
+        newState[identifier].enabled = false;
+        newState[identifier].value = currentState[identifier].value;
+      });
+      this.setState(newState);
+      return;
+    } else {
+      const newChanges: ModState = {};
+      this.props.mod.changes.forEach(function(change: BackendChangeConfig) {
+        const defaultValue = change.defaultValue;
+        const currentValue: string | number | undefined = currentState[change.identifier].value;
+
+        if (defaultValue !== "false") {
+          switch (change.selectionType) {
+
+            // always re-enable if default is true
+            case 'CHECKBOX':
+              newChanges[change.identifier] = { enabled: true};
+              break;
+
+            // always re-enable if default is true
+            // if the value has been changed from default selection use that, otherwise set to default
+            case 'RADIO':
+              if (currentValue !== defaultValue) {
+                newChanges[change.identifier] = { enabled: true, value: currentValue};
+              } else {
+                newChanges[change.identifier] = { enabled: true, value: defaultValue};
+              }
+              break;
+
+            // enable it if default is true
+            // if user has set a value use that
+            // if the current value is the default (vanilla) then disable
+            // if the current value is also suggested value enable and use that
+            case 'SLIDER':
+              if (currentValue !== change.selectionParameters.suggested || currentValue !== change.selectionParameters.default) {
+                newChanges[change.identifier] = { enabled: true, value: currentValue};
+              } else if (currentValue === change.selectionParameters.default) {
+                newChanges[change.identifier] = { enabled: false, value: currentValue};
+              } else {
+                newChanges[change.identifier] = { enabled: true, value: defaultValue};
+              }
+              break;
+          }
+        }
+      });
+      this.setState(newChanges);
+      return;
+    }
   };
 
 
   // toggle change enabled/disabled status
   toggleChange = (isEnabled: boolean, identifier: string, value?: string | number) => {
-    const currentState: ModConfig = JSON.parse(JSON.stringify(this.state));
-    const changes: ChangeConfig[] = currentState[this.props.mod.modIdentifier];
-    const newChanges = changes.map(function(change: ChangeConfig) {
-      if (change.identifier === identifier) {
-        if (change.value === undefined) {
-          return {
-            ...change,
+    const currentState: ModState = JSON.parse(JSON.stringify(this.state));
+    const newChanges: ModState = {};
+    Object.keys(currentState).forEach(function(currentIdentifier: string) {
+      if (currentIdentifier === identifier) {
+        if (currentState[currentIdentifier].value === undefined) {
+          newChanges[currentIdentifier] =
+          {
+            ...currentState[currentIdentifier],
             enabled: isEnabled,
+            value: value ?? currentState[currentIdentifier].value
           }
         } else {
-          return {
-            ...change,
+          newChanges[currentIdentifier] = {
+            ...currentState[currentIdentifier],
             enabled: isEnabled,
-            value: value
+            value: value ?? currentState[currentIdentifier].value
           }
         }
       } else {
-        return {
-          ...change
+        newChanges[currentIdentifier] = {
+          ...currentState[currentIdentifier]
         }
       }
     })
-    console.log(isEnabled);
-    console.log(identifier);
-    console.log(newChanges);
-    this.setState({ [identifier]: newChanges});
+    this.setState(newChanges);
   };
 
-  // handleChange = async (enabled: boolean) => {
 
-  // };
-
-  getModValues = (config: { enabled: boolean, identifier: string}[]) => {
-    if (config) {
-      console.log(config);
-    }
-  };
-
-  getInitialState(mod: BackendModConfig): Readonly<ModConfig> {
-    const changeConfigState: ChangeConfig[] = [];
+  getInitialState(mod: BackendModConfig): ModState {
+    const changeConfigState: ModState = {};
     mod.changes.forEach(function(change){
       if (change.defaultValue === "true") {
         if (change.selectionType === "CHECKBOX") {
-          changeConfigState.push({identifier: change.identifier, enabled: true});
+          changeConfigState[change.identifier] = { enabled: true};
         } else if (change.selectionType === "SLIDER") {
-          changeConfigState.push({
-            identifier: change.identifier,
+          changeConfigState[change.identifier] =
+          {
             enabled: true,
             value: change.selectionParameters?.default
-          });
+          };
         }
       } else if (change.selectionType === "RADIO") {
-          changeConfigState.push({
-            identifier: change.identifier,
+          changeConfigState[change.identifier] =
+          {
             enabled: true,
             value: change.defaultValue
-          });
+          };
       }
     });
-
-    return {
-      [mod.modIdentifier]: changeConfigState
-    };
+    return changeConfigState;
   };
 }

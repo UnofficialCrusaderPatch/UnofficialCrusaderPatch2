@@ -1,10 +1,16 @@
 import * as React from 'react';
-import { ModConfig } from '../reducers';
+import { BackendModConfig } from '../App';
+import { ModState } from '../reducers';
 
 /**
  * Header element for a single mod element
  */
-export class ModHeader extends React.Component<{mod: any, modIndex: number, config: ModConfig, onchange: (enabled: boolean, modIdentifier: string) => void}> {
+export class ModHeader extends React.Component<{
+  mod: BackendModConfig,
+  modIndex: number,
+  config: ModState,
+  onchange: (enabled: boolean) => void
+}> {
   componentDidMount() {}
 
   render() {
@@ -21,8 +27,8 @@ export class ModHeader extends React.Component<{mod: any, modIndex: number, conf
             value={modIdentifier}
             id={modType + '-' + modIdentifier}
             key={'input' + '-' + modType + '-' + modIdentifier + '-' + modIndex}
-            onChange={e => {this.props.onchange(e.currentTarget.checked, modIdentifier)}}
-            checked={this.props.config[modIdentifier].some(x => x.enabled === true)}
+            onChange={e => {this.props.onchange(e.currentTarget.checked)}}
+            checked={Object.values(this.props.config).some(x => x.enabled === true)}
             //onChange={e => {store.dispatch({type:modIdentifier, value: e.currentTarget.checked})}}
           />
           <label

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BackendChangeConfig, BackendModConfig } from '../App';
-import { ChangeConfig, ModConfig } from '../reducers';
+import { ModState } from '../reducers';
 import { ChangeProvider } from './ChangeElements/ChangeProvider';
 import { Radio } from './ChangeElements/Radio';
 import { Slider } from './ChangeElements/Slider';
@@ -8,7 +8,12 @@ import { Slider } from './ChangeElements/Slider';
 /**
  * Body element for a single mod element
  */
-export class ModBody extends React.Component<{mod: any, modIndex: number, config: ModConfig, onchange: ( enabled: boolean, identifier: string) => void}> {
+export class ModBody extends React.Component<{
+  mod: BackendModConfig,
+  modIndex: number,
+  config: ModState,
+  onchange: ( enabled: boolean, identifier: string) => void
+}> {
   componentDidMount() {}
 
   // render the mod as the set of its comprising changes followed by a comprehensive detailed description
@@ -16,7 +21,7 @@ export class ModBody extends React.Component<{mod: any, modIndex: number, config
     const modType: string = this.props.mod.modType;
     const modIndex: number = this.props.modIndex;
     const modIdentifier: string = this.props.mod.modIdentifier;
-    const detailedDescription: string = this.props.mod.detailedDescription;
+    const detailedDescription: string | undefined = this.props.mod.detailedDescription;
 
     const elementUniqueId: string = modType + '-' + modIdentifier + '-' + modIndex;
     const ariaLabel: string = modType + '-' + modIdentifier;
@@ -36,7 +41,7 @@ export class ModBody extends React.Component<{mod: any, modIndex: number, config
   }
 
   // returns the body elements that make up a single mod
-  getBody(mod: BackendModConfig, config: ModConfig, onchange: (enabled: boolean, identifier: string) => void): React.ReactNode {
+  getBody(mod: BackendModConfig, config: ModState, onchange: (enabled: boolean, identifier: string) => void): React.ReactNode {
 
     /**
      * when a mod contains a single change render it as a single element
@@ -44,29 +49,31 @@ export class ModBody extends React.Component<{mod: any, modIndex: number, config
      * when the only change is a checkbox do not render a nested checkbox
      */
     if (mod.changes.length === 1) {
-      const changeConfig: ChangeConfig = config[mod.modIdentifier][0];
       const change: BackendChangeConfig = mod.changes[0];
+      const changeValue: string | number | undefined = config[change.identifier].value;
+      const isEnabled: boolean = config[change.identifier].enabled;
       const elementKey: string = 'ucp-change-' + change.identifier;
       return (
         <React.Fragment key={elementKey}>
-          {change.selectionType === 'RADIO' && <Radio mod={mod} change={change} selected={changeConfig.value as string} onchange={onchange}></Radio>}
-          {change.selectionType === 'SLIDER' && <Slider mod={mod} change={change} selectedValue={changeConfig.value as number} onchange={onchange}></Slider>}
+          {change.selectionType === 'RADIO' && <Radio mod={mod} change={change} selected={changeValue as string} onchange={onchange}></Radio>}
+          {change.selectionType === 'SLIDER' && <Slider mod={mod} change={change} selectedValue={changeValue as number} isEnabled={isEnabled} onchange={onchange}></Slider>}
           {change.selectionType === 'CHECKBOX' && change.description}
           {change.detailedDescription !== undefined && change.detailedDescription}
         </React.Fragment>
       );
     } else {
-      return this.getChangeElements(mod, config[mod.modIdentifier], onchange);
+      return this.getChangeElements(mod, config, onchange);
     }
   }
 
   // with more than 1 change, each will have their own toggle checkbox and 
   // for non-checkbox changes nested selection options as well
-  getChangeElements(mod: BackendModConfig, changeConfig: ChangeConfig[], onchange: (enabled: boolean, identifier: string) => void): React.ReactNode {
+  getChangeElements(mod: BackendModConfig, changeConfig: ModState, onchange: (enabled: boolean, identifier: string) => void): React.ReactNode {
     return mod.changes.map((change: BackendChangeConfig) => {
-      const elementKey: string = 'ucp-change-' + change.identifier;
+      const identifier: string = change.identifier;
+      const elementKey: string = 'ucp-change-' + identifier;
       return <React.Fragment key={elementKey}>
-        <ChangeProvider mod={mod} change={change} selectedValue={changeConfig.filter(x => x.identifier === change.identifier)[0].value} onchange={onchange}/>
+        <ChangeProvider mod={mod} change={change} isEnabled={changeConfig[identifier].enabled} selectedValue={changeConfig[identifier].value} onchange={onchange}/>
         {change.detailedDescription !== undefined && change.detailedDescription}
       </React.Fragment>;
     });

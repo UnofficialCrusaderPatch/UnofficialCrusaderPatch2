@@ -78,3 +78,26 @@ label {
   padding-right: 32px;
   overflow-wrap: break-word;
 }
+
+.ucp-change-header {
+  display: inline;
+}
+
+input.ucp-change-header {
+  margin-right: 10px;
+}
+
+input.ucp-slider {
+  vertical-align: middle;
+  margin-bottom: 3px;
+}
+
+.ucp-slider-range {
+  display: inline;
+  margin-left: 10px;
+}
+
+.ucp-slider-values span {
+  display: inline;
+  margin-left: 15px;
+}
