@@ -1,30 +1,35 @@
-import { BackendModConfig, ChangeConfig, ModConfig } from "./Config";
+import { BackendModConfig, ModState } from "./Config";
+
+export interface AppState {
+  [identifier: string]: ModState;
+}
 
 // initializes the initial state for the GUI
-export const createInitialStateFromProps = (config: BackendModConfig[]): Readonly<ModConfig> => {
-  const initialState: ModConfig = {};
+export const createInitialStateFromProps = (config: BackendModConfig[]): Readonly<AppState> => {
+  const initialState: AppState = {};
 
   // initialize entry for each mod in the config
   config.forEach(function(mod: BackendModConfig) {
     const currentMod: BackendModConfig = mod;
     const currentIdentifier: string = mod.modIdentifier;
-    const changeConfigs: ChangeConfig[] = [];
+    const modState: ModState = {};
+    // const changeState: ChangeState = {};
 
     // initialize entry for each change in a mod
     currentMod.changes.forEach(function(item) {
       if (item.selectionType === 'RADIO') {
-        changeConfigs.push({ identifier: item.identifier, enabled: item.defaultValue !== "false", value: item.defaultValue });
+        modState[item.identifier] = { enabled: item.defaultValue !== "false", value: item.defaultValue };
       }
       if (item.selectionType === 'CHECKBOX') {
-        changeConfigs.push({ identifier: item.identifier, enabled: item.defaultValue !== "false" });
+        modState[item.identifier] = { enabled: item.defaultValue !== "false" };
       }
       if (item.selectionType === 'SLIDER') {
-        changeConfigs.push({ identifier: item.identifier, enabled: item.defaultValue !== "false", value: item.selectionParameters.default });
+        modState[item.identifier] = { enabled: item.defaultValue !== "false", value: item.selectionParameters.default };
       }
     });
 
     // assign change configs to the mod within state object
-    initialState[currentIdentifier] = changeConfigs;
+    initialState[currentIdentifier] = modState;
   });
   return initialState;
 }

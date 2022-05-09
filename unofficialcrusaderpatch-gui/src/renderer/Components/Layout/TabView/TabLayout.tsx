@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { AppState } from 'renderer/Components/State';
 
 import { BackendModConfig } from '../../Config';
 
@@ -11,6 +12,7 @@ import { TabHeader } from './TabHeader';
 export class TabLayout extends React.Component<{
   options: BackendModConfig[];
   modTypes: string[];
+  initialState: AppState;
 }> {
 
   render() {

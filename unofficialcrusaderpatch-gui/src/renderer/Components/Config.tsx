@@ -69,8 +69,10 @@ export type ModConfig = {
 }
 
 export type ModState = {
-  [identifier: string]: {
-    enabled: boolean;
-    value?: string | number;
-  }
+  [identifier: string]: ChangeState
+}
+
+export type ChangeState = {
+  enabled: boolean;
+  value?: string | number;
 }

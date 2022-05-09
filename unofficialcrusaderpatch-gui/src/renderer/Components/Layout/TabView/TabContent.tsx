@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { BackendModConfig } from '../../Config';
-import { ModLayout } from '../../Options/ModLayout';
+import { ModLayout } from '../ModView/ModLayout';
 
 /**
  * Renders the Tab content corresponding to a single mod type
