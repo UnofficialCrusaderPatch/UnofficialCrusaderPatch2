@@ -2,7 +2,7 @@ import { ModConfig } from "./Config";
 
 const initialState: ModConfig = {};
 
-// Use the initialState as a default value
+// given the input state and an action return a new state based on the action
 export function rootReducer(state: ModConfig = initialState, action: { type: string, value: any }) {
   // The reducer normally looks at the action type field to decide what happens
 

@@ -7,7 +7,7 @@ import { Radio } from './Radio';
 import { Slider } from './Slider';
 
 /**
- * Renders a single radio option
+ * Renders a single option based on its selection type
  */
 export class ChangeProvider extends React.Component<{ mod: BackendModConfig, change: BackendChangeConfig, isEnabled: boolean, selectedValue?: string | number, onchange: (enabled: boolean, identifier: string) => void }> {
 

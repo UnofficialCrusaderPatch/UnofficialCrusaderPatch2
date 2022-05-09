@@ -7,17 +7,21 @@ import { Header } from './Header';
 import { TabLayout } from './Layout/TabView/TabLayout';
 import { BackendModConfig, ModConfig } from './Config';
 import { rootReducer } from './Reducer';
-import { createStateFromProps } from './State';
-
-export interface AppProps {
-  config: BackendModConfig[];
-}
+import { createInitialStateFromProps } from './State';
 
 export let store: Store<ModConfig, AnyAction>;
+
+// create typed methods specific to state
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
+
+// config as input for the AppLayout element
+export interface AppProps {
+  config: BackendModConfig[];
+}
 
 /*
  * Root element for the UCP GUI
@@ -25,9 +29,12 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export class AppLayout extends React.Component<AppProps> {
   constructor(props: AppProps) {
     super(props);
-    store = configureStore({ reducer: rootReducer, preloadedState: createStateFromProps(props.config)});
+
+    // create a store with initial state given the config
+    store = configureStore({ reducer: rootReducer, preloadedState: createInitialStateFromProps(props.config)});
   }
 
+  // return the content wrapped in a Provider so that components re-render when state is updated
   render() {
     console.log(store.getState());
     return (
@@ -38,7 +45,7 @@ export class AppLayout extends React.Component<AppProps> {
     );
   }
 
-  // returns the Tab-based layout for the GUI
+  // returns the Tab-based layout for the GUI, one tab per unique mod type
   getTabLayout = (configList: BackendModConfig[]): React.ReactElement => {
     const uniqueModTypes: string[] = this.getUniqueModTypes(configList);
     return (

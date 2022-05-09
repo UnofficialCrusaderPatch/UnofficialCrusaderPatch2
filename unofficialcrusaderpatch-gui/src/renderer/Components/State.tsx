@@ -1,30 +1,30 @@
 import { BackendModConfig, ChangeConfig, ModConfig } from "./Config";
 
 // initializes the initial state for the GUI
-export const createStateFromProps = (config: BackendModConfig[]): Readonly<ModConfig> => {
+export const createInitialStateFromProps = (config: BackendModConfig[]): Readonly<ModConfig> => {
   const initialState: ModConfig = {};
 
+  // initialize entry for each mod in the config
   config.forEach(function(mod: BackendModConfig) {
     const currentMod: BackendModConfig = mod;
     const currentIdentifier: string = mod.modIdentifier;
-    const enabledChangeConfigs: ChangeConfig[] = [];
+    const changeConfigs: ChangeConfig[] = [];
 
+    // initialize entry for each change in a mod
     currentMod.changes.forEach(function(item) {
       if (item.selectionType === 'RADIO') {
-        enabledChangeConfigs.push({ identifier: item.identifier, enabled: item.defaultValue !== "false", value: item.defaultValue });
+        changeConfigs.push({ identifier: item.identifier, enabled: item.defaultValue !== "false", value: item.defaultValue });
       }
       if (item.selectionType === 'CHECKBOX') {
-        enabledChangeConfigs.push({ identifier: item.identifier, enabled: item.defaultValue !== "false" });
+        changeConfigs.push({ identifier: item.identifier, enabled: item.defaultValue !== "false" });
       }
       if (item.selectionType === 'SLIDER') {
-        enabledChangeConfigs.push({ identifier: item.identifier, enabled: item.defaultValue !== "false", value: item.selectionParameters.default });
+        changeConfigs.push({ identifier: item.identifier, enabled: item.defaultValue !== "false", value: item.selectionParameters.default });
       }
     });
-    if (enabledChangeConfigs.length > 0) {
-      initialState[currentIdentifier] = enabledChangeConfigs;
-    } else {
-      delete initialState[currentIdentifier];
-    }
+
+    // assign change configs to the mod within state object
+    initialState[currentIdentifier] = changeConfigs;
   });
   return initialState;
 }

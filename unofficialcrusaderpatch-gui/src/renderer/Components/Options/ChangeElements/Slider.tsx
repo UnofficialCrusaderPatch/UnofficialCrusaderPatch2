@@ -18,6 +18,13 @@ export class Slider extends React.Component<{ mod: BackendModConfig, change: Sli
     );
   }
 
+  /**
+   * renders the slider element with a conditionally present header
+   * the slider also has hints for the current value, default value, and suggested value
+   * @param elementUniqueId unique identifier for the element
+   * @param hasHeader whether or not the slider requires a header checkbox and description
+   * @returns slider HTML
+   */
   getSlider = (elementUniqueId: string, hasHeader?: boolean) => {
     return <React.Fragment>
       {hasHeader && this.getHeader(elementUniqueId)}
@@ -51,6 +58,7 @@ export class Slider extends React.Component<{ mod: BackendModConfig, change: Sli
     </React.Fragment>
   }
 
+  // renders a header element with a checkbox and the change description. Used when the Slider is one of multiple changes.
   getHeader = (elementUniqueId: string) => {
     return (
       <React.Fragment>
@@ -71,6 +79,7 @@ export class Slider extends React.Component<{ mod: BackendModConfig, change: Sli
     );
   }
 
+  // updates values when the slider value changes
   onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>, elementUniqueId: string) => {
     this.props.onchange(parseInt(e.currentTarget.value) !== this.props.change.selectionParameters.default, this.props.change.identifier, parseInt(e.currentTarget.value))
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
