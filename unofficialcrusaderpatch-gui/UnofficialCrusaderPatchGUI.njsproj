@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{98c96052-2188-48a6-bcec-cdfe4d55354a}</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <StartupFile />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <EnableTypeScript>true</EnableTypeScript>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">16.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <StartWebBrowser>True</StartWebBrowser>
+    <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <ItemGroup>
+    <Content Include="package-lock.json" />
+    <Content Include="package.json" />
+    <None Include="tsconfig.json" />
+    <Content Include="assets\icon.png" />
+    <Content Include="assets\wallpaper.jpg" />
+    <Content Include="assets\icon.ico" />
+    <Content Include="assets\icon.svg" />
+    <None Include="assets\assets.d.ts" />
+    <None Include="config\webpack.eslint.ts" />
+    <None Include="config\webpack.main.prod.ts" />
+    <None Include="config\webpack.preload.dev.ts" />
+    <None Include="config\webpack.renderer.dev.dll.ts" />
+    <None Include="config\webpack.renderer.dev.ts" />
+    <None Include="config\webpack.renderer.prod.ts" />
+    <Content Include="assets\icons\1024x1024.png" />
+    <Content Include="assets\icons\128x128.png" />
+    <Content Include="assets\icons\16x16.png" />
+    <Content Include="assets\icons\24x24.png" />
+    <Content Include="assets\icons\256x256.png" />
+    <Content Include="assets\icons\32x32.png" />
+    <Content Include="assets\icons\48x48.png" />
+    <Content Include="assets\icons\512x512.png" />
+    <Content Include="assets\icons\64x64.png" />
+    <Content Include="assets\icons\96x96.png" />
+    <Content Include="config\dll\renderer.json" />
+    <Content Include="config\dll\bootstrap\project.json" />
+    <Content Include="config\dll\bootstrap\obj\bootstrap.csproj.nuget.dgspec.json" />
+    <Content Include="config\dll\bootstrap\obj\project.assets.json" />
+    <Content Include="config\dll\bootstrap\bin\Release\netcoreapp1.1\bootstrap.deps.json" />
+    <Content Include="config\dll\bootstrap\obj\Release\netcoreapp1.1\bootstrap.csproj.FileListAbsolute.txt" />
+    <None Include="src\main\main.ts" />
+    <None Include="src\main\menu.ts" />
+    <None Include="src\main\preload.ts" />
+    <None Include="src\main\util.ts" />
+    <Content Include="README.md" />
+    <Content Include="src\renderer\app.css" />
+    <Content Include="src\renderer\index.ejs" />
+    <None Include="src\renderer\preload.d.ts" />
+    <None Include="src\renderer\App.tsx" />
+    <None Include="src\renderer\index.tsx" />
+    <None Include="src\__tests__\App.test.tsx" />
+    <Content Include="src\renderer\scss\app.scss" />
+    <Content Include="src\renderer\View\rawucpconfig.txt" />
+    <None Include="src\renderer\View\index.tsx" />
+    <None Include="src\renderer\View\TabContent.tsx" />
+    <None Include="src\renderer\View\TabHeader.tsx" />
+    <None Include="src\renderer\View\TabLayout.tsx" />
+    <None Include="src\renderer\Components\Buttons\CancelButton.tsx" />
+    <None Include="src\renderer\Components\Buttons\InstallButton.tsx" />
+    <None Include="src\renderer\Components\Buttons\RefreshButton.tsx" />
+    <None Include="src\renderer\Components\Header\index.tsx" />
+    <None Include="src\renderer\Components\Links\index.tsx" />
+    <None Include="src\renderer\Components\Options\ModBody.tsx" />
+    <None Include="src\renderer\Components\Options\ModHeader.tsx" />
+    <None Include="src\renderer\Components\Options\ModLayout.tsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets" />
+    <Folder Include="assets\icons" />
+    <Folder Include="config" />
+    <Folder Include="config\dll" />
+    <Folder Include="config\dll\bootstrap" />
+    <Folder Include="config\dll\bootstrap\bin" />
+    <Folder Include="config\dll\bootstrap\bin\Debug" />
+    <Folder Include="config\dll\bootstrap\bin\Debug\netcoreapp1.1" />
+    <Folder Include="config\dll\bootstrap\bin\Release" />
+    <Folder Include="config\dll\bootstrap\bin\Release\netcoreapp1.1" />
+    <Folder Include="config\dll\bootstrap\obj" />
+    <Folder Include="config\dll\bootstrap\obj\Debug" />
+    <Folder Include="config\dll\bootstrap\obj\Debug\netcoreapp1.1" />
+    <Folder Include="config\dll\bootstrap\obj\Release" />
+    <Folder Include="config\dll\bootstrap\obj\Release\netcoreapp1.1" />
+    <Folder Include="config\dll\native" />
+    <Folder Include="config\dll\native\win32" />
+    <Folder Include="config\dll\native\win32\ia32" />
+    <Folder Include="config\dll\native\win32\ia32\10.0.0" />
+    <Folder Include="config\dll\native\win32\ia32\11.0.0" />
+    <Folder Include="config\dll\native\win32\ia32\12.0.0" />
+    <Folder Include="config\dll\native\win32\ia32\13.0.0" />
+    <Folder Include="config\dll\native\win32\ia32\2.0.0" />
+    <Folder Include="config\dll\native\win32\ia32\3.0.0" />
+    <Folder Include="config\dll\native\win32\ia32\4.0.0" />
+    <Folder Include="config\dll\native\win32\ia32\5.0.0" />
+    <Folder Include="config\dll\native\win32\ia32\6.0.0" />
+    <Folder Include="config\dll\native\win32\ia32\7.0.0" />
+    <Folder Include="config\dll\native\win32\ia32\8.0.0" />
+    <Folder Include="config\dll\native\win32\ia32\9.0.0" />
+    <Folder Include="config\dll\native\win32\x64" />
+    <Folder Include="config\dll\native\win32\x64\10.0.0" />
+    <Folder Include="config\dll\native\win32\x64\11.0.0" />
+    <Folder Include="config\dll\native\win32\x64\12.0.0" />
+    <Folder Include="config\dll\native\win32\x64\13.0.0" />
+    <Folder Include="config\dll\native\win32\x64\2.0.0" />
+    <Folder Include="config\dll\native\win32\x64\3.0.0" />
+    <Folder Include="config\dll\native\win32\x64\4.0.0" />
+    <Folder Include="config\dll\native\win32\x64\5.0.0" />
+    <Folder Include="config\dll\native\win32\x64\6.0.0" />
+    <Folder Include="config\dll\native\win32\x64\7.0.0" />
+    <Folder Include="config\dll\native\win32\x64\8.0.0" />
+    <Folder Include="config\dll\native\win32\x64\9.0.0" />
+    <Folder Include="config\dll\native_modules" />
+    <Folder Include="release" />
+    <Folder Include="release\app" />
+    <Folder Include="src" />
+    <Folder Include="src\__tests__" />
+    <Folder Include="src\main" />
+    <Folder Include="src\renderer" />
+    <Folder Include="src\renderer\Components" />
+    <Folder Include="src\renderer\Components\Buttons" />
+    <Folder Include="src\renderer\Components\Header" />
+    <Folder Include="src\renderer\Components\Links" />
+    <Folder Include="src\renderer\Components\Options" />
+    <Folder Include="src\renderer\scss" />
+    <Folder Include="src\renderer\View" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
+  <Target Name="_CopyWebApplication" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,12 @@
+{
+  "name": "unofficialcrusaderpatch-gui",
+  "version": "1.0.0-alpha",
+  "description": "Unofficial Crusader Patch GUI",
+  "main": "./dist/main/main.js",
+  "author": {
+    "name": "patel-nikhil",
+    "url": "https://github.com/patel-nikhil"
+  },
+  "dependencies": {},
+  "license": "MIT"
+}

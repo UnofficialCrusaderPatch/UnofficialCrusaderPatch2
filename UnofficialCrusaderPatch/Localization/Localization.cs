@@ -191,6 +191,20 @@ namespace UCP
         static int langIndex;
         public static int LanguageIndex => langIndex;
 
+        public static void Load(string language)
+        {
+            int index = 0;
+            for (int i = 0; i < translations.Count; i++)
+            {
+                if (translations[i].Ident.Equals(language))
+                {
+                    index = i;
+                    break;
+                }
+            }
+            Load(index);
+        }
+
         public static void Load(int index)
         {
             try
@@ -224,7 +238,7 @@ namespace UCP
 
             catch (Exception e)
             {
-                Debug.Error(e);
+                throw new Exception(e.Message);
             }
         }
     }

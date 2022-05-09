@@ -1,0 +1,1852 @@
+﻿[
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "o_fix_ladderclimb",
+    "modDescription": {
+        "Chinese": "修复士兵爬上云梯后遗失目的地bug",
+        "English": "Fix ladder climbing destination bug",
+        "German": "Behebt Befehlsverlust beim Klettern auf Leitern",
+        "Hungarian": "Létramászás hibajavítás",
+        "Polish": "Napraw błąd związany z wchodzeniem po drabinie",
+        "Russian": "Исправить ошибку подъёма по лестнице"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_fix_ladderclimb",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "士兵现在爬上云梯后将会记住目的地，而不会被困在云梯上。",
+          "English": "Units will now remember their original destination after climbing a ladder, not getting stuck on the ladder.",
+          "German": "Einheiten klettern nicht mehr direkt zurück und vergessen auch nicht mehr ihr Ziel, nachdem sie eine Leiter erklommen haben.",
+          "Hungarian": "Az egységek mászás után nem felejtik el a számukra adott parancsot, és többé nem fognak lemászni miután már felmásztak.",
+          "Polish": "Jednostki nie będą już gubić się po wejściu na mury po drabinie i nie będą schodzić od razu na dół.",
+          "Russian": "Отряды больше не забывают о своем предназначении после восхождения на стену, и они больше не начнут подниматься или спускаться вниз сразу же после того, как они только что поднялись."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "u_fireballistafix",
+    "modDescription": {
+      "Chinese": "巨火弩正确攻击僧侣和隧道工",
+      "English": "Fire ballistae shoot monks and tunnelers",
+      "German": "Feuerballisten schießen auf Mönche und Tunnelgräber",
+      "Hungarian": "A tűzhajítógépek lőnek a szerzetesekre és az alagútásókra",
+      "Polish": "Balista ogniowa strzela do mnichów i kopaczy",
+      "Russian": "Огненные баллисты стреляют в монахов и тунелекопателей"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "u_fireballistafix",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "巨火弩将会自动攻击敌人的僧侣和隧道工。",
+          "English": "Fire ballistae automatically shoot at monks and tunnelers.",
+          "German": "Feuerballisten erkennen nun Mönche und Tunnelgräber als Feinde und schießen auf diese.",
+          "Hungarian": "A tűzhajítógépek most már ellenségként észlelik a szerzeteseket és az alagútásókat, mostantól lőnek rájuk.",
+          "Polish": "Balista ogniowa automatycznie strzela w mnichów i kopaczy.",
+          "Russian": "Огненные баллисты автоматически стреляют в монахов и тунелекопателей."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "ai_access",
+    "modDescription": {
+      "Chinese": "不拆除无通路建筑",
+      "English": "No demolishing of inaccessible buildings",
+      "German": "Kein Abreißen von unzugänglichen Gebäuden",
+      "Hungarian": "Az elérhetetlen épületek ne kerüljenek lerombolásra",
+      "Polish": "Brak niszczenia niedostępnych budynków",
+      "Russian": "Нет сноса недоступных зданий"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_access",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "ai会反复建造又拆除无通路但需要通路的建筑，打开此选项可以避免此问题。",
+          "English": "Prevents the AI from demolishing buildings without access. This should stop the AI from continuously demolishing and rebuilding buildings where no access is available.",
+          "German": "Verhindert, dass die KI Gebäude abreißt zu denen es keinen Zuweg gibt. Damit soll der Bug verhindert werden, bei dem manche KIs in ihren Burgen andauernd Gebäude abreißen und wieder aufbauen zu denen es keinen Weg gibt.",
+          "Hungarian": "Megakadályozza azt, hogy az MI lerombolja azt az épületet amihez nem lehet hozzáférni. Ezáltal kijavítható az a hiba, hogy az MI ne építse meg és rombolja le újra és újra mindig azt az épületet amihez nem tudnak eljutni.",
+          "Polish": "Ta opcja zapobiega niszczeniu budynków, do których nie ma dojścia. Dzięki temu Sztuczna Inteligencja przestanie ciągle niszczyć i odbudowywać budynki, do których nie da się dojść.",
+          "Russian": "Предотвращает AI от разрушения зданий без доступа. Это должно остановить AI непрерывного разрушения и восстановления зданий где нет доступа к ним."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "ai_defense",
+    "modDescription": {
+      "Chinese": "修复ai不会补充防守兵种",
+      "English": "Fix reinforcement of defense troops",
+      "German": "Verstärkung der Burgverteidigung fixen",
+      "Hungarian": "Várvédő egységek megerősítése kijavítva",
+      "Polish": "Usprawnione wysyłanie posiłków do obrony",
+      "Russian": "Исправляет подкрепление войск обороны AI"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_defense",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "当ai城墙防守部队出现减员时，如果城外防守部队仍然存在，那么ai将不会补充城墙防守部队。",
+          "English": "Fixes a bug which stopped the AI from reinforcing missing troops on walls and towers, as long as defensive patrols were still around.",
+          "German": "Fixt den Bug, der die KI davon abhielt, fehlende Truppen auf Wällen und Türmen zu verstärken solange noch Defensivpatrouillien vorhanden waren.",
+          "Hungarian": "Kijavítja azt a hibát, ami megakadályozza az MI-t abban, hogy a hiányzó egységekkel megerősítse a várfalat és a tornyot, ameddig rendelkezik még védekező-járőröző egységekkel.",
+          "Polish": "Naprawniono błąd, który uniemożliwiał SI dosyłanie brakujących jednostek na mury i wieże w momencie, gdy patrole defensywne były ciągle obecne.",
+          "Russian": "Исправлен баг, из-за которого AI не усиливал недостающие войска на стенах и башнях, пока оборонительные патрули все еще были вокруг."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "ai_tethers",
+    "modDescription": {
+      "Chinese": "防止ai牛栏堆积",
+      "English": "Disable ox tether spam",
+      "German": "Ochsenjoch-Spam deaktivieren",
+      "Hungarian": "Ökör karám spam deaktiválása",
+      "Polish": "Wyłącz niepotrzebne stawianie wołów pociągowych przez przeciwników komputerowych",
+      "Russian": "Отключит спам привязей"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_tethers",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "通常，ai会为每个新的采石场建筑一个新的牛栏，而不管已经存在多少牛栏。当采石场被反复摧毁时，会导致牛栏数量很多。打开此选项可以避免这种现象。",
+          "English": "Usually, the AI builds for each new stone quarry a new ox tether, independent of how many tether already exist. This can be disabled here, since it leads to ox tether spam if the AIs' quarries get destroyed repeatedly.",
+          "German": "Die KI baut normalerweise mit jedem neuen Steinbruch auch ein neues Ochsenjoch, unabhängig davon wie viele sie schon hat. Dies kann hier deaktiviert werden, da es zu Ochsenjoch-Spam führt, wenn die Steinbrüche der AI immer wieder zerstört werden.",
+          "Hungarian": "Az MI általában minden új kőfejtő építésekor épít egy új ökör karámot is attól függetlenül, hogy mennyi van neki. Ezt itt tudod deaktiválni, mert különben spammelni fogja az ökör karámokat, ha az MI kőfejtőjét mindig lerombolják.",
+          "Polish": "Zazwyczaj sztuczna inteligencja buduje dla każdego nowego kamieniołomu kolejne woły, niezależnie od tego, ile już postawiła wcześniej. Można to wyłączyć tutaj, ponieważ prowadzi to do spamu wołami pociągowymi, gdy kamieniołomy sztucznej inteligencji są wielokrotnie niszczone.",
+          "Russian": "Как правило, AI строит для каждой новой каменоломни новую привязь независимо от того сколько привязей уже существует. Здесь это можно отключить, так как это приводит к спаму если карьеры AI будут уничтожены повторно."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "ai_buywood",
+    "modDescription": {
+      "Chinese": "购买足够木头",
+      "English": "Buy enough wood",
+      "German": "Genügend Holz kaufen",
+      "Hungarian": "Elegendő fa vásárlása",
+      "Polish": "Kupuj wystarczającą ilość drewna",
+      "Russian": "Купить достаточно древесины"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_buywood",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "ai购买木头用于建筑时，将会购买2根额外的木头，防止刚购买的木头被工人拿走使得木头不足以建造目标建筑。",
+          "English": "To prevent thievish fletchers from stealing wood which the AI just bought for buildings, 2 extra wood will now be bought for each building.",
+          "German": "Damit Bogenmacher etc. nicht ständig gekauftes Bauholz wegschnappen, kauft die KI mit dieser Einstellung immer 2 Holz mehr als nötig für Gebäude.",
+          "Hungarian": "Ahhoz hogy az íjkészítők stb. ne vigyék el mindig a megvásárolt fát. Az MI ezzel a beállítással mindig 2 fával többet vesz, mint ami szükséges az épületek építéséhez.",
+          "Polish": "Aby uniemożliwić złodziejskim rzemieślnikom kradzież drewna, które gracz komputerowy właśnie kupił, aby postawić budynki, boty będą kupować o 2 deski więcej za każdym razem.",
+          "Russian": "Чтобы воры стрельники не могли украсть древесину которую АI только что купил для здания. 2 единицы дополнительной деревесины AI теперь будет покупать для каждого здания."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "ai_towerengines",
+    "modDescription": {
+      "Chinese": "解除ai的器械数量限制",
+      "English": "No limit for siege engines on towers",
+      "German": "Keine Grenze für Geräte auf Türmen",
+      "Hungarian": "Ne legyen korlátozás a tornyokon lévő szerkezeteknek",
+      "Polish": "Brak ograniczeń dla machin oblężniczych na wieżach",
+      "Russian": "Нет лимита на осадные машины на башнях"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_towerengines",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "在原版，每种器械ai最多只能放置3个，打开此选项可以解除此限制。",
+          "English": "Usually the AI only builds up to three mangonels and ballistae each on its towers. This limit can be lifted here.",
+          "German": "Normalerweise baut die KI maximal je drei Ballisten und Mangen. Dieses Limit wird hiermit aufgehoben.",
+          "Hungarian": "Általában az MI maximálisan 3 hajítógépet és kővetőgépet épít minden tornyára. Ezen beállítással ez a korlátozás megszűnik.",
+          "Polish": "Zazwyczaj sztuczna inteligencja buduje maksymalnie trzy mangonele i balisty na swoich wieżach. Ten limit można tutaj znieść.",
+          "Russian": "Обычно АI строит на своих башнях до трех мангонелей и баллист. Этот лимит можно снять здесь."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "ai_assaultswitch",
+    "modDescription": {
+      "Chinese": "进攻时不改变目标",
+      "English": "No AI target change during sieges",
+      "German": "Kein KI-Angriffszielwechsel während Belagerung",
+      "Hungarian": "Ostrom közben ne változtasson az MI támadási-célpontot",
+      "Polish": "Brak zmiany celu podczas oblężenia",
+      "Russian": "Нет изменения цели AI во время осады"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_assaultswitch",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "当ai进攻时，如果目标发生改变，将会改变已派出部队的目标，比如ai目标若是最弱的敌人，当ai已派出进攻部队时，如果最弱的敌人改变了，将会改变进攻部队的路径转而攻击新目标。打开这个选项可以防止这种现象的发生。已派出的部队不会中途改变目标。",
+          "English": "AI lords which attack the mightiest oder weakest enemy sometimes switch their target in the middle of an ongoing assault and send their troops to a different castle. This is prevented with this setting, as soon as the assault has started, i.e. during the troop gathering phase in front of a castle a change can still happen.",
+          "German": "KI-Lords die den mächtigsten oder schwächsten Gegner angreifen, hatten manchmal die Tendenz mitten in einem Angriff das Ziel zu wechseln, und ihre Truppen zu einer anderen Burg schicken. Mit dieser Einstellung, passiert das nicht mehr, sobald der Angriff begonnen hat, d.h. während des Sammelns vor der Burg kann ein Wechsel noch passieren.",
+          "Hungarian": "Azok az MI Lordok akik a legerősebbet vagy a leggyengébbet támadták meg, néha hajlamosak voltak a támadás közepén célpontot változtatni, és az egységeiket elküldeni a másik várhoz. Ezzel a beállítással, ez már nem fordul elő, mihelyst a támadást megkezdte, viszont a vár előtti egységek gyülekezésekor még előfordulhat, hogy célpontot vált.",
+          "Polish": "Przeciwnicy komputerowi, którzy atakują najlepszego albo najsłabszego wroga, czasami wysyłają swoich żołnierzy w trakcie oblężenia do innego zamku. Ta opcja to uniemożliwia, gdy atak już się rozpocznie. Jeżeli atak jeszcze się nie rozpoczął, np. w momencie zbierania armii przed zamkiem, zmiana może nastąpić.",
+          "Russian": "Лорды AI, которые иногда нападают на самого могущественного или самого слабого врага они переключают свою цель в середине продолжающегося нападения и отправляют свои войска в другой замок. Это предотвращается с помощью этой настройки, как только начался штурм, т. е. на этапе сбора войск перед замком, изменения все еще могут произойти."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "ai_rebuild",
+    "modDescription": {
+      "Chinese": "增强ai修复和建筑能力",
+      "English": "Improved AI repairs",
+      "German": "Verbessertes KI-Reparieren",
+      "Hungarian": "Kijavított MI javítások",
+      "Polish": "Ulepszona naprawa budynków przez graczy komputerowych",
+      "Russian": "Улучшенный ремонт AI"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_rebuild",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "打开后，ai将会在废墟中重建塔楼，修复微小损坏的城墙。工程师协会，隧道工协会，油锅被摧毁后，如果后半截仍然存在，打开后ai将可以正确重建。采石场被摧毁后，如果存放石头点仍然存在，打开后ai可以无视存放石头点放置建筑。",
+          "English": "The AI will repair tower ruins, slightly damaged walls, as well as destroyed engineer's and tunneler's guilds and oil smelters, of which the gathering place still exists. Furthermore, the AI can now build over the collection platform of quarries.",
+          "German": "Mit dieser Einstellung reparieren KI-Lords auch Turmruinen, leicht angeschlagene Mauern, sowie Baumeister-, Tunnelgilden und Ölkessel bei denen der Sammelplatz übergeblieben ist. Weiterhin kann die KI nun auch die Sammelstelle von Steinbrüchen überbauen.",
+          "Hungarian": "Ezzel a beállítással az MI Lordok megjavítják a toronyromokat is, enyhén megrongált várfalakat, továbbá mérnökök-, alagútásók céhet és olajfőző kunyhót ha a helyük megmaradt. Továbbá az MI most már képes építeni a kőfejtők helye felett is.",
+          "Polish": "Gracze komputerowi będą naprawiać ruiny wież, trochę zniszczone mury oraz zniszczone cechy inżynierów i kopaczy, a także kotły z olejem, których punkt zbiórki dalej istnieje. Dodatkowo gracze komputerowi mogą teraz budować na składach kamienia z kamieniołomów.",
+          "Russian": "AI будет ремонтировать руины башни, слегка поврежденные стены, а также уничтожит инженерные и туннельные гильдии и нефтеперерабатывающие платформы, место сбора которых все еще существует. Кроме того, AI теперь может строить на платформе сбора карьеров."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "ai_fix_laddermen_with_enclosed_keep",
+    "modDescription": {
+      "Chinese": "修复了ai在城堡无通路时不使用云梯兵的错误",
+      "English": "Fix AI not using laddermen if they are enclosed",
+      "German": "Korrigiert Leiternutzung",
+      "Hungarian": "Javított létrahasználat",
+      "Polish": "Napraw błąd, który powoduje, że komputer nie korzysta z drabiniarzy, gdy ma otoczoną siedzibę",
+      "Russian": "Исправить AI, не использующий лестниц, если они есть в наличии."
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_fix_laddermen_with_enclosed_keep",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "当ai(尤其是蛇)在自己城堡无通路到外界时，不再会停止使用云梯兵。",
+          "English": "AI (notably Snake) no longer stops using Laddermen with their sieging units if their keep is enclosed.",
+          "German": "Mit diesem Fix können Belagerungseinheiten von KIs, deren Bergfried abgeschlossen ist, weiterhin die Leitern der Leiterträger nutzen (betrifft vanilla nur die Schlange).",
+          "Hungarian": "Ezzel a hibajavítással azok az MI-k, akiknek a vártornyuk körül van zárva, továbbra is tudják az ostromegységeik használni a létrahordozók létráit (az eredeti játékban ez csak a Kígyót érinti).",
+          "Polish": "Komputer (głównie Wąż) będzie od teraz korzystał z drabiniarzy, gdy jego siedziba zostanie otoczona.",
+          "Russian": "AI (в частности, Змея) больше не прекращает использование Лестниц с Осадными орудиями, если они находится в замкнутом пространстве."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "u_fix_lord_animation_stuck_movement",
+    "modDescription": {
+      "Chinese": "修正领主摧毁建筑物后的人物动画",
+      "English": "Reset lord animation after destroying buildings",
+      "German": "Setzt die Lordanimation nach Zerstörung von Gebäuden zurück",
+      "Hungarian": "Lord animáció visszaállítása az épületek lerombolása után",
+      "Polish": "Zresetuj animację lorda po zniszczeniu budynku",
+      "Russian": "Исправляет анимацию замирания Лорда"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "u_fix_lord_animation_stuck_movement",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "修正了领主的姿势，当领主停止移动或者摧毁一个建筑物后，他将会站立，而不是被卡在地上。",
+          "English": "Reset the pose of the lord after it stops moving or destroys a building into the upright position. Usually it would get stuck bend down to the ground.",
+          "German": "Der Lord wechselt mit dieser Änderung nach dem Zerstören eines Gebäudes in seine Ausgangsposition. Bisher blieb er in der Zerstöranimation stecken.",
+          "Hungarian": "Ezzel a változtatással egy épület lerombolása után a Lord a kiindulási animációra tér vissza. Mostantól nem marad a leromboló animációban.",
+          "Polish": "Opcja pozwala zresetować animację lorda, gdy każemu mu zniszczyć budynek. Zazwyczaj po wykonaniu zadania stał w dziwnej pozie.",
+          "Russian": "Исправляет анимацию замирания Лорда когда тот стоит, либо когда разрушает здание."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "u_fix_applefarm_blocking",
+    "modDescription": {
+      "Chinese": "修复苹果园工人被堵路",
+      "English": "Fix apple farm worker getting blocked",
+      "German": "Behebt das Blockieren des Apfelfarmers",
+      "Hungarian": "Almáskert blokkolása javítás",
+      "Polish": "Napraw blokowanie sadów jabłoni",
+      "Russian": "Исправить блокировку яблочных ферм"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "u_fix_applefarm_blocking",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "当农场的左上方被建筑堵住时，将不再阻止苹果园工人进入苹果园。",
+          "English": "Apple farmers can no longer be blocked by placing buildings at the top left side of the farm.",
+          "German": "Apfelfarmer werden nicht länger inaktiv, wenn der Pfad links oben direkt neben der Farm blockiert wird.",
+          "Hungarian": "Az almatermesztő nem várakozik, ha az almáskert bal felső részénél lévő utat blokkolja valami.",
+          "Polish": "Farmerzy nie będą już blokowani, gdy postawi się budynek w lewej, górnej stronie farmy.",
+          "Russian": "Яблочные фермеры больше нельзя блокировать, размещая здания в верхней левой части фермы."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "u_tanner_fix",
+    "modDescription": {
+      "Chinese": "修复所有皮革工人获取同一头牛",
+      "English": "Fix tanners getting all the same cow",
+      "German": "Gerberinnen holen sich unterschiedliche Kühe",
+      "Hungarian": "A tímárok ugyanazt a tehenet választják javítás",
+      "Polish": "Zwiększ wydajność garbarzy",
+      "Russian": "Исправляет кожевников которые получают одну и ту же корову"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "u_tanner_fix",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "现在皮革工人到达牧场后，若发现想要牵走的牛已被其他工人牵去，会转而去牵另外一头牛，而不是直接回到作坊。极大提高皮革作坊的效率。",
+          "English": "Tanners will no longer return without a cow when another tanner took their target cow. They will now instead stand around a bit and then get another one.",
+          "German": "Gerberinnen kehren nicht länger ohne Kuh zurück, falls ihre anvisierte Kuh bereits weg ist. Sie warten nun, bis sie eine andere Kuh mitnehmen können.",
+          "Hungarian": "A tímárok mostantól nem fognak tehén nélkül visszatérni, ha egy másik tímár már elvitte az általuk kiválasztott tehenet. Mostantól várakoznak egy ideig és elvisznek egy másikat.",
+          "Polish": "Garbarze nie będą już wracać do budynku, gdy ktoś inny zabrał krowę, po którą szli. Zamiast tego postoją chwilę w miejscu i wyruszą po kolejną krowę.",
+          "Russian": "Кожевники больше не вернутся без коровы, когда другой кожевник забрал их целевую корову. Вместо этого они немного подождут, а потом возьмут еще одну корову."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "o_fix_fletcher_bug",
+    "modDescription": {
+      "Chinese": "修复弓弩工人的路线",
+      "English": "Fix fletcher pathing",
+      "German": "Entfernt den Extraweg des Pfeilmachers zur Werkstatt",
+      "Hungarian": "Íjkészítő hibajavítás",
+      "Polish": "Napraw błąd łuczarza",
+      "Russian": "Исправляет баг стрельника"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_fix_fletcher_bug",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "现在弓弩工人在武器库放下弓弩后会直接去储存区拿原料，而不是先返回作坊。",
+          "English": "Fixes the behaviour where fletchers go back to the workplace after depositing the bow/crossbow instead of going straight to the stockpile.",
+          "German": "Passt das Verhalten des Pfeilmachers an andere Waffenproduzenten an. Nach Abgabe seines Gutes geht er nun direkt zum Vorratslager, statt erneut zur Werkstatt zurückzukehren.",
+          "Hungarian": "Kijavítja az íjkészítő azon viselkedését, miszerint visszatér a munkahelyére ha leszállított egy íjat/íjpuskát, ahelyett hogy egyenesen a raktárhoz menne.",
+          "Polish": "Naprawia błąd, który powoduje, że łuczarz idzie do swojego budynku po odniesieniu broni do zbrojowni. Zamiast tego będzie teraz szedł od razu do składu zapasów po deski.",
+          "Russian": "Исправление поведения, при котором стрельник возвращается на рабочее место после сдачи на хранение лука/арбалета вместо того, чтобы идти прямо на склад."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "ai_fix_crusader_archers_pitch",
+    "modDescription": {
+      "Chinese": "修复AI的欧洲弓箭手不会点燃沥青",
+      "English": "Fix AI's crusader archers not lighting pitch",
+      "German": "Europäische Bogenschützen der KI entzünden Pech.",
+      "Hungarian": "MI keresztes íjász nem gyújtja be az olajosárkot javítás",
+      "Polish": "Napraw błąd z brakiem podpalania smoły przez łuczników europejskich",
+      "Russian": "Исправляет европейских лучников которые не стреляют в нефтяной ров"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_fix_crusader_archers_pitch",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "AI的欧洲弓箭手可以和阿拉伯弓箭手一样点燃沥青。",
+          "English": "AI's European archers light pitch the same way arabian archers do, defending against enemy units.",
+          "German": "Bisher waren nur Arabische Bogenschützen der KIs in der Lage Pechgraben mit Feuerpfeilen zu entzünden; nun können dies auch Europäischen Bogenschützen.",
+          "Hungarian": "Az MI keresztes íjász most már begyújtja az olajosárkot, úgy mint az arab íjász amikor ellenséges egység lép az olajosárokra.",
+          "Polish": "Łucznicy europejscy zarządzani przez SI nie podpalali smoły. Ta opcja naprawia ten błąd.",
+          "Russian": "Исправляет, что (AI) европейские лучники не зажигают рвы, как арабские лучники, когда на них попадают вражеские юниты."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "o_fix_baker_disappear",
+    "modDescription": {
+      "Chinese": "修复面包工人消失",
+      "English": "Fix bakers despawning",
+      "German": "Behebt das Verschwinden von Bäckern",
+      "Hungarian": "Eltűnő pék hibajavítás",
+      "Polish": "Napraw błąd ze znikającym piekarzem",
+      "Russian": "Исправить ошибку исчезновения пекаря"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_fix_baker_disappear",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "当面包工人到达储存区却没有面粉时，不再会消失。",
+          "English": "Bakers no longer disappear when they don't find flour at their targeted stockpile.",
+          "German": "Behebt den Fehler, der Bäcker verschwinden ließ, wenn sie kein Mehl am angestrebten Platz im Vorratslager vorfinden konnten.",
+          "Hungarian": "Kijavítja azt a hibát, amikor a pék eltűnik ha a raktárban nem találja meg a kiválasztott helyen a lisztet.",
+          "Polish": "Piekarze nie będą znikać, gdy dojdą do składu zapasów, w którym nie ma już mąki.",
+          "Russian": "Исправляет ошибку, при которой пекарни исчезали бы, если бы пекари не нашли муку на складе запасов."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Bugfixes",
+    "modIdentifier": "o_fix_moat_digging_unit_disappearing",
+    "modDescription": {
+      "Chinese": "修复挖河士兵消失",
+      "English": "Fix despawning of digging units",
+      "German": "Behebt das Verschwinden von Buddeleinheiten.",
+      "Hungarian": "Eltűnő árokásó egység hibajavítás",
+      "Polish": "Napraw błąd ze znikającymi jednostkami kopiącymi fosę",
+      "Russian": "Исправляет исчезания юнитов при копании рва"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_fix_moat_digging_unit_disappearing",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "挖河士兵在挖护城河时不再会随机消失。注意的是，当挖河士兵正好位于无通路地区时，如果你对其下达命令，他仍会消失！",
+          "English": "Fixes the bug where moat digging units would disappear while digging. Note that they can still disappear if you order them to move while standing on unwalkable terrain!",
+          "German": "Behebt das Verschwinden von Truppen, die mit dem Ausheben von Burggräben beschäftigt sind. Diese verschwinden allerdings weiterhin, falls diese neue Befehle bekommen und zeitgleich auf unbegehbarem Terrain stehen.",
+          "Hungarian": "Kijavítja azt a hibát, amikor árokásás közben véletlenszerűen eltűnik az árkot ásó egység. Megjegyzés: Az egység még mindig eltűnhet, ha árokásás közben elküldöd máshova és éppen egy nem járható helyen van!",
+          "Polish": "Naprawia błąd, który powodował losowe znikanie jednostek kopiących fosę. Uwaga: jednostki mogą dalej znikać, jeśli każesz im przemieścić się w momencie, gdy stoją w miejscu, z którego nie da się normalnie ruszyć!",
+          "Russian": "Исправлена ошибка, при которой копатели рва исчезали случайно во время раскопок. Обратите внимание, что они все равно могут исчезнуть, если вы прикажете им двигаться во время раскопок, и они случайно встанут на непешеходную плитку!"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "AILords",
+    "modIdentifier": "ai_housing",
+    "modDescription": {
+      "Chinese": "AI建造民房更加智能",
+      "English": "Let the AI build houses smarter",
+      "German": "Intelligenteres Errichten und Abreißen von Häusern",
+      "Hungarian": "Házak okosabb építése",
+      "Polish": "Mądrzejsze budowanie domów przez boty",
+      "Russian": "Настройка решения AI о строительстве и удалении домов"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "build_housing",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "你可以设定AI的民房数量的浮动值，AI建造民房时，会额外建造该数值的民房，这样直到下次人口不足之前，AI都不需要建造民房；同样的，当AI工作人口减少时，AI也会最多保留该数值的超出工作人口部分的民房。这使得AI无需频繁的拆建民房，浪费木材资源，尤其是人口频繁波动时。",
+          "English": "Difference between current and maximum population, above which the AI stops building houses. This is 0 in vanilla. This also disables deleting of houses for the AI.",
+          "German": "Die Differenz aus aktueller und maximal möglicher Bevölkerung, ab der KIs keine Häuser mehr bauen. In Vanilla ist diese 0. Zudem deaktiviert diese Option das Abreißen von Häusern für KIs.",
+          "Hungarian": "A jelenlegi és a maximális népességszám közötti különbség, amely felett az MI nem épít több házat. Az eredeti játékban ez a szám 0. Ha ez a beállítás be van jelölve, akkor az MI nem rombolja le a házakat.",
+          "Polish": "Różnica między obecną a maksymalną populacją, po której bot przestaje stawiać domy. W oryginale jest to 0. Ta opcja wyłącza również usuwanie domów przez bota.",
+          "Russian": "Количество дополнительного доступного жилья до того, как AI прекратит строительство домов"
+        },
+        "selectionType": "slider",
+        "selectionParameters": {
+          "minimum": 0,
+          "maximum": 100,
+          "interval": 1,
+          "default": 0,
+          "suggested": 5
+        }
+      },
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "campfire_housing",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "此处设置AI篝火处的空闲农民数量，当空闲农民数量多于此数值时，AI会停止建造民房。这个功能同时会禁止AI拆除民房。",
+          "English": "Number of idle peasants at the campfire before the AI stops building houses. This also disables deleting of houses for the AI.",
+          "German": "Wenn mehr als diese Anzahl an freien Bauern am Lagerfeuer sitzen, baut die KI keine Häuser mehr. Zudem deaktiviert diese Option das Abreißen von Häusern für KIs.",
+          "Hungarian": "Parasztok száma a tábortűznél, mielőtt az MI nem épít több házat. Ha ez a beállítás be van jelölve, akkor az MI nem rombolja le a házakat.",
+          "Polish": "Ilość wolnych chłopów przy ognisku, zanim bot przestanie stawiać domy. Ta opcja wyłącza również usuwanie domów przez bota.",
+          "Russian": "Количество крестьян у костра перед тем, как AI остановит строительство домов."
+        },
+        "selectionType": "slider",
+        "selectionParameters": {
+          "minimum": 0,
+          "maximum": 25,
+          "interval": 1,
+          "default": 5,
+          "suggested": 10
+        }
+      },
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "delete_housing",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "禁止AI拆除民房",
+          "English": "Disable the AI's ability to delete houses.",
+          "German": "Kein Abreißen von Häusern der KIs",
+          "Hungarian": "Az MI ne rombolja le a házakat.",
+          "Polish": "Wyłącz usuwanie domów.",
+          "Russian": "Отключает способность AI удалять дома."
+        },
+        "detailedDescription": {
+          "Chinese": "打开这个功能，AI将不会拆除民房。",
+          "English": "When this option is selected the AI will never delete houses.",
+          "German": "Mit dieser Option reißen KIs keine Häuser mehr ab.",
+          "Hungarian": "Ha ez a beállítás be van jelölve, akkor az MI soha nem rombolja le a házakat.",
+          "Polish": "Kiedy ta opcja jest zaznaczona, boty nie będą usuwać domów.",
+          "Russian": "Когда эта опция выбрана, AI никогда не будет удалять дома"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "AILords",
+    "modIdentifier": "ai_recruitstate_initialtimer",
+    "modDescription": {
+      "Chinese": "AI在初期阶段只招募防御士兵",
+      "English": "Set AIs initial time until they recruit by the AIC parameters",
+      "German": "Setzt den Zeitpunkt, ab dem KIs anhand der AIC rekrutieren",
+      "Hungarian": "Az MI a megadott ideig az AIC paraméterek alapján toborozzon",
+      "Polish": "Ustaw botom czas do rekrutacji jednostek zgodnie z parametrami AIC",
+      "Russian": "Настройка первоначального времени вербовки AI в защиту"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_recruitstate_initialtimervalue",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "AI在游戏开始起的以下时间内只会招募防御士兵，除非防御士兵数量已达上限。",
+          "English": "Set this value to number of months for which the AI will exclusively recruit defence troops, unless it has already filled up its defence total",
+          "German": "Anzahl an Monaten, ab der die KI anhand der in der AIC festgelegten Rekrutierungswahrscheinlichkeiten rekrutiert. Bis dahin rekrutiert sie ausschließlich Defensivtruppen bis diese vollständig sind und daraufhin Angriffstruppen.",
+          "Hungarian": "Az értéknek add meg azon hónapok számát, amikor az MI az AIC fájlban megadott toborzási sebeséggel toboroz kizárólag védekező egységeket, ha már teljesen megerősítette a védelmét, akkor támadó egységeket fog toborozni",
+          "Polish": "Można tu ustawić liczbę miesięcy, do której boty będą rekrutować wyłącznie jednostki do obrony, chyba że wypełnili już limit żołnierzy na zamku",
+          "Russian": "Установите это значение на количество месяцев, в течение которых AI будет вербовать исключительно войска обороны, если только он уже не заполнил всю оборону."
+        },
+        "selectionType": "slider",
+        "selectionParameters": {
+          "minimum": 0,
+          "maximum": 30,
+          "interval": 1,
+          "default": 6,
+          "suggested": 0
+        }
+      }
+    ]
+  },
+  {
+    "modType": "AILords",
+    "modIdentifier": "ai_attacklimit",
+    "modDescription": {
+      "Chinese": "调整ai的进攻部队数量限制",
+      "English": "Increase of the attacking troops limit of the AIs",
+      "German": "Erhöhung des Angriffstruppenlimits der KIs",
+      "Hungarian": "Megnövelt támadó egység limit az MI Lordoknak",
+      "Polish": "Zwiększenie limitu ataku przeciwników komputerowych",
+      "Russian": "Увеличение предела атакующих войск AI"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_attacklimit",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "ai的进攻部队的数量会随时间而增加，额外增加的部队数量上限在原版是200。你可以在此处修改这个值。",
+          "English": "The number of additional units which are added after the first attack is limited to 200 in Vanilla. Here you can change this limit.",
+          "German": "In Vanilla is das Limit der zusätzlichen Truppen, die nach dem ersten Angriff dazukommen auf 200 begrenzt. Hier kann diese Grenze verändert werden.",
+          "Hungarian": "Az eredeti játékban a további egységek limitje, akik az első támadás után csatlakoznak 200-ra van korlátozva. Itt tudod megváltoztatni ezt a korlátozást.",
+          "Polish": "Liczba dodatkowych jednostek dodawanych po pierwszym ataku jest ograniczona do 200 w oryginalnej grze. Tutaj możesz zmienić ten limit.",
+          "Russian": "Количество дополнительных единиц, которые добавляются после первой атаки в Ваниле - до 200. Здесь вы можете изменить этот предел."
+        },
+        "selectionType": "slider",
+        "selectionParameters": {
+          "minimum": 0,
+          "maximum": 3000,
+          "interval": 50,
+          "default": 200,
+          "suggested": 500
+        }
+      }
+    ]
+  },
+  {
+    "modType": "AILords",
+    "modIdentifier": "ai_attackwave",
+    "modDescription": {
+      "Chinese": "提升ai的进攻",
+      "English": "Improve attack waves",
+      "German": "Angriffswellen verbessern",
+      "Hungarian": "Támadási hullámok feljavítása",
+      "Polish": "Popraw fale ataków",
+      "Russian": "Улучшение волны атаки"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_attackwave",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "在原版中，ai在进攻时，只会派出能够得着城墙的数量的士兵，比如说一圈城堡有50格城墙，那么只有50个人可以在不重叠的情况下砍城墙，此时哪怕有100名士兵集结在敌人城堡附近，也只会派出50人前去攻击城堡，打开此选项后将可以避免此现象。并且，打开此选项后，ai的士兵将会主动攻击城堡建筑和经济建筑。此外，ai将会派出更多的士兵去攻击敌人的领主。",
+          "English": "The AI in an attack in vanilla only sends as many troops at once as there are wall parts reachable. This causes units to drop in in small waves when the target castle has a lot of buildings directly at its walls.This option makes units also attack civil and fortification buildings, as well as wall parts which are already being attacked by one unit. Moreover,the AI sends more troops to the enemy lord as soon as it detects a breach.",
+          "German": "In Vanilla schickt die KI bei einem Angriff immer nur so viele Einheiten auf einmal los wie Mauernstücke erreichbar sind. Bei Burgen die mit Gebäuden umbaut sind greifen die Einheiten dadurch nur tröpfchenweise an.Durch die Aktivierung dieser Option greifen Einheiten auch Gebäude und Befestigungsanlagen an, sowie Mauerstücke die bereits von einem Angreifer besetzt sind. Außerdem schickt die KI jetzt auch mehr Truppen auf den gegnerischen Bergfried, sobald sie eine Bresche erkennt.",
+          "Hungarian": "Az eredeti játékban az MI mindig csak annyi egységet küld el egyszerre amennyi elérhető várfal van. Azok a várak amik épületekkel vannak körülépítve, azokat az egységek csak elvétve támadják meg. Ezzel a beállítással az egységek az épületeket és az ostromsátrakat is megtámadják illetve azt a várfalat is amit már egy másik támadó egység rombol. Továbbá az MI mostantól több egységet küld az ellenséges vártoronyra, amint észrevesz egy oda vezető utat.",
+          "Polish": "W oryginalnej grze sztuczna inteligencja wysyła tylko tyle żołnierzy za jednym razem, ile jest wolnych kawałków murów. Powoduje to, że jednostki poruszają się w małych grupach, gdy atakowany zamek ma wiele budynków bezpośrednio przy murach.Ta opcja sprawia, że żołnierze atakują również budynki cywilne i fortyfikacyjne, a także te części murów, które są już atakowane przez inną jednostkę. DodatkowoSI wysyła więcej jednostek do wrogiego lorda, gdy przełamie mury.",
+          "Russian": "AI в атаке в ванили посылает сразу столько же войск, как и тогда когда стены целые. Это заставляет единицы умирать в маленьких волнахкогда у целевого замка много зданий прямо у его стен. Этот вариант позволяет подразделениям атаковать гражданские и фортификационные здания, а такжестены которые уже атакованы одной единицей. Более того AI посылает больше войск к вражескому лорду, как только обнаруживает что стена разрушена."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "AILords",
+    "modIdentifier": "ai_attacktarget",
+    "modDescription": {
+      "Chinese": "设置ai的目标敌人",
+      "English": "Set AI attack target",
+      "German": "AI-Angriffsziel einstellen",
+      "Hungarian": "MI támadási-célpont beállítása",
+      "Polish": "Ustaw cel ataku graczy komputerowych",
+      "Russian": "Установить цель атаки AI"
+    },
+    "detailedDescription": {
+      "Chinese": "该选项可以给所有ai设置相同的目标选择。",
+      "English": "With this setting, all AI lords will chose their next attack target in the same way. This prevents troops switching targets during a castle assault as well as sending them past other enemies' castles to gather.",
+      "German": "Mit dieser Einstellung suchen sich die KI-Lords alle auf die selbe Weise,das Ziel für ihren nächsten Angriff. Dies verhindert, dass die Truppen mittem im laufenden Angriff umschwenken oder an Gegnerburgen vorbeigeschickt werden zum Sammeln.",
+      "Hungarian": "Ezzel a beállítással az MI Lordok a saját módjukon keresik meg a célpontot a következő támadásukhoz. Ez megakadályozza azt, hogy az egységek támadás közben célpontot változtassanak vagy az MI ne a másik ellenséges várhoz küldje gyülekezni a seregét.",
+      "Polish": "Dzięki tej opcji gracze komputerowi będą zawsze wybierać ten sam cel ataku. Dzięki temu oddziały nie rozchodzą się podczas oblężenia zamku, ani nie giną z powodu przechodzenia obok zamku wroga, którego nie atakują w danej chwili.",
+      "Russian": "С этим параметром все лорды AI выберут свою следующую цель атаки. Это предотвращает переключение войск во время штурма замка, а также отправку их мимо замков других врагов."
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_attacktarget",
+        "defaultValue": "false",
+        "description": {},
+        "selectionType": "radio",
+        "selectionParameters": {
+          "options": [ 
+            {
+              "type": "string",
+              "value": "ai_attacktarget_nearest",
+              "description": {
+                "Chinese": "最近的敌人",
+                "English": "Nearest enemy",
+                "German": "Nahegelegenster Gegner",
+                "Hungarian": "A legközelebbi ellenség",
+                "Polish": "Najbliższy przeciwnik",
+                "Russian": "Ближайший враг"
+              }  
+            },
+            {
+              "type": "string",
+              "value": "ai_attacktarget_richest",
+              "description": {
+                "Chinese": "最富有的敌人",
+                "English": "Richest Enemy",
+                "German": "Reichster Gegner",
+                "Hungarian": "A leggazdagabb ellenség",
+                "Polish": "Najbogatszy przeciwnik",
+                "Russian": "Богатый враг"
+              }  
+            },
+            {
+              "type": "string",
+              "value": "ai_attacktarget_weakest",
+              "description": {
+                "Chinese": "最弱的敌人",
+                "English": "Weakest Enemy",
+                "German": "Schwächster Gegner",
+                "Hungarian": "A leggyengébb ellenség",
+                "Polish": "Najsłabszy przeciwnik",
+                "Russian": "Слабый враг"
+              }  
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "modType": "AILords",
+    "modIdentifier": "ai_nosleep",
+    "modDescription": {
+      "Chinese": "资源不足时ai不再休眠建筑",
+      "English": "Disable sleeping mode for lack of resources",
+      "German": "Schlafenlegen bei Rohstoffmangel deaktivieren",
+      "Hungarian": "Ha nincs elég erőforrás, szünetel a munka deaktiválása",
+      "Polish": "Wyłącz usypianie budynków z powodu braku zasobów",
+      "Russian": "Отключить спящий режим из-за нехватки ресурсов"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_nosleep",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "ai通常会将正在生产中的建筑休眠，因为有部分建筑缺乏原料，哪怕原料正在运回的路上，打开此选项可以防止ai将建筑休眠。",
+          "English": "The AI usually puts its processing buildings to sleep, as soon as the needed resource is missing. This is done without the regard for losing products which are just on the way f.e. to the weapon chamber.This feature can be completely disabled here.",
+          "German": "Normalerweise legt die KI ihre Verarbeitungsgebäude schlafen, sobald der nötige Rohstoff nicht mehr im Lager vorhanden ist. Dabei wird keine Rücksicht genommen ob Produkte verloren gehen die z.B. gerade zur Waffenkammer gebracht werden. Diese Funktion kann hier komplett deaktiviert werden.",
+          "Hungarian": "Általában az MI szünetelteti a munkát az ipari épületeinél, ha a szükséges erőforrás már nem áll rendelkezésére a raktárban. Eközben a termék kárba veszik amit pl. éppen a fegyverraktárba visznek. Ezt a funkciót itt teljesen ki lehet kapcsolni.",
+          "Polish": "Sztuczna inteligencja zwykle usypia budynki produkcyjne, gdy tylko brakuje wymaganego zasobu. Odbywa się to bez względu na to, czy straci produkty, które są już w drodze, np. do zbrojowni.Tę funkcję można tutaj całkowicie wyłączyć.",
+          "Russian": "AI обычно ставит свои обрабатывающие здания в сон поскольку необходимый ресурс отсутствует.Это делается без учета потери продуктов, и оружия которые находятся на пути в Оружейную.Эта функция может быть полностью отключена здесь."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "AILords",
+    "modIdentifier": "ai_demolish",
+    "modDescription": {
+      "Chinese": "停用ai拆毁以下类型建筑来获取资金",
+      "English": "Deactivate demolishing for money of the AI lords",
+      "German": "Einreißen für Geld der KI-Lords deaktivieren",
+      "Hungarian": "Az MI Lord lerombol mindent hogy pénzhez jusson deaktiválása",
+      "Polish": "Dezaktywuj burzenie budynków dla pieniędzy przez przeciwników komputerowych",
+      "Russian": "Деактивировать снос за деньги AI Лордов"
+    },
+    "detailedDescription": {
+      "Chinese": "如果ai感受到了压力，他会通过拆毁城堡建筑或者经济建筑的方式来快速获取资金这在有时是没有必要的，你可以在此处取消这个行为。.",
+      "English": "If the AI feels pressured, it likes to demolishes its economy or fortification buildings to get quick money for troops. This feature sometimes seems to be triggered without any visible reason and thus can be disabled here.",
+      "German": "Wenn die KI sich bedrängt fühlt und schnell an Geld für Truppen kommen will, reißt sie gerne mal ihre komplette Wirtschaft oder Befestigungsanlagen ein. Manchmal wird dieses Feature aber auch völlig ohne scheinbaren Grund ausgelöst und kann darum hier ausgestellt werden.",
+      "Hungarian": "Ha az MI Lord sarokba szorítva érzi magát és gyorsan pénzt akar szerezni az egységekhez, előszeretettel rombolja le a teljes iparát vagy várépületeit. Néha ez az esemény láthatólag minden indok nélkül megtörténik és emiatt itt ki tudod kapcsolni.",
+      "Polish": "Jeśli przeciwnik komputerowy czuje presję, lubi burzyć gospodarkę lub budynki fortyfikacyjne, aby uzyskać pieniądze w celu rekrutacji żołnierzy. Ta funkcja czasami wydaje się być uruchamiana bez widocznego powodu i dlatego można to tutaj wyłączyć.",
+      "Russian": "Если AI чуствует прессинг, он начинает разрушать свою экономику или фортификационные здания, чтобы получить быстрые деньги для сбора войск."
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_demolish_walls",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "城堡建筑",
+          "English": "fortification buildings",
+          "German": "Befestigungsanlagen",
+          "Hungarian": "Várépületek",
+          "Polish": "fortyfikacje obronne",
+          "Russian": "фортификационные сооружения"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      },
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_demolish_trapped",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "城堡与外界隔绝",
+          "English": "If enclosed",
+          "German": "Falls eingeschlossen",
+          "Hungarian": "Ha bezárva",
+          "Polish": "Jeśli siedziba jest otoczona",
+          "Russian": "Если приложено"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      },
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_demolish_eco",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "经济建筑",
+          "English": "econonmy buildings",
+          "German": "Wirtschaftsgebäude",
+          "Hungarian": "Ipari épületek",
+          "Polish": "budynki ekonomiczne",
+          "Russian": "экономические сооружения"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "AILords",
+    "modIdentifier": "ai_addattack",
+    "modDescription": {
+      "Chinese": "调整ai每波进攻额外增加的兵力",
+      "English": "Increase of the rate of additional attack troops",
+      "German": "Erhöhung der Rate von zusätzlichen Angriffstruppen",
+      "Hungarian": "Megnövelt további támadó egységek mértéke",
+      "Polish": "Zwiększenie liczby dodatkowych jednostek w kolejnych atakach SI",
+      "Russian": "Увеличение скорости дополнительных атакующих войск"
+    },
+    "modSelectionRule": "1|2",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_addattack",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "在原版，ai每波进攻都会额外增加5的兵力，这个同时生效于所有ai的数值可以在此处改变。",
+          "English": "In Vanilla the attack troop number is increased after each attack by 5 units on average. This value is the same for all AI lords and can be changed here.",
+          "German": "In Vanilla wird nach jedem Angriff die Truppenzahl für den nächsten Angriff durchschnittlich um 5 Einheiten erhöht. Dieser Wert ist für alle KI-Lords gleich und kann hier geändert werden.",
+          "Hungarian": "Az eredeti játékban minden egyes támadás után az egységek száma a következő támadáskor átlagosan 5 egységgel lesz megnövelve. Ez az érték minden MI Lordnak ugyanannyi és itt tudod megváltoztatni.",
+          "Polish": "W oryginalnej grze liczba żołnierzy wzrasta po każdym ataku średnio o 5 jednostek. Ta wartość jest taka sama dla wszystkich przeciwników komputerowych i można ją zmienić tutaj.",
+          "Russian": "В Ваниле количество единиц атаки увеличивается на 5 единиц в среднем. Это значение для всех здесь."
+        },
+        "selectionType": "slider",
+        "selectionParameters": {
+          "minimum": 0,
+          "maximum": 250,
+          "interval": 1,
+          "default": 5,
+          "suggested": 12
+        }
+      },
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_addattack_alt",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "或者，每波额外增加的兵力可以和ai初次进攻的兵力有关，对于不同ai来说，初次进攻兵力可以是不同的，因此这个选项可以使不同ai的进攻士兵增速不同。举例: 倍率 = 0.5苏丹从第一波开始的进攻士兵数量 = 10, 15, 20, 25, ...萨拉丁从第一波开始的进攻士兵数量 = 50, 75, 100, 125, ...",
+          "English": "Alternatively, the additional troop count can be made dependent on the troop count of the first attack. Since this value is different for each AI, the following attacks will also scale, instead of increasing by the same value for each AI lord.Example: Scale factor = 0.5Sultan's attack troops = 10, 15, 20, 25, ...Saladin's attack troops = 50, 75, 100, 125, ...",
+          "German": "Alternativ kann hier die hinzukommende Truppenanzahl von der Truppenstärke des ersten Angriffs abhängig gemacht werden. Da jede KI unterschiedliche Anzahlen für den Erstangriff hat, werden somit auch folgende Angriffe skalieren, anstatt für jede KI gleich anzusteigen.Beispiel: Skalierungsfaktor = 0,5Sultans Angriffszahlen = 10, 15, 20, 25, ...Saladins Angriffszahlen = 50, 75, 100, 125, ...",
+          "Hungarian": "Alternatív megoldásként, a további csatlakozó egységek számát az első támadás erősségétől függetlenné lehet tenni. De mivel minden MI Lord különböző számú egységet használ az első támadásnál, ezzel együtt a következő támadások is skálázódnak ahelyett, hogy minden MI Lordnak ugyanaz az értéke lenne.Például: Skálázási faktor = 0,5Szultán támadásainak száma = 10, 15, 20, 25, ...Szaladin támadásainak száma = 50, 75, 100, 125, ...",
+          "Polish": "Ewentualnie dodatkowa liczba żołnierzy może być uzależniona od liczby jednostek z pierwszego ataku. Ponieważ ta wartość jest inna dla każdego przeciwnika komputerowego, następne ataki będą zmieniać rozmiar zależnie od tej początkowej wartości.Przykład: współczynnik zmiany rozmiaru = 0,5Ataki wysyłane przez Sułtana = 10, 15, 20, 25, ...Ataki wysyłane przez Saladyna = 50, 75, 100, 125, ...",
+          "Russian": "В качестве альтернативы, дополнительное количество войск может быть выполнено в зависимости от число войск первой атаки. Поскольку это значение отличается для каждого AI следующие атаки будут масштабироваться, а не на одну и ту же величину для каждого лорда AI.Пример: Масштабный коэффициент = 0,5Войска Султана атакуют = 10, 15, 20, 25, ...Атакующие войска Саладина = 50, 75, 100, 125, ..."
+        },
+        "selectionType": "slider",
+        "selectionParameters": {
+          "minimum": 0,
+          "maximum": 3,
+          "interval": 0.1,
+          "default": 0,
+          "suggested": 0.3
+        }
+      }
+    ]
+  },
+  {
+    "modType": "AILords",
+    "modIdentifier": "ai_recruitinterval",
+    "modDescription": {
+      "Chinese": "加快所有ai的训练士兵速度",
+      "English": "Increased recruitment speed",
+      "German": "Erhöhtes Rekrutierungstempo",
+      "Hungarian": "Megnövelt toborzási sebesség",
+      "Polish": "Zwiększona prędkość rekrutacji",
+      "Russian": "Увеличенная скорость набора рекрутов"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_recruitinterval",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "将所有ai的训练时间间隔降低至最低(老鼠和狮心王的程度)",
+          "English": "Sets the recruitment interval of all AIs to the lowest value (Rat/Richard niveau)",
+          "German": "Setzt das Rekrutierungsintervall aller KIs auf den niedrigsten Wert. (Ratte/Richard-Niveau)",
+          "Hungarian": "Átállítja minden MI Lordnak a toborzási intervallumát a legkisebb értékre. (Patkány/Richárd szint)",
+          "Polish": "Ustawia odstęp między rekrutacją jednostek przez wszystkich przeciwników komputerowych na najniższą wartość (poziom Szczura/Ryszarda)",
+          "Russian": "Устанавливает интервал набора всех AI до самого низкого значения (Крыса/Ричард)"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Units",
+    "modIdentifier": "u_laddermen",
+    "modDescription": {
+      "Chinese": "增强云梯兵对于箭矢的抗性",
+      "English": "Increased armor of laddermen against ranged units",
+      "German": "Erhöhter Schutz für Leiterträger gegen Fernkämpfer",
+      "Hungarian": "Megnövelt védelem a létrás egységnek a távolsági egységek ellen",
+      "Polish": "Zwiększona obrona drabiniarzy przeciwko jednostkom strzelającym",
+      "Russian": "Увеличенная броня Крестьян с лесницами против дальних войск"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "u_laddermen",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "- 云梯兵在中5发箭后死亡改为中12发箭后死亡\r\n - 云梯兵在中2发弩箭后死亡改为中5发弩箭后死亡\r\n - 云梯兵价钱从4提升为20",
+          "English": "- Laddermen die after 12 arrow hits instead of 5\r\n - Laddermen die after 5 crossbow or slinger hits instead of 2\r\n - Laddermen cost 20 gold instead of 4",
+          "German": "- Leiterträger sterben erst nach 12 Pfeiltreffern statt 5\r\n - Leiterträger sterben erst nach 5 Armbrust- oder Schleudertreffern statt 2\r\n - Leiterträger kosten 20 Gold statt 4",
+          "Hungarian": "- A létrás egység 5 helyett 12 nyíl találat után hal meg\r\n - A létrás egység 2 helyett 5 számszeríj nyílvessző találat vagy parittyakő találat után hal meg\r\n - A létrás egység 4 helyett 20 aranyba kerül",
+          "Polish": "- Drabiniarz ginie po 12 strzałach z łuku zamiast po 5\r\n - Drabiniarz ginie po 5 trafieniach z kuszy lub procy zamiast 2\r\n - Drabiniarz kosztuje 20 złota zamiast 4",
+          "Russian": "- Крестияне с лестницами умирают после 12 стрел  вместо 5\r\n  - Крестияне с лестницами умирают после 5 выстрелов арбалетов или пращников вместо 2\r\n  - Крестияне с лестницами стоят 20 золотых вместо 4"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Units",
+    "modIdentifier": "u_arabxbow",
+    "modDescription": {
+      "Chinese": "增强了阿拉伯剑士抵抗弩箭的能力",
+      "English": "Increased armor of Arabic Swordsmen against crossbows",
+      "German": "Erhöhter Schutz von Arab. Schwertkämpfer vor Armbrüsten",
+      "Hungarian": "Megnövelt védelem az arab szablyás egységnek a számszeríj nyílvessző ellen",
+      "Polish": "Zwiększona obrona arabskich zbrojnych przeciwko kusznikom",
+      "Russian": "Увеличенная броня арабского мечника против стрел арбалетчика"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "u_arabxbow",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "-阿拉伯剑士在中3发弩箭后死亡改为6发弩箭后死亡。",
+          "English": "- Arabic Swordsmen only die after 6 crossbow hits intead of 3",
+          "German": "- Arabische Schwertkämpfer sterben erst nach 6 Armbrusttreffern statt 3",
+          "Hungarian": "- Az arab szablyás 3 helyett 6 számszeríj nyílvessző találat után hal meg",
+          "Polish": "- Arabscy zbrojni umierają po 6 strzałach z kuszy zamiast 3",
+          "Russian": "- Арабские мечники умирают после 6 стрел из арбалета вместо 3"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Units",
+    "modIdentifier": "u_arabwall",
+    "modDescription": {
+      "Chinese": "阿拉伯剑士破坏城墙速度加快",
+      "English": "Arabic Swordsmen destroy walls faster",
+      "German": "Arab. Schwertkämpfer reißen Mauern schneller ein",
+      "Hungarian": "Az arab szablyás gyorsabban rombolja le a várfalat",
+      "Polish": "Arabscy zbrojni szybciej niszczą mury",
+      "Russian": "Арабские мечники разрушают стены быстрее"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "u_arabwall",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "在原版，阿拉伯剑士破坏城墙的速度比其他任何单位都要更慢，打开这个选项后，破坏速度将会提升为原来的两倍，稍快于长矛手。",
+          "English": "In Vanilla, arabic swordsmen destroy walls slower than any other melee unit. With this option, the tear down speed against walls is about doubled for them, putting them slightly above Spearmen.",
+          "German": "In Vanilla reißen Arabische Schwertkämpfer Mauern am langsamsten ein unter den Nahkämpfern. Die Einreißgeschwindigkeit wird hiermit für sie ca. verdoppelt, sodass sie dabei knapp über Lanzenträgern sind.",
+          "Hungarian": "Az eredeti játékban az arab szablyás rombolja le a várfalat a leglassabban a közelharci egységek közül. A lerombolás sebessége ezentúl kb. megkétszereződik, így épphogy jobb lesz a lándzsás egységnél.",
+          "Polish": "W oryginalnej grze arabscy zbrojni niszczą mury najwolniej ze wszystkich jednostek walczących wręcz. Dzięki tej opcji prędkość niszczenia murów przez arabskich zbrojnych jest dwukrotnie większa, nieco powyżej prędkości włóczników.",
+          "Russian": "В Ваниле арабские мечники разрушают стены медленнее любого другого подразделения ближнего боя.С этой опцией скорость удара (анимации) против стен удваивается для них,поставив их немного выше копейщиков. (по скорости анимации атаки)"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Units",
+    "modIdentifier": "u_spearmen",
+    "modDescription": {
+      "Chinese": "增强长矛手抵抗箭矢的能力",
+      "English": "Increased armor of spearmen against ranged units",
+      "German": "Erhöhter Schutz von Lanzenträger gegen Fernkämpfer",
+      "Hungarian": "Megnövelt védelem a lándzsás egységnek a távolsági egységek ellen",
+      "Polish": "Zwiększona obrona włóczników przeciwko jednostkom strzelającym",
+      "Russian": "Увеличенная броня копейщиков против урона дальних юнитов"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "u_spearmen",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "- 长矛手在中3发箭后死亡改为5发箭后死亡，\r\n - 长矛手承受1发弩箭后还可以刚好存活。",
+          "English": "- Spearmen only die after 5 arrow hits instead of 3\r\n - Spearmen barely survive one crossbow hit, instead of getting one-shot",
+          "German": "- Lanzenträger sterben erst nach 5 Pfeiltreffern statt 3\r\n - Lanzenträger überleben knapp einen Armbrusttreffer",
+          "Hungarian": "- A lándzsás egység 3 helyett 5 nyíl találat után hal meg\r\n - A lándzsás egység épphogy túlél egy számszeríj nyílvessző találatot",
+          "Polish": "- Włócznicy giną po 5 strzałach z łuku zamiast 3\r\n - Włócznicy ledwie przeżywają jeden strzał z kuszy, zamiast od razu ginąć",
+          "Russian": "- Копейщики умирают после 5 попаданий стрел из лука, вместо 3\r\n  - Копейщики едва выдерживали один выстрел из арбалета, вместо того чтобы умереть от одного выстрела"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Units",
+    "modIdentifier": "o_restore_arabian_engineer_speech",
+    "modDescription": {
+      "Chinese": "工程师切换为阿拉伯语音",
+      "English": "Restore engineer arabian speech",
+      "German": "Baumeister arabischer Lords sprechen Arabisch",
+      "Hungarian": "Az arab mérnök arabul beszél",
+      "Polish": "Przywróć arabskie teksty inżynierów",
+      "Russian": "Восстановление арабской речи инженера"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_restore_arabian_engineer_speech",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "当玩家使用阿拉伯领主时，工程师的语音将会切换为阿拉伯语。",
+          "English": "Allows engineers to speak the originally recorded arabian voicelines when the player uses the Arabian lord.",
+          "German": "Falls der Spieler den arabischen Lord auswählt nutzen Baumeister nun ihre arabischen Sprachdateien.",
+          "Hungarian": "Ha a játékos az Arab Lord-ot választja, akkor a mérnök beszédekor az eredeti felvett arab hangfájlt használja.Nincs túl sok variáció ezekben a hangfájlokban, így egy idő után zavaró lehet.",
+          "Polish": "Ta opcja pozwala inżynierom na korzystanie z nagranych arabskich tekstów, gdy gracz gra jako arabski lord.Tekstów nie ma zbyt wielu, więc mogą być irytujące po dłuższej chwili.",
+          "Russian": "Позволяет инженерам говорить на изначально записанных арабских голосовых дорожках, когда игрок использует арабского лорда.Голосовые линии не сильно отличаются друг от друга, так что через некоторое время они могут стать раздражающими."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Units",
+    "modIdentifier": "u_spearmen_run",
+    "modDescription": {
+      "Chinese": "矛兵默认为奔跑状态而不是步行",
+      "English": "Spearmen run by default instead of walking",
+      "German": "Speerträger rennen standardmäßig",
+      "Hungarian": "A lándzsás egység sétálás helyett alapból fut",
+      "Polish": "Biegający włócznicy",
+      "Russian": "Копейщики бегут по умолчанию вместо того, чтобы ходить пешком."
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "u_spearmen_run",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "矛兵在默认状态下将使用奔跑作为移动方式，而不是步行。",
+          "English": "Makes spearmen run by default like slaves and macemen.",
+          "German": "Speerträger rennen standardmäßig so schnell wie Sklaven und Streitkolbenkämpfer.",
+          "Hungarian": "A lándzsás egység lassú sétálás helyett alapból futni fog. A lándzsás olyan gyorsan fut, mint egy rabszolga vagy buzogányos.",
+          "Polish": "Włócznicy będą cały czas biegać.",
+          "Russian": "Вместо медленной ходьбы копейщики бегут медленно."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_firecooldown",
+    "modDescription": {
+      "Chinese": "调整刚灭火建筑的免疫火灾时间",
+      "English": "Extend fireproof duration of extinguished buildings",
+      "German": "Feuerfeste Zeit gelöschter Gebäude verlängern",
+      "Hungarian": "Eloltott épületek tűzálló időtartamának megnövelése",
+      "Polish": "Wydłuż czas, po którym budynek może ponownie się zapalić",
+      "Russian": "Увеличить пожаробезопасную продолжительность потушенных зданий"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_firecooldown",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "着火的建筑在火被扑灭后，会有一段免疫着火的时间，此处可修改时间长短。",
+          "English": "The duration in which extinguished buildings cannot catch fire again can be extended here.",
+          "German": "Der Zeitraum in dem gelöschte Häuser nicht wieder brennen können kann hier verlängert werden.",
+          "Hungarian": "Itt meghosszabbítható az az időtartam, amely alatt az eloltott épületek nem tudnak újra kigyulladni.",
+          "Polish": "Można tutaj wydłużyć czas, po którym budynek może ponownie się zapalić po ugaszeniu.",
+          "Russian": "Здесь можно продлить срок, в течение которого потухшие здания больше не смогут загореться."
+        },
+        "selectionType": "slider",
+        "selectionParameters": {
+          "minimum": 0,
+          "maximum": 20000,
+          "interval": 500,
+          "default": 2000,
+          "suggested": 4000
+        }
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_xtreme",
+    "modDescription": {
+      "Chinese": "移除增强版的技能条",
+      "English": "Remove the magic bar in Extreme",
+      "German": "Magie-Leiste in Extreme entfernen.",
+      "Hungarian": "Varázserő-sáv eltávolítása az Extreme kiegészítőből.",
+      "Polish": "Usuń pasek mocy w wersji Extreme",
+      "Russian": "Убраны значки магии в Stronghold Crusader Extreme"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_xtreme",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "移除要塞十字军东征增强版中的技能条。",
+          "English": "Removes the magic bar in Crusader Extreme.",
+          "German": "Entfernt die Magie-Leiste in Crusader Extreme.",
+          "Hungarian": "Eltávolítja a Varázserő-sávot a Crusader Extreme kiegészítőben.",
+          "Polish": "Usuwa pasek umiejętności w Twierdzy Krzyżowiec Extreme.",
+          "Russian": "Убирает значки магии в Stronghold Crusader Extreme."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_playercolor",
+    "modDescription": {
+      "Chinese": "改变玩家1号的颜色",
+      "English": "Change the color of player 1",
+      "German": "Farbe von Spieler 1 wechseln",
+      "Hungarian": "Játékos 1 színcsere",
+      "Polish": "Zmiana koloru pierwszego gracza",
+      "Russian": "Изменить цвет Игрока 1"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_playercolor",
+        "defaultValue": "false",
+        "description": {},
+        "selectionType": "radio",
+        "selectionParameters": {
+          "options": [ 
+            {
+              "type": "color",
+              "value": "red"
+            },
+            {
+              "type": "color",
+              "value": "blue"
+            },
+            {
+              "type": "color",
+              "value": "yellow"
+            },
+            {
+              "type": "color",
+              "value": "orange"
+            },
+            {
+              "type": "color",
+              "value": "green"
+            },
+            {
+              "type": "color",
+              "value": "cyan"
+            },
+            {
+              "type": "color",
+              "value": "black"
+            },
+            {
+              "type": "color",
+              "value": "purple"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_keys",
+    "modDescription": {
+      "Chinese": "WASD键移动以及Ctrl+S/L键保存读取",
+      "English": "WASD-Keys and quicksaves",
+      "German": "WASD-Tasten und Quicksaves",
+      "Hungarian": "WASD billentyűk és gyorsmentés",
+      "Polish": "Klawisze WASD i szybki zapis",
+      "Russian": "WASD-Кнопки и быстрые сохранения"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_keys",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "打开此选项后，可以使用WASD键移动屏幕，以及Ctrl+S键打开保存界面，Ctrl+L键打开读取界面。",
+          "English": "The WASD-keys can be used to move around with this setting as well as CTRL-S and CTRL-L to quicksave and load respectively.",
+          "German": "Mit dieser Einstellung werden die WASD-Tasten für die Kamera aktiviert.Außerdem kann mit STRG-S und STRG-L ein Quicksave erstellt und geladen werden.",
+          "Hungarian": "Ezzel a beállítással aktiválva lesznek a WASD billentyűk a kamerához.Ezenkívül a CTRL-S és a CTRL-L billentyűkkel lehet gyorsmentést létrehozni és betölteni.",
+          "Polish": "Klawisze WASD mogą być używane do poruszania kamerą. Dodatkowo kombinacja klawiszy CTRL-S i CTRL-L służy do szybkiego zapisania i wczytania gry.",
+          "Russian": "Клавиши WASD можно использовать для перемещения с этой настройкой, а также CTRL-S и CTRL-L для быстрого сохранения и загрузки соответственно."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_override_identity_menu",
+    "modDescription": {
+      "Chinese": "在设置菜单里添加一些新的选择",
+      "English": "Override the Set-up Identity menu adding new features",
+      "German": "Fügt neue Optionen zum Menüpunkt 'Identität zulegen' hinzu",
+      "Hungarian": "Új beállítások hozzáadása a 'Játékos szerkesztése' menühöz",
+      "Polish": "Dodaje nowe funkcje do opcji ustawień tożsamości",
+      "Russian": "Переопределить меню Set-up Identity, добавляя новые функции."
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_override_identity_menu",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "增加了玩家初始兵种的选择的功能，只在普通模式下生效。",
+          "English": "Adds Ranged and Melee unit selection to Set-up Identity menu. ONLY FOR NORMAL GAME MODE!",
+          "German": "Im Menüpunkt 'Identität zulegen' kann man nun die Starteinheiten für 'Normales Spiel' ändern",
+          "Hungarian": "Távolsági és közelharci egységek kiválasztási lehetőségét adja hozzá a 'Játékos szerkesztése' menüponthoz. CSAK NORMÁL JÁTÉK MÓDHOZ!",
+          "Polish": "Dodaje jednostki do własnego ustawienia w opcji dostosowania tożsamości. TYLKO W NORMALNYM TRYBIE GRY!",
+          "Russian": "Добавляет выбор юнитов дальнего и ближнего боя в меню Set-up Identity. ТОЛЬКО ДЛЯ ОБЫЧНОГО ИГРОВОГО РЕЖИМА!"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_healer",
+    "modDescription": {
+      "Chinese": "医生会治愈伤员",
+      "English": "Healer heals casualties",
+      "German": "Heiler verarztet Verwundete",
+      "Hungarian": "A gyógyító ellátja a sérülteket",
+      "Polish": "Zielarz leczy rannych",
+      "Russian": "Целитель лечит раненых солдат"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_healer",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "药房的医生现在会积极寻找兵治疗受伤的士兵，平民或者动物。 优先治疗最近的目标。每次治疗动画中，可恢复长矛兵血量的1/3。 游览＆花园和治疗瘟疫的功能依旧存在！ 只有游览城堡的行为会被跳过，直到该地区不再有受伤的目标.",
+          "English": "The healer of the apothecary building now actively seeks out injured soldiers, civilists and animals to heal them. The nearest targets are treated first. With each healing animation ca. 1/3 of a spearman's health is recovered. The strolling through gardens and investigation of plague clouds is not replaced! Only the strolling through the castle is skipped until no more wounded targets are in the area.",
+          "German": "Der Heiler des Apothekengebäudes sucht nun verletzte Soldaten, Zivilisten und Tiere auf und heilt diese. Nahe Ziele werden dabei bevorzugt. Mit jeder Heilungs-Animation wird ca. 1/3 des Lebens eines Lanzenträgers geheilt. Das Schlendern durch die Gärten und Aufsuchen von Pestwolken wird dadurch nicht ersetzt! Nur das Schlendern durch die Burg wird ausgelassen, bis keine Verwundeten mehr in Reichweite sind.",
+          "Hungarian": "A gyógyszertár gyógyítója mostantól megkeresi a sérült harcosokat, civileket, állatokat és meggyógyítja őket. A hozzá legközelebb lévő célpontokat gyógyítja először. Minden gyógyító animációval kb. egy lándzsás 1/3 életerejét állítja helyre. A kertekben való mászkálás és a pestisfelhő felkeresése ez által nem lesz lecserélve! Csak a várban való mászkálása lesz kihagyva, ha van sebesült a hatótávolságán belül.",
+          "Polish": "Zielarz będzie teraz szukał rannych żołnierzy, zwierzęta i mieszkańców, aby ich uleczyć. Zielarz zaczyna leczyć od najbliższego celu. Każda animacja leczenia leczy 1/3 życia włócznika. Chodzenie po ogrodach i pozbywanie się zarazy nie zostało zastąpione! Zielarz pomija jedynie chodzenie po zamku, dopóki nie wyleczy wszystkich rannych.",
+          "Russian": "Целитель здания аптеки теперь активно ищет раненых солдат,жителей и жывотных чтобы исцелить их. Ближайшие цели он лечит первыми.Проигрывается анимация ,и он исцеляет за 1/3 секунды здоровье копейщика. Когда Целитель прогуливается он может разсеять облако чумы которое он заметит.Он будет лечить в одной области замка всех пока не вылечет до конца, а только потом он перейдет к другому участку замка.Также он не начнет разсеивать облака чумы пока он не сходит в сады."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_freetrader",
+    "modDescription": {
+      "Chinese": "免费市场",
+      "English": "Free trader post",
+      "German": "Kostenloser Marktplatz",
+      "Hungarian": "Ingyen piac",
+      "Polish": "Darmowe targowisko",
+      "Russian": "Бесплатный рынок"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_freetrader",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "有时ai的市场被拆除且没有木头时，ai将会彻底瘫痪。使市场免费可以避免此问题。",
+          "English": "Since the AI sometimes plays itself, when they're out of wood and their trader post is destroyed. With this setting, the trader post will become free of cost to prevent this.",
+          "German": "Da die KI sich manchmal selbst Schachmatt setzt, wenn sie kein Holz hat und der Marktplatz zerstört wurde, kann hier der Bau des Marktplatzes kostenlos gemacht werden.",
+          "Hungarian": "Mivel néha az MI magának add sakk-mattot, ha nincs elég fája és a piacát lerombolták. Itt tudod beállítani hogy a piac építése ingyenes legyen.",
+          "Polish": "Czasami sztuczna inteligencja może nic nie robić, gdy nie ma drewna, a targowisko zostało zniszczone. Aby temu zapobiec, można włączyć tę opcję, dzięki czemu targowisko będzie darmowe.",
+          "Russian": "Поскольку АI иногда играет сам, когда он находится далеко от леса и его рынок уничтожен.  С этим параметром рынок станет бесплатным, чтобы предотвратить это."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_engineertent",
+    "modDescription": {
+      "Chinese": "无需重复选择工程师帐篷类型",
+      "English": "No siege tent deselection",
+      "German": "Belagerungsgeräte nicht automatisch abwählen",
+      "Hungarian": "Ostromgépek kijelölve maradnak",
+      "Polish": "Brak anulowania wybranego namiotu oblężniczego",
+      "Russian": "Нету выбора осадной палатки"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_engineertent",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "打开这个选择之后，选择一次工程师帐篷类型后即可一直放置该类型的工程师帐篷，而不需要每次都再选择一次。",
+          "English": "With this setting, the game will not deselect your chosen siege equipment after placing one tent anymore. This way you can create several tents after another without having to reselect the same siege equipment every time.",
+          "German": "Mit dieser Einstellung wird das zuletzt zum Bau ausgewählte Belagerungsgerät bei Baumeistern nicht abgewählt, sodass man mehrere Zelte nacheinander bauen kann, ohne jedes mal neu wählen zu müssen.",
+          "Hungarian": "Ezzel a beállítással az utoljára építésre kiválasztott ostromgép marad kijelölve ha több mérnököt kiválasztottál, így több ostromsátrat is lehet egymás után építeni.",
+          "Polish": "Przy tym ustawieniu gra nie odznacza wybranej machiny oblężniczej po umieszczeniu już jednego namiotu. W ten sposób możesz stworzyć kilka namiotów bez konieczności ponownego wybierania tego samego sprzętu oblężniczego za każdym razem.",
+          "Russian": "С помощью этой настройки игра не отменяет выбранное вами осадное оборудование после размещения больше одной палаткиТаким образом вы можете создать несколько палаток одну за другим,без необходимости повторного выбора одного и того же осадного оборудования."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_moatvisibility",
+    "modDescription": {
+      "Chinese": "一直显示规划中的护城河",
+      "English": "Always show planned moat",
+      "German": "Geplanten Burggraben immer zeigen",
+      "Hungarian": "Mindig mutassa a tervezett várárkot",
+      "Polish": "Zawsze pokazuj zaplanowaną fosę",
+      "Russian": "Всегда показывать планированый ров"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_moatvisibility",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "你将可以一直看到规划中的护城河，而不需要点选单位。",
+          "English": "Your own placed but not digged out moat will always be shown with this setting, even if you deselect the moat placing.",
+          "German": "Mit dieser Einstellung wird der gesetzte, aber noch nicht ausgehobene Burggraben immer angezeigt, auch wenn man die Burggrabenplatzierung abwählt.",
+          "Hungarian": "Ezzel a beállítással a lehelyezett, de a még nem felásott várárok mindig látható, még akkor is ha nincs kiválasztva a várárokásás.",
+          "Polish": "Zaplanowana, ale jeszcze nie wykopana fosa będzie zawsze pokazywana z tym ustawieniem, nawet jeśli odznaczysz opcję rozmieszczania fosy.",
+          "Russian": "Ваш собственный,но не выкопанный ров всегда будет показан с этой опцией, даже если вы отмените выбор размещения рва."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_gamespeed",
+    "modDescription": {
+      "Chinese": "拓宽游戏速度限制",
+      "English": "Extended game speed limits",
+      "German": "Erweiterte Spielgeschwindigkeitsgrenzen",
+      "Hungarian": "Bővített játéksebesség limit",
+      "Polish": "Jeszcze większa prędkość gry",
+      "Russian": "Расширенные ограничения скорости игры"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_gamespeed",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "游戏速度的限制更改为如下所示:\r\n - 在10到90之间以5为间隔\r\n - 在90到200之间以10为间隔\r\n - 在200到1000之间以100为间隔\r\n新的游戏速度范围仅可通过键盘上的+ -号来改变，菜单中的游戏速度\r\n调整不到新的范围。",
+          "English": "The game speed can now be changed as follows:\r\n - From 10 to 90 in intervals of 5\r\n - From 90 to 200 in intervals of 10\r\n - From 200 to 1000 in intervals of 100\r\nThe new values are only available ingame via the +- keys, the slider in the \r\ngame menu remains unchanged.",
+          "German": "Die Spielgeschwindigkeit kann nun wie folgt geändert werden:\r\n - Von 10 bis 90 in 5er Schritten\r\n - Von 90 bis 200 in 10er Schritten\r\n - Von 200 bis 1000 in 100er Schritten\r\nDie neuen Werte sind nur im Spiel über die +- Tasten erreichbar, der Regler im \r\nSpielmenü bleibt ungeändert.",
+          "Hungarian": "A játéksebességet mostantól a következőképpen lehet megváltoztatni:\r\n - 10-től 90-ig 5 lépésben\r\n - 90-től 200-ig 10 lépésben\r\n - 200-tól 1000-ig 100 lépésben\r\nAz új értékek elérhetők a játékban a +- billentyűk segítségével, a csúszka a játékmenüben változatlanul maradt.",
+          "Polish": "Szybkość gry można teraz zmienić w następujący sposób:\r\n - Od 10 do 90 w odstępach 5\r\n - Od 90 do 200 w odstępach 10\r\n - Od 200 do 1000 w odstępach 100\r\nNowe wartości są dostępne w grze wyłącznie za pomocą klawiszy + i -, suwak w menu \r\ngry pozostaje niezmieniony.",
+          "Russian": "Теперь скорость игры можно изменить следующим образом:\r\n  - От 10 до 90 с интервалом 5\r\n  - от 90 до 200 с интервалом 10\r\n  - от 200 до 1000 с интервалом в 100\r\n   - от 1100 - 9000 (Но после 1100 уже не происходит увеличение) \r\nНовые значения доступны только с помощью клавиш + -, ползунка в \r\nменю игры остается неизменным."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_responsivegates",
+    "modDescription": {
+      "Chinese": "城门快速反应",
+      "English": "Quicker responsiveness of gates towards enemies",
+      "German": "Torhäuser schneller auf Gegner reagieren lassen",
+      "Hungarian": "A várkapuk gyorsabban reagálnak az ellenséges egységekre",
+      "Polish": "Szybsza reakcja bram",
+      "Russian": "Быстрая реакция юнитов на врагов"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_responsivegates",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "敌人在靠近城门一定距离时城门将会关闭，该距离由200调整至140。敌人在远离城门一定距离时城门将会打开，该距离由1200调整至100。",
+          "English": "Gates close themselves later if enemies get into range and open faster when the danger is gone. The distance of an enemy for which the gates close will be reduced from 200 to 140. The time after which the gates open, after & all enemies left will be reduced from 1200 to 100.",
+          "German": "Torhäuser schließen sich jetzt später bei Gegnernähe und öffnen wieder schneller automatisch, sobald die Gefahr vorüber ist. Die Distanz die ein Gegner haben muss, damit sich das Tor automatisch schließt, wird von 200 auf 140 gesenkt. Die Zeit nach der sich das Tor wieder öffnet, sofern kein Gegner mehr in der Nähe ist, wird von 1200 auf 100 reduziert.",
+          "Hungarian": "A várkapuk mostantól később záródnak be ha ellenség van a közelben és automatikusan gyorsabban kinyílnak, ha már nincs közelben ellenség. A távolság ami szükséges az ellenségnek, hogy a várkapu automatikusan bezáródjon, 200-ról 140-re lett csökkentve. Az idő amikor a várkapu ismét kinyílik, mihelyst nincs ellenség a közelben, 1200-ról 100-ra lett csökkentve.",
+          "Polish": "Bramy zamykają się później, gdy wrogowie znajdą się w zasięgu i otworzą się szybciej, kiedy niebezpieczeństwo zniknie. Odległość wroga od bramy, która wpływa na jej automatyczne zamykanie się zostanie zmniejszona z 200 do 140. Czas, po którym otwierają się bramy, gdy wszyscy wrogowie znikną, zostaje zmniejszony z 1200 do 100.",
+          "Russian": "Ворота закрывается позже когда опасность исчезнет. Расстояние врага, для которого закрываются ворота будет уменьшено с 200 до 140. Время, после которого ворота открываются, будет уменьшены с 1200 до 100."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_onlyai",
+    "modDescription": {
+      "Chinese": "打开观察者模式",
+      "English": "Activate Spectator-mode [bug possible]",
+      "German": "Zuschauer-Modus aktivieren [bug möglich]",
+      "Hungarian": "Nézői mód aktiválása [hiba előfordulhat]",
+      "Polish": "Aktywuj tryb Obserwatora [możliwy błąd]",
+      "Russian": "Активировать Режим - Зрителя (Только AI) [Возможны баги]"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_onlyai",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "移除了玩家1使得玩家只能以观察的视角观看游戏，这使得8个ai同时出场成为了可能。该模式下保存的游戏可以被正常读取。偶尔可能会出现物体随机遍布在整个地图的bug，这只是视觉上的bug并不影响游戏本身，保存游戏，退出游戏，再读取游戏可以清除该bug。",
+          "English": "Removes player 1 so that you can only spectate and makes 8 AIs in one round possible. Savegames now load properly in this mode. Sometimes a bug appears in which random objects spawn all over the map. This is just visually and can be removed by saving the game, ending the mission and reloading the save file.",
+          "German": "Entfernt Spieler 1 sodass man nur noch zugucken kann und 8 KIs in einem Kreuzzug möglich sind. Gespeicherte Spiele laden jetzt auch ordnungsgemäß in diesem Modus. Ab und zu tritt ein Bug auf, bei dem überall auf der Karte zufällige Objekte auftauchen. Diese sind jedoch nur visuell und können durch einfaches Spiel speichern -> Mission beenden -> Spiel laden behoben werden.",
+          "Hungarian": "Eltávolítja az 1.játékost a nézői módhoz és így 8 MI harcolhat egymással az Egyedi játék módban. Az elmentett játék most már rendesen működik ebben a módban is. Néha előfordulhat olyan hiba, hogy az egész térképen véletlenszerűen feltűnhetnek tárgyak. De ezek csak vizuálisan jelennek meg és egyszerűen megoldható a Játék mentése -> Küldetés befejezése -> Játék betöltésével.",
+          "Polish": "Usuwa głównego gracza, dzięki czemu możesz tylko obserwować i tworzyć pojedynki między ośmioma botami. Zapisy gry ładują się teraz poprawnie w tym trybie. Czasami pojawia się błąd, w którym losowe obiekty pojawiają się na całej mapie. Jest to tylko wizualny błąd i można go usunąć zapisując grę, kończąc misję i ponownie wczytując zapis.",
+          "Russian": "Убирает игрока 1, чтобы вы могли видеть только 8 AI в одном и том же режиме. Сохранения игры теперь правильно загружаются в этом режиме. Иногда ошибка появляется, когда случайные объекты появляются на всей карте. Это просто визуальный баг и его можно убрать сохранив игру, завершая миссию и перезагружая сохранить файл."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_armory_marketplace_weapon_order_fix",
+    "modDescription": {
+      "Chinese": "调整武器库和市场中武器的顺序",
+      "English": "Fix armory/marketplace weapon orders to match",
+      "German": "Vereinheitlicht Waffenreihenfolge",
+      "Hungarian": "Megegyező fegyver sorrend a fegyverraktár/piacban",
+      "Polish": "Ustaw broń na targowisku i w zbrojowni w tej samej kolejności",
+      "Russian": "Исправить оружейный склад/рыночное оружие, чтобы соответствовать порядку"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_armory_marketplace_weapon_order_fix",
+        "defaultValue": "true",
+        "description": {
+          "English": "Reorders Weapon icons in Armory and Marketplace to have the same order. Also moves Leather Armor between Mace and Crossbow, and moves Metal Armor between Polearm and Sword for easier access while in Marketplace scrolling through items.",
+          "German": "Vereinheitlicht Waffenreihenfolge in Waffenkammer und Marktplatz. Es befinden sich nun Lederrüstungen zwischen Streitkolben und Armbrüste, und Rüstungen zwischen Piken und Schwertern für einfacheres Scrollen im Marktplatz.",
+          "Hungarian": "Újrarendezi a fegyver ikonokat a fegyverraktárban és a piacban, hogy egyforma legyen a sorrend. A bőrpáncél a buzogány és számszeríj között lesz, míg a vaspáncél a dárda és kard között, hogy könnyebben megtalálható legyen a piacban való kereséskor.",
+          "Polish": "Ustawia broń na targowisku i w zbrojowni w tej samej kolejności. Zbroja skórzana na targowisku zostaje przesunięta między wekiery i kusze, natomiast zbroja metalowa między piki i miecze.",
+          "Russian": "Изменение порядка иконок оружия в Оружейной и на Рынке, чтобы они располагались в одинаковом порядке. Также перемещает кожаную броню между булавой и арбалетом, а металлическую броню - между пиками и мечом для более легкого доступа во время прокрутки предметов на Рынке."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_increase_path_update_tick_rate",
+    "modDescription": {
+      "Chinese": "寻路检测频率增加",
+      "English": "Check more often for available paths",
+      "German": "Suche öfter nach verfügbaren Wegen",
+      "Hungarian": "Elérhető útvonalak gyakoribb ellenőrzése",
+      "Polish": "Zwiększ częstotliwość odświeżania możliwych ścieżek",
+      "Russian": "Более частая проверка доступного пути"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_increase_path_update_tick_rate",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "在原版，每200游戏刻会检测一次可行通路，经常导致ai的单位在摧毁了敌人的城门或者塔楼时不能立刻进入城堡。打开后，每50个游戏刻就会进行一次检测，使得单位的反应速度加快。",
+          "English": "In vanilla, it took 200 game ticks to check for new paths, often stopping units to move into the castle after destroying a gate or tower immediately.Availability is calculated every 50 gameticks now, allowing the units to 'realize' new paths more quickly.",
+          "German": "Das Spiel überprüft nun viermal so häufig, welche Bereiche der Karte verbunden sind. Dadurch können beispielsweise nach der Zerstörung eines Torhauses oder eines Turmes die Truppen schneller ins Innere einer zuvor unzugänglichen Burg beordert werden.",
+          "Hungarian": "Az eredeti játékban minden 200. játékidő tick után kerültek ellenőrzésre az új útvonalak, ami azt eredményezte, hogy az egységek nem tudtak azonnal bemenni a várba miután lerombolták a kaput vagy a tornyot.Az elérhető útvonalakat mostantól minden 50. játékidő tick után ellenőrzi, így lehetővé téve hogy az egységek sokkal gyorsabban 'realizálják' az elérhető új útvonalat.",
+          "Polish": "W oryginale jednostki potrzebowały dużo czasu, zanim mogły zrozumieć, że można wejść do zamku po zniszczeniu bramy lub wieży..Ta opcja zwiększa czterokrotnie częstotliwość odświeżania możliwych ścieżek wykrywanych przez jednostki, dzięki czemu szybciej zrozumieją, że można już wejść do zamku.",
+          "Russian": "В ваниле, это заняло 200 игровых тиков, чтобы проверить новые пути, часто останавливая юнитов, чтобы перейти в замок после уничтожения ворот или башни немедленно. Доступность рассчитывается теперь каждые 50 игровых тиков, что позволяет юнитам реализовывать новые пути быстрее."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_default_multiplayer_speed",
+    "modDescription": {
+      "Chinese": "设置多人游戏中的默认游戏速度",
+      "English": "Set default multiplayer speed.",
+      "German": "Setzt Mehrspieler Standardgeschwindigkeit",
+      "Hungarian": "Többjátékos mód alapsebességének beállítása",
+      "Polish": "Ustaw domyślną prędkość gry multiplayer.",
+      "Russian": "Установить скорость мультиплеера по умолчанию."
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_default_multiplayer_speed",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "",
+          "English": "",
+          "German": "",
+          "Hungarian": "",
+          "Polish": "",
+          "Russian": ""
+        },
+        "selectionType": "slider",
+        "selectionParameters": {
+          "minimum": 20,
+          "maximum": 90,
+          "interval": 1,
+          "default": 40,
+          "suggested": 50
+        }
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_shfy",
+    "modDescription": {
+      "Chinese": "要塞修改",
+      "English": "Strongholdify",
+      "German": "Strongholdify",
+      "Hungarian": "Strongholdify",
+      "Polish": "Strongholdify",
+      "Russian": "Strongholdify"
+    },
+    "detailedDescription": {
+      "Chinese": "将这些方面调整为要塞1的数值。注意:任何改变都会影响ai领主，最坏的情况是失效!",
+      "English": "Adapts listed aspects to match Stronghold 1. Attention: Every change influences the AI lords, in the worst case renders them useless!",
+      "German": "Passt aufgelistete Aspekte an Stronghold 1 an. Achtung: Jede Annpassung nimmt Einfluss auf die KI Lords, schlimmstenfalls werden diese nutzlos!",
+      "Hungarian": "A felsorolt szempontokat a Stronghold 1-hez igazítja. Vigyázat: Minden változtatás hatással van az MI Lordokra, a legrosszabb esetben haszontalanná teszi őket!",
+      "Polish": "Podane aspekty są zbliżone do tych z pierwszej Twierdzy. Uwaga: Każda zmiana wpływa na przeciwników komputerowych. W najgorszym wypadku mogą stać się bezużyteczni!",
+      "Russian": "Адаптирует перечисленные аспекты в соответствии с Stronghold 1. Внимание: Каждое изменение влияет на повелителей AI, в худшем случае делает их бесполезными!"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_shfy_beer",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "从啤酒中获取的声望",
+          "English": "Popularity bonus from beer",
+          "German": "Beliebtheitsbonus durch Bier",
+          "Hungarian": "Sör általi népszerűségi bónusz",
+          "Polish": "Bonus do popularności za piwo",
+          "Russian": "Бонус за популярность от пива"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      },
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_shfy_religion",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "从宗教中获取的声望",
+          "English": "Popularity bonus from cathedral and church",
+          "German": "Beliebtheitsbonus Kathedrale und Kirche",
+          "Hungarian": "Templom és katedrális általi népszerűségi bónusz",
+          "Polish": "Bonus do popularności za katedrę i kościół",
+          "Russian": "Бонус за популярность от собора налогов и церкви"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      },
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_shfy_peasantspawnrate",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "农民产生速度",
+          "English": "Spawnrate peasants",
+          "German": "Spawngeschwindigkeit Bauern",
+          "Hungarian": "Parasztok érkezésének sebessége",
+          "Polish": "Szybkość pojawiania się wieśniaków",
+          "Russian": "Скорость появления крестьян (спавн)"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      },
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_shfy_resourcequantity",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "交付资源数量",
+          "English": "Quantity of delivered resources",
+          "German": "Anzahl der gelieferten Resourcen",
+          "Hungarian": "Leszállított erőforrások mennyisége",
+          "Polish": "Ilośc otrzymywanych surowców",
+          "Russian": "Количество предоставленных ресурсов"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "fix_apple_orchard_build_size",
+    "modDescription": {
+      "Chinese": "修正苹果园建造时的面积",
+      "English": "Shrink apple orchard's build size",
+      "German": "Reduziert die Baugröße von Apfelfarmen",
+      "Hungarian": "Almáskert építési méretének csökkentése",
+      "Polish": "Zmniejsz rozmiar budowy sadów jabłoni",
+      "Russian": "Размер площади яблоневой фермы"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "fix_apple_orchard_build_size",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "将建造时苹果园需求的面积修正为苹果园的实际面积，这也可以让AI正确的放置苹果园。",
+          "English": "Changes the apple orchard's build size to the size it occupies after the farm is placed down. This saves some space when building the farms and increases the rate with which the AI is able to put these farms down.",
+          "German": "Ändert die Bauvorschau von Apfelfarmen auf die Größe, die sie nach der Platzierung der Farm haben.",
+          "Hungarian": "Az almáskert elhelyezése előtt az előnézeti mérete nagyobb volt, mint amekkora valójában az almáskert az elhelyezés után. Ez a hiba kijavításra került. Ezzel a beállítással több szabad hely marad az almáskertek építésekor és megnöveli az MI mezőgazdasági épületek építésének rátáját.",
+          "Polish": "Opcja zmniejsza rozmiar budowy sadów jabłoni, aby był taki sam, jak rzeczywisty rozmiar całego budynku. Zaoszczędzi to miejsce na trawie i pomoże botom na lepszy rozwój.",
+          "Russian": "Изменяет размер постройки яблоневого сада на размер который он занимает после расположение фермы. Это экономит место при строительстве ферм и увеличивает скорость, с которой AI может располагать эти фермы."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_seed_modification_possibility_title",
+    "modDescription": {
+      "Chinese": "游戏种子",
+      "English": "Manipulate random number generator",
+      "German": "Manipuliere Zufallszahlengenerator",
+      "Hungarian": "Random játék seed",
+      "Polish": "Generowane ziarno gry",
+      "Russian": "Игровой случайный сид"
+    },
+    "modSelectionRule": "1|2",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_seed_modification_possibility_only_set",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "启用固定游戏随机种子",
+          "English": "Enable fixed game randomseed",
+          "German": "Ermögliche Festlegung eines Zufallsstartwertes",
+          "Hungarian": "Megadott Random játék seed engedélyezése",
+          "Polish": "Włącza generowane ziarno gry",
+          "Russian": "Включить фиксированную игру случайным сидом"
+        },
+        "detailedDescription": {
+          "Chinese": "如果使用相同的地图设置，设置游戏种子可以使只有AI的游戏对局每次都以相同的过程进行。对于既有玩家也有AI的游戏对局，设置游戏种子可以确保每次游戏的开始条件是相同的（例如相同的AIV）。若要设置游戏种子，请启用此选项并在game install/gameseeds目录中创建一个名为“live”的txt文件，并手动写上6位数字。注意：启动此功能后需要重新启动游戏！",
+          "English": "Setting the Game seed will allow AI-only games to play out the same way if the same map settings are used. For games involving human players, it will ensure the same starting conditions in the map (e.g. AIV selection). To set the game seed, enable this option and create a file called 'live' containing an integer in the [game install]/gameseeds directory. CAUTION: This feature only works after also restarting the game!",
+          "German": "Das Setzen eines Startwertes für den Zufallszahlen Generator ermöglicht es für KI Spiele immer den gleichen Verlauf zu nehmen. Für Spiele mit menschlichen Spielern und KI können feste Startbedingungen ermöglicht werden (z.B. die gleiche Auswahl von AIV Dateien für die KI). Um den Zufallsstartwert zu setzen, erstelle eine Datei mit dem Namen 'live', welche eine ganze Zahl enthält im Ordner Installationsverzeichnis/gameseeds. ACHTUNG: Vor Beginn eines wiederholbaren Scharmützels muss das Spiel neu gestartet werden!",
+          "Hungarian": "A játék seed megadásával az MI harcoknak a kimenetele ugyanaz lesz, azonos pályabeállítások esetén. Játékos-MI harc esetén, ugyanazon kezdési feltételeket biztosítja a pályán (mint pl. az AIV kiválasztás). A játék seed megadásához, engedélyezd ezt a beállítást és hozz létre egy 6 darab számot tartalmazó 'live' nevű szöveges fájlt a játék könyvtár/gameseeds mappában. FIGYELEM: Ez a beállítás csak a játék újraindítása után működik!",
+          "Polish": "Ta opcja pozwala na wygenerowanie ziarna gry (działa tylko na rozgrywki samych botów), aby rozgrywka była za każdym razem taka sama, jeśli wybrało się takie same ustawienia mapy. Aby to zrobić, włącz tę opcję i stwórz plik o nazwie 'live' z 6 cyframi w folderze z zainstalowaną grą/podfolderze z ziarnami (gameseed). UWAGA: Ta opcja działa po zrestartowaniu gry!",
+          "Russian": "Установка игрового сида позволит играм только с AI играть точно так же, если используются те же настройки карты. Для игр с AI, он обеспечит такие же условия запуска на карте (например, выбор AIV). Для установки игрового сида, включите эту опцию и создайте файл под названием (live) с 6-значным номером в каталоге установки игры/игр. ВНИМАНИЕ: Эта функция работает только после перезапуска игры!"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      },
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_seed_modification_possibility",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "启用或保存游戏随机种子",
+          "English": "Enable & Save game randomseeds",
+          "German": "Ermögliche & Speichere Zufallsstartwerte",
+          "Hungarian": "Random játék seed-ek engedélyezése és mentése",
+          "Polish": "Włącz i zapisuj generowane ziarna gry",
+          "Russian": "Включить и сохранить игру случайных сидов"
+        },
+        "detailedDescription": {
+          "Chinese": "这个选项可以保存你当前的游戏种子，前提是你当前没有设定游戏种子，你可以将保存的游戏种子重命名为“live”使其应用在之后的游戏中。",
+          "English": "This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards.",
+          "German": "Mit dieser Option werden Zufallsstartwerte von Spielen gespeichert, für die keiner im gameseeds Ordner gesetzt wurde. So können diese nachträglich in 'live' umbenannt werden um das Spiel zu wiederholen.",
+          "Hungarian": "Ez a beállítás elmenti a seed-et azon játékokból amikhez nem lett megadva live seed érték, nevezd át a kívánt seed-et tartalmazó szöveges fájlt 'live'-ra hogy a későbbiekben újra rekonstruálhasd a harcot.",
+          "Polish": "This option will save the seed from games that do not have a live seed set, so you can rename them to 'live' in order to recreate the match afterwards.",
+          "Russian": "Эта опция сохранит сид от игр, которые не имеют live сида, так что вы можете переименовать их в live, чтобы потом воссоздать матч."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_change_siege_engine_spawn_position_catapult",
+    "modDescription": {
+      "Chinese": "器械建造完成时将位于帐篷中央",
+      "English": "Spawn siege engines in the center of their tent",
+      "German": "Belagerungsgeräte in der Mitte des Zelts aufbauen",
+      "Hungarian": "Elkészült ostromgépek középre pozicionálása",
+      "Polish": "Wyśrodkuj pozycję pojawiania się machin oblężniczych",
+      "Russian": "Положение спавна осадных механизмов посредине"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_change_siege_engine_spawn_position_catapult",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "器械建造完成时将不再位于帐篷的右上角，而是位于帐篷的中央。",
+          "English": "Siege engines are spawning in the middle of their construction tent, instead of the top right corner.",
+          "German": "Belagerungsgeräte erscheinen nun nach dem Aufbauen am Punkt der Zeltmitte, statt wie bisher in der oberen rechten Ecke des Zelts.",
+          "Hungarian": "Az elkészült ostromgépek a sátor közepénél jelennek meg a sátor jobb felső sarka helyett.",
+          "Polish": "Machiny oblężnicze będą pojawiać się na środku miejsca, w którym stał namiot oblężniczy.",
+          "Russian": "Осадные механизмы теперь появляется по центру , вместо появления в верхнем углу палатки."
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  },
+  {
+    "modType": "Other",
+    "modIdentifier": "o_stop_player_keep_rotation",
+    "modDescription": {
+      "Chinese": "玩家的大本营会根据所处地图方位进行旋转",
+      "English": "Rotate player keeps same as AI's",
+      "German": "Drehe Spielerbergfriede wie die der KIs",
+      "Hungarian": "Játékos vártornyok elforgatása",
+      "Polish": "Odwróć siedziby graczy",
+      "Russian": "Поворот крепости игрока"
+    },
+    "modSelectionRule": "*",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "o_stop_player_keep_rotation",
+        "defaultValue": "true",
+        "description": {
+          "Chinese": "玩家的大本营将可以和AI一样，会根据所处地图方位进行旋转，使篝火处永远背向地图中央。",
+          "English": "Player keeps now get rotated the same way, that AI keeps rotate on a map, facing with their campfire outwards towards the map edge.",
+          "German": "Die Bergfriede der Spieler richten sich nun so aus wie die der KI; sie drehen sich so, dass das Lagerfeuer in Richtung des Kartenrands zeigt.",
+          "Hungarian": "A játékosok vártornyai mostantól ugyanolyan módon lesznek elforgatva, mint az MI vártornyok. A tábortűz mindig a térkép legközelebbi széle felé néz.",
+          "Polish": "Siedziby graczy będą odwracać się ogniskiem (wejściem) w stronę krańca mapy.",
+          "Russian": "Крепость игрока вращяется таким же образом как и крепости AI. Точней стоит лицом к костру AI , а другой стороной к краю карты"
+        },
+        "selectionType": "checkbox",
+        "selectionParameters": {}
+      }
+    ]
+  }
+]

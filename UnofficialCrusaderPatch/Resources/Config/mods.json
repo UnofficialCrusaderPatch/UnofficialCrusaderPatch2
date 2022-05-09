@@ -1,0 +1,70 @@
+﻿[
+  {
+    "modType": "AIV",
+    "modDescription": {
+      "English": "English Description"
+    },
+    "changes": [
+      {
+        "identifier": "rat",
+        "selectionType": "checkbox",
+        "selectionParameters": {
+          "Castles": [
+            {
+              "name": "rat1.aiv",
+              "description": {
+                "English": "English Description"
+              },
+              "previewUrl": "url"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "modType": "AILords",
+    "modIdentifier": "ai_addattack",
+    "modDescription": {
+      "English": "English Description"
+    },
+    "modSelectionType": "exclusive",
+    "changes": [
+      {
+        "compatibility": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_addattack",
+        "selectionType": "checkbox",
+        "defaultValue": "true",
+        "description": {
+          "English": "English Description"
+        }
+      },
+      {
+        "exeVersion": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_addattack_alt",
+        "selectionType": "slider",
+        "selectionParameters": {
+          "minimum": 1,
+          "maximum": 20,
+          "suggested": 10
+        },
+        "defaultValue": "0.3",
+        "description": {
+          "English": "English Description"
+        }
+      },
+      {
+        "exeVersion": [ "crusader", "extreme", "singleplayer", "multiplayer" ],
+        "identifier": "ai_addattack_alt",
+        "selectionType": "colour",
+        "selectionParameters": {
+          "options": [ "red", "blue", "yellow", "orange", "green", "cyan", "black", "purple" ]
+        },
+        "defaultValue": "red",
+        "description": {
+          "English": "English Description"
+        }
+      }
+    ]
+  }
+]
