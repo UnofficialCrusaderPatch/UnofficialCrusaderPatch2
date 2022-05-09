@@ -1,10 +1,9 @@
 import * as React from 'react';
 
-import { BackendChangeConfig, BackendModConfig, ModState } from '../Config';
-
-import { ChangeProvider } from './ChangeElements/ChangeProvider';
-import { Radio } from './ChangeElements/Radio';
-import { Slider } from './ChangeElements/Slider';
+import { BackendChangeConfig, BackendModConfig, ModState } from '../../Config';
+import { ChangeProvider } from '../../Options/ChangeElements/ChangeProvider';
+import { Radio } from '../../Options/ChangeElements/Radio';
+import { Slider } from '../../Options/ChangeElements/Slider';
 
 /**
  * Body element for a single mod element

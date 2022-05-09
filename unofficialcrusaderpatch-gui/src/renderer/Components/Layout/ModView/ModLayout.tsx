@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BackendChangeConfig, BackendModConfig, ModState } from '../Config';
+import { BackendChangeConfig, BackendModConfig, ModState } from '../../Config';
 
 import { ModBody } from './ModBody';
 import { ModHeader } from './ModHeader';

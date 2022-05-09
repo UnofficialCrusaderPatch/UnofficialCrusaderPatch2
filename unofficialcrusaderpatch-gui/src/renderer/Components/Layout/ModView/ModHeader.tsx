@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BackendModConfig, ModState } from '../Config';
+import { BackendModConfig, ModState } from '../../Config';
 
 /**
  * Header element for a single mod element
