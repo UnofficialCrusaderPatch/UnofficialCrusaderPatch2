@@ -199,7 +199,7 @@ namespace UCP.Balance
             "Fire ballista"
         };
         
-        public List<string> resourceNames = new List<string>()
+        public static List<string> resourceNames = new List<string>()
         {
             "Wood",
             "Hop",
