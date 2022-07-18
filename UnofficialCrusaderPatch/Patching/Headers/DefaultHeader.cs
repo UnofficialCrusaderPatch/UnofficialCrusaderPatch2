@@ -6,50 +6,50 @@ namespace UCP.Patching
 {
     public class DefaultHeader : ChangeHeader
     {
-        public bool NoLocalization = false;
+        public bool NoLocalization;
 
-        Change parent;
-        public Change Parent => parent;
+        public  Change Parent { get; private set; }
+
         public virtual void SetParent(Change change)
         {
-            this.parent = change;
-            this.isEnabled = parent.EnabledDefault && this.DefaultIsEnabled;
+            Parent = change;
+            isEnabled = Parent.EnabledDefault && DefaultIsEnabled;
         }
 
-        string descrIdent;
-        public string DescrIdent => descrIdent;
-        public string GetDescription() { return NoLocalization ? descrIdent : Localization.Get(descrIdent); }
+        public  string DescrIdent { get; }
 
-        bool defaultIsEnabled;
-        public bool DefaultIsEnabled => defaultIsEnabled;
+        public  string GetDescription() { return NoLocalization ? DescrIdent : Localization.Get(DescrIdent); }
+
+        public  bool DefaultIsEnabled { get; }
 
         public DefaultHeader(string descrIdent, bool suggested = true, bool noLocalization = false)
         {
-            this.descrIdent = descrIdent;
-            this.defaultIsEnabled = suggested;
-            this.NoLocalization = noLocalization;
+            DescrIdent = descrIdent;
+            DefaultIsEnabled = suggested;
+            NoLocalization = noLocalization;
         }
 
         #region UI
 
         public virtual void SetUIEnabled(bool enabled)
         {
-            if (box != null)
-                this.box.IsEnabled = enabled;
+            if (CheckBox != null)
+            {
+                CheckBox.IsEnabled = enabled;
+            }
         }
 
         public event Action<DefaultHeader, bool> OnEnabledChange;
 
-        CheckBox box;
-        public CheckBox CheckBox => box;
+        public  CheckBox CheckBox { get; private set; }
 
         public FrameworkElement InitUI(bool createCheckBox)
         {
             FrameworkElement content = CreateUI();
             if (createCheckBox)
             {
-                box = new CheckBox()
-                {
+                CheckBox = new CheckBox
+                      {
                     IsChecked = isEnabled,
                     Content = content,
                     Height = content.Height,
@@ -57,25 +57,25 @@ namespace UCP.Patching
                     VerticalAlignment = VerticalAlignment.Top,
                 };
 
-                box.Checked += Box_Checked;
-                box.Unchecked += Box_Unchecked;
+                CheckBox.Checked += Box_Checked;
+                CheckBox.Unchecked += Box_Unchecked;
 
-                return box;
+                return CheckBox;
             }
             return content;
         }
 
-        void Box_Unchecked(object sender, RoutedEventArgs e)
+        private void Box_Unchecked(object sender, RoutedEventArgs e)
         {
-            if (this.IsEnabled)
+            if (IsEnabled)
             {
                 SetEnabled(false);
             }
         }
 
-        void Box_Checked(object sender, RoutedEventArgs e)
+        private void Box_Checked(object sender, RoutedEventArgs e)
         {
-            if (!this.IsEnabled)
+            if (!IsEnabled)
             {
                 SetEnabled(true);
             }
@@ -83,37 +83,43 @@ namespace UCP.Patching
 
         protected virtual FrameworkElement CreateUI()
         {
-            return new TextBlock()
-            {
-                Text = this.GetDescription(),
+            return new TextBlock
+                   {
+                Text = GetDescription(),
                 Height = 16,
             };
         }
 
-        bool isEnabled;
+        private bool isEnabled;
         public virtual bool IsEnabled
         {
             get => isEnabled;
             set
             {
                 if (isEnabled == value)
+                {
                     return;
+                }
 
                 isEnabled = value;
 
-                if (box != null)
-                    box.IsChecked = value;
+                if (CheckBox != null)
+                {
+                    CheckBox.IsChecked = value;
+                }
             }
         }
 
         protected void SetEnabled(bool enabled)
         {
             if (IsEnabled == enabled)
+            {
                 return;
+            }
 
             IsEnabled = enabled;
             OnEnabledChange?.Invoke(this, enabled);
-            Configuration.Save(this.Parent.TitleIdent);
+            Configuration.Save(Parent.TitleIdent);
         }
 
         #endregion
@@ -123,14 +129,14 @@ namespace UCP.Patching
 
         public virtual string GetValueString()
         {
-            return this.isEnabled.ToString();
+            return isEnabled.ToString();
         }
 
         public virtual void LoadValueString(string valueStr)
         {
             if (Boolean.TryParse(valueStr, out bool result))
             {
-                this.isEnabled = result;
+                isEnabled = result;
             }
         }
 

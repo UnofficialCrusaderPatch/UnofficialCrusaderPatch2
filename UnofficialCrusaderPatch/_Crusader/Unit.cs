@@ -1,6 +1,6 @@
 ﻿namespace UCP._Crusader
 {
-    class Unit
+    internal class Unit
     {
         public const int Size = 0x490;
 

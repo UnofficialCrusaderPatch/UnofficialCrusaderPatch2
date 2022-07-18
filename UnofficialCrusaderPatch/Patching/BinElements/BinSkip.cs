@@ -3,14 +3,13 @@
     /// <summary>
     /// Represents a shift of the provided number of bytes.
     /// </summary>
-    class BinSkip : BinElement
+    internal class BinSkip : BinElement
     {
-        int count;
-        public override int Length => count;
+        public override int Length { get; }
 
         public BinSkip(int count)
         {
-            this.count = count;
+            Length = count;
         }
     }
 }

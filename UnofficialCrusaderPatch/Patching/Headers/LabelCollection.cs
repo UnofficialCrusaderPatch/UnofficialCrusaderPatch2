@@ -5,7 +5,7 @@ namespace UCP.Patching
 {
     public class LabelCollection
     {
-        Dictionary<string, BinLabel> dict = new Dictionary<string, BinLabel>(StringComparer.OrdinalIgnoreCase);
+        private Dictionary<string, BinLabel> dict = new Dictionary<string, BinLabel>(StringComparer.OrdinalIgnoreCase);
 
         public void Add(BinLabel label)
         {
@@ -22,7 +22,10 @@ namespace UCP.Patching
         public int GetLabel(string labelName)
         {
             if (!dict.TryGetValue(labelName, out BinLabel label))
+            {
                 throw new Exception("Label not found! " + labelName);
+            }
+
             return label.VirtAddress;
         }
 

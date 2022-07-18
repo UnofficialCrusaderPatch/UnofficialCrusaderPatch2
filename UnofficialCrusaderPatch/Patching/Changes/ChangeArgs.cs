@@ -7,8 +7,8 @@
 
         public ChangeArgs(byte[] data, byte[] oriData)
         {
-            this.Data = data;
-            this.OriData = oriData;
+            Data = data;
+            OriData = oriData;
         }
     }
 }

@@ -10,24 +10,24 @@ namespace UCP.Patching
 
     public class BinCollection : IEnumerable<BinElement>
     {
-        List<BinElement> elements = new List<BinElement>();
+        private List<BinElement> elements = new List<BinElement>();
 
         public IEnumerator<BinElement> GetEnumerator() => elements.GetEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         public BinCollection(params BinElement[] input)
         {
-            this.elements.AddRange(input);
+            elements.AddRange(input);
         }
 
         public void Add(BinElement input)
         {
-            this.elements.Add(input);
+            elements.Add(input);
         }
 
         public void Insert(int index, BinElement input)
         {
-            this.elements.Insert(index, input);
+            elements.Insert(index, input);
         }
     }
 }

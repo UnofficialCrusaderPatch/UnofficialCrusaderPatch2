@@ -1,6 +1,6 @@
 ﻿namespace UCP._Crusader
 {
-    class UI_Button
+    internal class UI_Button
     {
         public enum Header
         {

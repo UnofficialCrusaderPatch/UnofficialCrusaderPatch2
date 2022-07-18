@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using UCP.AICharacters;
 
 namespace IDAParser
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             try
             {
@@ -32,7 +29,7 @@ namespace IDAParser
             Console.ReadLine();
         }
 
-        static void UpdateAICs(string folder)
+        private static void UpdateAICs(string folder)
         {
             foreach(string file in Directory.EnumerateFiles(folder, "*.aic"))
             {
@@ -51,7 +48,7 @@ namespace IDAParser
             }
         }
 
-        static void ParseAll()
+        private static void ParseAll()
         {
             AICCollection collection = new AICCollection();
 
@@ -59,13 +56,15 @@ namespace IDAParser
             {
                 string name = Path.GetFileNameWithoutExtension(file);
                 if (!Enum.TryParse(name, true, out AICIndex index))
+                {
                     continue;
+                }
 
                 Console.WriteLine(index);
                 using (StreamReader sr = new StreamReader(file))
                 {
-                    AICharacter aic = new AICharacter()
-                    {
+                    AICharacter aic = new AICharacter
+                                      {
                         Index = (int)index,
                         Name = index.ToString(),
                         Personality = Parse(sr)
@@ -78,10 +77,10 @@ namespace IDAParser
                 collection.Write(fs);
         }
 
-        const string preamble = "*((_DWORD *)result + ";
-        const string preambleZero = "*(_DWORD *)result";
+        private const string preamble     = "*((_DWORD *)result + ";
+        private const string preambleZero = "*(_DWORD *)result";
 
-        static AIPersonality Parse(StreamReader sr)
+        private static AIPersonality Parse(StreamReader sr)
         {
 
             AIPersonality result = new AIPersonality();
@@ -89,7 +88,9 @@ namespace IDAParser
             while ((line = sr.ReadLine()) != null)
             {
                 if (string.IsNullOrWhiteSpace(line))
+                {
                     continue;
+                }
 
                 line = line.Trim(); // get rid of whitespaces
                 if (line.StartsWith(preamble))
@@ -100,16 +101,12 @@ namespace IDAParser
                 {
                     ReadIndexZero(line, result);
                 }
-                else
-                {
-                    continue;
-                }
             }
 
             return result;
         }
 
-        static void ReadIndex(string line, AIPersonality result)
+        private static void ReadIndex(string line, AIPersonality result)
         {
             // find field index
             int startIndex = line.IndexOf(')', preamble.Length);
@@ -153,8 +150,7 @@ namespace IDAParser
         }
 
 
-
-        static void ReadIndexZero(string line, AIPersonality result)
+        private static void ReadIndexZero(string line, AIPersonality result)
         {
             // find field value
             int startIndex = line.IndexOf('=', preambleZero.Length);

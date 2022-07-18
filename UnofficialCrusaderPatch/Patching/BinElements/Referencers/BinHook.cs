@@ -6,7 +6,7 @@ namespace UCP.Patching
     /// <summary>
     /// Defines the replacement of an existing instruction with an assembly jmp instruction
     /// </summary>
-    class BinHook : BinRedirect
+    internal class BinHook : BinRedirect
     {
         /// <summary>
         /// Creates an assembly jmp instruction of length 5 bytes and fills remaining byte length with nops
@@ -26,18 +26,22 @@ namespace UCP.Patching
             : base(true)
         {
             if (hookLen < jmpBytes.Length + 4)
+            {
                 throw new Exception("Hook length is too short!");
+            }
 
-            this.Collection.Insert(0, jmpBytes);
+            Collection.Insert(0, jmpBytes);
 
             int nopsLen = hookLen - (4 + jmpBytes.Length);
             if (nopsLen > 0)
-                this.Collection.Add(new BinNops(nopsLen));
+            {
+                Collection.Add(new BinNops(nopsLen));
+            }
 
             if (jmpBackLabel == null)
             {
-                jmpBackLabel = this.GetHashCode().ToString() + "back";
-                this.Collection.Add(new BinLabel(jmpBackLabel));
+                jmpBackLabel = GetHashCode() + "back";
+                Collection.Add(new BinLabel(jmpBackLabel));
             }
 
             base.Add(new BinBytes(0xE9));
@@ -54,7 +58,7 @@ namespace UCP.Patching
         {
             return new Change(ident, type, checkedDefault)
             {
-                new DefaultHeader(ident, true)
+                new DefaultHeader(ident)
                 {
                     CreateEdit(ident, hookLen, code)
                 }
@@ -63,7 +67,7 @@ namespace UCP.Patching
 
         public static BinaryEdit CreateEdit(string ident, int hookLen, params BinElement[] code)
         {
-            var hook = new BinHook(hookLen, ident, new byte[1] { 0xE9 });
+            BinHook hook = new BinHook(hookLen, ident, 0xE9);
             foreach (BinElement element in code)
                 hook.Add(element);
 
@@ -76,7 +80,7 @@ namespace UCP.Patching
 
         public static BinHook CreateJMP(int hookLen, params BinElement[] code)
         {
-            var hook = new BinHook(hookLen, null, new byte[1] { 0xE9 });
+            BinHook hook = new BinHook(hookLen, null, 0xE9);
             foreach (BinElement element in code)
                 hook.Add(element);
 

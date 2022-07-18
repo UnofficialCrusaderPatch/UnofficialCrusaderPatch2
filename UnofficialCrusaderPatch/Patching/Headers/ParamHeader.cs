@@ -1,11 +1,8 @@
-﻿using System;
-using System.Globalization;
-
-namespace UCP.Patching
+﻿namespace UCP.Patching
 {
     public class ParamHeader : DefaultHeader
     {
-        public ParamHeader(string descrIdent) : base(descrIdent, true)
+        public ParamHeader(string descrIdent) : base(descrIdent)
         {
         }
 

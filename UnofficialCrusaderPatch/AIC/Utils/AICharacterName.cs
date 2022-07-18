@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UCPAIConversion
+﻿namespace UCPAIConversion
 {
     /// <summary>
     /// Name and associated index (for calculating offsets when installing) for each AI
     /// </summary>
-    enum AICharacterName
+    internal enum AICharacterName
     {
         Rat = 1,
         Snake = 2,

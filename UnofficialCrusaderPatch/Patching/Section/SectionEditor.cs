@@ -10,8 +10,8 @@ namespace UCP.Patching
             currentLen = 0;
         }
 
-        static uint currentLen = 0;
-        static byte[] buffer = new byte[0];
+        private static uint   currentLen;
+        private static byte[] buffer = Array.Empty<byte>();
 
         public static AddressSpace ReserveBufferSpace(uint size)
         {
@@ -25,7 +25,7 @@ namespace UCP.Patching
                 buffer = newBuffer;
             }
 
-            var space = new AddressSpace(ucpSec.VirtAddr + currentLen, currentLen);
+            AddressSpace space = new AddressSpace(ucpSec.VirtAddr + currentLen, currentLen);
             currentLen = newLen;
             return space;
         }
@@ -36,20 +36,19 @@ namespace UCP.Patching
         }
 
 
-
-
-        
-        static PEHeader header;
-        static SectionHeader ucpSec;
+        private static PEHeader      header;
+        private static SectionHeader ucpSec;
 
         public static void Init(byte[] input)
         {
             // find headers entry
             header = PEHeader.Find(input);
             if (header == null)
+            {
                 throw new Exception("Failed to find PE header! Unsupported Version?");
+            }
 
-            var prevSec = header.Sections.Last();
+            SectionHeader prevSec = header.Sections.Last();
 
             // new code section
             ucpSec = new SectionHeader(".ucp")
@@ -64,7 +63,9 @@ namespace UCP.Patching
         public static byte[] AttachSection(byte[] input)
         {
             if (buffer.Length == 0)
+            {
                 return input;
+            }
 
             uint size = (uint)buffer.Length;
             ucpSec.VirtSize = GetMultiples(size, header.SectionAlignment);
@@ -76,7 +77,7 @@ namespace UCP.Patching
             return data;
         }
 
-        static uint GetMultiples(uint size, uint mult)
+        private static uint GetMultiples(uint size, uint mult)
         {
             uint num = size + mult - 1;
             return num - num % mult;

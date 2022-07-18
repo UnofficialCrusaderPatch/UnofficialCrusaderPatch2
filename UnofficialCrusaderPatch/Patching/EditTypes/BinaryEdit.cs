@@ -1,32 +1,33 @@
-﻿using CodeBlox;
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using CodeBlox;
 
 namespace UCP.Patching
 {
     public class BinaryEdit : BinaryEditBase
     {
-        string blockFile;
-        public string BlockFile => this.blockFile;
+        public  string BlockFile { get; }
 
-        CodeBlock block;
+        private CodeBlock block;
         
         public BinaryEdit(string blockIdent)
         {
             Assembly asm = Assembly.GetExecutingAssembly();
 
             // check if code block file is there
-            string file = string.Format("UCP.CodeBlocks.{0}.block", blockIdent);
+            string file = $"UCP.CodeBlocks.{blockIdent}.block";
             if (!asm.GetManifestResourceNames().Contains(file))
+            {
                 throw new Exception("MISSING BLOCK FILE " + file);
+            }
 
             // read code block file
             using (Stream stream = asm.GetManifestResourceStream(file))
-                this.block = new CodeBlock(stream);
+                block = new CodeBlock(stream);
 
-            this.blockFile = blockIdent;
+            BlockFile = blockIdent;
         }
 
         protected override bool GetAddresses(byte[] original, out int rawAddr, out int virtAddr)
@@ -37,15 +38,17 @@ namespace UCP.Patching
 
             if (count > 1)
             {
-                Patcher.AddFailure(this.blockFile, EditFailure.MultipleBlocks);
+                Patcher.AddFailure(BlockFile, EditFailure.MultipleBlocks);
                 return false;
             }
-            else if (count == 0)
+
+            if (count != 0)
             {
-                Patcher.AddFailure(this.blockFile, EditFailure.BlockNotFound);
-                return false;
+                return true;
             }
-            return true;
+
+            Patcher.AddFailure(BlockFile, EditFailure.BlockNotFound);
+            return false;
         }
     }
 }

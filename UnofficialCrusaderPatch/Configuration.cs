@@ -14,36 +14,24 @@ namespace UCP
     {
         public const string ConfigFile = "ucp.cfg";
 
-        private static Dictionary<String, String> settings = new Dictionary<string, string>()
-        {
+        private static Dictionary<String, String> settings = new Dictionary<string, string>
+                                                             {
             { "Path", "" },
             { "Language", "-1" }
         };
         public static string Path
         {
-            get
-            {
-                return settings["Path"];
-            }
-            set
-            {
-                settings["Path"] = value;
-            }
+            get => settings["Path"];
+            set => settings["Path"] = value;
         }
 
         public static int Language
         {
-            get
-            {
-                return Convert.ToInt32(settings["Language"]);
-            }
-            set
-            {
-                settings["Language"] = value.ToString();
-            }
+            get => Convert.ToInt32(settings["Language"]);
+            set => settings["Language"] = value.ToString();
         }
 
-        static bool loading = false;
+        private static bool loading = false;
 
         static Configuration()
         {
@@ -52,8 +40,11 @@ namespace UCP
 
         public static void Save(string str = null)
         {
-            if (loading) return;
-            
+            if (loading)
+            {
+                return;
+            }
+
             using (StreamWriter sw = new StreamWriter(ConfigFile))
             {
                 // install path
@@ -110,7 +101,8 @@ namespace UCP
                             aicConfigurationList.Add(line);
                             continue;
                         }
-                        else if(Regex.Replace(@"\s+", "", line).StartsWith("aiv_"))
+
+                        if(Regex.Replace(@"\s+", "", line).StartsWith("aiv_"))
                         {
                             if (aivConfigurationList == null)
                             {
@@ -119,7 +111,8 @@ namespace UCP
                             aivConfigurationList.Add(line);
                             continue;
                         }
-                        else if (Regex.Replace(@"\s+", "", line).StartsWith("res_"))
+
+                        if (Regex.Replace(@"\s+", "", line).StartsWith("res_"))
                         {
                             if (resourceConfigurationList == null)
                             {
@@ -128,7 +121,8 @@ namespace UCP
                             resourceConfigurationList.Add(line);
                             continue;
                         }
-                        else if (Regex.Replace(@"\s+", "", line).StartsWith("s_"))
+
+                        if (Regex.Replace(@"\s+", "", line).StartsWith("s_"))
                         {
                             if (startTroopConfigurationList == null)
                             {
@@ -138,7 +132,7 @@ namespace UCP
                             continue;
                         }
 
-                        string[] changeLine = line.Split(new char[] { '=' }, 2, StringSplitOptions.RemoveEmptyEntries).Select(str => str.Trim()).ToArray();
+                        string[] changeLine = line.Split(new[] { '=' }, 2, StringSplitOptions.RemoveEmptyEntries).Select(str => str.Trim()).ToArray();
                         if (changeLine.Length < 2)
                         {
                             continue;
@@ -151,12 +145,14 @@ namespace UCP
                         {
                             if (changeKey == "Path")
                             {
-                                Configuration.Path = changeSetting;
+                                Path = changeSetting;
                             }
                             else if (changeKey == "Language")
                             {
                                 if (int.TryParse(changeSetting, out int result))
-                                    Configuration.Language = result;
+                                {
+                                    Language = result;
+                                }
                             }
                         }
                         if (changeKey == "Path" || changeKey == "Language")
@@ -164,10 +160,13 @@ namespace UCP
                             continue;
                         }
                         Change change = Version.Changes.Find(c => c.TitleIdent == changeKey);
-                        if (change == null) continue;
+                        if (change == null)
+                        {
+                            continue;
+                        }
 
-                        int numChanges = changeSetting.Count(ch => ch == '=');
-                        string[] changes = changeSetting.Split(new char[] { '}' }, numChanges, StringSplitOptions.RemoveEmptyEntries);
+                        int      numChanges = changeSetting.Count(ch => ch == '=');
+                        string[] changes    = changeSetting.Split(new[] { '}' }, numChanges, StringSplitOptions.RemoveEmptyEntries);
                         for (int i = 0; i < numChanges; i++)
                         {
                             string headerKey = changes[i].Split('=')[0].Replace(" ", "").Replace("{", String.Empty);

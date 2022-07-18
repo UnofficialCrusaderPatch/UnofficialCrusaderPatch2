@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
 namespace UCPAIConversion
@@ -69,10 +65,7 @@ namespace UCPAIConversion
         [RWComment("Values range from 0 to 10000, where 100 popularity equals 10000. Below this value, the AI sells more stuff than usual to get money.")]
         public int CriticalPopularity
         {
-            get
-            {
-                return _CriticalPopularity;
-            }
+            get => _CriticalPopularity;
             set
             {
                 if (value < 0 || value > 10000)
@@ -87,10 +80,7 @@ namespace UCPAIConversion
         [RWComment("Below this value the AI sets taxes to zero until it reaches 'HighestPopularity' again.")]
         public int LowestPopularity
         {
-            get
-            {
-                return _LowestPopularity;
-            }
+            get => _LowestPopularity;
             set
             {
                 if (value < 0 || value > 10000)
@@ -105,10 +95,7 @@ namespace UCPAIConversion
         [RWComment("Above this value the AI sets taxes back up")]
         public int HighestPopularity
         {
-            get
-            {
-                return _HighestPopularity;
-            }
+            get => _HighestPopularity;
             set
             {
                 if (value < 0 || value > 10000)
@@ -124,10 +111,7 @@ namespace UCPAIConversion
         [RWComment("Ranging from 0 (being +7 gifts) to 11 (being -24 taxes)")]
         public int TaxesMin
         {
-            get
-            {
-                return _TaxesMin;
-            }
+            get => _TaxesMin;
             set
             {
                 if (value < 0 || value > 12)
@@ -143,10 +127,7 @@ namespace UCPAIConversion
         [RWComment("Ranging from 0 (being +7 gifts) to 11 (being -24 taxes)")]
         public int TaxesMax
         {
-            get
-            {
-                return _TaxesMax;
-            }
+            get => _TaxesMax;
             set
             {
                 if (value < 0 || value > 12)
@@ -166,10 +147,7 @@ namespace UCPAIConversion
         public FarmBuilding _Farm1 { get; set; }
         public string Farm1 {
             get => Enum.GetName(typeof(FarmBuilding), _Farm1);
-            set
-            {
-                _Farm1 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
-            }
+            set => _Farm1 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
         }
 
         // Index: 13 Hex: 0x34
@@ -178,10 +156,7 @@ namespace UCPAIConversion
         public string Farm2
         {
             get => Enum.GetName(typeof(FarmBuilding), _Farm2);
-            set
-            {
-                _Farm2 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
-            }
+            set => _Farm2 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
         }
 
         // Index: 14 Hex: 0x38
@@ -190,10 +165,7 @@ namespace UCPAIConversion
         public string Farm3
         {
             get => Enum.GetName(typeof(FarmBuilding), _Farm3);
-            set
-            {
-                _Farm3 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
-            }
+            set => _Farm3 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
         }
 
 
@@ -203,10 +175,7 @@ namespace UCPAIConversion
         public string Farm4
         {
             get => Enum.GetName(typeof(FarmBuilding), _Farm4);
-            set
-            {
-                _Farm4 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
-            }
+            set => _Farm4 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
         }
 
         // Index: 16 Hex: 0x40
@@ -215,10 +184,7 @@ namespace UCPAIConversion
         public string Farm5
         {
             get => Enum.GetName(typeof(FarmBuilding), _Farm5);
-            set
-            {
-                _Farm5 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
-            }
+            set => _Farm5 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
         }
 
         // Index: 17 Hex: 0x44
@@ -227,10 +193,7 @@ namespace UCPAIConversion
         public string Farm6
         {
             get => Enum.GetName(typeof(FarmBuilding), _Farm6);
-            set
-            {
-                _Farm6 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
-            }
+            set => _Farm6 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
         }
 
         // Index: 18 Hex: 0x48
@@ -239,10 +202,7 @@ namespace UCPAIConversion
         public string Farm7
         {
             get => Enum.GetName(typeof(FarmBuilding), _Farm7);
-            set
-            {
-                _Farm7 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
-            }
+            set => _Farm7 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
         }
 
         // Index: 19 Hex: 0x4C
@@ -251,20 +211,14 @@ namespace UCPAIConversion
         public string Farm8
         {
             get => Enum.GetName(typeof(FarmBuilding), _Farm8);
-            set
-            {
-                _Farm8 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
-            }
+            set => _Farm8 = (FarmBuilding)Enum.Parse(typeof(FarmBuilding), value);
         }
 
         // Index: 20 Hex: 0x50
         [RWComment("The AI builds one farm for each amount of this population value. (Also check MaxFarms)")]
         public int PopulationPerFarm
         {
-            get
-            {
-                return _PopulationPerFarm;
-            }
+            get => _PopulationPerFarm;
             set
             {
                 if (value < 0)
@@ -278,10 +232,7 @@ namespace UCPAIConversion
         // Index: 21 Hex: 0x54
         public int PopulationPerWoodcutter
         {
-            get
-            {
-                return _PopulationPerWoodcutter;
-            }
+            get => _PopulationPerWoodcutter;
             set
             {
                 if (value < 0)
@@ -295,10 +246,7 @@ namespace UCPAIConversion
         // Index: 22 Hex: 0x58
         public int PopulationPerQuarry
         {
-            get
-            {
-                return _PopulationPerQuarry;
-            }
+            get => _PopulationPerQuarry;
             set
             {
                 if (value < 0)
@@ -312,10 +260,7 @@ namespace UCPAIConversion
         // Index: 23 Hex: 0x5C
         public int PopulationPerIronmine
         {
-            get
-            {
-                return _PopulationPerIronmine;
-            }
+            get => _PopulationPerIronmine;
             set
             {
                 if (value < 0)
@@ -329,10 +274,7 @@ namespace UCPAIConversion
         // Index: 24 Hex: 0x60
         public int PopulationPerPitchrig
         {
-            get
-            {
-                return _PopulationPerPitchrig;
-            }
+            get => _PopulationPerPitchrig;
             set
             {
                 if (value < 0)
@@ -347,10 +289,7 @@ namespace UCPAIConversion
         [RWComment("Setting this to zero will not disable building! Set PopulationPerQuarry to zero instead!")]
         public int MaxQuarries
         {
-            get
-            {
-                return _MaxQuarries;
-            }
+            get => _MaxQuarries;
             set
             {
                 if (value < 0)
@@ -365,10 +304,7 @@ namespace UCPAIConversion
         [RWComment("Setting this to zero will not disable building! Set PopulationPerIronmine to zero instead!")]
         public int MaxIronmines
         {
-            get
-            {
-                return _MaxIronmines;
-            }
+            get => _MaxIronmines;
             set
             {
                 if (value < 0)
@@ -383,10 +319,7 @@ namespace UCPAIConversion
         [RWComment("Setting this to zero will not disable building! Set PopulationPerWoodcutter to zero instead!")]
         public int MaxWoodcutters
         {
-            get
-            {
-                return _MaxWoodcutters;
-            }
+            get => _MaxWoodcutters;
             set
             {
                 if (value < 0)
@@ -401,10 +334,7 @@ namespace UCPAIConversion
         [RWComment("Setting this to zero will not disable building! Set PopulationPerPitchrig to zero instead!")]
         public int MaxPitchrigs
         {
-            get
-            {
-                return _MaxPitchrigs;
-            }
+            get => _MaxPitchrigs;
             set
             {
                 if (value < 0)
@@ -420,10 +350,7 @@ namespace UCPAIConversion
         [RWComment("Setting this to zero will not disable building! Set PopulationPerFarm to zero instead!")]
         public int MaxFarms
         {
-            get
-            {
-                return _MaxFarms;
-            }
+            get => _MaxFarms;
             set
             {
                 if (value < 0)
@@ -468,10 +395,7 @@ namespace UCPAIConversion
         // Index: 38 Hex: 0x98
         public int TradeAmountFood
         {
-            get
-            {
-                return _TradeAmountFood;
-            }
+            get => _TradeAmountFood;
             set
             {
                 if (value < 0)
@@ -485,10 +409,7 @@ namespace UCPAIConversion
         // Index: 39 Hex: 0x9C
         public int TradeAmountEquipment
         {
-            get
-            {
-                return _TradeAmountEquipment;
-            }
+            get => _TradeAmountEquipment;
             set
             {
                 if (value < 0)
@@ -507,10 +428,7 @@ namespace UCPAIConversion
         [RWComment("If the AI would have less than this amount of a good after sending them it won't send them to the requesting player.")] //Includes ResourceVariance?
         public int MinimumGoodsRequiredAfterTrade
         {
-            get
-            {
-                return _MinimumGoodsRequiredAfterTrade;
-            }
+            get => _MinimumGoodsRequiredAfterTrade;
             set
             {
                 if (value < 0)
@@ -557,10 +475,7 @@ namespace UCPAIConversion
         public string BlacksmithSetting
         {
             get => Enum.GetName(typeof(BlacksmithSetting), _BlacksmithSetting);
-            set
-            {
-                _BlacksmithSetting = (BlacksmithSetting)Enum.Parse(typeof(BlacksmithSetting), value);
-            }
+            set => _BlacksmithSetting = (BlacksmithSetting)Enum.Parse(typeof(BlacksmithSetting), value);
         }
 
         // Index: 51 Hex: 0xCC
@@ -569,10 +484,7 @@ namespace UCPAIConversion
         public string FletcherSetting
         {
             get => Enum.GetName(typeof(FletcherSetting), _FletcherSetting);
-            set
-            {
-                _FletcherSetting = (FletcherSetting)Enum.Parse(typeof(FletcherSetting), value);
-            }
+            set => _FletcherSetting = (FletcherSetting)Enum.Parse(typeof(FletcherSetting), value);
         }
 
         // Index: 52 Hex: 0xD0
@@ -581,10 +493,7 @@ namespace UCPAIConversion
         public string PoleturnerSetting
         {
             get => Enum.GetName(typeof(PoleturnerSetting), _PoleturnerSetting);
-            set
-            {
-                _PoleturnerSetting = (PoleturnerSetting)Enum.Parse(typeof(PoleturnerSetting), value);
-            }
+            set => _PoleturnerSetting = (PoleturnerSetting)Enum.Parse(typeof(PoleturnerSetting), value);
         }
 
 
@@ -594,10 +503,7 @@ namespace UCPAIConversion
         public string SellResource01
         {
             get => Enum.GetName(typeof(Resource), _SellResource01);
-            set
-            {
-                _SellResource01 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource01 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 54 Hex: 0xD8
@@ -606,10 +512,7 @@ namespace UCPAIConversion
         public string SellResource02
         {
             get => Enum.GetName(typeof(Resource), _SellResource02);
-            set
-            {
-                _SellResource02 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource02 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 55 Hex: 0xDC
@@ -618,10 +521,7 @@ namespace UCPAIConversion
         public string SellResource03
         {
             get => Enum.GetName(typeof(Resource), _SellResource03);
-            set
-            {
-                _SellResource03 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource03 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 56 Hex: 0xE0
@@ -630,10 +530,7 @@ namespace UCPAIConversion
         public string SellResource04
         {
             get => Enum.GetName(typeof(Resource), _SellResource04);
-            set
-            {
-                _SellResource04 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource04 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 57 Hex: 0xE4
@@ -642,10 +539,7 @@ namespace UCPAIConversion
         public string SellResource05
         {
             get => Enum.GetName(typeof(Resource), _SellResource05);
-            set
-            {
-                _SellResource05 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource05 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 58 Hex: 0xE8
@@ -654,10 +548,7 @@ namespace UCPAIConversion
         public string SellResource06
         {
             get => Enum.GetName(typeof(Resource), _SellResource06);
-            set
-            {
-                _SellResource06 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource06 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 59 Hex: 0xEC
@@ -666,10 +557,7 @@ namespace UCPAIConversion
         public string SellResource07
         {
             get => Enum.GetName(typeof(Resource), _SellResource07);
-            set
-            {
-                _SellResource07 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource07 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 60 Hex: 0xF0
@@ -678,10 +566,7 @@ namespace UCPAIConversion
         public string SellResource08
         {
             get => Enum.GetName(typeof(Resource), _SellResource08);
-            set
-            {
-                _SellResource08 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource08 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 61 Hex: 0xF4
@@ -690,10 +575,7 @@ namespace UCPAIConversion
         public string SellResource09
         {
             get => Enum.GetName(typeof(Resource), _SellResource09);
-            set
-            {
-                _SellResource09 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource09 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 62 Hex: 0xF8
@@ -702,10 +584,7 @@ namespace UCPAIConversion
         public string SellResource10
         {
             get => Enum.GetName(typeof(Resource), _SellResource10);
-            set
-            {
-                _SellResource10 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource10 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 63 Hex: 0xFC
@@ -714,10 +593,7 @@ namespace UCPAIConversion
         public string SellResource11
         {
             get => Enum.GetName(typeof(Resource), _SellResource11);
-            set
-            {
-                _SellResource11 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource11 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 64 Hex: 0x100
@@ -726,10 +602,7 @@ namespace UCPAIConversion
         public string SellResource12
         {
             get => Enum.GetName(typeof(Resource), _SellResource12);
-            set
-            {
-                _SellResource12 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource12 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 65 Hex: 0x104
@@ -738,10 +611,7 @@ namespace UCPAIConversion
         public string SellResource13
         {
             get => Enum.GetName(typeof(Resource), _SellResource13);
-            set
-            {
-                _SellResource13 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource13 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 66 Hex: 0x108
@@ -750,10 +620,7 @@ namespace UCPAIConversion
         public string SellResource14
         {
             get => Enum.GetName(typeof(Resource), _SellResource14);
-            set
-            {
-                _SellResource14 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource14 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 67 Hex: 0x10C
@@ -762,10 +629,7 @@ namespace UCPAIConversion
         public string SellResource15
         {
             get => Enum.GetName(typeof(Resource), _SellResource15);
-            set
-            {
-                _SellResource15 = (Resource)Enum.Parse(typeof(Resource), value);
-            }
+            set => _SellResource15 = (Resource)Enum.Parse(typeof(Resource), value);
         }
 
         // Index: 68 Hex: 0x110
@@ -797,10 +661,7 @@ namespace UCPAIConversion
         [RWComment("The probability with which this AI reinforces missing defense troops. Note: These are ignored at the beginning of the game, as there are only sortie and defensive units being recruited.")]
         public int RecruitProbDefDefault
         {
-            get
-            {
-                return _RecruitProbDefDefault;
-            }
+            get => _RecruitProbDefDefault;
             set
             {
                 if (value < 0 || value > 100)
@@ -814,10 +675,7 @@ namespace UCPAIConversion
         // Index: 75 Hex: 0x12C
         public int RecruitProbDefWeak
         {
-            get
-            {
-                return _RecruitProbDefWeak;
-            }
+            get => _RecruitProbDefWeak;
             set
             {
                 if (value < 0 || value > 100)
@@ -831,10 +689,7 @@ namespace UCPAIConversion
         // Index: 76 Hex: 0x130
         public int RecruitProbDefStrong
         {
-            get
-            {
-                return _RecruitProbDefStrong;
-            }
+            get => _RecruitProbDefStrong;
             set
             {
                 if (value < 0 || value > 100)
@@ -848,10 +703,7 @@ namespace UCPAIConversion
         // Index: 77 Hex: 0x134
         public int RecruitProbRaidDefault
         {
-            get
-            {
-                return _RecruitProbRaidDefault;
-            }
+            get => _RecruitProbRaidDefault;
             set
             {
                 if (value < 0 || value > 100)
@@ -865,10 +717,7 @@ namespace UCPAIConversion
         // Index: 78 Hex: 0x138
         public int RecruitProbRaidWeak
         {
-            get
-            {
-                return _RecruitProbRaidWeak;
-            }
+            get => _RecruitProbRaidWeak;
             set
             {
                 if (value < 0 || value > 100)
@@ -882,10 +731,7 @@ namespace UCPAIConversion
         // Index: 79 Hex: 0x13C
         public int RecruitProbRaidStrong
         {
-            get
-            {
-                return _RecruitProbRaidStrong;
-            }
+            get => _RecruitProbRaidStrong;
             set
             {
                 if (value < 0 || value > 100)
@@ -899,10 +745,7 @@ namespace UCPAIConversion
         // Index: 80 Hex: 0x140
         public int RecruitProbAttackDefault
         {
-            get
-            {
-                return _RecruitProbAttackDefault;
-            }
+            get => _RecruitProbAttackDefault;
             set
             {
                 if (value < 0 || value > 100)
@@ -916,10 +759,7 @@ namespace UCPAIConversion
         // Index: 81 Hex: 0x144
         public int RecruitProbAttackWeak
         {
-            get
-            {
-                return _RecruitProbAttackWeak;
-            }
+            get => _RecruitProbAttackWeak;
             set
             {
                 if (value < 0 || value > 100)
@@ -933,10 +773,7 @@ namespace UCPAIConversion
         // Index: 82 Hex: 0x148
         public int RecruitProbAttackStrong
         {
-            get
-            {
-                return _RecruitProbAttackStrong;
-            }
+            get => _RecruitProbAttackStrong;
             set
             {
                 if (value < 0 || value > 100)
@@ -952,10 +789,7 @@ namespace UCPAIConversion
         [RWNames("SortieUnitRangedMax", "Unknown083")]
         public int SortieUnitRangedMin
         {
-            get
-            {
-                return _SortieUnitRangedMin;
-            }
+            get => _SortieUnitRangedMin;
             set
             {
                 if (value < 0)
@@ -973,10 +807,7 @@ namespace UCPAIConversion
         public string SortieUnitRanged
         {
             get => Enum.GetName(typeof(Unit), _SortieUnitRanged);
-            set
-            {
-                _SortieUnitRanged = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _SortieUnitRanged = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
 
@@ -985,10 +816,7 @@ namespace UCPAIConversion
         [RWComment("These units are only sent out if more than this amount of them has already been recruited.")]
         public int SortieUnitMeleeMin
         {
-            get
-            {
-                return _SortieUnitMeleeMin;
-            }
+            get => _SortieUnitMeleeMin;
             set
             {
                 if (value < 0)
@@ -1006,10 +834,7 @@ namespace UCPAIConversion
         public string SortieUnitMelee
         {
             get => Enum.GetName(typeof(Unit), _SortieUnitMelee);
-            set
-            {
-                _SortieUnitMelee = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _SortieUnitMelee = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 87 Hex: 0x15C
@@ -1023,10 +848,7 @@ namespace UCPAIConversion
         public string DefDiggingUnit
         {
             get => Enum.GetName(typeof(DiggingUnit), _DefDiggingUnit);
-            set
-            {
-                _DefDiggingUnit = (DiggingUnit)Enum.Parse(typeof(DiggingUnit), value);
-            }
+            set => _DefDiggingUnit = (DiggingUnit)Enum.Parse(typeof(DiggingUnit), value);
         }
 
         // Index: 89 Hex: 0x164
@@ -1045,10 +867,7 @@ namespace UCPAIConversion
         [RWComment("The total count of all defensive units (wall defense + patrols).")]
         public int DefTotal
         {
-            get
-            {
-                return _DefTotal;
-            }
+            get => _DefTotal;
             set
             {
                 if (value < 0)
@@ -1084,10 +903,7 @@ namespace UCPAIConversion
         public string DefUnit1
         {
             get => Enum.GetName(typeof(Unit), _DefUnit1);
-            set
-            {
-                _DefUnit1 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _DefUnit1 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 98 Hex: 0x188
@@ -1096,10 +912,7 @@ namespace UCPAIConversion
         public string DefUnit2
         {
             get => Enum.GetName(typeof(Unit), _DefUnit2);
-            set
-            {
-                _DefUnit2 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _DefUnit2 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 99 Hex: 0x18C
@@ -1108,10 +921,7 @@ namespace UCPAIConversion
         public string DefUnit3
         {
             get => Enum.GetName(typeof(Unit), _DefUnit3);
-            set
-            {
-                _DefUnit3 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _DefUnit3 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 100 Hex: 0x190
@@ -1120,10 +930,7 @@ namespace UCPAIConversion
         public string DefUnit4
         {
             get => Enum.GetName(typeof(Unit), _DefUnit4);
-            set
-            {
-                _DefUnit4 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _DefUnit4 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 101 Hex: 0x194
@@ -1132,10 +939,7 @@ namespace UCPAIConversion
         public string DefUnit5
         {
             get => Enum.GetName(typeof(Unit), _DefUnit5);
-            set
-            {
-                _DefUnit5 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _DefUnit5 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 102 Hex: 0x198
@@ -1144,10 +948,7 @@ namespace UCPAIConversion
         public string DefUnit6
         {
             get => Enum.GetName(typeof(Unit), _DefUnit6);
-            set
-            {
-                _DefUnit6 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _DefUnit6 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 103 Hex: 0x19C
@@ -1156,10 +957,7 @@ namespace UCPAIConversion
         public string DefUnit7
         {
             get => Enum.GetName(typeof(Unit), _DefUnit7);
-            set
-            {
-                _DefUnit7 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _DefUnit7 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 104 Hex: 0x1A0
@@ -1168,20 +966,14 @@ namespace UCPAIConversion
         public string DefUnit8
         {
             get => Enum.GetName(typeof(Unit), _DefUnit8);
-            set
-            {
-                _DefUnit8 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _DefUnit8 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 105 Hex: 0x1A4
         [RWComment("Base amount of raid troops, Special case: [unknown trigger => end result multiplied by 1.25]")]
         public int RaidUnitsBase
         {
-            get
-            {
-                return _RaidUnitsBase;
-            }
+            get => _RaidUnitsBase;
             set
             {
                 if (value < 0)
@@ -1202,10 +994,7 @@ namespace UCPAIConversion
         public string RaidUnit1
         {
             get => Enum.GetName(typeof(Unit), _RaidUnit1);
-            set
-            {
-                _RaidUnit1 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _RaidUnit1 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 108 Hex: 0x1B0
@@ -1214,10 +1003,7 @@ namespace UCPAIConversion
         public string RaidUnit2
         {
             get => Enum.GetName(typeof(Unit), _RaidUnit2);
-            set
-            {
-                _RaidUnit2 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _RaidUnit2 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 109 Hex: 0x1B4
@@ -1226,10 +1012,7 @@ namespace UCPAIConversion
         public string RaidUnit3
         {
             get => Enum.GetName(typeof(Unit), _RaidUnit3);
-            set
-            {
-                _RaidUnit3 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _RaidUnit3 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 110 Hex: 0x1B8
@@ -1238,10 +1021,7 @@ namespace UCPAIConversion
         public string RaidUnit4
         {
             get => Enum.GetName(typeof(Unit), _RaidUnit4);
-            set
-            {
-                _RaidUnit4 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _RaidUnit4 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 111 Hex: 0x1BC
@@ -1250,10 +1030,7 @@ namespace UCPAIConversion
         public string RaidUnit5
         {
             get => Enum.GetName(typeof(Unit), _RaidUnit5);
-            set
-            {
-                _RaidUnit5 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _RaidUnit5 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 112 Hex: 0x1C0
@@ -1262,10 +1039,7 @@ namespace UCPAIConversion
         public string RaidUnit6
         {
             get => Enum.GetName(typeof(Unit), _RaidUnit6);
-            set
-            {
-                _RaidUnit6 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _RaidUnit6 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 113 Hex: 0x1C4
@@ -1274,10 +1048,7 @@ namespace UCPAIConversion
         public string RaidUnit7
         {
             get => Enum.GetName(typeof(Unit), _RaidUnit7);
-            set
-            {
-                _RaidUnit7 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _RaidUnit7 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 114 Hex: 0x1C8
@@ -1286,10 +1057,7 @@ namespace UCPAIConversion
         public string RaidUnit8
         {
             get => Enum.GetName(typeof(Unit), _RaidUnit8);
-            set
-            {
-                _RaidUnit8 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _RaidUnit8 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 115 Hex: 0x1CC
@@ -1299,10 +1067,7 @@ namespace UCPAIConversion
         public string HarassingSiegeEngine1
         {
             get => Enum.GetName(typeof(HarassingSiegeEngine), _HarassingSiegeEngine1);
-            set
-            {
-                _HarassingSiegeEngine1 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
-            }
+            set => _HarassingSiegeEngine1 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
         }
 
         // Index: 116 Hex: 0x1D0
@@ -1312,10 +1077,7 @@ namespace UCPAIConversion
         public string HarassingSiegeEngine2
         {
             get => Enum.GetName(typeof(HarassingSiegeEngine), _HarassingSiegeEngine2);
-            set
-            {
-                _HarassingSiegeEngine2 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
-            }
+            set => _HarassingSiegeEngine2 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
         }
 
         // Index: 117 Hex: 0x1D4
@@ -1325,10 +1087,7 @@ namespace UCPAIConversion
         public string HarassingSiegeEngine3
         {
             get => Enum.GetName(typeof(HarassingSiegeEngine), _HarassingSiegeEngine3);
-            set
-            {
-                _HarassingSiegeEngine3 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
-            }
+            set => _HarassingSiegeEngine3 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
         }
 
         // Index: 118 Hex: 0x1D8
@@ -1338,10 +1097,7 @@ namespace UCPAIConversion
         public string HarassingSiegeEngine4
         {
             get => Enum.GetName(typeof(HarassingSiegeEngine), _HarassingSiegeEngine4);
-            set
-            {
-                _HarassingSiegeEngine4 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
-            }
+            set => _HarassingSiegeEngine4 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
         }
 
         // Index: 119 Hex: 0x1DC
@@ -1351,10 +1107,7 @@ namespace UCPAIConversion
         public string HarassingSiegeEngine5
         {
             get => Enum.GetName(typeof(HarassingSiegeEngine), _HarassingSiegeEngine5);
-            set
-            {
-                _HarassingSiegeEngine5 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
-            }
+            set => _HarassingSiegeEngine5 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
         }
 
         // Index: 120 Hex: 0x1E0
@@ -1364,10 +1117,7 @@ namespace UCPAIConversion
         public string HarassingSiegeEngine6
         {
             get => Enum.GetName(typeof(HarassingSiegeEngine), _HarassingSiegeEngine6);
-            set
-            {
-                _HarassingSiegeEngine6 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
-            }
+            set => _HarassingSiegeEngine6 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
         }
 
         // Index: 121 Hex: 0x1E4
@@ -1377,10 +1127,7 @@ namespace UCPAIConversion
         public string HarassingSiegeEngine7
         {
             get => Enum.GetName(typeof(HarassingSiegeEngine), _HarassingSiegeEngine7);
-            set
-            {
-                _HarassingSiegeEngine7 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
-            }
+            set => _HarassingSiegeEngine7 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
         }
 
         // Index: 122 Hex: 0x1E8
@@ -1390,10 +1137,7 @@ namespace UCPAIConversion
         public string HarassingSiegeEngine8
         {
             get => Enum.GetName(typeof(HarassingSiegeEngine), _HarassingSiegeEngine8);
-            set
-            {
-                _HarassingSiegeEngine8 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
-            }
+            set => _HarassingSiegeEngine8 = (HarassingSiegeEngine)Enum.Parse(typeof(HarassingSiegeEngine), value);
         }
 
         // Index: 123 Hex: 0x1EC
@@ -1408,10 +1152,7 @@ namespace UCPAIConversion
         [RWComment("The base amount of troops with which this AI attacks")]
         public int AttForceBase
         {
-            get
-            {
-                return _AttForceBase;
-            }
+            get => _AttForceBase;
             set
             {
                 if (value < 0)
@@ -1436,10 +1177,7 @@ namespace UCPAIConversion
         [RWNames("Unknown128")]
         public int AttForceRallyPercentage
         {
-            get
-            {
-                return _AttForceRallyPercentage;
-            }
+            get => _AttForceRallyPercentage;
             set
             {
                 if (value < 0)
@@ -1471,10 +1209,7 @@ namespace UCPAIConversion
         public string SiegeEngine1
         {
             get => Enum.GetName(typeof(SiegeEngine), _SiegeEngine1);
-            set
-            {
-                _SiegeEngine1 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
-            }
+            set => _SiegeEngine1 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
         }
 
         // Index: 134 Hex: 0x218
@@ -1483,10 +1218,7 @@ namespace UCPAIConversion
         public string SiegeEngine2
         {
             get => Enum.GetName(typeof(SiegeEngine), _SiegeEngine2);
-            set
-            {
-                _SiegeEngine2 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
-            }
+            set => _SiegeEngine2 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
         }
 
 
@@ -1496,10 +1228,7 @@ namespace UCPAIConversion
         public string SiegeEngine3
         {
             get => Enum.GetName(typeof(SiegeEngine), _SiegeEngine3);
-            set
-            {
-                _SiegeEngine3 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
-            }
+            set => _SiegeEngine3 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
         }
 
         // Index: 136 Hex: 0x220
@@ -1508,10 +1237,7 @@ namespace UCPAIConversion
         public string SiegeEngine4
         {
             get => Enum.GetName(typeof(SiegeEngine), _SiegeEngine4);
-            set
-            {
-                _SiegeEngine4= (SiegeEngine) Enum.Parse(typeof(SiegeEngine), value);
-            }
+            set => _SiegeEngine4= (SiegeEngine) Enum.Parse(typeof(SiegeEngine), value);
         }
 
         // Index: 137 Hex: 0x224
@@ -1520,10 +1246,7 @@ namespace UCPAIConversion
         public string SiegeEngine5
         {
             get => Enum.GetName(typeof(SiegeEngine), _SiegeEngine5);
-            set
-            {
-                _SiegeEngine5 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
-            }
+            set => _SiegeEngine5 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
         }
 
         // Index: 138 Hex: 0x228
@@ -1532,10 +1255,7 @@ namespace UCPAIConversion
         public string SiegeEngine6
         {
             get => Enum.GetName(typeof(SiegeEngine), _SiegeEngine6);
-            set
-            {
-                _SiegeEngine6 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
-            }
+            set => _SiegeEngine6 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
         }
 
         // Index: 139 Hex: 0x22C
@@ -1544,10 +1264,7 @@ namespace UCPAIConversion
         public string SiegeEngine7
         {
             get => Enum.GetName(typeof(SiegeEngine), _SiegeEngine7);
-            set
-            {
-                _SiegeEngine7 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
-            }
+            set => _SiegeEngine7 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
         }
 
         // Index: 140 Hex: 0x230
@@ -1556,10 +1273,7 @@ namespace UCPAIConversion
         public string SiegeEngine8
         {
             get => Enum.GetName(typeof(SiegeEngine), _SiegeEngine8);
-            set
-            {
-                _SiegeEngine8 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
-            }
+            set => _SiegeEngine8 = (SiegeEngine)Enum.Parse(typeof(SiegeEngine), value);
         }
 
         // Index: 141 Hex: 0x234
@@ -1568,10 +1282,7 @@ namespace UCPAIConversion
         [RWComment("The amount of stones needed to be thrown until the AI throws a diseased cow instead (catapults & trebuchets). Value 0 disables cows and -1 makes the AI not throw any boulders, only cows.")]
         public int CowThrowInterval
         {
-            get
-            {
-                return _CowThrowInterval;
-            }
+            get => _CowThrowInterval;
             set
             {
                 if (value < -1)
@@ -1595,10 +1306,7 @@ namespace UCPAIConversion
         public string AttDiggingUnit
         {
             get => Enum.GetName(typeof(DiggingUnit), _AttDiggingUnit);
-            set
-            {
-                _AttDiggingUnit = (DiggingUnit)Enum.Parse(typeof(DiggingUnit), value);
-            }
+            set => _AttDiggingUnit = (DiggingUnit)Enum.Parse(typeof(DiggingUnit), value);
         }
 
         // Index: 145 Hex: 0x244
@@ -1612,10 +1320,7 @@ namespace UCPAIConversion
         public string AttUnitVanguard
         {
             get => Enum.GetName(typeof(Unit), _AttUnitVanguard);
-            set
-            {
-                _AttUnitVanguard = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _AttUnitVanguard = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 147 Hex: 0x24C
@@ -1639,10 +1344,7 @@ namespace UCPAIConversion
         public string AttUnitPatrol
         {
             get => Enum.GetName(typeof(Unit), _AttUnitPatrol);
-            set
-            {
-                _AttUnitPatrol = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _AttUnitPatrol = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 152 Hex: 0x260
@@ -1654,10 +1356,7 @@ namespace UCPAIConversion
         [RWComment("# of groups the AttUnitPatrol split into. BUGGY! More than 1 group results to only a single group attacking, the others standing idle.")]
         public int AttUnitPatrolGroupsCount
         {
-            get
-            {
-                return _AttUnitPatrolGroupsCount;
-            }
+            get => _AttUnitPatrolGroupsCount;
             set
             {
                 if (value < 0)
@@ -1675,10 +1374,7 @@ namespace UCPAIConversion
         public string AttUnitBackup
         {
             get => Enum.GetName(typeof(Unit), _AttUnitBackup);
-            set
-            {
-                _AttUnitBackup = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _AttUnitBackup = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 155 Hex: 0x26C
@@ -1689,10 +1385,7 @@ namespace UCPAIConversion
         [RWComment("# of groups the AttUnitBackup split into. If shields are present in the army, one will be added to each group (if possible).")]
         public int AttUnitBackupGroupsCount
         {
-            get
-            {
-                return _AttUnitBackupGroupsCount;
-            }
+            get => _AttUnitBackupGroupsCount;
             set
             {
                 if (value < 0)
@@ -1711,10 +1404,7 @@ namespace UCPAIConversion
         public string AttUnitEngage
         {
             get => Enum.GetName(typeof(Unit), _AttUnitEngage);
-            set
-            {
-                _AttUnitEngage = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _AttUnitEngage = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 158 Hex: 0x278
@@ -1728,10 +1418,7 @@ namespace UCPAIConversion
         public string AttUnitSiegeDef
         {
             get => Enum.GetName(typeof(Unit), _AttUnitSiegeDef);
-            set
-            {
-                _AttUnitSiegeDef = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _AttUnitSiegeDef = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 160 Hex: 0x280
@@ -1748,10 +1435,7 @@ namespace UCPAIConversion
         public string AttUnitMain1
         {
             get => Enum.GetName(typeof(Unit), _AttUnitMain1);
-            set
-            {
-                _AttUnitMain1 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _AttUnitMain1 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 163 Hex: 0x28C
@@ -1760,10 +1444,7 @@ namespace UCPAIConversion
         public string AttUnitMain2
         {
             get => Enum.GetName(typeof(Unit), _AttUnitMain2);
-            set
-            {
-                _AttUnitMain2 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _AttUnitMain2 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 164 Hex: 0x290
@@ -1773,10 +1454,7 @@ namespace UCPAIConversion
         public string AttUnitMain3
         {
             get => Enum.GetName(typeof(Unit), _AttUnitMain3);
-            set
-            {
-                _AttUnitMain3 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _AttUnitMain3 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 165 Hex: 0x294
@@ -1786,10 +1464,7 @@ namespace UCPAIConversion
         public string AttUnitMain4
         {
             get => Enum.GetName(typeof(Unit), _AttUnitMain4);
-            set
-            {
-                _AttUnitMain4 = (Unit)Enum.Parse(typeof(Unit), value);
-            }
+            set => _AttUnitMain4 = (Unit)Enum.Parse(typeof(Unit), value);
         }
 
         // Index: 166 Hex: 0x298
@@ -1801,10 +1476,7 @@ namespace UCPAIConversion
         [RWNames("Unknown167")]
         public int AttMainGroupsCount
         {
-            get
-            {
-                return _AttMainGroupsCount;
-            }
+            get => _AttMainGroupsCount;
             set
             {
                 if (value < 0)
@@ -1821,10 +1493,7 @@ namespace UCPAIConversion
         public string TargetChoice
         {
             get => Enum.GetName(typeof(TargetingType), _TargetChoice);
-            set
-            {
-                _TargetChoice = (TargetingType) Enum.Parse(typeof(TargetingType), value);
-            }
+            set => _TargetChoice = (TargetingType) Enum.Parse(typeof(TargetingType), value);
         }
     }
 }

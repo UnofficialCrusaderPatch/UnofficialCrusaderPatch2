@@ -10,35 +10,32 @@ namespace UCP
     {
         public class Language
         {
-            string name;
-            public string Name => name;
+            public  string Name { get; }
 
-            string ident;
-            public string Ident => ident;
+            public  string Ident { get; }
 
-            string culture;
-            public string Culture => culture;
+            public  string Culture { get; }
 
             public Language(string name, string ident, string culture)
             {
-                this.name = name;
-                this.ident = ident;
-                this.culture = culture;
+                Name = name;
+                Ident = ident;
+                Culture = culture;
             }
         }
 
-        static int[] loadOrder = { 1, 0, 2, 3, 4};
+        private static int[] loadOrder = { 1, 0, 2, 3, 4};
         public static IEnumerable<int> IndexLoadOrder => loadOrder;
 
-        static List<Language> translations = new List<Language>()
-        {
-            new Language("Deutsch", "German", "de"),
-            new Language("English", "English", "en"),
-            new Language("Polski", "Polish", "pl"),
-            new Language("Русский", "Russian", "ru"),
-            new Language("中文", "Chinese", "ch"),
-            new Language("Magyar", "Hungarian", "hu")
-        };
+        private static List<Language> translations = new List<Language>
+                                                     {
+                                                         new Language("Deutsch", "German", "de"),
+                                                         new Language("English", "English", "en"),
+                                                         new Language("Polski", "Polish", "pl"),
+                                                         new Language("Русский", "Russian", "ru"),
+                                                         new Language("中文", "Chinese", "ch"),
+                                                         new Language("Magyar", "Hungarian", "hu")
+                                                     };
         public static IEnumerable<Language> Translations => translations;
         public static int GetLangByCulture(string culture)
         {
@@ -46,7 +43,7 @@ namespace UCP
         }
 
 
-        static Dictionary<string, string> localStrs = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        private static Dictionary<string, string> localStrs = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         public static void Add(string identifier, string text)
         {
@@ -74,15 +71,14 @@ namespace UCP
             {
                 return text;
             }
-            return string.Format("{{Unknown Identifier: {0}}}", identifier);
+            return $"{{Unknown Identifier: {identifier}}}";
 
         }
 
-        class Reader : IDisposable
+        private class Reader : IDisposable
         {
-            StreamReader sr;
-            int lineNum = 0;
-            public int LineNumber { get { return this.lineNum; } }
+            private StreamReader sr;
+            public  int          LineNumber { get; private set; }
 
             public Reader(Stream stream)
             {
@@ -98,56 +94,68 @@ namespace UCP
             {
                 while (true)
                 {
-                    line = sr.ReadLine(); lineNum++;
+                    line = sr.ReadLine(); LineNumber++;
                     if (line == null)
+                    {
                         break;
+                    }
 
                     line = line.Trim();
                     if (line.Length == 0)
+                    {
                         continue;
+                    }
 
                     if (!line.StartsWith("//"))
+                    {
                         return true;
+                    }
                 }
                 line = null;
                 return false;
             }
 
-            StringBuilder chars = new StringBuilder(100);
+            private StringBuilder chars = new StringBuilder(100);
             public bool ReadString(out string text)
             {
                 int c;
-                int oldLineNum = lineNum;
+                int oldLineNum = LineNumber;
 
                 while (true)
                 {
                     if ((c = sr.Read()) < 0)
+                    {
                         throw new Exception("ReadString: End of file after line " + oldLineNum);
+                    }
 
                     if (c == '\n')
-                        lineNum++;
+                    {
+                        LineNumber++;
+                    }
 
                     if (char.IsWhiteSpace((char)c))
+                    {
                         continue;
+                    }
 
                     if (c != '\"')
                     {
                         sr.ReadLine();
-                        lineNum++;
+                        LineNumber++;
                         text = null;
                         return false;
                     }
-                    else
-                    {
-                        break;
-                    }
+
+                    break;
                 }
 
-                oldLineNum = lineNum;
+                oldLineNum = LineNumber;
                 while (true)
                 {
                     if ((c = sr.Read()) < 0)
+                    {
                         throw new Exception("Could not find string closing after line " + oldLineNum);
+                    }
 
                     if (c == '&')
                     {
@@ -156,50 +164,49 @@ namespace UCP
                         {
                             sr.Read();
                             sr.Read();
-                            lineNum++;
+                            LineNumber++;
                             continue;
                         }
                     }
 
                     if (c == '\n')
                     {
-                        lineNum++;
+                        LineNumber++;
                     }
 
                     if (c == '\"')
+                    {
                         break;
+                    }
 
                     chars.Append((char)c);
                 }
 
-                sr.ReadLine(); lineNum++;
+                sr.ReadLine(); LineNumber++;
                 if (chars.Length > 0)
                 {
                     text = chars.ToString();
                     chars.Clear();
                     return true;
                 }
-                else
-                {
-                    text = null;
-                    return false;
-                }
+
+                text = null;
+                return false;
             }
         }
 
-        static int langIndex;
-        public static int LanguageIndex => langIndex;
+        public static  int LanguageIndex { get; private set; }
 
         public static void Load(int index)
         {
             try
             {
-                langIndex = index;
+                LanguageIndex = index;
 
-                string path = string.Format("UCP.Localization.{0}.txt", translations[index].Ident);
+                string path = $"UCP.Localization.{translations[index].Ident}.txt";
 
                 Assembly asm = Assembly.GetExecutingAssembly();
-                using (var s = asm.GetManifestResourceStream(path))
+                using (Stream s = asm.GetManifestResourceStream(path))
                 using (Reader r = new Reader(s))
                 {
                     localStrs.Clear();
@@ -208,13 +215,19 @@ namespace UCP
                         string ident = line;
 
                         if (!r.ReadLine(out line) || !line.StartsWith("{"))
+                        {
                             throw new Exception(ident + " Missing opening bracket at line " + r.LineNumber);
+                        }
 
                         if (!r.ReadString(out string text))
+                        {
                             throw new Exception(ident + " Missing string at " + r.LineNumber);
+                        }
 
                         if (!r.ReadLine(out line) || !line.StartsWith("}"))
+                        {
                             throw new Exception(ident + " Missing closing bracket at line " + r.LineNumber);
+                        }
 
                         localStrs.Add(ident, text);
                     }

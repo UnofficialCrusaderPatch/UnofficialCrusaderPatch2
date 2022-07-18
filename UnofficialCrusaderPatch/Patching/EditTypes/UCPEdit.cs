@@ -4,7 +4,7 @@
     {
         protected override bool GetAddresses(byte[] original, out int rawAddr, out int virtAddr)
         {
-            var space = SectionEditor.ReserveBufferSpace((uint)this.Length);
+            AddressSpace space = SectionEditor.ReserveBufferSpace((uint)Length);
             rawAddr = (int)space.RawAddress;
             virtAddr = (int)space.VirtualAddress + 0x400000;
             return true;

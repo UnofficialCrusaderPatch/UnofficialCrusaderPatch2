@@ -5,7 +5,7 @@
     /// </summary>
     public class BinNops : BinElement
     {
-        int count;
+        private         int count;
         public override int Length => count;
 
         public BinNops(int count)
@@ -16,7 +16,7 @@
         public override void Write(BinArgs data)
         {
             for (int i = 0; i < count; i++)
-                data.Buffer[this.RawAddress + i] = 0x90;
+                data.Buffer[RawAddress + i] = 0x90;
         }
 
         public static BinaryEdit CreateEdit(string ident, int count)

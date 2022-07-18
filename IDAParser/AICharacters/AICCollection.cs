@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Reflection;
+using System.Linq;
 
 namespace UCP.AICharacters
 {
@@ -12,8 +10,7 @@ namespace UCP.AICharacters
     /// </summary>
     public class AICCollection : Dictionary<int, AICharacter>
     {
-        AIFileHeader header = new AIFileHeader();
-        public AIFileHeader Header => header;
+        public  AIFileHeader Header { get; private set; } = new AIFileHeader();
 
         /// <summary> Creates an empty AICharacter collection. </summary>
         public AICCollection() : base(16)
@@ -23,7 +20,7 @@ namespace UCP.AICharacters
         /// <summary> Initialises a new AICharacter collection from the given stream. </summary>
         public AICCollection(Stream stream) : this()
         {
-            this.Read(stream, false);
+            Read(stream, false);
         }
 
         /// <summary> Writes the contents of this AICCollection into the stream in ASCII text encoding.</summary>
@@ -31,7 +28,7 @@ namespace UCP.AICharacters
         {
             using (AIWriter aiw = new AIWriter(stream))
             {
-                aiw.Write(header);
+                aiw.Write(Header);
                 aiw.WriteLine();
 
                 aiw.OpenCommentSec();
@@ -39,7 +36,7 @@ namespace UCP.AICharacters
                 aiw.CloseCommentSec();
                 aiw.WriteLine();
 
-                foreach (AICharacter c in this.Values.OrderBy(c => c.Index))
+                foreach (AICharacter c in Values.OrderBy(c => c.Index))
                 {
                     aiw.Write(c);
                     aiw.WriteLine();
@@ -55,16 +52,18 @@ namespace UCP.AICharacters
         {
             using (AIReader air = new AIReader(stream))
             {
-                var readHeader = air.Read<AIFileHeader>();
+                AIFileHeader readHeader = air.Read<AIFileHeader>();
                 if (readHeader != null)
-                    this.header = readHeader;
+                {
+                    Header = readHeader;
+                }
 
                 air.Reset(); // for the case that the header was in the middle or not there at all
 
                 AICharacter aic;
                 while ((aic = air.Read<AICharacter>()) != null)
                 {
-                    if (this.ContainsKey(aic.Index))
+                    if (ContainsKey(aic.Index))
                     {
                         if (replaceExisting)
                         {
@@ -77,7 +76,7 @@ namespace UCP.AICharacters
                     }
                     else
                     {
-                        this.Add(aic.Index, aic);
+                        Add(aic.Index, aic);
                     }
                 }
             }

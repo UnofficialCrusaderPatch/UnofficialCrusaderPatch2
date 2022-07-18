@@ -2,20 +2,17 @@
 {
     public class BinArgs
     {
-        byte[] data;
-        public byte[] Buffer => data;
+        public  byte[] Buffer { get; }
 
-        LabelCollection labels;
-        public LabelCollection Labels => labels;
+        public  LabelCollection Labels { get; }
 
-        double value;
-        public double Value => value;
+        public  double Value { get; }
 
         public BinArgs(byte[] data, LabelCollection labels, double value)
         {
-            this.data = data;
-            this.labels = labels;
-            this.value = value;
+            Buffer = data;
+            Labels = labels;
+            Value = value;
         }
 
         public static implicit operator byte[](BinArgs data)

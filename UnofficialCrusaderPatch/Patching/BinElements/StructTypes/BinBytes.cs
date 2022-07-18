@@ -10,12 +10,12 @@
 
         public BinBytes(params byte[] input)
         {
-            this.byteBuf = input;
+            byteBuf = input;
         }
 
         public override void Write(BinArgs data)
         {
-            byteBuf.CopyTo(data, this.RawAddress);
+            byteBuf.CopyTo(data, RawAddress);
         }
 
         public static Change Change(string ident, ChangeType type, bool checkedDefault, params byte[] input)

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
@@ -15,65 +14,65 @@ namespace UCP.Startup
 {
     public class StartTroopChange : Change
     {
-        enum LordType
+        private enum LordType
         {
             Europ,
             Arab
         }
 
-        const int lordStrengthBase = 0x64;
+        private const int lordStrengthBase = 0x64;
 
         // Game offsets for codeblocks
-        const int normalOffset = 0;
-        const int crusaderOffset = 0x64;
-        const int deathmatchOffset = 0xc8;
-        const string troopBlockFile = "s_troops";
-        const string lordStrengthBlockFile = "s_lordstrength";
-        const string lordTypeBlockFile = "s_lordtype";
+        private const int    normalOffset          = 0;
+        private const int    crusaderOffset        = 0x64;
+        private const int    deathmatchOffset      = 0xc8;
+        private const string troopBlockFile        = "s_troops";
+        private const string lordStrengthBlockFile = "s_lordstrength";
+        private const string lordTypeBlockFile     = "s_lordtype";
 
-        string description;
-        bool IsValid = true;
-        
-        static string selectedChange = String.Empty;
-        public static StartTroopChange activeChange = null;
+        private string description;
+        private bool   IsValid = true;
 
-        static Dictionary<String, int[]> lordDots => new Dictionary<string, int[]>()
-        {
-            {"None", new int[]{ 0, 0, 0, 0, 0 } },
-            {"Blue", new int[]{ 0, 1, 2, 3, 4, 5 } },
-            {"Yellow", new int[]{ 0, 6, 7, 8, 9, 10 } }
-        };
+        private static string selectedChange = String.Empty;
+        public static StartTroopChange activeChange;
+
+        private static Dictionary<String, int[]> lordDots => new Dictionary<string, int[]>
+                                                             {
+                                                                 {"None", new[]{ 0, 0, 0, 0, 0 } },
+                                                                 {"Blue", new[]{ 0, 1, 2, 3, 4, 5 } },
+                                                                 {"Yellow", new[]{ 0, 6, 7, 8, 9, 10 } }
+                                                             };
 
         public static List<Change> changes = new List<Change>();
 
         public StartTroopChange(string title, bool enabledDefault = false, bool isIntern = false)
             : base("s_" + title, ChangeType.StartTroops, enabledDefault, false)
         {
-            this.NoLocalization = true;
+            NoLocalization = true;
         }
 
         public override void InitUI()
         {
-            Localization.Add(this.TitleIdent + "_descr", this.description);
+            Localization.Add(TitleIdent + "_descr", description);
             base.InitUI();
-            if (this.IsChecked)
+            if (IsChecked)
             {
                 activeChange = this;
             }
-            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(2);
+            ((TextBlock)titleBox.Content).Text = TitleIdent.Substring(2);
 
-            if (this.IsValid == false)
+            if (IsValid == false)
             {
-                ((TextBlock)this.titleBox.Content).TextDecorations = TextDecorations.Strikethrough;
-                this.titleBox.IsEnabled = false;
-                this.titleBox.ToolTip = this.description;
-                ((TextBlock)this.titleBox.Content).Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+                ((TextBlock)titleBox.Content).TextDecorations = TextDecorations.Strikethrough;
+                titleBox.IsEnabled = false;
+                titleBox.ToolTip = description;
+                ((TextBlock)titleBox.Content).Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
             }
             else
             {
-                this.titleBox.IsChecked = selectedChange.Equals(this.TitleIdent);
+                titleBox.IsChecked = selectedChange.Equals(TitleIdent);
             }
-            this.titleBox.Background = new SolidColorBrush(Colors.White);
+            titleBox.Background = new SolidColorBrush(Colors.White);
         }
 
         protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
@@ -84,7 +83,7 @@ namespace UCP.Startup
             {
                 activeChange.IsChecked = false;
             }
-            selectedChange = this.TitleIdent;
+            selectedChange = TitleIdent;
             activeChange = this;
         }
 
@@ -117,7 +116,7 @@ namespace UCP.Startup
 
             foreach (string change in configuration)
             {
-                string[] changeLine = change.Split(new char[] { '=' }, 2, StringSplitOptions.RemoveEmptyEntries).Select(str => str.Trim()).ToArray();
+                string[] changeLine = change.Split(new[] { '=' }, 2, StringSplitOptions.RemoveEmptyEntries).Select(str => str.Trim()).ToArray();
                 if (changeLine.Length < 2)
                 {
                     continue;
@@ -127,7 +126,7 @@ namespace UCP.Startup
                 string changeSetting = changeLine[1];
 
                 bool selected = Regex.Replace(@"\s+", "", changeSetting.Split('=')[1]).Contains("True");
-                if (selected == true)
+                if (selected)
                 {
                     selectedChange = changeKey;
                 }
@@ -135,9 +134,9 @@ namespace UCP.Startup
         }
 
 
-        static void CreateNullChange(string file, string message)
+        private static void CreateNullChange(string file, string message)
         {
-            StartTroopChange change = new StartTroopChange(Path.GetFileNameWithoutExtension(file), false)
+            StartTroopChange change = new StartTroopChange(Path.GetFileNameWithoutExtension(file))
                         {
                             new DefaultHeader("s_" + file, false)
                             {
@@ -168,17 +167,16 @@ namespace UCP.Startup
                 if (activeChange == null)
                 {
                     change = changes.Where(x => x.TitleIdent.Equals(selectedChange)).First();
-                    foreach (var header in change)
+                    foreach (DefaultHeader header in change)
                     {
                         header.Activate(args);
                     }
                     return;
                 }
-                foreach (var header in change)
+                foreach (DefaultHeader header in change)
                 {
                     header.Activate(args);
                 }
-                return;
             }
         }
 
@@ -222,7 +220,7 @@ namespace UCP.Startup
             try 
             { 
                 string description = GetLocalizedDescription(startTroopConfigName, startTroopConfig);
-                StartTroopChange change = new StartTroopChange(startTroopConfigName, false)
+                StartTroopChange change = new StartTroopChange(startTroopConfigName)
                 {
                     CreateStartTroopHeader(startTroopConfigName, startTroopConfig),
                 };
@@ -237,10 +235,10 @@ namespace UCP.Startup
             }
         }
 
-        static void AssignBytes(int type, int count, byte[] config)
+        private static void AssignBytes(int type, int count, byte[] config)
         {
             byte[] countBits = BitConverter.GetBytes(count);
-            for (var i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++)
             {
                 config[type * 4 + i] = countBits[i];
             }
@@ -251,7 +249,7 @@ namespace UCP.Startup
         /// </summary>
         /// <param name="gamemodeConfig"></param>
         /// <returns></returns>
-        static byte[] ParseTroops(Dictionary<String, dynamic> gamemodeConfig)
+        private static byte[] ParseTroops(Dictionary<String, dynamic> gamemodeConfig)
         {
             byte[] gamemodeBytes = new byte[0x50];
             dynamic unitTypes;
@@ -266,8 +264,14 @@ namespace UCP.Startup
                         unitCount = gamemodeConfig["Counts"][typeIndex];
                     }
                     catch { };
-                    if (troopsCounter.ContainsKey(unitTypes[typeIndex])) troopsCounter[unitTypes[typeIndex]] += unitCount;
-                    else troopsCounter.Add(unitTypes[typeIndex], unitCount);
+                    if (troopsCounter.ContainsKey(unitTypes[typeIndex]))
+                    {
+                        troopsCounter[unitTypes[typeIndex]] += unitCount;
+                    }
+                    else
+                    {
+                        troopsCounter.Add(unitTypes[typeIndex], unitCount);
+                    }
                 }
             }
 
@@ -279,7 +283,10 @@ namespace UCP.Startup
                     int unitCount = 0;
                     string enumName = Enum.GetName(StartingTroopsType, troopsType);
                     if (troopsCounter.ContainsKey(enumName))
+                    {
                         unitCount += troopsCounter[enumName];
+                    }
+
                     AssignBytes(troopsType, unitCount, gamemodeBytes);
                 }
                 catch (KeyNotFoundException) { }
@@ -295,7 +302,7 @@ namespace UCP.Startup
         /// </summary>
         /// <param name="gamemodeConfig"></param>
         /// <returns></returns>
-        static List<BinElement> ParsePlayer(Dictionary<String, Object> playerConfig)
+        private static List<BinElement> ParsePlayer(Dictionary<String, Object> playerConfig)
         {
             List<BinElement> playerTroopChanges = new List<BinElement>();
 
@@ -336,13 +343,13 @@ namespace UCP.Startup
         /// </summary>
         /// <param name="gamemodeConfig"></param>
         /// <returns></returns>
-        static Dictionary<String, BinElement> ParseLordType(Dictionary<String, Object> gamemodeConfig)
+        private static Dictionary<String, BinElement> ParseLordType(Dictionary<String, Object> gamemodeConfig)
         {
             Int32 lordMultiplier;
             List<String> exceptions = new List<string>();
 
-            Dictionary<String, BinElement> resultConfig = new Dictionary<string, BinElement>()
-                {
+            Dictionary<String, BinElement> resultConfig = new Dictionary<string, BinElement>
+                                                          {
                     { "Strength", new BinSkip(0x4) },
                     { "Dots", new BinSkip(0x4) },
                     { "Type", new BinSkip(0x1) }
@@ -376,7 +383,7 @@ namespace UCP.Startup
 
                 try
                 {
-                    resultConfig["Type"] = new BinBytes(new byte[] { (byte) Enum.Parse(typeof(LordType), lordConfig["Type"]) });
+                    resultConfig["Type"] = new BinBytes((byte) Enum.Parse(typeof(LordType), lordConfig["Type"]));
                 }
                 catch (KeyNotFoundException) { }
                 catch (Exception)
@@ -392,7 +399,7 @@ namespace UCP.Startup
             return resultConfig;
         }
 
-        static String GetLocalizedDescription(String file, Dictionary<String, Dictionary<String, Object>> resourceConfig)
+        private static String GetLocalizedDescription(String file, Dictionary<String, Dictionary<String, Object>> resourceConfig)
         {
             String description = file;
             string currentLang = Localization.Translations.ToArray()[Configuration.Language].Ident;
@@ -402,7 +409,7 @@ namespace UCP.Startup
             }
             catch (Exception)
             {
-                foreach (var lang in Localization.Translations)
+                foreach (Localization.Language lang in Localization.Translations)
                 {
                     try
                     {
@@ -411,7 +418,6 @@ namespace UCP.Startup
                     }
                     catch (Exception)
                     {
-                        continue;
                     }
                 }
             }
@@ -424,7 +430,7 @@ namespace UCP.Startup
         }
 
 
-        static DefaultHeader CreateStartTroopHeader(String file, Dictionary<String, Dictionary<String, Object>> starttroopConfig)
+        private static DefaultHeader CreateStartTroopHeader(String file, Dictionary<String, Dictionary<String, Object>> starttroopConfig)
         {
             List<BinElement> startTroopChanges = new List<BinElement>();
             List<BinElement> lordStrengthChanges = new List<BinElement>();
@@ -491,7 +497,7 @@ namespace UCP.Startup
             lordTypeEdit.AddRange(lordTypeChanges);
 
 
-            DefaultHeader header = new DefaultHeader("s_" + file, true)
+            DefaultHeader header = new DefaultHeader("s_" + file)
             {
                 troopEdit,
                 lordStrengthEdit,

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -16,22 +14,22 @@ namespace UCP.Patching
         {
         }
 
-        static readonly List<Color> Colors = new List<Color>()
-        {
-            Color.FromArgb(255, 240, 32, 0), // red
-            Color.FromArgb(255, 248, 120, 0), // orange
-            Color.FromArgb(255, 224, 224, 0), // yellow
-            Color.FromArgb(255, 0, 0, 248), // blue
-            Color.FromArgb(255, 80, 80, 80), // black
-            Color.FromArgb(255, 184, 0, 248), // purple
-            Color.FromArgb(255, 0, 208, 240), // light blue
-            Color.FromArgb(255, 0, 216, 0) // green
-        };
+        private static readonly List<Color> Colors = new List<Color>
+                                                     {
+                                                         Color.FromArgb(255, 240, 32, 0), // red
+                                                         Color.FromArgb(255, 248, 120, 0), // orange
+                                                         Color.FromArgb(255, 224, 224, 0), // yellow
+                                                         Color.FromArgb(255, 0, 0, 248), // blue
+                                                         Color.FromArgb(255, 80, 80, 80), // black
+                                                         Color.FromArgb(255, 184, 0, 248), // purple
+                                                         Color.FromArgb(255, 0, 208, 240), // light blue
+                                                         Color.FromArgb(255, 0, 216, 0) // green
+                                                     };
 
-        Image focus;
-        const int ButtonSpacing = 53;
+        private       Image focus;
+        private const int   ButtonSpacing = 53;
 
-        List<Border> buttons = new List<Border>();
+        private List<Border> buttons = new List<Border>();
         public override void SetUIEnabled(bool enabled)
         {
             base.SetUIEnabled(enabled);
@@ -40,14 +38,14 @@ namespace UCP.Patching
 
         protected override FrameworkElement CreateUI()
         {
-            Grid grid = new Grid()
-            {
+            Grid grid = new Grid
+                        {
                 Width = 410,
                 Height = 30,
             };
 
-            focus = new Image()
-            {
+            focus = new Image
+                    {
                 Source = new BitmapImage(new Uri("pack://application:,,,/UnofficialCrusaderPatch;component/Graphics/shield.png")),
                 Margin = new Thickness(7, 4, 0, 0),
                 Width = 22,
@@ -61,8 +59,8 @@ namespace UCP.Patching
 
             for (int i = 0; i < 8; i++)
             {
-                Border button = new Border()
-                {
+                Border button = new Border
+                                {
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Top,
                     Margin = new Thickness(i * ButtonSpacing, 0, 0, 0),
@@ -80,15 +78,15 @@ namespace UCP.Patching
                 buttons.Add(button);
             }
 
-            this.OnValueChange += ValueChange;
+            OnValueChange += ValueChange;
             ValueChange();
 
             return grid;
         }
 
-        void ValueChange()
+        private void ValueChange()
         {
-            Canvas.SetLeft(focus, ButtonSpacing * (this.Value - 1));
+            Canvas.SetLeft(focus, ButtonSpacing * (Value - 1));
         }
     }
 }

@@ -9,23 +9,24 @@ using System.Web.Script.Serialization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using CodeBlox;
 using UCP.Patching;
 
 namespace UCP.Startup
 {
     public class ResourceChange : Change
     {
-        const int normalOffset = 0;
-        const int crusaderOffset = 0x64;
-        const int deathmatchOffset = 0xc8;
+        private const int normalOffset     = 0;
+        private const int crusaderOffset   = 0x64;
+        private const int deathmatchOffset = 0xc8;
 
-        const int goldArrayLength = 0x28;
-        const int aiGoldOffset = 0x10;
-        const int fairnessLevels = 5;
-        string description;
-        bool IsValid = true;
+        private const int    goldArrayLength = 0x28;
+        private const int    aiGoldOffset    = 0x10;
+        private const int    fairnessLevels  = 5;
+        private       string description;
+        private       bool   IsValid = true;
 
-        public static ResourceChange activeChange = null;
+        public static ResourceChange activeChange;
 
         public static List<Change> changes = new List<Change>();
         public static TreeView View;
@@ -39,31 +40,31 @@ namespace UCP.Startup
         public ResourceChange(string title, bool enabledDefault = false, bool isIntern = false)
             : base("res_" + title, ChangeType.Resource, enabledDefault, false)
         {
-            this.NoLocalization = true;
+            NoLocalization = true;
         }
 
         public override void InitUI()
         {
-            Localization.Add(this.TitleIdent + "_descr", this.description);
+            Localization.Add(TitleIdent + "_descr", description);
             base.InitUI();
-            if (this.IsChecked)
+            if (IsChecked)
             {
                 activeChange = this;
             }
-            ((TextBlock)this.titleBox.Content).Text = this.TitleIdent.Substring(4);
+            ((TextBlock)titleBox.Content).Text = TitleIdent.Substring(4);
 
-            if (this.IsValid == false)
+            if (IsValid == false)
             {
-                ((TextBlock)this.titleBox.Content).TextDecorations = TextDecorations.Strikethrough;
-                this.titleBox.IsEnabled = false;
-                this.titleBox.ToolTip = this.description;
-                ((TextBlock)this.titleBox.Content).Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+                ((TextBlock)titleBox.Content).TextDecorations = TextDecorations.Strikethrough;
+                titleBox.IsEnabled = false;
+                titleBox.ToolTip = description;
+                ((TextBlock)titleBox.Content).Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
             }
             else
             {
-                this.titleBox.IsChecked = selectedChange.Equals(this.TitleIdent);
+                titleBox.IsChecked = selectedChange.Equals(TitleIdent);
             }
-            this.titleBox.Background = new SolidColorBrush(Colors.White);
+            titleBox.Background = new SolidColorBrush(Colors.White);
         }
 
         protected override void TitleBox_Checked(object sender, RoutedEventArgs e)
@@ -71,9 +72,11 @@ namespace UCP.Startup
             base.TitleBox_Checked(sender, e);
 
             if (activeChange != null)
+            {
                 activeChange.IsChecked = false;
+            }
 
-            selectedChange = this.TitleIdent;
+            selectedChange = TitleIdent;
             activeChange = this;
         }
 
@@ -96,22 +99,26 @@ namespace UCP.Startup
             Assembly asm = Assembly.GetExecutingAssembly();
 
             // check if code block file is there
-            string file = string.Format("UCP.CodeBlocks.{0}.block", resourceBlockFile);
+            string file = $"UCP.CodeBlocks.{resourceBlockFile}.block";
             if (!asm.GetManifestResourceNames().Contains(file))
+            {
                 throw new Exception("MISSING BLOCK FILE " + file);
+            }
 
             // read code block file
             using (Stream stream = asm.GetManifestResourceStream(file))
-                resourceBlock = new CodeBlox.CodeBlock(stream).Elements.ToArray().Select(x => x.Value).ToArray();
+                resourceBlock = new CodeBlock(stream).Elements.ToArray().Select(x => x.Value).ToArray();
 
             // check if code block file is there
-            file = string.Format("UCP.CodeBlocks.{0}.block", goldBlockFile);
+            file = $"UCP.CodeBlocks.{goldBlockFile}.block";
             if (!asm.GetManifestResourceNames().Contains(file))
+            {
                 throw new Exception("MISSING BLOCK FILE " + file);
+            }
 
             // read code block file
             using (Stream stream = asm.GetManifestResourceStream(file))
-                goldBlock = new CodeBlox.CodeBlock(stream).Elements.ToArray().Select(x => x.Value).ToArray();
+                goldBlock = new CodeBlock(stream).Elements.ToArray().Select(x => x.Value).ToArray();
         }
 
         public static void LoadConfiguration(List<string> configuration = null)
@@ -123,7 +130,7 @@ namespace UCP.Startup
 
             foreach (string change in configuration)
             {
-                string[] changeLine = change.Split(new char[] { '=' }, 2, StringSplitOptions.RemoveEmptyEntries).Select(str => str.Trim()).ToArray();
+                string[] changeLine = change.Split(new[] { '=' }, 2, StringSplitOptions.RemoveEmptyEntries).Select(str => str.Trim()).ToArray();
                 if (changeLine.Length < 2)
                 {
                     continue;
@@ -133,7 +140,7 @@ namespace UCP.Startup
                 string changeSetting = changeLine[1];
 
                 bool selected = Regex.Replace(@"\s+", "", changeSetting.Split('=')[1]).Contains("True");
-                if (selected == true)
+                if (selected)
                 {
                     selectedChange = changeKey;
                 }
@@ -171,7 +178,7 @@ namespace UCP.Startup
                 try
                 {
                     string description = GetLocalizedDescription(file, resourceConfig);
-                    ResourceChange change = new ResourceChange(Path.GetFileNameWithoutExtension(file), false)
+                    ResourceChange change = new ResourceChange(Path.GetFileNameWithoutExtension(file))
                         {
                             CreateResourceHeader("res_" + Path.GetFileNameWithoutExtension(file), resourceConfig),
                         };
@@ -194,7 +201,7 @@ namespace UCP.Startup
             Version.Changes.AddRange(changes);
         }
 
-        static byte[] ParseResources(Dictionary<String, Dictionary<String, Object>> resourceConfig)
+        private static byte[] ParseResources(Dictionary<String, Dictionary<String, Object>> resourceConfig)
         {
             Type StartingResourceType = typeof(StartingResource);
             byte[] config = new byte[0x124];
@@ -259,7 +266,7 @@ namespace UCP.Startup
             return config;
         }
 
-        static byte[] ParseGold(Dictionary<String, Dictionary<String, Object>> resourceConfig)
+        private static byte[] ParseGold(Dictionary<String, Dictionary<String, Object>> resourceConfig)
         {
             byte[] config = new byte[0x78];
 
@@ -273,7 +280,7 @@ namespace UCP.Startup
             {
                 for (int lvl = 0; lvl < fairnessLevels; lvl++)
                 {
-                    for (var i = 0; i < 4; i++)
+                    for (int i = 0; i < 4; i++)
                     {
                         config[i + (lvl * 2) * 4] = goldBlock[i + (lvl * 2) * 4];
                         config[i + (lvl * 2 + 1)] = goldBlock[i + (lvl * 2 + 1) * 4];
@@ -295,7 +302,7 @@ namespace UCP.Startup
             {
                 for (int lvl = 0; lvl < fairnessLevels; lvl++)
                 {
-                    for (var i = 0; i < 4; i++)
+                    for (int i = 0; i < 4; i++)
                     {
                         config[i + (lvl * 2) * 4 + goldArrayLength] = goldBlock[i + (lvl * 2) * 4 + goldArrayLength];
                         config[i + (lvl * 2 + 1) * 4 + goldArrayLength] = goldBlock[i + (lvl * 2 + 1) * 4 + goldArrayLength];
@@ -317,7 +324,7 @@ namespace UCP.Startup
             {
                 for (int lvl = 0; lvl < fairnessLevels; lvl++)
                 {
-                    for (var i = 0; i < 4; i++)
+                    for (int i = 0; i < 4; i++)
                     {
                         config[i + (lvl * 2) * 4 + goldArrayLength * 2] = goldBlock[i + (lvl * 2) * 4 + goldArrayLength * 2];
                         config[i + (lvl * 2 + 1) * 4 + goldArrayLength * 2] = goldBlock[i + (lvl * 2 + 1) * 4 + goldArrayLength * 2];
@@ -336,7 +343,7 @@ namespace UCP.Startup
             return config;
         }
 
-        static void AssignGoldBytes(String mode, dynamic goldDictionary, Int32 offset, byte[] config)
+        private static void AssignGoldBytes(String mode, dynamic goldDictionary, Int32 offset, byte[] config)
         {
             bool humanGoldException = false;
             bool aiGoldException = false;
@@ -346,7 +353,7 @@ namespace UCP.Startup
                 try
                 {
                     byte[] humanGold = BitConverter.GetBytes(goldDictionary["human"][lvl]);
-                    for (var i = 0; i < 4; i++)
+                    for (int i = 0; i < 4; i++)
                     {
                         config[i + (lvl * 2) * 4 + offset] = humanGold[i];
                     }
@@ -359,7 +366,7 @@ namespace UCP.Startup
                 try
                 {
                     byte[] aiGold = BitConverter.GetBytes(goldDictionary["ai"][lvl]);
-                    for (var i = 0; i < 4; i++)
+                    for (int i = 0; i < 4; i++)
                     {
                         config[i + (lvl * 2 + 1) * 4 + offset] = aiGold[i];
                     }
@@ -371,11 +378,11 @@ namespace UCP.Startup
             }
 
             List<String> exceptions = new List<string>();
-            if (humanGoldException == true)
+            if (humanGoldException)
             {
                 exceptions.Add(mode + " mode human gold values incorrect");
             }
-            if (aiGoldException == true)
+            if (aiGoldException)
             {
                 exceptions.Add(mode + " mode AI gold values incorrect");
             }
@@ -385,7 +392,7 @@ namespace UCP.Startup
             }
         }
 
-        static void AssignResourceBytes(int offset, int field, Dictionary<String, Object> resourceConfig, byte[] config)
+        private static void AssignResourceBytes(int offset, int field, Dictionary<String, Object> resourceConfig, byte[] config)
         {
             Type StartingResourceType = typeof(StartingResource);
             if (!resourceConfig.ContainsKey(Enum.GetName(StartingResourceType, field)))
@@ -394,13 +401,13 @@ namespace UCP.Startup
             }
 
             byte[] fieldValue = BitConverter.GetBytes(Convert.ToInt32(resourceConfig[Enum.GetName(StartingResourceType, field)]));
-            for (var i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++)
             {
                 config[field * 4 + offset + i] = fieldValue[i];
             }
         }
 
-        static String GetLocalizedDescription(String file, Dictionary<String, Dictionary<String, Object>> resourceConfig)
+        private static String GetLocalizedDescription(String file, Dictionary<String, Dictionary<String, Object>> resourceConfig)
         {
             String description = file;
             string currentLang = Localization.Translations.ToArray()[Configuration.Language].Ident;
@@ -410,7 +417,7 @@ namespace UCP.Startup
             }
             catch (Exception)
             {
-                foreach (var lang in Localization.Translations)
+                foreach (Localization.Language lang in Localization.Translations)
                 {
                     try
                     {
@@ -419,7 +426,6 @@ namespace UCP.Startup
                     }
                     catch (Exception)
                     {
-                        continue;
                     }
                 }
             }
@@ -432,11 +438,11 @@ namespace UCP.Startup
         }
 
 
-        static void CreateNullChange(string file, string message)
+        private static void CreateNullChange(string file, string message)
         {
-            ResourceChange change = new ResourceChange(Path.GetFileNameWithoutExtension(file).Replace(" ", ""), false)
+            ResourceChange change = new ResourceChange(Path.GetFileNameWithoutExtension(file).Replace(" ", ""))
                         {
-                            new DefaultHeader(file, true)
+                            new DefaultHeader(file)
                             {
                                 new BinaryEdit("s_resource")
                                 {
@@ -464,28 +470,27 @@ namespace UCP.Startup
                 if (activeChange == null)
                 {
                     change = changes.Where(x => x.TitleIdent.Equals(selectedChange)).First();
-                    foreach (var header in change)
+                    foreach (DefaultHeader header in change)
                     {
                         header.Activate(args);
                     }
                     return;
                 }
-                foreach (var header in change)
+                foreach (DefaultHeader header in change)
                 {
                     header.Activate(args);
                 }
-                return;
             }
         }
 
-        static DefaultHeader CreateResourceHeader(String file, Dictionary<String, Dictionary<String, Object>> resourceConfig)
+        private static DefaultHeader CreateResourceHeader(String file, Dictionary<String, Dictionary<String, Object>> resourceConfig)
         {
             try
             {
                 byte[] resources = ParseResources(resourceConfig);
                 byte[] gold = ParseGold(resourceConfig);
 
-                return new DefaultHeader(file, true)
+                return new DefaultHeader(file)
                 {
                     BinBytes.CreateEdit("s_resource", resources),
                     BinBytes.CreateEdit("s_gold", gold)

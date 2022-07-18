@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Windows;
+using System.Diagnostics;
 using System.IO;
-using Microsoft.Win32;
-using System.Windows.Threading;
+using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using UCP;
+using System.Windows.Forms;
+using System.Windows.Input;
+using System.Windows.Threading;
+using Microsoft.Win32;
+using UCP.AIC;
 using UCP.AIV;
 using UCP.Patching;
 using UCP.Startup;
-using UCP.AIC;
-using System.Diagnostics;
-using System.Windows.Input;
+using Application = System.Windows.Application;
+using MessageBox = System.Windows.MessageBox;
+using TabControl = System.Windows.Controls.TabControl;
+using TreeView = System.Windows.Controls.TreeView;
 
 namespace UCP
 {
@@ -28,17 +29,17 @@ namespace UCP
             Application.Current.DispatcherUnhandledException += DispatcherException;
         }
 
-        void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
-        void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+            WindowState = WindowState.Minimized;
         }
 
-        void HelpButton_Click(object sender, RoutedEventArgs e)
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://unofficialcrusaderpatch.github.io/");
         }
@@ -48,17 +49,17 @@ namespace UCP
             base.OnMouseLeftButtonDown(e);
 
             // Begin dragging the window
-            this.DragMove();
+            DragMove();
         }
 
-        static void DispatcherException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        private static void DispatcherException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             Debug.Error(e.Exception);
         }
 
         public MainWindow()
         {
-            Configuration.Load(false);
+            Configuration.Load();
 
             // choose language
             if (!LanguageWindow.ShowSelection(Configuration.Language))
@@ -79,7 +80,7 @@ namespace UCP
             InitializeComponent();
 
             // set title
-            this.Title = string.Format("{0} {1}", Localization.Get("Name"), Version.PatcherVersion);
+            Title = $"{Localization.Get("Name")} {Version.PatcherVersion}";
 
             // set search path in ui
             SetBrowsePath();
@@ -90,7 +91,7 @@ namespace UCP
 
         #region Settings
 
-        void SetBrowsePath()
+        private void SetBrowsePath()
         {
             if (!Directory.Exists(Configuration.Path))
             {
@@ -107,8 +108,7 @@ namespace UCP
                     // check if we can already find the steam path
                     const string key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 40970";
                     RegistryKey myKey = Registry.LocalMachine.OpenSubKey(key, false);
-                    if (myKey != null && myKey.GetValue("InstallLocation") is string path
-                        && !string.IsNullOrWhiteSpace(path) && Patcher.CrusaderExists(path))
+                    if (myKey?.GetValue("InstallLocation") is string path && !string.IsNullOrWhiteSpace(path) && Patcher.CrusaderExists(path))
                     {
                         pTextBoxPath.Text = path;
                     }
@@ -120,7 +120,7 @@ namespace UCP
             }
         }
 
-        void SetLocalizedUIElements()
+        private void SetLocalizedUIElements()
         {
             pathBox.Text = Localization.Get("ui_searchpath");
             pButtonCancel.Content = Localization.Get("ui_cancel");
@@ -132,9 +132,9 @@ namespace UCP
             TextReferencer.SetText(linkLabel, Localization.Get("ui_welcometext"));
         }
 
-        void DisplayLicense()
+        private void DisplayLicense()
         {
-            var asm = System.Reflection.Assembly.GetExecutingAssembly();
+            Assembly asm = Assembly.GetExecutingAssembly();
             using (Stream stream = asm.GetManifestResourceStream("UCP.license.txt"))
             using (StreamReader sr = new StreamReader(stream))
                 linkLabel.Inlines.Add("\n\n\n\n\n\n" + sr.ReadToEnd());
@@ -144,7 +144,7 @@ namespace UCP
 
         #region Path finding
 
-        void pButtonUninstall_Click(object sender, RoutedEventArgs e)
+        private void pButtonUninstall_Click(object sender, RoutedEventArgs e)
         {
             string path = pTextBoxPath.Text;
             if (Directory.Exists(path))
@@ -158,22 +158,25 @@ namespace UCP
             }
         }
 
-        void bPathSearch_Click(object sender, RoutedEventArgs e)
+        private void bPathSearch_Click(object sender, RoutedEventArgs e)
         {
-            using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
+            using (FolderBrowserDialog dialog = new FolderBrowserDialog())
             {
                 dialog.ShowNewFolderButton = false;
                 dialog.SelectedPath = Directory.Exists(pTextBoxPath.Text) ? pTextBoxPath.Text : null;
                 dialog.Description = Localization.Get("ui_browsepath");
 
-                var result = dialog.ShowDialog();
+                DialogResult result = dialog.ShowDialog();
                 if ((int)result == 1)
+                {
                     pTextBoxPath.Text = dialog.SelectedPath;
+                }
             }
         }
 
-        bool viewLoaded = false;
-        void pButtonContinue_Click(object sender, RoutedEventArgs e)
+        private bool viewLoaded;
+
+        private void pButtonContinue_Click(object sender, RoutedEventArgs e)
         {
             string cPath = pTextBoxPath.Text;
             if (!Patcher.CrusaderExists(cPath))
@@ -197,22 +200,22 @@ namespace UCP
             installGrid.Visibility = Visibility.Visible;
         }
 
-        void pButtonCancel_Click(object sender, RoutedEventArgs e)
+        private void pButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         #endregion
 
         #region Install
 
-        void iButtonBack_Click(object sender, RoutedEventArgs e)
+        private void iButtonBack_Click(object sender, RoutedEventArgs e)
         {
             installGrid.Visibility = Visibility.Hidden;
             pathGrid.Visibility = Visibility.Visible;
         }
 
-        void iButtonInstall_Click(object sender, RoutedEventArgs e)
+        private void iButtonInstall_Click(object sender, RoutedEventArgs e)
         {
             string path = pTextBoxPath.Text;
             if (!Patcher.CrusaderExists(path))
@@ -229,12 +232,13 @@ namespace UCP
             changeHint.Text = "";
 
             setupThread = new Thread(DoSetup);
-            this.Closed += (s, args) => setupThread.Abort();
+            Closed += (s, args) => setupThread.Abort();
             setupThread.Start(pTextBoxPath.Text);
         }
 
-        Thread setupThread;
-        void DoSetup(object arg)
+        private Thread setupThread;
+
+        private void DoSetup(object arg)
         {
             try
             {
@@ -253,11 +257,13 @@ namespace UCP
             catch (Exception e)
             {
                 if (!(e is TaskCanceledException || e is ThreadAbortException)) // in case of exit
+                {
                     MessageBox.Show(e.ToString(), Localization.Get("ui_error"));
+                }
             }
         }
 
-        void SetPercent(double value)
+        private void SetPercent(double value)
         {
             Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => pbSetup.Value = value * 100.0));
         }
@@ -266,53 +272,60 @@ namespace UCP
 
         #region TreeView
 
-        void FillTreeView(IEnumerable<Change> changes)
+        private void FillTreeView(IEnumerable<Change> changes)
         {
             foreach (ChangeType type in Enum.GetValues(typeof(ChangeType)))
             {
                 string typeName = type.ToString();
                 Grid grid = new Grid();
-                TabItem tab = new TabItem()
-                {
+                TabItem tab = new TabItem
+                              {
                     Header = Localization.Get("ui_" + typeName),
                     Content = grid,
                 };
                 tabControl.Items.Add(tab);
 
-                if (type == ChangeType.Resource)
+                switch (type)
                 {
-                    new ResourceView().InitUI(grid, View_SelectedItemChanged);
-                    continue;
-                }
-                else if (type == ChangeType.AIV)
-                {
-                    new AIVView().InitUI(grid, View_SelectedItemChanged);
-                    continue;
-                } 
-                else if (type == ChangeType.AIC)
-                {
-                    new AICView().InitUI(grid, View_SelectedItemChanged);
-                    continue;
-                }
-                else if (type == ChangeType.StartTroops)
-                {
-                    new StartTroopView().InitUI(grid, View_SelectedItemChanged);
-                    continue;
+                    case ChangeType.Resource:
+                        new ResourceView().InitUI(grid, View_SelectedItemChanged);
+                        continue;
+                    case ChangeType.AIV:
+                        AIVView.InitUI(grid, View_SelectedItemChanged);
+                        continue;
+                    case ChangeType.AIC:
+                        new AICView().InitUI(grid, View_SelectedItemChanged);
+                        continue;
+                    case ChangeType.StartTroops:
+                        new StartTroopView().InitUI(grid, View_SelectedItemChanged);
+                        continue;
+                    case ChangeType.Bugfix:
+                        break;
+                    case ChangeType.AILords:
+                        break;
+                    case ChangeType.Troops:
+                        break;
+                    case ChangeType.Other:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
 
-                TreeView view = new TreeView()
-                {
-                    Background = null,
-                    BorderThickness = new Thickness(0, 0, 0, 0),
-                    Focusable = false,
-                };
+                TreeView view = new TreeView
+                                {
+                                    Background = null,
+                                    BorderThickness = new Thickness(0, 0, 0, 0),
+                                    Focusable = false,
+                                };
                 view.SelectedItemChanged += View_SelectedItemChanged;
                 grid.Children.Add(view);
 
                 foreach (Change change in changes)
                 {
                     if (change.Type != type)
+                    {
                         continue;
+                    }
 
                     change.InitUI();
                     view.Items.Add(change.UIElement);
@@ -320,19 +333,14 @@ namespace UCP
             }
         }
 
-        void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TabControl tab = (TabControl) sender;
             pbLabel.Content = "";
-            if ((String) (((TabItem) tab.SelectedItem).Header) == "AIC"){
-                changeHint.Text = "Ctrl+Click to select multiple aic files";
-            } else
-            {
-                changeHint.Text = "";
-            }
+            changeHint.Text = (String) (((TabItem) tab.SelectedItem).Header) == "AIC" ? "Ctrl+Click to select multiple aic files" : "";
         }
 
-        static void View_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        private static void View_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             TreeView view = (TreeView)sender;
             view.SelectedItemChanged -= View_SelectedItemChanged;

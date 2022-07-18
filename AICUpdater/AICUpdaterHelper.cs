@@ -8,7 +8,7 @@ using UCPAIConversion;
 
 namespace AICUpdater
 {
-    class AICUpdaterHelper
+    internal class AICUpdaterHelper
     {
         public static string Convert(string srcFile, string destFile)
         {
@@ -18,13 +18,13 @@ namespace AICUpdater
 
             aicSrcFile = Regex.Replace(aicSrcFile, "/[*]([^*]|([*][^/]))*[*]+/", String.Empty);
 
-            Match header = Regex.Match(aicSrcFile, @"AIFileHeader[\n.\s]+{");
-            int start = header.Index;
-            int headerTitleEnd = header.Index + header.Length;
-            int end = aicSrcFile.IndexOf("AICharacter", start);
+            Match header         = Regex.Match(aicSrcFile, @"AIFileHeader[\n.\s]+{");
+            int   start          = header.Index;
+            int   headerTitleEnd = header.Index + header.Length;
+            int   end            = aicSrcFile.IndexOf("AICharacter", start, StringComparison.Ordinal);
 
             List<string> descriptions = new List<string>();
-            string[] headerLines = aicSrcFile.Substring(headerTitleEnd, end).Split(new string[] { "Descr" }, StringSplitOptions.None);
+            string[]     headerLines  = aicSrcFile.Substring(headerTitleEnd, end).Split(new[] { "Descr" }, StringSplitOptions.None);
 
             List<string> descrLines = new List<string>();
             String language = "";
@@ -84,19 +84,19 @@ namespace AICUpdater
             }
 
             string headerJson = "\"AICShortDescription\": {\n  ";
-            headerJson = headerJson + String.Join(",\n  ", descriptions);
-            headerJson = headerJson + "\n  }";
+            headerJson += String.Join(",\n  ", descriptions);
+            headerJson += "\n  }";
 
 
             aicSrcFile = Regex.Replace(aicSrcFile, "/[*]([^*]|([*][^/]))*[*]+/", "");
-            string[] characterSearch = aicSrcFile.Split(new string[] { "AICharacter" }, StringSplitOptions.None);
-            string[] characters = new string[characterSearch.Length - 1];
+            string[] characterSearch = aicSrcFile.Split(new[] { "AICharacter" }, StringSplitOptions.None);
+            string[] characters      = new string[characterSearch.Length - 1];
             Array.Copy(characterSearch, 1, characters, 0, characters.Length);
 
             string aicJSON = "{\n" + headerJson + ",\n\n" + "\"AICharacters\": [";
             foreach (string character in characters)
             {
-                string[] personality = character.Split(new string[] { "Personality" }, StringSplitOptions.None);
+                string[] personality = character.Split(new[] { "Personality" }, StringSplitOptions.None);
                 string[] characterID = personality[0].Split('\n');
 
                 List<string> personalityIDs = new List<string>();
@@ -108,12 +108,14 @@ namespace AICUpdater
                 {
                     string parsedIdentifier = Regex.Replace(identifier, @"\s+", String.Empty);
                     string[] idFields = parsedIdentifier.Split('=');
-                    if (idFields[0].Trim() == "Index")
+                    if (idFields[0].Trim() != "Index")
                     {
-                        personalityIDs.Add('"' + "Name" + "\": \"" + Enum.GetName(typeof(AICharacterName), int.Parse(idFields[1])) + "\"");
-                        currentCharacterName = (AICharacterName)int.Parse(idFields[1]);
-                        indexFound = true;
+                        continue;
                     }
+
+                    personalityIDs.Add('"' + "Name" + "\": \"" + Enum.GetName(typeof(AICharacterName), int.Parse(idFields[1])) + "\"");
+                    currentCharacterName = (AICharacterName)int.Parse(idFields[1]);
+                    indexFound           = true;
                 }
 
                 //convert the name key and all other keys
@@ -123,44 +125,46 @@ namespace AICUpdater
                     {
                         string parsedIdentifier = Regex.Replace(identifier, @"\s+", String.Empty);
                         string[] idFields = identifier.Split('=');
-                        if (idFields.Length > 1)
+                        if (idFields.Length <= 1)
                         {
-                            try
+                            continue;
+                        }
+
+                        try
+                        {
+                            if (idFields[0].Trim() == "Name")
                             {
-                                if (idFields[0].Trim() == "Name")
+                                if (idFields[1].Trim() == "Philipp")
                                 {
-                                    if (idFields[1].Trim() == "Philipp")
-                                        idFields[1] = "Phillip";
-                                    string indexName = currentCharacterName.ToString();
-                                    if (indexName != idFields[1].Trim())
-                                        //custom name is set
-                                        personalityIDs.Add("\"CustomName\": \"" + idFields[1].Trim().Substring(0, Math.Min(idFields[1].Trim().ToString().Length, 20)) + '"');
-                                    else
-                                        //no custom name set
-                                        personalityIDs.Add("\"CustomName\": \"\"");
+                                    idFields[1] = "Phillip";
+                                }
+
+                                string indexName = currentCharacterName.ToString();
+                                if (indexName != idFields[1].Trim())
+                                    //custom name is set
+                                {
+                                    personalityIDs.Add("\"CustomName\": \"" + idFields[1].Trim().Substring(0, Math.Min(idFields[1].Trim().Length, 20)) + '"');
                                 }
                                 else
+                                    //no custom name set
                                 {
-                                    personalityIDs.Add('"' + idFields[0].Trim() + "\": " + int.Parse(idFields[1]).ToString());
+                                    personalityIDs.Add("\"CustomName\": \"\"");
                                 }
                             }
-                            catch (FormatException)
+                            else
                             {
-                                personalityIDs.Add('"' + idFields[0].Trim() + "\": \"" + idFields[1].Trim() + "\"");
+                                personalityIDs.Add('"' + idFields[0].Trim() + "\": " + int.Parse(idFields[1]));
                             }
+                        }
+                        catch (FormatException)
+                        {
+                            personalityIDs.Add('"' + idFields[0].Trim() + "\": \"" + idFields[1].Trim() + "\"");
                         }
                     }
                 }
 
                 string[] characterData = personality[1].Split('\n');
-                List<string> fields = new List<string>();
-                foreach (string field in characterData)
-                {
-                    if (field.Contains("="))
-                    {
-                        fields.Add(field);
-                    }
-                }
+                List<string> fields = characterData.Where(field => field.Contains("=")).ToList();
 
                 List<string> personalityFields = new List<string>();
                 const int numPersonalityFields = 169;
@@ -171,17 +175,19 @@ namespace AICUpdater
                     {
                         string parsedField = Regex.Replace(fields[index], @"\s+", String.Empty);
                         string[] fieldData = parsedField.Split("=".ToCharArray());
-                        if (fieldData.Length > 1)
+                        if (fieldData.Length <= 1)
                         {
-                            string fieldName = Enum.GetName(typeof(AIPersonalityFieldsEnum), index);
-                            try
-                            {
-                                personalityFields.Add('"' + fieldName + "\": " + int.Parse(fieldData[1]).ToString());
-                            }
-                            catch (FormatException)
-                            {
-                                personalityFields.Add('"' + fieldName + "\": \"" + fieldData[1] + "\"");
-                            }
+                            continue;
+                        }
+
+                        string fieldName = Enum.GetName(typeof(AIPersonalityFieldsEnum), index);
+                        try
+                        {
+                            personalityFields.Add('"' + fieldName + "\": " + int.Parse(fieldData[1]));
+                        }
+                        catch (FormatException)
+                        {
+                            personalityFields.Add('"' + fieldName + "\": \"" + fieldData[1] + "\"");
                         }
                     }
                 }
@@ -191,17 +197,19 @@ namespace AICUpdater
                     {
                         string parsedField = Regex.Replace(field, @"\s+", String.Empty);
                         string[] fieldData = parsedField.Split("=".ToCharArray());
-                        if (fieldData.Length > 1)
+                        if (fieldData.Length <= 1)
                         {
-                            string fieldName = UpdateFieldName(fieldData[0]);
-                            try
-                            {
-                                personalityFields.Add('"' + fieldName + "\": " + int.Parse(fieldData[1]).ToString());
-                            }
-                            catch (FormatException)
-                            {
-                                personalityFields.Add('"' + fieldName + "\": \"" + fieldData[1] + "\"");
-                            }
+                            continue;
+                        }
+
+                        string fieldName = UpdateFieldName(fieldData[0]);
+                        try
+                        {
+                            personalityFields.Add('"' + fieldName + "\": " + int.Parse(fieldData[1]));
+                        }
+                        catch (FormatException)
+                        {
+                            personalityFields.Add('"' + fieldName + "\": \"" + fieldData[1] + "\"");
                         }
                     }
                 }

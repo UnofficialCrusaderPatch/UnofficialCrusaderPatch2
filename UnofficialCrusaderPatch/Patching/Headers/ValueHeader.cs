@@ -5,42 +5,46 @@ namespace UCP.Patching
 {
     public class ValueHeader : DefaultHeader
     {
-        double oriVal, suggested;
-        public double OriginalValue => oriVal;
-        public double SuggestedValue => suggested;
+        public  double OriginalValue { get; }
+
+        public double SuggestedValue { get; }
 
         public ValueHeader(string descrIdent, bool isEnabled, double oriVal, double suggested) : base(descrIdent, isEnabled)
         {
-            this.oriVal = oriVal;
-            this.suggested = suggested;
+            OriginalValue = oriVal;
+            SuggestedValue = suggested;
         }
 
         public override void SetParent(Change change)
         {
             base.SetParent(change);
-            this.value = this.IsEnabled ? suggested : oriVal;
+            Value = IsEnabled ? SuggestedValue : OriginalValue;
         }
 
-        double value;
-        public double Value => value;
+        public  double Value { get; private set; }
 
         public override bool IsEnabled
         {
             get => base.IsEnabled;
             set
             {
-                if (this.IsEnabled == value)
+                if (IsEnabled == value)
+                {
                     return;
-                
+                }
+
                 base.IsEnabled = value;
                 if (IsEnabled)
                 {
-                    if (this.value == oriVal)
-                        this.SetValue(suggested);
+                    // Cheking floating-point with tolerance.
+                    if (Math.Abs(Value - OriginalValue) < 0.00001)
+                    {
+                        SetValue(SuggestedValue);
+                    }
                 }
                 else
                 {
-                    this.SetValue(oriVal);
+                    SetValue(OriginalValue);
                 }
             }
         }
@@ -50,22 +54,24 @@ namespace UCP.Patching
         {
             try
             {
-                if (this.value == value)
+                if (Math.Abs(Value - value) < 0.00001)
+                {
                     return;
+                }
 
-                this.value = value;
+                Value = value;
 
-                bool enable = value != oriVal;
-                if (enable != this.IsEnabled)
+                bool enable = Math.Abs(value - OriginalValue) > 0.00001;
+                if (enable != IsEnabled)
                 {
                     SetEnabled(enable);
                 }
                 else
                 {
-                    Configuration.Save(this.Parent.TitleIdent);
+                    Configuration.Save(Parent.TitleIdent);
                 }
 
-                this.OnValueChange?.Invoke();
+                OnValueChange?.Invoke();
             }
             catch (Exception e)
             {
@@ -75,19 +81,24 @@ namespace UCP.Patching
 
         public override string GetValueString()
         {
-            return string.Format("{0};{1}", this.IsEnabled, this.value.ToString(CultureInfo.InvariantCulture));
+            return $"{IsEnabled};{Value.ToString(CultureInfo.InvariantCulture)}";
         }
 
         public override void LoadValueString(string valueStr)
         {
             int index = valueStr.IndexOf(';');
-            if (index < 0) return;
+            if (index < 0)
+            {
+                return;
+            }
 
             base.LoadValueString(valueStr.Remove(index));
 
             valueStr = valueStr.Substring(index + 1).Trim();
             if (Double.TryParse(valueStr, NumberStyles.Any, CultureInfo.InvariantCulture, out double result))
-                this.value = result;
+            {
+                Value = result;
+            }
         }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UCPAIConversion
 {
@@ -10,13 +7,13 @@ namespace UCPAIConversion
     /// Exception class for containing list of all exceptions found when parsing an AIC
     /// Comprises of a list of AICharacterSerializationException instances
     /// </summary>
-    class AICSerializationException : FormatException
+    internal class AICSerializationException : FormatException
     {
         public List<AICharacterSerializationException> ErrorList { get; set; }
 
         public AICSerializationException()
         {
-            this.ErrorList = new List<AICharacterSerializationException>();
+            ErrorList = new List<AICharacterSerializationException>();
         }
 
         public String ToErrorString(string aicFile)
@@ -24,10 +21,9 @@ namespace UCPAIConversion
             if (aicFile == null)
             {
                 return "AIC Errors found:\n" + String.Join("\n", ErrorList);
-            } else
-            {
-                return "AIC Errors found in " + aicFile + ":\n" + String.Join("\n", ErrorList);
             }
+
+            return "AIC Errors found in " + aicFile + ":\n" + String.Join("\n", ErrorList);
         }
     }
 }

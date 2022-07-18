@@ -1,6 +1,6 @@
 ﻿namespace UCP._Crusader
 {
-    class Building
+    internal class Building
     {
         public const int Size = 0x32C;
 

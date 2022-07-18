@@ -6,35 +6,36 @@ namespace UCP.Patching
     /// Percentage handler which can be given limits for subdividing
     /// </summary>
     public class Percentage
-    {        
-        SetHandler handler;
-        public delegate void SetHandler(double percent);
+    {
+        private         SetHandler handler;
+        public delegate void       SetHandler(double percent);
         public Percentage(SetHandler handler)
         {
             this.handler = handler;
         }
 
-        double nextLimit;
+        private double nextLimit;
         public double NextLimit
         {
-            get { return this.nextLimit; }
+            get => nextLimit;
             set
             {
-                this.lastLimit = total;
-                this.nextLimit = value;
-                if (nextLimit < lastLimit)
+                LastLimit = Total;
+                nextLimit = value;
+                if (nextLimit < LastLimit)
+                {
                     throw new Exception("value < lastLimit");
+                }
             }
         }
 
-        double lastLimit;
-        public double LastLimit { get { return lastLimit; } }
+        public  double LastLimit { get; private set; }
 
-        double total;
-        public double Total { get { return total; } }
+        public  double Total { get; private set; }
+
         public void SetTotal(double value)
         {
-            this.total = value;
+            Total = value;
             if (handler != null)
             {
                 handler.Invoke(value);

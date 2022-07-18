@@ -6,7 +6,7 @@ namespace UCP.Patching
 
     public static partial class SectionEditor
     {
-        class SectionHeader
+        private class SectionHeader
         {
             public const int HeaderSize = 40;
             public const int NameLength = 8;
@@ -19,9 +19,9 @@ namespace UCP.Patching
             public void SetNameStr(string nameStr)
             {
                 byte[] buf = Encoding.ASCII.GetBytes(nameStr);
-                Buffer.BlockCopy(buf, 0, this.Name, 0, buf.Length);
+                Buffer.BlockCopy(buf, 0, Name, 0, buf.Length);
                 for (int i = buf.Length; i < NameLength; i++)
-                    this.Name[i] = 0;
+                    Name[i] = 0;
             }
 
             public readonly byte[] Name = new byte[NameLength];

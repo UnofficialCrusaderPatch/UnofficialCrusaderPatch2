@@ -7,8 +7,8 @@
 
         public AddressSpace(uint virtAddr, uint rawAddr)
         {
-            this.VirtualAddress = virtAddr;
-            this.RawAddress = rawAddr;
+            VirtualAddress = virtAddr;
+            RawAddress = rawAddr;
         }
     }
 }

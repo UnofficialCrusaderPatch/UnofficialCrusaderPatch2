@@ -14,9 +14,9 @@ namespace UCP.Patching
         public const string BackupIdent = "ucp_backup";
         public const string BackupFileEnding = "." + BackupIdent;
 
-        const string CrusaderExe = "Stronghold Crusader.exe";
-        const string XtremeExe = "Stronghold_Crusader_Extreme.exe";
-        const string GAME_SEEDS_FOLDER = "gameseeds";
+        private const string CrusaderExe       = "Stronghold Crusader.exe";
+        private const string XtremeExe         = "Stronghold_Crusader_Extreme.exe";
+        private const string GAME_SEEDS_FOLDER = "gameseeds";
 
         /// <summary>
         /// Test existence of SHC of SHC Extreme executables inside specified directory
@@ -26,10 +26,15 @@ namespace UCP.Patching
         public static bool CrusaderExists(string folderPath)
         {
             if (!Directory.Exists(folderPath))
+            {
                 return false;
+            }
 
             string path = Path.Combine(folderPath, CrusaderExe);
-            if (File.Exists(path)) return true;
+            if (File.Exists(path))
+            {
+                return true;
+            }
 
             path = Path.Combine(folderPath, XtremeExe);
             return File.Exists(path);
@@ -67,7 +72,7 @@ namespace UCP.Patching
         }
 
         // Retrieve path to the original SHC or SHC Extreme binary
-        static string GetOriginalBinary(string folderPath, string exe)
+        private static string GetOriginalBinary(string folderPath, string exe)
         {
             if (Directory.Exists(folderPath))
             {
@@ -82,17 +87,21 @@ namespace UCP.Patching
 
                 path = Path.Combine(folderPath, exe + BackupFileEnding);
                 if (File.Exists(path))
+                {
                     return path;
+                }
 
                 path = path.Remove(path.Length - BackupFileEnding.Length);
                 if (File.Exists(path))
+                {
                     return path;
+                }
             }
             return null;
         }
 
 
-        static void DoChanges(string folderPath, Percentage perc)
+        private static void DoChanges(string folderPath, Percentage perc)
         {
             string cPath = GetOriginalBinary(folderPath, CrusaderExe);
             string ePath = GetOriginalBinary(folderPath, XtremeExe);
@@ -103,15 +112,17 @@ namespace UCP.Patching
                 DoBinaryChanges(cPath, false, perc);
             }
 
-            if (ePath != null)
+            if (ePath == null)
             {
-                perc.NextLimit = 1;
-                DoBinaryChanges(ePath, true, perc);
+                return;
             }
+
+            perc.NextLimit = 1;
+            DoBinaryChanges(ePath, true, perc);
         }
 
 
-        static void DoBinaryChanges(string filePath, bool xtreme, Percentage perc)
+        private static void DoBinaryChanges(string filePath, bool xtreme, Percentage perc)
         {
             fails.Clear();
             SectionEditor.Reset();
@@ -124,8 +135,8 @@ namespace UCP.Patching
             }
 
             // Retrieve set of selected binary changes
-            var changes = Version.Changes.Where(c => c.IsChecked && c is Change && !(c is ResourceChange) && !(c is StartTroopChange));
-            List<Change> todoList = new List<Change>(changes);
+            IEnumerable<Change> changes  = Version.Changes.Where(c => c.IsChecked && c is Change && !(c is ResourceChange) && !(c is StartTroopChange));
+            List<Change>  todoList = new List<Change>(changes);
 
             int todoIndex = 0;
             double todoCount = 9 + todoList.Count; // +2 for AIprops +3 for read, +1 for version edit, +3 for writing data
@@ -191,44 +202,51 @@ namespace UCP.Patching
         /// </summary>
         /// <param name="dir"></param>
         /// <param name="exe"></param>
-        static void RestoreBinary(string dir, string exe)
+        private static void RestoreBinary(string dir, string exe)
         {
             string oriPath = Path.Combine(dir, exe);
             string backupPath = oriPath + BackupFileEnding;
-            if (File.Exists(backupPath))
+            if (!File.Exists(backupPath))
             {
-                if (File.Exists(oriPath))
-                    File.Delete(oriPath);
-
-                File.Move(backupPath, oriPath);
+                return;
             }
+
+            if (File.Exists(oriPath))
+            {
+                File.Delete(oriPath);
+            }
+
+            File.Move(backupPath, oriPath);
         }
 
-        static void ShowFailures(string filePath)
+        private static void ShowFailures(string filePath)
         {
-            if (fails.Count > 0)
+            if (fails.Count <= 0)
             {
-                StringBuilder sb = new StringBuilder();
-                sb.Append("Version Differences in ");
-                sb.Append(Path.GetFileName(filePath));
-                sb.AppendLine(":");
-                foreach (var f in fails)
-                    sb.AppendLine(f.Ident + " " + f.Type);
-
-                fails.Clear();
-                Debug.Show(sb.ToString());
+                return;
             }
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Version Differences in ");
+            sb.Append(Path.GetFileName(filePath));
+            sb.AppendLine(":");
+            foreach (EditFail f in fails)
+                sb.AppendLine(f.Ident + " " + f.Type);
+
+            fails.Clear();
+            Debug.Show(sb.ToString());
         }
 
-        struct EditFail
+        private struct EditFail
         {
             public string Ident;
             public EditFailure Type;
         }
-        static readonly List<EditFail> fails = new List<EditFail>();
+
+        private static readonly List<EditFail> fails = new List<EditFail>();
         public static void AddFailure(string ident, EditFailure failure)
         {
-            fails.Add(new EditFail(){ Ident=ident, Type=failure });
+            fails.Add(new EditFail { Ident=ident, Type=failure });
         }
     }
 }
