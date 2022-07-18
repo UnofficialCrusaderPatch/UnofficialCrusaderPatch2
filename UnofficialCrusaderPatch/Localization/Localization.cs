@@ -23,19 +23,19 @@ namespace UCP
                 Culture = culture;
             }
         }
-
-        private static int[] loadOrder = { 1, 0, 2, 3, 4};
+        static int[] loadOrder = { 1, 0, 2, 3, 4, 5};
         public static IEnumerable<int> IndexLoadOrder => loadOrder;
 
-        private static List<Language> translations = new List<Language>
-                                                     {
-                                                         new Language("Deutsch", "German", "de"),
-                                                         new Language("English", "English", "en"),
-                                                         new Language("Polski", "Polish", "pl"),
-                                                         new Language("Русский", "Russian", "ru"),
-                                                         new Language("中文", "Chinese", "ch"),
-                                                         new Language("Magyar", "Hungarian", "hu")
-                                                     };
+        static List<Language> translations = new List<Language>()
+        {
+            new Language("Deutsch", "German", "de"),
+            new Language("English", "English", "en"),
+            new Language("Polski", "Polish", "pl"),
+            new Language("Русский", "Russian", "ru"),
+            new Language("中文", "Chinese", "ch"),
+            new Language("Magyar", "Hungarian", "hu"),
+	    new Language("العربية", "Arabic", "ar")
+        };
         public static IEnumerable<Language> Translations => translations;
         public static int GetLangByCulture(string culture)
         {

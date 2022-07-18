@@ -1,5 +1,16 @@
 {
 "AICShortDescription": {
+  "Arabic": "تجعل هذه الأعدادات الملك (الذكاء الاصطناعي) تحديًا للاعب
+للوصول إلى الهدف ، وهو تعزيز الذكاء الاصطناعي قدر الإمكان ، من خلال التغييرات التالية
+- جعل سرعة بناء وتوظيف الذكاء الاصطناعي أعلى ما يمكن
+-> يقوم الملك بالبناء بشكل أسرع بوجود الموارد الكافية
+- الكفاءة الاقتصادية المثلى
+-> تحسن الضرائب وتغيير الشعبية
+-> تقليل المصاريف غير الضرورية
+-> إدارة الموارد الأمثل
+- سلوكيات عدوانية ودفاعية وهجوم أكثر نشاطا.
+-> تحسين استخدام وحدات الفرز والهجوم ، وخاصة الآلات الحربية
+- سلوك أكثر تناسقًا في جميع مراحل اللعبة",
   "German": "Mit dieser Charakterdatei wird die KI eine Herausforderung für den Spieler.
 Das Ziel, die vorhandenen KIs in jedem möglichen Aspekt zu stärken, wird durch folgende Anpassungen erreicht:
 - Die Geschwindigkeitsparameter der KI wurden maximiert.

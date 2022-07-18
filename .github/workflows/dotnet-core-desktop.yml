@@ -5,9 +5,9 @@ name: UCP Build
 on:
   workflow_dispatch:
   push:
-    branches: [master, GUI-Update]
+    branches: [ master, GUI-Update, development ]
   pull_request:
-    branches: [master, GUI-Update]
+    branches: [ master, GUI-Update, development ]
     types: [assigned, opened, edited, ready_for_review, reopened, synchronize]
 
 jobs:
