@@ -1,6 +1,110 @@
 // ======================
-//         2.15
+//         DEV
 // ======================
+
+ai_resources_rebuy
+{
+"Improve AI restocking of needed goods"
+}
+
+ai_resources_rebuy_descr
+{
+"The AI often doesn't restock goods even if it has the gold for it, leaving its production chains running dry. This option reduces the amount of time the AI waits for its stocks to be empty before restocking the necessary goods."
+}
+
+ai_nowood_maxtime_descr
+{
+"Time in 1/12th of months until the AI restocks 5 wood."
+}
+
+ai_noiron_maxtime_descr
+{
+"Time in 1/12th of months until the AI restocks 2 iron."
+}
+
+ai_noflour_maxtime_descr
+{
+"Time in 1/12th of months until the AI restocks 2 flour."
+}
+
+u_jestermoveto_assassin
+{
+	"Stop the jester from visiting assassins"
+}
+
+u_jestermoveto_assassin_descr
+{
+	"The jester visits your units on the battlefield to cheer them up. Now it wont visit your invisible assassins anymore, showing everyone where they are!"
+}
+
+o_disable_border_scrolling
+{
+"Deaktiviere Scrollen am Bildschirmrand"
+}
+
+o_disable_border_scrolling_descr
+{
+"Bewegen des Mauszeigers zum Bildschirmrand bewegt nicht mehr die Ansicht."
+}
+
+o_fast_placing
+{
+	"Fast placing"
+}
+
+o_fast_placing_common
+{
+	"killing pit, pitch ditch, woodcutter, good & bad things, mill, water pot, bakery, hovel)"
+}
+
+o_fast_placing_common_descr
+{
+	" "
+}
+
+o_fast_placing_all
+{
+	"all builds"
+}
+
+o_fast_placing_all_descr
+{
+	"Hold left mouse button down to place buildings."
+}
+
+o_remove_right_click_context_menu
+{
+"Remove right click context menu"
+}
+
+o_remove_right_click_context_menu_descr
+{
+"Removes right click context menu where you can rotate the map, lower walls, zoom and flatten."
+}
+
+o_fix_map_sending
+{
+"Enable map sending in multiplayer"
+}
+
+o_fix_map_sending_descr
+{
+"Reduces the length of the sent map name, to make map sending possible again!"
+}
+
+o_fix_rapid_deletion_bug
+{
+"Fix resources rapid deletion"
+}
+
+o_fix_rapid_deletion_bug_descr
+{
+"Deleting buildings with a fast auto clicker no longer gives resources for more than one deletion."
+}
+
+// ======================
+//         2.15
+// =====================
 
 u_spearmen_run
 {
@@ -884,7 +988,25 @@ o_keys_descr
 Außerdem kann mit STRG-S und STRG-L ein Quicksave erstellt und geladen werden."
 }
 
+o_quicksave
+{
+	"Enable quicksaves via CTRL-S and CTRL-L"
+}
 
+o_quicksave_descr
+{
+	"CTRL-S can be used to perform a quicksave. CTRL-L will load the same save"
+}
+
+o_wasd
+{
+	"Enable using WASD to move around"
+}
+
+o_wasd_descr
+{
+	"WASD can be used to move around in addition to the existing arrow keys"
+}
 
 
 
