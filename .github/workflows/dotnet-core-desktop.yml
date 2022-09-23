@@ -1,81 +1,79 @@
 # gynt: This is based on the .NET Core Desktop starter action
 
-
 name: UCP Build
 
 on:
   workflow_dispatch:
   push:
-    branches: [ master, GUI-Update, development ]
+    branches: [master, GUI-Update]
   pull_request:
-    branches: [ master, GUI-Update, development ]
+    branches: [master, GUI-Update]
     types: [assigned, opened, edited, ready_for_review, reopened, synchronize]
 
 jobs:
-
   build:
-
     strategy:
       matrix:
         configuration: [Debug, Release]
         nuget: [latest]
 
-    runs-on: windows-latest  # For a list of available runner types, refer to
-                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+    runs-on:
+      windows-latest # For a list of available runner types, refer to
+      # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
     env:
       OutputPath: ..\Output${{ matrix.configuration }}
-      Solution_Name: UnofficialCrusaderPatch.sln                      # Replace with your solution name, i.e. MyWpfApp.sln.
+      Solution_Name: UnofficialCrusaderPatch.sln # Replace with your solution name, i.e. MyWpfApp.sln.
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    
-    - name: Checkout submodules
-      run: git submodule update --init --recursive --depth 1
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-    # Install the .NET Core workload
-    - name: Install .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '3.1.x'
-    
-    # Restore NuGet packages
-    - name: Setup NuGet.exe
-      uses: nuget/setup-nuget@v1
-      with:
-        nuget-version: ${{ matrix.nuget }}
-    - name: Restore NuGet packages
-      run: nuget restore $env:Solution_Name
+      - name: Checkout submodules
+        run: git submodule update --init --recursive --depth 1
 
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v1.0.2
+      # Install the .NET Core workload
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "5.0.x"
 
-    # Execute all unit tests in the solution
-    # - name: Execute unit tests
-    #   run: dotnet test
+      # Restore NuGet packages
+      - name: Setup NuGet.exe
+        uses: nuget/setup-nuget@v1
+        with:
+          nuget-version: ${{ matrix.nuget }}
+      - name: Restore NuGet packages
+        run: nuget restore $env:Solution_Name
 
-    # Restore the application to populate the obj folder with RuntimeIdentifiers
-    - name: Build the application
-      run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration /p:OutputPath=$env:OutputPath
-      env:
-        Configuration: ${{ matrix.configuration }}
+      # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v1.1
 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: UCP-latest-release
-        path: |
-          OutputRelease/*.dll
-          OutputRelease/*.exe
-          OutputRelease/resources
+      # Execute all unit tests in the solution
+      # - name: Execute unit tests
+      #   run: dotnet test
 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: UCP-latest-debug
-        path: |
-          OutputDebug
+      # Restore the application to populate the obj folder with RuntimeIdentifiers
+      - name: Build the application
+        run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration /p:OutputPath=$env:OutputPath
+        env:
+          Configuration: ${{ matrix.configuration }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: UCP-latest-release
+          path: |
+            OutputRelease/*.dll
+            OutputRelease/*.exe
+            OutputRelease/resources
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: UCP-latest-debug
+          path: |
+            OutputDebug
