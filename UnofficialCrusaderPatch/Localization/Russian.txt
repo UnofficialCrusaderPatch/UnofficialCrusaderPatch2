@@ -2,6 +2,11 @@
 //         DEV
 // ======================
 
+ui_Balance
+{
+"Balance"
+}
+
 ai_resources_rebuy
 {
 "Improve AI restocking of needed goods"
