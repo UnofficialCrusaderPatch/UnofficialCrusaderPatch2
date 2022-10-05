@@ -5,30 +5,28 @@ namespace UCP.Patching
     /// <summary>
     /// Represents a single value
     /// </summary>
-    abstract class BinValue : BinElement
+    internal abstract class BinValue : BinElement
     {
-        double factor;
-        public double Factor => factor;
+        public  double Factor { get; }
 
-        double offset;
-        public double Offset => offset;
+        public  double Offset { get; }
 
         public BinValue(double factor = 1, double offset = 0)
         {
-            this.factor = factor;
-            this.offset = offset;
+            Factor = factor;
+            Offset = offset;
         }
 
         protected abstract byte[] GetBytes(double value);
 
         public override void Write(BinArgs data)
         {
-            byte[] buf = this.GetBytes(factor * data.Value + offset);
-            buf.CopyTo(data, this.RawAddress);
+            byte[] buf = GetBytes(Factor * data.Value + Offset);
+            buf.CopyTo(data, RawAddress);
         }
     }
 
-    class BinInt32Value : BinValue
+    internal class BinInt32Value : BinValue
     {
         public override int Length => 4;
 
@@ -43,7 +41,7 @@ namespace UCP.Patching
         }
     }
 
-    class BinInt16Value : BinValue
+    internal class BinInt16Value : BinValue
     {
         public override int Length => 2;
 
@@ -58,7 +56,7 @@ namespace UCP.Patching
         }
     }
 
-    class BinByteValue : BinValue
+    internal class BinByteValue : BinValue
     {
         public override int Length => 1;
 

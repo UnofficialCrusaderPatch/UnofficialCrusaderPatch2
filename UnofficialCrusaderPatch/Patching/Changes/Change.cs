@@ -10,21 +10,21 @@ namespace UCP.Patching
 {
     public class Change : IEnumerable<DefaultHeader>
     {
-        public bool NoLocalization = false;
-        Func<Dictionary<string, Dictionary<string, object>>, DefaultHeader> multiChange;
-        string titleIdent;
-        public string TitleIdent => titleIdent;
-        public string GetTitle() { return NoLocalization ? titleIdent : Localization.Get(titleIdent); }
+        public  bool                                                                NoLocalization = false;
+        private Func<Dictionary<string, Dictionary<string, object>>, DefaultHeader> multiChange;
+        public  string                                                              TitleIdent { get; }
 
-        ChangeType type;
-        public ChangeType Type => type;
+        public  string                                                              GetTitle() { return NoLocalization ? TitleIdent : Localization.Get(TitleIdent); }
 
-        bool exclusive, enabledDefault;
-        public bool EnabledDefault => enabledDefault;
-        List<DefaultHeader> headerList = new List<DefaultHeader>();
+        public  ChangeType Type { get; }
+
+        private bool exclusive;
+        public  bool EnabledDefault { get; }
+
+        private List<DefaultHeader> headerList = new List<DefaultHeader>();
 
         public IEnumerator<DefaultHeader> GetEnumerator() => headerList.GetEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         public void Add(DefaultHeader header)
         {
@@ -34,10 +34,10 @@ namespace UCP.Patching
 
         public Change(string titleIdent, ChangeType type, bool enabledDefault = true, bool exclusive = true, Func<Dictionary<string, Dictionary<string, object>>, ParamHeader> multiChange = null)
         {
-            this.type = type;
-            this.titleIdent = titleIdent;
+            Type = type;
+            TitleIdent = titleIdent;
             this.exclusive = exclusive;
-            this.enabledDefault = enabledDefault;
+            EnabledDefault = enabledDefault;
             this.multiChange = multiChange;
         }
 
@@ -45,32 +45,21 @@ namespace UCP.Patching
         {
             if (multiChange != null)
             {
-                Dictionary<string, Dictionary<string, object>> parameters = new Dictionary<string, Dictionary<string, object>>();
-                foreach (var header in headerList)
-                {
-                    parameters.Add(header.DescrIdent, new Dictionary<string, object>()
-                    {
-                        { "isEnabled", header.IsEnabled },
-                        { "value", (object)header is ValueHeader && header.IsEnabled ? (header as ValueHeader).Value : (object)header.IsEnabled }
-                    });
-                }
+                Dictionary<string, Dictionary<string, object>> parameters = headerList.ToDictionary(header => header.DescrIdent, header => new Dictionary<string, object> { { "isEnabled", header.IsEnabled }, { "value", (object)header is ValueHeader && header.IsEnabled ? (header as ValueHeader).Value : (object)header.IsEnabled } });
                 multiChange(parameters).Activate(args);
                 return;
             }
-            foreach (var header in headerList)
+
+            foreach (DefaultHeader header in headerList.Where(header => header.IsEnabled))
             {
-                if (header.IsEnabled)
-                    header.Activate(args);
+                header.Activate(args);
             }
         }
 
         public override string ToString()
         {
             string str = TitleIdent + "={ ";
-            foreach (DefaultHeader h in headerList)
-            {
-                str += h.ToString();
-            }
+            str =  headerList.Aggregate(str, (current, h) => current + h);
             str += "}";
             return str;
         }
@@ -86,22 +75,22 @@ namespace UCP.Patching
         public bool IsChecked
         {
             get { return headerList.Exists(h => h.IsEnabled); }
-            set { titleBox.IsChecked = value; }
+            set => titleBox.IsChecked = value;
         }
 
         protected UIElement uiElement;
-        public UIElement UIElement { get { return this.uiElement; } }
+        public    UIElement UIElement => uiElement;
 
         protected CheckBox titleBox;
         protected Grid grid;
 
         public virtual void InitUI()
         {
-            this.titleBox = new CheckBox()
-            {
-                Content = new TextBlock()
-                {
-                    Text = this.GetTitle(),
+            titleBox = new CheckBox
+                       {
+                Content = new TextBlock
+                          {
+                    Text = GetTitle(),
                     TextWrapping = TextWrapping.Wrap,
                     Margin = new Thickness(0, -1, 0, 0),
                     FontSize = 14,
@@ -110,8 +99,8 @@ namespace UCP.Patching
                 IsChecked = headerList.Exists(h => h.IsEnabled),
             };
 
-            TreeViewItem tvi = new TreeViewItem()
-            {
+            TreeViewItem tvi = new TreeViewItem
+                               {
                 IsExpanded = false,
                 Focusable = false,
                 Header = titleBox,
@@ -129,8 +118,8 @@ namespace UCP.Patching
                 titleBox.Unchecked += TitleBox_Unchecked;
             }
 
-            grid = new Grid()
-            {
+            grid = new Grid
+                   {
                 Background = new SolidColorBrush(Color.FromArgb(150, 200, 200, 200)),
                 Width = 420,
                 Margin = new Thickness(-18, 5, 0, 0),
@@ -142,26 +131,30 @@ namespace UCP.Patching
             tvi.Items.Add(grid);
             tvi.Items.Add(null); // spacing
 
-            this.uiElement = tvi;
+            uiElement = tvi;
         }
 
         protected virtual void TitleBox_Unchecked(object sender, RoutedEventArgs e)
         {
             headerList.ForEach(h => h.IsEnabled = false);
 
-            Configuration.Save(this.titleIdent);
+            Configuration.Save(TitleIdent);
         }
 
-        bool noCheck = false;
+        private bool noCheck;
         protected virtual void TitleBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (noCheck) return;
+            if (noCheck)
+            {
+                return;
+            }
+
             headerList.ForEach(h => h.IsEnabled = h.DefaultIsEnabled);
             noCheck = true;
-            titleBox.IsChecked = this.IsChecked;
+            titleBox.IsChecked = IsChecked;
             noCheck = false;
 
-            Configuration.Save(this.titleIdent);
+            Configuration.Save(TitleIdent);
         }
 
         protected void FillGrid(Grid grid)
@@ -171,14 +164,14 @@ namespace UCP.Patching
             double height = 5;
             for (int i = 0; i < headerList.Count; i++)
             {
-                var header = headerList[i];
+                DefaultHeader header = headerList[i];
 
                 if (!singleDefault)
                 {
                     header.OnEnabledChange += Header_OnEnable;
 
                     // ui element
-                    var uiElement = header.InitUI(headerList.Count > 1);
+                    FrameworkElement uiElement = header.InitUI(headerList.Count > 1);
                     uiElement.HorizontalAlignment = HorizontalAlignment.Left;
                     uiElement.VerticalAlignment = VerticalAlignment.Top;
                     uiElement.Margin = new Thickness(6, height, 0, 0);
@@ -191,8 +184,8 @@ namespace UCP.Patching
                 if (!string.IsNullOrWhiteSpace(headerDescr))
                 {
                     // Description
-                    TextBlock description = new TextBlock()
-                    {
+                    TextBlock description = new TextBlock
+                                            {
                         HorizontalAlignment = HorizontalAlignment.Left,
                         VerticalAlignment = VerticalAlignment.Top,
                         Margin = new Thickness(6, height, 0, 0),
@@ -206,26 +199,30 @@ namespace UCP.Patching
                     height += description.MeasureHeight();
 
                     if (i != headerList.Count - 1)
+                    {
                         height += 22;
+                    }
                 }
             }
             grid.Height = height + 10;
         }
-        
-        void Header_OnEnable(DefaultHeader header, bool enabled)
+
+        private void Header_OnEnable(DefaultHeader header, bool enabled)
         {
-            if (this.exclusive && enabled)
+            if (exclusive && enabled)
             {
                 foreach (DefaultHeader h in headerList)
                     if (h != header)
+                    {
                         h.IsEnabled = false;
+                    }
             }
 
-            bool newChecked = this.IsChecked;
-            if (this.titleBox.IsChecked != newChecked)
+            bool newChecked = IsChecked;
+            if (titleBox.IsChecked != newChecked)
             {
                 noCheck = true;
-                this.titleBox.IsChecked = newChecked;
+                titleBox.IsChecked = newChecked;
                 noCheck = false;
             }
         }

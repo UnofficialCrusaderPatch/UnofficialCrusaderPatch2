@@ -5,31 +5,28 @@ namespace UCP.Patching
 {
     public static partial class SectionEditor
     {
-        class PEHeader
+        private class PEHeader
         {
-            int offset;
-            ushort numberOfSections;
-            public ushort NumberOfSections => numberOfSections;
+            private int    offset;
+            public  ushort NumberOfSections { get; }
 
-            uint sectionAlignment;
-            public uint SectionAlignment => sectionAlignment;
+            public  uint SectionAlignment { get; }
 
-            uint fileAlignment;
-            public uint FileAlignment => fileAlignment;
+            public  uint FileAlignment { get; }
 
-            List<SectionHeader> sections;
-            public IEnumerable<SectionHeader> Sections => sections;
+            private List<SectionHeader>        sections;
+            public  IEnumerable<SectionHeader> Sections => sections;
 
             public PEHeader(byte[] input, int offset)
             {
                 this.offset = offset;
 
-                numberOfSections = BitConverter.ToUInt16(input, offset + 0x06);
-                sectionAlignment = BitConverter.ToUInt32(input, offset + 0x38);
-                fileAlignment = BitConverter.ToUInt32(input, offset + 0x3C);
+                NumberOfSections = BitConverter.ToUInt16(input, offset + 0x06);
+                SectionAlignment = BitConverter.ToUInt32(input, offset + 0x38);
+                FileAlignment = BitConverter.ToUInt32(input, offset + 0x3C);
 
-                sections = new List<SectionHeader>(numberOfSections);
-                for (int i = 0; i < numberOfSections; i++)
+                sections = new List<SectionHeader>(NumberOfSections);
+                for (int i = 0; i < NumberOfSections; i++)
                 {
                     sections.Add(new SectionHeader(input, offset + 0xF8 + SectionHeader.HeaderSize * i));
                 }
@@ -48,14 +45,14 @@ namespace UCP.Patching
                 Buffer.BlockCopy(input, 0, data, 0, (int)sec.RawAddr);
 
                 // number of sections
-                ushort sectionCount = (ushort)(this.NumberOfSections + 1);
+                ushort sectionCount = (ushort)(NumberOfSections + 1);
                 BitConverter.GetBytes(sectionCount).CopyTo(data, offset + 0x06);
 
                 // size of image
-                uint imageSize = sec.VirtAddr + GetMultiples(sec.VirtSize, sectionAlignment);
+                uint imageSize = sec.VirtAddr + GetMultiples(sec.VirtSize, SectionAlignment);
                 BitConverter.GetBytes(imageSize).CopyTo(data, offset + 0x50);
 
-                sec.Write(data, offset + 0xF8 + SectionHeader.HeaderSize * this.NumberOfSections);
+                sec.Write(data, offset + 0xF8 + SectionHeader.HeaderSize * NumberOfSections);
 
                 return data;
             }

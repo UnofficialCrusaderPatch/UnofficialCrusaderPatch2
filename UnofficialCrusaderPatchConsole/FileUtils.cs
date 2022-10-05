@@ -1,23 +1,22 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UCP
 {
-    class FileUtils
+    internal static class FileUtils
     {
         public static bool Transfer(String srcPath, String destPath, bool overwrite, bool log)
         {
-            Func<String, bool, bool> Message = (msg, result) =>
+            bool Message(string msg, bool result)
             {
                 Console.WriteLine(msg);
                 return result;
-            };
+            }
 
-            if (!Directory.Exists(srcPath)) return Message("Install failed. Source folder does not exist", false);
+            if (!Directory.Exists(srcPath))
+            {
+                return Message("Install failed. Source folder does not exist", false);
+            }
 
             try
             {
@@ -30,7 +29,7 @@ namespace UCP
                         Console.WriteLine("Saving existing files to folder " + copyDir.FullName);
                     }
 
-                    foreach (var file in Directory.EnumerateFiles(destPath))
+                    foreach (string file in Directory.EnumerateFiles(destPath))
                     {
                         File.Move(file, Path.Combine(copyDir.FullName, Path.GetFileName(file)));
                     }
@@ -41,7 +40,7 @@ namespace UCP
                     Console.WriteLine("Copying the following files to destination " + destPath);
                 }
 
-                foreach (var file in Directory.EnumerateFiles(srcPath))
+                foreach (string file in Directory.EnumerateFiles(srcPath))
                 {
                     if (log)
                     {

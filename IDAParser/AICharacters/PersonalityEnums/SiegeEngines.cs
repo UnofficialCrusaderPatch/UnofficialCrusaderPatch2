@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace UCP.AICharacters
+﻿namespace UCP.AICharacters
 {
     /// <summary>
     /// Crusader-intern military unit IDs

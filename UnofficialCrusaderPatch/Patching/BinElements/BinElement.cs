@@ -7,14 +7,14 @@
     {
         public virtual int Length => 0;
 
-        int rawAddr, virtAddr;
-        public int RawAddress => rawAddr;
-        public int VirtAddress => virtAddr;
+        public  int RawAddress { get; private set; }
+
+        public int VirtAddress { get; private set; }
 
         public virtual void Initialize(int rawAddr, int virtAddr, byte[] original)
         {
-            this.rawAddr = rawAddr;
-            this.virtAddr = virtAddr;
+            RawAddress = rawAddr;
+            VirtAddress = virtAddr;
         }
 
         public virtual void Write(BinArgs data)

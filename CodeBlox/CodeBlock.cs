@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
 using System.Globalization;
+using System.IO;
+using System.Text;
 
 namespace CodeBlox
 {
@@ -14,33 +13,32 @@ namespace CodeBlox
 
         public struct Element
         {
-            byte value;
-            public byte Value { get { return this.value; } }
-            bool wildCard;
-            public bool WildCard { get { return this.wildCard; } }
+            public  byte Value { get; private set; }
+
+            public  bool WildCard { get; private set; }
 
             public static implicit operator Element(byte input)
             {
-                return new Element()
-                {
-                    value = input,
-                    wildCard = false,
+                return new Element
+                       {
+                    Value = input,
+                    WildCard = false,
                 };
             }
 
             public static implicit operator Element(bool wildcard)
             {
-                return new Element()
-                {
-                    value = 0,
-                    wildCard = wildcard,
+                return new Element
+                       {
+                    Value = 0,
+                    WildCard = wildcard,
                 };
             }
         }
 
-        Element[] elements;
-        public int Length { get { return elements.Length; } }
-        public IEnumerable<Element> Elements { get { return this.elements; } }
+        private Element[]            elements;
+        public  int                  Length   => elements.Length;
+        public  IEnumerable<Element> Elements => elements;
 
         public CodeBlock(Stream stream)
         {
@@ -62,7 +60,9 @@ namespace CodeBlox
                     if (Char.IsLetterOrDigit(c))
                     {
                         if (sb.Length == 2)
+                        {
                             throw new Exception("Missing space after two characters!");
+                        }
 
                         sb.Append(c);
                         continue;
@@ -71,32 +71,37 @@ namespace CodeBlox
                     if (c == Wildcard)
                     {
                         if (sb.Length == 2)
+                        {
                             throw new Exception("Missing space after two characters!");
+                        }
 
                         list.Add(true);
                         continue;
                     }
 
-                    if (Char.IsWhiteSpace(c))
+                    if (!Char.IsWhiteSpace(c))
                     {
-                        CheckConvert(sb, list);
-                        continue;
+                        throw new Exception("Illegal character in block: " + c);
                     }
 
-                    throw new Exception("Illegal character in block: " + c);
+                    CheckConvert(sb, list);
                 }
             }
             elements = list.ToArray();
         }
 
-        void CheckConvert(StringBuilder sb, List<Element> list)
+        private static void CheckConvert(StringBuilder sb, List<Element> list)
         {
             if (sb.Length < 1)
+            {
                 return;
+            }
 
             string str = sb.ToString();
             if (!byte.TryParse(str, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out byte result))
+            {
                 throw new Exception("Could not convert " + str);
+            }
 
             list.Add(result);
 
@@ -106,7 +111,7 @@ namespace CodeBlox
         public int Seek(byte[] data, int startIndex)
         {
             int lastIndex = elements.Length - 1;
-            for (int i = startIndex; i < data.Length - this.Length; i++)
+            for (int i = startIndex; i < data.Length - Length; i++)
             {
                 for (int j = 0; j < elements.Length; j++)
                 {
@@ -114,9 +119,14 @@ namespace CodeBlox
                     if (e.WildCard || e.Value == data[i + j])
                     {
                         if (j == lastIndex)
+                        {
                             return i;
+                        }
                     }
-                    else break;
+                    else
+                    {
+                        break;
+                    }
                 }
             }
             return -1;
@@ -129,16 +139,17 @@ namespace CodeBlox
             int index = 0;
             while (true)
             {
-                index = this.Seek(data, index);
+                index = Seek(data, index);
                 if (index < 0)
                 {
                     break;
                 }
-                else
+
+                if (first == -1)
                 {
-                    if (first == -1)
-                        first = index;
+                    first = index;
                 }
+
                 count++;
                 index++;
             }

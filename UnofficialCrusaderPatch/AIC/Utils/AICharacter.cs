@@ -6,7 +6,7 @@ namespace UCPAIConversion
     /// <summary>
     /// Representation of an AI character through its defining attributes
     /// </summary>
-    class AICharacter
+    internal class AICharacter
     {
         [ScriptIgnore]
         public AICharacterName _Name { get; set; }
@@ -20,10 +20,7 @@ namespace UCPAIConversion
         public string Name
         {
             get => Enum.GetName(typeof(AICharacterName), _Name);
-            set
-            {
-                _Name = (AICharacterName)Enum.Parse(typeof(AICharacterName), value);
-            }
+            set => _Name = (AICharacterName)Enum.Parse(typeof(AICharacterName), value);
         }
 
         /// <summary>
@@ -32,10 +29,7 @@ namespace UCPAIConversion
         public String CustomName
         {
             get => _CustomName;
-            set
-            {
-                _CustomName = (value != null ? value.Substring(0, Math.Min(value.Length, 20)) : String.Empty);
-            }
+            set => _CustomName = (value != null ? value.Substring(0, Math.Min(value.Length, 20)) : String.Empty);
         }
 
         /// <summary>

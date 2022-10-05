@@ -1,10 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
 namespace UCPAIConversion
@@ -12,7 +10,7 @@ namespace UCPAIConversion
     /// <summary>
     /// Custom serializer implementation for handling JSON-formatted AIC definitions with descriptive error messages.
     /// </summary>
-    class AISerializer : JavaScriptConverter
+    internal class AISerializer : JavaScriptConverter
     {
         private readonly Dictionary<string, string> errorMessages;
         private readonly Dictionary<string, string> errorHints;
@@ -43,20 +41,20 @@ namespace UCPAIConversion
         private String GetErrorMessage(String field, String character)
         {
             String msg = "Error parsing field " + field + ".";
-            if (this.errorMessages.ContainsKey(field))
+            if (errorMessages.ContainsKey(field))
             {
-                msg += " Reason: " + this.errorMessages[field];
+                msg += " Reason: " + errorMessages[field];
             }
-            if (this.errorHints.ContainsKey(field))
+            if (errorHints.ContainsKey(field))
             {
-                msg += "\nHint: " + this.errorHints[field];
+                msg += "\nHint: " + errorHints[field];
             }
             return msg;
         }
 
         public override IEnumerable<Type> SupportedTypes
         {
-            get { return new ReadOnlyCollection<Type>(new List<Type>(new Type[] { typeof(AICollection) })); }
+            get { return new ReadOnlyCollection<Type>(new List<Type>(new[] { typeof(AICollection) })); }
         }
 
         /// <summary>
@@ -80,106 +78,117 @@ namespace UCPAIConversion
                 AICharacterSerializationException SerializationErrors = new AICharacterSerializationException();
                 SerializationErrors.Errors = new List<string>();
 
-                if (entry.Key == "AICShortDescription")
+                switch (entry.Key)
                 {
-                    foreach (KeyValuePair<string, object> field in (Dictionary<string, object>)entry.Value)
+                    case "AICShortDescription":
                     {
-                        try
+                        foreach (KeyValuePair<string, object> field in (Dictionary<string, object>)entry.Value)
                         {
-                            header[field.Key] = field.Value.ToString().Substring(0, Math.Min(field.Value.ToString().Length, 1000)).ToString();
+                            try
+                            {
+                                header[field.Key] = field.Value.ToString().Substring(0, Math.Min(field.Value.ToString().Length, 1000));
+                            }
+                            catch (ArgumentException)
+                            {
+                                SerializationErrors.Errors.Add(GetErrorMessage(field.Key, null));
+                            }
                         }
-                        catch (ArgumentException)
-                        {
-                            SerializationErrors.Errors.Add(GetErrorMessage(field.Key, null));
-                        }
+
+                        break;
                     }
-
-                } else if (entry.Key == "AICharacters")
-                {
-                    AICharacter currentCharacter;
-                    AIPersonality currentPersonality;
-                    foreach (var character in (System.Collections.ArrayList)entry.Value)
+                    case "AICharacters":
                     {
-                        currentCharacter = new AICharacter();
-                        SerializationErrors = new AICharacterSerializationException();
-
-                        foreach (KeyValuePair<string, object> definition in (Dictionary<string, object>)character)
+                        AICharacter   currentCharacter;
+                        AIPersonality currentPersonality;
+                        foreach (object character in (ArrayList)entry.Value)
                         {
-                            // Parse simply-typed fields defined within AICharacter scope
-                            if (definition.Key != "Personality")
-                            {
-                                try
-                                {
-                                    SetProperty(AICharacterType, currentCharacter, definition.Key, definition.Value);
-                                }
-                                catch (Exception e)
-                                {
-                                    if (e is TargetInvocationException || e is ArgumentException)
-                                    {
-                                        String customName = currentCharacter.CustomName;
-                                        String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
-                                        String errorName = ((name == null || name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
-                                        SerializationErrors.Errors.Add(GetErrorMessage(definition.Key, errorName));
-                                    }
-                                }
+                            currentCharacter    = new AICharacter();
+                            SerializationErrors = new AICharacterSerializationException();
 
-                            } else if (definition.Key == "Personality") // Parse the Personality definition within the AICharacter
+                            foreach (KeyValuePair<string, object> definition in (Dictionary<string, object>)character)
                             {
-                                currentPersonality = new AIPersonality();
-                                foreach (KeyValuePair<string, object> personalityValue in (Dictionary<string, object>)definition.Value)
+                                // Parse simply-typed fields defined within AICharacter scope
+                                if (definition.Key != "Personality")
                                 {
-                                    // Ignore metadata fields and set currentPersonality properties to values defined in input dictionary
-                                    if (personalityValue.Key.ToLowerInvariant().Contains("description") ||
-                                        personalityValue.Key.ToLowerInvariant().Contains("comment"))
-                                    {
-                                        continue;
-                                    }
                                     try
                                     {
-                                        SetProperty(AIPersonalityType, currentPersonality, personalityValue.Key, personalityValue.Value);
+                                        SetProperty(AICharacterType, currentCharacter, definition.Key, definition.Value);
                                     }
-                                    catch (ArgumentException)
+                                    catch (Exception e)
                                     {
-                                        String customName = currentCharacter.CustomName;
-                                        String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
-                                        String errorName = ((name == null || name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
-                                        SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, errorName));
+                                        if (e is TargetInvocationException || e is ArgumentException)
+                                        {
+                                            String customName = currentCharacter.CustomName;
+                                            String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
+                                            String errorName = ((name == null || name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
+                                            SerializationErrors.Errors.Add(GetErrorMessage(definition.Key, errorName));
+                                        }
                                     }
-                                    catch (NullReferenceException)
+
+                                } else if (definition.Key == "Personality") // Parse the Personality definition within the AICharacter
+                                {
+                                    currentPersonality = new AIPersonality();
+                                    foreach (KeyValuePair<string, object> personalityValue in (Dictionary<string, object>)definition.Value)
                                     {
-                                        String customName = currentCharacter.CustomName;
-                                        String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
-                                        String errorName = ((name == null || name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
-                                        SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, errorName));
+                                        // Ignore metadata fields and set currentPersonality properties to values defined in input dictionary
+                                        if (personalityValue.Key.ToLowerInvariant().Contains("description") ||
+                                            personalityValue.Key.ToLowerInvariant().Contains("comment"))
+                                        {
+                                            continue;
+                                        }
+                                        try
+                                        {
+                                            SetProperty(AIPersonalityType, currentPersonality, personalityValue.Key, personalityValue.Value);
+                                        }
+                                        catch (ArgumentException)
+                                        {
+                                            String customName = currentCharacter.CustomName;
+                                            String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
+                                            String errorName = ((name == null || name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
+                                            SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, errorName));
+                                        }
+                                        catch (NullReferenceException)
+                                        {
+                                            String customName = currentCharacter.CustomName;
+                                            String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
+                                            String errorName = ((name == null || name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
+                                            SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, errorName));
+                                        }
+                                        catch (Exception)
+                                        {
+                                            String customName = currentCharacter.CustomName;
+                                            String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
+                                            String errorName = ((name == null || name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
+                                            SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, errorName));
+                                        }
                                     }
-                                    catch (Exception)
-                                    {
-                                        String customName = currentCharacter.CustomName;
-                                        String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
-                                        String errorName = ((name == null || name.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
-                                        SerializationErrors.Errors.Add(GetErrorMessage(personalityValue.Key, errorName));
-                                    }
+                                    currentCharacter.Personality = currentPersonality;
                                 }
-                                currentCharacter.Personality = currentPersonality;
                             }
-                        }
-                        AICharacters.Add(currentCharacter);
+                            AICharacters.Add(currentCharacter);
 
-                        // If errors found in current character add character-specific error message to the set of encountered serialization errors
-                        if (SerializationErrors.Errors.Count > 0 || currentCharacter._Name == 0)
-                        {
-                            String customName = currentCharacter.CustomName;
-                            String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
-                            String errorName = ((name == null || customName.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
-                            SerializationErrors.AssociatedAICharacter = errorName;
-
-                            if (currentCharacter._Name == 0)
+                            // If errors found in current character add character-specific error message to the set of encountered serialization errors
+                            if (SerializationErrors.Errors.Count <= 0 && currentCharacter._Name != 0)
                             {
-                                SerializationErrors.Errors.Add(GetErrorMessage("Index", errorName));
+                                continue;
                             }
 
-                            AICSerializationExceptionList.ErrorList.Add(SerializationErrors);
+                            {
+                                String customName = currentCharacter.CustomName;
+                                String name = (currentCharacter._Name != 0) ? null : Enum.GetName(typeof(AICharacterName), currentCharacter._Name);
+                                String errorName = ((name == null || customName.Equals(String.Empty) || customName.Equals(name)) ? String.Empty : " (" + customName + ")");
+                                SerializationErrors.AssociatedAICharacter = errorName;
+
+                                if (currentCharacter._Name == 0)
+                                {
+                                    SerializationErrors.Errors.Add(GetErrorMessage("Index", errorName));
+                                }
+
+                                AICSerializationExceptionList.ErrorList.Add(SerializationErrors);
+                            }
                         }
+
+                        break;
                     }
                 }
             }

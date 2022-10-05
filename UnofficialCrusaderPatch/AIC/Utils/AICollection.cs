@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UCPAIConversion
 {
     /// <summary>
     /// Stores the collection of AI Characters defined in an AIC file
     /// </summary>
-    class AICollection
+    internal class AICollection
     {
         /// <summary>
         /// Dictionary of AIC descriptions (key = language, value = description)

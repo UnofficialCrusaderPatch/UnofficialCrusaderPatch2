@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace UCP
 {
-    static class Extensions
+    internal static class Extensions
     {
         public static double MeasureHeight(this FrameworkElement element)
         {
@@ -22,7 +22,9 @@ namespace UCP
                     if (self[i + j] == search[j])
                     {
                         if (j == last)
+                        {
                             return i;
+                        }
                     }
                     else
                     {

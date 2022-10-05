@@ -9,29 +9,27 @@ namespace UCP.Patching
     {
         public override int Length => 4;
 
-        string labelName;
-        public string LabelName => labelName;
+        public  string LabelName { get; }
 
-        bool relative;
-        public bool Relative => relative;
+        public  bool Relative { get; }
 
         public BinRefTo(string labelName, bool relative = true)
         {
-            this.labelName = labelName;
-            this.relative = relative;
+            LabelName = labelName;
+            Relative = relative;
         }
 
         public override void Write(BinArgs data)
         {
-            int labelAddress = data.Labels.GetLabel(this.labelName);
+            int labelAddress = data.Labels.GetLabel(LabelName);
 
             int refAddress = labelAddress;
-            if (relative)
+            if (Relative)
             {
-                refAddress -= (this.VirtAddress + 4);
+                refAddress -= (VirtAddress + 4);
             }
             
-            BitConverter.GetBytes(refAddress).CopyTo(data, this.RawAddress);
+            BitConverter.GetBytes(refAddress).CopyTo(data, RawAddress);
         }
     }
 }

@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
 using System.Globalization;
+using System.IO;
 
 namespace CodeBlox
 {
-    class Program
+    internal class Program
     {
-        const bool xtreme = false;
+        private const bool xtreme = false;
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             try
             {
@@ -24,7 +21,9 @@ namespace CodeBlox
 
                 path = Path.Combine("blocks", path);
                 if (!path.EndsWith(".block"))
+                {
                     path += ".block";
+                }
 
                 if (read)
                 {
@@ -38,7 +37,7 @@ namespace CodeBlox
 
                     foreach (string filePath in Directory.EnumerateFiles("versions", "*.exe"))
                     {
-                        Console.Write(string.Format("'{0}': ", Path.GetFileName(filePath)));
+                        Console.Write("'{0}': ", Path.GetFileName(filePath));
                         byte[] data = File.ReadAllBytes(filePath);
                         Console.WriteLine(block.SeekCount(data, out int whatever) + " " + whatever.ToString("X4"));
                     }
@@ -54,8 +53,9 @@ namespace CodeBlox
             Console.ReadLine();
         }
 
-        const int BlockLength = 32;
-        static void ReadBlock(string filePath)
+        private const int BlockLength = 32;
+
+        private static void ReadBlock(string filePath)
         {
 
             int address;
@@ -65,17 +65,23 @@ namespace CodeBlox
 
                 string input = Console.ReadLine();
                 if (input.StartsWith("0x"))
+                {
                     input = input.Substring(2);
+                }
 
                 if (int.TryParse(input, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out address))
+                {
                     break;
+                }
             }
 
-            byte[] data = File.ReadAllBytes(xtreme ? "Stronghold Crusader Extreme.exe" : "Stronghold Crusader.exe");
+            byte[] data = File.ReadAllBytes("Stronghold Crusader.exe");
 
             address -= 0x400000;
             if (address < 0x1000 || address >= data.Length)
+            {
                 throw new Exception("Address is out of range! " + address);
+            }
 
             int size;
             while (true)
@@ -83,11 +89,15 @@ namespace CodeBlox
                 Console.Write("Choose size: ");
                 string input = Console.ReadLine();
                 if (int.TryParse(input, out size))
+                {
                     break;
+                }
             }
 
             if (size <= 0 || address + size > data.Length)
+            {
                 throw new Exception("Size is out of range! " + size);
+            }
 
             byte[] buf = new byte[size];
             Buffer.BlockCopy(data, address, buf, 0, size);
@@ -105,7 +115,9 @@ namespace CodeBlox
                 {
                     sw.Write(buf[i].ToString("X2"));
                     if (i < buf.Length - 1)
+                    {
                         sw.Write(" ");
+                    }
                 }
             }
         }

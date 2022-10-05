@@ -10,8 +10,8 @@ namespace UCP.Startup
     {
         public void InitUI(Grid grid, RoutedPropertyChangedEventHandler<object> SelectionDisabler)
         {
-            TreeView view = new TreeView()
-            {
+            TreeView view = new TreeView
+                            {
                 Background = null,
                 BorderThickness = new Thickness(0, 0, 0, 0),
                 Focusable = false,
@@ -32,8 +32,8 @@ namespace UCP.Startup
                 HorizontalAlignment = HorizontalAlignment.Right,
                 VerticalAlignment = VerticalAlignment.Bottom,
                 Margin = new Thickness(0, 0, 20, 5),
-                Content = new Image()
-                {
+                Content = new Image
+                          {
                     Source = new BitmapImage(new Uri("pack://application:,,,/UnofficialCrusaderPatchGUI;component/Graphics/refresh.png")),
                 }
             };

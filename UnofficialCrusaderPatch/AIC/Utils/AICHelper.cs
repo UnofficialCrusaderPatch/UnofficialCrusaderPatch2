@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -10,7 +9,7 @@ namespace UCPAIConversion
     /// <summary>
     /// Performs conversion of older .aic AIC files to the newer JSON format
     /// </summary>
-    class AICHelper
+    internal class AICHelper
     {
         public static bool Convert(string srcFile, string destFile)
         {
@@ -28,7 +27,7 @@ namespace UCPAIConversion
 
             // Variables for parsing and storing descriptions
             List<string> descriptions = new List<string>();
-            string[] headerLines = aicSrcFile.Substring(headerTitleEnd, end).Split(new string[] { "Descr" }, StringSplitOptions.None);
+            string[]     headerLines  = aicSrcFile.Substring(headerTitleEnd, end).Split(new[] { "Descr" }, StringSplitOptions.None);
 
             List<string> descrLines = new List<string>();
 
@@ -94,13 +93,13 @@ namespace UCPAIConversion
             }
 
             string headerJson = "\"AICShortDescription\": {\n  ";
-            headerJson = headerJson + String.Join(",\n  ", descriptions);
-            headerJson = headerJson + "\n  }";
+            headerJson += String.Join(",\n  ", descriptions);
+            headerJson += "\n  }";
 
             // Remove all comments from the file
             aicSrcFile = Regex.Replace(aicSrcFile, "/[*]([^*]|([*][^/]))*[*]+/", "");
-            string[] characterSearch = aicSrcFile.Split(new string[] { "AICharacter" }, StringSplitOptions.None);
-            string[] characters = new string[characterSearch.Length-1];
+            string[] characterSearch = aicSrcFile.Split(new[] { "AICharacter" }, StringSplitOptions.None);
+            string[] characters      = new string[characterSearch.Length -1];
 
             // Copy file text starting from the first AICharacter definition to be parsed
             Array.Copy(characterSearch, 1, characters, 0, characters.Length);
@@ -108,7 +107,7 @@ namespace UCPAIConversion
             string aicJSON = "{\n" + headerJson + ",\n\n" + "\"AICharacters\": [";
             foreach(string character in characters)
             {
-                string[] personality = character.Split(new string[] { "Personality" }, StringSplitOptions.None);
+                string[] personality = character.Split(new[] { "Personality" }, StringSplitOptions.None);
                 string[] characterID = personality[0].Split('\n');
 
                 List<string> personalityIDs = new List<string>();
@@ -142,19 +141,26 @@ namespace UCPAIConversion
                                 if (idFields[0].Trim() == "Name")
                                 {
                                     if (idFields[1].Trim() == "Philipp")
+                                    {
                                         idFields[1] = "Phillip";
+                                    }
+
                                     string indexName = currentCharacterName.ToString();
 
                                     // Save CustomName if set else output blank CustomName
                                     if (indexName != idFields[1].Trim())
-                                        personalityIDs.Add("\"CustomName\": \"" + idFields[1].Trim().Substring(0, Math.Min(idFields[1].Trim().ToString().Length, 20)) + '"');
+                                    {
+                                        personalityIDs.Add("\"CustomName\": \"" + idFields[1].Trim().Substring(0, Math.Min(idFields[1].Trim().Length, 20)) + '"');
+                                    }
                                     else
+                                    {
                                         personalityIDs.Add("\"CustomName\": \"\"");
+                                    }
                                 }
                                 else
                                 {
                                     // Attempt to save value of field as a numeric type
-                                    personalityIDs.Add('"' + idFields[0].Trim() + "\": " + int.Parse(idFields[1]).ToString());
+                                    personalityIDs.Add('"' + idFields[0].Trim() + "\": " + int.Parse(idFields[1]));
                                 }
                             }
                             catch (FormatException) // Store value of field as string
@@ -192,7 +198,7 @@ namespace UCPAIConversion
                             string fieldName = Enum.GetName(typeof(AIPersonalityFieldsEnum), index);
                             try
                             {
-                                personalityFields.Add('"' + fieldName + "\": " + int.Parse(fieldData[1]).ToString());
+                                personalityFields.Add('"' + fieldName + "\": " + int.Parse(fieldData[1]));
                             }
                             catch (FormatException)
                             {
@@ -213,7 +219,7 @@ namespace UCPAIConversion
                             string fieldName = UpdateFieldName(fieldData[0]);
                             try
                             {
-                                personalityFields.Add('"' + fieldName + "\": " + int.Parse(fieldData[1]).ToString());
+                                personalityFields.Add('"' + fieldName + "\": " + int.Parse(fieldData[1]));
                             }
                             catch (FormatException)
                             {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace UCP.AICharacters
 {
@@ -10,7 +6,7 @@ namespace UCP.AICharacters
     {
         public const int TotalFields = 169;
 
-        static readonly FieldInfo[] fieldInfos = typeof(AIPersonality).GetFields();
+        private static readonly FieldInfo[] fieldInfos = typeof(AIPersonality).GetFields();
         public void SetByIndex(int index, int value)
         {
             FieldInfo fi = fieldInfos[index];

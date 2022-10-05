@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-namespace UCPAIConversion
+﻿namespace UCPAIConversion
 {
 	/// <summary>
 	/// List of AIC parameter fields
 	/// </summary>
-    enum AIPersonalityFieldsEnum
+	internal enum AIPersonalityFieldsEnum
     {
 		WallDecoration,
 		Unknown001,

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
 using static UCP.Patching.BinElements.Register;
 
 namespace UCP.Patching.BinElements
@@ -21,10 +18,8 @@ namespace UCP.Patching.BinElements
             {
                 return new byte[] { 0x6A, (byte)val };
             }
-            else
-            {
-                return new byte[] { 0x68, (byte)Math.Abs(val) };
-            }
+
+            return new byte[] { 0x68, (byte)Math.Abs(val) };
         }
 
         public static BinElement PUSH(Int32 val)
@@ -37,10 +32,8 @@ namespace UCP.Patching.BinElements
             {
                 return (new byte[] { 0x68 }).Concat(BitConverter.GetBytes(val)).ToArray();
             }
-            else
-            {
-                return (new byte[] { 0x68 }).Concat(BitConverter.GetBytes(0xFFFFFFFF + val - 1)).ToArray();
-            }
+
+            return (new byte[] { 0x68 }).Concat(BitConverter.GetBytes(0xFFFFFFFF + val - 1)).ToArray();
         }
 
         public static BinElement PUSH(Register reg)
@@ -1279,24 +1272,24 @@ namespace UCP.Patching.BinElements
                 UNCONDITIONAL
             }
 
-            public static Condition.Values GetOpposite(Condition.Values cond)
+            public static Values GetOpposite(Values cond)
             {
                 switch (cond)
                 {
-                    case Condition.Values.EQUALS:
-                        return Condition.Values.NOTEQUALS;
-                    case Condition.Values.NOTEQUALS:
-                        return Condition.Values.EQUALS;
-                    case Condition.Values.LESS:
-                        return Condition.Values.GREATERTHANEQUALS;
-                    case Condition.Values.LESSTHANEQUALS:
-                        return Condition.Values.GREATER;
-                    case Condition.Values.GREATER:
-                        return Condition.Values.LESSTHANEQUALS;
-                    case Condition.Values.GREATERTHANEQUALS:
-                        return Condition.Values.LESS;
+                    case Values.EQUALS:
+                        return Values.NOTEQUALS;
+                    case Values.NOTEQUALS:
+                        return Values.EQUALS;
+                    case Values.LESS:
+                        return Values.GREATERTHANEQUALS;
+                    case Values.LESSTHANEQUALS:
+                        return Values.GREATER;
+                    case Values.GREATER:
+                        return Values.LESSTHANEQUALS;
+                    case Values.GREATERTHANEQUALS:
+                        return Values.LESS;
                     default:
-                        return Condition.Values.UNCONDITIONAL;
+                        return Values.UNCONDITIONAL;
                 }
             }
 

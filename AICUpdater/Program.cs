@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace AICUpdater
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.Title = "AIC-Updater";
-            var files = Directory.EnumerateFiles(Environment.CurrentDirectory, "*.aic");
-            if (files.Count() == 0)
+            IEnumerable<string> files      = Directory.EnumerateFiles(Environment.CurrentDirectory, "*.aic");
+            IEnumerable<string> filesList = files.ToList();
+            if (!filesList.Any())
             {
                 Console.WriteLine("No .aic files found!");
             }
@@ -19,7 +21,7 @@ namespace AICUpdater
                 Console.WriteLine("The property names of the following .aic files will be updated.");
                 Console.WriteLine("Any custom comments will be lost in the process!");
                 Console.WriteLine();
-                foreach(string file in files)
+                foreach(string file in filesList)
                 {
                     Console.WriteLine(Path.GetFileName(file));
                 }
@@ -27,9 +29,9 @@ namespace AICUpdater
                 Console.WriteLine("Press ENTER to continue.");
                 Console.ReadLine();
 
-                foreach (string file in files)
+                foreach (string file in filesList)
                 {
-                    string newfile = Path.Combine(Path.GetDirectoryName(file), Path.GetFileNameWithoutExtension(file) + ".json");
+                    string newfile = Path.Combine(Path.GetDirectoryName(file) ?? throw new InvalidOperationException(), Path.GetFileNameWithoutExtension(file) + ".json");
                     try
                     {
                         string result = AICUpdaterHelper.Convert(file, newfile);

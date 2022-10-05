@@ -1,33 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UCP
 {
-    class PathUtils
+    internal static class PathUtils
     {
-        static Dictionary<String, String> installPaths;
+        private static readonly Dictionary<String, String> InstallPaths;
 
         static PathUtils()
         {
-            String aicPath = "aic";
-            String aivPath = "aiv";
-            String mapsPath = "maps";
-            String mapsExtremePath = "mapsExtreme";
+            const string aicPath         = "aic";
+            const string aivPath         = "aiv";
+            const string mapsPath        = "maps";
+            const string mapsExtremePath = "mapsExtreme";
 
-            installPaths = new Dictionary<string, string>();
-            installPaths.Add("aic", aicPath);
-            installPaths.Add("aiv", aivPath);
-            installPaths.Add("maps", mapsPath);
-            installPaths.Add("mapsExtreme", mapsExtremePath);
+            InstallPaths = new Dictionary<string, string>
+                           {
+                               { "aic", aicPath },
+                               { "aiv", aivPath },
+                               { "maps", mapsPath },
+                               { "mapsExtreme", mapsExtremePath }
+                           };
         }
 
         public static String Get(String path)
         {
-            String folder;
-            installPaths.TryGetValue(path, out folder);
+            InstallPaths.TryGetValue(path, out string folder);
             return folder;
         }
     }

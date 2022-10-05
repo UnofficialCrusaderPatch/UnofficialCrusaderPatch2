@@ -2,12 +2,11 @@
 {
     public class BinLabel : BinElement
     {
-        string name;
-        public string Name { get { return this.name; } }
+        public  string Name { get; }
 
         public BinLabel(string name)
         {
-            this.name = name;
+            Name = name;
         }
     }
 }

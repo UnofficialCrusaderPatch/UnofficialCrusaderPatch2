@@ -5,10 +5,10 @@ namespace UCP.Patching
     /// <summary>
     /// Definition of an address specified by its label, offset, and whether it is relative to code position or fixed.
     /// </summary>
-    class BinAddress : BinLabel
+    internal class BinAddress : BinLabel
     {
-        int offset;
-        bool isRelative;
+        private int  offset;
+        private bool isRelative;
         public BinAddress(string name, int offset, bool isRelative = false)
             : base(name)
         {
@@ -18,11 +18,11 @@ namespace UCP.Patching
 
         public override void Initialize(int rawAddr, int virtAddr, byte[] original)
         {
-            int read = BitConverter.ToInt32(original, rawAddr + this.offset);
+            int read = BitConverter.ToInt32(original, rawAddr + offset);
 
             if (isRelative)
             {
-                virtAddr = (virtAddr + this.offset + 4) + read;
+                virtAddr = (virtAddr + offset + 4) + read;
             }
             else
             {

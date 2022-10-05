@@ -1,6 +1,6 @@
 ﻿namespace UCP.Startup
 {
-    enum StartingResource
+    internal enum StartingResource
     {
         wood = 0,
         hop,
@@ -27,7 +27,7 @@
         metalarmor
     }
 
-    enum StartingTroops
+    internal enum StartingTroops
     {
         EuropArcher = 1,
         Crossbowman,

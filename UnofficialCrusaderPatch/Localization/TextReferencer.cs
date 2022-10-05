@@ -1,27 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Diagnostics;
 
 namespace UCP
 {
     public static class TextReferencer
     {
-        struct TextRef
+        private struct TextRef
         {
-            string keyword;
-            public string Keyword { get { return this.keyword; } }
+            public  string Keyword { get; }
 
-            string reference;
-            public string Reference { get { return this.reference; } }
+            public  string Reference { get; }
 
             public TextRef(string keyword, string reference)
             {
-                this.keyword = keyword;
-                this.reference = reference;
+                Keyword = keyword;
+                Reference = reference;
             }
         }
 

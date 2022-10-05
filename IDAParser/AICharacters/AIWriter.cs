@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Text;
 
 namespace UCP.AICharacters
 {
@@ -12,11 +12,10 @@ namespace UCP.AICharacters
     /// </summary>
     public class AIWriter : IDisposable
     {
-        StringBuilder sb;
-        StreamWriter sw;
-        int sections;
-        bool commenting;
-        public int Sections => sections;
+        private StringBuilder sb;
+        private StreamWriter  sw;
+        private bool          commenting;
+        public  int           Sections { get; private set; }
 
         public AIWriter(Stream stream)
         {
@@ -32,7 +31,7 @@ namespace UCP.AICharacters
 
         public void WriteLine(string line = null, string comment = null)
         {
-            for (int i = 0; i < sections; i++)
+            for (int i = 0; i < Sections; i++)
                 sw.Write('\t'); // tab character
 
             if (string.IsNullOrWhiteSpace(comment))
@@ -49,32 +48,34 @@ namespace UCP.AICharacters
 
         public void OpenSec()
         {
-            this.WriteLine("{");
-            sections++;
+            WriteLine("{");
+            Sections++;
         }
 
         public void CloseSec()
         {
-            sections--;
-            this.WriteLine("}");
+            Sections--;
+            WriteLine("}");
         }
 
         public void OpenCommentSec()
         {
             commenting = true;
-            this.WriteLine("/*");
+            WriteLine("/*");
         }
 
         public void CloseCommentSec()
         {
-            this.WriteLine("*/");
+            WriteLine("*/");
             commenting = false;
         }
         
         public void Write(object o, string name = null)
         {
             if (o == null)
+            {
                 throw new ArgumentNullException("o");
+            }
 
             Type type = o.GetType();
             if (writeFuncs.TryGetValue(type, out WriteFunc func)
@@ -84,16 +85,16 @@ namespace UCP.AICharacters
             }
             else
             {
-                this.WriteLine(name ?? type.Name);
-                this.OpenSec();
+                WriteLine(name ?? type.Name);
+                OpenSec();
 
                 foreach(FieldInfo fi in type.GetFields(Flags))
                 {
                     object value = fi.GetValue(o);                    
-                    this.Write(value, fi.Name);
+                    Write(value, fi.Name);
                 }
 
-                this.CloseSec();
+                CloseSec();
             }
         }
 
@@ -103,8 +104,10 @@ namespace UCP.AICharacters
         public void WriteInfo(Type type, string name = null, string comment = null)
         {
             if (type == null)
+            {
                 throw new ArgumentNullException("type");
-            
+            }
+
             if (!String.IsNullOrWhiteSpace(name))
             {
                 sb.Append(name);
@@ -119,42 +122,46 @@ namespace UCP.AICharacters
                 sb.Append(comment);
             }
 
-            this.WriteLine(sb.ToString());
+            WriteLine(sb.ToString());
             sb.Clear();
 
-            if (!writeFuncs.ContainsKey(type) && !writeFuncs.ContainsKey(type.BaseType))
+            if (writeFuncs.ContainsKey(type) || writeFuncs.ContainsKey(type.BaseType))
             {
-                this.OpenSec();
-
-                foreach (FieldInfo fi in type.GetFields(Flags))
-                {
-                    // get comment from attribute
-                    object[] attributes = fi.GetCustomAttributes(typeof(RWComment), false);
-                    string cmt = attributes.Length > 0 ? ((RWComment)attributes[0]).Comment : null;
-
-                    this.WriteInfo(fi.FieldType, fi.Name, cmt);
-                }
-
-                this.CloseSec();
+                return;
             }
+
+            OpenSec();
+
+            foreach (FieldInfo fi in type.GetFields(Flags))
+            {
+                // get comment from attribute
+                object[] attributes = fi.GetCustomAttributes(typeof(RWComment), false);
+                string   cmt        = attributes.Length > 0 ? ((RWComment)attributes[0]).Comment : null;
+
+                WriteInfo(fi.FieldType, fi.Name, cmt);
+            }
+
+            CloseSec();
         }
 
-        delegate void WriteFunc(AIWriter w, string name, object o);
-        static readonly Dictionary<Type, WriteFunc> writeFuncs = new Dictionary<Type, WriteFunc>()
-        {
-            { typeof(bool), WriteDefault },
-            { typeof(int), WriteDefault },
-            { typeof(string), WriteString },
-            { typeof(Enum), WriteDefault },
-        };
+        private delegate void WriteFunc(AIWriter w, string name, object o);
 
-        static void WriteDefault(AIWriter w, string name, object o)
+        private static readonly Dictionary<Type, WriteFunc> writeFuncs = new Dictionary<Type, WriteFunc>
+                                                                         {
+                                                                             { typeof(bool), WriteDefault },
+                                                                             { typeof(int), WriteDefault },
+                                                                             { typeof(string), WriteString },
+                                                                             { typeof(Enum), WriteDefault },
+                                                                         };
+
+        private static void WriteDefault(AIWriter w, string name, object o)
         {
-            w.WriteLine(string.Format("{0}\t= {1}", name, o));
+            w.WriteLine($"{name}\t= {o}");
         }
 
-        static readonly string[] lineBreakArr = { "\n" };
-        static void WriteString(AIWriter w, string name, object o)
+        private static readonly string[] lineBreakArr = { "\n" };
+
+        private static void WriteString(AIWriter w, string name, object o)
         {
             string input = (string)o;
             if (!input.Contains('\n'))
@@ -177,7 +184,9 @@ namespace UCP.AICharacters
         public void WriteMarkdown(Type type, string name = null, string comment = null)
         {
             if (type == null)
+            {
                 throw new ArgumentNullException("type");
+            }
 
             sb.Append("| ");
             if (!String.IsNullOrWhiteSpace(name))
@@ -195,19 +204,21 @@ namespace UCP.AICharacters
             }
             sb.Append(" |");
 
-            this.WriteLine(sb.ToString());
+            WriteLine(sb.ToString());
             sb.Clear();
 
-            if (!writeFuncs.ContainsKey(type) && !writeFuncs.ContainsKey(type.BaseType))
+            if (writeFuncs.ContainsKey(type) || writeFuncs.ContainsKey(type.BaseType))
             {
-                foreach (FieldInfo fi in type.GetFields(Flags))
-                {
-                    // get comment from attribute
-                    object[] attributes = fi.GetCustomAttributes(typeof(RWComment), false);
-                    string cmt = attributes.Length > 0 ? ((RWComment)attributes[0]).Comment : null;
+                return;
+            }
 
-                    this.WriteMarkdown(fi.FieldType, fi.Name, cmt);
-                }
+            foreach (FieldInfo fi in type.GetFields(Flags))
+            {
+                // get comment from attribute
+                object[] attributes = fi.GetCustomAttributes(typeof(RWComment), false);
+                string   cmt        = attributes.Length > 0 ? ((RWComment)attributes[0]).Comment : null;
+
+                WriteMarkdown(fi.FieldType, fi.Name, cmt);
             }
         }
     }

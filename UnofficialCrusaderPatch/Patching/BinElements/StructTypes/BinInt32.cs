@@ -16,7 +16,7 @@ namespace UCP.Patching
         {
             return new Change(locIdent, type, checkedDefault)
             {
-                new DefaultHeader(locIdent, true)
+                new DefaultHeader(locIdent)
                 {
                     CreateEdit(locIdent, newValue)
                 }

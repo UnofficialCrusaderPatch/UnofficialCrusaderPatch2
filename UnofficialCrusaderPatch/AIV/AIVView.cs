@@ -8,10 +8,10 @@ namespace UCP.AIV
 {
     public class AIVView
     {
-        public void InitUI(Grid grid, RoutedPropertyChangedEventHandler<object> SelectionDisabler)
+        public static void InitUI(Grid grid, RoutedPropertyChangedEventHandler<object> SelectionDisabler)
         {
-            TreeView view = new TreeView()
-            {
+            TreeView view = new TreeView
+                            {
                 Background = null,
                 BorderThickness = new Thickness(0, 0, 0, 0),
                 Focusable = false,
@@ -33,8 +33,8 @@ namespace UCP.AIV
                 HorizontalAlignment = HorizontalAlignment.Right,
                 VerticalAlignment = VerticalAlignment.Bottom,
                 Margin = new Thickness(0, 0, 20, 5),
-                Content = new Image()
-                {
+                Content = new Image
+                          {
                     Source = new BitmapImage(new Uri("pack://application:,,,/UnofficialCrusaderPatchGUI;component/Graphics/refresh.png")),
                 }
             };
@@ -42,7 +42,7 @@ namespace UCP.AIV
             button.Click += (s, e) => Refresh(s, e, view);
         }
 
-        private void Refresh(object s, RoutedEventArgs e, TreeView view)
+        private static void Refresh(object s, RoutedEventArgs e, TreeView view)
         {
             String activeChange = AIVChange.activeChange == null ? String.Empty : AIVChange.activeChange.TitleIdent;
             foreach (AIVChange change in AIVChange.changes)
@@ -57,14 +57,16 @@ namespace UCP.AIV
                 change.IsChecked = false;
                 view.Items.Add(change.UIElement);
             }
-            if (AIVChange.changes.Select(x => x.TitleIdent).Contains(activeChange))
+
+            if (!AIVChange.changes.Select(x => x.TitleIdent).Contains(activeChange))
             {
-                foreach (AIVChange change in AIVChange.changes)
+                return;
+            }
+
+            {
+                foreach (AIVChange change in AIVChange.changes.Where(change => change.TitleIdent == activeChange))
                 {
-                    if (change.TitleIdent == activeChange)
-                    {
-                        change.IsChecked = true;
-                    }
+                    change.IsChecked = true;
                 }
             }
         }

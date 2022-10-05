@@ -5,8 +5,7 @@ namespace UCP.Patching
 {
     public class BinAlloc : BinElement, IEnumerable<BinElement>
     {
-        string name;
-        public string Name => name;
+        public  string Name { get; }
 
         public BinAlloc(string name, uint size)
             : this(name, new byte[size])
@@ -15,24 +14,26 @@ namespace UCP.Patching
 
         public BinAlloc(string name, byte[] data)
         {
-            this.name = name;
+            Name = name;
 
-            editData.Add(new BinLabel(name));
+            EditData.Add(new BinLabel(name));
             if (data != null && data.Length > 0)
-                editData.Add(new BinBytes(data));
-            editData.Add(new BinNops(4));
+            {
+                EditData.Add(new BinBytes(data));
+            }
+
+            EditData.Add(new BinNops(4));
         }
 
-        UCPEdit editData = new UCPEdit();
-        public UCPEdit EditData => editData;
+        public  UCPEdit EditData { get; } = new UCPEdit();
 
-        public IEnumerator<BinElement> GetEnumerator() => editData.GetEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => editData.GetEnumerator();
+        public IEnumerator<BinElement> GetEnumerator() => EditData.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => EditData.GetEnumerator();
 
         public virtual void Add(BinElement input)
         {
             // add in front of nops
-            editData.Insert(editData.Count - 1, input);
+            EditData.Insert(EditData.Count - 1, input);
         }
     }
 }

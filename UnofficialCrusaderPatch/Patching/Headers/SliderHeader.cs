@@ -1,11 +1,12 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace UCP.Patching
 {
     public class SliderHeader : ValueHeader
     {
-        double min, max, delta;
+        private double min, max, delta;
 
         public SliderHeader(string descrIdent, bool isEnabled, double min, double max, double delta, double oriVal, double suggested)
             : base(descrIdent, isEnabled, oriVal, suggested)
@@ -15,8 +16,8 @@ namespace UCP.Patching
             this.delta = delta;
         }
 
-        Slider slider;
-        TextBlock sliderText;
+        private Slider    slider;
+        private TextBlock sliderText;
 
         public override void SetUIEnabled(bool enabled)
         {
@@ -35,30 +36,30 @@ namespace UCP.Patching
                 Height = sliderHeight,
             };
 
-            slider = new Slider()
-            {
+            slider = new Slider
+                     {
                 HorizontalAlignment = HorizontalAlignment.Left,
                 VerticalAlignment = VerticalAlignment.Top,
                 Margin = new Thickness(0, 0, 0, 0),
                 Width = sliderWidth,
                 Height = sliderHeight,
 
-                Value = this.Value,
+                Value = Value,
                 IsSnapToTickEnabled = true,
                 TickFrequency = delta,
                 Minimum = min,
                 Maximum = max,
             };
             slider.ValueChanged += Slider_ValueChanged;
-            this.OnValueChange += SliderHeader_OnValueChange;
+            OnValueChange += SliderHeader_OnValueChange;
             grid.Children.Add(slider);
 
-            sliderText = new TextBlock()
-            {
+            sliderText = new TextBlock
+                         {
                 HorizontalAlignment = HorizontalAlignment.Left,
                 VerticalAlignment = VerticalAlignment.Center,
                 Margin = new Thickness(sliderWidth + 5, 0, 0, 0),
-                Text = this.Value.ToString(),
+                Text = Value.ToString(),
                 Height = sliderHeight,
             };
             grid.Children.Add(sliderText);
@@ -66,22 +67,26 @@ namespace UCP.Patching
             return grid;
         }
 
-        void SliderHeader_OnValueChange()
+        private void SliderHeader_OnValueChange()
         {
-            if (this.Value == slider.Value)
+            if (Math.Abs(Value - slider.Value) < 0.00001)
+            {
                 return;
+            }
 
-            slider.Value = this.Value;
-            this.sliderText.Text = this.Value.ToString();
+            slider.Value = Value;
+            sliderText.Text = Value.ToString();
         }
 
-        void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (this.Value == slider.Value)
+            if (Math.Abs(Value - slider.Value) < 0.00001)
+            {
                 return;
+            }
 
-            this.SetValue(slider.Value);
-            this.sliderText.Text = this.Value.ToString();
+            SetValue(slider.Value);
+            sliderText.Text = Value.ToString();
         }
     }
 }
