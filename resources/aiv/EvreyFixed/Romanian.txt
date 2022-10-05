@@ -1,0 +1,3 @@
+Versiunea remediată a castelelor vanilla, facută de Evrey.
+Remediază erori ale castelelor lorzilor AI de bază, precum casele și construcțiile care lipsesc sau intrările blocate.
+[Creat de Evrey](https://github.com/Evrey/SHC_AIV/)
