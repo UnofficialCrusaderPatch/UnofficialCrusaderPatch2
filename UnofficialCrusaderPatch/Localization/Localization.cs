@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Web.Script.Serialization;
 
 namespace UCP
 {
@@ -50,141 +51,32 @@ namespace UCP
 
         public static void Add(string identifier, string text)
         {
-            if (localStrs.ContainsKey(identifier))
+            if (localStrs.ContainsKey(identifier.ToLower()))
             {
-                localStrs[identifier] = text;
+                localStrs[identifier.ToLower()] = text;
             } 
             else
             {
-                localStrs.Add(identifier, text);
+                localStrs.Add(identifier.ToLower(), text);
             }
         }
 
         public static void Remove(string identifier)
         {
-            if (localStrs.ContainsKey(identifier))
+            if (localStrs.ContainsKey(identifier.ToLower()))
             {
-                localStrs.Remove(identifier);
+                localStrs.Remove(identifier.ToLower());
             }
         }
 
         public static string Get(string identifier)
         {
-            if (localStrs.TryGetValue(identifier, out string text))
+            if (localStrs.TryGetValue(identifier.ToLower(), out string text))
             {
                 return text;
             }
-            return string.Format("{{Unknown Identifier: {0}}}", identifier);
+            return string.Format("{{Unknown Identifier: {0}}}", identifier.ToLower());
 
-        }
-
-        class Reader : IDisposable
-        {
-            StreamReader sr;
-            int lineNum = 0;
-            public int LineNumber { get { return this.lineNum; } }
-
-            public Reader(Stream stream)
-            {
-                sr = new StreamReader(stream);
-            }
-
-            public void Dispose()
-            {
-                sr.Dispose();
-            }
-
-            public bool ReadLine(out string line)
-            {
-                while (true)
-                {
-                    line = sr.ReadLine(); lineNum++;
-                    if (line == null)
-                        break;
-
-                    line = line.Trim();
-                    if (line.Length == 0)
-                        continue;
-
-                    if (!line.StartsWith("//"))
-                        return true;
-                }
-                line = null;
-                return false;
-            }
-
-            StringBuilder chars = new StringBuilder(100);
-            public bool ReadString(out string text)
-            {
-                int c;
-                int oldLineNum = lineNum;
-
-                while (true)
-                {
-                    if ((c = sr.Read()) < 0)
-                        throw new Exception("ReadString: End of file after line " + oldLineNum);
-
-                    if (c == '\n')
-                        lineNum++;
-
-                    if (char.IsWhiteSpace((char)c))
-                        continue;
-
-                    if (c != '\"')
-                    {
-                        sr.ReadLine();
-                        lineNum++;
-                        text = null;
-                        return false;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                oldLineNum = lineNum;
-                while (true)
-                {
-                    if ((c = sr.Read()) < 0)
-                        throw new Exception("Could not find string closing after line " + oldLineNum);
-
-                    if (c == '&')
-                    {
-                        int peek = sr.Peek();
-                        if (peek == '\r')
-                        {
-                            sr.Read();
-                            sr.Read();
-                            lineNum++;
-                            continue;
-                        }
-                    }
-
-                    if (c == '\n')
-                    {
-                        lineNum++;
-                    }
-
-                    if (c == '\"')
-                        break;
-
-                    chars.Append((char)c);
-                }
-
-                sr.ReadLine(); lineNum++;
-                if (chars.Length > 0)
-                {
-                    text = chars.ToString();
-                    chars.Clear();
-                    return true;
-                }
-                else
-                {
-                    text = null;
-                    return false;
-                }
-            }
         }
 
         static int langIndex;
@@ -196,31 +88,15 @@ namespace UCP
             {
                 langIndex = index;
 
-                string path = string.Format("UCP.Localization.{0}.txt", translations[index].Ident);
-
+                string path = string.Format("UCP.Localization.{0}.json", translations[index].Ident);
                 Assembly asm = Assembly.GetExecutingAssembly();
                 using (var s = asm.GetManifestResourceStream(path))
-                using (Reader r = new Reader(s))
+                using (StreamReader r = new StreamReader(s, Encoding.UTF8))
                 {
                     localStrs.Clear();
-                    while (r.ReadLine(out string line))
-                    {
-                        string ident = line;
-
-                        if (!r.ReadLine(out line) || !line.StartsWith("{"))
-                            throw new Exception(ident + " Missing opening bracket at line " + r.LineNumber);
-
-                        if (!r.ReadString(out string text))
-                            throw new Exception(ident + " Missing string at " + r.LineNumber);
-
-                        if (!r.ReadLine(out line) || !line.StartsWith("}"))
-                            throw new Exception(ident + " Missing closing bracket at line " + r.LineNumber);
-
-                        localStrs.Add(ident, text);
-                    }
+                    localStrs = new JavaScriptSerializer().Deserialize<Dictionary<String, String>>(r.ReadToEnd());
                 }
             }
-
             catch (Exception e)
             {
                 Debug.Error(e);
