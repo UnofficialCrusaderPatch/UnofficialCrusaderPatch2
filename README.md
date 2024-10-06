@@ -1,4 +1,4 @@
-# Unofficial Crusader Patch 2 [![UCP_Official](https://discordapp.com/api/guilds/426318193603117057/widget.png?style=shield)](https://discord.gg/N4UVjZBRXU)
+# Unofficial Crusader Patch 2 [![UCP_Official](https://discordapp.com/api/guilds/426318193603117057/widget.png?style=shield)](https://discord.gg/P9dkF38Q2t)
 
 ## Version 3
 Unofficial Crusader Patch 3 has been released! Get it [here](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch/releases)
