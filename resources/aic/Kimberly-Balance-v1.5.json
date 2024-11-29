@@ -40,7 +40,15 @@ Figyelem! Ez a kiegyensúlyozás a Stronghold Crusader Extreme verziójához ké
 
 Minden MI Lord át lett szerkesztve. Az összes keresztes MI mostantól vásárol fegyvert és páncélt. A legtöbb MI Lordnál a gazdaság meg lett változtatva, hogy összességében hatékonyabb legyen. 
 	
-A kiegyensúlyozást egy kicsit megváltoztattam, az állat lordok mint Patkány, Kígyó, Disznó és Farkas a többi lordhoz képest erősebbek lettek."
+A kiegyensúlyozást egy kicsit megváltoztattam, az állat lordok mint Patkány, Kígyó, Disznó és Farkas a többi lordhoz képest erősebbek lettek.",
+  "Romanian": "(Versiunea 1.5 din 22 februarie, 2020)
+
+Atenție! Această echilibrare este menită să fie folosită cu Stronghold Crusader Exreme, întrucât mulți lorzi AI recrutează armate mult mai mari!
+
+Toți lorzii AI au fost refăcuți. Toți lorzii AI pot cumpăra arme și armuri. Majoritatea lorzilor AI au o economie restabilită care este mult mai eficientă.
+
+Echilibrarea a fost, de asemenea, schimbată într-un mod accentuat, întrucât cei patru lorzi cu nume de animale Șobolanul, Șarpele, Porcul și Lupul au primit niște adaosuri mult mai mari decât ceilalți lorzi."
+
 },
 
 	"AICharacters": [

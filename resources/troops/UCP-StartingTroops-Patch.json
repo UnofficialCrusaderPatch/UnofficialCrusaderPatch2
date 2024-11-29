@@ -29,7 +29,12 @@
 - Kalifa mostantól tűzvetőgépekkel és arab szablyásokkal kezd a Keresztes háború játékmódban.
 - A Szultán is tűzvetőgépekkel kezd a Keresztes háború játékmódban.
 - Emír arab íjászokkal kezd lovasíjászok helyett.
-- Az Apát jelentősen kevesebb szerzetessel és néhány íjásszal kezd a Keresztes háború játékmódban."
+- Az Apát jelentősen kevesebb szerzetessel és néhány íjásszal kezd a Keresztes háború játékmódban.",
+    "Romanian": "Configurația trupelor de pornire ale UCP remediază nefolosirea trupelor de apărare, depășirea limitelor de apărare și lipsa unor anumite tipuri de trupe de apărare în modul de joc crusader și se înlocuiesc unele trupe din versiunea vanilla după cum urmează:
+- Califul începe acum și cu aruncători de foc și cu spadasini arabi în modul de joc Crusader.
+- Sultanul începe acum și cu aruncători de foc in modul de joc Crusader.
+- Emirul începe acum cu arcași arabi în loc de arcași pe cai.
+- Călugărul începe acum cu mai puțini călugări și cu câțiva arcași în modul de joc Crusader."
   },
   "1": {
     "Name": "Rat",

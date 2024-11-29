@@ -1,0 +1,1077 @@
+// ======================
+//         2.15
+// ======================
+u_spearmen_run
+{
+"Lăncierii aleargă în mod prestabilit în loc să meargă"
+}
+
+u_spearmen_run_descr
+{
+"Această funcție îi face pe lăncieri să alerge în mod prestabilit, precum sclavii și soldații cu buzdugan."
+}
+
+o_seed_modification_possibility_title
+{
+"Operează generatorul de numere aleatorii"
+}
+
+o_seed_modification_possibility_only_set
+{
+"Activează selecționarea aleatorie a unui seed"
+}
+
+o_seed_modification_possibility_only_set_descr
+{
+"Setarea seed-ului de joc va permite ca meciurile AI să fie desfășurate în același fel dacă sunt folosite aceleași setări ale hărții. &
+Pentru meciurile ce implică jucători umani, această funcție va asigura aceleași condiții de pornire al meciului pe hartă (spre exemplu, alegerea unui AIV anumit). &
+Pentru a seta seed-ul jocului, activează această opțiune și creează un fișier denumit „live” care să conțină un număr întreg în „folderul jocului/gameseeds”. &
+ATENȚIE! Această funcție este activată doar după repornirea jocului!"
+}
+
+o_seed_modification_possibility
+{
+"Activează & Salvează seed-uri aleatorii din joc"
+}
+
+o_seed_modification_possibility_descr
+{
+"Această opțiune va salva seed-urile din meciurile care nu au un seed setat live(pe moment). Așadar, seed-urile pot fi redenumite în „live” pentru a recrea meciul."
+}
+
+ai_recruitstate_initialtimer
+{
+"Setează timpul inițial până când AI-ul recrutează conform parametrilor AIC."
+}
+
+ai_recruitstate_initialtimervalue_descr
+{
+"Setează numărul de luni din an în care AI-ul va recruta exclusiv trupe pentru apărarea castelului, exceptând situația în care AI-ul a terminat deja de completat apărarea "
+}
+
+ai_defense
+{
+"Remediază întărirea trupelor destinate apărării"
+}
+
+ai_defense_descr
+{
+"Remediază o eroare ce împiedica AI-ul să-și întărească trupele lipsă de pe ziduri și turnuri cât timp patrulele defensive se aflau în jur."
+}
+
+ai_housing
+{
+"AI-ul construieste case mai inteligent"
+}
+
+build_housing_descr
+{
+"Această funcție reprezintă diferența dintre populația actuală și cea maximă peste care AI-ul nu mai construiește nicio casă.&
+Valoarea este 0 in versiunea vanilla. Această funcție dezactivează de asemenea stergerea caselor de către AI."
+}
+
+campfire_housing_descr
+{
+"Numărul necesar de săteni inactivi la focul de tabără de lângă castel la care AI-ul se oprește din construit case. Această funcție dezactivează de asemenea ștergerea caselor de către AI."
+}
+
+delete_housing
+{
+"Dezactivează ștergerea caselor de către AI"
+}
+
+delete_housing_descr
+{
+"Când această opțiune este selectată, AI-ul nu va șterge niciodată casele."
+}
+
+aiv_prompt
+{
+"Au fost detectate AIV-uri personalizate. Dorești să creezi un backup, lordul meu?"
+}
+
+aiv_cli_prompt
+{
+"Au fost detectate AIV-uri personalizate. Apasă „delete” pentru a șterge sau introdu numele folderului în care dorești să copiezi fișierele."
+}
+
+install_abort_io
+{
+"Instalare abandonată. Există deja fișiere cu același nume în acest folder. Încercați din nou și selectați un alt folder."
+}
+
+install_abort
+{
+"Instalare abandonată."
+}
+
+backup_aiv_select
+{
+"Selectează un folder AIV de rezervă."
+}
+
+o_change_siege_engine_spawn_position_catapult
+{
+"Poziționează mașinăria de asediu în centrul cortului"
+}
+
+o_change_siege_engine_spawn_position_catapult_descr
+{
+"Mașinăriile de asediu apar în mijlocul cortului de construcție, în loc să apară în colțul din dreapta sus."
+}
+
+o_stop_player_keep_rotation
+{
+"Rotește castelul jucătorului la fel ca AI-ul"
+}
+
+o_stop_player_keep_rotation_descr
+{
+"Castelul jucătorului se rotește acum în același fel ca al AI-ului, cu focul de tabără poziționat spre marginea hărții."
+}
+
+o_restore_arabian_engineer_speech
+{
+"Restabilește discursul în arabă al inginerilor"
+}
+
+o_restore_arabian_engineer_speech_descr
+{
+"Această funcție permite inginerilor să folosească liniile vocale arabe înregistrate inițial atunci când jucătorul folosește regele arab."
+}
+
+u_fix_lord_animation_stuck_movement
+{
+"Resetează animația regelui după distrugerea clădirilor"
+}
+
+u_fix_lord_animation_stuck_movement_descr
+{
+"Această funcție resetează poziția regelui după ce se oprește sau după ce distruge o clădire atunci când se află în poziție verticală. &
+În mod normal, regele se bloca stând aplecat spre pâmânt."
+}
+
+fix_apple_orchard_build_size
+{
+"Reduce dimensiunea spațiului pentru construirea livezii cu mere"
+}
+
+fix_apple_orchard_build_size_descr
+{
+"Această funcție schimbă dimensiunea construcției livezii cu mere cu dimensiunea reală pe care ferma o ocupă dupa ce a fost plasată pe harta.&
+Acest lucru salvează niște spațiu atunci când construiești fermele și crește posibilitatea ca AI-ul să poată plasa fermele pe hartă."
+}
+
+u_fix_applefarm_blocking
+{
+"Remediază blocarea muncitorilor din livada cu mere"
+}
+
+u_fix_applefarm_blocking_descr
+{
+"Fermierii de mere nu mai pot fi blocați prin plasarea unor clădiri în partea de stânga sus a fermei."
+}
+
+o_increase_path_update_tick_rate
+{
+"Verifică mai des căile de acces disponibile"
+}
+
+o_increase_path_update_tick_rate_descr
+{
+"În modul vanilla erau necesari 200 de timpi de joc pentru a căuta noi căi de acces disponibile, oprind de obicei din activități &
+muncitorii/soldații din joc după ce a fost distrusă imediat o poartă sau un turn."
+}
+
+o_fix_ladderclimb
+{
+"Remediază eroarea folosirii scării de asediu"
+}
+
+o_fix_ladderclimb_descr
+{
+"Soldații își vor aminti acum destinația inițială după ce au urcat pe o scară de asediu, fără a se bloca pe scară."
+}
+
+u_tanner_fix
+{
+"Remediază problema tăbăcarilor care se duc după aceeași vacă"
+}
+
+u_tanner_fix_descr
+{
+"Tăbăcarii nu se vor mai întoarce fără o vacă atunci când alt tăbăcar a ales deja o vacă. &
+Acum, ei vor aștepta puțin și vor începe să caute altă vacă."
+}
+
+o_fix_fletcher_bug
+{
+"Remediază traseul meșterului de arcuri"
+}
+
+o_fix_fletcher_bug_descr
+{
+"Remediază comportamentul meșterului de arcuri care se întoarce la locul de lucru după ce a lăsat arcul/arbaleta în loc să se ducă direct la depozit."
+}
+
+ai_fix_crusader_archers_pitch
+{
+"Remediază neaprinderea mocirlei de către arcașii europeni"
+}
+
+ai_fix_crusader_archers_pitch_descr
+{
+"Arcașii europeni controlați de AI aprind mocirla la fel ca arcașii arabi pentru a se apăra de soldații inamici."
+}
+
+o_fix_baker_disappear
+{
+"Remediază dispariția brutarilor"
+}
+
+o_fix_baker_disappear_descr
+{
+"Brutarii nu mai dispar atunci când nu găsesc făină în depozitul spre care se duc."
+}
+
+o_fix_moat_digging_unit_disappearing
+{
+"Remediază dispariția soldaților care sapă"
+}
+
+o_fix_moat_digging_unit_disappearing_descr
+{
+"Remediază eroarea prin care soldații care sapă șanțuri cu apă dispar. &
+REȚINEȚI că încă mai pot dispărea dacă sunt ordonați să se miște cât timp se află pe un teren pe care nu pot merge"
+}
+
+ui_welcometext
+{
+"Acesta este un patch neoficial pentru Stronghold Crusader.
+Proiectul este disponibil ca open-source pe [GitHub](https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch).
+
+Oricare versiune a Stronghold Crusader poate fi acceptată, dar din moment ce schimbările au fost făcute pe baza versiunii Steam 1.41, pot apărea anumite incompatibilități.
+Configurația va afișa ulterior mesajele cu erorile aferente. Versiunea de patch instalată este afișată în colțul din stânga jos al meniului principal al jocului.
+Înainte de a face orice modificare, vor fi create fișiere de rezervă. Acestea pot fi șterse prin intermediul butonului ”Dezinstalare” sau manual.
+
+Echipa din spatele UCP
+
+Creatorul UCP
+[Sh0wdown](https://github.com/Sh0wdown)  
+
+Managerii proiectului
+[Kimberly Azula](https://github.com/ByBurton/)  
+[Krarilotus (Youtube)](https://www.youtube.com/channel/UCMXHqa2vmclSoSkuCu_q5rw)
+
+Dezvoltatori
+[LordHansCapon](https://github.com/LordHansCapon)  
+[np123](https://github.com/patel-nikhil)  
+[J-T-de](https://github.com/J-T-de)
+[gynt](https://github.com/gynt)
+[Le spec](https://github.com/LeSpec)  
+[Chaf1812](https://github.com/Chaf1812)
+
+Translatori
+[Lutel (YouTube)](https://www.youtube.com/user/MrLutel05) (Polish)  
+[Lolasik011](https://github.com/Lolasik011) (Russian)  
+[Skysoul (e-mail)](mailto:theskysoul@vip.qq.com) (Chinese)
+[Liegav (YouTube)](https://www.youtube.com/channel/UCFqQMKfYgGb7iFKJagQl_wA) (Hungarian)
+[Deadly (e-mail)](mailto:george171999@yahoo.com) (Romanian)
+
+Creatori de conținut  
+[Evrey](https://github.com/Evrey) (aiv)  
+[Tatha](https://www.youtube.com/channel/UC4BrhBzHp1ymnczlkdKcSkg) (aiv,aic)  
+[PitchNeeded](https://github.com/PitchNeeded) (aiv)  
+[Xander10alpha (YouTube)](https://www.youtube.com/channel/UCYlyixfoKPcz-Ixi6Nc383Q) (aic)
+
+Evident, mulțumiri speciale pentru...  
+[Firefly Studios](https://fireflyworlds.com/)  
+pentru crearea gamei Stronghold Crusader
+
+Și mulți alții
+[Udwin (YouTube)](https://www.youtube.com/user/UdwinLP)  
+[PodeCaradox](https://github.com/PodeCaradox)  
+[GRhin](https://www.twitch.tv/grhin)  
+[Heroesflorian](https://github.com/Heroesflorian)"
+}
+
+// ======================
+//         2.14
+// ======================
+
+ui_StartTroops
+{
+	"TrupePornire"
+}
+
+ui_Resource
+{
+	"BunuriPornire"
+}
+
+ui_aicconflict
+{
+	"Conflict, se va ignora"
+}
+
+o_shfy
+{
+	"Strongholdify"
+}
+
+o_shfy_beer
+{
+	"Popularitate bonus oferită de bere"
+}
+
+o_shfy_beer_descr
+{
+	" "
+}
+
+o_shfy_religion
+{
+	"Popularitate bonus oferită de către catedrală și biserică"
+}
+
+o_shfy_religion_descr
+{
+	" "
+}
+
+o_shfy_peasantspawnrate
+{
+	"Rata de spawnare a sătenilor"
+}
+
+o_shfy_peasantspawnrate_descr
+{
+	" "
+}
+
+o_shfy_resourcequantity
+{
+	"Cantitatea resurselor livrate."
+}
+
+o_shfy_resourcequantity_descr
+{
+"Adaptează aspectele enumerate pentru a se potrivi cu Stronghold 1. &
+ATENȚIE! Fiecare schimbare afectează lorzii AI, făcându-i inutili în cel mai rău caz!"
+}
+
+o_armory_marketplace_weapon_order_fix
+{
+	"Remediază ordinea din armurărie și piață pentru a se potrivi"
+}
+
+o_armory_marketplace_weapon_order_fix_descr
+{
+"Reordonează pictogramele armelor din armurărie și piață pentru a avea aceeași ordine. &
+De asemenea, se mută armura de piele între buzdugan și arbaletă și se mută armura de metal între halebardă și sabie &
+pentru un acces mai facil atunci când explorezi în piață printre itemi."
+}
+
+ai_fix_laddermen_with_enclosed_keep
+{
+    "Remediază problema cu AI-ul care nu folosește oameni care cară scări dacă sunt închiși în castel"
+}
+
+ai_fix_laddermen_with_enclosed_keep_descr
+{
+    "AI-ul (în special Snake) nu mai încetează să mai folosească oameni care cară scări cu celelalte trupe de asediu dacă este castelul închis."
+}
+
+o_override_identity_menu
+{
+    "Înlocuiți meniul Set-up Identity cu funcții noi"
+}
+
+o_override_identity_menu_descr
+{
+    "Adaugă selecția de trupe de distanță și de apropiere în meniul Set-up Identity. &
+	POATE FI FOLOSIT DOAR PENTRU MODUL DE JOC NORMAL!"
+}
+
+o_default_multiplayer_speed
+{
+    "Setează viteza implicită în modul multiplayer"
+}
+
+o_default_multiplayer_speed_descr
+{
+    " "
+}
+
+u_fireballistafix
+{
+    "Ballista de foc trage acum în călugări și tunelieri"
+}
+
+u_fireballistafix_descr
+{
+    "Ballista de foc trage automat asupra călugărilor și a tunelierilor."
+}
+
+ui_browsepath
+{
+	"Vă rugăm să alegeți directorul în care este instalat Stronghold Crusader."
+}
+
+ui_aicoldversion
+{
+	"S-a detectat o versiune veche. Faceți click pentru a o converti"
+}
+
+ui_aicofferconvert
+{
+	"Convertiți fișierul AIC într-o versiune mai nouă?"
+}
+
+ui_aicconvertprompt
+{
+	"Convertirea AIC"
+}
+
+ui_aicselect
+{
+	"Deselectați vă rog mai întâi alt(e) fișier(e) AIC. Următoarele fișiere AIC sunt deja selectate: "
+}
+
+// ======================
+//         2.13
+// ======================
+
+o_firecooldown
+{
+	"Extindeți durata rezistenței la foc a clădirilor stinse recent"
+}
+
+o_firecooldown_descr
+{
+	"Durata în care clădirile stinse nu pot lua din nou foc poate fi prelungită aici."
+}
+
+u_ballistamonk
+{
+	"Balista de foc trage în călugări"
+}
+
+u_ballistamonk_descr
+{
+	"Balista de foc trage în mod automat în călugări cu această setare."
+}
+
+
+// ======================
+//         2.12
+// ======================
+
+ui_AIC
+{
+	"AIC"
+}
+
+ui_aicExport
+{
+	"Export"
+}
+
+ui_aicExport_success
+{
+	"Exportat cu succes."
+}
+
+ui_aicHint
+{
+	"Exportă fișierul .aic din programul de instalare în folderul Stronghold Crusader."
+}
+
+// ======================
+//         1.00
+// ======================
+
+Name
+{
+	"Unofficial Crusader Patcher"
+}
+
+u_ArabXBow
+{
+	"Rezistență crescută a armurii soldatului arab cu sabie împotriva arbaletelor"
+}
+
+u_arabxbow_descr
+{
+	" - Soldatul arab cu sabie rezistă la 6 lovituri de arbaletă în loc de 3."
+}
+
+u_ArabWall
+{
+	"Soldații arabi cu sabie distrug zidurile mai rapid"
+}
+
+u_ArabWall_descr
+{
+"În modul vanilla, soldații arabi cu sabie distrug zidurile mai lent decât orice altă trupă de apropiere. &
+Cu această opțiune, viteza de dărâmare a pereților este aproape dublată de către ei, situându-i puțin deasupra Lăncierilor ca putere."
+}
+
+u_spearmen
+{
+	"Rezistență crescută a armurii lăncierilor împotriva soldaților de distanță"
+}
+
+u_spearmen_descr
+{
+" - Lăncierii mor dupa 5 lovituri de săgeți în loc de 3 &
+ - Lăncierii supraviețuiesc cu foarte puțină viață unei lovituri de arbaletă, în loc să moară dintr-o singură lovitură."
+}
+
+ui_error
+{
+	"Eroare"
+}
+
+ui_SearchPath
+{
+	" Vă rugăm să selectați folderul de instalare:"
+}
+
+ui_search
+{
+	"Caută"
+}
+
+ui_continue
+{
+	"Continuă"
+}
+
+ui_wrongpath
+{
+	"Stronghold Crusader nu a putut fi găsit pe calea specificată!"
+}
+
+ui_back
+{
+	"Înapoi"
+}
+
+ui_install
+{
+	"Instalează"
+}
+
+ui_finished
+{
+	"Terminat"
+}
+
+ui_chooseLangTitle
+{
+	"Limbaj setup"
+}
+
+ui_chooseLang
+{
+	"Vă rugăm să alegeți o limba pentru acest setup din lista de mai jos."
+}
+
+ui_accept
+{
+	"OK"
+}
+
+ui_cancel
+{
+	"Anulare"
+}
+
+ui_uninstall
+{
+	"Dezinstalare"
+}
+
+ui_uninstalldone
+{
+	"Dezinstalare completă."
+}
+
+ai_recruitinterval
+{
+	"Viteză de recrutare crescută"
+}
+
+ai_recruitinterval_descr
+{
+	"Setează intervalul de recrutare a tuturor AI la cea ma mică valoare (la nivel de Rat/Richard)"
+}
+
+ai_attacklimit
+{
+	"Creșterea limitei trupelor AI care atacă"
+}
+
+ai_attacklimit_descr
+{
+"Numărul de trupe suplimentare care se adaugă după primul atac este &
+limitat la 200 în modul vanilla. Aici se poate modifica această limită."
+}
+
+o_gamespeed
+{
+	"Extinderea limitelor de viteză ale jocului"
+}
+
+o_gamespeed_descr
+{
+	"Viteza jocului poate fi acum modificată după cum urmează: &
+- De la viteza 10 la 90 în intervale de 5 &
+- De la viteza 90 la 200 în intervale de 10 &
+- De la viteza 200 la 1000 în intervale de 100 &
+Noile valori sunt disponibile în joc doar prin intermediul tastelor + Și - , glisorul din &
+meniul jocului rămâne neschimbat."
+}
+
+ui_bugfix
+{
+	"Buguri rezolvate"
+}
+
+ui_ailords
+{
+	"Lorzii AI"
+}
+
+ui_troops
+{
+	"Trupe"
+}
+
+ui_other
+{
+	"Altele"
+}
+
+o_responsivegates
+{
+	"Un răspuns mai rapid al porților față de inamici"
+}
+
+o_responsivegates_descr
+{
+"Porțile se închid singure dacă inamicii intră în raza de acțiune și se deschid mai repede când pericolul dispare. &
+Distanța unui inamic necesară pentru care porțile se vor închide va fi redusă de la 200 la 140."
+}
+
+ai_addattack
+{
+	"Creșterea ratei trupelor de atac"
+}
+
+ai_addattack_descr
+{
+"In modul vanilla, numărul trupelor atacante crește după fiecare atac cu 5 trupe în medie.
+Această valoare este aceeași pentru toți lorzii AI și pot fi modificată aici."
+}
+
+ai_addattack_alt_descr
+{
+"Alternativ, numărul suplimentar al trupelor poate fi făcut aici în funcție de numărul de trupe al primului atac. &
+Întrucât această valoare este diferită pentru fiecare AI, atacurile vor crește în mod diferit în loc să crească cu aceeași valoare pentru fiecare lord AI. &
+Spre exemplu: Factor de creștere = 0.5 &
+Trupele de atac ale lui Sultan = 10, 15, 20, 25, ... &
+Trupele de atac ale lui Saladin = 50, 75, 100, 125, ..."
+}
+
+u_laddermen
+{
+	"Rezistență crescută a soldaților cu scări de asediu"
+}
+
+u_laddermen_descr
+{
+	" - Soldații care cară scări pentru asediu mor după 12 lovituri de săgeți în loc de 5 &
+ - Soldații care cară scări pentru asediu mor după 5 lovituri de arbaletă sau praștie în loc de 2 &
+ - Soldații care cară scări pentru asediu 20 de aur în loc de 4"
+}
+
+o_playercolor
+{
+	"Schimbă culoarea jucătorului 1"
+}
+
+o_playercolor_descr
+{
+	" "
+}
+
+ai_demolish
+{
+	"Dezactivați demolarea pentru bani a lorzilor AI"
+}
+
+ai_demolish_walls
+{
+	"fortificații"
+}
+
+ai_demolish_eco
+{
+	"clădiri economice"
+}
+
+ai_demolish_walls_descr
+{
+	" "
+}
+
+ai_demolish_eco_descr
+{
+"Dacă AI-ul se simte sub presiune, acesta începe să-și demoleze economia sau fortificațiile pentru &
+a obține bani într-un mod rapid pentru a recruta trupe. &
+Această funcție este uneori declanșată fără un motiv pertinent, iar astfel, poate fi dezactivată aici. "
+}
+
+ai_tethers
+{
+	"Dezactivați spamarea construcțiilor de boi care cară piatră"
+}
+
+ai_tethers_descr
+{
+"De obicei, AI-ul construiește pentru fiecare carieră de piatră o nouă construcție de boi care cară piatră. &
+Acest lucru poate fi dezactivat aici, întrucât acest lucru duce la spamarea acestor construcții dacă &
+carierele de piatră ale AI-ului sunt distruse în mod repetat."
+}
+
+
+
+
+
+
+
+
+
+
+// =======================
+//          2.06
+// =======================
+
+ai_nosleep
+{
+	"Dezactivează modul de repaus din cauza lipsei resurselor"
+}
+
+ai_nosleep_descr
+{
+"De obicei, AI-ul își oprește clădirile din lucru atunci când resursa necesară lipsește. &
+Acest lucru se întâmplă fără a ține cont de produsele care se află pe drum, spre exemplu, &
+către armurărie. Această funcție poate fi complet dezactivată aici. "
+}
+
+
+
+
+
+
+
+
+// 5.12.2018
+
+o_onlyai
+{
+	"Activează modul spectator [pot exista buguri]"
+}
+
+o_onlyai_descr
+{
+"Această funcție înlătură jucătorul 1(culoarea roșie prestabilită fiind înlocuita cu un AI), &
+astfel încât să se poată realiza și viziona meciuri cu până la 8 AI. Meciurile salvate pot &
+fi redate acum în mod corespunzător cu această funcție. Uneori poate apărea o eroare în care &
+apar obiecte aleatorii pe toată harta. Acest lucru este doar un bug vizual și poate fi eliminat &
+prin salvarea jocului, terminarea meciului și reîncărcarea fișierului salvat."
+}
+
+o_moatvisibility
+{
+	"Arată întotdeauna șanțul cu apă planificat"
+}
+
+o_moatvisibility_descr
+{
+"Această funcție vă lasă să vedeți mereu pe hartă schema șanțului cu apă plasată pe hartă, dar &
+care nu este săpat chiar și atunci când deselectați plasarea șanțului cu apă."
+}
+
+o_engineertent
+{
+	"Dezactivarea deselectării cortului de asediu"
+}
+
+o_engineertent_descr
+{
+"Prin această setare, jocul nu va deselecta mașinăria de asediu aleasă după plasarea unui cort. &
+În acest fel pot fi create mai multe corturi de asediu, unele după celelalte, fără a fi nevoiți &
+să reselectați de fiecare dată același echipament de asediu."
+}
+
+
+
+
+
+
+
+
+
+
+// ================================
+//              2.07
+// ================================
+
+
+ai_demolish_trapped
+{
+	"Dacă este închis castelul"
+}
+
+ai_demolish_trapped_descr
+{
+	" "
+}
+
+o_freetrader
+{
+	"Amplasare gratuită a magazinului"
+}
+
+o_freetrader_descr
+{
+"Amplasare gratuită a magazinului, întrucât AI-ul își face singur de petrecanie uneori, atunci când &
+nu mai are lemn și magazinul este distrus. Cu această setare, &
+plasarea magazinului pe hartă va deveni gratuită pentru a preveni acest lucru."
+}
+
+ai_towerengines
+{
+	"Scoaterea limitelor mașinăriilor de asediu de pe turnuri"
+}
+
+ai_towerengines_descr
+{
+"De obicei, AI-ul construiește până la trei mangonele și baliste, &	
+fiecare dintre ele fiind aflate în turnuri diferite. Această limită &
+poate fi anulată aici."
+}
+
+ai_buywood
+{
+	"Cumpără lemn suficient"
+}
+
+ai_buywood_descr
+{
+"Pentru a împiedica hoțomanii de meșteri care fac arcuri din a mai fura &
+lemn pe care AI-ul tocmai l-a cumpărat pentru a construi clădiri, acum vor fi &
+cumpărate 2 lemne suplimentare pentru fiecare clădire."
+}
+
+o_keys
+{
+	"Tastele WASD și salvări rapide"
+}
+
+o_keys_descr
+{
+"Tastele WASD pot fi utilizate acum pentru a vă deplasa pe hartă, precum și &
+combinația de taste CTRL-S și CTRL-L pentru a salva și încărca salvarea"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===========
+//    2.07a
+// ===========
+
+
+
+ai_attacktarget
+{
+	"Setează ținta de atac a AI-ului"
+}
+
+ai_attacktarget_nearest
+{
+	"Cel mai apropiat inamic"
+}
+
+ai_attacktarget_nearest_descr
+{
+	" "
+}
+
+ai_attacktarget_richest
+{
+	"Cel mai bogat inamic"
+}
+
+ai_attacktarget_richest_descr
+{
+	" "
+}
+
+ai_attacktarget_weakest
+{
+	"Cel mai slab inamic"
+}
+
+ai_attacktarget_weakest_descr
+{
+"Prin această setare, toți lorzii AI își vor alege următoarea țintă de atac &
+prin același mod. Acest lucru împiedică trupele să schimbe ținte în timpul &
+unui asalt al unui castel, cât și să șe trimită prin jurul castelelor inamice &
+pentru a le aduna."
+}
+
+
+
+
+
+
+
+
+
+// ====================
+//        2.08
+// ====================
+
+
+
+
+
+ai_assaultswitch
+{
+	"Elimină schimbarea țintei AI în timpul asediilor"
+}
+
+ai_assaultswitch_descr
+{
+"Lorzii AI care atacă cel mai puternic și cel mai slab inamic își schimbă uneori &
+ținta în mijlocul unui asediu care are loc și își trimit trupele către un alt castel. &
+Acest lucru este prevenit cu această setare, de îndată ce asaltul asupra unui castel &
+a început. Totuși, acest lucru se mai poate întampla în timpul fazei în care AI-ul &
+își strânge trupele în fața unui castel. "
+}
+
+
+
+ai_rebuild
+{
+	"Reparații îmbunătățite ale AI-ului"
+}
+
+ai_rebuild_descr
+{
+"AI-ul repară turnurile afectate, zidurile ușor deteriorate, precum și clădirea inginerilor &
+sau clădirea tunelierilor și a arzătorilor de petrol. Mai mult decât atât, AI-ul poate construi &
+acum peste platforma de colectare a carierelor de piatră prin distrugerea acesteia."
+}
+
+
+
+
+
+// ====================
+//        2.09
+// ====================
+
+o_healer
+{
+	"Lecuitorul vindecă victime"
+}
+
+o_healer_descr
+{
+"Lecuitorul care vine din „farmacie” caută acum în mod constant soldați răniți, civili și animale &
+pentru a le vindeca. Cele mai apropiate ținte sunt tratate mai întâi de toate. Cu fiecare animație &
+de vindecare, acesta vindecă cam 1/3 din sănătatea unui lăncier. Plimbarea sa prin grădini și &
+investigarea sa a norilor de ciumă nu este înlocuită! Este omisă doar plimbarea lui prin castel &
+atunci când nu se mai află ținte rănite în zonă"
+}
+
+
+
+
+
+// ====================
+//        2.10
+// ====================
+
+
+
+o_xtreme
+{
+	"Eliminați bara magică din modul Extreme"
+}
+
+o_xtreme_descr
+{
+	"Elimină bara magică din modul Extreme"
+}
+
+
+// ======================
+//         2.11
+// ======================
+
+
+ui_AIV
+{
+	"AIV"
+}
+
+ai_access
+{
+	"Oprirea demolării clădirilor inaccesibile"
+}
+
+ai_access_descr
+{
+"Această funcție împiedică AI-ul să demoleze clădiri fără acces. &
+Acest lucru ar trebui să oprească AI-ul din a demolara și reconstrui &
+clădirile în mod constant în care accesul este imposibil"
+}
+
+ai_attackwave
+{
+	"Îmbunătățește valurile de atac"
+}
+
+ai_attackwave_descr
+{
+"În timpul unui atac din modul vanilla, AI-ul trimite trupe doar acolo unde &
+pot fi distruse părți ale zidului. Acest lucru cauzează niște atacuri slabe &
+ale trupelor acolo unde există castele cu multe clădiri lipite de pereți. &
+Această opțiune face ca trupele să atace și clădirile civile și fortificațiile, &
+precum și părți din zid care se află deja sub atacul unei trupe. Mai mult, AI-ul &
+trimite mai multe trupe către lordul inamic de îndată ce detectează o breșă în zid."
+}

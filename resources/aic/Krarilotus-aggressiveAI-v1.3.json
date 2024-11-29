@@ -70,7 +70,19 @@ Erre a célra végrehajtott változtatások:
 - Az MI hatékonyabban alkalmazza a rajtaütéseket.
 - Az MI csökkenti a feleslegesen járőröző egységeit.
 - Az MI az arany felhalmozása helyett elköti azt, hogy nagyobb nyomást gyakoroljon ellenségére.
-- Egyes MI-k néhány kezdeti támadás után új egységtípusokat használnak."
+- Egyes MI-k néhány kezdeti támadás után új egységtípusokat használnak.",
+
+  "Romanian": "Acest fișier AI-Caracter îmbunătățește eficiența tuturor AI-ilor și îi face mai agresivi. (13.04.2021)
+Modificări aduse în acest sens:
+- O economie mai eficientă.
+- Atacuri care au loc mai rapid pentru toți lorzii AI.
+- Utilizări mai versatile ale trupelor.
+- Atacuri mai constante.
+-> AI-ul nu se oprește din atacat la fel de des după un atac.
+- Razii mai eficiente.
+- Reducerea utilizării intensive ale trupelor de apărare a castelului.
+- În loc să strângă aur, AI-ul îl reinvestește pentru a pune presiune pe hartă.
+- Unii lorzi AI folosesc noi tipuri de trupe după câteva atacuri de început."
   },
 "AICLongDescription": {
   "German": "Not provided anymore",
@@ -84,6 +96,8 @@ Erre a célra végrehajtott változtatások:
   "Chinese": "Not provided anymore",
 
   "Hungarian": "Not provided anymore"
+
+  "Romanian": "Not provided anymore"
 },
 
 	"AICharacters": [

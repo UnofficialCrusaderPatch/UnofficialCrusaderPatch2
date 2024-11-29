@@ -1,0 +1,3 @@
+Modificarea castelelor lui Evrey realizată de PitchNeeded.
+Extinde „Castelele vanilla remediate ale lui Evrey” prin adăugarea de mangonele și baliste în turnurile lui Vizir, Porcului, Nizarului și Emirului.
+Editat de [PitchNeeded](https://github.com/PitchNeeded). 

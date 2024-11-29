@@ -1,0 +1,3 @@
+Modificarea versiunii lui PitchNeeded realizată de Evrey (fântâni & farmacii)
+Extinde „Castelele vanilla remediate ale lui Evrey” prin adăugarea de fântâni și farmacii la unele castele.
+Editat de [PitchNeeded](https://github.com/PitchNeeded).
